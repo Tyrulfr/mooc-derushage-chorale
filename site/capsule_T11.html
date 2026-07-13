@@ -309,19 +309,58 @@ Freins + apprentissage
 
 <section class="export-panel" id="export-word-panel" data-capsule-code="T11" data-capsule-title="Les freins et leviers">
   <h2>Export Word</h2>
-  <p class="meta">Exporter le script final au format Word pour relecture ou diffusion.</p>
+  <p class="meta">Exporter le script final, les unites de sens et les videos expert a produire.</p>
   <button type="button" class="btn" id="export-word-open" aria-expanded="false" aria-controls="export-word-modal">
-    Exporter le script final
+    Exporter le dossier capsule
   </button>
+  <div class="sr-export" id="export-unites-de-sens" hidden>UNITES DE SENS
+
+1. MUR-0013
+   Acte : Freins
+   Unite de sens : Nommer les freins : temps, legitimite, echec — et comment les depasser.
+   Grille expert : E20 — Freins
+
+2. JJG-0014
+   Acte : Incertitude
+   Unite de sens : Accepter l'incertitude : on ne maitrise pas tout avant de se lancer.
+   Grille expert : E20 · E21
+
+3. LOI-0011
+   Acte : Entourage
+   Unite de sens : Entourage academique clivant ; ajuster le discours et constituer une equipe.
+   Grille expert : E20 — Entourage
+
+4. SYL-0013
+   Acte : Conclusion
+   Unite de sens : Leviers : oser, accompagnement, impact societal.
+   Grille expert : E21 — Leviers</div><div class="sr-export" id="export-videos-expert" hidden>VIDEOS EXPERT A PRODUIRE
+
+E20 — Intervenant a definir
+   Titre : Gerer les freins
+   Descriptif : Temps, legitimite, entourage, droit a l'apprentissage et securisation du parcours.
+   Orientation : Muriel, Jean-Jacques et Loic nomment des freins reels. E20 aide a les travailler sans les nier.
+   Consignes :
+     - Valider l'emotion avant de proposer des solutions.
+     - Proposer une premiere action reversible.
+
+E21 — Intervenant a definir
+   Titre : Innover comme processus d'apprentissage
+   Descriptif : Incertitude, essais, erreurs, pivot et progression plutot que reussite lineaire. Focaliser le discours sur les leviers existants pour vaincre les freins.
+   Orientation : Jean-Jacques et Sylvia concluent sur les leviers. E21 relie innovation et progression non lineaire.
+   Consignes :
+     - Relier aux conseils finaux de la chorale.
+     - Focaliser sur les leviers pour vaincre les freins.
+
+Intervenants proposes (a confirmer) : Arielle Sante, Joel Nguen, Pascal Corbel, Bernard Yannou</div>
 </section>
 
 <div class="modal" id="export-word-modal" hidden role="dialog" aria-modal="true" aria-labelledby="export-word-title">
   <div class="modal-card">
-    <h2 id="export-word-title">Exporter en Word</h2>
-    <p class="meta">Choisissez un dossier de destination, puis lancez l'export.</p>
+    <h2 id="export-word-title">Exporter le dossier capsule</h2>
+    <p class="meta">Script final chorale, unites de sens et videos expert a produire.</p>
     <div class="export-field">
       <label for="export-word-filename">Nom du fichier</label>
-      <input type="text" id="export-word-filename" value="script_t11.doc" autocomplete="off">
+      <input type="text" id="export-word-filename" value="capsule_t11.doc" autocomplete="off">
     </div>
     <div class="export-field" id="export-word-folder-field">
       <label>Dossier de destination</label>

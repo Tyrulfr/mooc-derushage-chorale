@@ -342,19 +342,68 @@ Idees ≠ besoins valides
 
 <section class="export-panel" id="export-word-panel" data-capsule-code="T2" data-capsule-title="Sortir du laboratoire pour verifier le besoin">
   <h2>Export Word</h2>
-  <p class="meta">Exporter le script final au format Word pour relecture ou diffusion.</p>
+  <p class="meta">Exporter le script final, les unites de sens et les videos expert a produire.</p>
   <button type="button" class="btn" id="export-word-open" aria-expanded="false" aria-controls="export-word-modal">
-    Exporter le script final
+    Exporter le dossier capsule
   </button>
+  <div class="sr-export" id="export-unites-de-sens" hidden>UNITES DE SENS
+
+1. YAN-0003
+   Acte : Problematisation
+   Unite de sens : Problematisation : sortir du laboratoire pour trouver un vrai probleme de marche.
+
+2. JJG-0004
+   Acte : Cadre
+   Unite de sens : Cadre : distinguer nice to have et must have ; le client doit payer.
+
+3. MUR-0003
+   Acte : Preuve
+   Unite de sens : Preuve du besoin : ecart entre prescription et consommation reelle.
+
+4. MUR-0004
+   Acte : Terrain
+   Unite de sens : Utilisateur et co-construction : tester avec un EHPAD sur le terrain.
+
+5. LOI-0002
+   Acte : Apprentissage
+   Unite de sens : Hypotheses revisees : les filieres revelent d'autres problemes que prevu.
+
+6. JJG-0005
+   Acte : Pivot
+   Unite de sens : Pivot : etude de marche et adaptation de la cible.
+
+7. SYL-0004
+   Acte : Beneficiaire
+   Unite de sens : Beneficiaire : cliniciens et patients precisent le besoin medical.</div><div class="sr-export" id="export-videos-expert" hidden>VIDEOS EXPERT A PRODUIRE
+
+E2 — Intervenant a definir
+   Titre : Passer d'une technologie a un probleme a resoudre
+   Descriptif : Utilisateur, client, beneficiaire, usage et proposition de valeur.
+   Orientation : La chorale T2 montre comment sortir du labo fait emerger utilisateurs, usages et ecarts entre idee et realite. E2 structure cette lecture.
+   Consignes :
+     - Suivre sequence_recommandee_e2.
+     - Pour chaque extrait : phrase_amorce → concept → question_apprenant.
+     - Distinguer technologie, probleme et valeur percue.
+
+E3 — Intervenant a definir
+   Titre : Poser ou identifier le bon probleme avant de chercher la solution
+   Descriptif : Validation, hypotheses, experimentation, pivot et apprentissage.
+   Orientation : Les temoignages LOI et JJG montrent des hypotheses revisees et des pivots. E3 en donne une methode : formuler, tester, apprendre, ajuster.
+   Consignes :
+     - S'appuyer sur LOI-0002 avant JJG-0005 (probleme puis pivot).
+     - Presenter le pivot comme apprentissage.
+     - Proposer : formuler → tester → apprendre → ajuster.
+
+Intervenants proposes (a confirmer) : Gregoire Burge, Bernard Yannou</div>
 </section>
 
 <div class="modal" id="export-word-modal" hidden role="dialog" aria-modal="true" aria-labelledby="export-word-title">
   <div class="modal-card">
-    <h2 id="export-word-title">Exporter en Word</h2>
-    <p class="meta">Choisissez un dossier de destination, puis lancez l'export.</p>
+    <h2 id="export-word-title">Exporter le dossier capsule</h2>
+    <p class="meta">Script final chorale, unites de sens et videos expert a produire.</p>
     <div class="export-field">
       <label for="export-word-filename">Nom du fichier</label>
-      <input type="text" id="export-word-filename" value="script_t2.doc" autocomplete="off">
+      <input type="text" id="export-word-filename" value="capsule_t2.doc" autocomplete="off">
     </div>
     <div class="export-field" id="export-word-folder-field">
       <label>Dossier de destination</label>

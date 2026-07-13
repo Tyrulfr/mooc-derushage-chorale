@@ -299,19 +299,52 @@ Valeur + posture entrepreneuriale
 
 <section class="export-panel" id="export-word-panel" data-capsule-code="T10" data-capsule-title="S'approprier un langage pour entreprendre">
   <h2>Export Word</h2>
-  <p class="meta">Exporter le script final au format Word pour relecture ou diffusion.</p>
+  <p class="meta">Exporter le script final, les unites de sens et les videos expert a produire.</p>
   <button type="button" class="btn" id="export-word-open" aria-expanded="false" aria-controls="export-word-modal">
-    Exporter le script final
+    Exporter le dossier capsule
   </button>
+  <div class="sr-export" id="export-unites-de-sens" hidden>UNITES DE SENS
+
+1. MUR-0012
+   Acte : Adaptation
+   Unite de sens : Un meme projet, plusieurs discours : EHPAD, medecins, investisseurs.
+
+2. JJG-0013
+   Acte : Apprentissage
+   Unite de sens : Apprendre une nouvelle langue : entrepreneuriat, finance, droit.
+
+3. SYL-0012
+   Acte : Posture
+   Unite de sens : Formation sectorielle : pitch, negociation et market access en pharma.
+
+4. LOI-0010
+   Acte : Interlocuteurs
+   Unite de sens : Passer du discours scientifique aux attentes economiques et investisseurs.</div><div class="sr-export" id="export-videos-expert" hidden>VIDEOS EXPERT A PRODUIRE
+
+E18 — Intervenant a definir
+   Titre : Passer de la preuve scientifique a la valeur pour l'interlocuteur
+   Descriptif : Adapter le message selon l'utilisateur, le decideur, le partenaire ou l'investisseur.
+   Orientation : Muriel, Jean-Jacques et Loic montrent des adaptations de discours. E18 aide a partir du probleme et de la valeur.
+   Consignes :
+     - Partir du probleme et de la valeur, pas du protocole experimental.
+
+E19 — Intervenant a definir
+   Titre : La posture entrepreneuriale s'apprend
+   Descriptif : Feedback, entrainement, mentorat et evolution de l'identite professionnelle.
+   Orientation : Les temoignages montrent un apprentissage progressif du langage. E19 legitime l'inconfort et l'entrainement.
+   Consignes :
+     - Normaliser l'inconfort du changement de langage.
+
+Intervenants proposes (a confirmer) : Arielle Sante, Joel Nguen, Pascal Corbel</div>
 </section>
 
 <div class="modal" id="export-word-modal" hidden role="dialog" aria-modal="true" aria-labelledby="export-word-title">
   <div class="modal-card">
-    <h2 id="export-word-title">Exporter en Word</h2>
-    <p class="meta">Choisissez un dossier de destination, puis lancez l'export.</p>
+    <h2 id="export-word-title">Exporter le dossier capsule</h2>
+    <p class="meta">Script final chorale, unites de sens et videos expert a produire.</p>
     <div class="export-field">
       <label for="export-word-filename">Nom du fichier</label>
-      <input type="text" id="export-word-filename" value="script_t10.doc" autocomplete="off">
+      <input type="text" id="export-word-filename" value="capsule_t10.doc" autocomplete="off">
     </div>
     <div class="export-field" id="export-word-folder-field">
       <label>Dossier de destination</label>

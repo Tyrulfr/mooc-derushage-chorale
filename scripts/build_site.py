@@ -575,8 +575,8 @@ tbody tr:last-child td { border-bottom: none; }
 EXPORT_WORD_MODAL = """
 <div class="modal" id="export-word-modal" hidden role="dialog" aria-modal="true" aria-labelledby="export-word-title">
   <div class="modal-card">
-    <h2 id="export-word-title">Exporter en Word</h2>
-    <p class="meta">Choisissez un dossier de destination, puis lancez l'export.</p>
+    <h2 id="export-word-title">Exporter le dossier capsule</h2>
+    <p class="meta">Script final chorale, unites de sens et videos expert a produire.</p>
     <div class="export-field">
       <label for="export-word-filename">Nom du fichier</label>
       <input type="text" id="export-word-filename" value="{default_filename}" autocomplete="off">
@@ -917,18 +917,82 @@ def referents_section(capsule_data: dict) -> str:
 """
 
 
-def export_word_section(code: str, titre: str) -> str:
+def export_unites_plaintext(capsule_data: dict) -> str:
+    unites = capsule_data.get("unites_de_sens", [])
+    if not unites:
+        return ""
+    lines = ["UNITES DE SENS", ""]
+    for unite in unites:
+        extraits = ", ".join(unite.get("extraits", []))
+        grille = unite.get("grille_expert") or unite.get("grille_e1") or unite.get("grille_e20_e21") or ""
+        lines.append(f"{unite.get('ordre', '')}. {extraits or '—'}")
+        if unite.get("acte"):
+            lines.append(f"   Acte : {unite['acte']}")
+        if unite.get("libelle"):
+            lines.append(f"   Unite de sens : {unite['libelle']}")
+        if grille:
+            lines.append(f"   Grille expert : {grille}")
+        lines.append("")
+    return "\n".join(lines).strip()
+
+
+def export_videos_expert_plaintext(capsule_data: dict) -> str:
+    videos = capsule_data.get("videos_expert", [])
+    if not videos:
+        return ""
+    orientations = {
+        item.get("code", ""): item
+        for item in (capsule_data.get("orientations_expert") or [])
+        if item.get("code")
+    }
+    proposes = capsule_data.get("experts_proposes", [])
+    lines = ["VIDEOS EXPERT A PRODUIRE", ""]
+    for video in videos:
+        code = video.get("code", "")
+        intervenant = video.get("intervenant") or "Intervenant a definir"
+        lines.append(f"{code} — {intervenant}")
+        lines.append(f"   Titre : {video.get('titre', '')}")
+        if video.get("descriptif"):
+            lines.append(f"   Descriptif : {video['descriptif']}")
+        orientation = orientations.get(code)
+        if orientation:
+            if orientation.get("introduction"):
+                lines.append(f"   Orientation : {orientation['introduction']}")
+            consignes = orientation.get("consignes", [])
+            if consignes:
+                lines.append("   Consignes :")
+                for item in consignes:
+                    lines.append(f"     - {item}")
+        lines.append("")
+    if proposes:
+        lines.append(f"Intervenants proposes (a confirmer) : {', '.join(proposes)}")
+    return "\n".join(lines).strip()
+
+
+def export_word_section(code: str, titre: str, capsule_data: dict) -> str:
+    unites_text = export_unites_plaintext(capsule_data)
+    videos_text = export_videos_expert_plaintext(capsule_data)
+    hidden_blocks = ""
+    if unites_text:
+        hidden_blocks += (
+            f'<div class="sr-export" id="export-unites-de-sens" hidden>{escape(unites_text)}</div>'
+        )
+    if videos_text:
+        hidden_blocks += (
+            f'<div class="sr-export" id="export-videos-expert" hidden>{escape(videos_text)}</div>'
+        )
     return (
         f"""
 <section class="export-panel" id="export-word-panel" data-capsule-code="{escape(code)}" data-capsule-title="{escape(titre)}">
   <h2>Export Word</h2>
-  <p class="meta">Exporter le script final au format Word pour relecture ou diffusion.</p>
+  <p class="meta">Exporter le script final, les unites de sens et les videos expert a produire.</p>
   <button type="button" class="btn" id="export-word-open" aria-expanded="false" aria-controls="export-word-modal">
-    Exporter le script final
+    Exporter le dossier capsule
   </button>
+  {hidden_blocks}
 </section>
 """
-        + export_word_modal(f"script_{code.lower()}.doc")
+        + export_word_modal(f"capsule_{code.lower()}.doc")
     )
 
 
@@ -1210,7 +1274,7 @@ def build_capsule_pages(capsules: list[dict], segments: list[dict], affectations
             sections.append(selection_methodology_section(capsule, capsule_data))
             sections.append(selection_unites_section(capsule_data))
         sections.append(referents_section(capsule_data))
-        sections.append(export_word_section(code, capsule["titre"]))
+        sections.append(export_word_section(code, capsule["titre"], capsule_data))
         page_title = f"{code} - {capsule['titre']}"
         write_text(
             SITE / f"capsule_{code}.html",

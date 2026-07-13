@@ -7,6 +7,8 @@
     return;
   }
 
+  const unitesEl = document.getElementById("export-unites-de-sens");
+  const videosEl = document.getElementById("export-videos-expert");
   const modal = document.getElementById("export-word-modal");
   const openBtn = document.getElementById("export-word-open");
   const cancelBtn = document.getElementById("export-word-cancel");
@@ -25,7 +27,7 @@
   let directoryHandle = null;
 
   const presetFilename = filenameInput.value.trim();
-  const defaultFilename = presetFilename || `script_${slugify(capsuleCode)}.doc`;
+  const defaultFilename = presetFilename || `capsule_${slugify(capsuleCode)}.doc`;
   filenameInput.value = defaultFilename;
 
   configureBrowserUi();
@@ -127,62 +129,92 @@
   }
 
   function parseScriptBlocks(text) {
-    const lines = text.replace(/\r\n/g, "\n").split("\n");
+    const chunks = text.replace(/\r\n/g, "\n").split(/\n\n+/).filter(Boolean);
     const blocks = [];
-    let current = null;
 
-    const headerPattern =
-      /^\[([^\]]+)\]\s*(.+?)\s*\|\s*(.+?)\s*\|\s*(.+)$/;
+    for (const chunk of chunks) {
+      const lines = chunk.split("\n");
+      const header = lines[0] || "";
+      const body = lines.slice(1).join("\n").trim();
+      const extractMatch = header.match(/^\[([^\]]+)\]\s*(.+?)\s*\|\s*(.+?)\s*\|\s*(.+)$/);
 
-    for (const line of lines) {
-      const match = line.match(headerPattern);
-      if (match) {
-        if (current) {
-          current.verbatim = current.verbatim.join("\n").trim();
-          blocks.push(current);
-        }
-        current = {
-          id: match[1].trim(),
-          chercheur: match[2].trim(),
-          source: match[3].trim(),
-          timecodes: match[4].trim(),
-          verbatim: [],
-        };
+      if (extractMatch) {
+        blocks.push({
+          kind: "extract",
+          id: extractMatch[1].trim(),
+          chercheur: extractMatch[2].trim(),
+          source: extractMatch[3].trim(),
+          timecodes: extractMatch[4].trim(),
+          verbatim: body,
+        });
         continue;
       }
-      if (current) {
-        current.verbatim.push(line);
-      }
-    }
 
-    if (current) {
-      current.verbatim = current.verbatim.join("\n").trim();
-      blocks.push(current);
+      if (header.startsWith("[CADRAGE")) {
+        blocks.push({
+          kind: "cadrage",
+          header,
+          verbatim: body,
+        });
+        continue;
+      }
+
+      blocks.push({
+        kind: "raw",
+        header,
+        verbatim: body ? `${header}\n${body}`.trim() : header,
+      });
     }
 
     return blocks;
   }
 
-  function buildWordDocument(title, blocks, rawScript) {
-    const generatedAt = new Date().toLocaleString("fr-FR");
-    let body = "";
+  function renderScriptBlocks(blocks, rawScript) {
+    if (!blocks.length) {
+      return `<pre style="white-space:pre-wrap;font-family:Calibri,sans-serif;">${escapeHtml(rawScript)}</pre>`;
+    }
 
-    if (blocks.length) {
-      body = blocks
-        .map((block, index) => {
+    let extractIndex = 0;
+    return blocks
+      .map((block) => {
+        if (block.kind === "extract") {
+          extractIndex += 1;
           return `
-            <h2 style="font-size:13pt;margin:18pt 0 6pt;">${index + 1}. ${escapeHtml(block.id)} — ${escapeHtml(block.chercheur)}</h2>
+            <h3 style="font-size:13pt;margin:16pt 0 6pt;">${extractIndex}. ${escapeHtml(block.id)} — ${escapeHtml(block.chercheur)}</h3>
             <p class="meta" style="font-size:10pt;color:#555;margin:0 0 8pt;">
               Source : ${escapeHtml(block.source)}<br>
               Timecodes : ${escapeHtml(block.timecodes)}
             </p>
             <p style="margin:0 0 14pt;text-align:justify;">${escapeHtml(block.verbatim).replace(/\n/g, "<br>")}</p>
           `;
-        })
-        .join("");
-    } else {
-      body = `<pre style="white-space:pre-wrap;font-family:Calibri,sans-serif;">${escapeHtml(rawScript)}</pre>`;
+        }
+        if (block.kind === "cadrage") {
+          return `
+            <h3 style="font-size:12pt;margin:16pt 0 6pt;color:#0b6e77;">${escapeHtml(block.header)}</h3>
+            <p style="margin:0 0 14pt;font-style:italic;">${escapeHtml(block.verbatim).replace(/\n/g, "<br>")}</p>
+          `;
+        }
+        return `<p style="margin:0 0 12pt;white-space:pre-wrap;">${escapeHtml(block.verbatim).replace(/\n/g, "<br>")}</p>`;
+      })
+      .join("");
+  }
+
+  function renderPlainSection(title, text) {
+    if (!text) {
+      return "";
     }
+    return `
+      <h2 style="font-size:15pt;margin:24pt 0 10pt;border-top:1pt solid #ccc;padding-top:16pt;">${escapeHtml(title)}</h2>
+      <pre style="white-space:pre-wrap;font-family:Calibri,sans-serif;font-size:11pt;margin:0;">${escapeHtml(text)}</pre>
+    `;
+  }
+
+  function buildWordDocument(title, payload) {
+    const generatedAt = new Date().toLocaleString("fr-FR");
+    const scriptBlocks = parseScriptBlocks(payload.script);
+    const scriptHtml = renderScriptBlocks(scriptBlocks, payload.script);
+    const unitesHtml = renderPlainSection("Unites de sens", payload.unites);
+    const videosHtml = renderPlainSection("Videos expert a produire", payload.videos);
 
     return `<!DOCTYPE html>
 <html xmlns:o="urn:schemas-microsoft-com:office:office"
@@ -204,21 +236,24 @@
     @page { size: 21cm 29.7cm; margin: 2.5cm; }
     body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; color: #111; }
     h1 { font-size: 18pt; margin: 0 0 8pt; }
-    h2 { font-size: 13pt; }
+    h2 { font-size: 15pt; }
+    h3 { font-size: 13pt; }
     .subtitle { font-size: 10pt; color: #666; margin: 0 0 18pt; }
   </style>
 </head>
 <body>
   <h1>${escapeHtml(title)}</h1>
-  <p class="subtitle">Script final — exporte le ${escapeHtml(generatedAt)}</p>
-  ${body}
+  <p class="subtitle">Dossier capsule — exporte le ${escapeHtml(generatedAt)}</p>
+  <h2 style="font-size:15pt;margin:18pt 0 10pt;">Script final chorale</h2>
+  ${scriptHtml}
+  ${unitesHtml}
+  ${videosHtml}
 </body>
 </html>`;
   }
 
-  function buildBlob(title, scriptText) {
-    const blocks = parseScriptBlocks(scriptText);
-    const html = buildWordDocument(title, blocks, scriptText);
+  function buildBlob(title, payload) {
+    const html = buildWordDocument(title, payload);
     return new Blob(["\ufeff", html], {
       type: "application/msword",
     });
@@ -369,20 +404,31 @@
     return `Fichier telecharge : ${result.destination}`;
   }
 
+  function collectPayload() {
+    const script = scriptEl.textContent.trim();
+    const unites = unitesEl ? unitesEl.textContent.trim() : "";
+    const videos = videosEl ? videosEl.textContent.trim() : "";
+    return { script, unites, videos };
+  }
+
   async function runExport() {
     resetStatus();
     exportBtn.disabled = true;
 
-    const scriptText = scriptEl.textContent.trim();
-    if (!scriptText || scriptText === "A construire.") {
-      setStatus("Le script final est vide : rien a exporter.", "error");
+    const payload = collectPayload();
+    const hasScript = payload.script && payload.script !== "A construire.";
+    const hasUnites = Boolean(payload.unites);
+    const hasVideos = Boolean(payload.videos);
+
+    if (!hasScript && !hasUnites && !hasVideos) {
+      setStatus("Aucun contenu a exporter pour cette capsule.", "error");
       exportBtn.disabled = false;
       return;
     }
 
     const filename = sanitizeFilename(filenameInput.value);
     const title = `${capsuleCode} — ${capsuleTitle}`;
-    const blob = buildBlob(title, scriptText);
+    const blob = buildBlob(title, payload);
 
     try {
       const result = await saveExport(blob, filename);

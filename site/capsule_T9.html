@@ -327,19 +327,53 @@ Equipe + gouvernance
 
 <section class="export-panel" id="export-word-panel" data-capsule-code="T9" data-capsule-title="Construire une equipe complementaire et trouver sa place">
   <h2>Export Word</h2>
-  <p class="meta">Exporter le script final au format Word pour relecture ou diffusion.</p>
+  <p class="meta">Exporter le script final, les unites de sens et les videos expert a produire.</p>
   <button type="button" class="btn" id="export-word-open" aria-expanded="false" aria-controls="export-word-modal">
-    Exporter le script final
+    Exporter le dossier capsule
   </button>
+  <div class="sr-export" id="export-unites-de-sens" hidden>UNITES DE SENS
+
+1. JJG-0012
+   Acte : Competences
+   Unite de sens : L'equipe scientifique suffit pour la POC, pas pour creer l'entreprise.
+
+2. SYL-0011
+   Acte : Place
+   Unite de sens : Ne pas etre CEO : recruter un dirigeant et occuper la place de conseil scientifique.
+
+3. MUR-0011
+   Acte : Gouvernance
+   Unite de sens : Cofondatrices, CEO, ingenieur, comites strategique et scientifique.
+
+4. LOI-0009
+   Acte : Recrutement
+   Unite de sens : Mieux vaut un expert du secteur qu'un profil business generique.</div><div class="sr-export" id="export-videos-expert" hidden>VIDEOS EXPERT A PRODUIRE
+
+E16 — Intervenant a definir
+   Titre : Cartographier les competences necessaires
+   Descriptif : Complementarite, recrutement, role du CEO, du CSO et du CTO, et criteres humains.
+   Orientation : Les temoignages montrent des equipes tres differentes. E16 aide a cartographier competences et lacunes.
+   Consignes :
+     - Inviter l'apprenant a lister ses lacunes.
+     - Montrer que le profil « business » n'est pas generique.
+
+E17 — Intervenant a definir
+   Titre : Organiser la relation entre fondateurs
+   Descriptif : Gouvernance, responsabilites, repartition du pouvoir, parts, pacte et prevention des conflits.
+   Orientation : Muriel et Sylvia illustrent des choix de gouvernance. E17 structure roles, responsabilites et prevention des conflits.
+   Consignes :
+     - Parler pacte et repartition avant les tensions.
+
+Intervenants proposes (a confirmer) : Pascal Corbel, Arielle Sante</div>
 </section>
 
 <div class="modal" id="export-word-modal" hidden role="dialog" aria-modal="true" aria-labelledby="export-word-title">
   <div class="modal-card">
-    <h2 id="export-word-title">Exporter en Word</h2>
-    <p class="meta">Choisissez un dossier de destination, puis lancez l'export.</p>
+    <h2 id="export-word-title">Exporter le dossier capsule</h2>
+    <p class="meta">Script final chorale, unites de sens et videos expert a produire.</p>
     <div class="export-field">
       <label for="export-word-filename">Nom du fichier</label>
-      <input type="text" id="export-word-filename" value="script_t9.doc" autocomplete="off">
+      <input type="text" id="export-word-filename" value="capsule_t9.doc" autocomplete="off">
     </div>
     <div class="export-field" id="export-word-folder-field">
       <label>Dossier de destination</label>

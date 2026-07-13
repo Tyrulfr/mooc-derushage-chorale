@@ -313,19 +313,54 @@ Mode de protection + PI strategique
 
 <section class="export-panel" id="export-word-panel" data-capsule-code="T5" data-capsule-title="Brevet, secret ou savoir-faire : construire une strategie de protection">
   <h2>Export Word</h2>
-  <p class="meta">Exporter le script final au format Word pour relecture ou diffusion.</p>
+  <p class="meta">Exporter le script final, les unites de sens et les videos expert a produire.</p>
   <button type="button" class="btn" id="export-word-open" aria-expanded="false" aria-controls="export-word-modal">
-    Exporter le script final
+    Exporter le dossier capsule
   </button>
+  <div class="sr-export" id="export-unites-de-sens" hidden>UNITES DE SENS
+
+1. LOI-0005
+   Acte : Choix de mode
+   Unite de sens : Combiner brevet et secret quand la contrefacon est indemontrable.
+
+2. SYL-0007
+   Acte : Strategie PI
+   Unite de sens : Proteger le mecanisme puis les series ; gerer plusieurs tutelles.
+
+3. MUR-0007
+   Acte : Brevetabilite
+   Unite de sens : Cas vivant : breveter l'application, pas l'organisme.
+
+4. JJG-0008
+   Acte : Actif strategique
+   Unite de sens : La PI comme levier de credibilite aupres des investisseurs.</div><div class="sr-export" id="export-videos-expert" hidden>VIDEOS EXPERT A PRODUIRE
+
+E8 — Intervenant a definir
+   Titre : Choisir un mode de protection adapte
+   Descriptif : Brevetabilite, secret, savoir-faire, logiciel, preuve et confidentialite.
+   Orientation : La chorale T5 montre qu'il n'y a pas de reponse unique. E8 aide a choisir entre brevet, secret et strategies combinees.
+   Consignes :
+     - Comparer au moins deux strategies temoignees.
+     - Eviter le reflexe « tout breveter ».
+
+E9 — Intervenant a definir
+   Titre : La PI comme actif strategique
+   Descriptif : Barriere a l'entree, pouvoir de negociation, credibilite et articulation avec le modele de valorisation.
+   Orientation : Jean-Jacques illustre la PI comme levier de credibilite aupres des investisseurs. E9 elargit : barriere, negociation, articulation avec le modele economique.
+   Consignes :
+     - Relier PI au modele economique envisage.
+     - Montrer la PI comme outil de negociation.
+
+Intervenants proposes (a confirmer) : Antoine Latreille, Sophie DJEGA-MARIADASSOU, Eneli Vino, Soizic Lefeuvre</div>
 </section>
 
 <div class="modal" id="export-word-modal" hidden role="dialog" aria-modal="true" aria-labelledby="export-word-title">
   <div class="modal-card">
-    <h2 id="export-word-title">Exporter en Word</h2>
-    <p class="meta">Choisissez un dossier de destination, puis lancez l'export.</p>
+    <h2 id="export-word-title">Exporter le dossier capsule</h2>
+    <p class="meta">Script final chorale, unites de sens et videos expert a produire.</p>
     <div class="export-field">
       <label for="export-word-filename">Nom du fichier</label>
-      <input type="text" id="export-word-filename" value="script_t5.doc" autocomplete="off">
+      <input type="text" id="export-word-filename" value="capsule_t5.doc" autocomplete="off">
     </div>
     <div class="export-field" id="export-word-folder-field">
       <label>Dossier de destination</label>

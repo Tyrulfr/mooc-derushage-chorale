@@ -335,19 +335,59 @@ SATT · Incubateur · Autres structures
 
 <section class="export-panel" id="export-word-panel" data-capsule-code="T7" data-capsule-title="Accompagnement et trajectoire du projet">
   <h2>Export Word</h2>
-  <p class="meta">Exporter le script final au format Word pour relecture ou diffusion.</p>
+  <p class="meta">Exporter le script final, les unites de sens et les videos expert a produire.</p>
   <button type="button" class="btn" id="export-word-open" aria-expanded="false" aria-controls="export-word-modal">
-    Exporter le script final
+    Exporter le dossier capsule
   </button>
+  <div class="sr-export" id="export-unites-de-sens" hidden>UNITES DE SENS
+
+1. SYL-0009
+   Acte : Maturation
+   Unite de sens : La SATT structure la feuille de route et transforme la posture du porteur.
+
+2. LOI-0007
+   Acte : Accompagnement
+   Unite de sens : SATT : reseau, juridique et mise en relation avec incubateurs et investisseurs.
+
+3. MUR-0009
+   Acte : Incubation
+   Unite de sens : L'incubateur comme ecole du terrain : formation et nouveau vocabulaire.
+
+4. JJG-0010
+   Acte : Ecosysteme
+   Unite de sens : Enchainement de structures selon le stade du projet.</div><div class="sr-export" id="export-videos-expert" hidden>VIDEOS EXPERT A PRODUIRE
+
+E12 — Intervenant a definir
+   Titre : De la prematuration a la maturation
+   Descriptif : Etapes, selection, investissement, jalons et accompagnement.
+   Orientation : Sylvia et Loic illustrent le role structurant de la SATT. E12 nomme les etapes et distingue maturation et incubation.
+   Consignes :
+     - Distinguer maturation et incubation des le depart.
+
+E13 — Intervenant a definir
+   Titre : Ce que fait reellement un incubateur
+   Descriptif : Coaching, reseau, formation, confrontation, equipe et preparation de la creation.
+   Orientation : Muriel et Jean-Jacques illustrent l'incubation. E13 insiste sur la confrontation et la preparation a la creation.
+   Consignes :
+     - Insister sur la confrontation et la preparation a la creation.
+
+E13bis — Intervenant a definir
+   Titre : Autres structures d'accompagnement
+   Descriptif : Design spot, fablab, pole de competitivite, OTT, etc.
+   Orientation : Au-dela SATT et incubateur, l'ecosysteme est divers. E13bis complete avec Wilco, Institut d'Optique, poles, etc.
+   Consignes :
+     - Montrer la diversite des structures selon le besoin.
+
+Intervenants proposes (a confirmer) : Arielle Sante, Stephanie Oger Roussel, Yoan Montenot, Fatoumata Aonon</div>
 </section>
 
 <div class="modal" id="export-word-modal" hidden role="dialog" aria-modal="true" aria-labelledby="export-word-title">
   <div class="modal-card">
-    <h2 id="export-word-title">Exporter en Word</h2>
-    <p class="meta">Choisissez un dossier de destination, puis lancez l'export.</p>
+    <h2 id="export-word-title">Exporter le dossier capsule</h2>
+    <p class="meta">Script final chorale, unites de sens et videos expert a produire.</p>
     <div class="export-field">
       <label for="export-word-filename">Nom du fichier</label>
-      <input type="text" id="export-word-filename" value="script_t7.doc" autocomplete="off">
+      <input type="text" id="export-word-filename" value="capsule_t7.doc" autocomplete="off">
     </div>
     <div class="export-field" id="export-word-folder-field">
       <label>Dossier de destination</label>

@@ -285,19 +285,54 @@ Choisir sa voie de transfert
 
 <section class="export-panel" id="export-word-panel" data-capsule-code="T6" data-capsule-title="Creation de start-up, licence ou partenariat : choisir une voie de transfert">
   <h2>Export Word</h2>
-  <p class="meta">Exporter le script final au format Word pour relecture ou diffusion.</p>
+  <p class="meta">Exporter le script final, les unites de sens et les videos expert a produire.</p>
   <button type="button" class="btn" id="export-word-open" aria-expanded="false" aria-controls="export-word-modal">
-    Exporter le script final
+    Exporter le dossier capsule
   </button>
+  <div class="sr-export" id="export-unites-de-sens" hidden>UNITES DE SENS
+
+1. SYL-0008
+   Acte : Creation
+   Unite de sens : Porter le risque pharmaceutique via une societe creee au bon moment.
+
+2. MUR-0008
+   Acte : Licence
+   Unite de sens : Licence exclusive INRAE : la souche reste a l'organisme, l'exploitation a la start-up.
+
+3. JJG-0009
+   Acte : Cession
+   Unite de sens : Transfert de propriete du brevet plutot qu'une simple licence.
+
+4. LOI-0006
+   Acte : Choix de voie
+   Unite de sens : Creation d'entreprise choisie plutot qu'une valorisation limitee a une licence.</div><div class="sr-export" id="export-videos-expert" hidden>VIDEOS EXPERT A PRODUIRE
+
+E10 — Intervenant a definir
+   Titre : Quelle voie de valorisation pour quel projet ?
+   Descriptif : Licence, creation, co-developpement, partenariat et criteres de choix.
+   Orientation : La chorale T6 montre quatre trajectoires concretes. E10 aide a comparer les voies sans hierarchiser.
+   Consignes :
+     - Comparer sans hierarchiser les voies.
+     - Inviter a preparer des questions pour la valorisation.
+
+E11 — Intervenant a definir
+   Titre : Les mecanismes juridiques du transfert
+   Descriptif : Licence exclusive ou non, cession, contrat de collaboration, copropriete et principes de negociation.
+   Orientation : Apres le choix de voie, les mecanismes juridiques. Jean-Jacques illustre licence vs cession ; E11 decode.
+   Consignes :
+     - Rester pedagogique, pas exhaustif juridiquement.
+     - Signaler les points a faire valider par un professionnel.
+
+Intervenants proposes (a confirmer) : Fatoumata Aonon, Virginia Branco, Soizic Lefeuvre, Stephanie Oger Roussel</div>
 </section>
 
 <div class="modal" id="export-word-modal" hidden role="dialog" aria-modal="true" aria-labelledby="export-word-title">
   <div class="modal-card">
-    <h2 id="export-word-title">Exporter en Word</h2>
-    <p class="meta">Choisissez un dossier de destination, puis lancez l'export.</p>
+    <h2 id="export-word-title">Exporter le dossier capsule</h2>
+    <p class="meta">Script final chorale, unites de sens et videos expert a produire.</p>
     <div class="export-field">
       <label for="export-word-filename">Nom du fichier</label>
-      <input type="text" id="export-word-filename" value="script_t6.doc" autocomplete="off">
+      <input type="text" id="export-word-filename" value="capsule_t6.doc" autocomplete="off">
     </div>
     <div class="export-field" id="export-word-folder-field">
       <label>Dossier de destination</label>

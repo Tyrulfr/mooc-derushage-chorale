@@ -341,19 +341,55 @@ Clarifier le niveau de preuve
 
 <section class="export-panel" id="export-word-panel" data-capsule-code="T3" data-capsule-title="Passer d'une idee scientifique a une preuve utilisable (POC)">
   <h2>Export Word</h2>
-  <p class="meta">Exporter le script final au format Word pour relecture ou diffusion.</p>
+  <p class="meta">Exporter le script final, les unites de sens et les videos expert a produire.</p>
   <button type="button" class="btn" id="export-word-open" aria-expanded="false" aria-controls="export-word-modal">
-    Exporter le script final
+    Exporter le dossier capsule
   </button>
+  <div class="sr-export" id="export-unites-de-sens" hidden>UNITES DE SENS
+
+1. JJG-0006
+   Acte : POC
+   Unite de sens : POC : financer la manip et valider experimentalement sur 18 mois.
+
+2. SYL-0005
+   Acte : Preuve scientifique
+   Unite de sens : Pre-maturation : selectionner le candidat medicament actif.
+
+3. LOI-0003
+   Acte : Prototype
+   Unite de sens : Prototype : scale-up labo vers echelle industrielle et terrain.
+
+4. MUR-0005
+   Acte : Maturation produit
+   Unite de sens : MVP produit : formulation, contraintes sanitaires, entree sur le marche.</div><div class="sr-export" id="export-videos-expert" hidden>VIDEOS EXPERT A PRODUIRE
+
+E4 — Intervenant a definir
+   Titre : Resultat scientifique, POC, prototype, MVP et TRL
+   Descriptif : Clarifier les niveaux de preuve.
+   Orientation : La chorale T3 montre des preuves de natures differentes. E4 aide a nommer le niveau atteint et la prochaine incertitude.
+   Consignes :
+     - Suivre sequence_recommandee_e4.
+     - Nommer le niveau de preuve avant de generaliser.
+     - Distinguer preuve scientifique et preuve d'usage.
+
+E5 — Intervenant a definir
+   Titre : Derisquer un projet par etapes
+   Descriptif : Prematuration, maturation, jalons techniques et commerciaux, criteres de decision.
+   Orientation : Les parcours temoignent d'une progression par jalons. E5 propose une grille de derisquage technique et produit.
+   Consignes :
+     - S'appuyer sur les etapes visibles chez Muriel.
+     - Presenter les jalons comme des decisions, pas des formalites.
+
+Intervenants proposes (a confirmer) : Virginia Branco, Fatoumata Aonon, Stephanie Oger Roussel</div>
 </section>
 
 <div class="modal" id="export-word-modal" hidden role="dialog" aria-modal="true" aria-labelledby="export-word-title">
   <div class="modal-card">
-    <h2 id="export-word-title">Exporter en Word</h2>
-    <p class="meta">Choisissez un dossier de destination, puis lancez l'export.</p>
+    <h2 id="export-word-title">Exporter le dossier capsule</h2>
+    <p class="meta">Script final chorale, unites de sens et videos expert a produire.</p>
     <div class="export-field">
       <label for="export-word-filename">Nom du fichier</label>
-      <input type="text" id="export-word-filename" value="script_t3.doc" autocomplete="off">
+      <input type="text" id="export-word-filename" value="capsule_t3.doc" autocomplete="off">
     </div>
     <div class="export-field" id="export-word-folder-field">
       <label>Dossier de destination</label>

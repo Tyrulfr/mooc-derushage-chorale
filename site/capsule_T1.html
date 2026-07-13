@@ -305,19 +305,61 @@ Retenez : marche, laboratoire, pas de cote, maturation longue — quatre origine
 
 <section class="export-panel" id="export-word-panel" data-capsule-code="T1" data-capsule-title="Une innovation peut naitre de chemins tres differents">
   <h2>Export Word</h2>
-  <p class="meta">Exporter le script final au format Word pour relecture ou diffusion.</p>
+  <p class="meta">Exporter le script final, les unites de sens et les videos expert a produire.</p>
   <button type="button" class="btn" id="export-word-open" aria-expanded="false" aria-controls="export-word-modal">
-    Exporter le script final
+    Exporter le dossier capsule
   </button>
+  <div class="sr-export" id="export-unites-de-sens" hidden>UNITES DE SENS
+
+1. JJG-0001, MUR-0001, SYL-0001, YAN-0001
+   Acte : Presentations
+   Unite de sens : Quatre chercheurs se presentent : domaine et objet de recherche.
+
+2. JJG-0002
+   Acte : Genese
+   Unite de sens : Market-pull : une demande du marche rencontre l'expertise de recherche.
+   Grille expert : Market-pull · Rencontre
+
+3. MUR-0001
+   Acte : Genese
+   Unite de sens : Tech-push + observation : resultat de labo et manque sociétal.
+   Grille expert : Tech-push · Observation d'usage
+
+4. SYL-0002
+   Acte : Genese
+   Unite de sens : Serendipite : un pas de cote ouvre une nouvelle piste.
+   Grille expert : Serendipite
+
+5. YAN-0002
+   Acte : Genese
+   Unite de sens : Maturation progressive : du laboratoire a l'industrie sur le long terme.
+   Grille expert : Maturation progressive
+
+6. JJG-0003
+   Acte : Pivot
+   Unite de sens : Pivot : une idee peut preceder un resultat scientifique acquis.
+   Grille expert : Idee vs resultat</div><div class="sr-export" id="export-videos-expert" hidden>VIDEOS EXPERT A PRODUIRE
+
+E1 — Intervenant a definir
+   Titre : Reconnaitre les differentes origines d'une innovation
+   Descriptif : Tech-push, market-pull, observation d'usage, rencontre, serendipite, maturation progressive.
+   Orientation : La chorale T1 vient de montrer quatre trajectoires concretes (JJG, MUR, SYL, YAN). E1 ne doit pas recommenter le montage : elle nomme les logiques d'origine en s'appuyant sur les extraits deja vus.
+   Consignes :
+     - Suivre la sequence_recommandee_e1 dans l'ordre.
+     - Pour chaque origine : phrase_amorce → concept → question_apprenant (cf. par_origine).
+     - Ne pas lire le script_final ; pointer les extraits par chercheur et idee.
+     - Annoncer T2 a l'oral (sortir du labo, verifier le besoin) sans utiliser d'extrait temoin T2.
+
+Intervenants proposes (a confirmer) : Bernard Yannou, Eneli Vino</div>
 </section>
 
 <div class="modal" id="export-word-modal" hidden role="dialog" aria-modal="true" aria-labelledby="export-word-title">
   <div class="modal-card">
-    <h2 id="export-word-title">Exporter en Word</h2>
-    <p class="meta">Choisissez un dossier de destination, puis lancez l'export.</p>
+    <h2 id="export-word-title">Exporter le dossier capsule</h2>
+    <p class="meta">Script final chorale, unites de sens et videos expert a produire.</p>
     <div class="export-field">
       <label for="export-word-filename">Nom du fichier</label>
-      <input type="text" id="export-word-filename" value="script_t1.doc" autocomplete="off">
+      <input type="text" id="export-word-filename" value="capsule_t1.doc" autocomplete="off">
     </div>
     <div class="export-field" id="export-word-folder-field">
       <label>Dossier de destination</label>

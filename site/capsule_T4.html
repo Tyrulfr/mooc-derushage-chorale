@@ -309,19 +309,55 @@ Reflexe DI + premier contact
 
 <section class="export-panel" id="export-word-panel" data-capsule-code="T4" data-capsule-title="Proteger avant de communiquer">
   <h2>Export Word</h2>
-  <p class="meta">Exporter le script final au format Word pour relecture ou diffusion.</p>
+  <p class="meta">Exporter le script final, les unites de sens et les videos expert a produire.</p>
   <button type="button" class="btn" id="export-word-open" aria-expanded="false" aria-controls="export-word-modal">
-    Exporter le script final
+    Exporter le dossier capsule
   </button>
+  <div class="sr-export" id="export-unites-de-sens" hidden>UNITES DE SENS
+
+1. SYL-0006
+   Acte : Divulgation
+   Unite de sens : Reflexe : arbitrer publication et depot de brevet avant toute divulgation.
+
+2. MUR-0006
+   Acte : Protection
+   Unite de sens : Cas concret : proteger l'application avant publication et soutenance.
+
+3. JJG-0007
+   Acte : Parallelisme
+   Unite de sens : Brevet et preuve experimentale : deux volets en parallele.
+
+4. LOI-0004
+   Acte : Structures
+   Unite de sens : Premier contact : tutelles, valorisation, brevetable vs divulgue.</div><div class="sr-export" id="export-videos-expert" hidden>VIDEOS EXPERT A PRODUIRE
+
+E6 — Intervenant a definir
+   Titre : Le reflexe de declaration avant toute divulgation
+   Descriptif : Confidentialite, nouveaute, publication, congres, soutenance et DI.
+   Orientation : La chorale T4 montre des situations a risque (these, article, communication). E6 installe le reflexe : declarer avant de divulguer.
+   Consignes :
+     - Commencer par un cas temoin concret.
+     - Lister les situations a risque pour l'apprenant.
+     - Ne pas lire le script_final.
+
+E7 — Intervenant a definir
+   Titre : A qui parler et avec quoi arriver ?
+   Descriptif : Premier contact, role du charge de valorisation et informations utiles pour examiner un resultat.
+   Orientation : Loic et Jean-Jacques illustrent le premier echange avec l'ecosysteme de valorisation. E7 precise quoi preparer.
+   Consignes :
+     - Preciser ce qu'il faut preparer avant le rendez-vous.
+     - Rassurer : contacter tot la valorisation.
+
+Intervenants proposes (a confirmer) : Antoine Latreille, Soizic Lefeuvre, Stephanie Sano, Eneli Vino</div>
 </section>
 
 <div class="modal" id="export-word-modal" hidden role="dialog" aria-modal="true" aria-labelledby="export-word-title">
   <div class="modal-card">
-    <h2 id="export-word-title">Exporter en Word</h2>
-    <p class="meta">Choisissez un dossier de destination, puis lancez l'export.</p>
+    <h2 id="export-word-title">Exporter le dossier capsule</h2>
+    <p class="meta">Script final chorale, unites de sens et videos expert a produire.</p>
     <div class="export-field">
       <label for="export-word-filename">Nom du fichier</label>
-      <input type="text" id="export-word-filename" value="script_t4.doc" autocomplete="off">
+      <input type="text" id="export-word-filename" value="capsule_t4.doc" autocomplete="off">
     </div>
     <div class="export-field" id="export-word-folder-field">
       <label>Dossier de destination</label>
