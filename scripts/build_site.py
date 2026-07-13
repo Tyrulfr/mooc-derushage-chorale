@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -424,6 +425,54 @@ tbody tr:last-child td { border-bottom: none; }
 .unites-table th { font-size: 12px; }
 .orientation-expert { margin-top: 28px; }
 .orientation-expert h3 { margin: 20px 0 8px; font-size: 17px; }
+.brief-intervenant-panel { border-left: 4px solid var(--accent); }
+.brief-intervenant-panel .meta-lead { font-size: 15px; line-height: 1.5; margin-bottom: 20px; }
+.brief-video { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); }
+.brief-video:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+.brief-video h3 { margin: 0 0 8px; font-size: 18px; }
+.brief-unites { margin: 16px 0; padding-left: 1.25rem; }
+.brief-unites li { margin-bottom: 10px; }
+.brief-temoin-phrases { margin: 8px 0 0; padding-left: 1.25rem; }
+.brief-temoin-phrases li { margin-bottom: 6px; }
+.brief-precaution {
+  margin: 20px 0;
+  padding: 14px 16px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: var(--radius);
+  line-height: 1.5;
+}
+.brief-point {
+  margin: 14px 0;
+  padding: 14px 16px;
+  background: #f8fafc;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+}
+.brief-point h4 { margin: 0 0 8px; font-size: 15px; }
+.brief-point p { margin: 0 0 8px; }
+.brief-point p:last-child { margin-bottom: 0; }
+.brief-sequence { margin: 12px 0 0; padding-left: 1.25rem; }
+.brief-sequence li { margin-bottom: 6px; }
+.synthese-chorale-panel {
+  margin-top: 28px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow);
+  border-left: 4px solid #64748b;
+}
+.synthese-chorale-list { margin: 12px 0 0; padding: 0; list-style: none; }
+.synthese-chorale-list li {
+  margin-bottom: 12px;
+  padding: 12px 14px;
+  background: #f8fafc;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  line-height: 1.45;
+}
+.synthese-chorale-list strong { display: inline-block; min-width: 9rem; }
 .cadrage-block { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line); }
 .cadrage-block h3 { margin: 18px 0 8px; font-size: 16px; }
 .cadrage-position { font-size: 13px; color: var(--muted); margin: 0 0 8px; }
@@ -736,6 +785,518 @@ def _render_orientation_block(orientation: dict, plural: bool = False) -> str:
 """
 
 
+BRIEF_PRECAUTION_ORATOIRE = (
+    "Les objectifs et unites de sens que nous proposons (ingenierie pedagogique) refletent "
+    "notre niveau de comprehension du sujet a ce stade. C'est sur votre experience et la "
+    "maitrise de votre discipline que nous nous appuyons : n'hesitez pas a modifier ou "
+    "completer ce travail, en restant aligne avec les objectifs exposes dans le tableau "
+    "de conception."
+)
+
+EXPORT_BRIEF_SECTION_TITLE = "Proposition de cadrage pour la video expert"
+
+BRIEF_CONSIGNES_COMMUNES = [
+    "Partir des temoignages vus dans la chorale — pas d'un script a lire mot pour mot.",
+    "Nommer les concepts du MOOC en langage clair, avec des exemples concrets entendus.",
+    "Inviter l'apprenant a faire le lien avec son propre projet.",
+    "Ne pas citer les chercheurs phrase pour phrase : resumer dans vos propres mots.",
+    "Completer librement cette trame : ajouter tout element (exemple, rappel, precision, mise en perspective) que vous jugez complementaire et necessaire a ce stade du parcours.",
+]
+
+_CONSIGNE_TECHNIQUE_MARKERS = (
+    "sequence_recommandee",
+    "phrase_amorce",
+    "par_origine",
+    "par_voix",
+    "script_final",
+    "id + timecode",
+    "cf. par_",
+)
+
+
+def _expert_codes(capsule_data: dict) -> list[str]:
+    return [
+        item.get("code", "")
+        for item in capsule_data.get("videos_expert", [])
+        if item.get("code")
+    ]
+
+
+def _grille_values(unite: dict) -> list[str]:
+    return [str(value) for key, value in unite.items() if key.startswith("grille_") and value]
+
+
+def _grille_tags_expert(grille: str, expert_codes: list[str]) -> list[str]:
+    tagged = []
+    for code in sorted(expert_codes, key=len, reverse=True):
+        if re.search(rf"\b{re.escape(code)}\b", grille):
+            tagged.append(code)
+    return tagged
+
+
+def _unite_matches_expert(unite: dict, expert_code: str, expert_codes: list[str]) -> bool:
+    grilles = _grille_values(unite)
+    if not grilles:
+        return expert_code == "E1" and unite.get("ordre") == 1
+    tagged: list[str] = []
+    for grille in grilles:
+        tagged.extend(_grille_tags_expert(grille, expert_codes))
+    if not tagged:
+        return True
+    return expert_code in tagged
+
+
+def _orientation_guides(orientation: dict) -> list[dict]:
+    util = orientation.get("utilisation_script_temoin", {})
+    return util.get("par_origine") or util.get("par_voix") or []
+
+
+def _orientation_sequence(orientation: dict) -> list[str]:
+    util = orientation.get("utilisation_script_temoin", {})
+    for key, value in util.items():
+        if key.startswith("sequence_recommandee_") and isinstance(value, list):
+            return value
+    return []
+
+
+def _humanize_sequence_step(step: str, guides: list[dict]) -> str:
+    by_id = {item.get("extrait_id", ""): item for item in guides if item.get("extrait_id")}
+    cleaned = step.strip()
+    if "→" in cleaned:
+        left, right = [part.strip() for part in cleaned.split("→", 1)]
+        if left in by_id:
+            left = by_id[left].get("chercheur", left)
+        cleaned = f"{left} — {right}"
+
+    def replace_id(match: re.Match[str]) -> str:
+        guide = by_id.get(match.group(0))
+        return guide.get("chercheur", match.group(0)) if guide else match.group(0)
+
+    cleaned = re.sub(r"\b(?:JJG|MUR|SYL|YAN|LOI)-\d+\b", replace_id, cleaned)
+    cleaned = re.sub(r"\bextrait\s+", "", cleaned, flags=re.I)
+    cleaned = re.sub(r"\s{2,}", " ", cleaned)
+    return cleaned.strip(" —")
+
+
+def _simplify_consignes(consignes: list[str]) -> list[str]:
+    simplified: list[str] = []
+    for item in consignes:
+        lowered = item.lower()
+        if any(marker in lowered for marker in _CONSIGNE_TECHNIQUE_MARKERS):
+            continue
+        text = re.sub(r"\b(?:JJG|MUR|SYL|YAN|LOI)-\d+\b", "", item)
+        text = re.sub(r"\s{2,}", " ", text).strip(" ,;")
+        if text:
+            simplified.append(text)
+    return simplified
+
+
+CHERCHEUR_LABELS = {
+    "Jean-Jacques": "Jean-Jacques Greffet",
+    "Muriel": "Muriel Thomas",
+    "Sylvia": "Sylvia Cohen-Kaminski",
+    "Yann": "Yann Meunier",
+    "Loic": "Loic Rajjou",
+}
+
+
+def _parse_resume_temoignages(text: str) -> list[tuple[str, str]]:
+    text = text.strip()
+    if not text:
+        return []
+    parts = re.split(r"(?<=\.)\s+(?=[^:]+:)", text)
+    items: list[tuple[str, str]] = []
+    for part in parts:
+        part = part.strip().rstrip(".")
+        if not part:
+            continue
+        if ":" in part:
+            name, _, content = part.partition(":")
+            items.append((name.strip(), content.strip()))
+        else:
+            items.append(("", part))
+    return items
+
+
+def _label_chercheur(short_name: str) -> str:
+    return CHERCHEUR_LABELS.get(short_name, short_name)
+
+
+def _render_brief_point(guide: dict) -> str:
+    titre = guide.get("origine") or guide.get("angle") or "Point a developper"
+    chercheur = guide.get("chercheur", "")
+    heading = f"{titre} — {chercheur}" if chercheur else titre
+    concepts = guide.get("concepts_e1") or guide.get("concepts") or []
+    parts = [
+        '<div class="brief-point">',
+        f"<h4>{escape(heading)}</h4>",
+    ]
+    if guide.get("dans_le_temoin"):
+        parts.append(
+            f"<p><strong>Dans la chorale :</strong> {escape(guide['dans_le_temoin'])}</p>"
+        )
+    if guide.get("travail_expert"):
+        parts.append(f"<p><strong>A apporter :</strong> {escape(guide['travail_expert'])}</p>")
+    if concepts:
+        parts.append(
+            f"<p class='meta'><strong>Concepts :</strong> {escape(' · '.join(concepts))}</p>"
+        )
+    if guide.get("question_apprenant"):
+        parts.append(
+            "<p><strong>Question pour l'apprenant :</strong> "
+            f"{escape(guide['question_apprenant'])}</p>"
+        )
+    if guide.get("erreur_a_eviter"):
+        parts.append(
+            f"<p class='meta'><strong>A eviter :</strong> {escape(guide['erreur_a_eviter'])}</p>"
+        )
+    parts.append("</div>")
+    return "".join(parts)
+
+
+def _label_video_expert(code: str) -> str:
+    match = re.fullmatch(r"E(\d+)(bis)?", code, re.IGNORECASE)
+    if match:
+        suffix = f" {match.group(2)}" if match.group(2) else ""
+        return f"Vidéo Expert {match.group(1)}{suffix}"
+    return f"Vidéo Expert ({code})"
+
+
+def _label_video_temoin(capsule_code: str) -> str:
+    if capsule_code == "GEN":
+        return "Vidéo témoin 1"
+    match = re.fullmatch(r"T(\d+)", capsule_code)
+    if match:
+        return f"Vidéo témoin {match.group(1)}"
+    return f"Vidéo témoin ({capsule_code})"
+
+
+def _humanize_capsule_labels(text: str) -> str:
+    def repl_expert(match: re.Match[str]) -> str:
+        suffix = f" {match.group(2)}" if match.group(2) else ""
+        return f"Vidéo Expert {match.group(1)}{suffix}"
+
+    text = re.sub(r"\bE(\d+)(bis)?\b", repl_expert, text, flags=re.IGNORECASE)
+    text = re.sub(r"\bT(\d+)\b", r"Vidéo témoin \1", text)
+    return text
+
+
+def _strip_chercheur_prefix(text: str, chercheur: str) -> str:
+    cleaned = text.strip()
+    if chercheur and cleaned.startswith(chercheur):
+        cleaned = cleaned[len(chercheur) :].lstrip(" :—-\u2014")
+    return cleaned.strip()
+
+
+def _chercheur_prenom(chercheur: str) -> str:
+    if " " in chercheur:
+        return chercheur.split()[0]
+    return chercheur
+
+
+def _ensure_subject(text: str, chercheur: str) -> str:
+    if not text or not chercheur:
+        return text
+    lower = text.lower()
+    verb_starts = (
+        "oppose",
+        "raconte",
+        "part ",
+        "illustre",
+        "precise",
+        "definit",
+        "montre",
+    )
+    if any(lower.startswith(verb) for verb in verb_starts):
+        prenom = _chercheur_prenom(chercheur)
+        if text[0].isupper():
+            return f"{prenom} {text[0].lower()}{text[1:]}"
+        return f"{prenom} {text}"
+    return text
+
+
+def _phrases_from_extrait(segment: dict, guide: dict | None) -> list[str]:
+    chercheur = segment["chercheur"]
+    comment = (segment.get("commentaire") or "").strip()
+    detail = ""
+    if guide and guide.get("dans_le_temoin"):
+        detail = _ensure_subject(
+            _strip_chercheur_prefix(guide["dans_le_temoin"], chercheur),
+            chercheur,
+        )
+
+    if comment:
+        return [comment]
+    if detail:
+        return [detail]
+    return []
+
+
+def _resume_temoignages_map(capsule_data: dict) -> dict[str, str]:
+    mapping: dict[str, str] = {}
+    for short_name, content in _parse_resume_temoignages(
+        capsule_data.get("resume_temoignages", "")
+    ):
+        if short_name:
+            mapping[_label_chercheur(short_name)] = content
+    return mapping
+
+
+def _collect_temoignages_lisibles(
+    capsule_data: dict, by_id: dict[str, dict]
+) -> list[tuple[str, list[str]]]:
+    ordre = capsule_data.get("ordre_montage", [])
+    guide_by_id: dict[str, dict] = {}
+    for orientation in capsule_data.get("orientations_expert", []):
+        util = orientation.get("utilisation_script_temoin", {})
+        for guide in util.get("par_origine") or util.get("par_voix") or []:
+            extrait_id = guide.get("extrait_id")
+            if extrait_id:
+                guide_by_id[extrait_id] = guide
+
+    by_chercheur: dict[str, list[str]] = defaultdict(list)
+    chercheur_order: list[str] = []
+
+    for extrait_id in ordre:
+        segment = by_id.get(extrait_id)
+        if not segment:
+            continue
+        chercheur = segment["chercheur"]
+        if chercheur not in chercheur_order:
+            chercheur_order.append(chercheur)
+
+        guide = guide_by_id.get(extrait_id)
+        for phrase in _phrases_from_extrait(segment, guide):
+            if phrase not in by_chercheur[chercheur]:
+                by_chercheur[chercheur].append(phrase)
+
+    resume_map = _resume_temoignages_map(capsule_data)
+    result: list[tuple[str, list[str]]] = []
+    for chercheur in chercheur_order:
+        phrases = list(by_chercheur.get(chercheur, []))
+        if not phrases and chercheur in resume_map:
+            phrases = [resume_map[chercheur]]
+        if phrases:
+            result.append((chercheur, phrases))
+
+    if result:
+        return result
+
+    fallback: list[tuple[str, list[str]]] = []
+    for short_name, content in _parse_resume_temoignages(
+        capsule_data.get("resume_temoignages", "")
+    ):
+        if short_name:
+            fallback.append((_label_chercheur(short_name), [content]))
+        elif content:
+            fallback.append(("", [content]))
+    return fallback
+
+
+def _render_temoin_phrases(phrases: list[str]) -> str:
+    if len(phrases) == 1:
+        return f"<p>{escape(phrases[0])}</p>"
+    items = "".join(f"<li>{escape(phrase)}</li>" for phrase in phrases)
+    return f'<ul class="brief-temoin-phrases">{items}</ul>'
+
+
+def _render_brief_temoin(
+    capsule_code: str, capsule_data: dict, by_id: dict[str, dict]
+) -> str:
+    temoins = _collect_temoignages_lisibles(capsule_data, by_id)
+    if not temoins:
+        return ""
+
+    rows = []
+    for chercheur, phrases in temoins:
+        if chercheur:
+            rows.append(
+                "<li>"
+                f"<strong>{escape(chercheur)}</strong>"
+                f"{_render_temoin_phrases(phrases)}"
+                "</li>"
+            )
+        else:
+            rows.append(f"<li>{_render_temoin_phrases(phrases)}</li>")
+
+    temoin_label = _label_video_temoin(capsule_code)
+    return f"""
+  <article class="brief-video brief-video--temoin">
+    <h3>{escape(temoin_label)} — Ce que disent les chercheurs</h3>
+    <p class="meta">Rappel factuel pour lecteurs qui ne connaissent pas les trajectoires des chercheurs — sans interpretation editoriale.</p>
+    <ul class="brief-unites">
+      {''.join(rows)}
+    </ul>
+  </article>
+"""
+
+
+def _render_brief_video(video: dict, proposes: list[str]) -> str:
+    label = _label_video_expert(video.get("code", ""))
+    intervenant = video.get("intervenant")
+    if intervenant:
+        who = escape(intervenant)
+    elif proposes:
+        who = f"<em>A confirmer</em> <span class='meta'>(proposes : {escape(', '.join(proposes))})</span>"
+    else:
+        who = "<em>A confirmer</em>"
+
+    titre = video.get("titre", "")
+    descriptif = video.get("descriptif", "")
+    objectif_html = f"<p><strong>Objectif :</strong> {escape(titre)}</p>"
+    if descriptif:
+        objectif_html += f"<p>{escape(descriptif)}</p>"
+
+    return f"""
+  <article class="brief-video">
+    <h3>{escape(label)}</h3>
+    <p class='meta'><strong>Intervenant :</strong> {who}</p>
+    {objectif_html}
+  </article>
+"""
+
+
+def synthese_temoignages_section(capsule_code: str, capsule_data: dict) -> str:
+    resume = capsule_data.get("resume_temoignages", "").strip()
+    if not resume:
+        return ""
+
+    items = _parse_resume_temoignages(resume)
+    if not items:
+        return ""
+
+    rows = []
+    for name, content in items:
+        if name:
+            label = _label_chercheur(name)
+            rows.append(
+                f"<li><strong>{escape(label)}</strong> {escape(content)}</li>"
+            )
+        else:
+            rows.append(f"<li>{escape(content)}</li>")
+
+    temoin_label = _label_video_temoin(capsule_code)
+    return f"""
+<section class="methodology-panel synthese-chorale-panel">
+  <h2>{escape(temoin_label)} — Synthese des temoignages</h2>
+  <p class="meta">En quelques mots — ce que chaque chercheur a dit dans la chorale, sans interpretation.</p>
+  <ul class="synthese-chorale-list">
+    {''.join(rows)}
+  </ul>
+</section>
+"""
+
+
+def export_synthese_section_title(capsule_code: str) -> str:
+    return f"{_label_video_temoin(capsule_code)} — Synthese des temoignages"
+
+
+def export_synthese_temoignages_plaintext(capsule_code: str, capsule_data: dict) -> str:
+    resume = capsule_data.get("resume_temoignages", "").strip()
+    if not resume:
+        return ""
+
+    lines = [
+        "En quelques mots — ce que chaque chercheur a dit dans la chorale, sans interpretation.",
+        "",
+    ]
+    for name, content in _parse_resume_temoignages(resume):
+        if name:
+            lines.append(f"{_label_chercheur(name)} : {content}")
+        else:
+            lines.append(content)
+    return "\n".join(lines).strip()
+
+
+def brief_intervenant_section(
+    capsule_code: str, capsule_data: dict, by_id: dict[str, dict]
+) -> str:
+    videos = capsule_data.get("videos_expert", [])
+    if not videos:
+        return ""
+
+    proposes = capsule_data.get("experts_proposes", [])
+    temoin_html = _render_brief_temoin(capsule_code, capsule_data, by_id)
+    videos_html = "".join(
+        _render_brief_video(video, proposes)
+        for video in videos
+    )
+    consignes = [_humanize_capsule_labels(item) for item in BRIEF_CONSIGNES_COMMUNES]
+    consignes_html = (
+        "<h3>Consignes generales</h3>"
+        "<ul>"
+        + "".join(f"<li>{escape(item)}</li>" for item in consignes)
+        + "</ul>"
+    )
+    precaution_html = (
+        f'<p class="brief-precaution"><strong>Precaution :</strong> '
+        f"{escape(BRIEF_PRECAUTION_ORATOIRE)}</p>"
+    )
+
+    return f"""
+<section class="methodology-panel brief-intervenant-panel">
+  <h2>{escape(EXPORT_BRIEF_SECTION_TITLE)}</h2>
+  <p class="meta">A l'issue de la {escape(_label_video_temoin(capsule_code))} — quelques reperes proposes pour preparer la ou les videos expert, en s'appuyant sur les temoignages et les objectifs du programme de conception.</p>
+  {precaution_html}
+  {temoin_html}
+  {videos_html}
+  {consignes_html}
+  <p class="meta">Version detaillee (extraits, timecodes, passerelles) disponible plus bas sur cette page.</p>
+</section>
+"""
+
+
+def export_brief_intervenant_plaintext(
+    capsule_code: str, capsule_data: dict, by_id: dict[str, dict]
+) -> str:
+    videos = capsule_data.get("videos_expert", [])
+    if not videos:
+        return ""
+
+    proposes = capsule_data.get("experts_proposes", [])
+    lines = [
+        _humanize_capsule_labels(
+            f"A l'issue de la {_label_video_temoin(capsule_code)}, quelques reperes proposes "
+            "pour preparer la ou les videos expert, en s'appuyant sur les temoignages et "
+            "les objectifs du programme de conception."
+        ),
+        "",
+    ]
+    lines.append(f"Precaution : {BRIEF_PRECAUTION_ORATOIRE}")
+    lines.append("")
+
+    temoins = _collect_temoignages_lisibles(capsule_data, by_id)
+    if temoins:
+        lines.append(f"{_label_video_temoin(capsule_code)} — Ce que disent les chercheurs")
+        lines.append(
+            "Rappel factuel pour lecteurs qui ne connaissent pas les trajectoires des chercheurs."
+        )
+        for chercheur, phrases in temoins:
+            if chercheur:
+                lines.append(f"  - {chercheur}")
+            for phrase in phrases:
+                prefix = "      " if chercheur else "  - "
+                lines.append(f"{prefix}{phrase}")
+        lines.append("")
+
+    for video in videos:
+        label = _label_video_expert(video.get("code", ""))
+        intervenant = video.get("intervenant") or "Intervenant a confirmer"
+        lines.append(f"{label} — {intervenant}")
+        lines.append(f"   Objectif : {video.get('titre', '')}")
+        if video.get("descriptif"):
+            lines.append(f"   {video['descriptif']}")
+        lines.append("")
+
+    lines.append("Consignes generales :")
+    for item in BRIEF_CONSIGNES_COMMUNES:
+        lines.append(f"  - {_humanize_capsule_labels(item)}")
+    if proposes:
+        lines.append("")
+        lines.append(f"Intervenants proposes (a confirmer) : {', '.join(proposes)}")
+    return "\n".join(lines).strip()
+
+
 def selection_unites_section(capsule_data: dict) -> str:
     unites = capsule_data.get("unites_de_sens", [])
     orientations = capsule_data.get("orientations_expert") or []
@@ -894,7 +1455,7 @@ def referents_section(capsule_data: dict) -> str:
         desc = video.get("descriptif", "")
         desc_html = f" {escape(desc)}" if desc else ""
         items.append(
-            f"<li><strong>{escape(video.get('code', ''))}</strong> — {who} : "
+            f"<li><strong>{escape(_label_video_expert(video.get('code', '')))}</strong> — {who} : "
             f"{escape(video.get('titre', ''))}.{desc_html}</li>"
         )
 
@@ -950,8 +1511,8 @@ def export_videos_expert_plaintext(capsule_data: dict) -> str:
     for video in videos:
         code = video.get("code", "")
         intervenant = video.get("intervenant") or "Intervenant a definir"
-        lines.append(f"{code} — {intervenant}")
-        lines.append(f"   Titre : {video.get('titre', '')}")
+        lines.append(f"{_label_video_expert(code)} — {intervenant}")
+        lines.append(f"   Objectif : {video.get('titre', '')}")
         if video.get("descriptif"):
             lines.append(f"   Descriptif : {video['descriptif']}")
         orientation = orientations.get(code)
@@ -969,23 +1530,36 @@ def export_videos_expert_plaintext(capsule_data: dict) -> str:
     return "\n".join(lines).strip()
 
 
-def export_word_section(code: str, titre: str, capsule_data: dict) -> str:
-    unites_text = export_unites_plaintext(capsule_data)
-    videos_text = export_videos_expert_plaintext(capsule_data)
+def _export_hidden_block(block_id: str, section_title: str, body: str) -> str:
+    return (
+        f'<div class="sr-export" id="{block_id}" '
+        f'data-section-title="{escape(section_title)}" hidden>{escape(body)}</div>'
+    )
+
+
+def export_word_section(
+    code: str, titre: str, capsule_data: dict, by_id: dict[str, dict]
+) -> str:
+    brief_text = export_brief_intervenant_plaintext(code, capsule_data, by_id)
+    synthese_text = export_synthese_temoignages_plaintext(code, capsule_data)
     hidden_blocks = ""
-    if unites_text:
-        hidden_blocks += (
-            f'<div class="sr-export" id="export-unites-de-sens" hidden>{escape(unites_text)}</div>'
+    if synthese_text:
+        hidden_blocks += _export_hidden_block(
+            "export-synthese-temoignages",
+            export_synthese_section_title(code),
+            synthese_text,
         )
-    if videos_text:
-        hidden_blocks += (
-            f'<div class="sr-export" id="export-videos-expert" hidden>{escape(videos_text)}</div>'
+    if brief_text:
+        hidden_blocks += _export_hidden_block(
+            "export-brief-intervenant",
+            EXPORT_BRIEF_SECTION_TITLE,
+            brief_text,
         )
     return (
         f"""
 <section class="export-panel" id="export-word-panel" data-capsule-code="{escape(code)}" data-capsule-title="{escape(titre)}">
   <h2>Export Word</h2>
-  <p class="meta">Exporter le script final, les unites de sens et les videos expert a produire.</p>
+  <p class="meta">Exporter le script final, la synthese des temoignages et la proposition de cadrage pour la video expert.</p>
   <button type="button" class="btn" id="export-word-open" aria-expanded="false" aria-controls="export-word-modal">
     Exporter le dossier capsule
   </button>
@@ -1265,6 +1839,7 @@ def build_capsule_pages(capsules: list[dict], segments: list[dict], affectations
         sections.append(
             f"<div class='script' id='script-final'>{escape(capsule_data.get('script_final') or 'A construire.')}</div>"
         )
+        sections.append(synthese_temoignages_section(code, capsule_data))
         sections.append("<h2>Manques et decisions</h2>")
         for item in capsule_data.get("manques", []):
             sections.append(f"<p class='warn'>{escape(item)}</p>")
@@ -1272,9 +1847,12 @@ def build_capsule_pages(capsules: list[dict], segments: list[dict], affectations
             sections.append(f"<p>{escape(item)}</p>")
         if capsule_data.get("methodologie") or capsule_data.get("unites_de_sens"):
             sections.append(selection_methodology_section(capsule, capsule_data))
+        if capsule_data.get("videos_expert"):
+            sections.append(brief_intervenant_section(code, capsule_data, by_id))
+        if capsule_data.get("methodologie") or capsule_data.get("unites_de_sens"):
             sections.append(selection_unites_section(capsule_data))
         sections.append(referents_section(capsule_data))
-        sections.append(export_word_section(code, capsule["titre"], capsule_data))
+        sections.append(export_word_section(code, capsule["titre"], capsule_data, by_id))
         page_title = f"{code} - {capsule['titre']}"
         write_text(
             SITE / f"capsule_{code}.html",

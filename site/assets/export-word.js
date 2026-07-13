@@ -7,8 +7,8 @@
     return;
   }
 
-  const unitesEl = document.getElementById("export-unites-de-sens");
-  const videosEl = document.getElementById("export-videos-expert");
+  const briefEl = document.getElementById("export-brief-intervenant");
+  const syntheseEl = document.getElementById("export-synthese-temoignages");
   const modal = document.getElementById("export-word-modal");
   const openBtn = document.getElementById("export-word-open");
   const cancelBtn = document.getElementById("export-word-cancel");
@@ -128,6 +128,13 @@
       .replace(/"/g, "&quot;");
   }
 
+  function sectionTitle(el, fallback) {
+    if (!el || !el.dataset.sectionTitle) {
+      return fallback;
+    }
+    return el.dataset.sectionTitle;
+  }
+
   function parseScriptBlocks(text) {
     const chunks = text.replace(/\r\n/g, "\n").split(/\n\n+/).filter(Boolean);
     const blocks = [];
@@ -213,8 +220,8 @@
     const generatedAt = new Date().toLocaleString("fr-FR");
     const scriptBlocks = parseScriptBlocks(payload.script);
     const scriptHtml = renderScriptBlocks(scriptBlocks, payload.script);
-    const unitesHtml = renderPlainSection("Unites de sens", payload.unites);
-    const videosHtml = renderPlainSection("Videos expert a produire", payload.videos);
+    const syntheseHtml = renderPlainSection(payload.syntheseTitle, payload.synthese);
+    const briefHtml = renderPlainSection(payload.briefTitle, payload.brief);
 
     return `<!DOCTYPE html>
 <html xmlns:o="urn:schemas-microsoft-com:office:office"
@@ -246,8 +253,8 @@
   <p class="subtitle">Dossier capsule — exporte le ${escapeHtml(generatedAt)}</p>
   <h2 style="font-size:15pt;margin:18pt 0 10pt;">Script final chorale</h2>
   ${scriptHtml}
-  ${unitesHtml}
-  ${videosHtml}
+  ${syntheseHtml}
+  ${briefHtml}
 </body>
 </html>`;
   }
@@ -406,9 +413,18 @@
 
   function collectPayload() {
     const script = scriptEl.textContent.trim();
-    const unites = unitesEl ? unitesEl.textContent.trim() : "";
-    const videos = videosEl ? videosEl.textContent.trim() : "";
-    return { script, unites, videos };
+    const brief = briefEl ? briefEl.textContent.trim() : "";
+    const synthese = syntheseEl ? syntheseEl.textContent.trim() : "";
+    return {
+      script,
+      brief,
+      synthese,
+      briefTitle: sectionTitle(
+        briefEl,
+        "Proposition de cadrage pour la video expert"
+      ),
+      syntheseTitle: sectionTitle(syntheseEl, "Synthese des temoignages"),
+    };
   }
 
   async function runExport() {
@@ -417,10 +433,10 @@
 
     const payload = collectPayload();
     const hasScript = payload.script && payload.script !== "A construire.";
-    const hasUnites = Boolean(payload.unites);
-    const hasVideos = Boolean(payload.videos);
+    const hasBrief = Boolean(payload.brief);
+    const hasSynthese = Boolean(payload.synthese);
 
-    if (!hasScript && !hasUnites && !hasVideos) {
+    if (!hasScript && !hasBrief && !hasSynthese) {
       setStatus("Aucun contenu a exporter pour cette capsule.", "error");
       exportBtn.disabled = false;
       return;
