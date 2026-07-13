@@ -1,0 +1,1580 @@
+[
+  {
+    "id": "JJG-0001",
+    "chercheur": "Jean-Jacques Greffet",
+    "source": "BAB_JJ_GREFFET.txt",
+    "debut": "01:00:43.390",
+    "fin": "01:00:55.030",
+    "duree_secondes": 11.64,
+    "verbatim": "je voudrais greffer. Je travaille dans le domaine de la nano photonique, c'est à dire l'étude de la lumière à l'échelle du nanomètre. Concrètement, c'est par exemple étudier détecter des toutes petites particules avec de la lumière.",
+    "theme_principal": "T1",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "GEN",
+      "T1"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T1",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "UTILISE",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Presentation : nano photonique.",
+    "analyse_discours": {
+      "fonction_discursive": "exemple",
+      "progression_dramaturgique": "exemple",
+      "sous_theme": "origines de l'innovation",
+      "connecteurs": [],
+      "autonomie": {
+        "issues": [
+          "debut en milieu de phrase"
+        ],
+        "score": 0.75,
+        "nb_propositions": 3,
+        "connecteurs": []
+      },
+      "qualite_montage": {
+        "debut_exploitable": false,
+        "fin_exploitable": true,
+        "longueur_raisonnable": true,
+        "duree_raisonnable": true,
+        "score": 0.8,
+        "nb_mots": 37
+      },
+      "nb_propositions": 3,
+      "phrase_initiale": "je voudrais greffer.",
+      "score_composite": {
+        "composite": 0.582,
+        "composantes": {
+          "adequation_theme": 0.068,
+          "adequation_objectif": 0.039,
+          "clarte_unite": 0.562,
+          "autonomie": 0.75,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 0.617,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.8
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "JJG-0002",
+    "chercheur": "Jean-Jacques Greffet",
+    "source": "BAB_JJ_GREFFET.txt",
+    "debut": "01:01:13.210",
+    "fin": "01:02:15.030",
+    "duree_secondes": 61.82,
+    "verbatim": "l'innovation dont nous allons parler. Dans ce contexte, c'est tiré par le marché, ce qui n'est pas habituel, et c'est dès le le résultat d'une rencontre. Une rencontre avec un jeune startuper qui travaillait dans une start-up, qui avait une problématique de détection de virus, et il y avait un besoin du marché de voir des objets, des virus plus petits que ce qu'il pouvait détecter.\n\nC'est ça la question qui a été posée. Et j'ai apporté une réponse basée sur, évidemment, 30 ans de recherches et d'expériences de recherche. C'est comme ça qu'est née l'innovation, le fait d'oser à deux. Dans mon cas, ça s'est fait assez naturellement puisque la problématique scientifique est née d'une rencontre à deux.\n\nEt la deuxième personne se trouve être mon fils qui était startuper et qui rencontrait une barrière scientifique dans le développement des instruments qu'ils développaient. Et du coup, cette innovation était aussi l'occasion pour lui de se lancer dans une nouvelle aventure entrepreneuriale qui aurait été la sienne, qu'il aurait pilotée de A à Z.",
+    "theme_principal": "T1",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "GEN",
+      "T1"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T1",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "UTILISE",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Market-pull et rencontre ; couper apres « le fait d'oser a deux ».",
+    "analyse_discours": {
+      "fonction_discursive": "exemple",
+      "progression_dramaturgique": "exemple",
+      "sous_theme": "tech-push",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "du coup"
+        },
+        {
+          "type": "causaux",
+          "forme": "puisque"
+        }
+      ],
+      "autonomie": {
+        "issues": [
+          "debut en milieu de phrase"
+        ],
+        "score": 0.75,
+        "nb_propositions": 9,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "du coup"
+          },
+          {
+            "type": "causaux",
+            "forme": "puisque"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": false,
+        "fin_exploitable": true,
+        "longueur_raisonnable": false,
+        "duree_raisonnable": true,
+        "score": 0.6,
+        "nb_mots": 174
+      },
+      "nb_propositions": 9,
+      "phrase_initiale": "l'innovation dont nous allons parler.",
+      "score_composite": {
+        "composite": 0.731,
+        "composantes": {
+          "adequation_theme": 0.461,
+          "adequation_objectif": 0.364,
+          "clarte_unite": 0.75,
+          "autonomie": 0.75,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.6
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "JJG-0003",
+    "chercheur": "Jean-Jacques Greffet",
+    "source": "BAB_JJ_GREFFET.txt",
+    "debut": "01:07:42.290",
+    "fin": "01:08:10.910",
+    "duree_secondes": 28.62,
+    "verbatim": "Alors, le point de départ n'était pas un résultat scientifique, mais une idée scientifique qui répondait à un besoin. Et effectivement, c'était une idée au départ. Donc ensuite, on a fait des simulations numériques et on est dans un domaine où on contrôle bien ce qu'on fait. Donc quand les simulations numériques marchent, on a quand même déjà un bon niveau de confiance.\n\nPour autant, tant qu'on n'a pas fait la manip, rien n'est sûr. Et donc il faut monter la manip. Elle n'était pas prête au labo. Donc",
+    "theme_principal": "T1",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "GEN",
+      "T1"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T1",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "UTILISE",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Pivot : idee scientifique vs resultat deja acquis.",
+    "analyse_discours": {
+      "fonction_discursive": "preuve",
+      "progression_dramaturgique": "preuve",
+      "sous_theme": "tech-push",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "donc"
+        },
+        {
+          "type": "logiques",
+          "forme": "mais"
+        },
+        {
+          "type": "temporels",
+          "forme": "ensuite"
+        },
+        {
+          "type": "consecutifs",
+          "forme": "alors"
+        },
+        {
+          "type": "consecutifs",
+          "forme": "et donc"
+        }
+      ],
+      "autonomie": {
+        "issues": [
+          "fin tronquee",
+          "pronoms sans antecedent explicite"
+        ],
+        "score": 0.5,
+        "nb_propositions": 8,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "donc"
+          },
+          {
+            "type": "logiques",
+            "forme": "mais"
+          },
+          {
+            "type": "temporels",
+            "forme": "ensuite"
+          },
+          {
+            "type": "consecutifs",
+            "forme": "alors"
+          },
+          {
+            "type": "consecutifs",
+            "forme": "et donc"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": true,
+        "fin_exploitable": false,
+        "longueur_raisonnable": true,
+        "duree_raisonnable": true,
+        "score": 0.6,
+        "nb_mots": 89
+      },
+      "nb_propositions": 8,
+      "phrase_initiale": "Alors, le point de départ n'était pas un résultat scientifique, mais une idée scientifique qui répondait à un besoin.",
+      "score_composite": {
+        "composite": 0.636,
+        "composantes": {
+          "adequation_theme": 0.393,
+          "adequation_objectif": 0.232,
+          "clarte_unite": 0.5,
+          "autonomie": 0.5,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.6
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "JJG-0004",
+    "chercheur": "Jean-Jacques Greffet",
+    "source": "BAB_JJ_GREFFET.txt",
+    "debut": "01:05:59.060",
+    "fin": "01:07:36.570",
+    "duree_secondes": 97.51,
+    "verbatim": "Alors, en matière de développement, d'innovation, ce qui est important, c'est\n\nc'est la survie de l'entreprise et donc les ventes. Et donc il ne faut pas se tromper, on n'est pas là pour faire un beau projet de physicien, on est là pour répondre à des besoins réels de clients et un besoin réel. Ça veut dire que le client va payer. Donc en fait, on distingue entre le nice to have et le must have.\n\nEt quand on reste dans son labo, on ne peut pas savoir qu'est ce qui est nice to have ou qu'est ce qui est must have. Il faut rencontrer les clients et leur poser la question. Et une première façon d'ailleurs de le faire, c'est de vérifier s'ils sont prêts à payer un petit peu pour voir, c'est à dire louer un instrument par exemple.\n\nEt ça, c'est juste fondamental. Donc, il faut prendre son bâton de pèlerin et aller rencontrer un maximum de clients potentiels pour tester ce qu'est l'appétit du marché. Alors dans mon cas, c'est très simple. C'est la rencontre avec mon fils. Donc celle là elle remonte à il y a très longtemps.\n\nMais donc oui, le démarrage de mon de ma participation à un projet d'innovation, c'est vraiment la rencontre avec mon fils qui qui a exprimé un besoin. Donc il était entrepreneur, il était dans une start up et il a eu envie de se lancer tout seul pour accomplir, atteindre de nouveaux objectifs, avoir de nouvelles performances dans ce qu'il pouvait faire.\n\nEt c'est cette aventure à deux qui a été. C'est la perspective d'avoir cette aventure à deux qui a été l'élément déclencheur.",
+    "theme_principal": "T2",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "T2"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T2",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "UTILISE",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Nice to have vs must have ; rencontrer les clients.",
+    "analyse_discours": {
+      "fonction_discursive": "conseil",
+      "progression_dramaturgique": "conclusion",
+      "sous_theme": "market-pull",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "donc"
+        },
+        {
+          "type": "logiques",
+          "forme": "en fait"
+        },
+        {
+          "type": "logiques",
+          "forme": "mais"
+        },
+        {
+          "type": "consecutifs",
+          "forme": "alors"
+        },
+        {
+          "type": "consecutifs",
+          "forme": "et donc"
+        }
+      ],
+      "autonomie": {
+        "issues": [],
+        "score": 1.0,
+        "nb_propositions": 17,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "donc"
+          },
+          {
+            "type": "logiques",
+            "forme": "en fait"
+          },
+          {
+            "type": "logiques",
+            "forme": "mais"
+          },
+          {
+            "type": "consecutifs",
+            "forme": "alors"
+          },
+          {
+            "type": "consecutifs",
+            "forme": "et donc"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": true,
+        "fin_exploitable": true,
+        "longueur_raisonnable": false,
+        "duree_raisonnable": true,
+        "score": 0.8,
+        "nb_mots": 277
+      },
+      "nb_propositions": 17,
+      "phrase_initiale": "Alors, en matière de développement, d'innovation, ce qui est important, c'est",
+      "score_composite": {
+        "composite": 0.778,
+        "composantes": {
+          "adequation_theme": 0.33,
+          "adequation_objectif": 0.269,
+          "clarte_unite": 1.0,
+          "autonomie": 1.0,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.8
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "JJG-0005",
+    "chercheur": "Jean-Jacques Greffet",
+    "source": "BAB_JJ_GREFFET.txt",
+    "debut": "01:05:17.400",
+    "fin": "01:05:53.320",
+    "duree_secondes": 35.92,
+    "verbatim": "Cela nous a permis d'avoir une vision beaucoup plus précise. En parallèle, nous avons assisté à beaucoup de conférences dans les domaines des utilisateurs potentiels de l'innovation pour identifier ce qu'étaient les problèmes importants. Et l'ensemble de ces de ces étapes nous a conduit à\n\nmodifier en fait notre cible. Et nous avons fait ce qu'on appelle un pivot. C'est à dire qu'on a changé, on a adapté notre technologie pour répondre à un autre besoin qu'on a défini à ce moment là.",
+    "theme_principal": "T2",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "T2"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T2",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "UTILISE",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Etude de marche qualitative/quantitative et pivot de cible.",
+    "analyse_discours": {
+      "fonction_discursive": "pivot",
+      "progression_dramaturgique": "bascule",
+      "sous_theme": "proposition de valeur",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "en fait"
+        }
+      ],
+      "autonomie": {
+        "issues": [],
+        "score": 1.0,
+        "nb_propositions": 6,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "en fait"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": true,
+        "fin_exploitable": true,
+        "longueur_raisonnable": true,
+        "duree_raisonnable": true,
+        "score": 1.0,
+        "nb_mots": 83
+      },
+      "nb_propositions": 6,
+      "phrase_initiale": "Cela nous a permis d'avoir une vision beaucoup plus précise.",
+      "score_composite": {
+        "composite": 0.824,
+        "composantes": {
+          "adequation_theme": 0.516,
+          "adequation_objectif": 0.259,
+          "clarte_unite": 1.0,
+          "autonomie": 1.0,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 1.0
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "JJG-0006",
+    "chercheur": "Jean-Jacques Greffet",
+    "source": "BAB_JJ_GREFFET.txt",
+    "debut": "01:08:12.230",
+    "fin": "01:10:30.220",
+    "duree_secondes": 137.99,
+    "verbatim": "ça a été la première chose qu'on a faite. Réunir de l'argent pour financer la manip et valider expérimentalement les résultats. Et ça, ça nous a pris un an et demi et on a pu le faire grâce à des aides qui sont assez nombreuses actuellement. C'est c'est assez facile entre guillemets. En tous cas, par rapport au financement d'un projet de recherche fondamentale, c'est assez facile de pouvoir trouver des aides pour réaliser ce qu'on appelle donc une preuve de concept, c'est à dire montrer que l'idée va marcher.\n\nAlors lorsqu'on a une idée et qu'on se lance, pour la réaliser, il faut qu'il y ait de l'instrumentation. il faut faire des expériences et montrer réellement expérimentalement que ça fonctionne. Et donc ça, il nous a fallu un an et demi à peu près pour le faire, et on l'a fait en travaillant au laboratoire avec le soutien financier de l'université.\n\nAlors, tout d'abord, le soutien de l'établissement qui nous héberge, du laboratoire et puis ensuite le soutien financier de l'université et puis également du CNRS. L'évolution du développement technique, de l'innovation s'est fait de la façon suivante Dans un premier temps, on a une idée.\n\nCette idée, on peut l'utiliser pour rédiger un brevet et protéger l'innovation dans un deuxième temps. Et c'est indépendant, on réalise une expérience pour vérifier techniquement que ça fonctionne.\n\nEt donc ces choses, on les a faites en parallèle. Il faut bien sûr obtenir de l'argent et pour financer des déposer un brevet et pour réaliser les. Les. La preuve expérimentale. Et là, on a disposé de soutien de l'établissement de l'université et du CNRS pour réaliser ces choses là. Il faut un brevet.\n\nIl faut compter\n\nsix mois pour le déposer. A peu près, il est délivré au bout de deux ans. Et puis, sur le plan expérimental, il nous a fallu 18 mois. Alors la phase expérimentale de preuve de concept, sur le plan technique, c'est quelque chose qui permet de débugger. Dans notre jargon, c'est à dire de trouver toutes les difficultés qui ne sont pas inclues dans les modèles numériques que l'on fait et d'apprendre à les maîtriser.",
+    "theme_principal": "T3",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "T3"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T3",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "UTILISE",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Financement manip, preuve de concept (~18 mois) et debogage technique.",
+    "analyse_discours": {
+      "fonction_discursive": "preuve",
+      "progression_dramaturgique": "preuve",
+      "sous_theme": "tech-push",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "donc"
+        },
+        {
+          "type": "temporels",
+          "forme": "ensuite"
+        },
+        {
+          "type": "temporels",
+          "forme": "puis"
+        },
+        {
+          "type": "temporels",
+          "forme": "d'abord"
+        },
+        {
+          "type": "causaux",
+          "forme": "grace a"
+        },
+        {
+          "type": "consecutifs",
+          "forme": "alors"
+        },
+        {
+          "type": "consecutifs",
+          "forme": "et donc"
+        }
+      ],
+      "autonomie": {
+        "issues": [
+          "debut en milieu de phrase"
+        ],
+        "score": 0.75,
+        "nb_propositions": 24,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "donc"
+          },
+          {
+            "type": "temporels",
+            "forme": "ensuite"
+          },
+          {
+            "type": "temporels",
+            "forme": "puis"
+          },
+          {
+            "type": "temporels",
+            "forme": "d'abord"
+          },
+          {
+            "type": "causaux",
+            "forme": "grace a"
+          },
+          {
+            "type": "consecutifs",
+            "forme": "alors"
+          },
+          {
+            "type": "consecutifs",
+            "forme": "et donc"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": false,
+        "fin_exploitable": true,
+        "longueur_raisonnable": false,
+        "duree_raisonnable": false,
+        "score": 0.4,
+        "nb_mots": 359
+      },
+      "nb_propositions": 24,
+      "phrase_initiale": "ça a été la première chose qu'on a faite.",
+      "score_composite": {
+        "composite": 0.641,
+        "composantes": {
+          "adequation_theme": 0.143,
+          "adequation_objectif": 0.207,
+          "clarte_unite": 0.75,
+          "autonomie": 0.75,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.4
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "JJG-0007",
+    "chercheur": "Jean-Jacques Greffet",
+    "source": "BAB_JJ_GREFFET.txt",
+    "debut": "01:09:38.470",
+    "fin": "01:10:00.979",
+    "duree_secondes": 22.509,
+    "verbatim": "Et donc ces choses, on les a faites en parallèle. Il faut bien sûr obtenir de l'argent et pour financer des déposer un brevet et pour réaliser les. Les. La preuve expérimentale. Et là, on a disposé de soutien de l'établissement de l'université et du CNRS pour réaliser ces choses là. Il faut un brevet.\n\nIl faut compter",
+    "theme_principal": "T4",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "T4",
+      "T3"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T4",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "REUTILISATION_A_ARBITRER",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Brevet et preuve experimentale menes en parallele.",
+    "analyse_discours": {
+      "fonction_discursive": "preuve",
+      "progression_dramaturgique": "preuve",
+      "sous_theme": "protection",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "donc"
+        },
+        {
+          "type": "consecutifs",
+          "forme": "et donc"
+        }
+      ],
+      "autonomie": {
+        "issues": [
+          "pronoms sans antecedent explicite",
+          "enchainement anaphorique en debut d'unite"
+        ],
+        "score": 0.5,
+        "nb_propositions": 7,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "donc"
+          },
+          {
+            "type": "consecutifs",
+            "forme": "et donc"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": true,
+        "fin_exploitable": true,
+        "longueur_raisonnable": true,
+        "duree_raisonnable": true,
+        "score": 0.8,
+        "nb_mots": 58
+      },
+      "nb_propositions": 7,
+      "phrase_initiale": "Et donc ces choses, on les a faites en parallèle.",
+      "score_composite": {
+        "composite": 0.552,
+        "composantes": {
+          "adequation_theme": 0.0,
+          "adequation_objectif": 0.032,
+          "clarte_unite": 0.5,
+          "autonomie": 0.5,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 0.967,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.8
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "JJG-0008",
+    "chercheur": "Jean-Jacques Greffet",
+    "source": "BAB_JJ_GREFFET.txt",
+    "debut": "01:22:18.830",
+    "fin": "01:23:58.080",
+    "duree_secondes": 99.25,
+    "verbatim": "s'était tout de suite dirigés vers une start-up. On est dans une situation qui correspond assez bien à ça. On a un brevet, une innovation technologique, un produit sans équivalent et donc la\n\nvalorisation par création de start-up est assez adaptée. Donc nous avons\n\nCréer une startup qui est donc basée sur un brevet. Alors ce brevet, quand on l'exploite, soit on peut utiliser une licence exclusive qui est délivrée par les établissements qui sont copropriétaires du brevet, ou il peut y avoir un transfert de propriété en échange d'une part, de participation dans la société.\n\nLe schéma le plus couramment utilisé jusqu'ici était le premier, mais il se trouve que dans notre cas, nous sommes partis à la demande des établissements sur le deuxième cas. Et je dois dire que c'est du point de vue des de l'entreprise, c'est favorable puisque lorsque vous rencontrez des investisseurs, s'ils savent que vous avez la propriété pleine et entière du brevet, c'est tout à fait favorable.\n\nTrès bien. Là on peut.\n\nTape.\n\nAlors, il faut aussi rajouter un élément concernant la levée de fonds. L'écosystème est également très utile à cet à cette étape là pour faire des introductions. Et parmi les investisseurs qui sont dans notre tour de table, il y a un certain nombre d'acteurs qui ont été introduits par les partenaires de l'environnement local.",
+    "theme_principal": "T5",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "T5",
+      "T6"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T5",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "UTILISE",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Startup basee sur un brevet ; propriete pleine favorable aux investisseurs.",
+    "analyse_discours": {
+      "fonction_discursive": "recit_experience",
+      "progression_dramaturgique": "developpement",
+      "sous_theme": "protection",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "donc"
+        },
+        {
+          "type": "logiques",
+          "forme": "mais"
+        },
+        {
+          "type": "causaux",
+          "forme": "puisque"
+        },
+        {
+          "type": "consecutifs",
+          "forme": "alors"
+        },
+        {
+          "type": "consecutifs",
+          "forme": "et donc"
+        }
+      ],
+      "autonomie": {
+        "issues": [
+          "debut en milieu de phrase"
+        ],
+        "score": 0.75,
+        "nb_propositions": 15,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "donc"
+          },
+          {
+            "type": "logiques",
+            "forme": "mais"
+          },
+          {
+            "type": "causaux",
+            "forme": "puisque"
+          },
+          {
+            "type": "consecutifs",
+            "forme": "alors"
+          },
+          {
+            "type": "consecutifs",
+            "forme": "et donc"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": false,
+        "fin_exploitable": true,
+        "longueur_raisonnable": false,
+        "duree_raisonnable": true,
+        "score": 0.6,
+        "nb_mots": 225
+      },
+      "nb_propositions": 15,
+      "phrase_initiale": "s'était tout de suite dirigés vers une start-up.",
+      "score_composite": {
+        "composite": 0.616,
+        "composantes": {
+          "adequation_theme": 0.0,
+          "adequation_objectif": 0.098,
+          "clarte_unite": 0.75,
+          "autonomie": 0.75,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.6
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "JJG-0009",
+    "chercheur": "Jean-Jacques Greffet",
+    "source": "BAB_JJ_GREFFET.txt",
+    "debut": "01:22:03.910",
+    "fin": "01:23:28.850",
+    "duree_secondes": 84.94,
+    "verbatim": "Notre point de départ, c'était une expérience de Mathieu, notre président, qui était en start up, et il était assez clair pour lui que c'était le même genre de structure qu'il souhaitait reproduire. Donc on\n\ns'était tout de suite dirigés vers une start-up. On est dans une situation qui correspond assez bien à ça. On a un brevet, une innovation technologique, un produit sans équivalent et donc la\n\nvalorisation par création de start-up est assez adaptée. Donc nous avons\n\nCréer une startup qui est donc basée sur un brevet. Alors ce brevet, quand on l'exploite, soit on peut utiliser une licence exclusive qui est délivrée par les établissements qui sont copropriétaires du brevet, ou il peut y avoir un transfert de propriété en échange d'une part, de participation dans la société.\n\nLe schéma le plus couramment utilisé jusqu'ici était le premier, mais il se trouve que dans notre cas, nous sommes partis à la demande des établissements sur le deuxième cas. Et je dois dire que c'est du point de vue des de l'entreprise, c'est favorable puisque lorsque vous rencontrez des investisseurs, s'ils savent que vous avez la propriété pleine et entière du brevet, c'est tout à fait favorable.",
+    "theme_principal": "T6",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "T6",
+      "T5"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T6",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "REUTILISATION_A_ARBITRER",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Start-up basee sur un brevet ; licence exclusive vs transfert de propriete.",
+    "analyse_discours": {
+      "fonction_discursive": "recit_experience",
+      "progression_dramaturgique": "developpement",
+      "sous_theme": "protection",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "donc"
+        },
+        {
+          "type": "logiques",
+          "forme": "mais"
+        },
+        {
+          "type": "causaux",
+          "forme": "puisque"
+        },
+        {
+          "type": "consecutifs",
+          "forme": "alors"
+        },
+        {
+          "type": "consecutifs",
+          "forme": "et donc"
+        }
+      ],
+      "autonomie": {
+        "issues": [],
+        "score": 1.0,
+        "nb_propositions": 11,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "donc"
+          },
+          {
+            "type": "logiques",
+            "forme": "mais"
+          },
+          {
+            "type": "causaux",
+            "forme": "puisque"
+          },
+          {
+            "type": "consecutifs",
+            "forme": "alors"
+          },
+          {
+            "type": "consecutifs",
+            "forme": "et donc"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": true,
+        "fin_exploitable": true,
+        "longueur_raisonnable": false,
+        "duree_raisonnable": true,
+        "score": 0.8,
+        "nb_mots": 199
+      },
+      "nb_propositions": 11,
+      "phrase_initiale": "Notre point de départ, c'était une expérience de Mathieu, notre président, qui était en start up, et il était assez clair pour lui que c'était le même genre de ",
+      "score_composite": {
+        "composite": 0.738,
+        "composantes": {
+          "adequation_theme": 0.167,
+          "adequation_objectif": 0.187,
+          "clarte_unite": 1.0,
+          "autonomie": 1.0,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.8
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "JJG-0010",
+    "chercheur": "Jean-Jacques Greffet",
+    "source": "BAB_JJ_GREFFET.txt",
+    "debut": "01:20:23.840",
+    "fin": "01:22:01.990",
+    "duree_secondes": 98.15,
+    "verbatim": "Et puis il y a des incubateurs privés. Nous avons suivi un programme de Wilco. Les établissements eux mêmes leur programme. Nous avons été très aidés par l'Institut d'optique et le programme lumineux Edge en collaboration avec X Campus. Donc, il y a beaucoup de dispositifs pour accompagner les chercheurs qui veulent se lancer dans cette aventure.\n\nNous avons été accompagnés dans le développement de notre projet par un certain nombre de structures de l'université\n\net du CNRS également. Donc, par ordre d'entrée, il y a tout d'abord tout au début, un programme de l'université qui s'appelle POC in Lab, un programme commun avec la NSA. Ensuite, nous avons bénéficié dans ce cadre là de projet d'un programme de formation organisé par l'incubateur Cube Alliance de l'Université Paris-Saclay.\n\nEnsuite, nous sommes rentrés dans une phase de maturation, de pré maturation avec un autre programme d'incubation et nous étions également accompagnés par un programme de coaching du CNRS qui s'appelle le programme Rise.\n\nEt puis ensuite il y a eu la la, la phase d'incubation par l'incubateur. Et puis en parallèle, nous avons bénéficié d'un soutien du programme lumineux de l'Institut d'Optique X Campus dans le cadre de notre innovation.",
+    "theme_principal": "T7",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "T7"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T7",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "UTILISE",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "POC in Lab, IncubAlliance, Rise, maturation, incubateur, Wilco, Institut d'Optique.",
+    "analyse_discours": {
+      "fonction_discursive": "recit_experience",
+      "progression_dramaturgique": "developpement",
+      "sous_theme": "origines de l'innovation",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "donc"
+        },
+        {
+          "type": "temporels",
+          "forme": "ensuite"
+        },
+        {
+          "type": "temporels",
+          "forme": "puis"
+        },
+        {
+          "type": "temporels",
+          "forme": "au debut"
+        },
+        {
+          "type": "temporels",
+          "forme": "d'abord"
+        }
+      ],
+      "autonomie": {
+        "issues": [
+          "enchainement anaphorique en debut d'unite"
+        ],
+        "score": 0.75,
+        "nb_propositions": 12,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "donc"
+          },
+          {
+            "type": "temporels",
+            "forme": "ensuite"
+          },
+          {
+            "type": "temporels",
+            "forme": "puis"
+          },
+          {
+            "type": "temporels",
+            "forme": "au debut"
+          },
+          {
+            "type": "temporels",
+            "forme": "d'abord"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": true,
+        "fin_exploitable": true,
+        "longueur_raisonnable": false,
+        "duree_raisonnable": true,
+        "score": 0.8,
+        "nb_mots": 199
+      },
+      "nb_propositions": 12,
+      "phrase_initiale": "Et puis il y a des incubateurs privés.",
+      "score_composite": {
+        "composite": 0.723,
+        "composantes": {
+          "adequation_theme": 0.429,
+          "adequation_objectif": 0.225,
+          "clarte_unite": 0.75,
+          "autonomie": 0.75,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.8
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "JJG-0011",
+    "chercheur": "Jean-Jacques Greffet",
+    "source": "BAB_JJ_GREFFET.txt",
+    "debut": "01:25:09.690",
+    "fin": "01:27:41.830",
+    "duree_secondes": 152.14,
+    "verbatim": "Alors lorsqu'on démarre un projet, on est une équipe académique. On a besoin de beaucoup d'argent à différentes étapes. Il y a les étapes entre création d'entreprise, les étapes post création. Donc là, il faut savoir qu'il ne faut pas créer trop tôt, surtout parce qu'il y a beaucoup de financements qui sont en création, auxquels vous n'êtes plus éligible si vous créez.\n\nEt donc pour vous citez très brièvement les aides\n\nqui sont assez nombreuses lorsqu'on est dans le domaine de la deep tech, c'est à dire dans un domaine proche de la recherche fondamentale. Ce sont des financements, des programmes de valorisation des universités, des financements, des programmes de valorisation du CNRS.\n\nIl peut y avoir des financements locaux de différentes structures de l'université. Ensuite, quand on s'approche de la création, il y a des financements de la BPI qui aident à tout ce qui va vous tomber dessus. Par exemple, il vous faudra des avocats pour faire vos statuts, pour négocier un certain nombre de choses.\n\nEt donc on va vous donner de l'argent pour payer les avocats. On va vous donner de l'argent pour éventuellement payer le salaire de votre futur PDG que vous devez trouver. C'est urgent de le trouver et il faut que vous entendez bien avec lui. Donc cet argent, vous pourrez l'utiliser pour tester pendant six mois que ça se passe bien, etc, etc.\n\nL'étude sur sur la propriété industrielle, valider que vous l'avez, les frais de dépôt de brevet, tout ça. Et ça, ça peut monter à 100 000 €. Et ça, c'est avant. Dès que vous créez, vous n'avez plus le droit de dépenser cet argent. Donc il faut bien le planifier. Une fois que vous avez créé, vous pouvez avoir de la part de la part de la BPI, un programme Émergence, c'est 90 milliards d'euros.\n\nTout de suite, vous pouvez démarrer immédiatement.\n\nEt puis derrière, il y a des concours. Des concours à Scilab pour la deep tech également, qui peuvent vous fournir entre 300 zéro zéro et 600 000 €. Vous êtes très accompagnés par les incubateurs pour rédiger les réponses à ces appels d'offres.\n\nEt puis après? Après, il faut trouver des investisseurs ou des clients.\n\nEst ce qu'il y a eu un moment où votre projet a fortement accéléré?\n\nLe gros coup d'accélérateur. Là où on sait que lorsque l'équipe passe des fondateurs au début, ses fondateurs plus une personne. Parce qu'avec les moyens financiers dont on dispose, on peut payer une ou deux personnes grand maximum. Le gros coup d'accélérateur, c'est lorsqu'on a la levée de fond.\n\nEt là, l'équipe double de taille et tout se met à aller plus vite.",
+    "theme_principal": "T8",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "T8"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T8",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "UTILISE",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Financements avant/apres creation ; ne pas creer trop tot ; acceleration apres levee.",
+    "analyse_discours": {
+      "fonction_discursive": "conseil",
+      "progression_dramaturgique": "conclusion",
+      "sous_theme": "financement",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "donc"
+        },
+        {
+          "type": "temporels",
+          "forme": "ensuite"
+        },
+        {
+          "type": "temporels",
+          "forme": "puis"
+        },
+        {
+          "type": "temporels",
+          "forme": "apres"
+        },
+        {
+          "type": "temporels",
+          "forme": "avant"
+        },
+        {
+          "type": "temporels",
+          "forme": "au debut"
+        },
+        {
+          "type": "consecutifs",
+          "forme": "alors"
+        },
+        {
+          "type": "consecutifs",
+          "forme": "et donc"
+        }
+      ],
+      "autonomie": {
+        "issues": [
+          "pronoms sans antecedent explicite"
+        ],
+        "score": 0.75,
+        "nb_propositions": 32,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "donc"
+          },
+          {
+            "type": "temporels",
+            "forme": "ensuite"
+          },
+          {
+            "type": "temporels",
+            "forme": "puis"
+          },
+          {
+            "type": "temporels",
+            "forme": "apres"
+          },
+          {
+            "type": "temporels",
+            "forme": "avant"
+          },
+          {
+            "type": "temporels",
+            "forme": "au debut"
+          },
+          {
+            "type": "consecutifs",
+            "forme": "alors"
+          },
+          {
+            "type": "consecutifs",
+            "forme": "et donc"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": true,
+        "fin_exploitable": true,
+        "longueur_raisonnable": false,
+        "duree_raisonnable": false,
+        "score": 0.6,
+        "nb_mots": 445
+      },
+      "nb_propositions": 32,
+      "phrase_initiale": "Alors lorsqu'on démarre un projet, on est une équipe académique.",
+      "score_composite": {
+        "composite": 0.663,
+        "composantes": {
+          "adequation_theme": 0.167,
+          "adequation_objectif": 0.236,
+          "clarte_unite": 0.75,
+          "autonomie": 0.75,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.6
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "JJG-0012",
+    "chercheur": "Jean-Jacques Greffet",
+    "source": "BAB_JJ_GREFFET.txt",
+    "debut": "01:10:31.580",
+    "fin": "01:13:19.550",
+    "duree_secondes": 167.97,
+    "verbatim": "Il y a une toute autre dimension sur ce qui s'est passé pendant ces 18 mois, qui n'a rien de technique. C'est que comme nous étions déjà dans une démarche d'innovation en tant qu'entrepreneur, on est toujours dans l'hypothèse où tout va marcher, On est forcément optimiste, sinon on ne serait pas là.\n\nEt donc on se pose la question d'après et ce que nous étions, dans une situation d'équipe très complémentaire avec le scientifique et l'ingénieur qui maîtrise tous les aspects du développement technique. Il nous manquait à l'évidence quelqu'un qui ait des compétences dans le domaine de finance, de marketing, de logistique, de production, de ressources humaines Et donc c'était notre besoin le plus criant.\n\nEt ça, c'est quelque chose que l'on a développé pendant cette période là. Et il ne faut pas attendre quatre parce que c'est absolument critique. Donc, dans cette phase de preuve de concept, nous avons appris des choses dans plusieurs domaines. Tout d'abord, il y a l'aspect technique et là il faut déboguer, c'est à dire trouver tous les problèmes réels que l'on rencontre dans la vie réelle et apprendre à les résoudre, à les maîtriser.\n\nC'est, c'est l'aspect, je dirais, le plus proche de la vie du chercheur. Mais il y a un autre aspect qui est absolument crucial et critique, c'est le développement de l'équipe. En tant qu'entrepreneur, on se met dans la situation où de toute façon, ça va marcher. Donc il faut se poser la question de l'après et l'étape d'après, c'est l'équipe qui va créer l'entreprise.\n\nEt à l'évidence, notre équipe, de ce point de vue là, était bancale. Pour faire la preuve de concept, elle était parfaite. On avait l'ingénieur, on avait le scientifique. Mais pour l'entreprise, il nous manque quelqu'un qui sache gérer, faire du marketing, s'occuper des ventes, faire la comptabilité, s'occuper des ressources humaines, s'occuper de la logistique, s'occuper de la production.\n\nEt là, on avait zéro compétences, zéro expérience. Et donc il a fallu chercher ses compétences. Donc ça, c'est un point extrêmement important. Cette complémentarité que l'on a recherché, la complémentarité de l'équipe, c'est absolument essentiel parce que les investisseurs ne regardent que cela.\n\nAlors quand je dis que j'exagère à peine, ils vont un peu regarder si il y a un marché, ils vont quand même vérifier que ce n'est pas évidemment vers l'échec qu'on va. Mais ensuite, la seule chose qu'ils regardent, c'est la. C'est ce qu'ils estiment être la capacité de l'équipe à mener à bien le projet.\n\nCe qu'il faut savoir, c'est que la grande majorité des projets pivotent. C'est à dire que l'estimation technique du projet n'a aucune valeur puisque de toute façon, ce n'est pas ça qui va survivre, qui va résister et ce qui va survivre, c'est l'équipe. Et donc il faut choisir une équipe qui va être capable de prendre des virages quand il faut prendre des virages.",
+    "theme_principal": "T9",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "T9"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T9",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "UTILISE",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Equipe POC vs equipe entreprise ; troisieme profil business ; investisseurs regardent l'equipe.",
+    "analyse_discours": {
+      "fonction_discursive": "conseil",
+      "progression_dramaturgique": "conclusion",
+      "sous_theme": "market-pull",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "donc"
+        },
+        {
+          "type": "logiques",
+          "forme": "mais"
+        },
+        {
+          "type": "temporels",
+          "forme": "ensuite"
+        },
+        {
+          "type": "temporels",
+          "forme": "apres"
+        },
+        {
+          "type": "temporels",
+          "forme": "d'abord"
+        },
+        {
+          "type": "causaux",
+          "forme": "parce que"
+        },
+        {
+          "type": "causaux",
+          "forme": "puisque"
+        },
+        {
+          "type": "consecutifs",
+          "forme": "alors"
+        },
+        {
+          "type": "consecutifs",
+          "forme": "et donc"
+        }
+      ],
+      "autonomie": {
+        "issues": [],
+        "score": 1.0,
+        "nb_propositions": 26,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "donc"
+          },
+          {
+            "type": "logiques",
+            "forme": "mais"
+          },
+          {
+            "type": "temporels",
+            "forme": "ensuite"
+          },
+          {
+            "type": "temporels",
+            "forme": "apres"
+          },
+          {
+            "type": "temporels",
+            "forme": "d'abord"
+          },
+          {
+            "type": "causaux",
+            "forme": "parce que"
+          },
+          {
+            "type": "causaux",
+            "forme": "puisque"
+          },
+          {
+            "type": "consecutifs",
+            "forme": "alors"
+          },
+          {
+            "type": "consecutifs",
+            "forme": "et donc"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": true,
+        "fin_exploitable": true,
+        "longueur_raisonnable": false,
+        "duree_raisonnable": false,
+        "score": 0.6,
+        "nb_mots": 484
+      },
+      "nb_propositions": 26,
+      "phrase_initiale": "Il y a une toute autre dimension sur ce qui s'est passé pendant ces 18 mois, qui n'a rien de technique.",
+      "score_composite": {
+        "composite": 0.723,
+        "composantes": {
+          "adequation_theme": 0.143,
+          "adequation_objectif": 0.211,
+          "clarte_unite": 1.0,
+          "autonomie": 1.0,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.6
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "JJG-0013",
+    "chercheur": "Jean-Jacques Greffet",
+    "source": "BAB_JJ_GREFFET.txt",
+    "debut": "01:27:49.270",
+    "fin": "01:28:43.160",
+    "duree_secondes": 53.89,
+    "verbatim": "Alors, lorsqu'on est académique et qu'on se lance dans un projet de création d'entreprise, il faut apprendre à parler le langage de la création d'entreprise. Donc la première aide que j'ai eu mes premiers cours de Béaba, c'était une formation d'un Cube Alliance qui s'appelle Janice et Slide, où j'avais un petit cahier dans lequel je notais des mots de vocabulaire, comme lorsque j'étais aux Etats-Unis et que je notais les mots de vocabulaire d'anglais que j'apprenais tous les jours.\n\nMais là, j'apprenais la langue de l'entrepreneuriat.\n\nAprès, il y a un deuxième niveau qui nécessite un peu plus de maîtrise, qui concerne des disciplines telles que la finance, la comptabilité et le droit. Lorsqu'on lit des statuts et qu'on discute de propriété industrielle avec des investisseurs,\n\nEt là, si on peut être accompagné par quelqu'un dans l'équipe qui est déjà bilingue, c'est quand même très très précieux.",
+    "theme_principal": "T10",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "T10"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T10",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "UTILISE",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Apprendre la langue de l'entrepreneuriat, finance, droit et PI.",
+    "analyse_discours": {
+      "fonction_discursive": "recit_experience",
+      "progression_dramaturgique": "developpement",
+      "sous_theme": "origines de l'innovation",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "donc"
+        },
+        {
+          "type": "logiques",
+          "forme": "mais"
+        },
+        {
+          "type": "temporels",
+          "forme": "apres"
+        },
+        {
+          "type": "consecutifs",
+          "forme": "alors"
+        }
+      ],
+      "autonomie": {
+        "issues": [],
+        "score": 1.0,
+        "nb_propositions": 6,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "donc"
+          },
+          {
+            "type": "logiques",
+            "forme": "mais"
+          },
+          {
+            "type": "temporels",
+            "forme": "apres"
+          },
+          {
+            "type": "consecutifs",
+            "forme": "alors"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": true,
+        "fin_exploitable": true,
+        "longueur_raisonnable": false,
+        "duree_raisonnable": true,
+        "score": 0.8,
+        "nb_mots": 148
+      },
+      "nb_propositions": 6,
+      "phrase_initiale": "Alors, lorsqu'on est académique et qu'on se lance dans un projet de création d'entreprise, il faut apprendre à parler le langage de la création d'entreprise.",
+      "score_composite": {
+        "composite": 0.737,
+        "composantes": {
+          "adequation_theme": 0.167,
+          "adequation_objectif": 0.171,
+          "clarte_unite": 1.0,
+          "autonomie": 1.0,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.8
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "JJG-0014",
+    "chercheur": "Jean-Jacques Greffet",
+    "source": "BAB_JJ_GREFFET.txt",
+    "debut": "01:13:50.500",
+    "fin": "01:14:50.750",
+    "duree_secondes": 60.25,
+    "verbatim": "Mon hésitation principale, c'était d'emmener mon fils vers une impasse et un échec éventuel puisque c'était moi qui apportait le principe. Mais cela étant dit, je n'avais pas vraiment de craintes, au contraire, beaucoup d'enthousiasme à me jeter à l'eau et je dois dire que mon fils n'avait pas beaucoup non plus de craintes.\n\nMoi, à sa place, j'en aurais eu beaucoup plus et je n'aurais pas fait ce qu'il a fait. Il a démissionné à un moment où moi je n'aurais jamais démissionné car je jugeais la la maîtrise des risques trop faible.\n\nVoilà donc.\n\nÀ vrai dire, on n'avait pas beaucoup de craintes. Et ce qu'il faut surtout finalement dire, c'est qu'il est impossible de tout maîtriser et que de toute façon, il faut se jeter à l'eau. Et quand on se jette à l'eau, la seule chose qu'il faut savoir, c'est que si ça ne marche pas, on essaiera autre chose.\n\nDans le cadre du même projet. Et puis si ça ne marche pas, on essaiera autre chose dans le cadre d'un autre projet. Et donc il n'y a pas de crainte à avoir. En fait.",
+    "theme_principal": "T11",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "T11"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T11",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "UTILISE",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Impossible de tout maitriser ; accepter l'incertitude et se jeter a l'eau.",
+    "analyse_discours": {
+      "fonction_discursive": "obstacle",
+      "progression_dramaturgique": "problematisation",
+      "sous_theme": "origines de l'innovation",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "donc"
+        },
+        {
+          "type": "logiques",
+          "forme": "en fait"
+        },
+        {
+          "type": "logiques",
+          "forme": "mais"
+        },
+        {
+          "type": "temporels",
+          "forme": "puis"
+        },
+        {
+          "type": "temporels",
+          "forme": "finalement"
+        },
+        {
+          "type": "causaux",
+          "forme": "car"
+        },
+        {
+          "type": "causaux",
+          "forme": "puisque"
+        },
+        {
+          "type": "consecutifs",
+          "forme": "et donc"
+        }
+      ],
+      "autonomie": {
+        "issues": [],
+        "score": 1.0,
+        "nb_propositions": 12,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "donc"
+          },
+          {
+            "type": "logiques",
+            "forme": "en fait"
+          },
+          {
+            "type": "logiques",
+            "forme": "mais"
+          },
+          {
+            "type": "temporels",
+            "forme": "puis"
+          },
+          {
+            "type": "temporels",
+            "forme": "finalement"
+          },
+          {
+            "type": "causaux",
+            "forme": "car"
+          },
+          {
+            "type": "causaux",
+            "forme": "puisque"
+          },
+          {
+            "type": "consecutifs",
+            "forme": "et donc"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": true,
+        "fin_exploitable": true,
+        "longueur_raisonnable": false,
+        "duree_raisonnable": true,
+        "score": 0.8,
+        "nb_mots": 189
+      },
+      "nb_propositions": 12,
+      "phrase_initiale": "Mon hésitation principale, c'était d'emmener mon fils vers une impasse et un échec éventuel puisque c'était moi qui apportait le principe.",
+      "score_composite": {
+        "composite": 0.735,
+        "composantes": {
+          "adequation_theme": 0.167,
+          "adequation_objectif": 0.154,
+          "clarte_unite": 1.0,
+          "autonomie": 1.0,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.8
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "JJG-0015",
+    "chercheur": "Jean-Jacques Greffet",
+    "source": "BAB_JJ_GREFFET.txt",
+    "debut": "01:23:37.970",
+    "fin": "01:23:58.080",
+    "duree_secondes": 20.11,
+    "verbatim": "Alors, il faut aussi rajouter un élément concernant la levée de fonds. L'écosystème est également très utile à cet à cette étape là pour faire des introductions. Et parmi les investisseurs qui sont dans notre tour de table, il y a un certain nombre d'acteurs qui ont été introduits par les partenaires de l'environnement local.",
+    "theme_principal": "T12",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "T12"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T12",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "REUTILISATION_A_ARBITRER",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Ecosysteme local utile pour introductions investisseurs lors de la levee de fonds.",
+    "analyse_discours": {
+      "fonction_discursive": "conseil",
+      "progression_dramaturgique": "conclusion",
+      "sous_theme": "financement",
+      "connecteurs": [
+        {
+          "type": "consecutifs",
+          "forme": "alors"
+        }
+      ],
+      "autonomie": {
+        "issues": [],
+        "score": 1.0,
+        "nb_propositions": 3,
+        "connecteurs": [
+          {
+            "type": "consecutifs",
+            "forme": "alors"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": true,
+        "fin_exploitable": true,
+        "longueur_raisonnable": true,
+        "duree_raisonnable": true,
+        "score": 1.0,
+        "nb_mots": 55
+      },
+      "nb_propositions": 3,
+      "phrase_initiale": "Alors, il faut aussi rajouter un élément concernant la levée de fonds.",
+      "score_composite": {
+        "composite": 0.698,
+        "composantes": {
+          "adequation_theme": 0.143,
+          "adequation_objectif": 0.074,
+          "clarte_unite": 0.75,
+          "autonomie": 1.0,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 0.917,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 1.0
+        },
+        "redondance_max": 0.0
+      }
+    }
+  }
+]

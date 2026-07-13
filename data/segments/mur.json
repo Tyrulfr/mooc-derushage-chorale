@@ -1,0 +1,1588 @@
+[
+  {
+    "id": "MUR-0001",
+    "chercheur": "Muriel Thomas",
+    "source": "BAB_Muriel_Thomas video.txt",
+    "debut": "01:00:04.950",
+    "fin": "01:01:24.750",
+    "duree_secondes": 79.8,
+    "verbatim": "Je suis Murielle Thomas, je suis directrice de recherche à l'INRAE à l'Institut Michalis et mon sujet de recherche concerne les liens entre l'alimentation, les microbiotes et la santé. Je suis Muriel Thomas, Je travaille sur les liens entre l'alimentation, les microbiotes et la santé. Mon innovation est née d'un résultat de recherche où on avait isolé un probiotique d'intérêt et aussi d'une observation sociétale.\n\nLes personnes âgées ou en dénutrition, alors qu'elles ont un microbiote extrêmement appauvri, ne consomment jamais de probiotiques. Mon innovation est née d'un résultat de recherche parce que j'ai isolé au laboratoire avec de nombreux collaborateurs, un probiotique qui permet de préserver la masse musculaire.\n\nEt puis cette innovation est née aussi d'une observation qui est que les personnes âgées ou les personnes en convalescence, alors qu'elles ont un microbiote extrêmement appauvri, ne consomment jamais de probiotiques. Elle est issue d'un manque. C'est à dire clairement, les personnes qui sont très âgées ou qui ne veulent plus manger",
+    "theme_principal": "T1",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "GEN",
+      "T1"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T1",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "UTILISE",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Tech-push + observation du manque ; double usage presentation / genese.",
+    "analyse_discours": {
+      "fonction_discursive": "presentation",
+      "progression_dramaturgique": "ouverture",
+      "sous_theme": "tech-push",
+      "connecteurs": [
+        {
+          "type": "temporels",
+          "forme": "puis"
+        },
+        {
+          "type": "causaux",
+          "forme": "parce que"
+        },
+        {
+          "type": "consecutifs",
+          "forme": "alors"
+        }
+      ],
+      "autonomie": {
+        "issues": [],
+        "score": 1.0,
+        "nb_propositions": 8,
+        "connecteurs": [
+          {
+            "type": "temporels",
+            "forme": "puis"
+          },
+          {
+            "type": "causaux",
+            "forme": "parce que"
+          },
+          {
+            "type": "consecutifs",
+            "forme": "alors"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": true,
+        "fin_exploitable": true,
+        "longueur_raisonnable": false,
+        "duree_raisonnable": true,
+        "score": 0.8,
+        "nb_mots": 163
+      },
+      "nb_propositions": 8,
+      "phrase_initiale": "Je suis Murielle Thomas, je suis directrice de recherche à l'INRAE à l'Institut Michalis et mon sujet de recherche concerne les liens entre l'alimentation, les ",
+      "score_composite": {
+        "composite": 0.815,
+        "composantes": {
+          "adequation_theme": 0.469,
+          "adequation_objectif": 0.373,
+          "clarte_unite": 1.0,
+          "autonomie": 1.0,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.8
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "MUR-0002",
+    "chercheur": "Muriel Thomas",
+    "source": "BAB_Muriel_Thomas video.txt",
+    "debut": "01:11:26.950",
+    "fin": "01:11:54.900",
+    "duree_secondes": 27.95,
+    "verbatim": "C'est obligatoire de sortir du labo pour innover. Dans le laboratoire, vous êtes dans un contexte académique et vous posez des hypothèses scientifiques. Vous les testez expérimentalement et ensuite vous publiez vos résultats et donc vous adressez à un public académique, et les articles scientifiques vont être lus par la communauté scientifique et académique.",
+    "theme_principal": "T2",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "T2"
+    ],
+    "capsule_reservee": "T2",
+    "capsule_definitive": null,
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "RESERVE",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Reserve T2 : sortir du labo pour innover.",
+    "analyse_discours": {
+      "fonction_discursive": "preuve",
+      "progression_dramaturgique": "preuve",
+      "sous_theme": "tech-push",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "donc"
+        },
+        {
+          "type": "temporels",
+          "forme": "ensuite"
+        },
+        {
+          "type": "consecutifs",
+          "forme": "et donc"
+        }
+      ],
+      "autonomie": {
+        "issues": [],
+        "score": 1.0,
+        "nb_propositions": 3,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "donc"
+          },
+          {
+            "type": "temporels",
+            "forme": "ensuite"
+          },
+          {
+            "type": "consecutifs",
+            "forme": "et donc"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": true,
+        "fin_exploitable": true,
+        "longueur_raisonnable": true,
+        "duree_raisonnable": true,
+        "score": 1.0,
+        "nb_mots": 54
+      },
+      "nb_propositions": 3,
+      "phrase_initiale": "C'est obligatoire de sortir du labo pour innover.",
+      "score_composite": {
+        "composite": 0.705,
+        "composantes": {
+          "adequation_theme": 0.167,
+          "adequation_objectif": 0.106,
+          "clarte_unite": 0.75,
+          "autonomie": 1.0,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 0.9,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 1.0
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "MUR-0003",
+    "chercheur": "Muriel Thomas",
+    "source": "BAB_Muriel_Thomas video.txt",
+    "debut": "01:10:02.310",
+    "fin": "01:11:21.550",
+    "duree_secondes": 79.24,
+    "verbatim": "ils s'expriment tout simplement par un chiffre. En France, il y a 43 zéro zéro zéro compléments nutritionnels, mais\n\navec la société d'accélération, de transfert technologique, donc la SATT de Paris-Saclay, j'ai déposé un projet pour obtenir un financement et dans le contexte de ce projet, il y avait une étude de marché qui était faite. Et là on s'est aperçu que plus de la moitié des compléments nutritionnels oraux qui sont prescrits ne sont pas consommés.\n\nÇa signifie que, dans toutes les propositions alimentaires qui sont faites pour les personnes en dénutrition, on sait que la moitié est jetée. Donc, il y a une place pour proposer des nouveaux produits, pour essayer de diversifier les propositions alimentaires qui sont faites à ces patients qui souvent sont fatigués, sont fragiles, n'ont pas faim, donc ils ont besoin de diversité.\n\nEt d'ailleurs, cette diversité, ce besoin de diversifier les apports, est recommandé par la Haute Autorité de santé. Donc, si vous voulez, il y avait à la fois des observations de terrain et puis des enquêtes de terrain, et il y avait également des recommandations de la Haute Autorité de santé de prescrire de la variété.",
+    "theme_principal": "T2",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "T2"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T2",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "UTILISE",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Etude de marche : plus de la moitie des complements prescrits non consommes.",
+    "analyse_discours": {
+      "fonction_discursive": "definition",
+      "progression_dramaturgique": "developpement",
+      "sous_theme": "market-pull",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "donc"
+        },
+        {
+          "type": "logiques",
+          "forme": "mais"
+        },
+        {
+          "type": "temporels",
+          "forme": "puis"
+        }
+      ],
+      "autonomie": {
+        "issues": [
+          "debut en milieu de phrase",
+          "pronoms sans antecedent explicite"
+        ],
+        "score": 0.5,
+        "nb_propositions": 8,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "donc"
+          },
+          {
+            "type": "logiques",
+            "forme": "mais"
+          },
+          {
+            "type": "temporels",
+            "forme": "puis"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": false,
+        "fin_exploitable": true,
+        "longueur_raisonnable": false,
+        "duree_raisonnable": true,
+        "score": 0.4,
+        "nb_mots": 195
+      },
+      "nb_propositions": 8,
+      "phrase_initiale": "ils s'expriment tout simplement par un chiffre.",
+      "score_composite": {
+        "composite": 0.597,
+        "composantes": {
+          "adequation_theme": 0.262,
+          "adequation_objectif": 0.223,
+          "clarte_unite": 0.5,
+          "autonomie": 0.5,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.4
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "MUR-0004",
+    "chercheur": "Muriel Thomas",
+    "source": "BAB_Muriel_Thomas video.txt",
+    "debut": "01:14:06.730",
+    "fin": "01:16:14.349",
+    "duree_secondes": 127.619,
+    "verbatim": "de faire goûter le produit. Dans notre cas, ce sont des compléments nutritionnels oraux qu'on veut bons, qu'on veut adapter à l'âge adapté à la maladie. Il faut les faire goûter, Il faut les faire goûter non seulement aux résidents, aux patients, aux médecins, aux diététiciens, aux cuisiniers, bref, à toutes les personnes des établissements qui vont être concernés par ces produits.\n\nDonc, il faut aller sur le terrain, il faut les contacter, il faut les visiter, il faut les convaincre. Dans le parcours, il y a eu un échange tout à fait fondateur. C'est celui qu'on a établi avec un EHPAD qui s'appelle l'EHPAD Notre-Dame depuis Ravot qui est dans les Deux-Sèvres, donc dans un territoire très éloigné de Paris-Saclay.\n\nEt pourquoi cette rencontre a été fondatrice? Tout simplement parce que c'était EHPAD déjà depuis quinze ans. Travailler sur l'innovation culinaire au service des résidents et pour lutter contre la dénutrition. Donc on a utilisé leur expérience, on s'est construit clairement. Il y a eu des échanges qui ont été fondateurs dans le parcours de l'innovation, notamment un échange qu'on a établi avec un EHPAD qui s'appelle l'EHPAD de Notre-Dame depuis Travaux, parce que cette EPAD travaillait déjà depuis quinze ans sur la façon dont on pouvait innover en nutrition dans l'établissement pour essayer d'adapter les aliments aux contraintes de l'âge ou de la maladie.\n\nEt nous avons eu un parcours depuis maintenant plus de cinq ans de co-construction, de co réflexion mais aussi de co action. Les premières bouchées, les premiers aliments qui ont été distribués ont été fabriqués par les cuisiniers de l'EHPAD pendant un week end. Ils ont fabriqué 18 zéro zéro zéro car embauchés pour qu'on puisse les tester.\n\nDonc vous voyez que c'est un investissement à la fois en terme de temps, un investissement humain, un investissement, un investissement aussi",
+    "theme_principal": "T2",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "T2"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T2",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "UTILISE",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Co-construction avec EHPAD Notre-Dame : tests sur le terrain.",
+    "analyse_discours": {
+      "fonction_discursive": "recit_experience",
+      "progression_dramaturgique": "developpement",
+      "sous_theme": "origines de l'innovation",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "donc"
+        },
+        {
+          "type": "logiques",
+          "forme": "mais"
+        },
+        {
+          "type": "causaux",
+          "forme": "parce que"
+        },
+        {
+          "type": "causaux",
+          "forme": "car"
+        }
+      ],
+      "autonomie": {
+        "issues": [
+          "debut en milieu de phrase",
+          "fin tronquee"
+        ],
+        "score": 0.5,
+        "nb_propositions": 15,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "donc"
+          },
+          {
+            "type": "logiques",
+            "forme": "mais"
+          },
+          {
+            "type": "causaux",
+            "forme": "parce que"
+          },
+          {
+            "type": "causaux",
+            "forme": "car"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": false,
+        "fin_exploitable": false,
+        "longueur_raisonnable": false,
+        "duree_raisonnable": false,
+        "score": 0.0,
+        "nb_mots": 306
+      },
+      "nb_propositions": 15,
+      "phrase_initiale": "de faire goûter le produit.",
+      "score_composite": {
+        "composite": 0.566,
+        "composantes": {
+          "adequation_theme": 0.27,
+          "adequation_objectif": 0.186,
+          "clarte_unite": 0.5,
+          "autonomie": 0.5,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.0
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "MUR-0005",
+    "chercheur": "Muriel Thomas",
+    "source": "BAB_Muriel_Thomas video.txt",
+    "debut": "01:18:18.720",
+    "fin": "01:20:03.270",
+    "duree_secondes": 104.55,
+    "verbatim": "Nous avons créé la startup en octobre 2021. On a testé notre premier concept, donc nos versions V0 de nos aliments tout de suite, dans la foulée, par ce qu'on appelle un test de sensorialité sur le terrain. Puis il a fallu quatre ans, 4 à 5 ans de développement, d'affinage en fait de la formulation.\n\nEt pourquoi on a pris autant de temps? Parce qu'au début, on voulait faire des aliments prêts à consommer, qui se gardaient au froid. Mais la chaîne du froid, c'est trop cher. C'est impossible en fait de le développer. En tout cas, ce n'était pas possible de le développer pour que ce soit viable économiquement.\n\nDonc on a fait un pivot technologique et on est passé d'une formulation prête à consommer à une formulation prête à préparer, qui va être prise en charge par les cuisiniers dans les EHPAD, puis amenés auprès des résidents, par exemple. Donc, il a fallu quatre, cinq ans de développement de la formulation.\n\nL'étape d'entrée sur le marché, on est en train de la franchir. Mais pour la franchir, il fallait produire et produire de façon industrielle pour respecter tous les aspects réglementaires et sanitaires. Donc trouver un industriel, ça prend du temps. On l'a trouvé. Notre première production aura lieu en septembre.\n\nDonc notre premier pot, en fait de poudres prêtes à préparer, va sortir en septembre et nous avons déjà quelques établissements qui sont motivés et prêts à acheter ces premiers pots. Donc, il nous a fallu au moins une année pour construire cette entrée sur le marché.",
+    "theme_principal": "T3",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "T3"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T3",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "UTILISE",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Formulation 4-5 ans : pivot prete a consommer vers poudre prete a preparer.",
+    "analyse_discours": {
+      "fonction_discursive": "exemple",
+      "progression_dramaturgique": "exemple",
+      "sous_theme": "origines de l'innovation",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "donc"
+        },
+        {
+          "type": "logiques",
+          "forme": "en fait"
+        },
+        {
+          "type": "logiques",
+          "forme": "mais"
+        },
+        {
+          "type": "temporels",
+          "forme": "puis"
+        },
+        {
+          "type": "temporels",
+          "forme": "au debut"
+        }
+      ],
+      "autonomie": {
+        "issues": [],
+        "score": 1.0,
+        "nb_propositions": 17,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "donc"
+          },
+          {
+            "type": "logiques",
+            "forme": "en fait"
+          },
+          {
+            "type": "logiques",
+            "forme": "mais"
+          },
+          {
+            "type": "temporels",
+            "forme": "puis"
+          },
+          {
+            "type": "temporels",
+            "forme": "au debut"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": true,
+        "fin_exploitable": true,
+        "longueur_raisonnable": false,
+        "duree_raisonnable": true,
+        "score": 0.8,
+        "nb_mots": 261
+      },
+      "nb_propositions": 17,
+      "phrase_initiale": "Nous avons créé la startup en octobre 2021.",
+      "score_composite": {
+        "composite": 0.694,
+        "composantes": {
+          "adequation_theme": 0.0,
+          "adequation_objectif": 0.064,
+          "clarte_unite": 1.0,
+          "autonomie": 1.0,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.8
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "MUR-0006",
+    "chercheur": "Muriel Thomas",
+    "source": "BAB_Muriel_Thomas video.txt",
+    "debut": "01:22:21.940",
+    "fin": "01:24:36.750",
+    "duree_secondes": 134.81,
+    "verbatim": "Pendant un projet de recherche qui était financé par Carnot quasiment. On a abouti à la caractérisation du probiotique. Et là je savais qu'il y avait un potentiel de valorisation, tout simplement. On ne peut pas breveter du vivant, donc on ne peut pas breveter une bactérie. En revanche, on peut breveter son application.\n\nEt là l'application en question, c'était on peut utiliser ce probiotique qui va diminuer la fonte de la masse musculaire en cas de dénutrition. En d'autres termes, ce probiotique peut améliorer les.\n\nLes.\n\nLes marqueurs métaboliques. Ouais,\n\nok. En d'autres termes, ce probiotique peut améliorer les marqueurs métaboliques qui se mettent en place en cas de dénutrition. Et c'est ça qu'on a qu'on a proposé à INRA et transfert, donc aux structures de transfert comme brevet. Cette idée là. Cette application, elle est travaillée par les ingénieurs d'Hydra et Transfert qui regarde si dans tous les brevets qui existent dans le monde, ce brevet a une place, cette application a une place.\n\nDonc ce travail là, il est fait par Inria et Transfert, il n'est pas fait par les chercheurs.\n\nÉvidemment, l'objectif final d'un projet de recherche, c'est la publication, mais jamais le fait d'écrire un brevet ou d'imaginer une application, par exemple pour un probiotique, a freiné cette publication. Parce qu'en fait, dans le temps, c'est séquentiel et vous commencez à travailler la propriété intellectuelle avec notamment Inria et Transfert avant de publier.\n\nEt ce qu'il faut savoir, par exemple pour les thésards, et là c'était le cas, il y avait une thésarde dont c'était le sujet de thèse. Ça n'a absolument pas empêché de soutenir sa thèse parce que la publication est arrivée Après la protection intellectuelle et la protection intellectuelle était validée par son école doctorale comme l'acquisition d'un résultat.",
+    "theme_principal": "T4",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "T4"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T4",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "UTILISE",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Breveter l'application (vivant) ; protection avant publication et soutenance.",
+    "analyse_discours": {
+      "fonction_discursive": "obstacle",
+      "progression_dramaturgique": "problematisation",
+      "sous_theme": "tech-push",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "donc"
+        },
+        {
+          "type": "logiques",
+          "forme": "en fait"
+        },
+        {
+          "type": "logiques",
+          "forme": "en revanche"
+        },
+        {
+          "type": "logiques",
+          "forme": "mais"
+        },
+        {
+          "type": "temporels",
+          "forme": "apres"
+        },
+        {
+          "type": "temporels",
+          "forme": "avant"
+        },
+        {
+          "type": "causaux",
+          "forme": "parce que"
+        }
+      ],
+      "autonomie": {
+        "issues": [],
+        "score": 1.0,
+        "nb_propositions": 20,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "donc"
+          },
+          {
+            "type": "logiques",
+            "forme": "en fait"
+          },
+          {
+            "type": "logiques",
+            "forme": "en revanche"
+          },
+          {
+            "type": "logiques",
+            "forme": "mais"
+          },
+          {
+            "type": "temporels",
+            "forme": "apres"
+          },
+          {
+            "type": "temporels",
+            "forme": "avant"
+          },
+          {
+            "type": "causaux",
+            "forme": "parce que"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": true,
+        "fin_exploitable": true,
+        "longueur_raisonnable": false,
+        "duree_raisonnable": false,
+        "score": 0.6,
+        "nb_mots": 297
+      },
+      "nb_propositions": 20,
+      "phrase_initiale": "Pendant un projet de recherche qui était financé par Carnot quasiment.",
+      "score_composite": {
+        "composite": 0.723,
+        "composantes": {
+          "adequation_theme": 0.167,
+          "adequation_objectif": 0.172,
+          "clarte_unite": 1.0,
+          "autonomie": 1.0,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.6
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "MUR-0007",
+    "chercheur": "Muriel Thomas",
+    "source": "BAB_Muriel_Thomas video.txt",
+    "debut": "01:22:21.940",
+    "fin": "01:23:46.160",
+    "duree_secondes": 84.22,
+    "verbatim": "Pendant un projet de recherche qui était financé par Carnot quasiment. On a abouti à la caractérisation du probiotique. Et là je savais qu'il y avait un potentiel de valorisation, tout simplement. On ne peut pas breveter du vivant, donc on ne peut pas breveter une bactérie. En revanche, on peut breveter son application.\n\nEt là l'application en question, c'était on peut utiliser ce probiotique qui va diminuer la fonte de la masse musculaire en cas de dénutrition. En d'autres termes, ce probiotique peut améliorer les.\n\nLes.\n\nLes marqueurs métaboliques. Ouais,\n\nok. En d'autres termes, ce probiotique peut améliorer les marqueurs métaboliques qui se mettent en place en cas de dénutrition. Et c'est ça qu'on a qu'on a proposé à INRA et transfert, donc aux structures de transfert comme brevet. Cette idée là. Cette application, elle est travaillée par les ingénieurs d'Hydra et Transfert qui regarde si dans tous les brevets qui existent dans le monde, ce brevet a une place, cette application a une place.\n\nDonc ce travail là, il est fait par Inria et Transfert, il n'est pas fait par les chercheurs.",
+    "theme_principal": "T5",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "T5",
+      "T4"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T5",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "REUTILISATION_A_ARBITRER",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Vivant non brevetable ; breveter l'application avec INRA Transfert.",
+    "analyse_discours": {
+      "fonction_discursive": "obstacle",
+      "progression_dramaturgique": "problematisation",
+      "sous_theme": "origines de l'innovation",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "donc"
+        },
+        {
+          "type": "logiques",
+          "forme": "en revanche"
+        }
+      ],
+      "autonomie": {
+        "issues": [],
+        "score": 1.0,
+        "nb_propositions": 16,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "donc"
+          },
+          {
+            "type": "logiques",
+            "forme": "en revanche"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": true,
+        "fin_exploitable": true,
+        "longueur_raisonnable": false,
+        "duree_raisonnable": true,
+        "score": 0.8,
+        "nb_mots": 184
+      },
+      "nb_propositions": 16,
+      "phrase_initiale": "Pendant un projet de recherche qui était financé par Carnot quasiment.",
+      "score_composite": {
+        "composite": 0.701,
+        "composantes": {
+          "adequation_theme": 0.0,
+          "adequation_objectif": 0.122,
+          "clarte_unite": 1.0,
+          "autonomie": 1.0,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.8
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "MUR-0008",
+    "chercheur": "Muriel Thomas",
+    "source": "BAB_Muriel_Thomas video.txt",
+    "debut": "01:26:50.860",
+    "fin": "01:27:54.760",
+    "duree_secondes": 63.9,
+    "verbatim": "Il se trouve que j'avais travaillé pendant quinze ans, plus de quinze ans sur ce projet et Et j'avais envie d'aller jusqu'au bout. J'avais envie de.\n\nD'aller jusqu'à la cohérence de ce produit qui est d'associer un probiotique qui préserve la masse musculaire en cas de dénutrition. Un aliment qui est utile en cas de dénutrition. Et donc là, on combine à la fois une structure matricielle alimentaire riche en nutriments pour nourrir notre corps et un probiotique pour nourrir notre microbiote.\n\nEt c'est cette cohérence là qui m'a motivé à créer une startup. Dans le cadre de la startup, on a négocié avec l'INRAE une licence exclusive d'exploitation, c'est à dire que la souche appartient à l'INRAE, la bactérie appartient à l'INRAE. Mais car en bouche, à la licence exclusive d'exploitation de ce brevet, de cette souche.",
+    "theme_principal": "T6",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "T6"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T6",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "UTILISE",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Licence a un industriel ou start-up ; licence exclusive INRAE a Carembouche.",
+    "analyse_discours": {
+      "fonction_discursive": "definition",
+      "progression_dramaturgique": "developpement",
+      "sous_theme": "origines de l'innovation",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "donc"
+        },
+        {
+          "type": "logiques",
+          "forme": "mais"
+        },
+        {
+          "type": "causaux",
+          "forme": "car"
+        },
+        {
+          "type": "consecutifs",
+          "forme": "et donc"
+        }
+      ],
+      "autonomie": {
+        "issues": [],
+        "score": 1.0,
+        "nb_propositions": 8,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "donc"
+          },
+          {
+            "type": "logiques",
+            "forme": "mais"
+          },
+          {
+            "type": "causaux",
+            "forme": "car"
+          },
+          {
+            "type": "consecutifs",
+            "forme": "et donc"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": true,
+        "fin_exploitable": true,
+        "longueur_raisonnable": false,
+        "duree_raisonnable": true,
+        "score": 0.8,
+        "nb_mots": 138
+      },
+      "nb_propositions": 8,
+      "phrase_initiale": "Il se trouve que j'avais travaillé pendant quinze ans, plus de quinze ans sur ce projet et Et j'avais envie d'aller jusqu'au bout.",
+      "score_composite": {
+        "composite": 0.727,
+        "composantes": {
+          "adequation_theme": 0.167,
+          "adequation_objectif": 0.092,
+          "clarte_unite": 1.0,
+          "autonomie": 1.0,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.8
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "MUR-0009",
+    "chercheur": "Muriel Thomas",
+    "source": "BAB_Muriel_Thomas video.txt",
+    "debut": "01:17:41.560",
+    "fin": "01:18:17.640",
+    "duree_secondes": 36.08,
+    "verbatim": "Le résultat scientifique, on l'a obtenu à peu près après quinze ou 20 ans d'études sur les probiotiques et la validation concrète. Il a fallu obtenir d'autres financements. Donc ces financements, ça a d'abord été un projet Carnot quasiment, puis un financement par la suite. Puis après, j'ai bénéficié d'une formation à l'incubateur Incube Alliance pour pour me former tout simplement à l'entrepreneuriat, au monde des startups, pour apprendre un nouveau vocabulaire et une nouvelle façon de penser.",
+    "theme_principal": "T7",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "T7"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T7",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "UTILISE",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Formation IncubAlliance : entrepreneuriat, vocabulaire, facon de penser.",
+    "analyse_discours": {
+      "fonction_discursive": "preuve",
+      "progression_dramaturgique": "preuve",
+      "sous_theme": "tech-push",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "donc"
+        },
+        {
+          "type": "temporels",
+          "forme": "puis"
+        },
+        {
+          "type": "temporels",
+          "forme": "apres"
+        },
+        {
+          "type": "temporels",
+          "forme": "d'abord"
+        }
+      ],
+      "autonomie": {
+        "issues": [],
+        "score": 1.0,
+        "nb_propositions": 4,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "donc"
+          },
+          {
+            "type": "temporels",
+            "forme": "puis"
+          },
+          {
+            "type": "temporels",
+            "forme": "apres"
+          },
+          {
+            "type": "temporels",
+            "forme": "d'abord"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": true,
+        "fin_exploitable": true,
+        "longueur_raisonnable": true,
+        "duree_raisonnable": true,
+        "score": 1.0,
+        "nb_mots": 78
+      },
+      "nb_propositions": 4,
+      "phrase_initiale": "Le résultat scientifique, on l'a obtenu à peu près après quinze ou 20 ans d'études sur les probiotiques et la validation concrète.",
+      "score_composite": {
+        "composite": 0.709,
+        "composantes": {
+          "adequation_theme": 0.0,
+          "adequation_objectif": 0.075,
+          "clarte_unite": 1.0,
+          "autonomie": 1.0,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 1.0
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "MUR-0010",
+    "chercheur": "Muriel Thomas",
+    "source": "BAB_Muriel_Thomas video.txt",
+    "debut": "01:30:20.660",
+    "fin": "01:31:35.899",
+    "duree_secondes": 75.239,
+    "verbatim": "Hum. Il y a des des moments assez importants, des moments d'inflexion du projet. Et ces étapes là qui vont être un peu comme des marches d'un escalier. Souvent, elles sont déclenchées par l'obtention de financements par exemple. Clairement, le fait d'avoir été lauréat du concours Scilab, ça nous a fait passer une marche parce qu'on a pu passer des aliments prêts à consommer à des aliments en poudre qui vont se garder à température ambiante pendant très longtemps.\n\nÇa, c'est grâce au concours Ail Lab. On a pu également recruter le premier ingénieur de Car en bouche, qui va s'occuper de tous les développements scientifiques et cliniques. Donc c'est sur l'obtention du concours Ail Lab. Être lauréat de ce concours d'innovation, ça fait franchir une marche.\n\nAprès, il y a d'autres marches qui vont être peut être un peu plus petites, mais non moins déterminante, comme par exemple créer une équipe, comme par exemple rencontrer des partenaires. Les pas de puis. Ravot a été un partenaire historique et toujours notre partenaire, et nous permet de franchir régulièrement des petites marches",
+    "theme_principal": "T8",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "T8"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T8",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "UTILISE",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Concours i-Lab : pivot poudre, recrutement premier ingenieur.",
+    "analyse_discours": {
+      "fonction_discursive": "exemple",
+      "progression_dramaturgique": "exemple",
+      "sous_theme": "equipe",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "donc"
+        },
+        {
+          "type": "logiques",
+          "forme": "mais"
+        },
+        {
+          "type": "temporels",
+          "forme": "puis"
+        },
+        {
+          "type": "temporels",
+          "forme": "apres"
+        },
+        {
+          "type": "causaux",
+          "forme": "car"
+        }
+      ],
+      "autonomie": {
+        "issues": [],
+        "score": 1.0,
+        "nb_propositions": 12,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "donc"
+          },
+          {
+            "type": "logiques",
+            "forme": "mais"
+          },
+          {
+            "type": "temporels",
+            "forme": "puis"
+          },
+          {
+            "type": "temporels",
+            "forme": "apres"
+          },
+          {
+            "type": "causaux",
+            "forme": "car"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": true,
+        "fin_exploitable": true,
+        "longueur_raisonnable": false,
+        "duree_raisonnable": true,
+        "score": 0.8,
+        "nb_mots": 181
+      },
+      "nb_propositions": 12,
+      "phrase_initiale": "Hum.",
+      "score_composite": {
+        "composite": 0.747,
+        "composantes": {
+          "adequation_theme": 0.167,
+          "adequation_objectif": 0.257,
+          "clarte_unite": 1.0,
+          "autonomie": 1.0,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.8
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "MUR-0011",
+    "chercheur": "Muriel Thomas",
+    "source": "BAB_Muriel_Thomas video.txt",
+    "debut": "01:32:23.570",
+    "fin": "01:33:54.000",
+    "duree_secondes": 90.43,
+    "verbatim": "Je l'ai déjà dit, mais plus un projet est ambitieux, plus l'entourage est important j'ai l'impression. Donc clairement, l'équipe que j'ai construite au cours de Autour de 40 bouches est essentielle. Donc nous sommes trois femmes co-fondatrice,\n\nune médecin qui s'appelle Francisca, Julie, Odile de Christiane qui dirige la société et moi. Mais il y a aussi par exemple Paul Biskra qui est l'ingénieur qui s'occupe de tous les développements cliniques et scientifiques. Donc ça c'est l'équipe, on va dire, forte, le noyau central de 40 push.\n\nPuis après, il y a par exemple, le comité stratégique de l'entreprise, qui sont des personnes qui vont plutôt nous donner des conseils ou des orientations ou nous ouvrir leur réseau pour l'entreprise. Et puis il y a aussi le comité scientifique qui vont être plutôt des chercheurs pour nous guider, pour nous aider dans nos choix.\n\nEn fait, quand on établit des collaborations tout au long du projet, il est vraiment important de le faire dans le cadre de contrats, soit des contrats de collaboration, soit des contrats de prestation de prestation, soit des contrats par exemple, qui vont régir la société dans le cadre, car en bouche, c'est une SAS.\n\nDonc ça c'est vraiment important parce que ça donne des règles et ça donne un cadre qui est tout à fait essentiel, surtout au début quand vous pouvez aller dans tous les sens.",
+    "theme_principal": "T9",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "T9",
+      "T12"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T9",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "REUTILISATION_A_ARBITRER",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Cofondatrices, CEO, ingenieur ; comites strategique et scientifique.",
+    "analyse_discours": {
+      "fonction_discursive": "exemple",
+      "progression_dramaturgique": "exemple",
+      "sous_theme": "origines de l'innovation",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "donc"
+        },
+        {
+          "type": "logiques",
+          "forme": "en fait"
+        },
+        {
+          "type": "logiques",
+          "forme": "mais"
+        },
+        {
+          "type": "temporels",
+          "forme": "puis"
+        },
+        {
+          "type": "temporels",
+          "forme": "apres"
+        },
+        {
+          "type": "temporels",
+          "forme": "au debut"
+        },
+        {
+          "type": "causaux",
+          "forme": "parce que"
+        },
+        {
+          "type": "causaux",
+          "forme": "car"
+        }
+      ],
+      "autonomie": {
+        "issues": [],
+        "score": 1.0,
+        "nb_propositions": 10,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "donc"
+          },
+          {
+            "type": "logiques",
+            "forme": "en fait"
+          },
+          {
+            "type": "logiques",
+            "forme": "mais"
+          },
+          {
+            "type": "temporels",
+            "forme": "puis"
+          },
+          {
+            "type": "temporels",
+            "forme": "apres"
+          },
+          {
+            "type": "temporels",
+            "forme": "au debut"
+          },
+          {
+            "type": "causaux",
+            "forme": "parce que"
+          },
+          {
+            "type": "causaux",
+            "forme": "car"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": true,
+        "fin_exploitable": true,
+        "longueur_raisonnable": false,
+        "duree_raisonnable": true,
+        "score": 0.8,
+        "nb_mots": 232
+      },
+      "nb_propositions": 10,
+      "phrase_initiale": "Je l'ai déjà dit, mais plus un projet est ambitieux, plus l'entourage est important j'ai l'impression.",
+      "score_composite": {
+        "composite": 0.762,
+        "composantes": {
+          "adequation_theme": 0.286,
+          "adequation_objectif": 0.208,
+          "clarte_unite": 1.0,
+          "autonomie": 1.0,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.8
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "MUR-0012",
+    "chercheur": "Muriel Thomas",
+    "source": "BAB_Muriel_Thomas video.txt",
+    "debut": "01:33:59.440",
+    "fin": "01:36:02.710",
+    "duree_secondes": 123.27,
+    "verbatim": "Sur ce projet. Ce projet, c'est un projet de transfert, c'est à dire on fait une découverte dans un laboratoire et on va essayer d'en faire quelque chose de concret pour la société civile. Donc vous voyez qu'on passe d'un environnement académique de chercheur à un environnement de personnes qui vont être dans des EHPAD ou dans des établissements de santé.\n\nDonc il faut changer de posture, il faut changer de vocabulaire et il faut s'adapter à d'autres interlocuteurs. Et ça, ça se fait aussi en écoutant les conseils, en se formant notamment dans les incubateurs. Clairement, il faut changer. En fait, il faut, il ne faut pas se changer soi même, mais il faut juste acquérir une nouvelle culture, un nouveau vocabulaire, une nouvelle posture.\n\nAdapter le vocabulaire. Ça ne se décide pas en un jour et ça ne se décide pas tout seul devant une feuille de papier. En fait, ça inculque juste en discutant avec les autres. Quand votre message ne passe pas, vous le sentez tout de suite. Donc vous, vous modifiez la prochaine fois. Et ça, ça s'incrémente de façon tout à fait graduelle et progressive.\n\nTous les étudiants en thèse vous le diront, quand ils font leurs répétitions pour la thèse, ils font 42 répétitions, ils ont 500 recommandations. Pour les pitchs, c'est la même chose. Vous allez faire des répétitions, vous allez les présenter aux incubateurs, aux business angels ou à toutes les personnes à qui vous présentez votre pitch.\n\nEt à chaque fois, vous avez des recommandations et à chaque fois, vous avez des recommandations différentes. Donc en vous en faites, vous, votre job c'est d'essayer de concilier tout ça, de comprendre tous ces messages qui sont derrière les recommandations et de faire un pitch qui va vous ressembler malgré tout.\n\nJ'ai passé 30 ans dans un labo,",
+    "theme_principal": "T10",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "T10"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T10",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "UTILISE",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Adapter le discours EHPAD, medecins, investisseurs ; pitch par repetitions.",
+    "analyse_discours": {
+      "fonction_discursive": "conseil",
+      "progression_dramaturgique": "conclusion",
+      "sous_theme": "pivot",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "donc"
+        },
+        {
+          "type": "logiques",
+          "forme": "en fait"
+        },
+        {
+          "type": "logiques",
+          "forme": "mais"
+        }
+      ],
+      "autonomie": {
+        "issues": [
+          "fin tronquee",
+          "pronoms sans antecedent explicite"
+        ],
+        "score": 0.5,
+        "nb_propositions": 19,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "donc"
+          },
+          {
+            "type": "logiques",
+            "forme": "en fait"
+          },
+          {
+            "type": "logiques",
+            "forme": "mais"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": true,
+        "fin_exploitable": false,
+        "longueur_raisonnable": false,
+        "duree_raisonnable": false,
+        "score": 0.2,
+        "nb_mots": 306
+      },
+      "nb_propositions": 19,
+      "phrase_initiale": "Sur ce projet.",
+      "score_composite": {
+        "composite": 0.572,
+        "composantes": {
+          "adequation_theme": 0.167,
+          "adequation_objectif": 0.275,
+          "clarte_unite": 0.5,
+          "autonomie": 0.5,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.2
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "MUR-0013",
+    "chercheur": "Muriel Thomas",
+    "source": "BAB_Muriel_Thomas video.txt",
+    "debut": "01:20:21.990",
+    "fin": "01:22:15.060",
+    "duree_secondes": 113.07,
+    "verbatim": "Je dirais peut être le premier frein, c'est la peur du manque de temps. Le deuxième frein, c'est la peur de perdre la légitimité académique puisqu'on va vers un nouveau métier.\n\nLe troisième frein, c'est la peur de l'échec. Et si ce projet ne marche pas? Et si on n'arrive pas à mettre sur le marché? Si ce n'est pas viable économiquement? Ça, c'est la peur de l'échec.\n\nVoilà peut être parmi ces trois freins,\n\ncelui qui est le plus difficile à surmonter, c'est le manque de temps. Clairement, là il y a un neuf, il y a quelque chose qu'il faut travailler. Par exemple, je dirigeais un groupe de recherche de quinze personnes. Et bien j'ai mis en place la succession de ce groupe pour ne plus le diriger, pour me libérer du temps.\n\nCe qui. Donc il y a des outils, il y a des moyens, il y a des actions à mettre en place, mais ça, c'est difficile. Et pour ça, j'ai beaucoup bénéficié de l'aide des coachs d'incubation qui m'ont aidé à faire des choix pour me libérer du temps. Ensuite, la peur de l'échec.\n\nÇa vous vous rendrez vite compte que ce frein s'en est pas un. Parce que de toute façon, quoi qu'il arrive, quel que soit l'avenir de votre projet, vous avez tellement appris que ce n'est pas un échec. Et le troisième frein la peur de la perte, de la légitimité. C'est vrai, peut être vous allez publier un petit peu moins parce que votre temps est plus contraint, mais vous produisez autre chose, vous produisez un produit, vous produisez un réseau, vous produisez d'autres connaissances et d'autres applications.\n\nDonc ce frein là aussi, petit à petit, il s'amenuise et diminue.",
+    "theme_principal": "T11",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "T11"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T11",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "UTILISE",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Freins temps, legitimite, echec ; leviers (succession, coachs, apprentissage).",
+    "analyse_discours": {
+      "fonction_discursive": "obstacle",
+      "progression_dramaturgique": "problematisation",
+      "sous_theme": "origines de l'innovation",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "donc"
+        },
+        {
+          "type": "logiques",
+          "forme": "mais"
+        },
+        {
+          "type": "temporels",
+          "forme": "ensuite"
+        },
+        {
+          "type": "causaux",
+          "forme": "parce que"
+        }
+      ],
+      "autonomie": {
+        "issues": [],
+        "score": 1.0,
+        "nb_propositions": 21,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "donc"
+          },
+          {
+            "type": "logiques",
+            "forme": "mais"
+          },
+          {
+            "type": "temporels",
+            "forme": "ensuite"
+          },
+          {
+            "type": "causaux",
+            "forme": "parce que"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": true,
+        "fin_exploitable": true,
+        "longueur_raisonnable": false,
+        "duree_raisonnable": true,
+        "score": 0.8,
+        "nb_mots": 289
+      },
+      "nb_propositions": 21,
+      "phrase_initiale": "Je dirais peut être le premier frein, c'est la peur du manque de temps.",
+      "score_composite": {
+        "composite": 0.838,
+        "composantes": {
+          "adequation_theme": 0.5,
+          "adequation_objectif": 0.514,
+          "clarte_unite": 1.0,
+          "autonomie": 1.0,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.8
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "MUR-0014",
+    "chercheur": "Muriel Thomas",
+    "source": "BAB_Muriel_Thomas video.txt",
+    "debut": "01:16:18.750",
+    "fin": "01:17:35.490",
+    "duree_secondes": 76.74,
+    "verbatim": "Cette co-construction s'est établie dans le temps et d'ailleurs\n\npeut être trois ans après avoir établi le premier contact, j'ai demandé à cette équipe de l'EHPAD Mais qu'est ce qui vous motive pour continuer à travailler avec nous, à passer du temps avec nous? Et leur réponse ma surprise, ils m'ont dit C'est tout simplement un projet qui parle d'espoir et d'innovation.\n\nEt après le Covid, on en avait besoin. Clairement, il y a eu des rencontres déterminantes et absolument fondatrices, notamment celle avec l'EHPAD de Puits Ravot, qui est un EHPAD situé dans les Deux-Sèvres. Tout simplement parce que leur projet d'établissement était basé sur l'amélioration de la nutrition.\n\nEt donc, vous voyez, c'était parfaitement cohérent avec notre projet et nos produits. Et nous travaillons ensemble, nous construisons ensemble depuis plus de cinq ans et ils m'ont souvent dit ou souvent témoigné en fait, de leur intérêt pour notre projet, parce que c'est un projet qui leur amène aussi de l'espoir.\n\nDonc nous, à la fois on bénéficie leur expérience et eux aussi trouvent un intérêt pour motiver les équipes et pour participer à des innovations.",
+    "theme_principal": "T12",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "T12"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T12",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "UTILISE",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Co-construction EHPAD sur cinq ans ; espoir, innovation, motivation mutuelle.",
+    "analyse_discours": {
+      "fonction_discursive": "recit_experience",
+      "progression_dramaturgique": "developpement",
+      "sous_theme": "market-pull",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "donc"
+        },
+        {
+          "type": "logiques",
+          "forme": "en fait"
+        },
+        {
+          "type": "logiques",
+          "forme": "mais"
+        },
+        {
+          "type": "temporels",
+          "forme": "apres"
+        },
+        {
+          "type": "causaux",
+          "forme": "parce que"
+        },
+        {
+          "type": "consecutifs",
+          "forme": "et donc"
+        }
+      ],
+      "autonomie": {
+        "issues": [],
+        "score": 1.0,
+        "nb_propositions": 9,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "donc"
+          },
+          {
+            "type": "logiques",
+            "forme": "en fait"
+          },
+          {
+            "type": "logiques",
+            "forme": "mais"
+          },
+          {
+            "type": "temporels",
+            "forme": "apres"
+          },
+          {
+            "type": "causaux",
+            "forme": "parce que"
+          },
+          {
+            "type": "consecutifs",
+            "forme": "et donc"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": true,
+        "fin_exploitable": true,
+        "longueur_raisonnable": false,
+        "duree_raisonnable": true,
+        "score": 0.8,
+        "nb_mots": 187
+      },
+      "nb_propositions": 9,
+      "phrase_initiale": "Cette co-construction s'est établie dans le temps et d'ailleurs",
+      "score_composite": {
+        "composite": 0.73,
+        "composantes": {
+          "adequation_theme": 0.143,
+          "adequation_objectif": 0.152,
+          "clarte_unite": 1.0,
+          "autonomie": 1.0,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.8
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "MUR-0015",
+    "chercheur": "Muriel Thomas",
+    "source": "BAB_Muriel_Thomas video.txt",
+    "debut": "01:32:41.690",
+    "fin": "01:33:54.000",
+    "duree_secondes": 72.31,
+    "verbatim": "une médecin qui s'appelle Francisca, Julie, Odile de Christiane qui dirige la société et moi. Mais il y a aussi par exemple Paul Biskra qui est l'ingénieur qui s'occupe de tous les développements cliniques et scientifiques. Donc ça c'est l'équipe, on va dire, forte, le noyau central de 40 push.\n\nPuis après, il y a par exemple, le comité stratégique de l'entreprise, qui sont des personnes qui vont plutôt nous donner des conseils ou des orientations ou nous ouvrir leur réseau pour l'entreprise. Et puis il y a aussi le comité scientifique qui vont être plutôt des chercheurs pour nous guider, pour nous aider dans nos choix.\n\nEn fait, quand on établit des collaborations tout au long du projet, il est vraiment important de le faire dans le cadre de contrats, soit des contrats de collaboration, soit des contrats de prestation de prestation, soit des contrats par exemple, qui vont régir la société dans le cadre, car en bouche, c'est une SAS.\n\nDonc ça c'est vraiment important parce que ça donne des règles et ça donne un cadre qui est tout à fait essentiel, surtout au début quand vous pouvez aller dans tous les sens.",
+    "theme_principal": "T12",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "T12"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T12",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "REUTILISATION_A_ARBITRER",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Contractualiser les collaborations : contrats collaboration, prestation, SAS.",
+    "analyse_discours": {
+      "fonction_discursive": "exemple",
+      "progression_dramaturgique": "exemple",
+      "sous_theme": "origines de l'innovation",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "donc"
+        },
+        {
+          "type": "logiques",
+          "forme": "en fait"
+        },
+        {
+          "type": "logiques",
+          "forme": "mais"
+        },
+        {
+          "type": "temporels",
+          "forme": "puis"
+        },
+        {
+          "type": "temporels",
+          "forme": "apres"
+        },
+        {
+          "type": "temporels",
+          "forme": "au debut"
+        },
+        {
+          "type": "causaux",
+          "forme": "parce que"
+        },
+        {
+          "type": "causaux",
+          "forme": "car"
+        }
+      ],
+      "autonomie": {
+        "issues": [
+          "debut en milieu de phrase"
+        ],
+        "score": 0.75,
+        "nb_propositions": 7,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "donc"
+          },
+          {
+            "type": "logiques",
+            "forme": "en fait"
+          },
+          {
+            "type": "logiques",
+            "forme": "mais"
+          },
+          {
+            "type": "temporels",
+            "forme": "puis"
+          },
+          {
+            "type": "temporels",
+            "forme": "apres"
+          },
+          {
+            "type": "temporels",
+            "forme": "au debut"
+          },
+          {
+            "type": "causaux",
+            "forme": "parce que"
+          },
+          {
+            "type": "causaux",
+            "forme": "car"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": false,
+        "fin_exploitable": true,
+        "longueur_raisonnable": false,
+        "duree_raisonnable": true,
+        "score": 0.6,
+        "nb_mots": 195
+      },
+      "nb_propositions": 7,
+      "phrase_initiale": "une médecin qui s'appelle Francisca, Julie, Odile de Christiane qui dirige la société et moi.",
+      "score_composite": {
+        "composite": 0.654,
+        "composantes": {
+          "adequation_theme": 0.143,
+          "adequation_objectif": 0.202,
+          "clarte_unite": 0.75,
+          "autonomie": 0.75,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.6
+        },
+        "redondance_max": 0.0
+      }
+    }
+  }
+]

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GEN - Comment nait une innovation ?</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header>
+    <a href="index.html">Tableau de bord</a>
+    <a href="bab_encodes.html">BAB encodé</a>
+    <a href="conflits.html">Conflits</a>
+    <a href="registre.html">Registre</a>
+  </header>
+  <main>
+    <h1>GEN - Comment nait une innovation ?</h1>
+    <p><strong>Objectif:</strong> Comprendre que l'innovation emerge de la rencontre entre une observation, un besoin et un usage, et savoir reperer dans ses travaux un resultat ou une rencontre susceptible d'ouvrir une demarche d'innovation.</p>
+<p><strong>Message central:</strong> Une innovation ne nait pas seulement d'une idee isolee ; elle se construit au contact d'un besoin, d'une observation ou d'une opportunite.</p>
+<p class='meta'><strong>Laboratoire editorial :</strong> cette capsule sert a preparer <a href='capsule_T1.html'>T1</a> (meme contenu temoin, montage et cadrage valides ici avant production).</p>
+<h2>Extraits candidats</h2>
+<h2>Montage propose</h2>
+<h2>Script final</h2>
+<div class='script' id='script-final'>A construire.</div>
+<h2>Manques et decisions</h2>
+<p>Montage migre vers T1 (GEN = test archive).</p>
+
+<section class="methodology-panel">
+  <h2>Methode de selection des sequences</h2>
+  
+  <p>
+    Cette capsule chorale est constituee a partir des transcripts BAB d'interviews
+    (Jean-Jacques Greffet, Muriel Thomas, Sylvia Cohen-Kaminski, Loic Rajjou). La selection
+    repose sur une analyse par <strong>unites de sens</strong> (sciences sociales et linguistique),
+    pas sur une decoupe mecanique du temps de parole.
+  </p>
+  <p class="meta">Pipeline : analyze_discourse → proposition chorale → montage → sync_unites_de_sens. Voir docs/METHODOLOGIE_ANALYSE.md</p>
+  <p><strong>Fil pedagogique de la capsule :</strong> Archive laboratoire — voir T1</p>
+  <ul>
+    <li><strong>Unites de sens</strong> — identification des passages qui forment une idee complete,
+    comprehensible hors du reste de l'entretien.</li>
+    <li><strong>Regroupement thematique</strong> — rapprochement des extraits selon le fil pedagogique
+    de la capsule.</li>
+    <li><strong>Themes et sous-themes</strong> — chaque extrait est qualifie selon sa contribution
+    au message central.</li>
+    <li><strong>Redondances</strong> — lorsque plusieurs formulations disent la meme chose,
+    une seule formulation est retenue pour respecter la duree cible.</li>
+    <li><strong>Transitions</strong> — verification que l'enchainement entre voix reste lisible.</li>
+    <li><strong>Complementarite entre intervenants</strong> — equilibre des quatre parcours
+    sans repetition inutile d'un meme angle.</li>
+    <li><strong>Autonomie des extraits</strong> — chaque sequence doit pouvoir etre entendue
+    sans renvoi implicite a un passage non monte.</li>
+    <li><strong>Faisabilite du montage</strong> — prise en compte des coupes NON PRONONCE,
+    de la duree cible et des reservations d'extraits pour d'autres capsules.</li>
+  </ul>
+  <p>
+    Les extraits retenus, leur ordre et les coupes prevues sont documentes ci-dessus lorsque le montage est etabli.
+    Les passages ecartes ou reserves restent traces dans les BAB encodes et le registre des extraits.
+  </p>
+</section>
+
+
+
+<section class="methodology-panel referents-panel">
+  <h2>Videos expert a produire</h2>
+  <p class="meta">Programme de conception mis a jour le 2026-07-10 (source : 20260710_Prev_Vid.xlsx).</p>
+  <ul>
+    <li><strong>E1</strong> — <em>Intervenant a definir</em> : Reconnaitre les differentes origines d'une innovation. Tech-push, market-pull, observation d'usage, rencontre, serendipite, maturation progressive.</li>
+  </ul>
+  <p class='meta'><strong>Intervenants proposes (a confirmer) :</strong> Bernard Yannou, Eneli Vino</p>
+</section>
+
+
+<section class="export-panel" id="export-word-panel" data-capsule-code="GEN" data-capsule-title="Comment nait une innovation ?">
+  <h2>Export Word</h2>
+  <p class="meta">Exporter le script final au format Word pour relecture ou diffusion.</p>
+  <button type="button" class="btn" id="export-word-open" aria-expanded="false" aria-controls="export-word-modal">
+    Exporter le script final
+  </button>
+</section>
+
+<div class="modal" id="export-word-modal" hidden role="dialog" aria-modal="true" aria-labelledby="export-word-title">
+  <div class="modal-card">
+    <h2 id="export-word-title">Exporter en Word</h2>
+    <p class="meta">Choisissez un dossier de destination, puis lancez l'export.</p>
+    <div class="export-field">
+      <label for="export-word-filename">Nom du fichier</label>
+      <input type="text" id="export-word-filename" value="script_gen.doc" autocomplete="off">
+    </div>
+    <div class="export-field" id="export-word-folder-field">
+      <label>Dossier de destination</label>
+      <div class="export-folder">
+        <span id="export-word-folder">Aucun dossier selectionne</span>
+        <button type="button" class="btn btn-secondary" id="export-word-pick-dir">Choisir un dossier</button>
+      </div>
+    </div>
+    <p class="meta" id="export-word-browser-hint">Chrome et Edge permettent de choisir un dossier. Firefox et Safari utilisent le telechargement du navigateur.</p>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-secondary" id="export-word-cancel">Annuler</button>
+      <button type="button" class="btn" id="export-word-run">Exporter</button>
+    </div>
+    <p class="export-status" id="export-word-status" aria-live="polite"></p>
+  </div>
+</div>
+
+  </main>
+  <script src="assets/export-word.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+[
+  {
+    "id": "YAN-0001",
+    "chercheur": "Yann Meunier",
+    "source": "BAB_Yan_Monier.txt",
+    "debut": "01:00:04.510",
+    "fin": "01:00:21.230",
+    "duree_secondes": 16.72,
+    "verbatim": "Alors je m'appelle Yann Meunier, je suis jeune chercheur et je travaille donc au Lure, pas le N s Paris-Saclay et je travaille dans le domaine de l'automatique, de la construction automatisée de jumeau numérique, de chaîne de production industrielle à partir de l'analyse des données.",
+    "theme_principal": "T1",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "GEN",
+      "T1"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T1",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "UTILISE",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Presentation : automatique, jumeaux numeriques.",
+    "analyse_discours": {
+      "fonction_discursive": "presentation",
+      "progression_dramaturgique": "ouverture",
+      "sous_theme": "origines de l'innovation",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "donc"
+        },
+        {
+          "type": "consecutifs",
+          "forme": "alors"
+        }
+      ],
+      "autonomie": {
+        "issues": [],
+        "score": 1.0,
+        "nb_propositions": 1,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "donc"
+          },
+          {
+            "type": "consecutifs",
+            "forme": "alors"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": true,
+        "fin_exploitable": true,
+        "longueur_raisonnable": true,
+        "duree_raisonnable": true,
+        "score": 1.0,
+        "nb_mots": 46
+      },
+      "nb_propositions": 1,
+      "phrase_initiale": "Alors je m'appelle Yann Meunier, je suis jeune chercheur et je travaille donc au Lure, pas le N s Paris-Saclay et je travaille dans le domaine de l'automatique,",
+      "score_composite": {
+        "composite": 0.625,
+        "composantes": {
+          "adequation_theme": 0.136,
+          "adequation_objectif": 0.078,
+          "clarte_unite": 0.25,
+          "autonomie": 1.0,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 0.767,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 1.0
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "YAN-0002",
+    "chercheur": "Yann Meunier",
+    "source": "BAB_Yan_Monier.txt",
+    "debut": "01:01:00.910",
+    "fin": "01:02:19.560",
+    "duree_secondes": 78.65,
+    "verbatim": "je travaillais sur l'identification d'automates hybrides, de chaîne de production industrielle. Mon innovation est née sur le long terme. D'abord à partir des résultats du laboratoire sur les quinze dernières années de recherche. Et puis plus précisément sur mes travaux de thèse sur l'identification d'automates hybrides, de chaîne de production industrielle où en fait, ça m'a donné vraiment l'idée de convertir cette recherche en un produit, en quelque chose qui puisse être utile pour la société et qui puisse être un vrai projet, qui ne reste pas sur étagère, mais qui puisse vraiment être utile pour l'industrie.\n\nAlors ma recherche, elle vient d'abord d'une découverte exploratoire qui s'est ensuite affinée par une analyse du marché. On est d'abord passé sur une techno, sur une approche techno poche. On avait des solutions au laboratoire. Mais la technologie tout seul ne suffit pas. On a besoin d'avoir des problématiques provenant du marché.\n\nEt c'est en discutant avec des industriels et des acteurs de l'industrie qu'on a pu orienter le développement de la solution vers des vrais besoins. Oui. Quand je dis on, bien évidemment, je parle de l'équipe de recherche qui travaille avec moi au laboratoire.",
+    "theme_principal": "T1",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "GEN",
+      "T1"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T1",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "UTILISE",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Maturation progressive : 15 ans de labo, these, puis orientation par le marche industriel.",
+    "analyse_discours": {
+      "fonction_discursive": "preuve",
+      "progression_dramaturgique": "preuve",
+      "sous_theme": "tech-push",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "en fait"
+        },
+        {
+          "type": "logiques",
+          "forme": "mais"
+        },
+        {
+          "type": "temporels",
+          "forme": "ensuite"
+        },
+        {
+          "type": "temporels",
+          "forme": "puis"
+        },
+        {
+          "type": "temporels",
+          "forme": "d'abord"
+        },
+        {
+          "type": "consecutifs",
+          "forme": "alors"
+        }
+      ],
+      "autonomie": {
+        "issues": [
+          "debut en milieu de phrase"
+        ],
+        "score": 0.75,
+        "nb_propositions": 12,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "en fait"
+          },
+          {
+            "type": "logiques",
+            "forme": "mais"
+          },
+          {
+            "type": "temporels",
+            "forme": "ensuite"
+          },
+          {
+            "type": "temporels",
+            "forme": "puis"
+          },
+          {
+            "type": "temporels",
+            "forme": "d'abord"
+          },
+          {
+            "type": "consecutifs",
+            "forme": "alors"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": false,
+        "fin_exploitable": true,
+        "longueur_raisonnable": false,
+        "duree_raisonnable": true,
+        "score": 0.6,
+        "nb_mots": 194
+      },
+      "nb_propositions": 12,
+      "phrase_initiale": "je travaillais sur l'identification d'automates hybrides, de chaîne de production industrielle.",
+      "score_composite": {
+        "composite": 0.812,
+        "composantes": {
+          "adequation_theme": 0.842,
+          "adequation_objectif": 0.465,
+          "clarte_unite": 0.75,
+          "autonomie": 0.75,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.6
+        },
+        "redondance_max": 0.0
+      }
+    }
+  },
+  {
+    "id": "YAN-0003",
+    "chercheur": "Yann Meunier",
+    "source": "BAB_Yan_Monier.txt",
+    "debut": "01:12:21.830",
+    "fin": "01:13:02.690",
+    "duree_secondes": 40.86,
+    "verbatim": "Je trouve qu'il est essentiel de sortir du laboratoire pour innover, parce que dans le laboratoire, on reste quand même dans un environnement très protégé où on va s'intéresser principalement à des problèmes théoriques. On va être entouré de personnes très brillante qui vont nous donner de bonnes solutions techniques.\n\nMais l'innovation ne se base pas que sur la technique. Elle a besoin de répondre à un vrai problème de marché. Et ça, on ne peut pas l'avoir en restant dans le laboratoire. On ne peut le trouver qu'en allant à l'extérieur, en discutant avec des gens qui sont concernés par les problèmes, qui ont vraiment des qui ont vraiment des problèmes, qui leur coûtent de l'argent, qui est économiquement viable.",
+    "theme_principal": "T2",
+    "themes_secondaires": [],
+    "capsules_candidates": [
+      "T2"
+    ],
+    "capsule_reservee": null,
+    "capsule_definitive": "T2",
+    "scores": {
+      "pertinence": 2,
+      "concret": 2,
+      "autonomie": 2,
+      "force_narrative": 2,
+      "montabilite_editoriale": 2,
+      "singularite": 2
+    },
+    "qualification": "PRIORITAIRE",
+    "statut": "UTILISE",
+    "transcription_a_verifier": false,
+    "validation_video_requise": true,
+    "commentaire": "Sortir du labo : vrai probleme de marche introuvable au laboratoire.",
+    "analyse_discours": {
+      "fonction_discursive": "obstacle",
+      "progression_dramaturgique": "problematisation",
+      "sous_theme": "proposition de valeur",
+      "connecteurs": [
+        {
+          "type": "logiques",
+          "forme": "mais"
+        },
+        {
+          "type": "causaux",
+          "forme": "parce que"
+        }
+      ],
+      "autonomie": {
+        "issues": [],
+        "score": 1.0,
+        "nb_propositions": 6,
+        "connecteurs": [
+          {
+            "type": "logiques",
+            "forme": "mais"
+          },
+          {
+            "type": "causaux",
+            "forme": "parce que"
+          }
+        ]
+      },
+      "qualite_montage": {
+        "debut_exploitable": true,
+        "fin_exploitable": true,
+        "longueur_raisonnable": false,
+        "duree_raisonnable": true,
+        "score": 0.8,
+        "nb_mots": 121
+      },
+      "nb_propositions": 6,
+      "phrase_initiale": "Je trouve qu'il est essentiel de sortir du laboratoire pour innover, parce que dans le laboratoire, on reste quand même dans un environnement très protégé où on",
+      "score_composite": {
+        "composite": 0.777,
+        "composantes": {
+          "adequation_theme": 0.322,
+          "adequation_objectif": 0.272,
+          "clarte_unite": 1.0,
+          "autonomie": 1.0,
+          "complementarite": 1.0,
+          "diversite_intervenants": 1.0,
+          "richesse_formulation": 1.0,
+          "absence_redondance": 1.0,
+          "potentiel_montage": 0.8
+        },
+        "redondance_max": 0.0
+      }
+    }
+  }
+]

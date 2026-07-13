@@ -1,0 +1,190 @@
+{
+  "version": "1.0",
+  "unite_principale": "unite_de_sens",
+  "note_methodologique": "L'unite de sens est l'unite principale de selection. Les syntagmes et mots-cles ne servent qu'a structurer localement le discours et a calculer des scores interpretables.",
+  "fonctions_discursives": {
+    "definition": "Enonce une notion, un cadre ou une distinction conceptuelle.",
+    "exemple": "Illustre par un cas concret, une situation ou un episode.",
+    "recit_experience": "Raconte un parcours, une sequence vecue ou un cheminement.",
+    "obstacle": "Signale une difficulte, un frein, une contrainte ou un echec.",
+    "pivot": "Marque un changement de direction, de cible ou de strategie.",
+    "preuve": "Apporte un element de demonstration, de test ou de validation.",
+    "conseil": "Formule une recommandation, une injonction ou une lecon.",
+    "conclusion": "Cloture, synthese ou ouverture finale sur une idee.",
+    "presentation": "Identifie l'intervenant, son domaine ou son objet de recherche.",
+    "problematisation": "Pose une question, un enjeu ou un paradoxe a resoudre."
+  },
+  "progression_dramaturgique": [
+    "ouverture",
+    "problematisation",
+    "developpement",
+    "exemple",
+    "bascule",
+    "preuve",
+    "conclusion"
+  ],
+  "connecteurs": {
+    "logiques": [
+      "donc",
+      "ainsi",
+      "par consequent",
+      "en fait",
+      "du coup",
+      "c'est-a-dire",
+      "autrement dit",
+      "en revanche",
+      "par contre",
+      "mais",
+      "cependant",
+      "pourtant",
+      "or",
+      "neanmoins",
+      "toutefois"
+    ],
+    "temporels": [
+      "ensuite",
+      "puis",
+      "apres",
+      "avant",
+      "a partir de la",
+      "a ce moment-la",
+      "des lors",
+      "finalement",
+      "au debut",
+      "d'abord",
+      "plus tard"
+    ],
+    "causaux": [
+      "parce que",
+      "car",
+      "puisque",
+      "etant donne",
+      "grace a",
+      "a cause de"
+    ],
+    "consecutifs": [
+      "alors",
+      "et donc",
+      "de ce fait",
+      "ce qui fait que"
+    ]
+  },
+  "indices_fonction_discursive": {
+    "definition": [
+      "c'est a dire",
+      "c'est-a-dire",
+      "on distingue",
+      "la definition",
+      "signifie que",
+      "consiste a"
+    ],
+    "exemple": [
+      "par exemple",
+      "concretement",
+      "dans mon cas",
+      "typiquement",
+      "illustration"
+    ],
+    "recit_experience": [
+      "j'ai",
+      "nous avons",
+      "c'est ne",
+      "ca a ete",
+      "mon parcours",
+      "notre aventure"
+    ],
+    "obstacle": [
+      "difficulte",
+      "probleme",
+      "frein",
+      "bloque",
+      "echec",
+      "impossible",
+      "ne peut pas"
+    ],
+    "pivot": [
+      "pivot",
+      "changer",
+      "adapter",
+      "modifier notre",
+      "autre besoin",
+      "nouvelle cible"
+    ],
+    "preuve": [
+      "preuve",
+      "validation",
+      "test",
+      "etude de marche",
+      "resultat",
+      "demonstration",
+      "experiment"
+    ],
+    "conseil": [
+      "il faut",
+      "ne faut pas",
+      "obligatoire",
+      "conseil",
+      "oser",
+      "prenez",
+      "prenez le temps"
+    ],
+    "conclusion": [
+      "en resume",
+      "retenez",
+      "finalement",
+      "au final",
+      "pour conclure"
+    ],
+    "presentation": [
+      "je suis",
+      "je m'appelle",
+      "bonjour",
+      "je travaille",
+      "mon sujet de recherche"
+    ],
+    "problematisation": [
+      "pourquoi",
+      "comment",
+      "quelle question",
+      "le vrai probleme",
+      "l'enjeu"
+    ]
+  },
+  "poids_score_composite": {
+    "adequation_theme": 0.18,
+    "adequation_objectif": 0.12,
+    "clarte_unite": 0.12,
+    "autonomie": 0.15,
+    "complementarite": 0.12,
+    "diversite_intervenants": 0.08,
+    "richesse_formulation": 0.08,
+    "absence_redondance": 0.08,
+    "potentiel_montage": 0.07
+  },
+  "seuils": {
+    "redondance_jaccard": 0.52,
+    "longueur_unite_max_mots": 120,
+    "longueur_unite_min_mots": 12,
+    "duree_montage_min_secondes": 300,
+    "duree_montage_cible_secondes": 330,
+    "duree_montage_max_secondes": 420,
+    "score_selection_min": 0.45,
+    "intervenants_cibles": 4
+  },
+  "lexique_themes": {
+    "origines de l'innovation": ["origine", "nee", "ne", "emerge", "eurêka", "eureka", "chemin"],
+    "tech-push": ["resultat", "laboratoire", "recherche", "publication", "scientifique"],
+    "market-pull": ["marche", "client", "besoin", "demande", "acheteur", "vente"],
+    "observation d'usage": ["observation", "manque", "quotidien", "usage", "societe"],
+    "serendipite": ["pas de cote", "hasard", "inattendu", "decouverte"],
+    "maturation progressive": ["annees", "long", "progressive", "maturation", "filiere"],
+    "validation du besoin": ["besoin", "valider", "terrain", "confronter", "verifier"],
+    "utilisateur": ["utilisateur", "beneficiaire", "patient", "agriculteur", "client"],
+    "proposition de valeur": ["valeur", "solution", "probleme", "repondre"],
+    "pivot": ["pivot", "changer", "adapter", "cible", "nice to have", "must have"],
+    "POC": ["poc", "preuve de concept", "prototype", "simulation", "manip"],
+    "protection": ["brevet", "confidentialite", "divulgation", "nouveaute", "propriete"],
+    "financement": ["financement", "levée", "subvention", "investisseur", "budget"],
+    "equipe": ["equipe", "recruter", "associe", "complementarite", "ceo"]
+  }
+}

@@ -1,0 +1,758 @@
+LOIC_RAJJOU_BABbrut.txt
+French
+
+01:00:05.150 — 01:01:22.959 · Speaker 1
+Bonjour, je m'appelle Loïc Rajout, je suis professeur à AgroParisTech en biologie végétale et je m'intéresse particulièrement à tout ce qui est biologie cellulaire, génomique, métabolisme et biochimie. Bonjour, je m'appelle Loïc Raju, je suis professeur à AgroParisTech en biologie végétale et je m'intéresse à de la biologie cellulaire et de la génomique, du métabolisme et de la biochimie.
+
+Comment est née mon innovation? Alors ça a été un chemin assez long de plusieurs années de recherche plutôt fondamentale, exploratoire, sur la compréhension des mécanismes cellulaires et moléculaires qui conduisent à la germination et à la croissance des plantes, et toutes les connaissances qu'on a pu générer au cours de toutes ces années m'ont amené à réfléchir, à savoir qu'est ce qu'on peut faire de ces travaux, au delà de les publier et de générer de la connaissance, est ce que ça peut trouver une application?
+
+Alors je travaille dans le monde de l'agronomie, de l'agriculture très interfacé avec ces filières agricoles de production. Et effectivement, naturellement, je me suis orienté vers ces filières pour chercher les problématiques qui étaient liées à la germination et à la levée des jeunes plantules au champ.
+
+Donc effectivement, c'était une démarche personnelle. J'ai un passé très lié avec l'industrie et le monde industriel, puisque j'ai fait ma thèse
+
+
+01:01:24.640 — 01:02:07.500 · Speaker 1
+chez un industriel chez Bayard Crop Sciences à Lyon, en interface avec un laboratoire CNRS. Donc j'ai toujours fait du lien en fait, entre la recherche très académique et très fondamentale, et avec de la recherche plutôt appliquée et finalisée pour trouver des débouchés. Et donc pour moi, c'était assez naturel en fait, de continuer dans mon poste académique aujourd'hui, à faire ce lien là, avec aussi peut être une conviction personnelle qu'on est payé par de l'argent public, et que l'argent public doit aussi servir à être valorisé vers des filières économiques.
+
+Alors c'est à quel moment j'ai changé de regard sur mes résultats. J'ai changé de regard à partir du moment où, effectivement, j'ai pris conscience qu'il y avait des problématiques qui pouvaient être résolues,
+
+
+01:02:09.140 — 01:03:50.590 · Speaker 1
+en connaissant beaucoup mieux le modèle d'étude sur lequel je travaille, c'est à dire la semence, la graine qui va germer, qui va donner une future plante. Et à partir de ce moment là, on a commencé à réfléchir. Alors, moi et mon équipe à des leviers biochimiques, à des leviers moléculaires, à des leviers de traitement pour savoir si comment stimuler les plantes pour pouvoir résoudre des vraies problématiques de levée de qualité, germées, natives.
+
+Et donc du coup, derrière, de perte de rendement in fine pour l'agriculteur. Alors est ce que j'ai hésité pour pouvoir me lancer dans une démarche d'entrepreneuriat? Probablement oui, dans une démarche de transfert de connaissances. Très certainement non. J'ai toujours voulu partager. On travaille dans le monde académique et une de nos missions, c'est aussi de partager les connaissances, de partager ce qu'on produit, Alors il y a parfois une ambiguïté entre la propriété intellectuelle et conserver un certain nombre de connaissances pour pouvoir les valoriser par des brevets ou par d'autres modes de valorisation de licences auprès des industriels.
+
+Mais c'est vrai que le transfert, pour moi, le partage des connaissances et le transfert, c'est quelque chose d'important. Donc j'ai rarement hésité sur ce côté là. Entreprendre, effectivement, ça a été une réflexion un petit peu plus longue. Alors qu'est ce qui m'a amené à aller vers une valorisation au delà juste d'une publication scientifique?
+
+Ça a été vraiment pas de se dire notre connaissance, elle est partagée effectivement avec les pairs scientifiques. Mais finalement, comment est ce qu'on la fait rayonner auprès de nos étudiants? Comment est ce qu'on la fait rayonner auprès des acteurs des filières agricoles?
+
+
+01:03:51.630 — 01:04:26.679 · Speaker 1
+Et à partir de là, on s'est dit peut être que en comprenant mieux les problématiques. On va pouvoir aller discuter avec des industriels, discuter avec des agriculteurs, discuter avec des distributeurs de semences, discuter avec des des entreprises qui font du traitement de semences, comprendre les problématiques de logistique, comprendre des problématiques de conservation et de levée, comprendre la problématique tout simplement de l'agriculteur qui parfois a 10 % ou 20 % de sa récolte qui ne lève pas, donc il n'a pas de rendement derrière.
+
+Et à partir de là, en fait, on s'est dit
+
+
+01:04:27.760 — 01:05:26.200 · Speaker 1
+avec mon équipe, encore une fois, on a probablement un positionnement qui va au delà juste de notre périmètre de recherche fondamentale pour aller vers une recherche un peu plus appliquée, un peu plus finalisée et faire rentrer des acteurs avec nous. Donc, plutôt que d'aller aussi uniquement vers eux, leur dire est ce que vous pouvez venir faire de la recherche avec nous dans des projets de recherche collaboratif, aller chercher des financements ensemble sur des thématiques ciblées?
+
+Et ça en fait, ça a créé vraiment un lien très fort en fait, entre notre réseau d'acteurs filière semences et plants en France, et puis notre laboratoire. Comment mon entourage a réagi à cette démarche entrepreneuriale? Alors déjà, au niveau académique, je me suis rendu compte au cours de ma carrière qu'effectivement il y a.
+
+Ça peut être clivant d'entreprendre. Il y a des collègues qui estiment que c'est pas nos missions, que nos missions c'est de faire de la science, de faire de la recherche, de produire de la connaissance et que ça s'arrête là.
+
+
+01:05:27.840 — 01:06:46.769 · Speaker 1
+Il y en a d'autres qui, au contraire, voient un petit peu aussi les enjeux que l'impact qu'on peut avoir sur la société, sur l'économie, sur l'entreprise, sur la souveraineté alimentaire dans le cadre de la production de denrées alimentaires agricoles. Et effectivement, je me suis aperçu qu'il fallait ajuster quand même le discours dans la démarche pour avoir, pour être accepté dans l'environnement où j'étais.
+
+Donc dans mon institution AgroParisTech, dans mon laboratoire associé à INRA. Dans le paysage national. Dans le paysage européen. Comment est ce que finalement, un enseignant chercheur se lance dans une demande, dans une démarche entrepreneuriale? Qu'est ce qui fait de ces financements publics pour aller vers une valorisation industrielle?
+
+Donc ça n'a pas toujours été évident, mais on est arrivé peut être à une époque, dans les années 2015-2016, 2017 où c'était une vraie prise de conscience. Je pense au niveau national, de dire la recherche académique, elle doit aussi servir à la société, à l'environnement et aux grands enjeux auxquels on fait face.
+
+Alors, au tout début de la genèse de ce projet, il y a une chance, c'est qu'effectivement j'avais un doctorant qui était à peu près à un an de la fin de sa thèse et qui ne se voyait pas aller vers
+
+
+01:06:48.010 — 01:07:53.840 · Speaker 1
+une carrière académique, et il réfléchissait plutôt à exploré des aspects, soit travaillé dans l'industrie, soit à entreprendre, et ils étaient complètement dans la dans une philosophie qui me correspondait. Donc, on a travaillé ensemble. Il s'appelle Frédéric Chauffeur. C'est lui qui est aujourd'hui PDG de l'entreprise qu'on a, qu'on a créé.
+
+Et cette genèse là, on l'a construite sur sa dernière année de thèse et on a vraiment commencé effectivement à orienter nos travaux vers des choses qui pourraient être applicables au niveau industriel. Et autour de ça, on avait une équipe technique qui a vraiment adhéré au projet aussi.
+
+Pas tous. Il y a certains de mes, de mes collègues qui vont dire Mais moi, je ne veux pas travailler sur ces projets là, je veux rester sur de la recherche plutôt académique et fondamentale. Choix que je respecte complètement. Et par contre, effectivement, je pense qu'un point clé c'est constituer une équipe et ça a été vraiment un déclencheur de se dire on n'est pas tout seul et on est trois ou quatre personnes où on croit au projet.
+
+Pourquoi oser? Je dirais pourquoi pas oser.
+
+
+01:07:55.880 — 01:08:07.520 · Speaker 1
+Parce que finalement, la recherche académique, c'est passionnant et on peut très bien faire de l'entrepreneuriat en maintenant un très très bon niveau de recherche académique. Donc je ne voyais pas de frein à franchir ce pas là.
+
+
+01:08:13.280 — 01:09:02.129 · Speaker 1
+Alors, à quel moment je me suis posé la question de l'usage et de l'utilité de notre innovation? Alors j'ai la chance d'avoir une thématique qui est quand même orientée et qui peut être orientée assez facilement vers les filières agricoles. Donc je travaille sur un objet qui est la graine, qui est la semence.
+
+Et effectivement, c'est un objet en agriculture important puisque c'est ce qu'on a l'habitude de dire, c'est le premier intrant agricole, c'est la première chose qu'on sème. Et donc l'exigence de qualité sur les semences est extrêmement élevée sur certaines cultures pour, par exemple, des tomates ou des courgettes.
+
+Les producteurs de plants veulent une graine efficace pour un plan efficace qui cherche à atteindre un taux de germination proche de 100 %. Or, on sait que c'est une biologie complexe. La graine, elle, survit à l'état sec
+
+
+01:09:03.690 — 01:10:19.300 · Speaker 1
+et que quand on sème des graines, tout jardinier a pu voir ça. Elle ne germe pas toutes. Donc pour ça, depuis l'histoire de l'agriculture, on a toujours cherché à améliorer les semences. Donc nous, on cherche à comprendre les mécanismes moléculaires qui conduisent à l'efficacité de levée.
+
+Donc le lien était assez assez facile, en fait, de discuter avec des industriels et de comprendre qu'en fait il y avait beaucoup de problèmes. Il y a des problèmes de blocage, de germination par ce qu'on appelle de la dormance. Il y a des problèmes de stockage et de gestion logistique, des stocks pour transporter des semences en France, à l'étranger, pour importer des semences.
+
+Il y a des problèmes de conditions environnementales avec les changements climatiques, les périodes de semis. Et donc on s'est aperçu qu'il n'y avait pas une. Mais il y avait une diversité de problématiques qui étaient loin d'être résolues. Et donc là, ça nous a vraiment fait réfléchir, nous, sur les connaissances qu'on avait et comment on pouvait les valoriser, et comment est ce qu'on pouvait développer quelque chose d'un petit peu nouveau qui se positionnerait dans le paysage au moins européen, en commençant par le paysage français?
+
+Alors est ce que nous sommes partis des besoins effectivement des des industriels? Oui et non.
+
+
+01:10:20.460 — 01:11:33.780 · Speaker 1
+Je dirais comme un peu dans tout projet, on commence avec des idées un peu préconçues. Nous, on travaillait sur une technologie un peu particulière qui s'appelle le prime mines en fait, qui consiste à faire pré germer des graines et à les sécher pour que, quand l'agriculteur les ressème, elles puissent germer de manière plus rapide et plus homogène.
+
+Donc, quelque chose de relativement simple. Et on s'est dit c'est une technique qui est relativement ancestrale, qui a été très développée il y a une cinquantaine ou une soixantaine d'années par des industriels, mais qui, depuis, n'a jamais été amélioré. Et on était convaincus que la seule problématique, c'était l'homogénéité, la vitesse de levée.
+
+Donc, on est partis sur. Sur ce volet là. Et effectivement, en discutant avec des acteurs, on s'est aperçu que c'était beaucoup plus large que ça. Par exemple, ils avaient des gros problèmes de logistique sur leurs semences puisque quand les semences sont traitées avec cette technologie de prime, elles se conservent très mal.
+
+Donc, en fonction de leur marché et de leur circuit de distribution, de leur temps de stockage, ils pouvaient avoir un effet indésirable. Ils cherchaient à améliorer la germination. Et dans certains cas, on peut avoir au contraire des pertes de germination. Donc ça nous a ouvert. Donc on est parti d'une idée
+
+
+01:11:35.180 — 01:11:47.830 · Speaker 1
+qui est maintenue et on s'est aperçu au fil du temps, en fait, que cette idée, oui, elle était réelle, mais elle n'était pas réelle pour toutes les espèces. D'une part, et d'autre part, ça nous a ouvert vers d'autres problématiques qu'on n'imaginait pas ou qu'on ne connaissait pas
+
+
+01:11:49.230 — 01:13:03.520 · Speaker 1
+les problèmes concrets que permet de résoudre notre innovation. Ce sont des problèmes à la fois d'efficacité, de germination et de levées aux champs ou en serre en fonction que les plantes soient produites au changement de serre. Ce sont des problématiques de conservation des semences après traitement.
+
+Pour des questions de logistique et de distribution. Et puis, sont également des problématiques de faire face à des contraintes environnementales, soit de températures élevées, chaudes ou froides, qui permettent en fait à nos graines de germer dans des conditions. Habituellement, elles ne germent pas.
+
+Et enfin, le dernier point, c'est que c'est un traitement qui s'affranchit de produits phytopharmaceutiques, donc de produits d'usage, de produits chimiques artificiels. Et donc du coup, on peut éviter d'utiliser certains produits Phytosanitaires. Certains pesticides. En utilisant cette stratégie.
+
+Donc l'idée c'est d'avoir un panorama. Une gamme de solutions pour des acteurs en fonction des espèces et en fonction des applications. Alors pourquoi notre solution est innovante? Alors elle est innovante Parce que
+
+
+01:13:04.800 — 01:13:06.200 · Speaker 1
+d'une part, elle est biosourcés,
+
+
+01:13:07.360 — 01:13:17.440 · Speaker 1
+elle est sans usage de produits chimiques artificiels comme se font la plupart des traitements de semences aujourd'hui. Donc c'est un traitement de semences naturelles par amorçage de germination.
+
+
+01:13:18.760 — 01:13:43.120 · Speaker 1
+Elle est innovante parce que elle donne, elle offre des solutions qui n'existent pas aujourd'hui sur le marché. Donc, on a à la fois de la levée et de la conservation des semences sur des périodes qui peuvent être assez longues. Et enfin, c'est une solution qui n'a zéro résidus dans l'environnement.
+
+Donc, tout est fait de manière confinée, en laboratoire ou en usine.
+
+
+01:13:49.130 — 01:14:52.580 · Speaker 1
+Alors pour valider l'intérêt de notre technologie et notre innovation, ça a été beaucoup d'échanges. Donc on a beaucoup échangé avec déjà notre environnement de proximité au laboratoire, avec les visions qu'on pouvait avoir, des besoins en interne. On a échangé aussi dans le cadre d'une étude de marché qu'on a réalisé, qu'on a fait, réalisé, porté par la part de Paris-Saclay pour aller vers les acteurs, même si on avait, nous, une connaissance assez fine quand même des acteurs.
+
+Et puis après, on a beaucoup échangé avec les acteurs eux mêmes, puisque vous savez que les filières végétales, c'est très large, ça va des grandes cultures du blé, de l'orge, du tournesol jusqu'aux cultures potagères, parfois minoritaires. Donc ça peut être de la tomate, de la betterave, de la courgette, du persil, du panais, etc.
+
+Et on s'est aperçu qu'en fait les exigences étaient très différentes en termes de qualité d'une filière à l'autre. Ça, c'est le premier point. Et le deuxième point, c'est que les besoins n'étaient pas du tout les mêmes.
+
+
+01:14:53.780 — 01:15:32.539 · Speaker 1
+Aujourd'hui, le besoin en germinations, en levées, il existe assez peu sur les grandes cultures puisqu'elles ont été génétiquement améliorées pour ne pas avoir de dormance et pour germer. Mais il est très orienté plutôt sur les filières potagères. Donc ça, ça a été le premier point.
+
+Et puis le deuxième point, ça a été de dire OK, à qui on apporte de la valeur. Et donc à partir de là, on a commencé vraiment à creuser une approche plutôt effectivement entrepreneuriale sur la question de la valeur pour savoir à qui on apporte de la valeur. Ça a été encore une fois un travail assez approfondi d'échanges avec avec les acteurs pour essayer de collecter des données
+
+
+01:15:34.220 — 01:15:39.820 · Speaker 1
+sur la valeur des semences, sur la valeur des traitements, sur les besoins en traitements.
+
+
+01:15:41.020 — 01:15:52.589 · Speaker 1
+Et pour eux, finalement, comment est ce qu'on amène une innovation, donc un traitement sans produits phytopharmaceutiques qui améliore les performances? OK. Et pourquoi notre traitement serait finalement mieux
+
+
+01:15:53.670 — 01:16:43.070 · Speaker 1
+et risqué? Parce qu'il y a aussi la question de risque. Depuis 30 ans, les filières agricoles travaillent avec des produits phytopharmaceutiques pour protéger leurs semences ou pour améliorer leur germination. Et donc là, on arrive avec une offre assez différente. C'est différenciante sur le marché.
+
+Et du coup, on est arrivé à un point où il fallait faire la démonstration. Donc là, on est rentré dans le dur de passer de ce qu'on était capable de faire aux laboratoires, de ce qu'on arrivait à démontrer pour démontrer à l'utilisateur final que ça peut être aussi performant, voire plus performant que ce qu'il a l'habitude de faire.
+
+Alors, est ce que notre idée de départ a évolué? Très certainement. Elle a même beaucoup évolué.
+
+
+01:16:44.190 — 01:17:31.630 · Speaker 1
+L'idée au départ est restée au centre de ce qu'on voulait faire. Par contre, ce qui a évolué, c'est comment on l'a ajustée aux acteurs. Et en fait, on est arrivé non pas avec une innovation, mais avec une gamme de possibles qui étaient très adaptables. Et au final, notre innovation, c'est plutôt quelque chose qui est très utilisateur dépendant.
+
+Donc on fait du design à façon, du traitement de semence en fonction de l'espèce, en fonction de la génétique, en fonction du territoire où il va, où il va produire son espèce pour pouvoir effectivement lui offrir la meilleure performance par rapport à ce qu'il fait aujourd'hui. Alors, ce qu'on a appris en confrontant notre recherche au regard des acteurs agricoles,
+
+
+01:17:32.790 — 01:17:42.050 · Speaker 1
+c'est principalement le niveau d'exigence des filières. Je vous donne un exemple aujourd'hui en laitue Pour produire un plant de laitue.
+
+
+01:17:43.490 — 01:18:36.010 · Speaker 1
+Il cherche pas 95 % de germination. Il ne cherche pas 97 % de germination. Ils veulent au moins 98 99 %. On sait que la laitue, c'est une espèce à grosse problématique de dormance en fonction de la température. Les impacts climatiques impactent beaucoup les levées. Et donc on s'est dit Il y a des espèces où il faut effectivement se positionner pour rentrer sur le marché, pour rentrer sur les filières, pour rentrer auprès des acteurs et en faire la démonstration.
+
+Alors, le conseil que je pourrais donner à un chercheur ou un enseignant-chercheur qui voudrait s'engager dans une démarche de transfert de connaissances vers de l'innovation et éventuellement vers de l'entrepreneuriat, c'est qu'effectivement il doit bien maîtriser sa techno. Ça, c'est un point.
+
+
+01:18:37.370 — 01:19:35.569 · Speaker 1
+Il doit en imaginer la capacité à faire du scale up, à monter à une échelle qui soit applicable pour les acteurs. Et donc il doit bien connaître le mode de fonctionnement des acteurs industriels. Parce que s'il ne connaît pas leur mode de fonctionnement, bien avant la commercialisation, on est vraiment dans l'industrialisation du process.
+
+S'il ne connait pas l'industrialisation du process ou s'il a une idée préconçue de ce que ce doit être par rapport à son transfert de laboratoire et que c'est trop en décalage avec ce qui se fait de manière quotidienne dans l'industrie, ça sera une rupture trop forte. Souvent, on parle d'innovation, de rupture versus innovation incrémentale dans certains secteurs.
+
+Et moi, dans le monde de l'agriculture, l'innovation de rupture, c'est pas quelque chose qui est accepté de manière très facile. Donc vaut mieux y aller de manière incrémentale. Et s'il y a de la rupture, il faut vraiment qu'elle soit
+
+
+01:19:36.990 — 01:19:38.310 · Speaker 1
+Extrêmement
+
+
+01:19:39.590 — 01:19:50.270 · Speaker 1
+valorisable pour celui qui va l'intégrer dans ses process. Alors est ce qu'on cible les besoins des industriels ou le besoin des utilisateurs finaux? Alors les deux.
+
+
+01:19:52.710 — 01:20:32.870 · Speaker 1
+Ce qu'on cherche à comprendre finalement, c'est comment va évoluer l'agriculture sur les dix prochaines années ou sur les 20 prochaines années. On voit qu'il y a un contexte à la fois réglementaire, avec un retrait des produits phytopharmaceutiques et un contexte climatique qui est assez fort et qui pèse effectivement sur les productions agricoles.
+
+Et puis il y a un contexte géopolitique qui fait qu'il y a certaines denrées alimentaires qui sont difficilement accessibles ou qui pourraient devenir difficilement accessibles. Donc, on sait qu'il y a un besoin utilisateur final. Et ce qu'on cherche à comprendre, c'est comment les industriels se positionnent vis à vis de ça, et comment est ce que les industriels vont avoir une stratégie.
+
+
+01:20:34.030 — 01:20:59.910 · Speaker 1
+Et nous, en tant que Modestement chercheur académique, on essaye de venir contribuer à cette stratégie là, à une stratégie qui soit collective et qui soit utile finalement pour la société et pour l'environnement. Et donc c'est dans cette démarche là. Donc les industriels ont des stratégies qui sont très centrées sur leurs entreprises.
+
+
+01:21:01.150 — 01:21:14.550 · Speaker 1
+Donc, nous, on n'a pas vocation à travailler pour une entreprise plutôt qu'une autre. Par contre, on a vocation à travailler pour finalement, quelle que soit chose qui soit, du bien collectif. Donc la finalité, elle est importante
+
+
+01:21:15.630 — 01:21:45.760 · Speaker 1
+en termes de recherche académique. On peut avoir des convictions, mais le chemin pour y aller peut difficilement être sans les acteurs industriels. Donc, ma conviction, c'est qu'effectivement il faut qu'on réussisse à trouver une articulation qui permette d'avoir un bénéfice commun in fine en termes d'agriculture, en termes de production agricole, à partir des connaissances académiques et à travers les stratégies individuelles des entreprises ou collectives.
+
+
+01:21:50.960 — 01:22:19.080 · Speaker 1
+Alors pourquoi il est essentiel de sortir du laboratoire pour innover? Pour plein de raisons. Le. Les applications en laboratoire se font souvent sur des. Des dimensionnement très restreints par rapport à ce qui peut se faire pour répondre à des productions agricoles. Donc nous, dans le cas de la semence, on est capable de travailler sur quelques milligrammes, quelques grammes.
+
+Dans l'industrie, on travaille que sur quelques kilos ou quelques centaines de kilos,
+
+
+01:22:20.600 — 01:22:43.370 · Speaker 1
+avec tout un tas de problématiques industrielles, de séchage, d'énergie, de thermodynamique. Donc le scale up, il est super important parce qu'il y a tout un tas de connaissances qui peuvent rester des stats de laboratoire et qui ne pourront pas être appliquées à des grandes dimensions. Donc si on ne si on articule pas ça,
+
+
+01:22:44.890 — 01:22:50.370 · Speaker 1
+il est improbable, impossible d'aller au marché derrière.
+
+
+01:22:51.450 — 01:22:56.650 · Speaker 1
+Alors ce qu'on a découvert qu'on n'aurait jamais appris si on était resté simplement au laboratoire.
+
+
+01:22:58.650 — 01:22:59.370 · Speaker 1
+Je sais pas.
+
+
+01:23:01.610 — 01:23:04.529 · Speaker 1
+Je réfléchis, je réfléchis. Il y a sûrement, il y a plein de trucs que
+
+
+01:23:05.850 — 01:23:07.089 · Speaker 1
+ce qu'on a pu découvrir
+
+
+01:23:08.570 — 01:23:26.610 · Speaker 1
+en sortant de notre laboratoire pour aller comprendre les enjeux industriels. Ça a été à la fois technique, mais finalement c'était quelque chose qui était assez naturel en fait, de changer d'échelle avec du matériel différent, du matériel industriel.
+
+
+01:23:28.010 — 01:23:31.449 · Speaker 1
+Mais ça a été aussi sur des aspects à la fois financiers et réglementaires
+
+
+01:23:32.650 — 01:23:36.300 · Speaker 1
+qu'on n'avait pas forcément imaginé quand on est au labo.
+
+
+01:23:37.620 — 01:23:45.060 · Speaker 1
+Dans le monde académique, on est assez peu contraints aux exigences réglementaires ou aux exigences économiques des industries.
+
+
+01:23:46.820 — 01:24:17.220 · Speaker 1
+Et ça, il fallait qu'on le prenne en compte dans notre dimensionnement. Parce que j'ai parlé tout à l'heure de d'apport de valeur. Il fallait que notre apport de valeur soit compatible avec l'exigence de l'entreprise ou des entreprises qui voulaient développer, qui voudraient ou qui voulaient développer nos technologies et l'intégrer dans leurs process.
+
+Et en prenant en compte leurs exigences réglementaires et leurs exigences économiques, ça nous a permis aussi de se positionner pour leur apporter nos technologies.
+
+
+01:24:22.700 — 01:24:52.680 · Speaker 1
+Alors, pour passer de résultats académiques, de recherche exploratoire vers des résultats concrets applicables, on a fait des choix pour passer de nos résultats académiques vers des technologies applicables. On a dû faire des choix. D'abord, on a fait des choix sur les espèces et on a choisi de se concentrer sur des espèces potagères pour lesquelles des besoins en traitement de semences étaient très forts aujourd'hui par les industriels.
+
+Donc on a choisi la tomate et la laitue.
+
+
+01:24:53.880 — 01:25:38.159 · Speaker 1
+Pourquoi? Parce que on cherchait à passer de 50 ou 60 % de germination à 95, 98 % de germination. On a fait ces choix là et on a voulu démontrer aux acteurs industriels, les semenciers, mais aussi et surtout les producteurs de plants, ceux qui produisent les plants en serre pour pouvoir les transférer après chez les producteurs de fruits.
+
+Il fallait qu'on fasse la démonstration au terrain. Ça, ça a été un point hyper important pour nous. Comment on passe du labo à convaincre les utilisateurs? Convaincre scientifiquement, on savait faire convaincre les utilisateurs agricoles. On s'est aperçu qu'on ne savait pas faire. Donc il fallait qu'on dimensionne différemment nos essais.
+
+Il fallait qu'on dimensionne différemment
+
+
+01:25:39.440 — 01:26:14.520 · Speaker 1
+les traitements, les volumes. On a pris aussi conscience de la saisonnalité de ces productions là. Donc effectivement, ça nous a apporté beaucoup de se dire on fait des choix et qu'est ce qu'on offre? On offre une technologie de traitement de semences. On offre aussi une technologie qui est sans résidu et sans impact environnemental derrière pour l'utilisateur.
+
+Et ça, pour nous, ça a été une clé d'apporter des arguments qui allaient juste au delà de simplement l'idée de départ qui était on va offrir des semences qui germent mieux,
+
+
+01:26:15.560 — 01:26:34.300 · Speaker 1
+mais qui apportent aussi des valeurs, des valeurs beaucoup plus larges que ce qu'on imaginait au départ. On a considéré que notre solution était techniquement viable à partir du moment où on a réussi à avoir des performances identique, voire meilleur, sur des échelles
+
+
+01:26:35.740 — 01:27:08.620 · Speaker 1
+qui passaient d'une échelle laboratoire à une échelle réelle de traitement. Pour un industriel qui allait vendre ses semences à un producteur de plomb. Comment est ce qu'on est passé de nos quelques grammes à quelques dizaines de kilos de traitement? A partir du moment où on a vu que nos technologies à ces échelles là répondaient bien, on savait qu'on était capable de maîtriser le process et donc de le transférer.
+
+Alors, ce qu'on a appris durant cette phase d'expérimentation,
+
+
+01:27:10.220 — 01:27:20.180 · Speaker 1
+on a appris effectivement à dimensionner des essais qui pouvaient effectivement aller sur le terrain soit en serre, soit aux champs.
+
+
+01:27:21.700 — 01:27:30.110 · Speaker 1
+On a appris que ben une culture, c'est une saison. Donc si on rate notre culture, Bah on attend l'année d'après,
+
+
+01:27:31.150 — 01:27:45.270 · Speaker 1
+alors qu'au laboratoire, finalement, on est en conditions contrôlées, donc on rate une culture, un traitement, on recommence et ça nous prend quelques semaines, éventuellement un mois ou deux. Donc ça nous a changé complètement la vision aussi de la temporalité.
+
+
+01:27:50.550 — 01:27:54.470 · Speaker 1
+Alors les freins et les craintes pour s'engager dans la valorisation.
+
+
+01:27:55.630 — 01:28:10.630 · Speaker 1
+Je garderai une phrase de Xavier Apollinaire, qui était président de l'INSA à l'époque, qui disait si vous voulez entreprendre, rentrez chez vous et parlez en à votre compagne ou à votre compagnon pour être sûr que familialement, tout le monde est prêt à entreprendre.
+
+
+01:28:12.350 — 01:28:19.470 · Speaker 1
+Et cette phrase m'a fait prendre conscience d'une chose, c'est qu'entreprendre, c'est aussi une prise de risque individuelle.
+
+
+01:28:21.510 — 01:28:25.589 · Speaker 1
+Et donc il fallait créer et construire un environnement
+
+
+01:28:26.630 — 01:29:16.760 · Speaker 1
+qui permettait de sécuriser alors pas complètement des risqués, mais sécurisé et. Et donc du coup, on est rentré dans cette phase d'entrepreneuriat en se disant il faut qu'on construise un environnement qui ne soit pas notre environnement académique, mais qui soit un véritable environnement d'entrepreneuriat.
+
+Alors pour pour construire cet environnement d'entrepreneuriat, puisqu'effectivement beaucoup de de crainte et de peur au départ pour un académique, on n'est pas formé à ça, on est avant tout des scientifiques. Moi, je partais avec une équipe de jeunes scientifiques qui étaient dans mon laboratoire, donc une ingénieure, un doctorant, une équipe technique, académique qui était là.
+
+Et de se dire mais nous, une étude de marché, on sait pas faire
+
+
+01:29:18.600 — 01:29:21.000 · Speaker 1
+une étude de brevetabilité, on ne sait pas faire
+
+
+01:29:22.720 — 01:29:55.010 · Speaker 1
+aller chercher des financeurs et vendre un produit, on ne sait pas faire. Et donc il faut qu'on aille chercher des experts. Donc on est rentré en pré maturation puis en maturation à la SATT. Et la ça, ça a été vraiment une structure qui nous a apporté beaucoup, beaucoup en termes de réseau, en termes de compréhension des différentes problématiques qui peuvent conduire sur le chemin de la valorisation.
+
+Donc mise en relation avec des incubateurs, avec des investisseurs, avec des juristes sur l'aspect brevets
+
+
+01:29:56.770 — 01:29:59.690 · Speaker 1
+et effectivement comprendre un peu les les clés.
+
+
+01:30:01.210 — 01:30:03.850 · Speaker 1
+Et puis par contre, c'était quand même à nous de se dire.
+
+
+01:30:06.170 — 01:30:20.650 · Speaker 1
+Qu'est ce qui nous manque? Est ce qu'on ne rate pas quelque chose? Est ce qu'on ne prend pas un risque trop grand? Et donc dans le groupe initial qui était effectivement, on n'était que des scientifiques, j'avais une connaissance dans mon réseau qui était
+
+
+01:30:21.810 — 01:30:49.939 · Speaker 1
+un ancien scientifique aussi, qui avait travaillé chez un semencier qui avait changé de d'orientation de carrière, qui était parti sur une orientation carrière beaucoup plus marketing, business, marché, mise en marché de produits agricoles. Et j'ai contacté cette personne, je lui ai demandé de venir nous coacher et en fait, cette personne est devenue in fine cofondatrice de l'entreprise avec nous et nous a vraiment apporté beaucoup
+
+
+01:30:51.940 — 01:30:53.859 · Speaker 1
+sur la manière de voir
+
+
+01:30:54.900 — 01:31:40.670 · Speaker 1
+le transfert de connaissances, de voir la possibilité de créer quelque chose sur la diversité des acteurs, comment les aborder. Nous, on avait l'habitude de discuter avec les scientifiques des entreprises. Il nous a dit le scientifique, ce n'est pas le bon interlocuteur. Il faut discuter avec le responsable commercial, avec le directeur business de l'entreprise.
+
+Ça, c'est le bon interlocuteur, parce que c'est lui qui a les clés de la finance, et c'est lui qui pourra apporter du support et du soutien pour développer des projets R&D en collaboration avec des académiques. Et donc ça a changé complètement notre panorama aussi d'interlocuteurs.
+
+
+01:31:46.350 — 01:32:05.510 · Speaker 1
+Concernant la propriété intellectuelle, on s'est posé des questions dès le départ puisque on est dans un institut académique. Donc moi je travaille dans un laboratoire public à Versailles qui s'appelle l'Institut Jean-Pierre Bourgain. C'est une unité mixte INRA et AgroParisTech, et toutes les questions de valorisation de brevetabilité sont gérées par nos tutelles.
+
+
+01:32:06.590 — 01:32:25.310 · Speaker 1
+Il se trouve que c'est un projet qui est rentré en prématuré, puis ensuite en maturation à la ça et là. Ça avait mandat sur la gestion de la propriété intellectuelle, sur l'accompagnement de propriété intellectuelle avec les cellules de valorisation respectives d'Hydra et de AgroParisTech.
+
+Donc on s'est posé les questions collectivement.
+
+
+01:32:27.190 — 01:32:35.950 · Speaker 1
+Une grande question qui s'est posée, nous, sur notre technologie, c'est qu'est ce qui est brevetable? OK, mais surtout qu'est ce qui est divulgué?
+
+
+01:32:37.430 — 01:32:45.750 · Speaker 1
+Potentiellement, tout était brevetable. Par contre, il y avait une partie de la techno qu'on ne souhaitait pas divulguer.
+
+
+01:32:46.830 — 01:32:53.630 · Speaker 1
+Pour une question assez simple, c'est qu'on était incapable de démontrer la copie de cette partie de la technologie.
+
+
+01:32:55.510 — 01:32:58.109 · Speaker 1
+En d'autres mots, si
+
+
+01:32:59.150 — 01:33:03.230 · Speaker 1
+un acteur faisait exactement la même chose que nous
+
+
+01:33:04.950 — 01:33:07.990 · Speaker 1
+sans le dire, on est incapable de le démontrer.
+
+
+01:33:09.270 — 01:33:15.310 · Speaker 1
+Donc là, ça nous a amené à réfléchir à une stratégie qui était plus une stratégie de secret industriel.
+
+
+01:33:16.550 — 01:34:15.370 · Speaker 1
+Et donc là aussi, on a découvert les différentes facettes de la gestion de la propriété intellectuelle et de la confidentialité. Et donc on a deux volets en fait, dans notre pays, on a un brevet, un brevet qui est beaucoup plus sur des recettes qu'on apporte sur le traitement de semences pendant la phase confinée, où on amorce la germination.
+
+Et on a toute une partie, en fait, sur le procédé même d'application qui est resté sur du secret industriel, parce que ce. Parce que cette partie là, on ne peut pas la dévoiler, parce que si on la dévoile, on est incapable de démontrer le rétro, de faire du rétro-ingénierie et de démontrer la contrefaçon.
+
+Donc, deux volets sur l'API qui ont été construites. Et donc c'est une API qu'on continue de construire de cette manière là aujourd'hui. Alors après avoir créé, donc c'est une start-up qui a cinq ans, donc la stratégie de propriété intellectuelle. Aujourd'hui, on continue de faire du développement
+
+
+01:34:16.770 — 01:34:46.540 · Speaker 1
+et donc on continue d'avoir un volet et un souhait d'avoir des nouveaux brevets sur des applications un petit peu différentes ou pour des, des des marchés un peu différents de ceux qu'on a commencé à aborder aujourd'hui. Évidemment, on est une petite start-up. Aujourd'hui, il y a trois salariés, plus deux personnes qui ne sont pas salariés mais qui sont co-fondateurs.
+
+Quelqu'un sur la partie business et quelqu'un sur la partie scientifique? Moi même.
+
+
+01:34:47.899 — 01:35:07.060 · Speaker 1
+Et donc du coup, l'idée c'est de donc d'aller explorer, élargir les marchés qu'on peut, qu'on peut, qu'on peut aborder et surtout apporter des solutions qu'on n'apporte pas aujourd'hui en continuant de faire du développement techno. Donc on continue de faire du développement techno avec des procédés
+
+
+01:35:08.220 — 01:35:23.780 · Speaker 1
+qu'on qu'on sources toujours sur nos connaissances scientifiques pour voir si ça marche et pour savoir dans quelle mesure on peut les industrialiser. Et donc la stratégie, aujourd'hui, elle est plus orientée vers une stratégie brevets puisque la stratégie savoir-faire secret, elle, est sous clé.
+
+
+01:35:24.860 — 01:35:29.699 · Speaker 1
+Aujourd'hui, on développe encore un peu de savoir faire, mais on reste dans cette partie
+
+
+01:35:30.780 — 01:35:33.460 · Speaker 1
+complètement secrète du processus.
+
+
+01:35:39.220 — 01:35:46.260 · Speaker 1
+Est-ce qu'on peut avancer seul? Probablement qu'il y a des entrepreneurs qui peuvent avancer seul. Dans le monde agricole, on ne peut pas avancer seul.
+
+
+01:35:49.740 — 01:36:01.460 · Speaker 1
+Dans ce transfert de technologie qui part du monde académique vers la création d'une start-up. Ce qui a été notre choix, plutôt que de faire juste une valorisation de propriété intellectuelle par licence.
+
+
+01:36:02.940 — 01:36:10.939 · Speaker 1
+On a été, on a eu besoin d'être accompagnés d'une part. Donc, je disais, pour tout un tas de compétences qu'on n'avait pas marché
+
+
+01:36:12.500 — 01:36:15.380 · Speaker 1
+juridique, propriété intellectuelle.
+
+
+01:36:16.740 — 01:37:07.669 · Speaker 1
+Et puis on a été, on a eu besoin d'être accompagnés aussi pour être financé. Donc non, on n'a pas avancé seul dans cette démarche entrepreneuriale. Donc on est parti effectivement avec une équipe, une équipe avec un doctorant, une ingénieure, des techniciens qui étaient dans mon laboratoire.
+
+On a commencé à développer la technologie. On a eu besoin de financement, donc on a frappé à la porte de l'écosystème d'innovation Paris-Saclay. Et donc elle a la SATT Paris-Saclay particulièrement, où on a eu un financement de maturation. Puis après, à la fin de cette maturation, effectivement, on a pris la décision de créer cette entreprise.
+
+Donc on est rentré dans une vraie démarche de création et là on a eu besoin de d'autres compétences, on a eu besoin de compétences juridiques. Donc
+
+
+01:37:09.110 — 01:37:12.510 · Speaker 1
+on a eu un avocat d'affaires qui a intégré
+
+
+01:37:13.750 — 01:37:59.490 · Speaker 1
+le projet pour suivre l'entreprise et pour l'accompagner. on a eu à nouveau besoin de financement. Donc, au moment de la création, on a été vers d'autres sources de financement, notamment à BPI France, sur le programme Eye Labs, pour lequel on a été lauréat. Et puis on avait besoin de réseauter puisque la force commerciale d'une petite entreprise à trois personnes, vous imaginez qu'elle est très faible.
+
+Donc on a eu besoin de réseauter. On s'est beaucoup appuyé sur les pôles de compétitivité, notamment le pôle VG Police Valley, qui est dans notre secteur. Mais mais ce n'est pas le seul qui nous a aidés. Donc, on a pu effectivement avoir un peu plus de visibilité sur la création de notre entreprise.
+
+Et puis
+
+
+01:38:00.930 — 01:38:12.370 · Speaker 1
+on avait vraiment besoin de bien comprendre la mécanique qui touchait à l'investissement des entreprises. Et nous, dans notre cas, c'était particulier parce que des investisseurs, il y en a plein,
+
+
+01:38:13.730 — 01:38:16.930 · Speaker 1
+mais ils ont tous des formats d'investissement Différent.
+
+
+01:38:18.330 — 01:38:19.010 · Speaker 1
+Et nous,
+
+
+01:38:20.090 — 01:39:05.930 · Speaker 1
+on avait une vraie identité. C'est à dire qu'on voulait rester une entreprise qui va grandir petit à petit et qui va apporter une solution à la filière selon ses plans. On n'avait pas une ambition économique, on n'avait pas l'ambition de se dire on crée en 2021 et en 2028 ou en 2030, on revend et on récupère dix fois ou 20 fois notre mise.
+
+Ce n'était pas le modèle. Et en fait, on s'est aperçu que beaucoup d'investisseurs avaient ce modèle là. Ils disaient OK, on peut vous apporter votre projet et convaincant. Vous avez le réseau. Votre techno à l'air a l'air intéressante. On est prêts à apporter de l'argent pour vous faire grossir et vous faire intégrer le marché très vite.
+
+
+01:39:07.010 — 01:39:19.940 · Speaker 1
+Par contre, les modèles de retour d'investissement n'étaient pas du tout compatibles avec le marché qu'on aborde. On est sur le marché agricole. Je vous l'ai dit, il y a une saisonnalité très forte. Un semis, c'est un semis par an.
+
+
+01:39:21.020 — 01:39:43.580 · Speaker 1
+La la rentabilité, la marge que font chaque intermédiaire est très faible en agriculture. Et donc nous, en tant que petite entreprise et nouvel acteur dans le paysage, on ne correspondait pas très bien à un modèle économique avec un retour sur investissement sur un pas de temps de 7 à 10 ans.
+
+
+01:39:45.740 — 01:39:59.980 · Speaker 1
+Donc on a réfléchi, on a été vraiment en se disant OK, il y a l'appât du gain. D'une part, OK, ça peut être tentant de se dire Tiens, il y a quelqu'un qui met 800 000, 1 million, 2 millions, 3 millions sur la table tout de suite alors qu'on vient d'être créé.
+
+
+01:40:02.420 — 01:40:07.179 · Speaker 1
+Par contre, on a. On a travaillé avec d'autres profils d'investisseurs
+
+
+01:40:08.420 — 01:40:09.820 · Speaker 1
+beaucoup plus raisonnables,
+
+
+01:40:11.140 — 01:40:28.880 · Speaker 1
+raisonnables pour nous, en se disant OK, ils ont moins d'attentes derrière. Ils sont beaucoup plus dans l'accompagnement aussi. On a eu cette chance là d'avoir des personnes qui ont mis des tickets, qui ont cru en nous, qui nous ont dit ok, on croit en vous.
+
+
+01:40:30.400 — 01:41:03.200 · Speaker 1
+Est ce que vous vous prenez un risque? Est ce que vous croyez aussi en vous? Donc on a aussi investi de de notre argent propre derrière. Et quand je dis qu'on a construit notre écosystème pour aller vers l'entrepreneuriat, c'est aussi avec toutes ces personnes là que je remercie d'ailleurs et qui nous ont vraiment apporté l'aide financière qui nous a permis de déployer, de développer la technologie et d'aller aujourd'hui jusqu'au marché pour commencer à faire du chiffre d'affaires.
+
+Et ça, c'était une étape vraiment cruciale pour nous parce que, à plusieurs étapes, on s'est dit si on peut faire un go go go!
+
+
+01:41:04.440 — 01:41:06.120 · Speaker 1
+Et si ça ne marche pas, tout s'arrête. Quoi?
+
+
+01:41:12.080 — 01:41:23.439 · Speaker 1
+Je suis co-fondateur mais j'ai pas de concours scientifique. Pour une raison assez simple en fait, c'est que AgroParisTech, via AgroParisTech Innovation, avait aussi pris des parts
+
+
+01:41:24.760 — 01:41:38.080 · Speaker 1
+et qu'on considérait que mon. Vu que je n'étais que au Conseil scientifique et co-fondateur, ça incombait sur mon activité de recherche qui était une activité de recherche plutôt finalisée, mais.
+
+
+01:41:44.680 — 01:41:59.000 · Speaker 1
+En fin de maturation pour créer l'entreprise, ça a été une réflexion assez profonde, on va dire pas très longue, mais profonde de savoir est ce qu'on y va ou est ce qu'on n'y va pas? Et donc on a décidé de procréer, de co-créer à quatre.
+
+
+01:42:00.400 — 01:42:05.160 · Speaker 1
+Donc un ancien de mes doctorants, une ingénieure qui était au laboratoire,
+
+
+01:42:06.680 — 01:42:16.860 · Speaker 1
+une connaissance qui était plutôt dans le monde du business agricole et moi même. Donc on a co-créé et co-fondé cette société A4 en août 2021.
+
+
+01:42:18.420 — 01:43:31.670 · Speaker 1
+Nous sommes en juin 2026 donc en presque cinq ans. C'est une entreprise, c'est une start up qui a, qui a grandi, qui a poussé. Ça a été un traitement de semences qui a marché, si je peux dire, avec une croissance qui a été progressive, avec différents types d'investissements. Et puis il fallait s'associer ou monter des partenariats avec les acteurs.
+
+Donc, on a eu nos associés clients, on va dire, parce que ceux qui ont cru en notre projet, qui étaient prêts à devenir notre client, voulaient des démonstrations. Donc il n'y a jamais eu. Ce n'était pas une commercialisation d'un smartphone, c'était vraiment une construction d'un service avec les partenaires.
+
+Donc, au cours des de ces cinq années, il y a eu plusieurs acteurs de la filière Semence et plans qui se sont associés avec nous pour tester d'abord notre technologie sur leur espèce ou sur leur génétique, la mettre aux champs et ensuite revenir en tant que client pour dire ok, ça marche, on est convaincus, on part avec vous.
+
+Donc ça a été très incrémental. Et l'un d'entre eux,
+
+
+01:43:33.030 — 01:44:07.830 · Speaker 1
+avec lequel on travaille depuis un peu plus de deux ans maintenant, a décidé de rentrer à l'actionnariat de l'entreprise en tant qu'actionnaire majoritaire depuis le mois dernier. Donc les quatre fondateurs initiaux, il y a une personne qui est sortie de l'actionnariat pour par choix personnel, et les trois autres sont toujours actionnaires minoritaires pour le coup.
+
+Mais c'est une entreprise, donc l'activité de l'entreprise demeure et j'espère demeurera encore longtemps. Donc c'est aujourd'hui un véritable acteur de cette filière selon ses plans.
+
+
+01:44:09.300 — 01:44:22.580 · Speaker 1
+Mais en fait les créateurs. Souvent, on voit dans pas mal de créations d'entreprises, il y a un profil scientifique et puis on va chercher un profil business. Nous, on a fait ça, ça n'a pas marché. Donc pour construire l'équipe,
+
+
+01:44:23.940 — 01:44:30.180 · Speaker 1
+ça a été une réflexion importante parce qu'on n'était que des scientifiques au départ un doctorant,
+
+
+01:44:31.540 — 01:44:34.020 · Speaker 1
+un enseignant-chercheur et une ingénieure. On était trois
+
+
+01:44:35.620 — 01:44:54.340 · Speaker 1
+et on voyait qu'il nous manquait tout un tas de choses sur le côté business, sur le côté financier, sur le côté juridique. Et on voyait que dans le modèle de création d'entreprise autour de la deep tech, beaucoup vont faire appel à des profils de personnes qui sortent d'écoles de commerce.
+
+
+01:44:55.980 — 01:45:10.199 · Speaker 1
+Donc nous, on a essayé d'aller dans cette démarche là. On avait été guidé par un certain nombre d'acteurs en nous disant on va faire des pitchs, on va regarder. Et en fait, on s'est aperçu que la plupart des des personnes qui venaient du monde des écoles de commerce
+
+
+01:45:11.520 — 01:45:38.040 · Speaker 1
+avaient pas forcément une vision assez fine des enjeux pour le secteur agricole. Ils voyaient très très bien comment créer une entreprise. Ils voyaient très très bien ce que je disais sur les modèles de retour sur investissement ou sur les modèles de financement, etc. Mais ce n'était pas adapté à nos pas de temps.
+
+Comme je le rappelle, les marges de gains pour chacun des acteurs sont très faibles en agriculture et les retours sur investissement sur les technos sont très longs.
+
+
+01:45:39.640 — 01:46:03.200 · Speaker 1
+Et ça ne correspondait pas très bien. Et donc du coup, on est partis plutôt avec quelqu'un qui était un scientifique à la base, qui avait basculé dans le monde de la mise en marché de produits agricoles, qui connaissait très bien les acteurs de mise en marché et qui est rentré dans l'équipe de co-création avec nous.
+
+Oui, on invente, on n'a pas, on n'a pas été incubés. On a eu des échanges avec un club alliances ici,
+
+
+01:46:05.120 — 01:46:15.800 · Speaker 1
+on a eu des échanges avec Station F sur Paris, mais on n'a pas été incubé puisqu'en fait. Du coup, quand on a créé, on a été hébergés sur le site Inside Versailles.
+
+
+01:46:17.680 — 01:46:24.000 · Speaker 1
+Et donc du coup, on a on loue des espaces labo et on a démarré. On a démarré sur le centre de l'adversaire.
+
+
+01:46:30.120 — 01:47:08.010 · Speaker 1
+Donc pour changer d'échelle et passer d'une communication avec des acteurs académiques vers des acteurs industriels. On a été contraints à changer un petit peu notre vocabulaire, à changer de langage, à changer la manière de présenter la science. Les résultats scientifiques. On a commencé à le travailler beaucoup pendant notre programme de maturation avec l'équipe.
+
+Nos deux jeunes scientifiques, doctorants et ingénieurs se sont un petit peu acculturer aussi avec ce monde de l'entreprise pour pouvoir Effectivement amener les démonstrations
+
+
+01:47:09.610 — 01:47:23.250 · Speaker 1
+qui sont nécessaires en industrie, qui sont un petit peu différentes de celles qu'on attend au laboratoire. Donc, on a changé de langage à cette première étape là. Et puis après on a changé aussi au moment de la création, parce qu'au moment de la création, on s'est aperçu que
+
+
+01:47:24.450 — 01:48:26.420 · Speaker 1
+il y avait beaucoup de choses qui rentraient en jeu. C'est quelque chose de tout simple avoir un avocat d'affaires pour des académies qui sont financées sur des financements publics, ce n'est pas quelque chose de commun. Lui expliquer ce qu'on fait, lui expliquer comment il pourrait défendre nos intérêts au mieux.
+
+Ça a été quelque chose d'important. Et même chose avec les investisseurs. Comment est-ce qu'on convainc un investisseur que notre technologie a une vraie valeur? Elle a une vraie plus-value qui va au delà de simplement la filière. C'est aussi une une valeur à travers l'image qu'elle peut donner auprès de la société.
+
+Est ce qu'elle est acceptable? Est ce qu'elle est désirable? J'aime beaucoup parler de désirabilité quand j'enseigne l'entrepreneuriat. Il faut que ce soit désirable par un public très large. Et comment est ce qu'on en fait quelque chose de désirable? Il faut changer un peu la typologie des mots qu'on utilise, et sortir un peu d'une science très dure vers des choses beaucoup plus
+
+
+01:48:27.700 — 01:48:34.899 · Speaker 1
+palpables pour l'utiliser pour les utilisateurs. Donc, pour faire cette transition
+
+
+01:48:35.980 — 01:48:53.380 · Speaker 1
+entre les deux mondes, entre le monde académique et le monde industriel, notre équipe de scientifiques, et notamment les deux jeunes scientifiques qui étaient embarqués dans le projet, ont eu la chance d'avoir une formation qui a été financée par la SATT Paris-Saclay, intégralement
+
+
+01:48:54.900 — 01:49:12.400 · Speaker 1
+à HEC pendant plusieurs mois, pour effectivement les acculturer à cette démarche business. Cette démarche commerciale a cette démarche de créateur, ça les a vraiment transformé. Alors moi j'ai pas suivi la formation les premières semaines,
+
+
+01:49:13.440 — 01:49:49.440 · Speaker 1
+je me suis dit c'est fini, ils voudront jamais entreprendre. Ils revenaient au labo, ils étaient démoralisés et au bout de quelques semaines, je les ai vu se transformer, prendre confiance en eux et se dire ok, on y va vraiment, On pense qu'on a les clés pour y aller, toujours avec beaucoup de précaution.
+
+C'est un petit peu ce qui nous caractérise je pense. On a toujours avancer pas à pas, on n'a jamais voulu aller trop vite. On a eu énormément de gardes fous en se disant on veut aussi sécuriser les emplois des jeunes.
+
+
+01:49:50.840 — 01:50:12.400 · Speaker 1
+Moi je suis professeur d'université donc je suis sécurisé. l'Autre co-fondateur sur la partie business, il a son entreprise, il était sécurisé. Mais les jeunes qui s'embarquaient dans l'aventure entrepreneuriale, il portait tout le risque. Nous, on voulait les dés risqués au maximum et ça leur a donné vraiment une confiance très, très forte en fait, de suivre cette formation.
+
+
+01:50:18.240 — 01:50:26.879 · Speaker 1
+Donc c'est vrai que par rapport à mon métier d'enseignant-chercheur, aujourd'hui, je participe au comité scientifique de l'entreprise
+
+
+01:50:28.400 — 01:51:00.880 · Speaker 1
+tout en gardant mes fonctions d'enseignant-chercheur. Donc je fais très, très attention à tout ce qui est, ce qui incombe à ma fonction de d'enseignant-chercheur du monde académique, à être impartial, à garder cette neutralité, mais avec une vision quand même qui permet d'avoir un véritable apport.
+
+Donc, je peux faire occuper ces deux fonctions là sans forcément avoir de pénalité dans mon activité académique pleinement.
+
+
+01:51:07.170 — 01:51:18.169 · Speaker 1
+Alors les messages que j'aimerais transmettre à tous les acteurs académiques ou autres d'ailleurs, qui veulent se lancer dans l'entrepreneuriat, c'est de construire leur environnement, de bien savoir
+
+
+01:51:19.930 — 01:51:29.649 · Speaker 1
+quels sont leurs objectifs, est ce que leurs objectifs sont financiers? Ou est ce que leurs objectifs sont vraiment un apport d'une proposition de valeur pour
+
+
+01:51:30.650 — 01:51:33.770 · Speaker 1
+des acteurs particuliers? Ça peut être les deux,
+
+
+01:51:35.370 — 01:51:43.209 · Speaker 1
+mais je pense que le chemin peut être différent s'il est purement financier. Il y a plein de modèles qui marchent très très bien
+
+
+01:51:44.690 — 01:52:15.470 · Speaker 1
+s'il est entre les deux et apporter une vraie valeur à un secteur d'activité, il faut réussir à s'en environner et à bien comprendre le secteur d'activité. Avoir des vrais experts du secteur d'activité qui puissent intégrer ce chemin qui amène vers, vers l'innovation. Avec la diversité des choses qu'on, qu'on, qu'on a balayé.
+
+La science. C'est difficile d'apporter de l'innovation sans connaissance et sans fondement scientifique.
+
+
+01:52:16.910 — 01:52:26.510 · Speaker 1
+Le transfert Comment est ce qu'on va changer d'échelle et qu'on passe de simples connaissances à une vraie plus-value applicable?
+
+
+01:52:27.790 — 01:53:37.960 · Speaker 1
+La propriété intellectuelle, comment je la réfléchis? Comment je connais l'environnement? Et c'est là où je dis il faut connaître l'environnement parce qu'il faut connaître les acteurs, qui sont les concurrents, mais qui sont aussi les potentiels collaborateurs. Et parfois, vous pouvez avoir des concurrents qui deviennent collaborateurs, ce qui est notre cas.
+
+On a des gens, des entreprises qui font du traitement de semences, qui utilisent des technos un petit peu similaires de la nôtre, mais pas exactement les mêmes et qui sont très contents de nous retrouver parce qu'on leur permet de faire ce qu'ils n'ont plus le temps de faire, c'est à dire faire du développement, faire des travaux d'application sur des espèces qu'ils n'ont pas le temps d'aborder, etc etc.
+
+Donc bien comprendre l'écosystème. Donc il faut vraiment construire, s'équiper effectivement d'experts qui vont venir vous vous accompagner. Et puis derrière, je reparlais donc la partie propriété intellectuelle, mais aussi la partie financière qui boucle un peu avec l'objectif de départ.
+
+C'est à dire est ce que votre objectif c'est de gagner beaucoup d'argent? Ou est ce que votre objectif c'est de d'avoir une entreprise qui va croître progressivement
+
+
+01:53:39.640 — 01:53:56.680 · Speaker 1
+et qui va investir, gagner un petit peu plus de parts de marché année après année. Et le modèle d'investissement peut être très différent. Je pense que c'est une question de valeurs. C'est une question de valeurs humaines. Qu'est ce qu'on a envie? Qu'est ce qu'on a envie d'être et vers quoi on a envie d'aller?
+
+
+01:53:57.760 — 01:54:02.720 · Speaker 1
+Donc si je devais résumer en un mot cette démarche entrepreneuriale.
+
+
+01:54:03.840 — 01:54:04.960 · Speaker 1
+Gérer le risque.
+
+
+01:54:06.440 — 01:54:14.279 · Speaker 1
+Pourquoi gérer le risque? Parce que quand on est un acteur académique en France, on est rattaché à une
+
+
+01:54:15.320 — 01:54:19.080 · Speaker 1
+tutelle académique, peu importe laquelle.
+
+
+01:54:21.000 — 01:54:26.600 · Speaker 1
+Et qu'on veut se lancer dans une démarche entrepreneuriale. Le risque, il est porté par l'individu,
+
+
+01:54:27.640 — 01:54:30.080 · Speaker 1
+il n'est pas porté par l'institution.
+
+
+01:54:31.560 — 01:54:35.560 · Speaker 1
+Et ça, c'est quelque chose que j'aimerais changer.
+
+
+01:54:36.960 — 01:54:43.600 · Speaker 1
+Peut être d'ici là, ma fin de carrière, peut être Après, c'est que les institutions académiques puissent risquer un peu plus
+
+
+01:54:44.920 — 01:54:56.240 · Speaker 1
+la prise de risque par les personnels publics dans des démarches entrepreneuriales. Parce que sinon, celui qui décide de créer une entreprise.
+
+
+01:54:58.540 — 01:55:11.220 · Speaker 1
+Financièrement, il prend les risques tout seul. Quand un investi va chercher un investisseur, alors oui, on est environnés par tout un tas de structures. On a parlé de la SACD, on a parlé de BPI, etc. Oui, il y a beaucoup d'argent public qui viennent soutenir l'entrepreneuriat,
+
+
+01:55:12.340 — 01:55:15.500 · Speaker 1
+mais les individus y sont rattachés à une institution
+
+
+01:55:17.340 — 01:55:52.580 · Speaker 1
+et leur institution prend très rarement, voire jamais, une part de risque dans la démarche entrepreneuriale du chercheur ou de l'enseignant-chercheur, ce qui n'est pas du tout le cas. Si vous allez dans des pays outre-Atlantique où effectivement il y a une stratégie de dérive cage individuelle beaucoup plus forte en fait par l'institution pour créer et donc qui porte le risque, il est colporté.
+
+Donc il faut réussir à des risqués et à gérer les différents risques qu'il peut y avoir pour pouvoir avoir une belle réussite entrepreneuriale.
+
+
+01:55:54.660 — 01:56:34.980 · Speaker 1
+Pour des personnes qui hésitent à rentrer dans une démarche entrepreneuriale, mon seul conseil, c'est aller discuter avec des entrepreneurs. Allez discuter avec des personnes dans votre secteur d'activité ou dans d'autres secteurs qui ont pris le risque d'entreprendre, qui ont pris le risque de créer.
+
+Parce que c'est là où on arrive à mesurer finalement comment est ce qu'on va positionner son innovation et est ce qu'elle vaut le coup de passer d'une innovation vers une création d'entreprise? Et donc discuter avec des entrepreneurs, c'est je pense, la meilleure solution.
+
+
+01:56:37.060 — 01:56:47.019 · Speaker 1
+Ce qu'on aurait aimé savoir avant de démarrer cette aventure là. C'est peut être mieux connaître effectivement toutes les démarches qui conduisent à lever des fonds
+
+
+01:56:48.020 — 01:57:46.990 · Speaker 1
+pour pouvoir mener l'aventure entrepreneuriale. Parce que c'est là encore une vraie réflexion stratégique, d'aller chercher à la fois du fonds publics et de la subvention, qui est plutôt des risqués pour le coup. Et puis aller chercher des capitaux privés avec des modèles qui peuvent être très différents.
+
+Et ça, ça a été un point de crispation à plusieurs étapes. Parce que, en tant que jeune équipe avec des scientifiques et des jeunes scientifiques, pour eux, ce qui est une vraie prise de risque financière individuelle, et à plusieurs moments, on s'est dit bah on ne va pas prendre le risque, ça s'arrête, peut être que ça s'arrête.
+
+Et plus on avançait, plus on voyait qu'il y avait un intérêt quand même à notre technologie, notre innovation. Et peut être que si on avait, on comprenait mieux la mécanique d'investissement des capitaux privés dans les entreprises. Peut être que ça aurait rassuré tout au long de la démarche entrepreneuriale.
+
+
+01:57:50.790 — 01:57:51.870 · Speaker 2
+Merci Loïc.
+
+
+01:57:51.910 — 01:57:52.510 · Speaker 1
+Merci à vous.
+
+
+01:57:52.870 — 01:57:54.030 · Speaker 2
+Oui merci. Merci beaucoup.
+

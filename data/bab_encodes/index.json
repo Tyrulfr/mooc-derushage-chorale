@@ -1,0 +1,52 @@
+[
+  {
+    "id": "jjg",
+    "fichier": "jjg.json",
+    "source": "BAB_JJ_GREFFET.txt",
+    "chercheur": "Jean-Jacques Greffet",
+    "statut_encodage": "NON_ENCODE",
+    "date_maj": "2026-07-13",
+    "nb_segments": 15,
+    "nb_utilises": 12
+  },
+  {
+    "id": "mur",
+    "fichier": "mur.json",
+    "source": "BAB_Muriel_Thomas video.txt",
+    "chercheur": "Muriel Thomas",
+    "statut_encodage": "NON_ENCODE",
+    "date_maj": "2026-07-13",
+    "nb_segments": 15,
+    "nb_utilises": 11
+  },
+  {
+    "id": "syl",
+    "fichier": "syl.json",
+    "source": "BAB_SYLVIA_COHEN_BABbrut.txt",
+    "chercheur": "Sylvia Cohen-Kaminski",
+    "statut_encodage": "NON_ENCODE",
+    "date_maj": "2026-07-13",
+    "nb_segments": 14,
+    "nb_utilises": 12
+  },
+  {
+    "id": "loi",
+    "fichier": "loi.json",
+    "source": "BAB_LOIC_RAJJOU_BABbrut.txt",
+    "chercheur": "Loic Rajjou",
+    "statut_encodage": "NON_ENCODE",
+    "date_maj": "2026-07-13",
+    "nb_segments": 12,
+    "nb_utilises": 11
+  },
+  {
+    "id": "yan",
+    "fichier": "yan.json",
+    "source": "BAB_Yan_Monier.txt",
+    "chercheur": "Yann Meunier",
+    "statut_encodage": "NON_ENCODE",
+    "date_maj": "2026-07-13",
+    "nb_segments": 3,
+    "nb_utilises": 3
+  }
+]

@@ -1,0 +1,230 @@
+{
+  "id": "loi",
+  "source": "BAB_LOIC_RAJJOU_BABbrut.txt",
+  "chercheur": "Loic Rajjou",
+  "statut_encodage": "NON_ENCODE",
+  "date_maj": "2026-07-13",
+  "segments": [
+    {
+      "id": "LOI-0001",
+      "debut": "01:00:05.150",
+      "fin": "01:01:22.959",
+      "duree_secondes": 77.809,
+      "verbatim": "Bonjour, je m'appelle Loïc Rajout, je suis professeur à AgroParisTech en biologie végétale et je m'intéresse particulièrement à tout ce qui est biologie cellulaire, génomique, métabolisme et biochimie. Bonjour, je m'appelle Loïc Raju, je suis professeur à AgroParisTech en biologie végétale et je m'intéresse à de la biologie cellulaire et de la génomique, du métabolisme et de la biochimie.\n\nComment est née mon innovation? Alors ça a été un chemin assez long de plusieurs années de recherche plutôt fondamentale, exploratoire, sur la compréhension des mécanismes cellulaires et moléculaires qui conduisent à la germination et à la croissance des plantes, et toutes les connaissances qu'on a pu générer au cours de toutes ces années m'ont amené à réfléchir, à savoir qu'est ce qu'on peut faire de ces travaux, au delà de les publier et de générer de la connaissance, est ce que ça peut trouver une application?\n\nAlors je travaille dans le monde de l'agronomie, de l'agriculture très interfacé avec ces filières agricoles de production. Et effectivement, naturellement, je me suis orienté vers ces filières pour chercher les problématiques qui étaient liées à la germination et à la levée des jeunes plantules au champ.\n\nDonc effectivement, c'était une démarche personnelle. J'ai un passé très lié avec l'industrie et le monde industriel, puisque j'ai fait ma thèse",
+      "theme_principal": "T1",
+      "statut": "RESERVE",
+      "qualification": "PRIORITAIRE",
+      "capsules": {},
+      "commentaire": "Reserve : maturation agronomique (hors montage T1 v2 Yan)."
+    },
+    {
+      "id": "LOI-0002",
+      "debut": "01:10:20.460",
+      "fin": "01:11:47.830",
+      "duree_secondes": 87.37,
+      "verbatim": "Je dirais comme un peu dans tout projet, on commence avec des idées un peu préconçues. Nous, on travaillait sur une technologie un peu particulière qui s'appelle le prime mines en fait, qui consiste à faire pré germer des graines et à les sécher pour que, quand l'agriculteur les ressème, elles puissent germer de manière plus rapide et plus homogène.\n\nDonc, quelque chose de relativement simple. Et on s'est dit c'est une technique qui est relativement ancestrale, qui a été très développée il y a une cinquantaine ou une soixantaine d'années par des industriels, mais qui, depuis, n'a jamais été amélioré. Et on était convaincus que la seule problématique, c'était l'homogénéité, la vitesse de levée.\n\nDonc, on est partis sur. Sur ce volet là. Et effectivement, en discutant avec des acteurs, on s'est aperçu que c'était beaucoup plus large que ça. Par exemple, ils avaient des gros problèmes de logistique sur leurs semences puisque quand les semences sont traitées avec cette technologie de prime, elles se conservent très mal.\n\nDonc, en fonction de leur marché et de leur circuit de distribution, de leur temps de stockage, ils pouvaient avoir un effet indésirable. Ils cherchaient à améliorer la germination. Et dans certains cas, on peut avoir au contraire des pertes de germination. Donc ça nous a ouvert. Donc on est parti d'une idée\n\nqui est maintenue et on s'est aperçu au fil du temps, en fait, que cette idée, oui, elle était réelle, mais elle n'était pas réelle pour toutes les espèces. D'une part, et d'autre part, ça nous a ouvert vers d'autres problématiques qu'on n'imaginait pas ou qu'on ne connaissait pas",
+      "theme_principal": "T2",
+      "statut": "UTILISE",
+      "qualification": "PRIORITAIRE",
+      "capsules": {
+        "T2": {
+          "statut": "UTILISE",
+          "role": "hypotheses",
+          "duree_montage_secondes": 58,
+          "coupe": "Idees preconcues sur l'homogeneite vs problemes logistiques reveles par les filieres."
+        }
+      },
+      "commentaire": "Idees preconcues sur la techno vs problemes reveles par les filieres."
+    },
+    {
+      "id": "LOI-0003",
+      "debut": "01:24:53.880",
+      "fin": "01:27:45.270",
+      "duree_secondes": 171.39,
+      "verbatim": "Pourquoi? Parce que on cherchait à passer de 50 ou 60 % de germination à 95, 98 % de germination. On a fait ces choix là et on a voulu démontrer aux acteurs industriels, les semenciers, mais aussi et surtout les producteurs de plants, ceux qui produisent les plants en serre pour pouvoir les transférer après chez les producteurs de fruits.\n\nIl fallait qu'on fasse la démonstration au terrain. Ça, ça a été un point hyper important pour nous. Comment on passe du labo à convaincre les utilisateurs? Convaincre scientifiquement, on savait faire convaincre les utilisateurs agricoles. On s'est aperçu qu'on ne savait pas faire. Donc il fallait qu'on dimensionne différemment nos essais.\n\nIl fallait qu'on dimensionne différemment\n\nles traitements, les volumes. On a pris aussi conscience de la saisonnalité de ces productions là. Donc effectivement, ça nous a apporté beaucoup de se dire on fait des choix et qu'est ce qu'on offre? On offre une technologie de traitement de semences. On offre aussi une technologie qui est sans résidu et sans impact environnemental derrière pour l'utilisateur.\n\nEt ça, pour nous, ça a été une clé d'apporter des arguments qui allaient juste au delà de simplement l'idée de départ qui était on va offrir des semences qui germent mieux,\n\nmais qui apportent aussi des valeurs, des valeurs beaucoup plus larges que ce qu'on imaginait au départ. On a considéré que notre solution était techniquement viable à partir du moment où on a réussi à avoir des performances identique, voire meilleur, sur des échelles\n\nqui passaient d'une échelle laboratoire à une échelle réelle de traitement. Pour un industriel qui allait vendre ses semences à un producteur de plomb. Comment est ce qu'on est passé de nos quelques grammes à quelques dizaines de kilos de traitement? A partir du moment où on a vu que nos technologies à ces échelles là répondaient bien, on savait qu'on était capable de maîtriser le process et donc de le transférer.\n\nAlors, ce qu'on a appris durant cette phase d'expérimentation,\n\non a appris effectivement à dimensionner des essais qui pouvaient effectivement aller sur le terrain soit en serre, soit aux champs.\n\nOn a appris que ben une culture, c'est une saison. Donc si on rate notre culture, Bah on attend l'année d'après,\n\nalors qu'au laboratoire, finalement, on est en conditions contrôlées, donc on rate une culture, un traitement, on recommence et ça nous prend quelques semaines, éventuellement un mois ou deux. Donc ça nous a changé complètement la vision aussi de la temporalité.",
+      "theme_principal": "T3",
+      "statut": "UTILISE",
+      "qualification": "PRIORITAIRE",
+      "capsules": {
+        "T3": {
+          "statut": "UTILISE",
+          "role": "prototype",
+          "duree_montage_secondes": 68,
+          "coupe": "Demonstration terrain ; grammes vers dizaines de kilos ; essais serre/champ et contrainte des saisons."
+        }
+      },
+      "commentaire": "Scale-up : grammes vers kilos, essais serre/champ, saisonnalite."
+    },
+    {
+      "id": "LOI-0004",
+      "debut": "01:31:46.350",
+      "fin": "01:32:53.630",
+      "duree_secondes": 67.28,
+      "verbatim": "Concernant la propriété intellectuelle, on s'est posé des questions dès le départ puisque on est dans un institut académique. Donc moi je travaille dans un laboratoire public à Versailles qui s'appelle l'Institut Jean-Pierre Bourgain. C'est une unité mixte INRA et AgroParisTech, et toutes les questions de valorisation de brevetabilité sont gérées par nos tutelles.\n\nIl se trouve que c'est un projet qui est rentré en prématuré, puis ensuite en maturation à la ça et là. Ça avait mandat sur la gestion de la propriété intellectuelle, sur l'accompagnement de propriété intellectuelle avec les cellules de valorisation respectives d'Hydra et de AgroParisTech.\n\nDonc on s'est posé les questions collectivement.\n\nUne grande question qui s'est posée, nous, sur notre technologie, c'est qu'est ce qui est brevetable? OK, mais surtout qu'est ce qui est divulgué?\n\nPotentiellement, tout était brevetable. Par contre, il y avait une partie de la techno qu'on ne souhaitait pas divulguer.\n\nPour une question assez simple, c'est qu'on était incapable de démontrer la copie de cette partie de la technologie.",
+      "theme_principal": "T4",
+      "statut": "UTILISE",
+      "qualification": "PRIORITAIRE",
+      "capsules": {
+        "T4": {
+          "statut": "UTILISE",
+          "role": "tutelles_valorisation",
+          "duree_montage_secondes": 88,
+          "coupe": "Tutelles et SATT ; qu'est-ce qui est brevetable vs divulgue."
+        }
+      },
+      "commentaire": "Tutelles, cellules de valorisation ; brevetable vs divulgue."
+    },
+    {
+      "id": "LOI-0005",
+      "debut": "01:33:09.270",
+      "fin": "01:35:23.780",
+      "duree_secondes": 134.51,
+      "verbatim": "Donc là, ça nous a amené à réfléchir à une stratégie qui était plus une stratégie de secret industriel.\n\nEt donc là aussi, on a découvert les différentes facettes de la gestion de la propriété intellectuelle et de la confidentialité. Et donc on a deux volets en fait, dans notre pays, on a un brevet, un brevet qui est beaucoup plus sur des recettes qu'on apporte sur le traitement de semences pendant la phase confinée, où on amorce la germination.\n\nEt on a toute une partie, en fait, sur le procédé même d'application qui est resté sur du secret industriel, parce que ce. Parce que cette partie là, on ne peut pas la dévoiler, parce que si on la dévoile, on est incapable de démontrer le rétro, de faire du rétro-ingénierie et de démontrer la contrefaçon.\n\nDonc, deux volets sur l'API qui ont été construites. Et donc c'est une API qu'on continue de construire de cette manière là aujourd'hui. Alors après avoir créé, donc c'est une start-up qui a cinq ans, donc la stratégie de propriété intellectuelle. Aujourd'hui, on continue de faire du développement\n\net donc on continue d'avoir un volet et un souhait d'avoir des nouveaux brevets sur des applications un petit peu différentes ou pour des, des des marchés un peu différents de ceux qu'on a commencé à aborder aujourd'hui. Évidemment, on est une petite start-up. Aujourd'hui, il y a trois salariés, plus deux personnes qui ne sont pas salariés mais qui sont co-fondateurs.\n\nQuelqu'un sur la partie business et quelqu'un sur la partie scientifique? Moi même.\n\nEt donc du coup, l'idée c'est de donc d'aller explorer, élargir les marchés qu'on peut, qu'on peut, qu'on peut aborder et surtout apporter des solutions qu'on n'apporte pas aujourd'hui en continuant de faire du développement techno. Donc on continue de faire du développement techno avec des procédés\n\nqu'on qu'on sources toujours sur nos connaissances scientifiques pour voir si ça marche et pour savoir dans quelle mesure on peut les industrialiser. Et donc la stratégie, aujourd'hui, elle est plus orientée vers une stratégie brevets puisque la stratégie savoir-faire secret, elle, est sous clé.",
+      "theme_principal": "T5",
+      "statut": "UTILISE",
+      "qualification": "PRIORITAIRE",
+      "capsules": {
+        "T5": {
+          "statut": "UTILISE",
+          "role": "brevet_secret",
+          "duree_montage_secondes": 78,
+          "coupe": "Secret industriel puis brevet sur les recettes ; evolution vers plus de brevets, secret sous cle."
+        }
+      },
+      "commentaire": "Secret industriel vs brevet ; evolution de la strategie PI (deux volets puis brevets)."
+    },
+    {
+      "id": "LOI-0006",
+      "debut": "01:35:49.740",
+      "fin": "01:37:07.669",
+      "duree_secondes": 77.929,
+      "verbatim": "Dans ce transfert de technologie qui part du monde académique vers la création d'une start-up. Ce qui a été notre choix, plutôt que de faire juste une valorisation de propriété intellectuelle par licence.\n\nOn a été, on a eu besoin d'être accompagnés d'une part. Donc, je disais, pour tout un tas de compétences qu'on n'avait pas marché\n\njuridique, propriété intellectuelle.\n\nEt puis on a été, on a eu besoin d'être accompagnés aussi pour être financé. Donc non, on n'a pas avancé seul dans cette démarche entrepreneuriale. Donc on est parti effectivement avec une équipe, une équipe avec un doctorant, une ingénieure, des techniciens qui étaient dans mon laboratoire.\n\nOn a commencé à développer la technologie. On a eu besoin de financement, donc on a frappé à la porte de l'écosystème d'innovation Paris-Saclay. Et donc elle a la SATT Paris-Saclay particulièrement, où on a eu un financement de maturation. Puis après, à la fin de cette maturation, effectivement, on a pris la décision de créer cette entreprise.\n\nDonc on est rentré dans une vraie démarche de création et là on a eu besoin de d'autres compétences, on a eu besoin de compétences juridiques. Donc",
+      "theme_principal": "T6",
+      "statut": "UTILISE",
+      "qualification": "PRIORITAIRE",
+      "capsules": {
+        "T6": {
+          "statut": "UTILISE",
+          "role": "choix_creation",
+          "duree_montage_secondes": 68,
+          "coupe": "Creation de start-up plutot que licence seule ; accompagnement marche, juridique, PI ; maturation SATT."
+        }
+      },
+      "commentaire": "Creation d'entreprise plutot que valorisation par licence seule ; SATT et accompagnement."
+    },
+    {
+      "id": "LOI-0007",
+      "debut": "01:29:18.600",
+      "fin": "01:30:20.650",
+      "duree_secondes": 62.05,
+      "verbatim": "une étude de brevetabilité, on ne sait pas faire\n\naller chercher des financeurs et vendre un produit, on ne sait pas faire. Et donc il faut qu'on aille chercher des experts. Donc on est rentré en pré maturation puis en maturation à la SATT. Et la ça, ça a été vraiment une structure qui nous a apporté beaucoup, beaucoup en termes de réseau, en termes de compréhension des différentes problématiques qui peuvent conduire sur le chemin de la valorisation.\n\nDonc mise en relation avec des incubateurs, avec des investisseurs, avec des juristes sur l'aspect brevets\n\net effectivement comprendre un peu les les clés.\n\nEt puis par contre, c'était quand même à nous de se dire.\n\nQu'est ce qui nous manque? Est ce qu'on ne rate pas quelque chose? Est ce qu'on ne prend pas un risque trop grand? Et donc dans le groupe initial qui était effectivement, on n'était que des scientifiques, j'avais une connaissance dans mon réseau qui était",
+      "theme_principal": "T7",
+      "statut": "UTILISE",
+      "qualification": "PRIORITAIRE",
+      "capsules": {
+        "T7": {
+          "statut": "UTILISE",
+          "role": "satt_reseau",
+          "duree_montage_secondes": 72,
+          "coupe": "Experts manquants (marche, brevet, vente) ; SATT apporte reseau, incubateurs, juristes."
+        }
+      },
+      "commentaire": "Pre-maturation et maturation SATT ; reseau, incubateurs, juristes, interlocuteurs."
+    },
+    {
+      "id": "LOI-0008",
+      "debut": "01:38:00.930",
+      "fin": "01:40:28.880",
+      "duree_secondes": 147.95,
+      "verbatim": "on avait vraiment besoin de bien comprendre la mécanique qui touchait à l'investissement des entreprises. Et nous, dans notre cas, c'était particulier parce que des investisseurs, il y en a plein,\n\nmais ils ont tous des formats d'investissement Différent.\n\nEt nous,\n\non avait une vraie identité. C'est à dire qu'on voulait rester une entreprise qui va grandir petit à petit et qui va apporter une solution à la filière selon ses plans. On n'avait pas une ambition économique, on n'avait pas l'ambition de se dire on crée en 2021 et en 2028 ou en 2030, on revend et on récupère dix fois ou 20 fois notre mise.\n\nCe n'était pas le modèle. Et en fait, on s'est aperçu que beaucoup d'investisseurs avaient ce modèle là. Ils disaient OK, on peut vous apporter votre projet et convaincant. Vous avez le réseau. Votre techno à l'air a l'air intéressante. On est prêts à apporter de l'argent pour vous faire grossir et vous faire intégrer le marché très vite.\n\nPar contre, les modèles de retour d'investissement n'étaient pas du tout compatibles avec le marché qu'on aborde. On est sur le marché agricole. Je vous l'ai dit, il y a une saisonnalité très forte. Un semis, c'est un semis par an.\n\nLa la rentabilité, la marge que font chaque intermédiaire est très faible en agriculture. Et donc nous, en tant que petite entreprise et nouvel acteur dans le paysage, on ne correspondait pas très bien à un modèle économique avec un retour sur investissement sur un pas de temps de 7 à 10 ans.\n\nDonc on a réfléchi, on a été vraiment en se disant OK, il y a l'appât du gain. D'une part, OK, ça peut être tentant de se dire Tiens, il y a quelqu'un qui met 800 000, 1 million, 2 millions, 3 millions sur la table tout de suite alors qu'on vient d'être créé.\n\nPar contre, on a. On a travaillé avec d'autres profils d'investisseurs\n\nbeaucoup plus raisonnables,\n\nraisonnables pour nous, en se disant OK, ils ont moins d'attentes derrière. Ils sont beaucoup plus dans l'accompagnement aussi. On a eu cette chance là d'avoir des personnes qui ont mis des tickets, qui ont cru en nous, qui nous ont dit ok, on croit en vous.",
+      "theme_principal": "T8",
+      "statut": "UTILISE",
+      "qualification": "PRIORITAIRE",
+      "capsules": {
+        "T8": {
+          "statut": "UTILISE",
+          "role": "logique_investisseurs",
+          "duree_montage_secondes": 80,
+          "coupe": "Formats d'investissement incompatibles avec l'agriculture ; choix d'investisseurs plus raisonnables et accompagnants."
+        }
+      },
+      "commentaire": "Investisseurs compatibles rythme et marges du secteur agricole."
+    },
+    {
+      "id": "LOI-0009",
+      "debut": "01:44:09.300",
+      "fin": "01:46:03.200",
+      "duree_secondes": 113.9,
+      "verbatim": "Mais en fait les créateurs. Souvent, on voit dans pas mal de créations d'entreprises, il y a un profil scientifique et puis on va chercher un profil business. Nous, on a fait ça, ça n'a pas marché. Donc pour construire l'équipe,\n\nça a été une réflexion importante parce qu'on n'était que des scientifiques au départ un doctorant,\n\nun enseignant-chercheur et une ingénieure. On était trois\n\net on voyait qu'il nous manquait tout un tas de choses sur le côté business, sur le côté financier, sur le côté juridique. Et on voyait que dans le modèle de création d'entreprise autour de la deep tech, beaucoup vont faire appel à des profils de personnes qui sortent d'écoles de commerce.\n\nDonc nous, on a essayé d'aller dans cette démarche là. On avait été guidé par un certain nombre d'acteurs en nous disant on va faire des pitchs, on va regarder. Et en fait, on s'est aperçu que la plupart des des personnes qui venaient du monde des écoles de commerce\n\navaient pas forcément une vision assez fine des enjeux pour le secteur agricole. Ils voyaient très très bien comment créer une entreprise. Ils voyaient très très bien ce que je disais sur les modèles de retour sur investissement ou sur les modèles de financement, etc. Mais ce n'était pas adapté à nos pas de temps.\n\nComme je le rappelle, les marges de gains pour chacun des acteurs sont très faibles en agriculture et les retours sur investissement sur les technos sont très longs.\n\nEt ça ne correspondait pas très bien. Et donc du coup, on est partis plutôt avec quelqu'un qui était un scientifique à la base, qui avait basculé dans le monde de la mise en marché de produits agricoles, qui connaissait très bien les acteurs de mise en marché et qui est rentré dans l'équipe de co-création avec nous.\n\nOui, on invente, on n'a pas, on n'a pas été incubés. On a eu des échanges avec un club alliances ici,",
+      "theme_principal": "T9",
+      "statut": "UTILISE",
+      "qualification": "PRIORITAIRE",
+      "capsules": {
+        "T9": {
+          "statut": "UTILISE",
+          "role": "profil_sectoriel",
+          "duree_montage_secondes": 73,
+          "coupe": "Profil business generique (ecole de commerce) inadapte ; choix d'un profil connaissant le secteur agricole."
+        }
+      },
+      "commentaire": "Echec profil business generique ; profil sectoriel agricole en co-creation."
+    },
+    {
+      "id": "LOI-0010",
+      "debut": "01:46:30.120",
+      "fin": "01:48:26.420",
+      "duree_secondes": 116.3,
+      "verbatim": "Donc pour changer d'échelle et passer d'une communication avec des acteurs académiques vers des acteurs industriels. On a été contraints à changer un petit peu notre vocabulaire, à changer de langage, à changer la manière de présenter la science. Les résultats scientifiques. On a commencé à le travailler beaucoup pendant notre programme de maturation avec l'équipe.\n\nNos deux jeunes scientifiques, doctorants et ingénieurs se sont un petit peu acculturer aussi avec ce monde de l'entreprise pour pouvoir Effectivement amener les démonstrations\n\nqui sont nécessaires en industrie, qui sont un petit peu différentes de celles qu'on attend au laboratoire. Donc, on a changé de langage à cette première étape là. Et puis après on a changé aussi au moment de la création, parce qu'au moment de la création, on s'est aperçu que\n\nil y avait beaucoup de choses qui rentraient en jeu. C'est quelque chose de tout simple avoir un avocat d'affaires pour des académies qui sont financées sur des financements publics, ce n'est pas quelque chose de commun. Lui expliquer ce qu'on fait, lui expliquer comment il pourrait défendre nos intérêts au mieux.\n\nÇa a été quelque chose d'important. Et même chose avec les investisseurs. Comment est-ce qu'on convainc un investisseur que notre technologie a une vraie valeur? Elle a une vraie plus-value qui va au delà de simplement la filière. C'est aussi une une valeur à travers l'image qu'elle peut donner auprès de la société.\n\nEst ce qu'elle est acceptable? Est ce qu'elle est désirable? J'aime beaucoup parler de désirabilité quand j'enseigne l'entrepreneuriat. Il faut que ce soit désirable par un public très large. Et comment est ce qu'on en fait quelque chose de désirable? Il faut changer un peu la typologie des mots qu'on utilise, et sortir un peu d'une science très dure vers des choses beaucoup plus",
+      "theme_principal": "T10",
+      "statut": "UTILISE",
+      "qualification": "PRIORITAIRE",
+      "capsules": {
+        "T10": {
+          "statut": "UTILISE",
+          "role": "discours_industriel",
+          "duree_montage_secondes": 82,
+          "coupe": "Vocabulaire academique vers industriel ; convaincre investisseurs ; desirabilite — couper avant demonstrations industrielles (suite hors T10)."
+        }
+      },
+      "commentaire": "Discours scientifique vers industriel ; investisseurs et desirabilite."
+    },
+    {
+      "id": "LOI-0011",
+      "debut": "01:05:27.840",
+      "fin": "01:08:07.520",
+      "duree_secondes": 159.68,
+      "verbatim": "Il y en a d'autres qui, au contraire, voient un petit peu aussi les enjeux que l'impact qu'on peut avoir sur la société, sur l'économie, sur l'entreprise, sur la souveraineté alimentaire dans le cadre de la production de denrées alimentaires agricoles. Et effectivement, je me suis aperçu qu'il fallait ajuster quand même le discours dans la démarche pour avoir, pour être accepté dans l'environnement où j'étais.\n\nDonc dans mon institution AgroParisTech, dans mon laboratoire associé à INRA. Dans le paysage national. Dans le paysage européen. Comment est ce que finalement, un enseignant chercheur se lance dans une demande, dans une démarche entrepreneuriale? Qu'est ce qui fait de ces financements publics pour aller vers une valorisation industrielle?\n\nDonc ça n'a pas toujours été évident, mais on est arrivé peut être à une époque, dans les années 2015-2016, 2017 où c'était une vraie prise de conscience. Je pense au niveau national, de dire la recherche académique, elle doit aussi servir à la société, à l'environnement et aux grands enjeux auxquels on fait face.\n\nAlors, au tout début de la genèse de ce projet, il y a une chance, c'est qu'effectivement j'avais un doctorant qui était à peu près à un an de la fin de sa thèse et qui ne se voyait pas aller vers\n\nune carrière académique, et il réfléchissait plutôt à exploré des aspects, soit travaillé dans l'industrie, soit à entreprendre, et ils étaient complètement dans la dans une philosophie qui me correspondait. Donc, on a travaillé ensemble. Il s'appelle Frédéric Chauffeur. C'est lui qui est aujourd'hui PDG de l'entreprise qu'on a, qu'on a créé.\n\nEt cette genèse là, on l'a construite sur sa dernière année de thèse et on a vraiment commencé effectivement à orienter nos travaux vers des choses qui pourraient être applicables au niveau industriel. Et autour de ça, on avait une équipe technique qui a vraiment adhéré au projet aussi.\n\nPas tous. Il y a certains de mes, de mes collègues qui vont dire Mais moi, je ne veux pas travailler sur ces projets là, je veux rester sur de la recherche plutôt académique et fondamentale. Choix que je respecte complètement. Et par contre, effectivement, je pense qu'un point clé c'est constituer une équipe et ça a été vraiment un déclencheur de se dire on n'est pas tout seul et on est trois ou quatre personnes où on croit au projet.\n\nPourquoi oser? Je dirais pourquoi pas oser.\n\nParce que finalement, la recherche académique, c'est passionnant et on peut très bien faire de l'entrepreneuriat en maintenant un très très bon niveau de recherche académique. Donc je ne voyais pas de frein à franchir ce pas là.",
+      "theme_principal": "T11",
+      "statut": "UTILISE",
+      "qualification": "PRIORITAIRE",
+      "capsules": {
+        "T11": {
+          "statut": "UTILISE",
+          "role": "entourage_academique",
+          "duree_montage_secondes": 78,
+          "coupe": "Entrepreneuriat clivant ; ajuster le discours ; constituer une equipe ; pourquoi oser."
+        }
+      },
+      "commentaire": "Entrepreneuriat clivant en milieu academique ; ajuster le discours ; pourquoi oser."
+    },
+    {
+      "id": "LOI-0012",
+      "debut": "01:42:18.420",
+      "fin": "01:44:07.830",
+      "duree_secondes": 109.41,
+      "verbatim": "Nous sommes en juin 2026 donc en presque cinq ans. C'est une entreprise, c'est une start up qui a, qui a grandi, qui a poussé. Ça a été un traitement de semences qui a marché, si je peux dire, avec une croissance qui a été progressive, avec différents types d'investissements. Et puis il fallait s'associer ou monter des partenariats avec les acteurs.\n\nDonc, on a eu nos associés clients, on va dire, parce que ceux qui ont cru en notre projet, qui étaient prêts à devenir notre client, voulaient des démonstrations. Donc il n'y a jamais eu. Ce n'était pas une commercialisation d'un smartphone, c'était vraiment une construction d'un service avec les partenaires.\n\nDonc, au cours des de ces cinq années, il y a eu plusieurs acteurs de la filière Semence et plans qui se sont associés avec nous pour tester d'abord notre technologie sur leur espèce ou sur leur génétique, la mettre aux champs et ensuite revenir en tant que client pour dire ok, ça marche, on est convaincus, on part avec vous.\n\nDonc ça a été très incrémental. Et l'un d'entre eux,\n\navec lequel on travaille depuis un peu plus de deux ans maintenant, a décidé de rentrer à l'actionnariat de l'entreprise en tant qu'actionnaire majoritaire depuis le mois dernier. Donc les quatre fondateurs initiaux, il y a une personne qui est sortie de l'actionnariat pour par choix personnel, et les trois autres sont toujours actionnaires minoritaires pour le coup.\n\nMais c'est une entreprise, donc l'activité de l'entreprise demeure et j'espère demeurera encore longtemps. Donc c'est aujourd'hui un véritable acteur de cette filière selon ses plans.",
+      "theme_principal": "T12",
+      "statut": "UTILISE",
+      "qualification": "PRIORITAIRE",
+      "capsules": {
+        "T12": {
+          "statut": "UTILISE",
+          "role": "partenaires_clients_actionnaires",
+          "duree_montage_secondes": 109,
+          "coupe": "Associés-clients ; demonstrations puis clients ; construction incrementale ; entree d'un partenaire au capital."
+        }
+      },
+      "commentaire": "Partenaires devenus clients puis actionnaire majoritaire ; construction incrementale."
+    }
+  ]
+}

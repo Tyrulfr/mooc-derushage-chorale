@@ -1,0 +1,494 @@
+BAB_JJ_GREFFET.txt
+French
+
+01:00:05.870 — 01:00:42.270 · Speaker 1
+Alors je m'appelle Jean-André Greffé, je suis professeur à l'Université Paris-Saclay à l'Institut d'Optique et je travaille en recherche dans le domaine de la nano photonique. Alors nano photonique, ça veut dire qu'on étudie la lumière, mais à l'échelle du nanomètre. Par exemple pour détecter des tout petits objets.
+
+Jean-Jacques Greffé Je suis professeur à l'Institut d'optique. Je travaille dans le domaine de la nano photonique, c'est à dire de l'optique, l'étude de la lumière, mais à l'échelle du nanomètre. Et concrètement, ça sert par exemple à étudier des observer, détecter des toutes petites particules.
+
+Excusez-moi,
+
+
+01:00:43.390 — 01:00:55.030 · Speaker 1
+je voudrais greffer. Je travaille dans le domaine de la nano photonique, c'est à dire l'étude de la lumière à l'échelle du nanomètre. Concrètement, c'est par exemple étudier détecter des toutes petites particules avec de la lumière.
+
+
+01:01:01.370 — 01:01:05.369 · Speaker 1
+Alors dans mon cas, l'innovation n'est pas
+
+
+01:01:06.730 — 01:01:11.769 · Speaker 1
+le résultat d'une action de recherche fondamentale comme on fait habituellement
+
+
+01:01:13.210 — 01:02:15.030 · Speaker 1
+l'innovation dont nous allons parler. Dans ce contexte, c'est tiré par le marché, ce qui n'est pas habituel, et c'est dès le le résultat d'une rencontre. Une rencontre avec un jeune startuper qui travaillait dans une start-up, qui avait une problématique de détection de virus, et il y avait un besoin du marché de voir des objets, des virus plus petits que ce qu'il pouvait détecter.
+
+C'est ça la question qui a été posée. Et j'ai apporté une réponse basée sur, évidemment, 30 ans de recherches et d'expériences de recherche. C'est comme ça qu'est née l'innovation, le fait d'oser à deux. Dans mon cas, ça s'est fait assez naturellement puisque la problématique scientifique est née d'une rencontre à deux.
+
+Et la deuxième personne se trouve être mon fils qui était startuper et qui rencontrait une barrière scientifique dans le développement des instruments qu'ils développaient. Et du coup, cette innovation était aussi l'occasion pour lui de se lancer dans une nouvelle aventure entrepreneuriale qui aurait été la sienne, qu'il aurait pilotée de A à Z.
+
+
+01:02:16.070 — 01:02:43.350 · Speaker 1
+Notre innovation concerne apporte la réponse à la question de la détection de nanoparticules qui sont utilisées dans des applications médicales. Très concrètement, le vaccin que nous avons tous connu contre le Covid, véhicule de l'ARN, cette ARN. Si on l'injecte dans le corps, il est détruit par le système immunitaire extrêmement vite.
+
+Il faut le protéger. En langue balan, il est dans une petite particule qui le protège.
+
+
+01:02:44.430 — 01:03:16.200 · Speaker 1
+Et donc ça, ça pose la question de compter ces particules, savoir combien on en a fabriqué et de savoir si elles sont remplies, oui ou non. Et c'est beaucoup plus difficile de répondre à cette question que dans le cas d'une aspirine. Savoir si le comprimé contient le produit actif, parce que ce n'est pas de la synthèse chimique.
+
+C'est fabriqué par de la matière vivante. Et du coup, on a un contrôle qui n'est pas du tout le même sur ce qu'on fabrique et donc caractériser ce qu'est la matière vivante. Un produit est très difficile et c'est cette question à laquelle on veut répondre.
+
+
+01:03:17.480 — 01:03:57.080 · Speaker 1
+Au delà de mon exemple, la problématique que je viens de décrire concernant le vaccin du Covid est la problématique générale de la totalité des bio thérapies qui sont les meilleures chances d'adresser des problèmes très difficiles que sont les maladies auto-immunes et les cancers. Et donc toutes ces techniques utilisent des beaucoup d'entre elles des thérapies géniques.
+
+Et on retrouve toujours la même question du transport, de l'arène, de l'ADN, des différents principes actifs. La. l'Innovation que nous avons introduite va servir à beaucoup d'acteurs dans la chaîne
+
+
+01:03:58.230 — 01:04:16.750 · Speaker 1
+de la bio thérapie. Dans un premier temps, les premiers intéressés sont les biotechs. Les biotechs, ce sont des startups qui développent un médicament. Elles se focalisent sur un problème particulier et si tout se passe bien, elles finissent par être rachetées par des grandes entreprises pharmaceutiques que l'on appelle les pharmas.
+
+Dans le jargon
+
+
+01:04:17.870 — 01:04:42.990 · Speaker 1
+donc, ce sont les premiers acteurs. Ce sont des acteurs de recherche privés. Il y a la recherche académique qui arrive juste après, qui est aussi extrêmement intéressée par ce qu'on développe. Et puis dans un horizon de cinq ou dix ans, si tout ça se passe bien, ces médicaments seront produits.
+
+Et donc là, ce seront les industries pharmaceutiques qui produisent, qui seront intéressés par la caractérisation de leurs productions.
+
+
+01:04:46.830 — 01:04:46.870 · Speaker 1
+Et
+
+
+01:04:48.110 — 01:04:50.830 · Speaker 1
+intérêts. Alors, dans notre cas,
+
+
+01:04:52.190 — 01:04:58.560 · Speaker 1
+nous sommes partis d'un besoin du marché qui était connu par mon co-fondateur.
+
+
+01:05:00.200 — 01:05:16.040 · Speaker 1
+Pour autant, nous avons réalisé une étude de marché pour essayer d'avoir une approche qui ne soit pas cette fois ci qualitative, mais un peu plus quantitative de ce que serait le marché. Et là, nous avons bénéficié de l'aide de la SATT de Paris-Saclay qui a réalisé une étude de marché.
+
+
+01:05:17.400 — 01:05:40.160 · Speaker 1
+Cela nous a permis d'avoir une vision beaucoup plus précise. En parallèle, nous avons assisté à beaucoup de conférences dans les domaines des utilisateurs potentiels de l'innovation pour identifier ce qu'étaient les problèmes importants. Et l'ensemble de ces de ces étapes nous a conduit à
+
+
+01:05:41.480 — 01:05:53.320 · Speaker 1
+modifier en fait notre cible. Et nous avons fait ce qu'on appelle un pivot. C'est à dire qu'on a changé, on a adapté notre technologie pour répondre à un autre besoin qu'on a défini à ce moment là.
+
+
+01:05:59.060 — 01:06:04.739 · Speaker 1
+Alors, en matière de développement, d'innovation, ce qui est important, c'est
+
+
+01:06:06.060 — 01:07:36.570 · Speaker 1
+c'est la survie de l'entreprise et donc les ventes. Et donc il ne faut pas se tromper, on n'est pas là pour faire un beau projet de physicien, on est là pour répondre à des besoins réels de clients et un besoin réel. Ça veut dire que le client va payer. Donc en fait, on distingue entre le nice to have et le must have.
+
+Et quand on reste dans son labo, on ne peut pas savoir qu'est ce qui est nice to have ou qu'est ce qui est must have. Il faut rencontrer les clients et leur poser la question. Et une première façon d'ailleurs de le faire, c'est de vérifier s'ils sont prêts à payer un petit peu pour voir, c'est à dire louer un instrument par exemple.
+
+Et ça, c'est juste fondamental. Donc, il faut prendre son bâton de pèlerin et aller rencontrer un maximum de clients potentiels pour tester ce qu'est l'appétit du marché. Alors dans mon cas, c'est très simple. C'est la rencontre avec mon fils. Donc celle là elle remonte à il y a très longtemps.
+
+Mais donc oui, le démarrage de mon de ma participation à un projet d'innovation, c'est vraiment la rencontre avec mon fils qui qui a exprimé un besoin. Donc il était entrepreneur, il était dans une start up et il a eu envie de se lancer tout seul pour accomplir, atteindre de nouveaux objectifs, avoir de nouvelles performances dans ce qu'il pouvait faire.
+
+Et c'est cette aventure à deux qui a été. C'est la perspective d'avoir cette aventure à deux qui a été l'élément déclencheur.
+
+
+01:07:42.290 — 01:08:10.910 · Speaker 1
+Alors, le point de départ n'était pas un résultat scientifique, mais une idée scientifique qui répondait à un besoin. Et effectivement, c'était une idée au départ. Donc ensuite, on a fait des simulations numériques et on est dans un domaine où on contrôle bien ce qu'on fait. Donc quand les simulations numériques marchent, on a quand même déjà un bon niveau de confiance.
+
+Pour autant, tant qu'on n'a pas fait la manip, rien n'est sûr. Et donc il faut monter la manip. Elle n'était pas prête au labo. Donc
+
+
+01:08:12.230 — 01:09:37.430 · Speaker 1
+ça a été la première chose qu'on a faite. Réunir de l'argent pour financer la manip et valider expérimentalement les résultats. Et ça, ça nous a pris un an et demi et on a pu le faire grâce à des aides qui sont assez nombreuses actuellement. C'est c'est assez facile entre guillemets. En tous cas, par rapport au financement d'un projet de recherche fondamentale, c'est assez facile de pouvoir trouver des aides pour réaliser ce qu'on appelle donc une preuve de concept, c'est à dire montrer que l'idée va marcher.
+
+Alors lorsqu'on a une idée et qu'on se lance, pour la réaliser, il faut qu'il y ait de l'instrumentation. il faut faire des expériences et montrer réellement expérimentalement que ça fonctionne. Et donc ça, il nous a fallu un an et demi à peu près pour le faire, et on l'a fait en travaillant au laboratoire avec le soutien financier de l'université.
+
+Alors, tout d'abord, le soutien de l'établissement qui nous héberge, du laboratoire et puis ensuite le soutien financier de l'université et puis également du CNRS. L'évolution du développement technique, de l'innovation s'est fait de la façon suivante Dans un premier temps, on a une idée.
+
+Cette idée, on peut l'utiliser pour rédiger un brevet et protéger l'innovation dans un deuxième temps. Et c'est indépendant, on réalise une expérience pour vérifier techniquement que ça fonctionne.
+
+
+01:09:38.470 — 01:10:00.979 · Speaker 1
+Et donc ces choses, on les a faites en parallèle. Il faut bien sûr obtenir de l'argent et pour financer des déposer un brevet et pour réaliser les. Les. La preuve expérimentale. Et là, on a disposé de soutien de l'établissement de l'université et du CNRS pour réaliser ces choses là. Il faut un brevet.
+
+Il faut compter
+
+
+01:10:02.140 — 01:10:30.220 · Speaker 1
+six mois pour le déposer. A peu près, il est délivré au bout de deux ans. Et puis, sur le plan expérimental, il nous a fallu 18 mois. Alors la phase expérimentale de preuve de concept, sur le plan technique, c'est quelque chose qui permet de débugger. Dans notre jargon, c'est à dire de trouver toutes les difficultés qui ne sont pas inclues dans les modèles numériques que l'on fait et d'apprendre à les maîtriser.
+
+
+01:10:31.580 — 01:12:19.690 · Speaker 1
+Il y a une toute autre dimension sur ce qui s'est passé pendant ces 18 mois, qui n'a rien de technique. C'est que comme nous étions déjà dans une démarche d'innovation en tant qu'entrepreneur, on est toujours dans l'hypothèse où tout va marcher, On est forcément optimiste, sinon on ne serait pas là.
+
+Et donc on se pose la question d'après et ce que nous étions, dans une situation d'équipe très complémentaire avec le scientifique et l'ingénieur qui maîtrise tous les aspects du développement technique. Il nous manquait à l'évidence quelqu'un qui ait des compétences dans le domaine de finance, de marketing, de logistique, de production, de ressources humaines Et donc c'était notre besoin le plus criant.
+
+Et ça, c'est quelque chose que l'on a développé pendant cette période là. Et il ne faut pas attendre quatre parce que c'est absolument critique. Donc, dans cette phase de preuve de concept, nous avons appris des choses dans plusieurs domaines. Tout d'abord, il y a l'aspect technique et là il faut déboguer, c'est à dire trouver tous les problèmes réels que l'on rencontre dans la vie réelle et apprendre à les résoudre, à les maîtriser.
+
+C'est, c'est l'aspect, je dirais, le plus proche de la vie du chercheur. Mais il y a un autre aspect qui est absolument crucial et critique, c'est le développement de l'équipe. En tant qu'entrepreneur, on se met dans la situation où de toute façon, ça va marcher. Donc il faut se poser la question de l'après et l'étape d'après, c'est l'équipe qui va créer l'entreprise.
+
+Et à l'évidence, notre équipe, de ce point de vue là, était bancale. Pour faire la preuve de concept, elle était parfaite. On avait l'ingénieur, on avait le scientifique. Mais pour l'entreprise, il nous manque quelqu'un qui sache gérer, faire du marketing, s'occuper des ventes, faire la comptabilité, s'occuper des ressources humaines, s'occuper de la logistique, s'occuper de la production.
+
+
+01:12:20.770 — 01:13:19.550 · Speaker 1
+Et là, on avait zéro compétences, zéro expérience. Et donc il a fallu chercher ses compétences. Donc ça, c'est un point extrêmement important. Cette complémentarité que l'on a recherché, la complémentarité de l'équipe, c'est absolument essentiel parce que les investisseurs ne regardent que cela.
+
+Alors quand je dis que j'exagère à peine, ils vont un peu regarder si il y a un marché, ils vont quand même vérifier que ce n'est pas évidemment vers l'échec qu'on va. Mais ensuite, la seule chose qu'ils regardent, c'est la. C'est ce qu'ils estiment être la capacité de l'équipe à mener à bien le projet.
+
+Ce qu'il faut savoir, c'est que la grande majorité des projets pivotent. C'est à dire que l'estimation technique du projet n'a aucune valeur puisque de toute façon, ce n'est pas ça qui va survivre, qui va résister et ce qui va survivre, c'est l'équipe. Et donc il faut choisir une équipe qui va être capable de prendre des virages quand il faut prendre des virages.
+
+
+01:13:25.470 — 01:13:36.590 · Speaker 1
+Alors pour ce qui me concerne, la crainte principale, c'était celle que je sois en train d'emmener mon président, partenaire, co-fondateur et fils dans une impasse.
+
+
+01:13:38.150 — 01:13:40.789 · Speaker 1
+Mais lui, il n'avait pas du tout cette crainte. Il ne faut pas se gratter
+
+
+01:13:41.910 — 01:13:42.470 · Speaker 1
+la barbe.
+
+
+01:13:44.030 — 01:13:44.830 · Speaker 1
+Je recommence
+
+
+01:13:45.870 — 01:13:46.750 · Speaker 1
+donc c'est bon.
+
+
+01:13:47.590 — 01:13:50.460 · Speaker 2
+Ma principale principale hésitation en crainte.
+
+
+01:13:50.500 — 01:14:21.780 · Speaker 1
+Mon hésitation principale, c'était d'emmener mon fils vers une impasse et un échec éventuel puisque c'était moi qui apportait le principe. Mais cela étant dit, je n'avais pas vraiment de craintes, au contraire, beaucoup d'enthousiasme à me jeter à l'eau et je dois dire que mon fils n'avait pas beaucoup non plus de craintes.
+
+Moi, à sa place, j'en aurais eu beaucoup plus et je n'aurais pas fait ce qu'il a fait. Il a démissionné à un moment où moi je n'aurais jamais démissionné car je jugeais la la maîtrise des risques trop faible.
+
+
+01:14:24.060 — 01:14:25.100 · Speaker 1
+Voilà donc.
+
+
+01:14:27.380 — 01:14:50.750 · Speaker 1
+À vrai dire, on n'avait pas beaucoup de craintes. Et ce qu'il faut surtout finalement dire, c'est qu'il est impossible de tout maîtriser et que de toute façon, il faut se jeter à l'eau. Et quand on se jette à l'eau, la seule chose qu'il faut savoir, c'est que si ça ne marche pas, on essaiera autre chose.
+
+Dans le cadre du même projet. Et puis si ça ne marche pas, on essaiera autre chose dans le cadre d'un autre projet. Et donc il n'y a pas de crainte à avoir. En fait.
+
+
+01:14:52.350 — 01:14:57.270 · Speaker 3
+Lorsqu'on se lance dans une activité d'entrepreneuriat, il y a toujours des obstacles.
+
+
+01:14:57.590 — 01:15:27.510 · Speaker 1
+Tous les jours, il y a des obstacles. On passe notre temps à résoudre des problèmes plus ou moins graves. Alors il y en a qui sont, qui laissent plus de traces parce qu'ils s'étalent dans la durée et ils mangent un peu l'esprit, ils deviennent obsédants. Alors, il y a les négociations de transfert de propriété intellectuelle avec les propriétaires qui sont les tutelles, qui sont des choses qui sont assez longues.
+
+Donc, par rapport à ce qui se passe, je j'estime que, dans mon cas, on s'en est bien tiré, mais c'est quand même des processus qui sont longs.
+
+
+01:15:28.790 — 01:16:10.799 · Speaker 1
+Ensuite, il y a un processus qui est extrêmement difficile et la longueur dépend de l'état de l'économie. C'est l'obtention de financements, la levée de fonds. Et donc là, évidemment, il y a des périodes où les investisseurs, il y en a beaucoup, et il y a des périodes où il y en a beaucoup moins.
+
+Et donc, à ce moment là, la recherche peut être très longue. Je vais vous donner un exemple. Un investisseur donné va investir. Typiquement, lorsqu'il a ce qu'on appelle un fonds, c'est à dire une masse d'argent qu'il a lui même levé de ses clients et qu'il doit investir. Il va rechercher dix projets sur lesquels il va investir.
+
+Il va avoir 1000 projets à examiner. Ça vous donne une idée du taux de sélection. Alors, il y a un autre aspect
+
+
+01:16:12.120 — 01:16:28.880 · Speaker 1
+qui est difficile dans qui est, qui est qui peut être assez long, c'est le recrutement, les ressources humaines. Lorsqu'on développe une équipe pour une startup, les ressources humaines, c'est absolument essentiel. Et donc ce n'est pas toujours facile de trouver les bons candidats.
+
+
+01:16:29.960 — 01:16:31.439 · Speaker 1
+On a toujours peur de se tromper
+
+
+01:16:32.960 — 01:16:47.260 · Speaker 1
+et donc c'est voilà, ça c'est quelque chose qui aussi prend beaucoup de temps et qui est absolument capital. C'est dans le cadre d'une startup, la qualité de l'équipe, c'est une grosse, grosse partie du succès.
+
+
+01:16:53.300 — 01:16:56.140 · Speaker 3
+Alors lorsqu'on se lance dans un projet de.
+
+
+01:16:56.140 — 01:16:56.940 · Speaker 1
+Valorisation.
+
+
+01:16:56.940 — 01:16:57.300 · Speaker 3
+Dans un.
+
+
+01:16:57.300 — 01:17:06.780 · Speaker 1
+Environnement académique, on a un premier environnement immédiat qui est l'établissement dans lequel on se trouve. Donc en général, il y a un labo CNRS. Et puis
+
+
+01:17:07.980 — 01:17:11.740 · Speaker 1
+en tout cas dans mon cas, de physicien, et puis une université ou une grande école.
+
+
+01:17:13.180 — 01:17:14.300 · Speaker 1
+Et donc ce.
+
+
+01:17:14.300 — 01:17:14.900 · Speaker 3
+Sont eux.
+
+
+01:17:14.900 — 01:17:27.300 · Speaker 1
+Qui accompagnent dans la toute première étape qui est le dépôt de brevet et qui c'est eux qui qui héberge. Et puis évidemment, ils les accompagnent parce qu'ils fournissent les locaux, les moyens, les services techniques. Et ça, c'est extrêmement important.
+
+
+01:17:29.100 — 01:17:32.020 · Speaker 3
+Le deuxième accompagnateur.
+
+
+01:17:32.020 — 01:17:34.660 · Speaker 1
+Que l'on oublie généralement de citer,
+
+
+01:17:35.820 — 01:18:25.720 · Speaker 1
+c'est France Travail. Très souvent, s'il y a des gens qui se lancent et c'est le cas de mon co-fondateur et qui démissionne. Et donc ils ont deux ans en fait de financement pour mener à bien leur projet, et ce deux ans sont critiques. Si, si France travail un jour décide que ce sera 18 mois, ça sera un énorme problème pour pour l'innovation parce que parce que c'est moi, là, on les compte dans notre situation.
+
+Ensuite, il y a beaucoup de dispositifs qui ont été mis en place pour l'aide, et en particulier dans ce qu'on appelle la deep tech, c'est à dire la technologie qui est issue de recherche fondamentale assez avancée, et donc par opposition à ce qu'on pourrait appeler de l'industrie incrémentale.
+
+On va prendre un produit bien connu et on va le modifier un petit peu pour qu'il soit un petit peu plus performant.
+
+
+01:18:27.000 — 01:18:55.670 · Speaker 1
+Dans Tic-Tac, on va amener quelque chose de radicalement différent. Et donc, pour favoriser donc ce processus qui consiste à aller chercher des nouvelles idées dans les laboratoires et à les transformer en produits industriels, il y a tout un tas de programmes souvent orchestrés soit par l'Agence nationale de la recherche, soit par la BPI, la Banque pour la banque pour l'innovation ou pour l'industrie, la banque pour l'investissement.
+
+
+01:18:58.470 — 01:18:58.829 · Speaker 2
+Et
+
+
+01:19:00.230 — 01:19:00.990 · Speaker 2
+Bpifrance.
+
+
+01:19:03.390 — 01:19:36.189 · Speaker 1
+Et donc il y a différents organismes, l'Agence nationale pour la recherche. Et puis il y a BPI France qui est la Banque pour l'investissement. Et il y a beaucoup d'instruments qui permettent, étape après étape, d'accompagner. Donc, nous, nous avons bénéficié d'un soutien du Labex, d'un soutien de l'Université, des programmes d'aide à l'innovation, d'un programme spécifique d'innovation du CNRS.
+
+Tout ça, ça fait quand même plus de 250 zéro zéro 0 €. Ensuite, au moment où on s'approche de la création d'entreprise et avant la création de l'entreprise, il y a un programme qui s'appelle
+
+
+01:19:37.270 — 01:20:22.680 · Speaker 1
+BFT Lab. Donc pour French Tech, c'est la BPI qui est derrière. Une fois qu'on crée, il peut y avoir des montants de l'ordre de un peu moins de 100 zéro zéro 0 € pour démarrer l'activité au tout début de l'entreprise. Et puis après, il y a des concours organisé par la BPI également, sur lesquels on peut avoir des financements de l'ordre de 300 à 600 zéro zéro 0 €.
+
+Donc voilà. Et alors? Et puis j'oublie, j'oublie les accompagnements. Donc là je vous ai parlé que des programmes financiers. Donc, derrière, il y a énormément d'éducation à l'innovation avec des programmes pilotés notamment par les incubateurs dans le cadre de l'Université Paris-Saclay et Incube Alliance.
+
+
+01:20:23.840 — 01:20:46.980 · Speaker 1
+Et puis il y a des incubateurs privés. Nous avons suivi un programme de Wilco. Les établissements eux mêmes leur programme. Nous avons été très aidés par l'Institut d'optique et le programme lumineux Edge en collaboration avec X Campus. Donc, il y a beaucoup de dispositifs pour accompagner les chercheurs qui veulent se lancer dans cette aventure.
+
+
+01:20:52.620 — 01:20:57.740 · Speaker 1
+Nous avons été accompagnés dans le développement de notre projet par un certain nombre de structures de l'université
+
+
+01:20:58.780 — 01:21:23.220 · Speaker 1
+et du CNRS également. Donc, par ordre d'entrée, il y a tout d'abord tout au début, un programme de l'université qui s'appelle POC in Lab, un programme commun avec la NSA. Ensuite, nous avons bénéficié dans ce cadre là de projet d'un programme de formation organisé par l'incubateur Cube Alliance de l'Université Paris-Saclay.
+
+
+01:21:24.420 — 01:21:38.980 · Speaker 1
+Ensuite, nous sommes rentrés dans une phase de maturation, de pré maturation avec un autre programme d'incubation et nous étions également accompagnés par un programme de coaching du CNRS qui s'appelle le programme Rise.
+
+
+01:21:41.070 — 01:22:01.990 · Speaker 1
+Et puis ensuite il y a eu la la, la phase d'incubation par l'incubateur. Et puis en parallèle, nous avons bénéficié d'un soutien du programme lumineux de l'Institut d'Optique X Campus dans le cadre de notre innovation.
+
+
+01:22:03.910 — 01:22:17.790 · Speaker 1
+Notre point de départ, c'était une expérience de Mathieu, notre président, qui était en start up, et il était assez clair pour lui que c'était le même genre de structure qu'il souhaitait reproduire. Donc on
+
+
+01:22:18.830 — 01:22:31.470 · Speaker 1
+s'était tout de suite dirigés vers une start-up. On est dans une situation qui correspond assez bien à ça. On a un brevet, une innovation technologique, un produit sans équivalent et donc la
+
+
+01:22:32.670 — 01:22:38.469 · Speaker 1
+valorisation par création de start-up est assez adaptée. Donc nous avons
+
+
+01:22:40.370 — 01:23:04.650 · Speaker 1
+Créer une startup qui est donc basée sur un brevet. Alors ce brevet, quand on l'exploite, soit on peut utiliser une licence exclusive qui est délivrée par les établissements qui sont copropriétaires du brevet, ou il peut y avoir un transfert de propriété en échange d'une part, de participation dans la société.
+
+
+01:23:06.250 — 01:23:28.850 · Speaker 1
+Le schéma le plus couramment utilisé jusqu'ici était le premier, mais il se trouve que dans notre cas, nous sommes partis à la demande des établissements sur le deuxième cas. Et je dois dire que c'est du point de vue des de l'entreprise, c'est favorable puisque lorsque vous rencontrez des investisseurs, s'ils savent que vous avez la propriété pleine et entière du brevet, c'est tout à fait favorable.
+
+
+01:23:29.690 — 01:23:31.570 · Speaker 2
+Très bien. Là on peut.
+
+
+01:23:36.250 — 01:23:36.810 · Speaker 2
+Tape.
+
+
+01:23:37.970 — 01:23:58.080 · Speaker 1
+Alors, il faut aussi rajouter un élément concernant la levée de fonds. L'écosystème est également très utile à cet à cette étape là pour faire des introductions. Et parmi les investisseurs qui sont dans notre tour de table, il y a un certain nombre d'acteurs qui ont été introduits par les partenaires de l'environnement local.
+
+
+01:23:59.240 — 01:24:14.320 · Speaker 1
+Lorsqu'on a démarré le projet, nous étions deux et un ingénieur, un scientifique et donc il manquait à l'évidence une compétence qui est la compétence de management, la compétence finance comptable, ressources humaines.
+
+
+01:24:15.400 — 01:24:32.160 · Speaker 1
+Et donc nous avons tout de suite cherché à pallier ce manque en cherchant un troisième co-fondateur qui aurait ces compétences. C'est absolument crucial. Et je dois dire que
+
+
+01:24:33.200 — 01:25:03.330 · Speaker 1
+c'est parce que nous avons eu la chance de trouver quelqu'un de remarquable que. qu'ENSUITE nous avons pu nous présenter devant les investisseurs avec une équipe très complémentaire et qui pouvait entraîner la conviction des investisseurs. Il faut bien comprendre que les investisseurs sont totalement incompétents sur l'aspect technique.
+
+Ils n'investissent jamais en évaluant la pertinence d'un projet technique. Ils investissent en pariant sur une équipe humaine.
+
+
+01:25:09.690 — 01:25:35.010 · Speaker 1
+Alors lorsqu'on démarre un projet, on est une équipe académique. On a besoin de beaucoup d'argent à différentes étapes. Il y a les étapes entre création d'entreprise, les étapes post création. Donc là, il faut savoir qu'il ne faut pas créer trop tôt, surtout parce qu'il y a beaucoup de financements qui sont en création, auxquels vous n'êtes plus éligible si vous créez.
+
+Et donc pour vous citez très brièvement les aides
+
+
+01:25:36.210 — 01:25:50.720 · Speaker 1
+qui sont assez nombreuses lorsqu'on est dans le domaine de la deep tech, c'est à dire dans un domaine proche de la recherche fondamentale. Ce sont des financements, des programmes de valorisation des universités, des financements, des programmes de valorisation du CNRS.
+
+
+01:25:51.880 — 01:26:52.970 · Speaker 1
+Il peut y avoir des financements locaux de différentes structures de l'université. Ensuite, quand on s'approche de la création, il y a des financements de la BPI qui aident à tout ce qui va vous tomber dessus. Par exemple, il vous faudra des avocats pour faire vos statuts, pour négocier un certain nombre de choses.
+
+Et donc on va vous donner de l'argent pour payer les avocats. On va vous donner de l'argent pour éventuellement payer le salaire de votre futur PDG que vous devez trouver. C'est urgent de le trouver et il faut que vous entendez bien avec lui. Donc cet argent, vous pourrez l'utiliser pour tester pendant six mois que ça se passe bien, etc, etc.
+
+L'étude sur sur la propriété industrielle, valider que vous l'avez, les frais de dépôt de brevet, tout ça. Et ça, ça peut monter à 100 000 €. Et ça, c'est avant. Dès que vous créez, vous n'avez plus le droit de dépenser cet argent. Donc il faut bien le planifier. Une fois que vous avez créé, vous pouvez avoir de la part de la part de la BPI, un programme Émergence, c'est 90 milliards d'euros.
+
+Tout de suite, vous pouvez démarrer immédiatement.
+
+
+01:26:54.010 — 01:27:08.250 · Speaker 1
+Et puis derrière, il y a des concours. Des concours à Scilab pour la deep tech également, qui peuvent vous fournir entre 300 zéro zéro et 600 000 €. Vous êtes très accompagnés par les incubateurs pour rédiger les réponses à ces appels d'offres.
+
+
+01:27:09.290 — 01:27:13.290 · Speaker 1
+Et puis après? Après, il faut trouver des investisseurs ou des clients.
+
+
+01:27:14.530 — 01:27:17.530 · Speaker 2
+Est ce qu'il y a eu un moment où votre projet a fortement accéléré?
+
+
+01:27:20.250 — 01:27:41.830 · Speaker 1
+Le gros coup d'accélérateur. Là où on sait que lorsque l'équipe passe des fondateurs au début, ses fondateurs plus une personne. Parce qu'avec les moyens financiers dont on dispose, on peut payer une ou deux personnes grand maximum. Le gros coup d'accélérateur, c'est lorsqu'on a la levée de fond.
+
+Et là, l'équipe double de taille et tout se met à aller plus vite.
+
+
+01:27:49.270 — 01:28:16.670 · Speaker 1
+Alors, lorsqu'on est académique et qu'on se lance dans un projet de création d'entreprise, il faut apprendre à parler le langage de la création d'entreprise. Donc la première aide que j'ai eu mes premiers cours de Béaba, c'était une formation d'un Cube Alliance qui s'appelle Janice et Slide, où j'avais un petit cahier dans lequel je notais des mots de vocabulaire, comme lorsque j'étais aux Etats-Unis et que je notais les mots de vocabulaire d'anglais que j'apprenais tous les jours.
+
+Mais là, j'apprenais la langue de l'entrepreneuriat.
+
+
+01:28:19.030 — 01:28:34.270 · Speaker 1
+Après, il y a un deuxième niveau qui nécessite un peu plus de maîtrise, qui concerne des disciplines telles que la finance, la comptabilité et le droit. Lorsqu'on lit des statuts et qu'on discute de propriété industrielle avec des investisseurs,
+
+
+01:28:35.560 — 01:28:43.160 · Speaker 1
+Et là, si on peut être accompagné par quelqu'un dans l'équipe qui est déjà bilingue, c'est quand même très très précieux.
+
+
+01:28:45.040 — 01:28:53.880 · Speaker 1
+Alors oui, nous avons été aidés par plusieurs programmes qui sont développés par le CNRS, l'Université, l'Institut d'optique.
+
+
+01:28:55.160 — 01:29:04.600 · Speaker 1
+Donc, le CNRS a un programme de prématurés et un programme de coaching pour les entrepreneurs qui s'appelle Rise, qui nous a fait beaucoup d'introduction.
+
+
+01:29:05.720 — 01:29:50.580 · Speaker 1
+Au niveau de l'université, nous avons été accompagnés par un incubateur qui s'appelle Incube Alliance, qui a également fourni d'une part beaucoup de formations et aussi beaucoup d'introduction auprès de. Alors ça peut être trouver un électronicien, un électronicien, ça a l'air tout bête, mais quand il vous reste deux mois pour avancer et que vous ne trouvez pas, si tout d'un coup quelqu'un vous donne la bonne adresse, c'est ça, ça vous retire une sacrée épine du pied.
+
+Donc, s'il y a beaucoup de petites aides qui sont cruciales et être accompagnées, ça permet de résoudre tous ces problèmes. Nous avons bénéficié du programme de Lumina Edge, qui est un programme de l'Institut d'optique avec X Campus, qui a été très précieux pour faire des introductions auprès d'investisseurs.
+
+
+01:29:51.940 — 01:29:52.660 · Speaker 1
+Donc.
+
+
+01:29:55.100 — 01:30:09.539 · Speaker 1
+Est ce que j'ai parlé de Rise? J'ai parlé de Lumina Edge et puis nous avons aussi bénéficié d'un programme privé qui s'appelle Wilco, dans lequel il y a et des prêts d'honneur qui sont faits, qui sont des montants tout à fait
+
+
+01:30:10.620 — 01:30:12.620 · Speaker 1
+non négligeable, de l'ordre de 100 000 €,
+
+
+01:30:13.820 — 01:30:41.410 · Speaker 1
+avec une formation qui accompagne les investisseurs. Et autre chose aussi qui est intéressant, qui est le fait de faire partie d'une cohorte. Donc ça, c'est fait. Lorsqu'on parle d'accompagnement, on parle de toutes les structures, mais il y a un autre mode d'accompagnement qui est Quand on est dans cette structure, on est dans des promotions en fait, et donc on rencontre d'autres entrepreneurs.
+
+Et là il y a évidemment une entraide aussi qui apparaît. Et ça, ce n'est pas négligeable.
+
+
+01:30:47.810 — 01:30:59.689 · Speaker 1
+Alors, depuis la création de l'entreprise, je fais partie du conseil de surveillance de l'entreprise. Et donc à ce titre là, j'ai
+
+
+01:31:00.810 — 01:31:40.300 · Speaker 1
+une tout autre type d'activité avec une dimension stratégique extrêmement importante. Et par ailleurs, je suis devenu quelqu'un qui a des compétences dans le domaine de l'entreprise. Donc je participe au sein de l'université, un certain nombre d'instances telles que ce que je suis en train de faire en ce moment même où j'essaye de participer à transmettre tout l'intérêt qu'il y a à se lancer dans une démarche entrepreneuriale.
+
+Lorsque l'on se lance dans une activité Dans l'entrepreneuriat, on a plusieurs retours. Il y a. Il y en a un qui est extrêmement important pour un scientifique, c'est. C'est de voir
+
+
+01:31:41.380 — 01:33:15.710 · Speaker 1
+une application concrète de ce qu'il a fait pendant 35 ans. Publier des articles, c'est très bien, mais des fois, on se demande s'il y a des gens qui les lisent. Alors, il y a des indicateurs pour ça et je n'ai pas à me plaindre. Mais voir que ce que l'on a fait se transforme en un produit qui va avoir un impact sur le développement de maladies, des solutions, des maladies auto-immunes ou des cancers.
+
+Ce n'est pas dans le même registre et donc c'est extrêmement satisfaisant. Donc ça, c'est probablement l'un des l'un des retours les plus les plus importants de mon point de vue. Les l'innovation que nous avons développé aujourd'hui, elle s'est traduite par un prototype d'appareil. On parle de MVP dans le jargon entrepreneurial, donc de Minimum Viable Product.
+
+C'est à dire que c'est quelque chose où il y a un seul bouton et qui marche tout seul, sans aucune compétence. Ce n'est pas encore un produit commercial stabilisé et fiable, et on l'a déjà vendu à deux entreprises. Et donc là, on voit les conséquences concrètes. La première, qui nous a fait confiance est une entreprise qui développe, qui, qui développe des bactéries chauffage, c'est à dire des virus bactério, phages.
+
+En fait on dit des phages, c'est leur petit nom, mais ce sont des virus bactério, phages. Ils s'attaquent aux bactéries et donc ils sont susceptibles de remplacer les antibiotiques. Et c'est l'une des rares solutions alternatives aux antibiotiques, ce qui est aujourd'hui un problème majeur compte tenu des résistances aux antibiotiques qui apparaissent de plus en plus.
+
+
+01:33:21.070 — 01:33:32.340 · Speaker 1
+Alors, si vous avez envisagé de vous lancer dans l'entrepreneuriat, il ne faut pas hésiter, Il faut y aller. Si vous attendez d'être sûr que ça va marcher. Vous ne saurez jamais.
+
+
+01:33:33.660 — 01:34:10.540 · Speaker 1
+Et donc, ce qu'il faut bien savoir, c'est que c'est impossible d'être prêt. Donc se lancer dans l'entrepreneuriat, ça veut juste décider qu'on choisit de se lancer vers un chemin où on ne sait pas si on ira au bout, mais où on pense que l'on aura la capacité à contourner les obstacles parce que ce sera fait d'obstacles.
+
+Et c'est. Mais il n'y a pas de raison de ne pas résoudre les obstacles de toute façon, c'est ce qu'on fait dans sa vie quotidienne. Donc, si vous avez confiance en votre capacité à résoudre les problèmes du quotidien, c'est juste une collection de problèmes quotidiens qui sont devant vous,
+
+
+01:34:11.780 — 01:34:17.220 · Speaker 1
+mais avec un objectif au bout qui est assez exaltant. Donc il ne faut pas hésiter à se lancer.
+
+
+01:34:19.419 — 01:34:32.429 · Speaker 1
+Il faut aussi savoir que lorsqu'on se lance dans l'aventure de l'entrepreneuriat, on n'est pas tout seul. Il y a beaucoup d'autres personnes qui se retrouvent en fait dans les structures d'accompagnement,
+
+
+01:34:33.629 — 01:34:41.029 · Speaker 1
+dans dans dans les structures des universités et des établissements. Et donc il y a une sorte de
+
+
+01:34:42.350 — 01:35:17.990 · Speaker 1
+famille d'entrepreneurs. Et ce qu'il faut aussi savoir, c'est que ceux qui sont passés dix ans, 20 ans avant et qui ont réussi sont toujours prêts à vous aider. Je n'ai eu aucun refus de transmission d'expérience. J'ai eu beaucoup de coup de fil très long avec des gens qui sont extrêmement occupés parce qu'ils sont chefs de PME et que donc ils sont au four et au moulin et qui prennent 1 h, 2 h, 3 h pour transmettre leur expérience.
+
+Et cette solidarité, elle est assez remarquable. Et donc vous ne serez pas tout seul si vous plongez.
+
+
+01:35:19.190 — 01:35:20.150 · Speaker 2
+N'importe quelle.
+
+
+01:35:20.630 — 01:35:28.230 · Speaker 1
+Voie, si vous souhaitez, si vous envisagez une aventure entrepreneuriale, eh bien c'est assez simple, allez y.
+

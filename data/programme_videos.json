@@ -1,0 +1,305 @@
+{
+  "source_document": "20260710_Prev_Vid.xlsx",
+  "source_path": "/Users/ups_ifpoc/Documents/01_Ingenierie/01_INNOV/04_Conception/20260710_Prev_Vid.xlsx",
+  "date_mise_a_jour": "2026-07-10",
+  "note": "Les noms de la colonne « Nom propose » du tableau de conception sont des propositions ; l'intervenant de chaque video expert reste a definir.",
+  "capsules": {
+    "GEN": {
+      "module": "M1",
+      "enchainement_expert": "E1",
+      "resume_temoignages": "Ouverture chorale : quatre origines d'innovation (marche, laboratoire, pas de cote, maturation progressive) avant la video expert E1.",
+      "experts_proposes": [
+        "Bernard Yannou",
+        "Eneli Vino"
+      ],
+      "videos_expert": [
+        {
+          "code": "E1",
+          "titre": "Reconnaitre les differentes origines d'une innovation",
+          "descriptif": "Tech-push, market-pull, observation d'usage, rencontre, serendipite, maturation progressive.",
+          "intervenant": null
+        }
+      ]
+    },
+    "T1": {
+      "module": "M1",
+      "resume_temoignages": "Jean-Jacques : demande du marche et rencontre. Muriel : resultat de labo et observation societale. Sylvia : pas de cote scientifique. Yann : maturation de 15 ans de recherche vers les besoins industriels.",
+      "experts_proposes": [
+        "Bernard Yannou",
+        "Eneli Vino"
+      ],
+      "videos_expert": [
+        {
+          "code": "E1",
+          "titre": "Reconnaitre les differentes origines d'une innovation",
+          "descriptif": "Tech-push, market-pull, observation d'usage, rencontre, serendipite, maturation progressive.",
+          "intervenant": null
+        }
+      ]
+    },
+    "T2": {
+      "module": "M1",
+      "resume_temoignages": "Yann : sortir du labo pour un vrai probleme de marche. Jean-Jacques : nice to have / must have et pivot apres etude de marche. Muriel : complements non consommes et co-construction EHPAD. Loic : filieres revelent des problemes plus larges que prevu. Sylvia : cliniciens et patients precisent le besoin medical.",
+      "experts_proposes": [
+        "Gregoire Burge",
+        "Bernard Yannou"
+      ],
+      "videos_expert": [
+        {
+          "code": "E2",
+          "titre": "Passer d'une technologie a un probleme a resoudre",
+          "descriptif": "Utilisateur, client, beneficiaire, usage et proposition de valeur.",
+          "intervenant": null
+        },
+        {
+          "code": "E3",
+          "titre": "Poser ou identifier le bon probleme avant de chercher la solution",
+          "descriptif": "Validation, hypotheses, experimentation, pivot et apprentissage.",
+          "intervenant": null
+        }
+      ]
+    },
+    "T3": {
+      "module": "M1",
+      "resume_temoignages": "Jean-Jacques : financement manip et 18 mois de preuve de concept. Sylvia : pre-maturation et selection du candidat medicament. Loic : passage grammes vers kilos, essais serre/champ et saisons. Muriel : formulation, pivot poudre et entree production industrielle.",
+      "experts_proposes": [
+        "Virginia Branco",
+        "Fatoumata Aonon",
+        "Stephanie Oger Roussel"
+      ],
+      "videos_expert": [
+        {
+          "code": "E4",
+          "titre": "Resultat scientifique, POC, prototype, MVP et TRL",
+          "descriptif": "Clarifier les niveaux de preuve.",
+          "intervenant": null
+        },
+        {
+          "code": "E5",
+          "titre": "Derisquer un projet par etapes",
+          "descriptif": "Prematuration, maturation, jalons techniques et commerciaux, criteres de decision.",
+          "intervenant": null
+        }
+      ]
+    },
+    "T4": {
+      "module": "M2",
+      "resume_temoignages": "Sylvia : arbitrage publication et brevet, contacter valorisation tot. Muriel : breveter l'application avant publication et soutenance. Jean-Jacques : brevet et preuve experimentale en parallele. Loic : tutelles, brevetable vs divulgue.",
+      "experts_proposes": [
+        "Antoine Latreille",
+        "Soizic Lefeuvre",
+        "Stephanie Sano",
+        "Eneli Vino"
+      ],
+      "videos_expert": [
+        {
+          "code": "E6",
+          "titre": "Le reflexe de declaration avant toute divulgation",
+          "descriptif": "Confidentialite, nouveaute, publication, congres, soutenance et DI.",
+          "intervenant": null
+        },
+        {
+          "code": "E7",
+          "titre": "A qui parler et avec quoi arriver ?",
+          "descriptif": "Premier contact, role du charge de valorisation et informations utiles pour examiner un resultat.",
+          "intervenant": null
+        }
+      ]
+    },
+    "T5": {
+      "module": "M2",
+      "resume_temoignages": "Loic : combinaison brevet et secret industriel quand la copie est indemontrable. Sylvia : breveter le mecanisme puis les series chimiques ; multi-tutelles. Muriel : breveter l'application du vivant, pas l'organisme. Jean-Jacques : propriete du brevet favorable aux investisseurs.",
+      "experts_proposes": [
+        "Antoine Latreille",
+        "Sophie DJEGA-MARIADASSOU",
+        "Eneli Vino",
+        "Soizic Lefeuvre"
+      ],
+      "videos_expert": [
+        {
+          "code": "E8",
+          "titre": "Choisir un mode de protection adapte",
+          "descriptif": "Brevetabilite, secret, savoir-faire, logiciel, preuve et confidentialite.",
+          "intervenant": null
+        },
+        {
+          "code": "E9",
+          "titre": "La PI comme actif strategique",
+          "descriptif": "Barriere a l'entree, pouvoir de negociation, credibilite et articulation avec le modele de valorisation.",
+          "intervenant": null
+        }
+      ]
+    },
+    "T6": {
+      "module": "M2",
+      "resume_temoignages": "Sylvia : creer une societe pour porter le risque pharma jusqu'aux phases cliniques. Muriel : licence exclusive INRAE accordee a Carembouche. Jean-Jacques : transfert de propriete du brevet plutot qu'une simple licence. Loic : creation d'entreprise plutot qu'une valorisation limitee a une licence.",
+      "experts_proposes": [
+        "Fatoumata Aonon",
+        "Virginia Branco",
+        "Soizic Lefeuvre",
+        "Stephanie Oger Roussel"
+      ],
+      "videos_expert": [
+        {
+          "code": "E10",
+          "titre": "Quelle voie de valorisation pour quel projet ?",
+          "descriptif": "Licence, creation, co-developpement, partenariat et criteres de choix.",
+          "intervenant": null
+        },
+        {
+          "code": "E11",
+          "titre": "Les mecanismes juridiques du transfert",
+          "descriptif": "Licence exclusive ou non, cession, contrat de collaboration, copropriete et principes de negociation.",
+          "intervenant": null
+        }
+      ]
+    },
+    "T7": {
+      "module": "M3",
+      "resume_temoignages": "Sylvia : la SATT transforme le projet en feuille de route et fait evoluer la posture. Loic : maturation SATT, reseau, juridique et interlocuteurs economiques. Muriel : formation IncubAlliance, apprentissage du marche et de l'entrepreneuriat. Jean-Jacques : POC in Lab, Rise, IncubAlliance, Wilco et programmes Institut d'Optique.",
+      "experts_proposes": [
+        "Arielle Sante",
+        "Stephanie Oger Roussel",
+        "Yoan Montenot",
+        "Fatoumata Aonon"
+      ],
+      "videos_expert": [
+        {
+          "code": "E12",
+          "titre": "De la prematuration a la maturation",
+          "descriptif": "Etapes, selection, investissement, jalons et accompagnement.",
+          "intervenant": null
+        },
+        {
+          "code": "E13",
+          "titre": "Ce que fait reellement un incubateur",
+          "descriptif": "Coaching, reseau, formation, confrontation, equipe et preparation de la creation.",
+          "intervenant": null
+        },
+        {
+          "code": "E13bis",
+          "titre": "Autres structures d'accompagnement",
+          "descriptif": "Design spot, fablab, pole de competitivite, OTT, etc.",
+          "intervenant": null
+        }
+      ]
+    },
+    "T8": {
+      "module": "M3",
+      "resume_temoignages": "Jean-Jacques : financements avant et apres creation, risque de creer trop tot, acceleration apres levee. Sylvia : Eye Lab puis difficulte de levee. Muriel : i-Lab, pivot poudre et recrutement. Loic : investisseurs compatibles avec le rythme et les marges agricoles.",
+      "experts_proposes": [
+        "Arielle Sante",
+        "Stephanie Oger Roussel",
+        "Fatoumata Aonon"
+      ],
+      "videos_expert": [
+        {
+          "code": "E14",
+          "titre": "La chaine des financements de l'innovation",
+          "descriptif": "Prematuration, maturation, aides non dilutives, concours, Bpifrance et financement prive.",
+          "intervenant": null
+        },
+        {
+          "code": "E15",
+          "titre": "Comprendre la logique des investisseurs",
+          "descriptif": "Dilution, retour attendu, rythme de croissance, gouvernance et compatibilite avec le projet.",
+          "intervenant": null
+        }
+      ]
+    },
+    "T9": {
+      "module": "M4",
+      "resume_temoignages": "Jean-Jacques : equipe scientifique insuffisante pour creer ; troisieme profil business. Sylvia : ne pas etre CEO ; conseil scientifique et recrutement CIO. Muriel : cofondatrices, CEO, comites strategique et scientifique. Loic : profil sectoriel plutot que business generique.",
+      "experts_proposes": [
+        "Pascal Corbel",
+        "Arielle Sante"
+      ],
+      "videos_expert": [
+        {
+          "code": "E16",
+          "titre": "Cartographier les competences necessaires",
+          "descriptif": "Complementarite, recrutement, role du CEO, du CSO et du CTO, et criteres humains.",
+          "intervenant": null
+        },
+        {
+          "code": "E17",
+          "titre": "Organiser la relation entre fondateurs",
+          "descriptif": "Gouvernance, responsabilites, repartition du pouvoir, parts, pacte et prevention des conflits.",
+          "intervenant": null
+        }
+      ]
+    },
+    "T10": {
+      "module": "M4",
+      "resume_temoignages": "Muriel : parler aux EHPAD, medecins, investisseurs ; pitch par repetitions. Jean-Jacques : langue de l'entrepreneuriat, finance et droit. Sylvia : ecosysteme pharma, pitch, negociation, market access. Loic : discours scientifique vers attentes economiques et desirabilite.",
+      "experts_proposes": [
+        "Arielle Sante",
+        "Joel Nguen",
+        "Pascal Corbel"
+      ],
+      "videos_expert": [
+        {
+          "code": "E18",
+          "titre": "Passer de la preuve scientifique a la valeur pour l'interlocuteur",
+          "descriptif": "Adapter le message selon l'utilisateur, le decideur, le partenaire ou l'investisseur.",
+          "intervenant": null
+        },
+        {
+          "code": "E19",
+          "titre": "La posture entrepreneuriale s'apprend",
+          "descriptif": "Feedback, entrainement, mentorat et evolution de l'identite professionnelle.",
+          "intervenant": null
+        }
+      ]
+    },
+    "T11": {
+      "module": "M4",
+      "resume_temoignages": "Muriel : peur du temps, de l'echec et de la perte de legitimite ; reorganiser ses responsabilites. Jean-Jacques : impossible de tout maitriser ; accepter l'incertitude. Loic : entrepreneuriat clivant en milieu academique ; constituer une equipe. Sylvia : oser innover, accomplissement et accompagnement.",
+      "experts_proposes": [
+        "Arielle Sante",
+        "Joel Nguen",
+        "Pascal Corbel",
+        "Bernard Yannou"
+      ],
+      "videos_expert": [
+        {
+          "code": "E20",
+          "titre": "Gerer les freins",
+          "descriptif": "Temps, legitimite, entourage, droit a l'apprentissage et securisation du parcours.",
+          "intervenant": null
+        },
+        {
+          "code": "E21",
+          "titre": "Innover comme processus d'apprentissage",
+          "descriptif": "Incertitude, essais, erreurs, pivot et progression plutot que reussite lineaire. Focaliser le discours sur les leviers existants pour vaincre les freins.",
+          "intervenant": null
+        }
+      ]
+    },
+    "T12": {
+      "module": "M5",
+      "resume_temoignages": "Muriel : cinq annees de co-construction avec un EHPAD, implication des cuisiniers et necessite de contractualiser les collaborations. Loic : partenaires devenus clients apres des demonstrations, puis entree de l'un d'eux au capital. Sylvia : complementarite entre biologistes, chimistes, pharmacologues, cliniciens et patients. Jean-Jacques : role des cofondateurs, des reseaux et des introductions dans la progression du projet.",
+      "experts_proposes": [
+        "Remi Wache",
+        "Soizic Lefeuvre",
+        "Virginia Branco",
+        "Eneli Vino",
+        "Fatoumata Aonon"
+      ],
+      "videos_expert": [
+        {
+          "code": "E22",
+          "titre": "Concevoir une collaboration equilibree",
+          "descriptif": "Objectifs partages, complementarite, gouvernance, engagement, creation et partage de valeur.",
+          "intervenant": null
+        },
+        {
+          "code": "E23",
+          "titre": "Securiser juridiquement la collaboration",
+          "descriptif": "Confidentialite, contrats, connaissances anterieures, resultats nouveaux, PI, publication et sortie du partenariat.",
+          "intervenant": null
+        }
+      ]
+    }
+  }
+}

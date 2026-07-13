@@ -1,0 +1,294 @@
+{
+  "id": "jjg",
+  "source": "BAB_JJ_GREFFET.txt",
+  "chercheur": "Jean-Jacques Greffet",
+  "statut_encodage": "NON_ENCODE",
+  "date_maj": "2026-07-13",
+  "segments": [
+    {
+      "id": "JJG-0001",
+      "debut": "01:00:43.390",
+      "fin": "01:00:55.030",
+      "duree_secondes": 11.64,
+      "verbatim": "je voudrais greffer. Je travaille dans le domaine de la nano photonique, c'est à dire l'étude de la lumière à l'échelle du nanomètre. Concrètement, c'est par exemple étudier détecter des toutes petites particules avec de la lumière.",
+      "theme_principal": "T1",
+      "statut": "UTILISE",
+      "qualification": "PRIORITAIRE",
+      "capsules": {
+        "T1": {
+          "statut": "UTILISE",
+          "role": "presentation",
+          "duree_montage_secondes": 11.6
+        }
+      },
+      "commentaire": "Presentation : nano photonique."
+    },
+    {
+      "id": "JJG-0002",
+      "debut": "01:01:13.210",
+      "fin": "01:02:15.030",
+      "duree_secondes": 61.82,
+      "verbatim": "l'innovation dont nous allons parler. Dans ce contexte, c'est tiré par le marché, ce qui n'est pas habituel, et c'est dès le le résultat d'une rencontre. Une rencontre avec un jeune startuper qui travaillait dans une start-up, qui avait une problématique de détection de virus, et il y avait un besoin du marché de voir des objets, des virus plus petits que ce qu'il pouvait détecter.\n\nC'est ça la question qui a été posée. Et j'ai apporté une réponse basée sur, évidemment, 30 ans de recherches et d'expériences de recherche. C'est comme ça qu'est née l'innovation, le fait d'oser à deux. Dans mon cas, ça s'est fait assez naturellement puisque la problématique scientifique est née d'une rencontre à deux.\n\nEt la deuxième personne se trouve être mon fils qui était startuper et qui rencontrait une barrière scientifique dans le développement des instruments qu'ils développaient. Et du coup, cette innovation était aussi l'occasion pour lui de se lancer dans une nouvelle aventure entrepreneuriale qui aurait été la sienne, qu'il aurait pilotée de A à Z.",
+      "theme_principal": "T1",
+      "statut": "UTILISE",
+      "qualification": "PRIORITAIRE",
+      "capsules": {
+        "T1": {
+          "statut": "UTILISE",
+          "role": "genese",
+          "duree_montage_secondes": 55,
+          "coupe": "Couper apres « le fait d'oser a deux »."
+        }
+      },
+      "commentaire": "Market-pull et rencontre ; couper apres « le fait d'oser a deux »."
+    },
+    {
+      "id": "JJG-0003",
+      "debut": "01:07:42.290",
+      "fin": "01:08:10.910",
+      "duree_secondes": 28.62,
+      "verbatim": "Alors, le point de départ n'était pas un résultat scientifique, mais une idée scientifique qui répondait à un besoin. Et effectivement, c'était une idée au départ. Donc ensuite, on a fait des simulations numériques et on est dans un domaine où on contrôle bien ce qu'on fait. Donc quand les simulations numériques marchent, on a quand même déjà un bon niveau de confiance.\n\nPour autant, tant qu'on n'a pas fait la manip, rien n'est sûr. Et donc il faut monter la manip. Elle n'était pas prête au labo. Donc",
+      "theme_principal": "T1",
+      "statut": "UTILISE",
+      "qualification": "PRIORITAIRE",
+      "capsules": {
+        "T1": {
+          "statut": "UTILISE",
+          "role": "pivot",
+          "duree_montage_secondes": 36,
+          "coupe": "Couper apres « rien n'est sur »."
+        }
+      },
+      "commentaire": "Pivot : idee scientifique vs resultat deja acquis."
+    },
+    {
+      "id": "JJG-0004",
+      "debut": "01:05:59.060",
+      "fin": "01:07:36.570",
+      "duree_secondes": 97.51,
+      "verbatim": "Alors, en matière de développement, d'innovation, ce qui est important, c'est\n\nc'est la survie de l'entreprise et donc les ventes. Et donc il ne faut pas se tromper, on n'est pas là pour faire un beau projet de physicien, on est là pour répondre à des besoins réels de clients et un besoin réel. Ça veut dire que le client va payer. Donc en fait, on distingue entre le nice to have et le must have.\n\nEt quand on reste dans son labo, on ne peut pas savoir qu'est ce qui est nice to have ou qu'est ce qui est must have. Il faut rencontrer les clients et leur poser la question. Et une première façon d'ailleurs de le faire, c'est de vérifier s'ils sont prêts à payer un petit peu pour voir, c'est à dire louer un instrument par exemple.\n\nEt ça, c'est juste fondamental. Donc, il faut prendre son bâton de pèlerin et aller rencontrer un maximum de clients potentiels pour tester ce qu'est l'appétit du marché. Alors dans mon cas, c'est très simple. C'est la rencontre avec mon fils. Donc celle là elle remonte à il y a très longtemps.\n\nMais donc oui, le démarrage de mon de ma participation à un projet d'innovation, c'est vraiment la rencontre avec mon fils qui qui a exprimé un besoin. Donc il était entrepreneur, il était dans une start up et il a eu envie de se lancer tout seul pour accomplir, atteindre de nouveaux objectifs, avoir de nouvelles performances dans ce qu'il pouvait faire.\n\nEt c'est cette aventure à deux qui a été. C'est la perspective d'avoir cette aventure à deux qui a été l'élément déclencheur.",
+      "theme_principal": "T2",
+      "statut": "UTILISE",
+      "qualification": "PRIORITAIRE",
+      "capsules": {
+        "T2": {
+          "statut": "UTILISE",
+          "role": "cadre",
+          "duree_montage_secondes": 52,
+          "coupe": "Couper avant « Dans mon cas, c'est tres simple »."
+        }
+      },
+      "commentaire": "Nice to have vs must have ; rencontrer les clients."
+    },
+    {
+      "id": "JJG-0005",
+      "debut": "01:05:17.400",
+      "fin": "01:05:53.320",
+      "duree_secondes": 35.92,
+      "verbatim": "Cela nous a permis d'avoir une vision beaucoup plus précise. En parallèle, nous avons assisté à beaucoup de conférences dans les domaines des utilisateurs potentiels de l'innovation pour identifier ce qu'étaient les problèmes importants. Et l'ensemble de ces de ces étapes nous a conduit à\n\nmodifier en fait notre cible. Et nous avons fait ce qu'on appelle un pivot. C'est à dire qu'on a changé, on a adapté notre technologie pour répondre à un autre besoin qu'on a défini à ce moment là.",
+      "theme_principal": "T2",
+      "statut": "UTILISE",
+      "qualification": "PRIORITAIRE",
+      "capsules": {
+        "T2": {
+          "statut": "UTILISE",
+          "role": "pivot",
+          "duree_montage_secondes": 36
+        }
+      },
+      "commentaire": "Etude de marche qualitative/quantitative et pivot de cible."
+    },
+    {
+      "id": "JJG-0006",
+      "debut": "01:08:12.230",
+      "fin": "01:10:30.220",
+      "duree_secondes": 137.99,
+      "verbatim": "ça a été la première chose qu'on a faite. Réunir de l'argent pour financer la manip et valider expérimentalement les résultats. Et ça, ça nous a pris un an et demi et on a pu le faire grâce à des aides qui sont assez nombreuses actuellement. C'est c'est assez facile entre guillemets. En tous cas, par rapport au financement d'un projet de recherche fondamentale, c'est assez facile de pouvoir trouver des aides pour réaliser ce qu'on appelle donc une preuve de concept, c'est à dire montrer que l'idée va marcher.\n\nAlors lorsqu'on a une idée et qu'on se lance, pour la réaliser, il faut qu'il y ait de l'instrumentation. il faut faire des expériences et montrer réellement expérimentalement que ça fonctionne. Et donc ça, il nous a fallu un an et demi à peu près pour le faire, et on l'a fait en travaillant au laboratoire avec le soutien financier de l'université.\n\nAlors, tout d'abord, le soutien de l'établissement qui nous héberge, du laboratoire et puis ensuite le soutien financier de l'université et puis également du CNRS. L'évolution du développement technique, de l'innovation s'est fait de la façon suivante Dans un premier temps, on a une idée.\n\nCette idée, on peut l'utiliser pour rédiger un brevet et protéger l'innovation dans un deuxième temps. Et c'est indépendant, on réalise une expérience pour vérifier techniquement que ça fonctionne.\n\nEt donc ces choses, on les a faites en parallèle. Il faut bien sûr obtenir de l'argent et pour financer des déposer un brevet et pour réaliser les. Les. La preuve expérimentale. Et là, on a disposé de soutien de l'établissement de l'université et du CNRS pour réaliser ces choses là. Il faut un brevet.\n\nIl faut compter\n\nsix mois pour le déposer. A peu près, il est délivré au bout de deux ans. Et puis, sur le plan expérimental, il nous a fallu 18 mois. Alors la phase expérimentale de preuve de concept, sur le plan technique, c'est quelque chose qui permet de débugger. Dans notre jargon, c'est à dire de trouver toutes les difficultés qui ne sont pas inclues dans les modèles numériques que l'on fait et d'apprendre à les maîtriser.",
+      "theme_principal": "T3",
+      "statut": "UTILISE",
+      "qualification": "PRIORITAIRE",
+      "capsules": {
+        "T3": {
+          "statut": "UTILISE",
+          "role": "poc",
+          "duree_montage_secondes": 78,
+          "coupe": "Conserver financement manip, preuve de concept 18 mois, debogage ; couper le volet equipe finance/marketing (hors T3)."
+        }
+      },
+      "commentaire": "Financement manip, preuve de concept (~18 mois) et debogage technique."
+    },
+    {
+      "id": "JJG-0007",
+      "debut": "01:09:38.470",
+      "fin": "01:10:00.979",
+      "duree_secondes": 22.509,
+      "verbatim": "Et donc ces choses, on les a faites en parallèle. Il faut bien sûr obtenir de l'argent et pour financer des déposer un brevet et pour réaliser les. Les. La preuve expérimentale. Et là, on a disposé de soutien de l'établissement de l'université et du CNRS pour réaliser ces choses là. Il faut un brevet.\n\nIl faut compter",
+      "theme_principal": "T4",
+      "statut": "REUTILISATION_A_ARBITRER",
+      "qualification": "PRIORITAIRE",
+      "capsules": {
+        "T4": {
+          "statut": "UTILISE",
+          "role": "brevet_parallele",
+          "duree_montage_secondes": 30,
+          "coupe": "Couper avant « Il faut compter » (phrase incomplete).",
+          "reutilisation": true
+        }
+      },
+      "commentaire": "Brevet et preuve experimentale menes en parallele."
+    },
+    {
+      "id": "JJG-0008",
+      "debut": "01:22:18.830",
+      "fin": "01:23:58.080",
+      "duree_secondes": 99.25,
+      "verbatim": "s'était tout de suite dirigés vers une start-up. On est dans une situation qui correspond assez bien à ça. On a un brevet, une innovation technologique, un produit sans équivalent et donc la\n\nvalorisation par création de start-up est assez adaptée. Donc nous avons\n\nCréer une startup qui est donc basée sur un brevet. Alors ce brevet, quand on l'exploite, soit on peut utiliser une licence exclusive qui est délivrée par les établissements qui sont copropriétaires du brevet, ou il peut y avoir un transfert de propriété en échange d'une part, de participation dans la société.\n\nLe schéma le plus couramment utilisé jusqu'ici était le premier, mais il se trouve que dans notre cas, nous sommes partis à la demande des établissements sur le deuxième cas. Et je dois dire que c'est du point de vue des de l'entreprise, c'est favorable puisque lorsque vous rencontrez des investisseurs, s'ils savent que vous avez la propriété pleine et entière du brevet, c'est tout à fait favorable.\n\nTrès bien. Là on peut.\n\nTape.\n\nAlors, il faut aussi rajouter un élément concernant la levée de fonds. L'écosystème est également très utile à cet à cette étape là pour faire des introductions. Et parmi les investisseurs qui sont dans notre tour de table, il y a un certain nombre d'acteurs qui ont été introduits par les partenaires de l'environnement local.",
+      "theme_principal": "T5",
+      "statut": "UTILISE",
+      "qualification": "PRIORITAIRE",
+      "capsules": {
+        "T5": {
+          "statut": "UTILISE",
+          "role": "pi_strategique",
+          "duree_montage_secondes": 92,
+          "coupe": "Licence vs cession du brevet ; propriete pleine rassure les investisseurs ; ecosysteme et levée de fonds."
+        }
+      },
+      "commentaire": "Startup basee sur un brevet ; propriete pleine favorable aux investisseurs."
+    },
+    {
+      "id": "JJG-0009",
+      "debut": "01:22:03.910",
+      "fin": "01:23:28.850",
+      "duree_secondes": 84.94,
+      "verbatim": "Notre point de départ, c'était une expérience de Mathieu, notre président, qui était en start up, et il était assez clair pour lui que c'était le même genre de structure qu'il souhaitait reproduire. Donc on\n\ns'était tout de suite dirigés vers une start-up. On est dans une situation qui correspond assez bien à ça. On a un brevet, une innovation technologique, un produit sans équivalent et donc la\n\nvalorisation par création de start-up est assez adaptée. Donc nous avons\n\nCréer une startup qui est donc basée sur un brevet. Alors ce brevet, quand on l'exploite, soit on peut utiliser une licence exclusive qui est délivrée par les établissements qui sont copropriétaires du brevet, ou il peut y avoir un transfert de propriété en échange d'une part, de participation dans la société.\n\nLe schéma le plus couramment utilisé jusqu'ici était le premier, mais il se trouve que dans notre cas, nous sommes partis à la demande des établissements sur le deuxième cas. Et je dois dire que c'est du point de vue des de l'entreprise, c'est favorable puisque lorsque vous rencontrez des investisseurs, s'ils savent que vous avez la propriété pleine et entière du brevet, c'est tout à fait favorable.",
+      "theme_principal": "T6",
+      "statut": "REUTILISATION_A_ARBITRER",
+      "qualification": "PRIORITAIRE",
+      "capsules": {
+        "T6": {
+          "statut": "UTILISE",
+          "role": "cession_brevet",
+          "duree_montage_secondes": 85,
+          "coupe": "Licence exclusive vs transfert de propriete du brevet ; choix des etablissements coproprietaires.",
+          "reutilisation": true
+        }
+      },
+      "commentaire": "Start-up basee sur un brevet ; licence exclusive vs transfert de propriete."
+    },
+    {
+      "id": "JJG-0010",
+      "debut": "01:20:23.840",
+      "fin": "01:22:01.990",
+      "duree_secondes": 98.15,
+      "verbatim": "Et puis il y a des incubateurs privés. Nous avons suivi un programme de Wilco. Les établissements eux mêmes leur programme. Nous avons été très aidés par l'Institut d'optique et le programme lumineux Edge en collaboration avec X Campus. Donc, il y a beaucoup de dispositifs pour accompagner les chercheurs qui veulent se lancer dans cette aventure.\n\nNous avons été accompagnés dans le développement de notre projet par un certain nombre de structures de l'université\n\net du CNRS également. Donc, par ordre d'entrée, il y a tout d'abord tout au début, un programme de l'université qui s'appelle POC in Lab, un programme commun avec la NSA. Ensuite, nous avons bénéficié dans ce cadre là de projet d'un programme de formation organisé par l'incubateur Cube Alliance de l'Université Paris-Saclay.\n\nEnsuite, nous sommes rentrés dans une phase de maturation, de pré maturation avec un autre programme d'incubation et nous étions également accompagnés par un programme de coaching du CNRS qui s'appelle le programme Rise.\n\nEt puis ensuite il y a eu la la, la phase d'incubation par l'incubateur. Et puis en parallèle, nous avons bénéficié d'un soutien du programme lumineux de l'Institut d'Optique X Campus dans le cadre de notre innovation.",
+      "theme_principal": "T7",
+      "statut": "UTILISE",
+      "qualification": "PRIORITAIRE",
+      "capsules": {
+        "T7": {
+          "statut": "UTILISE",
+          "role": "chaine_structures",
+          "duree_montage_secondes": 85,
+          "coupe": "POC in Lab, IncubAlliance, Rise, maturation, incubateur ; Wilco et programme Lumineux Institut d'Optique."
+        }
+      },
+      "commentaire": "POC in Lab, IncubAlliance, Rise, maturation, incubateur, Wilco, Institut d'Optique."
+    },
+    {
+      "id": "JJG-0011",
+      "debut": "01:25:09.690",
+      "fin": "01:27:41.830",
+      "duree_secondes": 152.14,
+      "verbatim": "Alors lorsqu'on démarre un projet, on est une équipe académique. On a besoin de beaucoup d'argent à différentes étapes. Il y a les étapes entre création d'entreprise, les étapes post création. Donc là, il faut savoir qu'il ne faut pas créer trop tôt, surtout parce qu'il y a beaucoup de financements qui sont en création, auxquels vous n'êtes plus éligible si vous créez.\n\nEt donc pour vous citez très brièvement les aides\n\nqui sont assez nombreuses lorsqu'on est dans le domaine de la deep tech, c'est à dire dans un domaine proche de la recherche fondamentale. Ce sont des financements, des programmes de valorisation des universités, des financements, des programmes de valorisation du CNRS.\n\nIl peut y avoir des financements locaux de différentes structures de l'université. Ensuite, quand on s'approche de la création, il y a des financements de la BPI qui aident à tout ce qui va vous tomber dessus. Par exemple, il vous faudra des avocats pour faire vos statuts, pour négocier un certain nombre de choses.\n\nEt donc on va vous donner de l'argent pour payer les avocats. On va vous donner de l'argent pour éventuellement payer le salaire de votre futur PDG que vous devez trouver. C'est urgent de le trouver et il faut que vous entendez bien avec lui. Donc cet argent, vous pourrez l'utiliser pour tester pendant six mois que ça se passe bien, etc, etc.\n\nL'étude sur sur la propriété industrielle, valider que vous l'avez, les frais de dépôt de brevet, tout ça. Et ça, ça peut monter à 100 000 €. Et ça, c'est avant. Dès que vous créez, vous n'avez plus le droit de dépenser cet argent. Donc il faut bien le planifier. Une fois que vous avez créé, vous pouvez avoir de la part de la part de la BPI, un programme Émergence, c'est 90 milliards d'euros.\n\nTout de suite, vous pouvez démarrer immédiatement.\n\nEt puis derrière, il y a des concours. Des concours à Scilab pour la deep tech également, qui peuvent vous fournir entre 300 zéro zéro et 600 000 €. Vous êtes très accompagnés par les incubateurs pour rédiger les réponses à ces appels d'offres.\n\nEt puis après? Après, il faut trouver des investisseurs ou des clients.\n\nEst ce qu'il y a eu un moment où votre projet a fortement accéléré?\n\nLe gros coup d'accélérateur. Là où on sait que lorsque l'équipe passe des fondateurs au début, ses fondateurs plus une personne. Parce qu'avec les moyens financiers dont on dispose, on peut payer une ou deux personnes grand maximum. Le gros coup d'accélérateur, c'est lorsqu'on a la levée de fond.\n\nEt là, l'équipe double de taille et tout se met à aller plus vite.",
+      "theme_principal": "T8",
+      "statut": "UTILISE",
+      "qualification": "PRIORITAIRE",
+      "capsules": {
+        "T8": {
+          "statut": "UTILISE",
+          "role": "chaine_financement",
+          "duree_montage_secondes": 90,
+          "coupe": "Ne pas creer trop tot ; aides pre-creation (BPI, avocats, brevet) ; Emergence post-creation ; acceleration apres levee."
+        }
+      },
+      "commentaire": "Financements avant/apres creation ; ne pas creer trop tot ; acceleration apres levee."
+    },
+    {
+      "id": "JJG-0012",
+      "debut": "01:10:31.580",
+      "fin": "01:13:19.550",
+      "duree_secondes": 167.97,
+      "verbatim": "Il y a une toute autre dimension sur ce qui s'est passé pendant ces 18 mois, qui n'a rien de technique. C'est que comme nous étions déjà dans une démarche d'innovation en tant qu'entrepreneur, on est toujours dans l'hypothèse où tout va marcher, On est forcément optimiste, sinon on ne serait pas là.\n\nEt donc on se pose la question d'après et ce que nous étions, dans une situation d'équipe très complémentaire avec le scientifique et l'ingénieur qui maîtrise tous les aspects du développement technique. Il nous manquait à l'évidence quelqu'un qui ait des compétences dans le domaine de finance, de marketing, de logistique, de production, de ressources humaines Et donc c'était notre besoin le plus criant.\n\nEt ça, c'est quelque chose que l'on a développé pendant cette période là. Et il ne faut pas attendre quatre parce que c'est absolument critique. Donc, dans cette phase de preuve de concept, nous avons appris des choses dans plusieurs domaines. Tout d'abord, il y a l'aspect technique et là il faut déboguer, c'est à dire trouver tous les problèmes réels que l'on rencontre dans la vie réelle et apprendre à les résoudre, à les maîtriser.\n\nC'est, c'est l'aspect, je dirais, le plus proche de la vie du chercheur. Mais il y a un autre aspect qui est absolument crucial et critique, c'est le développement de l'équipe. En tant qu'entrepreneur, on se met dans la situation où de toute façon, ça va marcher. Donc il faut se poser la question de l'après et l'étape d'après, c'est l'équipe qui va créer l'entreprise.\n\nEt à l'évidence, notre équipe, de ce point de vue là, était bancale. Pour faire la preuve de concept, elle était parfaite. On avait l'ingénieur, on avait le scientifique. Mais pour l'entreprise, il nous manque quelqu'un qui sache gérer, faire du marketing, s'occuper des ventes, faire la comptabilité, s'occuper des ressources humaines, s'occuper de la logistique, s'occuper de la production.\n\nEt là, on avait zéro compétences, zéro expérience. Et donc il a fallu chercher ses compétences. Donc ça, c'est un point extrêmement important. Cette complémentarité que l'on a recherché, la complémentarité de l'équipe, c'est absolument essentiel parce que les investisseurs ne regardent que cela.\n\nAlors quand je dis que j'exagère à peine, ils vont un peu regarder si il y a un marché, ils vont quand même vérifier que ce n'est pas évidemment vers l'échec qu'on va. Mais ensuite, la seule chose qu'ils regardent, c'est la. C'est ce qu'ils estiment être la capacité de l'équipe à mener à bien le projet.\n\nCe qu'il faut savoir, c'est que la grande majorité des projets pivotent. C'est à dire que l'estimation technique du projet n'a aucune valeur puisque de toute façon, ce n'est pas ça qui va survivre, qui va résister et ce qui va survivre, c'est l'équipe. Et donc il faut choisir une équipe qui va être capable de prendre des virages quand il faut prendre des virages.",
+      "theme_principal": "T9",
+      "statut": "UTILISE",
+      "qualification": "PRIORITAIRE",
+      "capsules": {
+        "T9": {
+          "statut": "UTILISE",
+          "role": "equipe_poc_entreprise",
+          "duree_montage_secondes": 85,
+          "coupe": "Equipe parfaite pour la POC, bancale pour l'entreprise ; finance, marketing, RH manquants ; investisseurs regardent l'equipe."
+        }
+      },
+      "commentaire": "Equipe POC vs equipe entreprise ; troisieme profil business ; investisseurs regardent l'equipe."
+    },
+    {
+      "id": "JJG-0013",
+      "debut": "01:27:49.270",
+      "fin": "01:28:43.160",
+      "duree_secondes": 53.89,
+      "verbatim": "Alors, lorsqu'on est académique et qu'on se lance dans un projet de création d'entreprise, il faut apprendre à parler le langage de la création d'entreprise. Donc la première aide que j'ai eu mes premiers cours de Béaba, c'était une formation d'un Cube Alliance qui s'appelle Janice et Slide, où j'avais un petit cahier dans lequel je notais des mots de vocabulaire, comme lorsque j'étais aux Etats-Unis et que je notais les mots de vocabulaire d'anglais que j'apprenais tous les jours.\n\nMais là, j'apprenais la langue de l'entrepreneuriat.\n\nAprès, il y a un deuxième niveau qui nécessite un peu plus de maîtrise, qui concerne des disciplines telles que la finance, la comptabilité et le droit. Lorsqu'on lit des statuts et qu'on discute de propriété industrielle avec des investisseurs,\n\nEt là, si on peut être accompagné par quelqu'un dans l'équipe qui est déjà bilingue, c'est quand même très très précieux.",
+      "theme_principal": "T10",
+      "statut": "UTILISE",
+      "qualification": "PRIORITAIRE",
+      "capsules": {
+        "T10": {
+          "statut": "UTILISE",
+          "role": "langue_entrepreneuriat",
+          "duree_montage_secondes": 55,
+          "coupe": "Cahier de vocabulaire entrepreneuriat ; finance, comptabilite, droit ; etre accompagne par quelqu'un de bilingue."
+        }
+      },
+      "commentaire": "Apprendre la langue de l'entrepreneuriat, finance, droit et PI."
+    },
+    {
+      "id": "JJG-0014",
+      "debut": "01:13:50.500",
+      "fin": "01:14:50.750",
+      "duree_secondes": 60.25,
+      "verbatim": "Mon hésitation principale, c'était d'emmener mon fils vers une impasse et un échec éventuel puisque c'était moi qui apportait le principe. Mais cela étant dit, je n'avais pas vraiment de craintes, au contraire, beaucoup d'enthousiasme à me jeter à l'eau et je dois dire que mon fils n'avait pas beaucoup non plus de craintes.\n\nMoi, à sa place, j'en aurais eu beaucoup plus et je n'aurais pas fait ce qu'il a fait. Il a démissionné à un moment où moi je n'aurais jamais démissionné car je jugeais la la maîtrise des risques trop faible.\n\nVoilà donc.\n\nÀ vrai dire, on n'avait pas beaucoup de craintes. Et ce qu'il faut surtout finalement dire, c'est qu'il est impossible de tout maîtriser et que de toute façon, il faut se jeter à l'eau. Et quand on se jette à l'eau, la seule chose qu'il faut savoir, c'est que si ça ne marche pas, on essaiera autre chose.\n\nDans le cadre du même projet. Et puis si ça ne marche pas, on essaiera autre chose dans le cadre d'un autre projet. Et donc il n'y a pas de crainte à avoir. En fait.",
+      "theme_principal": "T11",
+      "statut": "UTILISE",
+      "qualification": "PRIORITAIRE",
+      "capsules": {
+        "T11": {
+          "statut": "UTILISE",
+          "role": "incertitude",
+          "duree_montage_secondes": 72,
+          "coupe": "Crainte d'emmener son fils vers l'echec ; impossible de tout maitriser — se jeter a l'eau, essayer autre chose."
+        }
+      },
+      "commentaire": "Impossible de tout maitriser ; accepter l'incertitude et se jeter a l'eau."
+    },
+    {
+      "id": "JJG-0015",
+      "debut": "01:23:37.970",
+      "fin": "01:23:58.080",
+      "duree_secondes": 20.11,
+      "verbatim": "Alors, il faut aussi rajouter un élément concernant la levée de fonds. L'écosystème est également très utile à cet à cette étape là pour faire des introductions. Et parmi les investisseurs qui sont dans notre tour de table, il y a un certain nombre d'acteurs qui ont été introduits par les partenaires de l'environnement local.",
+      "theme_principal": "T12",
+      "statut": "REUTILISATION_A_ARBITRER",
+      "qualification": "PRIORITAIRE",
+      "capsules": {
+        "T12": {
+          "statut": "UTILISE",
+          "role": "reseau_introductions",
+          "duree_montage_secondes": 20,
+          "coupe": "Ecosysteme local pour introductions investisseurs au tour de table."
+        }
+      },
+      "commentaire": "Ecosysteme local utile pour introductions investisseurs lors de la levee de fonds."
+    }
+  ]
+}

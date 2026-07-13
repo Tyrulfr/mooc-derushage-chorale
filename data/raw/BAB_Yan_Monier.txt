@@ -1,0 +1,366 @@
+BAB_Yan_Monier.txt
+French
+
+01:00:04.510 — 01:00:21.230 · Speaker 1
+Alors je m'appelle Yann Meunier, je suis jeune chercheur et je travaille donc au Lure, pas le N s Paris-Saclay et je travaille dans le domaine de l'automatique, de la construction automatisée de jumeau numérique, de chaîne de production industrielle à partir de l'analyse des données.
+
+
+01:00:23.230 — 01:00:53.230 · Speaker 1
+Yann Meunier Je travaille dans le domaine de l'automatique, plus précisément sur la construction automatisée de jumeaux numériques de chaîne de production industrielle à partir de l'analyse de données. Mon innovation est née sur le long terme. Initialement, elle vient de travaux de laboratoire sur les quinze dernières années et c'est au fil de ces quinze années, et principalement grâce aux résultats de ma thèse, que l'innovation a été produite.
+
+
+01:00:55.390 — 01:00:59.590 · Speaker 1
+J'ai fait ma thèse au Lure, pas le NS l'UNSS Paris-Saclay,
+
+
+01:01:00.910 — 01:02:19.560 · Speaker 1
+je travaillais sur l'identification d'automates hybrides, de chaîne de production industrielle. Mon innovation est née sur le long terme. D'abord à partir des résultats du laboratoire sur les quinze dernières années de recherche. Et puis plus précisément sur mes travaux de thèse sur l'identification d'automates hybrides, de chaîne de production industrielle où en fait, ça m'a donné vraiment l'idée de convertir cette recherche en un produit, en quelque chose qui puisse être utile pour la société et qui puisse être un vrai projet, qui ne reste pas sur étagère, mais qui puisse vraiment être utile pour l'industrie.
+
+Alors ma recherche, elle vient d'abord d'une découverte exploratoire qui s'est ensuite affinée par une analyse du marché. On est d'abord passé sur une techno, sur une approche techno poche. On avait des solutions au laboratoire. Mais la technologie tout seul ne suffit pas. On a besoin d'avoir des problématiques provenant du marché.
+
+Et c'est en discutant avec des industriels et des acteurs de l'industrie qu'on a pu orienter le développement de la solution vers des vrais besoins. Oui. Quand je dis on, bien évidemment, je parle de l'équipe de recherche qui travaille avec moi au laboratoire.
+
+
+01:02:20.840 — 01:02:21.880 · Speaker 2
+Pourquoi oser?
+
+
+01:02:23.360 — 01:02:37.760 · Speaker 1
+Alors il faut oser innover pour moi, parce que c'est tout d'abord une grosse source de développement personnel, d'apprentissage. C'est un bon moyen de se confronter à de nouvelles expériences, des rencontres et donc de se développer personnellement.
+
+
+01:02:40.160 — 01:03:11.320 · Speaker 1
+Il faut aussi oser. Pour moi, transformer des résultats de recherche en véritable solution parce que c'est toujours un petit peu triste je trouve, d'avoir plein de personnes talentueuses qui développent des nouvelles technologies et qui finalement restent sur des étagères dans le laboratoire sans être utilisé.
+
+Alors qu'en fait, si elle était un petit peu plus expliquée, un petit peu plus montré, on pourrait vraiment les utiliser pour développer de nouveaux produits et de nouvelles solutions qui aiderait beaucoup de gens.
+
+
+01:03:12.720 — 01:03:44.520 · Speaker 1
+Après mes trois années de thèse, je dirais même plutôt au milieu de ma troisième année, je trouvais un petit peu dommage le fait que tous les résultats, toutes les recherches que j'avais faites allait s'arrêter, du moins pour ma part, à la fin de cette troisième année, de cette troisième année.
+
+Et j'avais envie vraiment d'aller un petit peu plus loin, de concrétiser les premiers résultats que j'avais, les améliorer pour que ce ne soit plus des résultats théoriques qui marchent sur des maquettes au laboratoire, mais des résultats qui puissent marcher dans l'industrie.
+
+
+01:03:50.800 — 01:04:04.770 · Speaker 1
+Alors initialement, quand mon sujet de thèse a été construit, il a été construit déjà avec des idées de cas d'applications dans l'industrie, mais sans forcément pousser cette réflexion très, très loin.
+
+
+01:04:05.930 — 01:04:27.730 · Speaker 1
+Donc on faisait de la recherche théorique. Et c'est pendant, je dirais, ma troisième année de thèse que j'avais envie de creuser un petit peu plus loin le côté pratique. C'est à dire ne plus avoir seulement de la théorie avec des idées d'applications, réellement orienter le développement théorique pour qu'il réponde à des problématiques concrètes.
+
+
+01:04:29.090 — 01:05:02.200 · Speaker 1
+Lorsqu'on a construit le sujet de thèse avec mes encadrants, on avait déjà des idées d'applications. Mais le sujet a été construit plutôt d'une manière théorique. De quoi lever des verrous scientifiques. Et c'est au milieu de ma troisième année que j'ai eu envie d'aller un petit peu plus loin de ces verrous purement théorique et de répondre à vraiment des verrous pratiques, des problèmes qui venaient de l'industrie et donc orienter la recherche et les développements vers de vraies solutions pour les industriels.
+
+
+01:05:04.000 — 01:05:41.000 · Speaker 1
+Mon innovation, elle sert à construire automatiquement des modèles de jumeau numérique, de chaîne de production à partir des données provenant des différents capteurs et actionneurs. Et ensuite? Ce modèle peut être utilisé par les industriels pour pouvoir faire du monitoring de la.
+
+Donc de la surveillance pour faire de la détection d'anomalies. Détection de cyberattaques, détection de pannes. Et ça peut avoir plusieurs avantages, comme le fait de prédire quand est ce qu'on va devoir réparer un équipement et ainsi limiter des temps d'arrêt qui sont assez coûteux pour l'industrie.
+
+
+01:05:42.240 — 01:06:14.820 · Speaker 1
+Ma solution est innovante parce qu'elle se base sur des nouvelles méthodes mathématiques et on a juste besoin de se brancher aux données de la chaîne de production, sans avoir forcément d'intervention humaine et de l'équipe d'ingénieurs dédiée pour la mettre en place, qui permet donc d'avoir quand même ces résultats de maintenance prédictive et d'analyse qu'on a aujourd'hui normalement, qu'après plusieurs mois de travail par des équipes d'ingénieurs dédiées.
+
+
+01:06:17.180 — 01:06:42.980 · Speaker 1
+D'un point de vue économique, mon innovation va être plutôt du côté de la mise en place rapide d'une solution, sans déployer des moyens énormes. L'idée, c'est qu'on puisse en quelques jours déployer la solution et déjà voir de premiers résultats de détection de pannes. Et l'idée c'est que donc du coup, la
+
+
+01:06:44.340 — 01:06:49.380 · Speaker 1
+le gain économique de la solution soit amorti dès la première panne évitée.
+
+
+01:06:50.980 — 01:07:23.740 · Speaker 1
+Ma solution permet de réduire de 15 % les arrêts non planifiés des chaînes de production, avec l'objectif d'être rentable dès la première panne évitée. L'idée, c'est que par l'installation rapide de la solution et sans expertise, on peut l'installer avec un coût d'à peu près 15 000 €.
+
+Et donc pour quelques heures d'arrêts à peine évités d'une chaîne de production, on peut déjà économiser plus de 20 zéro zéro 0 €, ce qui la rend donc rentable dès dès la première planéité.
+
+
+01:07:30.300 — 01:08:24.090 · Speaker 1
+On a validé qu'il existait un besoin et un intérêt de notre solution dès le début de la construction du sujet de thèse à partir des de la bibliographie scientifique. C'était vraiment le premier point de départ. Il y avait un problème scientifique à résoudre et toute une communauté scientifique qui s'y intéresse.
+
+Mais le côté scientifique par rapport à un vrai besoin industriel, ça ne suffit pas. Donc du coup, pour en avoir une meilleure idée du besoin, j'ai fait des recherches sur Internet sur des rapports venant de plusieurs groupes industriels comme Siemens par exemple, ou des rapports de cabinets de conseil comme McKinsey.
+
+Mais ces rapports donnent une idée assez générale du marché, mais pas vraiment précise à chaque industriel. D'où la nécessité ensuite d'aller voir des industriels sur le terrain et de discuter directement avec eux pour comprendre quels sont leurs besoins et leurs problématiques.
+
+
+01:08:25.810 — 01:09:15.380 · Speaker 1
+On a validé qu'il existait un besoin et un intérêt à la solution qu'on développe. Tout d'abord, lorsque le sujet de thèse a été construit, c'est à dire en se basant sur les différentes recherches académiques dans ce domaine, vu qu'il y avait une communauté scientifique qui travaillait sur le sujet, on avait déjà une preuve que le sujet était quelque chose d'intéressant et d'utile.
+
+Par contre, des résultats scientifiques ou des recherches scientifiques ne suffisent pas à prouver qu'il y a un vrai besoin dans l'industrie. C'est pour ça que pour savoir s'il y avait vraiment un besoin, j'ai fait des recherches à la fois sur Internet et en utilisant divers systèmes d'IA comme Chatgpt ou Cloud, et ça m'a permis de découvrir des rapports qui sont faits soit par Siemens, soit par des cabinets de conseil comme McKinsey, qui donne une vue globale
+
+
+01:09:16.420 — 01:09:43.060 · Speaker 1
+de l'économie autour de la solution, qui montre donc qu'il y avait un véritable intérêt. Mais cette vision globale toute seule, elle ne suffit pas parce qu'à la fin, on a vraiment besoin d'aller chercher des vérités. Des vrais industriels. Ce sont nos futurs clients. Donc on doit aller sur le terrain et aller interroger les clients un par un, les personnes concernées, pour pouvoir connaître quels sont leurs différents problèmes au quotidien et comment nous, on peut adapter notre solution pour pouvoir les aider.
+
+
+01:09:44.860 — 01:10:45.240 · Speaker 1
+En confrontant ma recherche au terrain. La première chose qui m'a surprise, c'est le fait que la technologie et la solution technique n'est pas la chose la plus importante. La plus importante, c'est de vraiment faire gagner économiquement quelque chose à un industriel ou à un client. Et pour lui faire comprendre qu'il a des choses à gagner, il faut vraiment adapter son langage et trouver une manière que la personne puisse nous faire confiance.
+
+Et ça, c'est vraiment quelque chose qui se fait sur la durée, sur le long terme, en donnant petit à petit des preuves, en discutant longuement. Et on est obligé plutôt d'essayer de comprendre l'interlocuteur, de se faire un réseau et de ne pas forcément pitcher sa technologie, ce qui est quelque chose d'un petit peu difficile je trouve.
+
+Quand on vient du monde de la recherche, on a toujours envie de s'étaler sur sa solution technique. Alors qu'en fait, ce n'est pas ce qui va faire vendre dans un premier temps le produit.
+
+
+01:10:48.200 — 01:11:12.320 · Speaker 1
+Mon idée de départ a énormément évolué suite au contact avec des potentiels industriels, les futurs utilisateurs de la solution. Principalement à cause du fait qu'au début on partait de la technologie. On avait une solution technique qu'on essayait d'adapter au marché et donc on voulait cibler un segment de marché très très large, ce qui en fait n'est
+
+
+01:11:13.400 — 01:11:35.400 · Speaker 1
+est une bonne chose. Quand on a enfin, ça nous montre qu'on a beaucoup de possibilités d'application de la technologie. Mais par contre, quand on veut être donner de la crédibilité et trouver des vrais utilisateurs, ça donne plutôt l'impression qu'on part dans dans tous les sens. Et du coup, on a dû se recentrer et vraiment choisir un segment spécifique qui va parler.
+
+
+01:11:36.560 — 01:12:14.750 · Speaker 1
+J'ai envie de dire au plus grand nombre et là où il y a le plus grand gain économique possible à faire, qui était la réduction de panne de chaîne de production et la maintenance prévisionnelle. Et donc on sait, on a plutôt orienté les recherches et les développements vers ce plan là. Et du coup, ça a levé aussi de nouvelles problématiques à résoudre qu'on n'avait pas forcément regardé au début et Et ça a donc permis de d'orienter le développement de la solution vers ce qu'elle est aujourd'hui.
+
+Et je suis sûr qu'elle va devoir encore évoluer suite aux prochaines discussions que j'aurai.
+
+
+01:12:21.830 — 01:13:02.690 · Speaker 1
+Je trouve qu'il est essentiel de sortir du laboratoire pour innover, parce que dans le laboratoire, on reste quand même dans un environnement très protégé où on va s'intéresser principalement à des problèmes théoriques. On va être entouré de personnes très brillante qui vont nous donner de bonnes solutions techniques.
+
+Mais l'innovation ne se base pas que sur la technique. Elle a besoin de répondre à un vrai problème de marché. Et ça, on ne peut pas l'avoir en restant dans le laboratoire. On ne peut le trouver qu'en allant à l'extérieur, en discutant avec des gens qui sont concernés par les problèmes, qui ont vraiment des qui ont vraiment des problèmes, qui leur coûtent de l'argent, qui est économiquement viable.
+
+
+01:13:04.250 — 01:13:14.290 · Speaker 1
+Et c'est grâce à cette information qu'on va pouvoir essayer de créer un business plan, un business model et toute une économie qui va accompagner notre notre innovation.
+
+
+01:13:15.370 — 01:13:55.870 · Speaker 1
+Je pense aussi qu'on fait l'erreur en tant que scientifique, parce qu'on aime la science, de vouloir s'enfermer dans son laboratoire pendant plusieurs mois et développer une solution technique. Mais en fait, ça, ça peut être une bonne chose pour avancer d'un point de vue de la science, mais ça nous empêche de s'ouvrir à plein d'idées et de problématiques qu'on ne peut obtenir que de la bouche des des personnes concernées.
+
+Et il est aussi très important, je trouve, de s'entourer de personnes qui ont des compétences différentes et qui complètent en fait nos compétences. Pour un petit peu, je dirais,
+
+
+01:13:57.510 — 01:14:07.550 · Speaker 1
+nous permettre de voir plein d'angles morts, qu'en tant que scientifiques on n'a pas forcément l'habitude de voir et qui, dans le domaine de l'innovation, sont vraiment nécessaires.
+
+
+01:14:09.670 — 01:14:43.300 · Speaker 1
+J'ai eu plusieurs échanges déterminants avec des personnes extérieures au laboratoire, que ce soit d'un point de vue scientifique, technique ou même stratégique ou économique. J'ai beaucoup aidé. J'ai beaucoup été aidé par l'écosystème de l'Université Paris-Saclay, que ce soit par les cours donnés par la Maison du doctorat ou bien avec un Cube Alliance, le service valorisation, la ça, mais aussi avec des acteurs industriels dans différents salons comme Vivatech ou Spring, ou des des
+
+
+01:14:44.460 — 01:16:07.520 · Speaker 1
+ou des rencontres en tête à tête par exemple avec le CTO DA système qui m'a permis d'avoir une qui m'a donné des idées sur quels pouvaient être des pistes d'applications concrètes et vraiment aider à m'orienter stratégiquement, sur quel segment de marché il fallait que que j'adresse. J'ai eu énormément d'échanges déterminants dans mon parcours à plusieurs étapes.
+
+Les premières, elles étaient avec l'écosystème de l'Université Paris-Saclay et principalement la Maison du doctorat, qui a pu me permettre d'avoir des formations qui m'ont initié à l'entrepreneuriat et qui m'ont donné envie vraiment de me me lancer dedans. Et puis ensuite avec différents acteurs comme le service de valorisation de l'ENS, La salade ou un cube alliance.
+
+Qui ont pu me conseiller sur la manière de développer mon projet. J'ai aussi rencontré plusieurs personnes à différents salons comme Vivatech ou Spring, qui m'ont donné des informations sur l'économie du marché que j'essayais d'adresser, et j'ai pu même aussi contacter des personnes qui sont très immergées dans l'industrie, comme le City Systems par exemple, qui a pu me donner des informations très pertinentes sur quel segment de marché je pouvais cibler et où je pouvais vraiment avoir une valeur ajoutée par rapport aux différents produits qu'il existe aujourd'hui dans le domaine.
+
+
+01:16:15.400 — 01:17:05.310 · Speaker 1
+En termes du développement de mon projet. Je suis actuellement en phase de pré maturation sous un financement de l'Université Paris-Saclay qui s'appelle PUC in Lab. C'est une année de recherche et développement qui me permet de consolider la recherche que j'ai pu faire en thèse et pendant mon post-doc, pour en faire vraiment une première preuve de concept qui fonctionnera d'abord sur des maquettes qu'on a au laboratoire et avec l'objectif de les tester sur des véritables chaînes de production avec un industriel d'ici fin 2026.
+
+La prochaine étape, ce sera sûrement de passer par un financement de maturation de la SAT pour pouvoir développer le projet encore plus loin et passer des TRL encore plus plus haut.
+
+
+01:17:07.709 — 01:18:17.130 · Speaker 1
+Pour passer d'un résultat scientifique à une solution concrète. Une idée ne suffit pas, il faut pouvoir la démontrer à plusieurs échelles d'abord au laboratoire, puis ensuite chez un industriel, puis après dans le cas général. Moi, pour le moment, je suis dans une phase de pré maturation sous un financement POC in Lab de l'Université Paris-Saclay.
+
+Et c'est pendant cette année que mon objectif du coup, c'est de développer une première preuve de concept qui va venir consolider toute la recherche que j'ai faite pendant ma thèse et dans mon post-doc, sur une première solution dont je pourrais faire une démo avec des. Avec les équipements du laboratoire.
+
+Donc je dirais que c'est quelque chose qui se passe à peu près au TRL trois et d'ici la fin 2026, de tester ça sur des chaînes de taille plutôt industrielles. Donc, passer plus au TRL quatre Et à la suite de ça, je pense, dans l'année 2027, je vais essayer de chercher un financement de la ça de maturation pour pouvoir développer le projet encore plus loin, faire des partenariats avec des industriels et démarrer la start-up.
+
+
+01:18:23.650 — 01:19:25.100 · Speaker 1
+Au moment de m'engager dans la valorisation de mon projet. J'avais plusieurs sources de craintes et appréhensions. Tout d'abord, je dirais un peu une peur de légitimité dans le sens où pendant toute mes études, j'ai été à l'ENS, j'ai fait de la recherche. Les stages que j'ai fait, c'étaient des stages de recherche.
+
+Ma thèse, c'était dans un labo, dans un laboratoire de recherche. Et mon innovation, c'est quelque chose qui va plutôt s'appliquer dans l'industrie. Monter une start-up, c'est monter une boîte et je n'avais vraiment aucune expérience dans ce dans ce milieu là. Et donc je me disais qu'il était peut être plus pertinent.
+
+Enfin, j'avais beaucoup d'hésitations sur le fait de me lancer directement à vouloir monter mon projet, monter mon équipe. Ou peut être pas. Pourquoi d'abord aller travailler en entreprise, voir comment ça se passe en entreprise, voir comment ça se passe dans l'industrie. Et après trois ou quatre années d'expérience, me lancer dans la création de ma boîte.
+
+
+01:19:26.780 — 01:20:36.420 · Speaker 1
+Malgré ses doutes, j'arrivais quand même une énorme opportunité venant de l'université, à la fois financière, par un financement Talking Lab et d'accompagnement, qui est aussi des différents cours que j'ai eus, qui m'ont vraiment fait comprendre que pour entreprendre, on n'a pas forcément besoin d'avoir une idée révolutionnaire, mais qu'on a ce dont on a besoin.
+
+C'est d'un problème qui vient de l'industriel et qu'il n'y a pas de mauvais ou bon moment vraiment pour démarrer l'aventure. Et c'est tout cet accompagnement qui m'a décidé à prendre le risque, même si je manquais d'expérience, de quand même me lancer, de faire confiance aux personnes qui m'accompagnent et qui me conseillaient.
+
+Et aujourd'hui, je suis plutôt assez assez content de ce choix. En tout cas, ça m'a permis d'apprendre beaucoup de choses et de me développer sur plein de pans. Même si bien sûr, je pense qu'il n'y a pas de bon ou de mauvais choix dans ce type, dans ce type d'aventure. Chacun a son propre parcours et le plus important, c'est d'avancer.
+
+
+01:20:37.820 — 01:20:38.660 · Speaker 2
+La surmonter.
+
+
+01:20:39.540 — 01:21:07.060 · Speaker 1
+Je dirais que l'obstacle le plus difficile à surmonter, c'est quand même avancer et prendre des décisions sur des choses qu'on ne connait pas beaucoup. Et donc du coup, devoir se former dans ces domaines, comme par exemple en venant de la tech principalement, on n'a pas forcément tout le vocabulaire des commerciaux et de l'industrie qui eux vont plutôt parler de retour sur investissement plutôt que de solutions technologiques.
+
+
+01:21:08.220 — 01:21:21.480 · Speaker 1
+Et après, il y a aussi toutes les questions juridiques comme la protection de propriété intellectuelle qu'il faut qu'il faut gérer par rapport aux publications par exemple. On ne va pas tout publier, on va garder peut être certaines choses secrètes.
+
+
+01:21:22.800 — 01:21:31.920 · Speaker 1
+Et en fait toutes ces. Tout cet apprentissage aussi. Je dirais même. Qu'est ce qu'il pourrait y avoir comme trouver des. Trouver des concours, trouver des financements,
+
+
+01:21:33.200 — 01:21:51.640 · Speaker 1
+Travailler le business model, la stratégie. En fait, ce sont pleins de choses qui sont nécessaires et dont au début on n'a pas forcément les connaissances et c'est assez difficile je trouve, d'organiser son temps pour pouvoir à la fois soit se former soi même, soit trouver les bonnes personnes qui vont pouvoir nous conseiller et nous aider sur sur ce domaine.
+
+
+01:21:52.560 — 01:21:56.200 · Speaker 2
+Quels conseils donneriez-vous pour surmonter ses freins et ses doutes?
+
+
+01:21:57.640 — 01:22:25.070 · Speaker 1
+Je dirais que pour surmonter ces différents freins et doutes, le plus important c'est de s'entourer de personnes compétentes. Et l'écosystème Paris-Saclay est un bon entourage pour répondre à ces problématiques. Et donc il ne faut pas hésiter à leur leur faire part de nos doutes, de nos problèmes.
+
+Il y a des équipes qui sont vraiment heureuses de nous aider et ça donne des résultats plutôt pertinents.
+
+
+01:22:32.350 — 01:22:41.510 · Speaker 1
+J'ai contacté la cellule de valorisation de l'ENS, donc là où je faisais ma thèse pendant la troisième année de ma thèse, je dirais vers le milieu de la troisième année,
+
+
+01:22:42.790 — 01:23:22.730 · Speaker 1
+je pense que c'était un petit peu tard, mais c'est parce qu'on ne savait pas forcément qu'on allait développer, transformer la recherche en produit et donc j'inviterai plutôt les personnes à à les contacter, leur cellule de valorisation, même s'ils n'ont pas forcément d'envie ou ni d'idée de valorisation de leurs travaux.
+
+Dès le début de la thèse, dès le début d'une recherche, dès le début d'un travail scientifique ou d'une production scientifique, parce qu'on n'est jamais à l'abri qu'en fait cette solution, elle est un vrai cas d'application dans dans l'industrie. Et c'est toujours mieux d'avoir cette information avant d'avoir publié qu'après avoir publié mes résultats.
+
+
+01:23:23.930 — 01:23:53.210 · Speaker 1
+J'ai compris qu'il fallait que je protège mon travail. Après deux ou trois discussions avec la cellule de valorisation qui m'a fait comprendre que protéger la propriété intellectuelle, c'est quelque chose de très important, parce que c'est sur ça que la valeur de la recherche ou même de la future start-up est fondée.
+
+Au début de la boîte, et donc il faut se protéger soit d'attaques d'industriels extérieurs ou de personnes qui voudraient nous voler l'idée.
+
+
+01:23:54.010 — 01:23:56.690 · Speaker 2
+Quel rôle à jouer La cellule de valorisation?
+
+
+01:23:57.450 — 01:24:15.720 · Speaker 1
+La cellule de valorisation, elle a joué un rôle de conseils et d'accompagnement sur quelles sont les informations qu'on a le droit de publier, que ce soit dans des articles scientifiques ou dans des communications sur LinkedIn ou dans des ou dans différents journal industriel pour ma part,
+
+
+01:24:17.520 — 01:24:19.560 · Speaker 1
+ou dans des journaux industriels.
+
+
+01:24:21.280 — 01:24:44.000 · Speaker 1
+En discutant avec les cellules de valorisation, j'ai compris qu'il fallait qu'on fasse une déclaration d'invention, ou du moins qu'on décrive un document qui va permettre ensuite de pouvoir faire une étude de brevetabilité avec la SLA pour voir parmi ce qu'on a inventé, qu'est ce qui doit rester un secret de méthodes industrielles et qu'est ce qui doit être protégé par un brevet?
+
+
+01:24:50.760 — 01:24:58.400 · Speaker 1
+Il existe plusieurs modes de valorisation de la recherche. Les deux principaux, c'est le licensing de
+
+
+01:24:59.560 — 01:25:13.100 · Speaker 1
+brevets et de solutions. Et le deuxième, c'est le fait de monter une startup. Moi je pense que dans mon cas, ce qui s'applique le plus, c'est se monter une startup. Parce que j'ai envie de. J'ai envie de monter une boîte et de pouvoir la développer sur cette technologie.
+
+
+01:25:14.380 — 01:25:34.219 · Speaker 1
+Si je devais donner un conseil aujourd'hui aux jeunes chercheurs, ce serait de se rapprocher très tôt de leur cellule de valorisation pour pouvoir discuter avec eux et voir quelles sont les La quelle est la valorisation possible de leur, de leurs travaux. Même s'il n'y a pas de vocation à
+
+
+01:25:35.260 — 01:26:05.220 · Speaker 1
+faire de la valorisation de travaux, c'est toujours un travail intéressant parce que le plus tôt on sait ce qu'on veut faire, le plus tôt on peut avoir une stratégie sur quoi protéger et quoi publier. Et on n'a pas à se retrouver, comme dans mon cas, en milieu de troisième année de thèse, à devoir essayer de faire un arbitrage rapide entre ce qu'on va écrire et mettre dans la thèse, et qu'est ce qu'on va devoir protéger.
+
+Le plus tôt on le sait, le mieux on peut s'adapter et donc suivre ce process sereinement.
+
+
+01:26:11.920 — 01:27:36.950 · Speaker 1
+Plusieurs personnes m'ont aidé dans mon projet et à différentes étapes. Je dirais d'abord que les premières personnes qui m'ont aidé, ce sont mes encadrants de thèse qui m'ont aidé pendant ma thèse. Bien évidemment d'un point de vue scientifique, mais qui m'ont aussi suivi et accompagné dans les étapes d'après pour aller vers la valorisation de mes travaux.
+
+Je dirais qu'une deuxième entité aussi qui m'a beaucoup aidé, c'est la maison du doctorat, avec les formations qu'elle a, qu'elle m'a proposée. D'un point de vue docteur en start-up ou docteur en entreprise ou en valorisation, ce sont des formations qui m'ont permis d'un petit peu sortir du contexte scientifique du laboratoire et de m'ouvrir d'autres domaines, que ce soit économique, stratégique mais aussi juridique.
+
+Donc ça m'a donné beaucoup, beaucoup d'informations utiles. Et une troisième entité qui m'a aidé, ce sont les incubateurs comme Incubes Alliance ou les sociétés de transfert comme le comme la SAT. Même le service de Valo qui eux m'ont plutôt aidé d'un point de vue stratégique et conseil.
+
+C'est à dire que j'ai pu avoir plusieurs rendez vous avec eux, discuter de mon projet, discuter de quelles sont les prochaines étapes à faire. Et c'est vraiment quelque chose qui me permet d'accélérer sur plein de points où je manque de connaissances. Et c'est vraiment, c'est vraiment bénéfique pour moi et pour le projet.
+
+
+01:27:38.670 — 01:28:19.170 · Speaker 1
+L'écosystème m'a aussi permis d'assister à différents événements et concours, comme par exemple Starters, qui est un concours de pitch qui m'a donné l'occasion ensuite de pitcher à des événements comme la Big de la BPI ou au Paris-Saclay Summit, qui étaient vraiment des des expériences très enrichissantes.
+
+Mais j'ai pu aussi faire partie de plusieurs programmes d'analyse de marché et stratégiques comme Lab to Bees en partenariat avec HC ou des équipes du MBA Entrepreneurship, des étudiants ont pu me faire toute une étude économique de mon projet, qui est une source de données assez
+
+
+01:28:20.370 — 01:28:23.090 · Speaker 1
+assez pertinente pour pour le futur du projet.
+
+
+01:28:30.330 — 01:29:12.640 · Speaker 1
+L'écosystème, ce n'est pas que des de l'aide humaine et du conseil, mais c'est aussi une aide financière qui permet de payer les chercheurs pendant le développement du projet. Personnellement, moi je suis en phase de pré maturation avec un financement POC in Lab qui me paye pendant un an pour faire une preuve de concept de mon projet.
+
+Mais il y a d'autres financements aussi qui existent pour pouvoir faire de la pré maturation ou de la maturation des financements CNRS par exemple, ou des financements de la Ça en maturation. Ou même voir des des financements provenant de différents concours de la BPI par exemple comme Eye Lab.
+
+
+01:29:14.680 — 01:29:44.040 · Speaker 1
+Cette aide économique, elle permet de se focaliser vraiment sur le développement à la fois technique et le développement stratégique de sa boite, sans forcément être focalisé sur essayer de trouver de l'argent pour pouvoir vivre au quotidien. Ça nous donne vraiment l'opportunité de.
+
+Au lieu de cumuler un travail pour se nourrir et de faire notre projet à côté, de vraiment se focaliser à 100 % sur le projet et c'est vraiment un accélérateur qui est très pertinent.
+
+
+01:29:46.680 — 01:30:21.230 · Speaker 1
+Cette aide financière, elle permet de libérer beaucoup de temps parce qu'on n'a plus à devoir avoir un travail qui nous permette, qui permet de se nourrir et son projet en parallèle. Là, on peut vraiment focaliser toute son attention sur le développement du projet. Et puis le financement Pack in Lab, par exemple, c'est un financement qui est donné aux laboratoires pour embaucher le chercheur sur un contrat chercheur ou postdoctoral, ce qui permet aussi de garder un lien fort avec le labo, ce qui est important d'un point de vue scientifique pour le développement du projet.
+
+
+01:30:27.550 — 01:31:09.729 · Speaker 1
+Pour faire comprendre mon innovation en dehors du laboratoire et avec plusieurs industriels ou des personnes externes, j'ai dû changer mon langage et itérer beaucoup de fois, changer mon discours, réécrire des pitchs pour trouver quelle était la manière de le raconter, qui fédérer le plus et qui faisait passer le message que j'avais envie de transmettre.
+
+Et ça, c'est vraiment un travail qui n'est pas facile et qui qui ne peut pas être résolu du premier coup. Il faut vraiment itérer, faire des pitchs, discuter avec un maximum de gens et voir comment l'auditoire s'adapte et comment l'interlocuteur
+
+
+01:31:10.730 — 01:31:16.770 · Speaker 1
+comprend ce qu'on lui dit pour pouvoir toujours itérer, réadapter son discours et se faire comprendre.
+
+
+01:31:19.370 — 01:31:58.250 · Speaker 1
+Pour échanger avec des partenaires non académiques, j'ai dû complètement revoir mon discours scientifique. J'ai dû vraiment arrêter de parler de la science, de comment la solution marche, mais plutôt me concentrer sur quels sont les bénéfices qu'elle va apporter à mon interlocuteur.
+
+Et c'est à partir de ce moment là qu'il commence à nous, à nous écouter, à nous faire confiance. Et c'est après, quand on ira plutôt discuter avec les techniciens, que là on pourra reparler peut être un petit peu plus science pour vraiment implémenter la solution. Mais la première phase, elle se fait d'abord par un discours très loin de la science.
+
+
+01:32:00.090 — 01:32:26.490 · Speaker 1
+Par exemple, dans mon cas, j'ai écrit un article pour la FIM qui est l'Association française des ingénieurs en maintenance. Et au début, j'avais parlé un petit peu trop de comment ma solution fonctionnait. D'un point de vue scientifique, et j'ai dû retravailler mon discours pour plutôt me concentrer sur quels sont les bénéfices qu'elle apporte, quel argent elle va faire gagner aux futurs industriels.
+
+Ce qui fait qu'en fait, mon article
+
+
+01:32:27.690 — 01:32:32.930 · Speaker 1
+devenait un article scientifique mi économique plutôt qu'un article complètement scientifique.
+
+
+01:32:35.410 — 01:33:41.939 · Speaker 1
+Personnellement, pour discuter avec des partenaires non académiques, j'ai dû adapter mon mon discours. J'ai dû arrêter de parler de termes techniques pour plutôt parler de termes relatifs aux bénéfices et aux gains que va avoir mon interlocuteur. Par exemple, dans le cadre D'un article que j'ai écrit pour la FIM qui est l'Agence française des ingénieurs en maintenance.
+
+J'avais écrit un article un petit peu trop scientifique, dans lequel il y avait des termes qui parlaient beaucoup aux scientifiques, comme à l'intelligence artificielle ou au numérique ou autre, mais peut être moins à des décideurs, des décideurs industriels. Et donc j'ai dû adapter mon discours pour voir en plus de ces termes ou à la place de ces termes, parler vraiment de retour sur investissement, de bénéfice pour qu'en fait la personne qui va lire, là, qui va lire l'article ne se focalise pas forcément sur la solution technique, mais sur qu'est ce que vraiment ça va lui apporter.
+
+Et c'est ça qui va lui donner envie de me recontacter par la suite pour pouvoir peut être tester la solution
+
+
+01:33:43.500 — 01:34:07.300 · Speaker 1
+pour travailler mon pitch. J'ai eu l'occasion de participer à plusieurs formations événements, donc il y a tout d'abord eu Start, un concours de pitch qui m'a donné ensuite l'opportunité de pitcher au Paris-Saclay Summit et aussi à la Big. Et j'ai aussi eu des formations de pitch avec un Cube Alliance lors de la formation Genesis Genesis Lite.
+
+
+01:34:08.460 — 01:34:08.940 · Speaker 2
+Très bien.
+
+
+01:34:14.820 — 01:34:46.979 · Speaker 1
+Si je devais donner un conseil à ceux qui hésitent à entreprendre, je dirais que c'est déjà de ne pas se focaliser sur l'idée reçue qu'on a besoin d'une idée pour entreprendre. En fait, on n'a pas besoin d'une idée, on a besoin d'un problème, d'une problématique terrain. Et c'est une fois qu'on s'intéresse à cette problématique qu'on va développer l'idée.
+
+L'idée, c'est que dans un second temps, donc, vous pouvez vous vous intéressez à l'entrepreneuriat sans même avoir une idée révolutionnaire. Vous avez juste à vous former, à rentrer dans l'écosystème. Et
+
+
+01:34:48.740 — 01:35:22.400 · Speaker 1
+aussi, je dirais qu'il ne faut pas trop que vous vous posez de questions, il faut que vous avanciez. Que même si vous avez des doutes, foncez quand même. Formez vous. Quoi que vous appreniez pendant ce parcours d'innovation ou d'entrepreneuriat, ce sera toujours quelque chose qui sera bénéfique dans toutes vos carrières, quel que soit votre futur métier.
+
+Donc même si intéressé maintenant, faire quelques formations, même si vous ne finissez finalement par ne pas entreprendre ou monter une boîte, ce sera toujours quelque chose d'utile. Donc n'hésitez pas,
+
+
+01:35:23.680 — 01:35:26.120 · Speaker 1
+ne vous posez pas trop de questions, foncez!
+
+
+01:35:27.640 — 01:35:30.160 · Speaker 1
+En un mot, foncez!
+
+
+01:35:31.440 — 01:35:36.440 · Speaker 1
+En un mot, foncez! Ne vous posez pas trop de questions et faites vous votre propre avis.
+
+
+01:35:39.520 — 01:35:51.160 · Speaker 1
+Yann Meunier Je travaille dans le domaine de l'automatique, de la construction de jumeaux numériques automatisés de chaîne de production industrielle à partir des données provenant des capteurs et des actionneurs.
+

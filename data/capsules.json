@@ -1,0 +1,306 @@
+[
+  {
+    "code": "GEN",
+    "ordre": 0,
+    "module": "Module 1 - Identifier le potentiel d'innovation",
+    "titre": "Comment nait une innovation ?",
+    "objectif_pedagogique": "Comprendre que l'innovation emerge de la rencontre entre une observation, un besoin et un usage, et savoir reperer dans ses travaux un resultat ou une rencontre susceptible d'ouvrir une demarche d'innovation.",
+    "message_central": "Une innovation ne nait pas seulement d'une idee isolee ; elle se construit au contact d'un besoin, d'une observation ou d'une opportunite.",
+    "criteres_inclusion": [
+      "origine de l'idee",
+      "besoin identifie",
+      "rencontre",
+      "observation societale",
+      "passage de la recherche vers l'usage"
+    ],
+    "criteres_exclusion": [
+      "details administratifs",
+      "financement avance",
+      "protection juridique"
+    ],
+    "duree_cible_secondes": 360,
+    "statut": "A_CARTOGRAPHIER",
+    "role": "LABORATOIRE",
+    "equivalent_production": "T1"
+  },
+  {
+    "code": "T1",
+    "ordre": 1,
+    "module": "Module 1 - Identifier le potentiel d'innovation",
+    "titre": "Une innovation peut naitre de chemins tres differents",
+    "objectif_pedagogique": "L'apprenant comprend qu'il n'existe pas un seul moment Eurêka. Il sait reperer dans ses travaux un resultat, une observation ou une rencontre susceptible d'ouvrir une demarche d'innovation.",
+    "message_central": "L'innovation peut emerger d'une demande du marche, d'un resultat de laboratoire, d'une observation societale ou d'une maturation progressive.",
+    "criteres_inclusion": [
+      "origines de l'innovation",
+      "tech-push",
+      "market-pull",
+      "observation d'usage",
+      "serendipite",
+      "maturation progressive"
+    ],
+    "criteres_exclusion": [
+      "protection juridique",
+      "financement",
+      "creation d'entreprise"
+    ],
+    "duree_cible_secondes": 300,
+    "statut": "EN_CONSTRUCTION"
+  },
+  {
+    "code": "T2",
+    "ordre": 2,
+    "module": "Module 1 - Identifier le potentiel d'innovation",
+    "titre": "Sortir du laboratoire pour verifier le besoin",
+    "objectif_pedagogique": "L'apprenant sait distinguer une idee interessante d'un besoin valide. Il sait formuler : Pour qui ? Dans quelle situation ? Quel probleme concret ? Quelle preuve du besoin ?",
+    "message_central": "Confronter l'invention au terrain revele la difference entre nice to have et must have.",
+    "criteres_inclusion": [
+      "utilisateur",
+      "beneficiaire",
+      "usage",
+      "proposition de valeur",
+      "validation du besoin",
+      "pivot"
+    ],
+    "criteres_exclusion": [
+      "genese sans beneficiaire",
+      "preuve technique seule",
+      "protection PI"
+    ],
+    "duree_cible_secondes": 300,
+    "statut": "EN_CONSTRUCTION"
+  },
+  {
+    "code": "T3",
+    "ordre": 3,
+    "module": "Module 1 - Identifier le potentiel d'innovation",
+    "titre": "Passer d'une idee scientifique a une preuve utilisable (POC)",
+    "objectif_pedagogique": "L'apprenant sait identifier le niveau de preuve dont il dispose et la prochaine incertitude qu'il doit lever. Il comprend qu'une preuve scientifique n'est pas encore necessairement une preuve d'usage, d'industrialisation ou de marche.",
+    "message_central": "Chaque projet doit clarifier son niveau de preuve et la prochaine etape pour derisquer.",
+    "criteres_inclusion": [
+      "POC",
+      "prototype",
+      "MVP",
+      "TRL",
+      "prematuration",
+      "maturation",
+      "jalons techniques"
+    ],
+    "criteres_exclusion": [
+      "strategie de protection",
+      "levée de fonds",
+      "gouvernance"
+    ],
+    "duree_cible_secondes": 300,
+    "statut": "EN_CONSTRUCTION"
+  },
+  {
+    "code": "T4",
+    "ordre": 4,
+    "module": "Module 2 - Proteger et valoriser les resultats",
+    "titre": "Proteger avant de communiquer",
+    "objectif_pedagogique": "Face a un resultat potentiellement valorisable, l'apprenant sait qu'il doit contacter sa structure de valorisation avant de publier ou de communiquer. Il sait preparer ce premier echange.",
+    "message_central": "Toute divulgation publique doit etre precedee d'une reflexion sur la protection et la confidentialite.",
+    "criteres_inclusion": [
+      "confidentialite",
+      "nouveaute",
+      "publication",
+      "congres",
+      "soutenance",
+      "declaration d'invention"
+    ],
+    "criteres_exclusion": [
+      "choix licence vs start-up",
+      "montage de pitch",
+      "recrutement"
+    ],
+    "duree_cible_secondes": 300,
+    "statut": "EN_CONSTRUCTION"
+  },
+  {
+    "code": "T5",
+    "ordre": 5,
+    "module": "Module 2 - Proteger et valoriser les resultats",
+    "titre": "Brevet, secret ou savoir-faire : construire une strategie de protection",
+    "objectif_pedagogique": "L'apprenant comprend que breveter n'est pas une reponse automatique. Il sait identifier les principales questions qui orientent le choix entre brevet, secret et savoir-faire.",
+    "message_central": "Le mode de protection doit correspondre au type de resultat, a sa demonstrabilite et au modele de valorisation.",
+    "criteres_inclusion": [
+      "brevetabilite",
+      "secret industriel",
+      "savoir-faire",
+      "logiciel",
+      "preuve",
+      "confidentialite"
+    ],
+    "criteres_exclusion": [
+      "premier contact valorisation",
+      "financement",
+      "pitch"
+    ],
+    "duree_cible_secondes": 300,
+    "statut": "EN_CONSTRUCTION"
+  },
+  {
+    "code": "T6",
+    "ordre": 6,
+    "module": "Module 2 - Proteger et valoriser les resultats",
+    "titre": "Creation de start-up, licence ou partenariat : choisir une voie de transfert",
+    "objectif_pedagogique": "L'apprenant comprend que la creation d'entreprise n'est qu'une voie possible. Il sait comparer les grandes options et identifier les questions a traiter avec les professionnels de la valorisation.",
+    "message_central": "La voie de transfert depend du risque a porter, du marche cible et des partenaires mobilisables.",
+    "criteres_inclusion": [
+      "licence",
+      "creation d'entreprise",
+      "co-developpement",
+      "partenariat",
+      "cession",
+      "copropriete"
+    ],
+    "criteres_exclusion": [
+      "protection avant publication",
+      "incubation",
+      "freins personnels"
+    ],
+    "duree_cible_secondes": 300,
+    "statut": "EN_CONSTRUCTION"
+  },
+  {
+    "code": "T7",
+    "ordre": 7,
+    "module": "Module 3 - Se faire accompagner et financer",
+    "titre": "Accompagnement et trajectoire du projet",
+    "objectif_pedagogique": "L'apprenant sait distinguer maturation et incubation. Il sait identifier a quel moment et pour quel besoin solliciter chacune de ces structures.",
+    "message_central": "L'accompagnement transforme un resultat en feuille de route et fait evoluer la posture du porteur.",
+    "criteres_inclusion": [
+      "prematuration",
+      "maturation",
+      "incubation",
+      "SATT",
+      "jalons",
+      "coaching",
+      "reseau"
+    ],
+    "criteres_exclusion": [
+      "levée de fonds detaillee",
+      "pacte d'associes",
+      "collaboration contractuelle"
+    ],
+    "duree_cible_secondes": 300,
+    "statut": "EN_CONSTRUCTION"
+  },
+  {
+    "code": "T8",
+    "ordre": 8,
+    "module": "Module 3 - Se faire accompagner et financer",
+    "titre": "Choisir les bons financements au bon moment",
+    "objectif_pedagogique": "L'apprenant sait qu'un financement correspond a un stade, a une depense et a un niveau de risque. Il distingue subvention, avance, investissement en capital et chiffre d'affaires.",
+    "message_central": "Les financements doivent etre alignes sur le stade du projet et le rythme du secteur.",
+    "criteres_inclusion": [
+      "aides non dilutives",
+      "Bpifrance",
+      "concours",
+      "investissement en capital",
+      "dilution",
+      "gouvernance"
+    ],
+    "criteres_exclusion": [
+      "protection PI",
+      "recrutement d'equipe",
+      "pitch utilisateur"
+    ],
+    "duree_cible_secondes": 300,
+    "statut": "EN_CONSTRUCTION"
+  },
+  {
+    "code": "T9",
+    "ordre": 9,
+    "module": "Module 4 - Entreprendre et faire grandir le projet",
+    "titre": "Construire une equipe complementaire et trouver sa place",
+    "objectif_pedagogique": "L'apprenant sait identifier les competences manquantes autour de son projet et reflechir a la place qu'il souhaite reellement occuper.",
+    "message_central": "L'equipe initiale suffit rarement a porter seule le passage a l'entrepreneuriat.",
+    "criteres_inclusion": [
+      "complementarite",
+      "recrutement",
+      "CEO",
+      "CSO",
+      "CTO",
+      "comite strategique",
+      "comite scientifique"
+    ],
+    "criteres_exclusion": [
+      "financement",
+      "protection",
+      "freins psychologiques generaux"
+    ],
+    "duree_cible_secondes": 300,
+    "statut": "EN_CONSTRUCTION"
+  },
+  {
+    "code": "T10",
+    "ordre": 10,
+    "module": "Module 4 - Entreprendre et faire grandir le projet",
+    "titre": "S'approprier un langage pour entreprendre",
+    "objectif_pedagogique": "L'apprenant sait presenter ses travaux autrement qu'a des pairs scientifiques, en partant du probleme, de l'usage et de la valeur attendue.",
+    "message_central": "Le pitch se construit par repetitions et par adaptation aux interlocuteurs economiques.",
+    "criteres_inclusion": [
+      "pitch",
+      "valeur pour l'interlocuteur",
+      "utilisateur",
+      "decideur",
+      "partenaire",
+      "investisseur"
+    ],
+    "criteres_exclusion": [
+      "protection avant publication",
+      "choix de licence",
+      "montage technique"
+    ],
+    "duree_cible_secondes": 300,
+    "statut": "EN_CONSTRUCTION"
+  },
+  {
+    "code": "T11",
+    "ordre": 11,
+    "module": "Module 4 - Entreprendre et faire grandir le projet",
+    "titre": "Les freins et leviers",
+    "objectif_pedagogique": "L'apprenant identifie ses propres freins et comprend qu'ils ne doivent pas tous etre resolus avant de faire le premier pas. Il choisit une premiere action realiste et reversible.",
+    "message_central": "Peur, manque de temps et perte de legitimite sont des freins courants mais travaillables.",
+    "criteres_inclusion": [
+      "freins personnels",
+      "legitimite",
+      "temps",
+      "echec",
+      "incertitude",
+      "conseils de fin"
+    ],
+    "criteres_exclusion": [
+      "contrats de collaboration",
+      "brevet",
+      "TRL"
+    ],
+    "duree_cible_secondes": 300,
+    "statut": "EN_CONSTRUCTION"
+  },
+  {
+    "code": "T12",
+    "ordre": 12,
+    "module": "Module 4 - Entreprendre et faire grandir le projet",
+    "titre": "Construire une collaboration qui produit reellement de la valeur",
+    "objectif_pedagogique": "L'apprenant sait preparer une premiere collaboration en clarifiant les contributions, les attentes, les regles de decision et les sujets de propriete intellectuelle.",
+    "message_central": "Une collaboration durable repose sur la co-construction, la contractualisation et le partage de valeur.",
+    "criteres_inclusion": [
+      "co-construction",
+      "partenaires",
+      "gouvernance",
+      "contrats",
+      "PI",
+      "publication",
+      "partage de valeur"
+    ],
+    "criteres_exclusion": [
+      "freins personnels",
+      "financement initial",
+      "origine de l'idee"
+    ],
+    "duree_cible_secondes": 300,
+    "statut": "EN_CONSTRUCTION"
+  }
+]

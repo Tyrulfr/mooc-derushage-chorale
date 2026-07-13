@@ -1,0 +1,10 @@
+[project]
+name = "mooc-derushage"
+version = "0.1.0"
+description = "Outil local de derushage editorial pour capsules chorales MOOC."
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.ruff]
+line-length = 100
+
