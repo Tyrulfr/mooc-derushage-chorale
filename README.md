@@ -123,8 +123,11 @@ Le dossier `site/` est un site **100 % statique** (HTML, CSS, JS). Aucun serveur
 ### Mise en place (une fois)
 
 1. Pousser le depot sur GitHub (`main`).
-2. **Settings → Pages → Build and deployment → Source** : choisir **GitHub Actions** (pas « Deploy from a branch »).
-3. A chaque push sur `main`, le workflow `.github/workflows/pages.yml` :
+2. **Settings → Pages → Build and deployment → Source** :
+   - **Recommande : GitHub Actions** (publie le contenu de `site/` a la racine de l'URL).
+   - **Alternative : Deploy from a branch** → branche `main`, dossier **`/site`** (pas la racine `/`).
+3. Si la page d'accueil affiche le README au lieu du sommaire, la source Pages pointe encore vers la racine du depot : corriger le reglage ci-dessus.
+4. A chaque push sur `main`, le workflow `.github/workflows/pages.yml` :
    - lance `validate_data.py` puis `build_site.py` ;
    - publie le contenu de `site/` sur Pages.
 
