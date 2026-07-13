@@ -18,6 +18,9 @@ NAV_ITEMS = (
     ("registre.html", "Registre"),
 )
 
+SITE_BRAND = "Dérushage chorale"
+SITE_TAGLINE = "L'Esprit d'innover — MOOC Paris-Saclay"
+
 ALLOWED_SEGMENT_STATUSES = {
     "DISPONIBLE",
     "CANDIDAT",
@@ -261,14 +264,44 @@ def render_bab_encode_export(doc: dict) -> str:
     return "\n".join(lines).strip() + "\n"
 
 
+def html_breadcrumb(*parts: tuple[str, str | None]) -> str:
+    items: list[str] = []
+    for label, href in parts:
+        if href:
+            items.append(f'<li><a href="{href}">{escape(label)}</a></li>')
+        else:
+            items.append(f'<li aria-current="page">{escape(label)}</li>')
+    return f'<ol class="breadcrumb">{"".join(items)}</ol>'
+
+
 def html_nav(current: str | None = None) -> str:
-    links = []
+    links: list[str] = []
     for href, label in NAV_ITEMS:
         if href == current:
-            links.append(f'<span class="nav-current">{escape(label)}</span>')
+            links.append(f'<a class="site-nav__link site-nav__link--current" href="{href}" aria-current="page">{escape(label)}</a>')
         else:
-            links.append(f'<a href="{href}">{escape(label)}</a>')
-    return "\n    ".join(links)
+            links.append(f'<a class="site-nav__link" href="{href}">{escape(label)}</a>')
+    return f"""<div class="site-header__inner">
+    <a class="site-brand" href="index.html">
+      <span class="site-brand__mark" aria-hidden="true">◆</span>
+      <span class="site-brand__text">
+        <span class="site-brand__title">{escape(SITE_BRAND)}</span>
+        <span class="site-brand__tagline">{escape(SITE_TAGLINE)}</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      {"".join(links)}
+    </nav>
+  </div>"""
+
+
+def html_footer() -> str:
+    return f"""<footer class="site-footer">
+    <div class="site-footer__inner">
+      <p><strong>{escape(SITE_BRAND)}</strong> — outil de lecture et de verification du derushage editorial.</p>
+      <p class="meta">Donnees source : <code>data/</code> · Pages regenerees par <code>scripts/build_site.py</code></p>
+    </div>
+  </footer>"""
 
 
 def index_by_id(segments: list[dict]) -> dict[str, dict]:
@@ -431,25 +464,36 @@ def html_page(
     scripts: list[str] | None = None,
     nav_current: str | None = None,
     page_header: str | None = None,
+    breadcrumb: str | None = None,
+    main_class: str = "",
 ) -> str:
     script_tags = "".join(f'  <script src="{escape(path)}" defer></script>\n' for path in (scripts or []))
-    heading = page_header if page_header is not None else f"<h1>{escape(title)}</h1>"
+    if page_header is None:
+        page_header = f'<div class="page-head"><h1>{escape(title)}</h1></div>'
+    breadcrumb_html = breadcrumb or ""
+    main_classes = "site-main"
+    if main_class:
+        main_classes += f" {main_class}"
     return f"""<!doctype html>
 <html lang="fr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{escape(title)}</title>
+  <title>{escape(title)} — {escape(SITE_BRAND)}</title>
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <header>
+  <header class="site-header">
     {html_nav(nav_current)}
   </header>
-  <main>
-    {heading}
-    {body}
+  <main class="{main_classes}">
+    {breadcrumb_html}
+    {page_header}
+    <div class="page-content">
+      {body}
+    </div>
   </main>
+  {html_footer()}
 {script_tags}</body>
 </html>
 """

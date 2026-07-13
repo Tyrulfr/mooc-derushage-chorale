@@ -3,20 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Loic Rajjou</title>
+  <title>Loic Rajjou — Dérushage chorale</title>
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <header>
-    <a href="index.html">Accueil</a>
-    <a href="tableau_de_bord.html">Tableau de bord</a>
-    <a href="bab_encodes.html">BAB encodé</a>
-    <a href="conflits.html">Conflits</a>
-    <a href="registre.html">Registre</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+    <a class="site-brand" href="index.html">
+      <span class="site-brand__mark" aria-hidden="true">◆</span>
+      <span class="site-brand__text">
+        <span class="site-brand__title">Dérushage chorale</span>
+        <span class="site-brand__tagline">L'Esprit d'innover — MOOC Paris-Saclay</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a class="site-nav__link" href="index.html">Accueil</a><a class="site-nav__link" href="tableau_de_bord.html">Tableau de bord</a><a class="site-nav__link" href="bab_encodes.html">BAB encodé</a><a class="site-nav__link" href="conflits.html">Conflits</a><a class="site-nav__link" href="registre.html">Registre</a>
+    </nav>
+  </div>
   </header>
-  <main>
-    <h1>Loic Rajjou</h1>
-    <p class='meta'>Duree totale utilisee: 20:48</p><p><span class='tag'>RESERVE: 1</span><span class='tag'>UTILISE: 11</span></p><table><thead><tr><th>ID</th><th>Timecodes</th><th>Theme</th><th>Statut</th><th>Score</th><th>Verbatim</th></tr></thead><tbody><tr><td>LOI-0001</td><td>01:00:05.150 - 01:01:22.959</td><td>T1</td><td>RESERVE</td><td>12/12</td><td>Bonjour, je m'appelle Loïc Rajout, je suis professeur à AgroParisTech en biologie végétale et je m'intéresse particulièrement à tout ce qui est biologie cellulaire, génomique, métabolisme et biochimie. Bonjour, je m'appelle Loïc Raju, je suis professeur à AgroParisTech en biologie végétale et je m'intéresse à de la biologie cellulaire et de la génomique, du métabolisme et de la biochimie.
+  <main class="site-main">
+    <ol class="breadcrumb"><li><a href="index.html">Accueil</a></li><li><a href="tableau_de_bord.html">Tableau de bord</a></li><li aria-current="page">Loic Rajjou</li></ol>
+    <div class="page-head"><h1>Loic Rajjou</h1></div>
+    <div class="page-content">
+      <p class='meta'>Duree totale utilisee: 20:48</p><p><span class='tag'>RESERVE: 1</span><span class='tag'>UTILISE: 11</span></p><div class="table-wrap"><table><thead><tr><th>ID</th><th>Timecodes</th><th>Theme</th><th>Statut</th><th>Score</th><th>Verbatim</th></tr></thead><tbody><tr><td>LOI-0001</td><td>01:00:05.150 - 01:01:22.959</td><td>T1</td><td>RESERVE</td><td>12/12</td><td>Bonjour, je m'appelle Loïc Rajout, je suis professeur à AgroParisTech en biologie végétale et je m'intéresse particulièrement à tout ce qui est biologie cellulaire, génomique, métabolisme et biochimie. Bonjour, je m'appelle Loïc Raju, je suis professeur à AgroParisTech en biologie végétale et je m'intéresse à de la biologie cellulaire et de la génomique, du métabolisme et de la biochimie.
 
 Comment est née mon innovation? Alors ça a été un chemin assez long de plusieurs années de recherche plutôt fondamentale, exploratoire, sur la compréhension des mécanismes cellulaires et moléculaires qui conduisent à la germination et à la croissance des plantes, et toutes les connaissances qu'on a pu générer au cours de toutes ces années m'ont amené à réfléchir, à savoir qu'est ce qu'on peut faire de ces travaux, au delà de les publier et de générer de la connaissance, est ce que ça peut trouver une application?
 
@@ -177,7 +186,14 @@ il y avait beaucoup de choses qui rentraient en jeu. C'est quelque chose de tout
 
 Ça a été quelque chose d'important. Et même chose avec les investisseurs. Comment est-ce qu'on convainc un investisseur que notre technologie a une vraie valeur? Elle a une vraie plus-value qui va au delà de simplement la filière. C'est aussi une une valeur à travers l'image qu'elle peut donner auprès de la société.
 
-Est ce qu'elle est acceptable? Est ce qu'elle est désirable? J'aime beaucoup parler de désirabilité quand j'enseigne l'entrepreneuriat. Il faut que ce soit désirable par un public très large. Et comment est ce qu'on en fait quelque chose de désirable? Il faut changer un peu la typologie des mots qu'on utilise, et sortir un peu d'une science très dure vers des choses beaucoup plus</td></tr></tbody></table>
+Est ce qu'elle est acceptable? Est ce qu'elle est désirable? J'aime beaucoup parler de désirabilité quand j'enseigne l'entrepreneuriat. Il faut que ce soit désirable par un public très large. Et comment est ce qu'on en fait quelque chose de désirable? Il faut changer un peu la typologie des mots qu'on utilise, et sortir un peu d'une science très dure vers des choses beaucoup plus</td></tr></tbody></table></div>
+    </div>
   </main>
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p><strong>Dérushage chorale</strong> — outil de lecture et de verification du derushage editorial.</p>
+      <p class="meta">Donnees source : <code>data/</code> · Pages regenerees par <code>scripts/build_site.py</code></p>
+    </div>
+  </footer>
 </body>
 </html>

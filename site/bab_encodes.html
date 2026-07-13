@@ -3,24 +3,40 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BAB encodé</title>
+  <title>BAB encodé — Dérushage chorale</title>
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <header>
-    <a href="index.html">Accueil</a>
-    <a href="tableau_de_bord.html">Tableau de bord</a>
-    <span class="nav-current">BAB encodé</span>
-    <a href="conflits.html">Conflits</a>
-    <a href="registre.html">Registre</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+    <a class="site-brand" href="index.html">
+      <span class="site-brand__mark" aria-hidden="true">◆</span>
+      <span class="site-brand__text">
+        <span class="site-brand__title">Dérushage chorale</span>
+        <span class="site-brand__tagline">L'Esprit d'innover — MOOC Paris-Saclay</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a class="site-nav__link" href="index.html">Accueil</a><a class="site-nav__link" href="tableau_de_bord.html">Tableau de bord</a><a class="site-nav__link site-nav__link--current" href="bab_encodes.html" aria-current="page">BAB encodé</a><a class="site-nav__link" href="conflits.html">Conflits</a><a class="site-nav__link" href="registre.html">Registre</a>
+    </nav>
+  </div>
   </header>
-  <main>
-    <h1>BAB encodé</h1>
-    <p class='meta'>BAB complets avec decoupage source. Les blocs deja travailles sont encodes ; les autres sont marques <strong>Non encode</strong>. Evolution dans <code>data/bab_encodes/</code>.</p><table><thead><tr><th>Chercheur</th><th>Source BAB</th><th>Statut</th><th>Blocs BAB</th><th>Encodes</th><th>Utilises</th><th>Mise a jour</th></tr></thead><tbody><tr><td><a href='bab_encode_jjg.html'>Jean-Jacques Greffet</a></td><td>BAB_JJ_GREFFET.txt</td><td>NON_ENCODE</td><td>99</td><td>38</td><td>31</td><td>2026-07-13</td></tr>
+  <main class="site-main">
+    <ol class="breadcrumb"><li><a href="index.html">Accueil</a></li><li aria-current="page">BAB encodé</li></ol>
+    <div class="page-head"><h1>BAB encodé</h1><p class="lead">Lecture segment par segment des BAB bruts, avec statuts et capsules associees.</p></div>
+    <div class="page-content">
+      <p class='meta'>BAB complets avec decoupage source. Les blocs deja travailles sont encodes ; les autres sont marques <strong>Non encode</strong>. Evolution dans <code>data/bab_encodes/</code>.</p><div class="table-wrap"><table><thead><tr><th>Chercheur</th><th>Source BAB</th><th>Statut</th><th>Blocs BAB</th><th>Encodes</th><th>Utilises</th><th>Mise a jour</th></tr></thead><tbody><tr><td><a href='bab_encode_jjg.html'>Jean-Jacques Greffet</a></td><td>BAB_JJ_GREFFET.txt</td><td>NON_ENCODE</td><td>99</td><td>38</td><td>31</td><td>2026-07-13</td></tr>
 <tr><td><a href='bab_encode_mur.html'>Muriel Thomas</a></td><td>BAB_Muriel_Thomas video.txt</td><td>NON_ENCODE</td><td>70</td><td>26</td><td>19</td><td>2026-07-13</td></tr>
 <tr><td><a href='bab_encode_syl.html'>Sylvia Cohen-Kaminski</a></td><td>BAB_SYLVIA_COHEN_BABbrut.txt</td><td>NON_ENCODE</td><td>94</td><td>41</td><td>38</td><td>2026-07-13</td></tr>
 <tr><td><a href='bab_encode_loi.html'>Loic Rajjou</a></td><td>BAB_LOIC_RAJJOU_BABbrut.txt</td><td>NON_ENCODE</td><td>150</td><td>54</td><td>53</td><td>2026-07-13</td></tr>
-<tr><td><a href='bab_encode_yan.html'>Yann Meunier</a></td><td>BAB_Yan_Monier.txt</td><td>NON_ENCODE</td><td>71</td><td>3</td><td>3</td><td>2026-07-13</td></tr></tbody></table>
+<tr><td><a href='bab_encode_yan.html'>Yann Meunier</a></td><td>BAB_Yan_Monier.txt</td><td>NON_ENCODE</td><td>71</td><td>3</td><td>3</td><td>2026-07-13</td></tr></tbody></table></div>
+    </div>
   </main>
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p><strong>Dérushage chorale</strong> — outil de lecture et de verification du derushage editorial.</p>
+      <p class="meta">Donnees source : <code>data/</code> · Pages regenerees par <code>scripts/build_site.py</code></p>
+    </div>
+  </footer>
 </body>
 </html>

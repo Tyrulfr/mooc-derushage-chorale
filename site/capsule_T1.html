@@ -3,20 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>T1 - Une innovation peut naitre de chemins tres differents</title>
+  <title>T1 - Une innovation peut naitre de chemins tres differents — Dérushage chorale</title>
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <header>
-    <a href="index.html">Accueil</a>
-    <a href="tableau_de_bord.html">Tableau de bord</a>
-    <a href="bab_encodes.html">BAB encodé</a>
-    <a href="conflits.html">Conflits</a>
-    <a href="registre.html">Registre</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+    <a class="site-brand" href="index.html">
+      <span class="site-brand__mark" aria-hidden="true">◆</span>
+      <span class="site-brand__text">
+        <span class="site-brand__title">Dérushage chorale</span>
+        <span class="site-brand__tagline">L'Esprit d'innover — MOOC Paris-Saclay</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a class="site-nav__link" href="index.html">Accueil</a><a class="site-nav__link" href="tableau_de_bord.html">Tableau de bord</a><a class="site-nav__link" href="bab_encodes.html">BAB encodé</a><a class="site-nav__link" href="conflits.html">Conflits</a><a class="site-nav__link" href="registre.html">Registre</a>
+    </nav>
+  </div>
   </header>
-  <main>
-    <h1>T1 - Une innovation peut naitre de chemins tres differents</h1>
-    <p><strong>Objectif:</strong> L'apprenant comprend qu'il n'existe pas un seul moment Eurêka. Il sait reperer dans ses travaux un resultat, une observation ou une rencontre susceptible d'ouvrir une demarche d'innovation.</p>
+  <main class="site-main">
+    <ol class="breadcrumb"><li><a href="index.html">Accueil</a></li><li><a href="tableau_de_bord.html">Tableau de bord</a></li><li aria-current="page">T1</li></ol>
+    <div class="page-head"><h1>T1 - Une innovation peut naitre de chemins tres differents</h1></div>
+    <div class="page-content">
+      <p><strong>Objectif:</strong> L'apprenant comprend qu'il n'existe pas un seul moment Eurêka. Il sait reperer dans ses travaux un resultat, une observation ou une rencontre susceptible d'ouvrir une demarche d'innovation.</p>
 <p><strong>Message central:</strong> L'innovation peut emerger d'une demande du marche, d'un resultat de laboratoire, d'une observation societale ou d'une maturation progressive.</p>
 <p class='meta'><strong>Production derivee du laboratoire :</strong> montage et cadrage initialises depuis <a href='capsule_GEN.html'>GEN</a>.</p>
 <h2>Extraits candidats</h2>
@@ -326,7 +335,14 @@ Retenez : marche, laboratoire, pas de cote, maturation longue — quatre origine
   </div>
 </div>
 
+    </div>
   </main>
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p><strong>Dérushage chorale</strong> — outil de lecture et de verification du derushage editorial.</p>
+      <p class="meta">Donnees source : <code>data/</code> · Pages regenerees par <code>scripts/build_site.py</code></p>
+    </div>
+  </footer>
   <script src="assets/export-word.js" defer></script>
 </body>
 </html>

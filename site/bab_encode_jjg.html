@@ -3,21 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BAB encode — Jean-Jacques Greffet</title>
+  <title>BAB encode — Jean-Jacques Greffet — Dérushage chorale</title>
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <header>
-    <a href="index.html">Accueil</a>
-    <a href="tableau_de_bord.html">Tableau de bord</a>
-    <span class="nav-current">BAB encodé</span>
-    <a href="conflits.html">Conflits</a>
-    <a href="registre.html">Registre</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+    <a class="site-brand" href="index.html">
+      <span class="site-brand__mark" aria-hidden="true">◆</span>
+      <span class="site-brand__text">
+        <span class="site-brand__title">Dérushage chorale</span>
+        <span class="site-brand__tagline">L'Esprit d'innover — MOOC Paris-Saclay</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a class="site-nav__link" href="index.html">Accueil</a><a class="site-nav__link" href="tableau_de_bord.html">Tableau de bord</a><a class="site-nav__link site-nav__link--current" href="bab_encodes.html" aria-current="page">BAB encodé</a><a class="site-nav__link" href="conflits.html">Conflits</a><a class="site-nav__link" href="registre.html">Registre</a>
+    </nav>
+  </div>
   </header>
-  <main>
+  <main class="site-main">
+    <ol class="breadcrumb"><li><a href="index.html">Accueil</a></li><li><a href="bab_encodes.html">BAB encodé</a></li><li aria-current="page">Jean-Jacques Greffet</li></ol>
     <div class='page-header'><div><h1>BAB encode — Jean-Jacques Greffet</h1><p class='meta'>Source : BAB_JJ_GREFFET.txt · Statut : NON_ENCODE · Blocs : 38/99 encodes · Mise a jour : 2026-07-13</p></div><div class='export-toolbar' id='export-word-panel' data-capsule-code='bab-jjg' data-capsule-title='Jean-Jacques Greffet — BAB encode'><button type='button' class='btn' id='export-word-open' aria-expanded='false' aria-controls='export-word-modal'>Exporter en Word</button></div></div>
-    <p><a href="bab_encodes.html">← Retour aux BAB encodés</a></p>
-<p class='meta'><strong>38</strong> blocs encodes sur <strong>99</strong> blocs BAB · <strong>31</strong> utilises dans les capsules.</p>
+    <div class="page-content">
+      <p class='meta'><strong>38</strong> blocs encodes sur <strong>99</strong> blocs BAB · <strong>31</strong> utilises dans les capsules.</p>
 <div class='card bab-segment bab-segment--non-encode'><strong>Bloc 1</strong> <span class='meta'>01:00:05.870 → 01:00:42.270 · 00:36</span><p class='capsules'><span class='tag capsule-tag non-encode'>Non encode</span></p><p>Alors je m'appelle Jean-André Greffé, je suis professeur à l'Université Paris-Saclay à l'Institut d'Optique et je travaille en recherche dans le domaine de la nano photonique. Alors nano photonique, ça veut dire qu'on étudie la lumière, mais à l'échelle du nanomètre. Par exemple pour détecter des tout petits objets.
 
 Jean-Jacques Greffé Je suis professeur à l'Institut d'optique. Je travaille dans le domaine de la nano photonique, c'est à dire de l'optique, l'étude de la lumière, mais à l'échelle du nanomètre. Et concrètement, ça sert par exemple à étudier des observer, détecter des toutes petites particules.
@@ -885,7 +893,14 @@ Voie, si vous souhaitez, si vous envisagez une aventure entrepreneuriale, eh bie
   </div>
 </div>
 
+    </div>
   </main>
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p><strong>Dérushage chorale</strong> — outil de lecture et de verification du derushage editorial.</p>
+      <p class="meta">Donnees source : <code>data/</code> · Pages regenerees par <code>scripts/build_site.py</code></p>
+    </div>
+  </footer>
   <script src="assets/export-word.js" defer></script>
 </body>
 </html>

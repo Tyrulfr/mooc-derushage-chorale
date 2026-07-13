@@ -3,20 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Registre des extraits</title>
+  <title>Registre des extraits — Dérushage chorale</title>
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <header>
-    <a href="index.html">Accueil</a>
-    <a href="tableau_de_bord.html">Tableau de bord</a>
-    <a href="bab_encodes.html">BAB encodé</a>
-    <a href="conflits.html">Conflits</a>
-    <span class="nav-current">Registre</span>
+  <header class="site-header">
+    <div class="site-header__inner">
+    <a class="site-brand" href="index.html">
+      <span class="site-brand__mark" aria-hidden="true">◆</span>
+      <span class="site-brand__text">
+        <span class="site-brand__title">Dérushage chorale</span>
+        <span class="site-brand__tagline">L'Esprit d'innover — MOOC Paris-Saclay</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a class="site-nav__link" href="index.html">Accueil</a><a class="site-nav__link" href="tableau_de_bord.html">Tableau de bord</a><a class="site-nav__link" href="bab_encodes.html">BAB encodé</a><a class="site-nav__link" href="conflits.html">Conflits</a><a class="site-nav__link site-nav__link--current" href="registre.html" aria-current="page">Registre</a>
+    </nav>
+  </div>
   </header>
-  <main>
-    <h1>Registre des extraits</h1>
-    <table><thead><tr><th>ID</th><th>Chercheur</th><th>Theme</th><th>Capsules</th><th>Statut</th><th>Score</th><th>Qualification</th><th>Transcription</th></tr></thead><tbody><tr><td>JJG-0001</td><td>Jean-Jacques Greffet</td><td>T1</td><td>GEN, T1</td><td>UTILISE</td><td>12/12</td><td>PRIORITAIRE</td><td>non</td></tr>
+  <main class="site-main">
+    <ol class="breadcrumb"><li><a href="index.html">Accueil</a></li><li aria-current="page">Registre</li></ol>
+    <div class="page-head"><h1>Registre des extraits</h1><p class="lead">Inventaire complet des segments indexes, leurs statuts et qualifications.</p></div>
+    <div class="page-content">
+      <div class="table-wrap"><table><thead><tr><th>ID</th><th>Chercheur</th><th>Theme</th><th>Capsules</th><th>Statut</th><th>Score</th><th>Qualification</th><th>Transcription</th></tr></thead><tbody><tr><td>JJG-0001</td><td>Jean-Jacques Greffet</td><td>T1</td><td>GEN, T1</td><td>UTILISE</td><td>12/12</td><td>PRIORITAIRE</td><td>non</td></tr>
 <tr><td>JJG-0002</td><td>Jean-Jacques Greffet</td><td>T1</td><td>GEN, T1</td><td>UTILISE</td><td>12/12</td><td>PRIORITAIRE</td><td>non</td></tr>
 <tr><td>JJG-0003</td><td>Jean-Jacques Greffet</td><td>T1</td><td>GEN, T1</td><td>UTILISE</td><td>12/12</td><td>PRIORITAIRE</td><td>non</td></tr>
 <tr><td>JJG-0004</td><td>Jean-Jacques Greffet</td><td>T2</td><td>T2</td><td>UTILISE</td><td>12/12</td><td>PRIORITAIRE</td><td>non</td></tr>
@@ -74,7 +83,14 @@
 <tr><td>SYL-0014</td><td>Sylvia Cohen-Kaminski</td><td>T12</td><td>T12</td><td>REUTILISATION_A_ARBITRER</td><td>12/12</td><td>PRIORITAIRE</td><td>non</td></tr>
 <tr><td>YAN-0001</td><td>Yann Meunier</td><td>T1</td><td>GEN, T1</td><td>UTILISE</td><td>12/12</td><td>PRIORITAIRE</td><td>non</td></tr>
 <tr><td>YAN-0002</td><td>Yann Meunier</td><td>T1</td><td>GEN, T1</td><td>UTILISE</td><td>12/12</td><td>PRIORITAIRE</td><td>non</td></tr>
-<tr><td>YAN-0003</td><td>Yann Meunier</td><td>T2</td><td>T2</td><td>UTILISE</td><td>12/12</td><td>PRIORITAIRE</td><td>non</td></tr></tbody></table>
+<tr><td>YAN-0003</td><td>Yann Meunier</td><td>T2</td><td>T2</td><td>UTILISE</td><td>12/12</td><td>PRIORITAIRE</td><td>non</td></tr></tbody></table></div>
+    </div>
   </main>
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p><strong>Dérushage chorale</strong> — outil de lecture et de verification du derushage editorial.</p>
+      <p class="meta">Donnees source : <code>data/</code> · Pages regenerees par <code>scripts/build_site.py</code></p>
+    </div>
+  </footer>
 </body>
 </html>

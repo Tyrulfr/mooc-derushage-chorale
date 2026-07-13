@@ -3,21 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BAB encode — Yann Meunier</title>
+  <title>BAB encode — Yann Meunier — Dérushage chorale</title>
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <header>
-    <a href="index.html">Accueil</a>
-    <a href="tableau_de_bord.html">Tableau de bord</a>
-    <span class="nav-current">BAB encodé</span>
-    <a href="conflits.html">Conflits</a>
-    <a href="registre.html">Registre</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+    <a class="site-brand" href="index.html">
+      <span class="site-brand__mark" aria-hidden="true">◆</span>
+      <span class="site-brand__text">
+        <span class="site-brand__title">Dérushage chorale</span>
+        <span class="site-brand__tagline">L'Esprit d'innover — MOOC Paris-Saclay</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a class="site-nav__link" href="index.html">Accueil</a><a class="site-nav__link" href="tableau_de_bord.html">Tableau de bord</a><a class="site-nav__link site-nav__link--current" href="bab_encodes.html" aria-current="page">BAB encodé</a><a class="site-nav__link" href="conflits.html">Conflits</a><a class="site-nav__link" href="registre.html">Registre</a>
+    </nav>
+  </div>
   </header>
-  <main>
+  <main class="site-main">
+    <ol class="breadcrumb"><li><a href="index.html">Accueil</a></li><li><a href="bab_encodes.html">BAB encodé</a></li><li aria-current="page">Yann Meunier</li></ol>
     <div class='page-header'><div><h1>BAB encode — Yann Meunier</h1><p class='meta'>Source : BAB_Yan_Monier.txt · Statut : NON_ENCODE · Blocs : 3/71 encodes · Mise a jour : 2026-07-13</p></div><div class='export-toolbar' id='export-word-panel' data-capsule-code='bab-yan' data-capsule-title='Yann Meunier — BAB encode'><button type='button' class='btn' id='export-word-open' aria-expanded='false' aria-controls='export-word-modal'>Exporter en Word</button></div></div>
-    <p><a href="bab_encodes.html">← Retour aux BAB encodés</a></p>
-<p class='meta'><strong>3</strong> blocs encodes sur <strong>71</strong> blocs BAB · <strong>3</strong> utilises dans les capsules.</p>
+    <div class="page-content">
+      <p class='meta'><strong>3</strong> blocs encodes sur <strong>71</strong> blocs BAB · <strong>3</strong> utilises dans les capsules.</p>
 <div class='card bab-segment'><strong>YAN-0001</strong> <span class='meta'>01:00:04.510 → 01:00:21.230 · 00:17 · UTILISE</span><p class='capsules'><span class='tag capsule-tag utilise'>T1: UTILISE (presentation)</span></p><p class='meta'>Presentation : automatique, jumeaux numeriques.</p><p>Alors je m'appelle Yann Meunier, je suis jeune chercheur et je travaille donc au Lure, pas le N s Paris-Saclay et je travaille dans le domaine de l'automatique, de la construction automatisée de jumeau numérique, de chaîne de production industrielle à partir de l'analyse des données.</p></div>
 <div class='card bab-segment bab-segment--non-encode'><strong>Bloc 2</strong> <span class='meta'>01:00:23.230 → 01:00:53.230 · 00:30</span><p class='capsules'><span class='tag capsule-tag non-encode'>Non encode</span></p><p>Yann Meunier Je travaille dans le domaine de l'automatique, plus précisément sur la construction automatisée de jumeaux numériques de chaîne de production industrielle à partir de l'analyse de données. Mon innovation est née sur le long terme. Initialement, elle vient de travaux de laboratoire sur les quinze dernières années et c'est au fil de ces quinze années, et principalement grâce aux résultats de ma thèse, que l'innovation a été produite.</p></div>
 <div class='card bab-segment bab-segment--non-encode'><strong>Bloc 3</strong> <span class='meta'>01:00:55.390 → 01:00:59.590 · 00:04</span><p class='capsules'><span class='tag capsule-tag non-encode'>Non encode</span></p><p>J'ai fait ma thèse au Lure, pas le NS l'UNSS Paris-Saclay,</p></div>
@@ -574,7 +582,14 @@ Yann Meunier Je travaille dans le domaine de l'automatique, de la construction d
   </div>
 </div>
 
+    </div>
   </main>
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p><strong>Dérushage chorale</strong> — outil de lecture et de verification du derushage editorial.</p>
+      <p class="meta">Donnees source : <code>data/</code> · Pages regenerees par <code>scripts/build_site.py</code></p>
+    </div>
+  </footer>
   <script src="assets/export-word.js" defer></script>
 </body>
 </html>

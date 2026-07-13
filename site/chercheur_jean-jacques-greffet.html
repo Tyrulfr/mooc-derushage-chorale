@@ -3,20 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jean-Jacques Greffet</title>
+  <title>Jean-Jacques Greffet — Dérushage chorale</title>
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <header>
-    <a href="index.html">Accueil</a>
-    <a href="tableau_de_bord.html">Tableau de bord</a>
-    <a href="bab_encodes.html">BAB encodé</a>
-    <a href="conflits.html">Conflits</a>
-    <a href="registre.html">Registre</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+    <a class="site-brand" href="index.html">
+      <span class="site-brand__mark" aria-hidden="true">◆</span>
+      <span class="site-brand__text">
+        <span class="site-brand__title">Dérushage chorale</span>
+        <span class="site-brand__tagline">L'Esprit d'innover — MOOC Paris-Saclay</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a class="site-nav__link" href="index.html">Accueil</a><a class="site-nav__link" href="tableau_de_bord.html">Tableau de bord</a><a class="site-nav__link" href="bab_encodes.html">BAB encodé</a><a class="site-nav__link" href="conflits.html">Conflits</a><a class="site-nav__link" href="registre.html">Registre</a>
+    </nav>
+  </div>
   </header>
-  <main>
-    <h1>Jean-Jacques Greffet</h1>
-    <p class='meta'>Duree totale utilisee: 16:45</p><p><span class='tag'>UTILISE: 12</span><span class='tag'>REUTILISATION_A_ARBITRER: 3</span></p><table><thead><tr><th>ID</th><th>Timecodes</th><th>Theme</th><th>Statut</th><th>Score</th><th>Verbatim</th></tr></thead><tbody><tr><td>JJG-0001</td><td>01:00:43.390 - 01:00:55.030</td><td>T1</td><td>UTILISE</td><td>12/12</td><td>je voudrais greffer. Je travaille dans le domaine de la nano photonique, c'est à dire l'étude de la lumière à l'échelle du nanomètre. Concrètement, c'est par exemple étudier détecter des toutes petites particules avec de la lumière.</td></tr>
+  <main class="site-main">
+    <ol class="breadcrumb"><li><a href="index.html">Accueil</a></li><li><a href="tableau_de_bord.html">Tableau de bord</a></li><li aria-current="page">Jean-Jacques Greffet</li></ol>
+    <div class="page-head"><h1>Jean-Jacques Greffet</h1></div>
+    <div class="page-content">
+      <p class='meta'>Duree totale utilisee: 16:45</p><p><span class='tag'>UTILISE: 12</span><span class='tag'>REUTILISATION_A_ARBITRER: 3</span></p><div class="table-wrap"><table><thead><tr><th>ID</th><th>Timecodes</th><th>Theme</th><th>Statut</th><th>Score</th><th>Verbatim</th></tr></thead><tbody><tr><td>JJG-0001</td><td>01:00:43.390 - 01:00:55.030</td><td>T1</td><td>UTILISE</td><td>12/12</td><td>je voudrais greffer. Je travaille dans le domaine de la nano photonique, c'est à dire l'étude de la lumière à l'échelle du nanomètre. Concrètement, c'est par exemple étudier détecter des toutes petites particules avec de la lumière.</td></tr>
 <tr><td>JJG-0002</td><td>01:01:13.210 - 01:02:15.030</td><td>T1</td><td>UTILISE</td><td>12/12</td><td>l'innovation dont nous allons parler. Dans ce contexte, c'est tiré par le marché, ce qui n'est pas habituel, et c'est dès le le résultat d'une rencontre. Une rencontre avec un jeune startuper qui travaillait dans une start-up, qui avait une problématique de détection de virus, et il y avait un besoin du marché de voir des objets, des virus plus petits que ce qu'il pouvait détecter.
 
 C'est ça la question qui a été posée. Et j'ai apporté une réponse basée sur, évidemment, 30 ans de recherches et d'expériences de recherche. C'est comme ça qu'est née l'innovation, le fait d'oser à deux. Dans mon cas, ça s'est fait assez naturellement puisque la problématique scientifique est née d'une rencontre à deux.
@@ -140,7 +149,14 @@ Mais là, j'apprenais la langue de l'entrepreneuriat.
 
 Après, il y a un deuxième niveau qui nécessite un peu plus de maîtrise, qui concerne des disciplines telles que la finance, la comptabilité et le droit. Lorsqu'on lit des statuts et qu'on discute de propriété industrielle avec des investisseurs,
 
-Et là, si on peut être accompagné par quelqu'un dans l'équipe qui est déjà bilingue, c'est quand même très très précieux.</td></tr></tbody></table>
+Et là, si on peut être accompagné par quelqu'un dans l'équipe qui est déjà bilingue, c'est quand même très très précieux.</td></tr></tbody></table></div>
+    </div>
   </main>
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p><strong>Dérushage chorale</strong> — outil de lecture et de verification du derushage editorial.</p>
+      <p class="meta">Donnees source : <code>data/</code> · Pages regenerees par <code>scripts/build_site.py</code></p>
+    </div>
+  </footer>
 </body>
 </html>

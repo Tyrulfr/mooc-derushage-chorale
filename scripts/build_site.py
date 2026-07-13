@@ -11,6 +11,7 @@ from lib_derushage import (
     escape,
     find_overlaps,
     format_seconds,
+    html_breadcrumb,
     html_page,
     index_by_id,
     load_affectations,
@@ -30,43 +31,393 @@ from lib_derushage import (
 STYLE = """
 :root {
   color-scheme: light;
-  --ink: #1f2933;
-  --muted: #607080;
-  --line: #d7dee6;
-  --panel: #f7f9fb;
-  --accent: #006d77;
+  --ink: #15202b;
+  --muted: #5c6b7a;
+  --line: #dde4ec;
+  --panel: #f0f4f8;
+  --surface: #ffffff;
+  --accent: #0b6e77;
+  --accent-dark: #08545b;
+  --accent-soft: #e6f4f5;
   --warn: #b45309;
+  --ok: #0f766e;
+  --shadow: 0 10px 30px rgba(21, 32, 43, 0.06);
+  --radius: 12px;
 }
 * { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: var(--ink);
-  background: #ffffff;
-}
-header {
+  min-height: 100vh;
   display: flex;
-  gap: 18px;
-  padding: 14px 24px;
-  border-bottom: 1px solid var(--line);
+  flex-direction: column;
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--ink);
   background: var(--panel);
+  line-height: 1.5;
+}
+a { color: var(--accent); text-decoration: none; font-weight: 600; }
+a:hover { color: var(--accent-dark); text-decoration: underline; }
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.92em;
+  background: var(--panel);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+.site-header {
   position: sticky;
   top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 1px 0 rgba(21, 32, 43, 0.04);
 }
-header a, a { color: var(--accent); text-decoration: none; font-weight: 650; }
-main { width: min(1180px, calc(100vw - 32px)); margin: 28px auto 56px; }
-h1 { font-size: 30px; margin: 0 0 22px; }
-h2 { font-size: 20px; margin-top: 30px; }
-table { width: 100%; border-collapse: collapse; margin: 16px 0 28px; }
-th, td { border-bottom: 1px solid var(--line); padding: 10px 8px; text-align: left; vertical-align: top; }
-th { font-size: 13px; text-transform: uppercase; color: var(--muted); letter-spacing: .02em; }
+.site-header__inner {
+  width: min(1180px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 14px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.site-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: inherit;
+  text-decoration: none;
+  font-weight: 700;
+}
+.site-brand:hover { text-decoration: none; color: inherit; }
+.site-brand__mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(145deg, var(--accent), var(--accent-dark));
+  color: #fff;
+  font-size: 14px;
+}
+.site-brand__text { display: flex; flex-direction: column; gap: 2px; }
+.site-brand__title { font-size: 16px; line-height: 1.2; }
+.site-brand__tagline {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+}
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.site-nav__link {
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+}
+.site-nav__link:hover {
+  color: var(--accent-dark);
+  background: var(--accent-soft);
+  text-decoration: none;
+}
+.site-nav__link--current {
+  color: #fff;
+  background: var(--accent);
+}
+.site-nav__link--current:hover {
+  color: #fff;
+  background: var(--accent-dark);
+}
+.site-main {
+  flex: 1;
+  width: min(1180px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 28px 0 48px;
+}
+.page-home .page-content { padding-top: 0; }
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+.breadcrumb li:not(:last-child)::after {
+  content: "›";
+  margin-left: 6px;
+  color: #9aa8b5;
+}
+.breadcrumb a { font-weight: 500; }
+.page-head { margin-bottom: 22px; }
+.page-head h1 {
+  margin: 0;
+  font-size: clamp(26px, 4vw, 34px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.page-head .lead {
+  margin: 10px 0 0;
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 62ch;
+}
+.page-content > h2,
+.page-content h2 {
+  font-size: 20px;
+  margin: 32px 0 14px;
+}
+.page-content > h2:first-child,
+.page-content h2:first-child { margin-top: 0; }
+.hero {
+  margin: 0 0 36px;
+  padding: 40px 32px;
+  border-radius: calc(var(--radius) + 4px);
+  background:
+    radial-gradient(circle at top right, rgba(11, 110, 119, 0.14), transparent 42%),
+    linear-gradient(160deg, #ffffff 0%, #eef6f7 100%);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+.hero__eyebrow {
+  margin: 0 0 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.hero h1 {
+  margin: 0 0 12px;
+  font-size: clamp(30px, 5vw, 42px);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+.hero__lead {
+  margin: 0 0 22px;
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 58ch;
+}
+.hero__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.stat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid var(--line);
+  font-size: 14px;
+}
+.stat-pill strong { color: var(--accent-dark); }
+.section-title {
+  margin: 0 0 16px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.sommaire-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+.sommaire-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 150px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: inherit;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+.sommaire-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 14px 34px rgba(11, 110, 119, 0.12);
+  text-decoration: none;
+  color: inherit;
+}
+.sommaire-card__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  font-size: 18px;
+}
+.sommaire-card h2 {
+  margin: 0;
+  font-size: 18px;
+  color: var(--ink);
+}
+.sommaire-card p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+  font-weight: 400;
+}
+.sommaire-card__cta {
+  margin-top: auto;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.stat-card {
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+.stat-card__label {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.stat-card__value {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--accent-dark);
+  margin-bottom: 6px;
+}
+.stat-card__meta { font-size: 14px; color: var(--muted); }
+.panel {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+table { width: 100%; border-collapse: collapse; margin: 0; }
+th, td {
+  border-bottom: 1px solid var(--line);
+  padding: 12px 14px;
+  text-align: left;
+  vertical-align: top;
+}
+th {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  background: #fafbfc;
+}
+tbody tr:hover { background: #fbfdfe; }
+tbody tr:last-child td { border-bottom: none; }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
-.card { border: 1px solid var(--line); border-radius: 8px; padding: 14px; background: #fff; }
+.card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
 .meta { color: var(--muted); font-size: 14px; }
-.tag { display: inline-block; border: 1px solid var(--line); border-radius: 999px; padding: 2px 8px; margin: 2px; font-size: 13px; }
+.tag {
+  display: inline-block;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 3px 10px;
+  margin: 2px 4px 2px 0;
+  font-size: 12px;
+  font-weight: 600;
+  background: #fff;
+}
+.chip-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+.chip:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  text-decoration: none;
+}
+.status {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: #eef2f6;
+  color: #475569;
+}
+.status--progress { background: #e0f2fe; color: #0369a1; }
+.status--ok { background: #d1fae5; color: #047857; }
+.status--warn { background: #ffedd5; color: #c2410c; }
 .warn { color: var(--warn); font-weight: 700; }
-.script { white-space: pre-wrap; background: var(--panel); border: 1px solid var(--line); padding: 14px; border-radius: 8px; }
-.methodology-panel { margin-top: 36px; padding: 18px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+.script {
+  white-space: pre-wrap;
+  background: #f8fafc;
+  border: 1px solid var(--line);
+  padding: 16px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  line-height: 1.55;
+}
+.methodology-panel {
+  margin-top: 28px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
 .methodology-panel h2 { margin-top: 0; }
 .methodology-panel ul { margin: 12px 0 16px; padding-left: 1.25rem; }
 .methodology-panel li { margin-bottom: 8px; }
@@ -76,9 +427,29 @@ th { font-size: 13px; text-transform: uppercase; color: var(--muted); letter-spa
 .cadrage-block { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line); }
 .cadrage-block h3 { margin: 18px 0 8px; font-size: 16px; }
 .cadrage-position { font-size: 13px; color: var(--muted); margin: 0 0 8px; }
-.cadrage-quote { margin: 8px 0 12px; padding: 12px 14px; border-left: 3px solid var(--accent); background: var(--bg); font-style: italic; }
-.cadrage-pancarte { margin: 8px 0 12px; padding: 12px 14px; background: var(--bg); font-family: ui-monospace, monospace; font-size: 13px; white-space: pre-wrap; }
-.export-panel { margin-top: 36px; padding: 18px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+.cadrage-quote {
+  margin: 8px 0 12px;
+  padding: 12px 14px;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-soft);
+  font-style: italic;
+}
+.cadrage-pancarte {
+  margin: 8px 0 12px;
+  padding: 12px 14px;
+  background: #f8fafc;
+  font-family: ui-monospace, monospace;
+  font-size: 13px;
+  white-space: pre-wrap;
+}
+.export-panel {
+  margin-top: 28px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
 .export-panel p { margin: 0 0 14px; }
 .btn {
   display: inline-block;
@@ -90,12 +461,10 @@ th { font-size: 13px; text-transform: uppercase; color: var(--muted); letter-spa
   font: inherit;
   font-weight: 650;
   cursor: pointer;
+  text-decoration: none;
 }
-.btn:hover { filter: brightness(1.05); }
-.btn-secondary {
-  background: #fff;
-  color: var(--accent);
-}
+.btn:hover { filter: brightness(1.05); color: #fff; text-decoration: none; }
+.btn-secondary { background: #fff; color: var(--accent); }
 .modal {
   position: fixed;
   inset: 0;
@@ -117,7 +486,15 @@ th { font-size: 13px; text-transform: uppercase; color: var(--muted); letter-spa
 .modal-card h2 { margin: 0 0 8px; font-size: 22px; }
 .modal-card p { margin: 0 0 16px; }
 .export-field { margin-bottom: 14px; }
-.export-field label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; color: var(--muted); text-transform: uppercase; letter-spacing: .02em; }
+.export-field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .02em;
+}
 .export-field input {
   width: 100%;
   border: 1px solid var(--line);
@@ -140,10 +517,9 @@ th { font-size: 13px; text-transform: uppercase; color: var(--muted); letter-spa
 .export-folder--disabled .btn-secondary { cursor: not-allowed; }
 .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 18px; }
 .export-status { margin-top: 14px; font-size: 14px; min-height: 1.2em; }
-.export-status.ok { color: #0f766e; }
+.export-status.ok { color: var(--ok); }
 .export-status.warn { color: var(--warn); }
 .export-status.error { color: #b91c1c; }
-.nav-current { font-weight: 650; color: var(--ink); }
 .page-header {
   display: flex;
   justify-content: space-between;
@@ -156,72 +532,42 @@ th { font-size: 13px; text-transform: uppercase; color: var(--muted); letter-spa
 .export-toolbar { flex-shrink: 0; }
 .bab-segment { margin-bottom: 16px; }
 .bab-segment .capsules { margin: 8px 0; }
-.capsule-tag.utilise { border-color: #0f766e; color: #0f766e; background: #ecfdf5; }
+.capsule-tag.utilise { border-color: var(--ok); color: var(--ok); background: #ecfdf5; }
 .capsule-tag.reserve { border-color: var(--warn); color: var(--warn); background: #fffbeb; }
 .capsule-tag.candidat { border-color: #64748b; color: #475569; }
 .capsule-tag.rejete { border-color: #cbd5e1; color: #94a3b8; }
 .capsule-tag.non-encode { border-color: #cbd5e1; color: #64748b; background: #f8fafc; }
 .bab-segment--non-encode { border-style: dashed; background: #fcfdff; }
 .coupe-note { font-size: 13px; color: var(--muted); margin: 6px 0; }
-#script-final.sr-export { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: pre-wrap; border: 0; }
-.home-hero {
-  margin-bottom: 36px;
-  padding: 28px 24px;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  background: linear-gradient(160deg, #f7f9fb 0%, #ffffff 55%);
+#script-final.sr-export {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: pre-wrap;
+  border: 0;
 }
-.home-kicker {
-  margin: 0 0 10px;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .04em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-.home-title {
-  margin: 0 0 12px;
-  font-size: 34px;
-  line-height: 1.15;
-}
-.home-lead {
-  margin: 0 0 14px;
-  font-size: 18px;
-  line-height: 1.45;
-  color: var(--muted);
-  max-width: 62ch;
-}
-.sommaire-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 16px;
-  margin: 18px 0 8px;
-}
-.sommaire-card {
-  display: block;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 18px 18px 16px;
+.site-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--line);
   background: #fff;
-  color: inherit;
-  text-decoration: none;
-  transition: border-color .15s ease, box-shadow .15s ease;
 }
-.sommaire-card:hover {
-  border-color: var(--accent);
-  box-shadow: 0 8px 24px rgba(0, 109, 119, 0.08);
-}
-.sommaire-card h2 {
-  margin: 0 0 8px;
-  font-size: 18px;
-  color: var(--accent);
-}
-.sommaire-card p {
-  margin: 0;
+.site-footer__inner {
+  width: min(1180px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 22px 0 28px;
   font-size: 14px;
-  line-height: 1.45;
   color: var(--muted);
-  font-weight: 400;
+}
+.site-footer p { margin: 0 0 6px; }
+.site-footer strong { color: var(--ink); }
+@media (max-width: 720px) {
+  .site-header__inner { align-items: flex-start; }
+  .site-nav { width: 100%; }
+  .hero { padding: 28px 20px; }
 }
 """
 
@@ -594,45 +940,66 @@ def link_segment(segment: dict) -> str:
     )
 
 
+def status_badge(value: str) -> str:
+    css = {
+        "EN_CONSTRUCTION": "status--progress",
+        "VALIDEE": "status--ok",
+        "VERROUILLEE": "status--ok",
+        "A_ARBITRER": "status--warn",
+        "A_CARTOGRAPHIER": "status--warn",
+    }.get(value, "")
+    return f'<span class="status {css}">{escape(value)}</span>'
+
+
 def build_home(capsules: list[dict], segments: list[dict]) -> None:
     used_count = sum(1 for segment in segments if segment.get("statut") == "UTILISE")
     sections = [
         (
             "tableau_de_bord.html",
+            "⊞",
             "Tableau de bord",
             "Vue d'ensemble des capsules, durees, chercheurs et acces aux montages.",
         ),
         (
             "bab_encodes.html",
+            "▣",
             "BAB encodé",
             "Parcours des BAB timecodes par chercheur, segment par segment.",
         ),
         (
             "conflits.html",
+            "⚠",
             "Conflits",
             "Chevauchements entre extraits et reutilisations a arbitrer.",
         ),
         (
             "registre.html",
+            "☰",
             "Registre",
             "Liste complete des extraits, statuts et affectations.",
         ),
     ]
     cards = "".join(
         f"<a class='sommaire-card' href='{escape(href)}'>"
+        f"<span class='sommaire-card__icon' aria-hidden='true'>{escape(icon)}</span>"
         f"<h2>{escape(title)}</h2>"
         f"<p>{escape(description)}</p>"
+        f"<span class='sommaire-card__cta'>Ouvrir →</span>"
         f"</a>"
-        for href, title, description in sections
+        for href, icon, title, description in sections
     )
     body = f"""
-<section class="home-hero">
-  <p class="home-kicker">MOOC · L'Esprit d'innover ! Pourquoi pas Vous !</p>
-  <h1 class="home-title">Derushage editorial chorale</h1>
-  <p class="home-lead">Cartographier, qualifier et assembler les temoignages BAB pour les videos chorales du MOOC.</p>
-  <p class="meta">{len(capsules)} capsules · {len(segments)} extraits · {used_count} utilises dans les montages</p>
+<section class="hero">
+  <p class="hero__eyebrow">MOOC · L'Esprit d'innover ! Pourquoi pas Vous !</p>
+  <h1>Dérushage éditorial chorale</h1>
+  <p class="hero__lead">Cartographier, qualifier et assembler les temoignages BAB pour les videos chorales du MOOC.</p>
+  <div class="hero__stats">
+    <span class="stat-pill"><strong>{len(capsules)}</strong> capsules</span>
+    <span class="stat-pill"><strong>{len(segments)}</strong> extraits indexes</span>
+    <span class="stat-pill"><strong>{used_count}</strong> utilises dans les montages</span>
+  </div>
 </section>
-<h2>Sommaire</h2>
+<h2 class="section-title">Sommaire</h2>
 <nav class="sommaire-grid" aria-label="Sommaire">
 {cards}
 </nav>
@@ -644,6 +1011,7 @@ def build_home(capsules: list[dict], segments: list[dict]) -> None:
             body,
             nav_current="index.html",
             page_header="",
+            main_class="page-home",
         ),
     )
 
@@ -668,7 +1036,7 @@ def build_dashboard(capsules: list[dict], segments: list[dict], affectations: di
             "<tr>"
             f"<td><a href='capsule_{escape(code)}.html'>{escape(code)}</a></td>"
             f"<td>{escape(capsule['titre'])}</td>"
-            f"<td>{escape(capsule['statut'])}</td>"
+            f"<td>{status_badge(capsule['statut'])}</td>"
             f"<td>{duration_label} / {format_seconds(capsule['duree_cible_secondes'])}</td>"
             f"<td>{escape(', '.join(researchers) or '-')}</td>"
             f"<td>{len(capsule_data.get('extraits_candidats', []))}</td>"
@@ -676,28 +1044,52 @@ def build_dashboard(capsules: list[dict], segments: list[dict], affectations: di
             "</tr>"
         )
     researcher_counts = Counter(segment["chercheur"] for segment in segments if segment["statut"] == "UTILISE")
+    used_count = sum(researcher_counts.values())
     en_construction = sum(1 for capsule in capsules if capsule.get("statut") == "EN_CONSTRUCTION")
     body = f"""
-<section class="grid">
-  <div class="card"><strong>Capsules</strong><br><span class="meta">{len(capsules)} definies · {en_construction} en construction</span></div>
-  <div class="card"><strong>Extraits</strong><br><span class="meta">{len(segments)} segments indexes</span></div>
-  <div class="card"><strong>Equilibre chercheurs</strong><br><span class="meta">{escape(dict(researcher_counts))}</span></div>
+<section class="stats-grid">
+  <div class="stat-card">
+    <div class="stat-card__label">Capsules</div>
+    <div class="stat-card__value">{len(capsules)}</div>
+    <div class="stat-card__meta">{en_construction} en construction</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-card__label">Extraits</div>
+    <div class="stat-card__value">{len(segments)}</div>
+    <div class="stat-card__meta">segments indexes dans le registre</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-card__label">Chercheurs</div>
+    <div class="stat-card__value">{len(researcher_counts)}</div>
+    <div class="stat-card__meta">{used_count} extraits utilises au total</div>
+  </div>
 </section>
 <h2>Capsules</h2>
+<div class="table-wrap">
 <table>
 <thead><tr><th>Code</th><th>Titre</th><th>Statut</th><th>Duree</th><th>Chercheurs utilises</th><th>Candidats</th><th>Alertes</th></tr></thead>
 <tbody>
 """ + "\n".join(rows) + """
 </tbody>
 </table>
+</div>
 <h2>Chercheurs</h2>
+<div class="chip-grid">
 """ + "".join(
-        f"<p><a href='chercheur_{slug(name)}.html'>{escape(name)}</a></p>"
+        f"<a class='chip' href='chercheur_{slug(name)}.html'>{escape(name)}</a>"
         for name in sorted({segment["chercheur"] for segment in segments})
-    )
+    ) + """
+</div>
+"""
     write_text(
         SITE / "tableau_de_bord.html",
-        html_page("Tableau de bord", body, nav_current="tableau_de_bord.html"),
+        html_page(
+            "Tableau de bord",
+            body,
+            nav_current="tableau_de_bord.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Tableau de bord", None)),
+            page_header='<div class="page-head"><h1>Tableau de bord</h1><p class="lead">Suivi des capsules, montages provisoires et equilibre des voix chercheurs.</p></div>',
+        ),
     )
 
 
@@ -727,11 +1119,23 @@ def build_researcher_pages(segments: list[dict]) -> None:
         body = (
             f"<p class='meta'>Duree totale utilisee: {format_seconds(used_duration)}</p>"
             f"<p>{status_tags}</p>"
-            "<table><thead><tr><th>ID</th><th>Timecodes</th><th>Theme</th><th>Statut</th><th>Score</th><th>Verbatim</th></tr></thead><tbody>"
+            '<div class="table-wrap"><table><thead><tr><th>ID</th><th>Timecodes</th><th>Theme</th><th>Statut</th><th>Score</th><th>Verbatim</th></tr></thead><tbody>'
             + "\n".join(rows)
-            + "</tbody></table>"
+            + "</tbody></table></div>"
         )
-        write_text(SITE / f"chercheur_{slug(researcher)}.html", html_page(researcher, body, nav_current=None))
+        write_text(
+            SITE / f"chercheur_{slug(researcher)}.html",
+            html_page(
+                researcher,
+                body,
+                nav_current=None,
+                breadcrumb=html_breadcrumb(
+                    ("Accueil", "index.html"),
+                    ("Tableau de bord", "tableau_de_bord.html"),
+                    (researcher, None),
+                ),
+            ),
+        )
 
 
 def build_capsule_pages(capsules: list[dict], segments: list[dict], affectations: dict) -> None:
@@ -815,6 +1219,11 @@ def build_capsule_pages(capsules: list[dict], segments: list[dict], affectations
                 "\n".join(sections),
                 scripts=["assets/export-word.js"],
                 nav_current=None,
+                breadcrumb=html_breadcrumb(
+                    ("Accueil", "index.html"),
+                    ("Tableau de bord", "tableau_de_bord.html"),
+                    (code, None),
+                ),
             ),
         )
 
@@ -832,10 +1241,19 @@ def build_conflicts_page(segments: list[dict]) -> None:
             f"<td>{overlap.duree}s</td>"
             "</tr>"
         )
-    body = "<table><thead><tr><th>Extrait 1</th><th>Extrait 2</th><th>Chercheur</th><th>Source</th><th>Duree chevauchee</th></tr></thead><tbody>"
+    body = '<div class="table-wrap"><table><thead><tr><th>Extrait 1</th><th>Extrait 2</th><th>Chercheur</th><th>Source</th><th>Duree chevauchee</th></tr></thead><tbody>'
     body += "\n".join(rows) or "<tr><td colspan='5'>Aucun conflit detecte.</td></tr>"
-    body += "</tbody></table>"
-    write_text(SITE / "conflits.html", html_page("Conflits", body, nav_current="conflits.html"))
+    body += "</tbody></table></div>"
+    write_text(
+        SITE / "conflits.html",
+        html_page(
+            "Conflits",
+            body,
+            nav_current="conflits.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Conflits", None)),
+            page_header='<div class="page-head"><h1>Conflits</h1><p class="lead">Chevauchements temporels et reutilisations a arbitrer entre extraits.</p></div>',
+        ),
+    )
 
 
 def build_registry(segments: list[dict]) -> None:
@@ -853,10 +1271,19 @@ def build_registry(segments: list[dict]) -> None:
             f"<td>{'oui' if segment['transcription_a_verifier'] else 'non'}</td>"
             "</tr>"
         )
-    body = "<table><thead><tr><th>ID</th><th>Chercheur</th><th>Theme</th><th>Capsules</th><th>Statut</th><th>Score</th><th>Qualification</th><th>Transcription</th></tr></thead><tbody>"
+    body = '<div class="table-wrap"><table><thead><tr><th>ID</th><th>Chercheur</th><th>Theme</th><th>Capsules</th><th>Statut</th><th>Score</th><th>Qualification</th><th>Transcription</th></tr></thead><tbody>'
     body += "\n".join(rows)
-    body += "</tbody></table>"
-    write_text(SITE / "registre.html", html_page("Registre des extraits", body, nav_current="registre.html"))
+    body += "</tbody></table></div>"
+    write_text(
+        SITE / "registre.html",
+        html_page(
+            "Registre des extraits",
+            body,
+            nav_current="registre.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Registre", None)),
+            page_header='<div class="page-head"><h1>Registre des extraits</h1><p class="lead">Inventaire complet des segments indexes, leurs statuts et qualifications.</p></div>',
+        ),
+    )
 
 
 def capsule_tags_html(capsules: dict) -> str:
@@ -923,14 +1350,20 @@ def build_bab_encodes_index() -> None:
     body = (
         "<p class='meta'>BAB complets avec decoupage source. Les blocs deja travailles sont encodes ; "
         "les autres sont marques <strong>Non encode</strong>. Evolution dans <code>data/bab_encodes/</code>.</p>"
-        "<table><thead><tr><th>Chercheur</th><th>Source BAB</th><th>Statut</th>"
+        '<div class="table-wrap"><table><thead><tr><th>Chercheur</th><th>Source BAB</th><th>Statut</th>'
         "<th>Blocs BAB</th><th>Encodes</th><th>Utilises</th><th>Mise a jour</th></tr></thead><tbody>"
         + ("\n".join(rows) or "<tr><td colspan='7'>Aucun BAB encode.</td></tr>")
-        + "</tbody></table>"
+        + "</tbody></table></div>"
     )
     write_text(
         SITE / "bab_encodes.html",
-        html_page("BAB encodé", body, nav_current="bab_encodes.html"),
+        html_page(
+            "BAB encodé",
+            body,
+            nav_current="bab_encodes.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("BAB encodé", None)),
+            page_header='<div class="page-head"><h1>BAB encodé</h1><p class="lead">Lecture segment par segment des BAB bruts, avec statuts et capsules associees.</p></div>',
+        ),
     )
 
 
@@ -944,7 +1377,7 @@ def build_bab_encode_pages() -> None:
             continue
         stats = bab_encode_stats(doc)
         export_text = render_bab_encode_export(doc)
-        sections = ['<p><a href="bab_encodes.html">← Retour aux BAB encodés</a></p>']
+        sections = []
         sections.append(
             f"<p class='meta'><strong>{stats['nb_encodes']}</strong> blocs encodes sur "
             f"<strong>{stats['nb_blocs']}</strong> blocs BAB · "
@@ -979,6 +1412,11 @@ def build_bab_encode_pages() -> None:
                 scripts=["assets/export-word.js"],
                 nav_current="bab_encodes.html",
                 page_header=header,
+                breadcrumb=html_breadcrumb(
+                    ("Accueil", "index.html"),
+                    ("BAB encodé", "bab_encodes.html"),
+                    (doc["chercheur"], None),
+                ),
             ),
         )
     for path in SITE.glob("bab_encode_*.html"):

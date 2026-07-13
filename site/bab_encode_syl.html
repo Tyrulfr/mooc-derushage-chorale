@@ -3,21 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BAB encode — Sylvia Cohen-Kaminski</title>
+  <title>BAB encode — Sylvia Cohen-Kaminski — Dérushage chorale</title>
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <header>
-    <a href="index.html">Accueil</a>
-    <a href="tableau_de_bord.html">Tableau de bord</a>
-    <span class="nav-current">BAB encodé</span>
-    <a href="conflits.html">Conflits</a>
-    <a href="registre.html">Registre</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+    <a class="site-brand" href="index.html">
+      <span class="site-brand__mark" aria-hidden="true">◆</span>
+      <span class="site-brand__text">
+        <span class="site-brand__title">Dérushage chorale</span>
+        <span class="site-brand__tagline">L'Esprit d'innover — MOOC Paris-Saclay</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a class="site-nav__link" href="index.html">Accueil</a><a class="site-nav__link" href="tableau_de_bord.html">Tableau de bord</a><a class="site-nav__link site-nav__link--current" href="bab_encodes.html" aria-current="page">BAB encodé</a><a class="site-nav__link" href="conflits.html">Conflits</a><a class="site-nav__link" href="registre.html">Registre</a>
+    </nav>
+  </div>
   </header>
-  <main>
+  <main class="site-main">
+    <ol class="breadcrumb"><li><a href="index.html">Accueil</a></li><li><a href="bab_encodes.html">BAB encodé</a></li><li aria-current="page">Sylvia Cohen-Kaminski</li></ol>
     <div class='page-header'><div><h1>BAB encode — Sylvia Cohen-Kaminski</h1><p class='meta'>Source : BAB_SYLVIA_COHEN_BABbrut.txt · Statut : NON_ENCODE · Blocs : 41/94 encodes · Mise a jour : 2026-07-13</p></div><div class='export-toolbar' id='export-word-panel' data-capsule-code='bab-syl' data-capsule-title='Sylvia Cohen-Kaminski — BAB encode'><button type='button' class='btn' id='export-word-open' aria-expanded='false' aria-controls='export-word-modal'>Exporter en Word</button></div></div>
-    <p><a href="bab_encodes.html">← Retour aux BAB encodés</a></p>
-<p class='meta'><strong>41</strong> blocs encodes sur <strong>94</strong> blocs BAB · <strong>38</strong> utilises dans les capsules.</p>
+    <div class="page-content">
+      <p class='meta'><strong>41</strong> blocs encodes sur <strong>94</strong> blocs BAB · <strong>38</strong> utilises dans les capsules.</p>
 <div class='card bab-segment'><strong>SYL-0001</strong> <span class='meta'>01:00:05.150 → 01:02:40.570 · 02:35 · UTILISE</span><p class='capsules'><span class='tag capsule-tag utilise'>T1: UTILISE (presentation)</span></p><p class='coupe-note'><strong>T1</strong> — Acte 1 : maladie rare, pneumologie — premier paragraphe seulement.</p><p class='meta'>Presentation acte 1 ; genese detaillee hors montage.</p><p>Bonjour, je suis Sylvia Cohen Kaminski, directrice de recherche au CNRS. Je travaille dans une unité Inserm sur une maladie rare qui est l'hypertension artérielle pulmonaire. Domaine de la pneumologie. Je suis Sylvia Cohen Kaminski, directrice de recherche au CNRS, et je travaille sur une maladie rare qui est l'hypertension artérielle pulmonaire.
 
 Domaine de la pneumologie. Cette innovation est née d'un pas de côté, d'un pas de côté que j'ai fait il y a quelque temps déjà, du temps où j'étais immunologique haute. J'étais passionné par un récepteur qui était spécialisé dans la communication cellule, la cellule et le pas de côté.
@@ -794,7 +802,14 @@ et. Et en somme, pendant ce parcours, j'ai eu le sentiment de participer à un j
   </div>
 </div>
 
+    </div>
   </main>
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p><strong>Dérushage chorale</strong> — outil de lecture et de verification du derushage editorial.</p>
+      <p class="meta">Donnees source : <code>data/</code> · Pages regenerees par <code>scripts/build_site.py</code></p>
+    </div>
+  </footer>
   <script src="assets/export-word.js" defer></script>
 </body>
 </html>

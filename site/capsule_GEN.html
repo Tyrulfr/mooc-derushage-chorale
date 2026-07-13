@@ -3,20 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GEN - Comment nait une innovation ?</title>
+  <title>GEN - Comment nait une innovation ? — Dérushage chorale</title>
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <header>
-    <a href="index.html">Accueil</a>
-    <a href="tableau_de_bord.html">Tableau de bord</a>
-    <a href="bab_encodes.html">BAB encodé</a>
-    <a href="conflits.html">Conflits</a>
-    <a href="registre.html">Registre</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+    <a class="site-brand" href="index.html">
+      <span class="site-brand__mark" aria-hidden="true">◆</span>
+      <span class="site-brand__text">
+        <span class="site-brand__title">Dérushage chorale</span>
+        <span class="site-brand__tagline">L'Esprit d'innover — MOOC Paris-Saclay</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a class="site-nav__link" href="index.html">Accueil</a><a class="site-nav__link" href="tableau_de_bord.html">Tableau de bord</a><a class="site-nav__link" href="bab_encodes.html">BAB encodé</a><a class="site-nav__link" href="conflits.html">Conflits</a><a class="site-nav__link" href="registre.html">Registre</a>
+    </nav>
+  </div>
   </header>
-  <main>
-    <h1>GEN - Comment nait une innovation ?</h1>
-    <p><strong>Objectif:</strong> Comprendre que l'innovation emerge de la rencontre entre une observation, un besoin et un usage, et savoir reperer dans ses travaux un resultat ou une rencontre susceptible d'ouvrir une demarche d'innovation.</p>
+  <main class="site-main">
+    <ol class="breadcrumb"><li><a href="index.html">Accueil</a></li><li><a href="tableau_de_bord.html">Tableau de bord</a></li><li aria-current="page">GEN</li></ol>
+    <div class="page-head"><h1>GEN - Comment nait une innovation ?</h1></div>
+    <div class="page-content">
+      <p><strong>Objectif:</strong> Comprendre que l'innovation emerge de la rencontre entre une observation, un besoin et un usage, et savoir reperer dans ses travaux un resultat ou une rencontre susceptible d'ouvrir une demarche d'innovation.</p>
 <p><strong>Message central:</strong> Une innovation ne nait pas seulement d'une idee isolee ; elle se construit au contact d'un besoin, d'une observation ou d'une opportunite.</p>
 <p class='meta'><strong>Laboratoire editorial :</strong> cette capsule sert a preparer <a href='capsule_T1.html'>T1</a> (meme contenu temoin, montage et cadrage valides ici avant production).</p>
 <h2>Extraits candidats</h2>
@@ -104,7 +113,14 @@
   </div>
 </div>
 
+    </div>
   </main>
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p><strong>Dérushage chorale</strong> — outil de lecture et de verification du derushage editorial.</p>
+      <p class="meta">Donnees source : <code>data/</code> · Pages regenerees par <code>scripts/build_site.py</code></p>
+    </div>
+  </footer>
   <script src="assets/export-word.js" defer></script>
 </body>
 </html>

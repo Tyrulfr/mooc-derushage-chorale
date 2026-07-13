@@ -3,20 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>T9 - Construire une equipe complementaire et trouver sa place</title>
+  <title>T9 - Construire une equipe complementaire et trouver sa place — Dérushage chorale</title>
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <header>
-    <a href="index.html">Accueil</a>
-    <a href="tableau_de_bord.html">Tableau de bord</a>
-    <a href="bab_encodes.html">BAB encodé</a>
-    <a href="conflits.html">Conflits</a>
-    <a href="registre.html">Registre</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+    <a class="site-brand" href="index.html">
+      <span class="site-brand__mark" aria-hidden="true">◆</span>
+      <span class="site-brand__text">
+        <span class="site-brand__title">Dérushage chorale</span>
+        <span class="site-brand__tagline">L'Esprit d'innover — MOOC Paris-Saclay</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a class="site-nav__link" href="index.html">Accueil</a><a class="site-nav__link" href="tableau_de_bord.html">Tableau de bord</a><a class="site-nav__link" href="bab_encodes.html">BAB encodé</a><a class="site-nav__link" href="conflits.html">Conflits</a><a class="site-nav__link" href="registre.html">Registre</a>
+    </nav>
+  </div>
   </header>
-  <main>
-    <h1>T9 - Construire une equipe complementaire et trouver sa place</h1>
-    <p><strong>Objectif:</strong> L'apprenant sait identifier les competences manquantes autour de son projet et reflechir a la place qu'il souhaite reellement occuper.</p>
+  <main class="site-main">
+    <ol class="breadcrumb"><li><a href="index.html">Accueil</a></li><li><a href="tableau_de_bord.html">Tableau de bord</a></li><li aria-current="page">T9</li></ol>
+    <div class="page-head"><h1>T9 - Construire une equipe complementaire et trouver sa place</h1></div>
+    <div class="page-content">
+      <p><strong>Objectif:</strong> L'apprenant sait identifier les competences manquantes autour de son projet et reflechir a la place qu'il souhaite reellement occuper.</p>
 <p><strong>Message central:</strong> L'equipe initiale suffit rarement a porter seule le passage a l'entrepreneuriat.</p>
 <h2>Extraits candidats</h2>
 <h2>Montage propose</h2>
@@ -348,7 +357,14 @@ Equipe + gouvernance
   </div>
 </div>
 
+    </div>
   </main>
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p><strong>Dérushage chorale</strong> — outil de lecture et de verification du derushage editorial.</p>
+      <p class="meta">Donnees source : <code>data/</code> · Pages regenerees par <code>scripts/build_site.py</code></p>
+    </div>
+  </footer>
   <script src="assets/export-word.js" defer></script>
 </body>
 </html>

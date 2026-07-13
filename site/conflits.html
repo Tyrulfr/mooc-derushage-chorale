@@ -3,25 +3,41 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Conflits</title>
+  <title>Conflits — Dérushage chorale</title>
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <header>
-    <a href="index.html">Accueil</a>
-    <a href="tableau_de_bord.html">Tableau de bord</a>
-    <a href="bab_encodes.html">BAB encodé</a>
-    <span class="nav-current">Conflits</span>
-    <a href="registre.html">Registre</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+    <a class="site-brand" href="index.html">
+      <span class="site-brand__mark" aria-hidden="true">◆</span>
+      <span class="site-brand__text">
+        <span class="site-brand__title">Dérushage chorale</span>
+        <span class="site-brand__tagline">L'Esprit d'innover — MOOC Paris-Saclay</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a class="site-nav__link" href="index.html">Accueil</a><a class="site-nav__link" href="tableau_de_bord.html">Tableau de bord</a><a class="site-nav__link" href="bab_encodes.html">BAB encodé</a><a class="site-nav__link site-nav__link--current" href="conflits.html" aria-current="page">Conflits</a><a class="site-nav__link" href="registre.html">Registre</a>
+    </nav>
+  </div>
   </header>
-  <main>
-    <h1>Conflits</h1>
-    <table><thead><tr><th>Extrait 1</th><th>Extrait 2</th><th>Chercheur</th><th>Source</th><th>Duree chevauchee</th></tr></thead><tbody><tr><td>JJG-0006</td><td>JJG-0007</td><td>Jean-Jacques Greffet</td><td>BAB_JJ_GREFFET.txt</td><td>22.509s</td></tr>
+  <main class="site-main">
+    <ol class="breadcrumb"><li><a href="index.html">Accueil</a></li><li aria-current="page">Conflits</li></ol>
+    <div class="page-head"><h1>Conflits</h1><p class="lead">Chevauchements temporels et reutilisations a arbitrer entre extraits.</p></div>
+    <div class="page-content">
+      <div class="table-wrap"><table><thead><tr><th>Extrait 1</th><th>Extrait 2</th><th>Chercheur</th><th>Source</th><th>Duree chevauchee</th></tr></thead><tbody><tr><td>JJG-0006</td><td>JJG-0007</td><td>Jean-Jacques Greffet</td><td>BAB_JJ_GREFFET.txt</td><td>22.509s</td></tr>
 <tr><td>JJG-0009</td><td>JJG-0008</td><td>Jean-Jacques Greffet</td><td>BAB_JJ_GREFFET.txt</td><td>70.02s</td></tr>
 <tr><td>JJG-0008</td><td>JJG-0015</td><td>Jean-Jacques Greffet</td><td>BAB_JJ_GREFFET.txt</td><td>20.11s</td></tr>
 <tr><td>MUR-0006</td><td>MUR-0007</td><td>Muriel Thomas</td><td>BAB_Muriel_Thomas video.txt</td><td>84.22s</td></tr>
 <tr><td>MUR-0011</td><td>MUR-0015</td><td>Muriel Thomas</td><td>BAB_Muriel_Thomas video.txt</td><td>72.31s</td></tr>
-<tr><td>SYL-0011</td><td>SYL-0014</td><td>Sylvia Cohen-Kaminski</td><td>BAB_SYLVIA_COHEN_BABbrut.txt</td><td>50.5s</td></tr></tbody></table>
+<tr><td>SYL-0011</td><td>SYL-0014</td><td>Sylvia Cohen-Kaminski</td><td>BAB_SYLVIA_COHEN_BABbrut.txt</td><td>50.5s</td></tr></tbody></table></div>
+    </div>
   </main>
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p><strong>Dérushage chorale</strong> — outil de lecture et de verification du derushage editorial.</p>
+      <p class="meta">Donnees source : <code>data/</code> · Pages regenerees par <code>scripts/build_site.py</code></p>
+    </div>
+  </footer>
 </body>
 </html>

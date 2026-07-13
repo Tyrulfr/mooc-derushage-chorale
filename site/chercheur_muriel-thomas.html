@@ -3,20 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Muriel Thomas</title>
+  <title>Muriel Thomas — Dérushage chorale</title>
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <header>
-    <a href="index.html">Accueil</a>
-    <a href="tableau_de_bord.html">Tableau de bord</a>
-    <a href="bab_encodes.html">BAB encodé</a>
-    <a href="conflits.html">Conflits</a>
-    <a href="registre.html">Registre</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+    <a class="site-brand" href="index.html">
+      <span class="site-brand__mark" aria-hidden="true">◆</span>
+      <span class="site-brand__text">
+        <span class="site-brand__title">Dérushage chorale</span>
+        <span class="site-brand__tagline">L'Esprit d'innover — MOOC Paris-Saclay</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a class="site-nav__link" href="index.html">Accueil</a><a class="site-nav__link" href="tableau_de_bord.html">Tableau de bord</a><a class="site-nav__link" href="bab_encodes.html">BAB encodé</a><a class="site-nav__link" href="conflits.html">Conflits</a><a class="site-nav__link" href="registre.html">Registre</a>
+    </nav>
+  </div>
   </header>
-  <main>
-    <h1>Muriel Thomas</h1>
-    <p class='meta'>Duree totale utilisee: 16:54</p><p><span class='tag'>UTILISE: 11</span><span class='tag'>RESERVE: 1</span><span class='tag'>REUTILISATION_A_ARBITRER: 3</span></p><table><thead><tr><th>ID</th><th>Timecodes</th><th>Theme</th><th>Statut</th><th>Score</th><th>Verbatim</th></tr></thead><tbody><tr><td>MUR-0001</td><td>01:00:04.950 - 01:01:24.750</td><td>T1</td><td>UTILISE</td><td>12/12</td><td>Je suis Murielle Thomas, je suis directrice de recherche à l'INRAE à l'Institut Michalis et mon sujet de recherche concerne les liens entre l'alimentation, les microbiotes et la santé. Je suis Muriel Thomas, Je travaille sur les liens entre l'alimentation, les microbiotes et la santé. Mon innovation est née d'un résultat de recherche où on avait isolé un probiotique d'intérêt et aussi d'une observation sociétale.
+  <main class="site-main">
+    <ol class="breadcrumb"><li><a href="index.html">Accueil</a></li><li><a href="tableau_de_bord.html">Tableau de bord</a></li><li aria-current="page">Muriel Thomas</li></ol>
+    <div class="page-head"><h1>Muriel Thomas</h1></div>
+    <div class="page-content">
+      <p class='meta'>Duree totale utilisee: 16:54</p><p><span class='tag'>UTILISE: 11</span><span class='tag'>RESERVE: 1</span><span class='tag'>REUTILISATION_A_ARBITRER: 3</span></p><div class="table-wrap"><table><thead><tr><th>ID</th><th>Timecodes</th><th>Theme</th><th>Statut</th><th>Score</th><th>Verbatim</th></tr></thead><tbody><tr><td>MUR-0001</td><td>01:00:04.950 - 01:01:24.750</td><td>T1</td><td>UTILISE</td><td>12/12</td><td>Je suis Murielle Thomas, je suis directrice de recherche à l'INRAE à l'Institut Michalis et mon sujet de recherche concerne les liens entre l'alimentation, les microbiotes et la santé. Je suis Muriel Thomas, Je travaille sur les liens entre l'alimentation, les microbiotes et la santé. Mon innovation est née d'un résultat de recherche où on avait isolé un probiotique d'intérêt et aussi d'une observation sociétale.
 
 Les personnes âgées ou en dénutrition, alors qu'elles ont un microbiote extrêmement appauvri, ne consomment jamais de probiotiques. Mon innovation est née d'un résultat de recherche parce que j'ai isolé au laboratoire avec de nombreux collaborateurs, un probiotique qui permet de préserver la masse musculaire.
 
@@ -132,7 +141,14 @@ Tous les étudiants en thèse vous le diront, quand ils font leurs répétitions
 
 Et à chaque fois, vous avez des recommandations et à chaque fois, vous avez des recommandations différentes. Donc en vous en faites, vous, votre job c'est d'essayer de concilier tout ça, de comprendre tous ces messages qui sont derrière les recommandations et de faire un pitch qui va vous ressembler malgré tout.
 
-J'ai passé 30 ans dans un labo,</td></tr></tbody></table>
+J'ai passé 30 ans dans un labo,</td></tr></tbody></table></div>
+    </div>
   </main>
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p><strong>Dérushage chorale</strong> — outil de lecture et de verification du derushage editorial.</p>
+      <p class="meta">Donnees source : <code>data/</code> · Pages regenerees par <code>scripts/build_site.py</code></p>
+    </div>
+  </footer>
 </body>
 </html>

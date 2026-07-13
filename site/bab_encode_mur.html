@@ -3,21 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BAB encode — Muriel Thomas</title>
+  <title>BAB encode — Muriel Thomas — Dérushage chorale</title>
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <header>
-    <a href="index.html">Accueil</a>
-    <a href="tableau_de_bord.html">Tableau de bord</a>
-    <span class="nav-current">BAB encodé</span>
-    <a href="conflits.html">Conflits</a>
-    <a href="registre.html">Registre</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+    <a class="site-brand" href="index.html">
+      <span class="site-brand__mark" aria-hidden="true">◆</span>
+      <span class="site-brand__text">
+        <span class="site-brand__title">Dérushage chorale</span>
+        <span class="site-brand__tagline">L'Esprit d'innover — MOOC Paris-Saclay</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a class="site-nav__link" href="index.html">Accueil</a><a class="site-nav__link" href="tableau_de_bord.html">Tableau de bord</a><a class="site-nav__link site-nav__link--current" href="bab_encodes.html" aria-current="page">BAB encodé</a><a class="site-nav__link" href="conflits.html">Conflits</a><a class="site-nav__link" href="registre.html">Registre</a>
+    </nav>
+  </div>
   </header>
-  <main>
+  <main class="site-main">
+    <ol class="breadcrumb"><li><a href="index.html">Accueil</a></li><li><a href="bab_encodes.html">BAB encodé</a></li><li aria-current="page">Muriel Thomas</li></ol>
     <div class='page-header'><div><h1>BAB encode — Muriel Thomas</h1><p class='meta'>Source : BAB_Muriel_Thomas video.txt · Statut : NON_ENCODE · Blocs : 26/70 encodes · Mise a jour : 2026-07-13</p></div><div class='export-toolbar' id='export-word-panel' data-capsule-code='bab-mur' data-capsule-title='Muriel Thomas — BAB encode'><button type='button' class='btn' id='export-word-open' aria-expanded='false' aria-controls='export-word-modal'>Exporter en Word</button></div></div>
-    <p><a href="bab_encodes.html">← Retour aux BAB encodés</a></p>
-<p class='meta'><strong>26</strong> blocs encodes sur <strong>70</strong> blocs BAB · <strong>19</strong> utilises dans les capsules.</p>
+    <div class="page-content">
+      <p class='meta'><strong>26</strong> blocs encodes sur <strong>70</strong> blocs BAB · <strong>19</strong> utilises dans les capsules.</p>
 <div class='card bab-segment'><strong>MUR-0001</strong> <span class='meta'>01:00:04.950 → 01:01:24.750 · 01:20 · UTILISE</span><p class='capsules'><span class='tag capsule-tag utilise'>T1: UTILISE (genese)</span></p><p class='coupe-note'><strong>T1</strong> — Reprise depuis « Mon innovation est nee » ; resultat + observation + manque.</p><p class='meta'>Tech-push + observation du manque ; double usage presentation / genese.</p><p>Je suis Murielle Thomas, je suis directrice de recherche à l'INRAE à l'Institut Michalis et mon sujet de recherche concerne les liens entre l'alimentation, les microbiotes et la santé. Je suis Muriel Thomas, Je travaille sur les liens entre l'alimentation, les microbiotes et la santé. Mon innovation est née d'un résultat de recherche où on avait isolé un probiotique d'intérêt et aussi d'une observation sociétale.
 
 Les personnes âgées ou en dénutrition, alors qu'elles ont un microbiote extrêmement appauvri, ne consomment jamais de probiotiques. Mon innovation est née d'un résultat de recherche parce que j'ai isolé au laboratoire avec de nombreux collaborateurs, un probiotique qui permet de préserver la masse musculaire.
@@ -738,7 +746,14 @@ Pourquoi on hésiterait à aller dans un projet qui va vous apporter, t on?
   </div>
 </div>
 
+    </div>
   </main>
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p><strong>Dérushage chorale</strong> — outil de lecture et de verification du derushage editorial.</p>
+      <p class="meta">Donnees source : <code>data/</code> · Pages regenerees par <code>scripts/build_site.py</code></p>
+    </div>
+  </footer>
   <script src="assets/export-word.js" defer></script>
 </body>
 </html>
