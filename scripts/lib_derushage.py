@@ -11,7 +11,8 @@ SITE = ROOT / "site"
 BAB_ENCODES = DATA / "bab_encodes"
 
 NAV_ITEMS = (
-    ("index.html", "Tableau de bord"),
+    ("index.html", "Accueil"),
+    ("tableau_de_bord.html", "Tableau de bord"),
     ("bab_encodes.html", "BAB encodé"),
     ("conflits.html", "Conflits"),
     ("registre.html", "Registre"),

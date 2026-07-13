@@ -164,6 +164,65 @@ th { font-size: 13px; text-transform: uppercase; color: var(--muted); letter-spa
 .bab-segment--non-encode { border-style: dashed; background: #fcfdff; }
 .coupe-note { font-size: 13px; color: var(--muted); margin: 6px 0; }
 #script-final.sr-export { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: pre-wrap; border: 0; }
+.home-hero {
+  margin-bottom: 36px;
+  padding: 28px 24px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: linear-gradient(160deg, #f7f9fb 0%, #ffffff 55%);
+}
+.home-kicker {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.home-title {
+  margin: 0 0 12px;
+  font-size: 34px;
+  line-height: 1.15;
+}
+.home-lead {
+  margin: 0 0 14px;
+  font-size: 18px;
+  line-height: 1.45;
+  color: var(--muted);
+  max-width: 62ch;
+}
+.sommaire-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin: 18px 0 8px;
+}
+.sommaire-card {
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 18px 18px 16px;
+  background: #fff;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.sommaire-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 24px rgba(0, 109, 119, 0.08);
+}
+.sommaire-card h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  color: var(--accent);
+}
+.sommaire-card p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--muted);
+  font-weight: 400;
+}
 """
 
 
@@ -535,6 +594,60 @@ def link_segment(segment: dict) -> str:
     )
 
 
+def build_home(capsules: list[dict], segments: list[dict]) -> None:
+    used_count = sum(1 for segment in segments if segment.get("statut") == "UTILISE")
+    sections = [
+        (
+            "tableau_de_bord.html",
+            "Tableau de bord",
+            "Vue d'ensemble des capsules, durees, chercheurs et acces aux montages.",
+        ),
+        (
+            "bab_encodes.html",
+            "BAB encodé",
+            "Parcours des BAB timecodes par chercheur, segment par segment.",
+        ),
+        (
+            "conflits.html",
+            "Conflits",
+            "Chevauchements entre extraits et reutilisations a arbitrer.",
+        ),
+        (
+            "registre.html",
+            "Registre",
+            "Liste complete des extraits, statuts et affectations.",
+        ),
+    ]
+    cards = "".join(
+        f"<a class='sommaire-card' href='{escape(href)}'>"
+        f"<h2>{escape(title)}</h2>"
+        f"<p>{escape(description)}</p>"
+        f"</a>"
+        for href, title, description in sections
+    )
+    body = f"""
+<section class="home-hero">
+  <p class="home-kicker">MOOC · L'Esprit d'innover ! Pourquoi pas Vous !</p>
+  <h1 class="home-title">Derushage editorial chorale</h1>
+  <p class="home-lead">Cartographier, qualifier et assembler les temoignages BAB pour les videos chorales du MOOC.</p>
+  <p class="meta">{len(capsules)} capsules · {len(segments)} extraits · {used_count} utilises dans les montages</p>
+</section>
+<h2>Sommaire</h2>
+<nav class="sommaire-grid" aria-label="Sommaire">
+{cards}
+</nav>
+"""
+    write_text(
+        SITE / "index.html",
+        html_page(
+            "Accueil",
+            body,
+            nav_current="index.html",
+            page_header="",
+        ),
+    )
+
+
 def build_dashboard(capsules: list[dict], segments: list[dict], affectations: dict) -> None:
     by_id = index_by_id(segments)
     rows = []
@@ -563,11 +676,12 @@ def build_dashboard(capsules: list[dict], segments: list[dict], affectations: di
             "</tr>"
         )
     researcher_counts = Counter(segment["chercheur"] for segment in segments if segment["statut"] == "UTILISE")
-    body = """
+    en_construction = sum(1 for capsule in capsules if capsule.get("statut") == "EN_CONSTRUCTION")
+    body = f"""
 <section class="grid">
-  <div class="card"><strong>Capsules</strong><br><span class="meta">2 configurees dans le MVP</span></div>
-  <div class="card"><strong>Extraits</strong><br><span class="meta">""" + str(len(segments)) + """ segments de demonstration</span></div>
-  <div class="card"><strong>Equilibre chercheurs</strong><br><span class="meta">""" + escape(dict(researcher_counts)) + """</span></div>
+  <div class="card"><strong>Capsules</strong><br><span class="meta">{len(capsules)} definies · {en_construction} en construction</span></div>
+  <div class="card"><strong>Extraits</strong><br><span class="meta">{len(segments)} segments indexes</span></div>
+  <div class="card"><strong>Equilibre chercheurs</strong><br><span class="meta">{escape(dict(researcher_counts))}</span></div>
 </section>
 <h2>Capsules</h2>
 <table>
@@ -581,7 +695,10 @@ def build_dashboard(capsules: list[dict], segments: list[dict], affectations: di
         f"<p><a href='chercheur_{slug(name)}.html'>{escape(name)}</a></p>"
         for name in sorted({segment["chercheur"] for segment in segments})
     )
-    write_text(SITE / "index.html", html_page("Tableau de bord", body, nav_current="index.html"))
+    write_text(
+        SITE / "tableau_de_bord.html",
+        html_page("Tableau de bord", body, nav_current="tableau_de_bord.html"),
+    )
 
 
 def build_researcher_pages(segments: list[dict]) -> None:
@@ -882,6 +999,7 @@ if __name__ == "__main__":
     for path in SITE.glob("capsule_*.html"):
         if path.name not in expected_capsule_pages:
             path.unlink()
+    build_home(all_capsules, all_segments)
     build_dashboard(all_capsules, all_segments, all_affectations)
     build_researcher_pages(all_segments)
     build_capsule_pages(all_capsules, all_segments, all_affectations)
