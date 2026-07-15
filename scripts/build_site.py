@@ -19,7 +19,7 @@ from lib_derushage import (
     load_bab_encode,
     load_bab_encode_index,
     load_capsules,
-    load_programme_videos,
+    load_programme_table,
     load_segments,
     merge_bab_encode_blocs,
     bab_encode_stats,
@@ -795,7 +795,16 @@ BRIEF_PRECAUTION_ORATOIRE = (
 )
 
 EXPORT_BRIEF_SECTION_TITLE = "Proposition de cadrage pour la video expert"
-EXPORT_VIDEOS_TABLE_TITLE = "Tableau du programme complet"
+EXPORT_VIDEOS_TABLE_TITLE = "Tableau du programme de conception"
+PROGRAMME_TABLE_FIELDS = (
+    "module",
+    "code",
+    "video_temoin",
+    "resume_chercheurs",
+    "videos_referent",
+    "objectif_pedagogique",
+    "noms_proposes",
+)
 
 BRIEF_CONSIGNES_COMMUNES = [
     "Partir des temoignages vus dans la chorale — pas d'un script a lire mot pour mot.",
@@ -1532,54 +1541,63 @@ def export_videos_expert_plaintext(capsule_data: dict) -> str:
     return "\n".join(lines).strip()
 
 
+def _multiline_cell_html(text: str) -> str:
+    if not text:
+        return ""
+    return escape(text).replace("\n", "<br>")
+
+
+def _export_highlight_code(capsule_code: str) -> str:
+    if capsule_code == "GEN":
+        return "T1"
+    return capsule_code
+
+
 def export_programme_complet_table_html(
-    current_capsule_code: str, capsules: list[dict], programme: dict
+    current_capsule_code: str, programme_table: dict
 ) -> str:
-    programme_capsules = programme.get("capsules", {})
-    rows: list[str] = []
-
-    for capsule in sorted(capsules, key=lambda item: item.get("ordre", 0)):
-        code = capsule["code"]
-        if code == "GEN":
-            continue
-        cap_prog = programme_capsules.get(code, {})
-        videos = cap_prog.get("videos_expert", [])
-        if not videos:
-            continue
-
-        module_short = cap_prog.get("module", "")
-        temoin = _label_video_temoin(code)
-        titre_capsule = capsule.get("titre", "")
-        highlight = code == current_capsule_code
-        row_bg = "background:#dff4f6;" if highlight else ""
-        count = len(videos)
-
-        for index, video in enumerate(videos):
-            cells: list[str] = []
-            if index == 0:
-                cells.extend(
-                    [
-                        f'<td rowspan="{count}" style="{row_bg}vertical-align:top;">{escape(module_short)}</td>',
-                        f'<td rowspan="{count}" style="{row_bg}vertical-align:top;">{escape(temoin)}</td>',
-                        f'<td rowspan="{count}" style="{row_bg}vertical-align:top;">{escape(titre_capsule)}</td>',
-                    ]
-                )
-            cells.extend(
-                [
-                    f'<td style="{row_bg}">{escape(_label_video_expert(video.get("code", "")))}</td>',
-                    f'<td style="{row_bg}">{escape(video.get("titre", ""))}</td>',
-                    f'<td style="{row_bg}">{escape(video.get("descriptif", ""))}</td>',
-                ]
-            )
-            rows.append("<tr>" + "".join(cells) + "</tr>")
-
-    if not rows:
+    rows_data = programme_table.get("rows", [])
+    if not rows_data:
         return ""
 
-    source = programme.get("source_document", "tableau de conception")
-    date_maj = programme.get("date_mise_a_jour", "")
+    headers = programme_table.get("headers", {})
+    highlight_code = _export_highlight_code(current_capsule_code)
+    html_rows: list[str] = []
+    index = 0
+
+    while index < len(rows_data):
+        module = rows_data[index]["module"]
+        end = index
+        while end < len(rows_data) and rows_data[end]["module"] == module:
+            end += 1
+        module_count = end - index
+
+        for offset in range(index, end):
+            row = rows_data[offset]
+            highlight = row["code"] == highlight_code
+            row_bg = "background:#dff4f6;" if highlight else ""
+            cells: list[str] = []
+            if offset == index:
+                cells.append(
+                    f'<td rowspan="{module_count}" style="{row_bg}vertical-align:top;">'
+                    f'{_multiline_cell_html(row["module"])}</td>'
+                )
+            for field in PROGRAMME_TABLE_FIELDS[1:]:
+                cells.append(
+                    f'<td style="{row_bg}vertical-align:top;">'
+                    f"{_multiline_cell_html(row[field])}</td>"
+                )
+            html_rows.append("<tr>" + "".join(cells) + "</tr>")
+        index = end
+
+    header_cells = "".join(
+        f"<th style='background:#f3f3f3;'>{escape(headers.get(field, field))}</th>"
+        for field in PROGRAMME_TABLE_FIELDS
+    )
+    source = programme_table.get("source_document", "tableau de conception")
+    date_maj = programme_table.get("date_mise_a_jour", "")
     date_label = f" — mis a jour le {date_maj}" if date_maj else ""
-    note = programme.get("note", "")
+    note = programme_table.get("note", "")
     note_html = (
         f'<p style="font-size:10pt;color:#555;margin:12pt 0 0;">{escape(note)}</p>'
         if note
@@ -1589,22 +1607,16 @@ def export_programme_complet_table_html(
 
     return (
         '<p style="font-size:10pt;color:#555;margin:0 0 10pt;">'
-        "Vue d'ensemble du programme MOOC pour situer votre intervention dans la sequence "
-        f"des videos temoin et expert. Les lignes en surbrillance correspondent a "
-        f"{escape(current_label)} (capsule exportee).</p>"
+        "Tableau de conception du MOOC (extrait tel quel du fichier source) pour situer "
+        "votre intervention dans l'ensemble du parcours et rester aligne sur le grain "
+        "prevu. La ligne en surbrillance correspond a "
+        f"{escape(current_label)}.</p>"
         f'<p style="font-size:10pt;color:#555;margin:0 0 10pt;">'
         f"Source : {escape(source)}{escape(date_label)}.</p>"
         '<table border="1" cellpadding="6" cellspacing="0" '
-        'style="width:100%;border-collapse:collapse;font-size:10pt;">'
-        "<thead><tr>"
-        "<th style='background:#f3f3f3;'>Module</th>"
-        "<th style='background:#f3f3f3;'>Video temoin</th>"
-        "<th style='background:#f3f3f3;'>Capsule</th>"
-        "<th style='background:#f3f3f3;'>Video expert</th>"
-        "<th style='background:#f3f3f3;'>Objectif</th>"
-        "<th style='background:#f3f3f3;'>Descriptif</th>"
-        "</tr></thead><tbody>"
-        + "".join(rows)
+        'style="width:100%;border-collapse:collapse;font-size:9pt;">'
+        f"<thead><tr>{header_cells}</tr></thead><tbody>"
+        + "".join(html_rows)
         + "</tbody></table>"
         + note_html
     )
@@ -1629,12 +1641,11 @@ def export_word_section(
     titre: str,
     capsule_data: dict,
     by_id: dict[str, dict],
-    capsules: list[dict],
-    programme: dict,
+    programme_table: dict,
 ) -> str:
     brief_text = export_brief_intervenant_plaintext(code, capsule_data, by_id)
     synthese_text = export_synthese_temoignages_plaintext(code, capsule_data)
-    videos_table_html = export_programme_complet_table_html(code, capsules, programme)
+    videos_table_html = export_programme_complet_table_html(code, programme_table)
     hidden_blocks = ""
     if synthese_text:
         hidden_blocks += _export_hidden_block(
@@ -1658,7 +1669,7 @@ def export_word_section(
         f"""
 <section class="export-panel" id="export-word-panel" data-capsule-code="{escape(code)}" data-capsule-title="{escape(titre)}">
   <h2>Export Word</h2>
-  <p class="meta">Exporter le script final, la synthese des temoignages, la proposition de cadrage pour la video expert et le tableau du programme complet.</p>
+  <p class="meta">Exporter le script final, la synthese des temoignages, la proposition de cadrage pour la video expert et le tableau de conception (source Excel).</p>
   <button type="button" class="btn" id="export-word-open" aria-expanded="false" aria-controls="export-word-modal">
     Exporter le dossier capsule
   </button>
@@ -1876,7 +1887,10 @@ def build_researcher_pages(segments: list[dict]) -> None:
 
 
 def build_capsule_pages(
-    capsules: list[dict], segments: list[dict], affectations: dict, programme: dict
+    capsules: list[dict],
+    segments: list[dict],
+    affectations: dict,
+    programme_table: dict,
 ) -> None:
     by_id = index_by_id(segments)
     overlaps = find_overlaps(segments)
@@ -1954,7 +1968,7 @@ def build_capsule_pages(
             sections.append(selection_unites_section(capsule_data))
         sections.append(referents_section(capsule_data))
         sections.append(
-            export_word_section(code, capsule["titre"], capsule_data, by_id, capsules, programme)
+            export_word_section(code, capsule["titre"], capsule_data, by_id, programme_table)
         )
         page_title = f"{code} - {capsule['titre']}"
         write_text(
@@ -2178,7 +2192,7 @@ if __name__ == "__main__":
     all_capsules = load_capsules()
     all_segments = load_segments()
     all_affectations = load_affectations()
-    programme = load_programme_videos()
+    programme_table = load_programme_table()
     expected_capsule_pages = {f"capsule_{capsule['code']}.html" for capsule in all_capsules}
     for path in SITE.glob("capsule_*.html"):
         if path.name not in expected_capsule_pages:
@@ -2186,7 +2200,7 @@ if __name__ == "__main__":
     build_home(all_capsules, all_segments)
     build_dashboard(all_capsules, all_segments, all_affectations)
     build_researcher_pages(all_segments)
-    build_capsule_pages(all_capsules, all_segments, all_affectations, programme)
+    build_capsule_pages(all_capsules, all_segments, all_affectations, programme_table)
     build_conflicts_page(all_segments)
     build_registry(all_segments)
     build_bab_encodes_index()

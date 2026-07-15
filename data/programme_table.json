@@ -1,0 +1,125 @@
+{
+  "source_document": "20260710_Prev_Vid.xlsx",
+  "source_path": "/Users/ups_ifpoc/Documents/01_Ingenierie/01_INNOV/04_Conception/20260710_Prev_Vid.xlsx",
+  "date_mise_a_jour": "2026-07-10",
+  "note": "Les noms de la colonne « Nom propose » du tableau de conception sont des propositions ; l'intervenant de chaque video expert reste a definir.",
+  "headers": {
+    "module": "Module",
+    "code": "N°",
+    "video_temoin": "Vidéo chorale témoin",
+    "resume_chercheurs": "Ce que racontent les chercheurs",
+    "videos_referent": "Vidéo(s) de référent à produire",
+    "objectif_pedagogique": "Objectif pédagogique atteint",
+    "noms_proposes": "Nom proposé"
+  },
+  "rows": [
+    {
+      "module": "M1",
+      "code": "T1",
+      "video_temoin": "Une innovation peut naître de chemins très différents",
+      "resume_chercheurs": "Jean-Jacques : une demande issue du marché rencontre trente ans d’expertise scientifique. Muriel : un résultat de laboratoire rencontre une observation sociétale. Sylvia : un « pas de côté » scientifique appliqué à une maladie rare. Loïc : un chemin progressif de la recherche fondamentale vers les problématiques agricoles.",
+      "videos_referent": "E1 — Reconnaître les différentes origines d’une innovation. Tech-push, market-pull, observation d’usage, rencontre, sérendipité, maturation progressive.",
+      "objectif_pedagogique": "L’apprenant comprend qu’il n’existe pas un seul « moment Eurêka ». Il sait repérer dans ses travaux un résultat, une observation ou une rencontre susceptible d’ouvrir une démarche d’innovation.",
+      "noms_proposes": "Bernard Yannou\nEneli Vino"
+    },
+    {
+      "module": "M1",
+      "code": "T2",
+      "video_temoin": "Sortir du laboratoire pour vérifier le besoin",
+      "resume_chercheurs": "Jean-Jacques : étude de marché, pivot et distinction entre nice to have et must have. Muriel : produits prescrits mais non consommés, tests et co-construction avec un EHPAD. Loïc : les échanges avec les filières révèlent des problèmes différents de ceux initialement imaginés. Sylvia : les cliniciens et les patients précisent le besoin médical et la place possible de la solution.",
+      "videos_referent": "E2 — Passer d’une technologie à un problème à résoudre. Utilisateur, client, bénéficiaire, usage et proposition de valeur. \nE3 — Poser ou identifier le bon problème avant de chercher la solution. Validation, hypothèses, expérimentation, pivot et apprentissage.",
+      "objectif_pedagogique": "L’apprenant sait distinguer une idée intéressante d’un besoin validé. Il sait formuler : « Pour qui ? Dans quelle situation ? Quel problème concret ? Quelle preuve du besoin ? »",
+      "noms_proposes": "Gregoire Burgé\nBernard Yannou"
+    },
+    {
+      "module": "M1",
+      "code": "T3",
+      "video_temoin": "Passer d’une idée scientifique à une preuve utilisable (POC)",
+      "resume_chercheurs": "Jean-Jacques : simulations, montage expérimental et dix-huit mois de preuve de concept. Loïc : passage de quelques grammes à des dizaines de kilos, essais en serre ou au champ et contrainte des saisons. Muriel : formulation alimentaire, contraintes sanitaires, abandon de la chaîne du froid et passage à une poudre prête à préparer. Sylvia : sélection d’un candidat médicament actif dans les modèles expérimentaux.",
+      "videos_referent": "E4 — Résultat scientifique, POC, prototype, MVP et TRL. Clarifier les niveaux de preuve. \nE5 —  Dérisquer un projet par étapes. Prématuration, maturation, jalons techniques et commerciaux, critères de décision.",
+      "objectif_pedagogique": "L’apprenant sait identifier le niveau de preuve dont il dispose et la prochaine incertitude qu’il doit lever. Il comprend qu’une preuve scientifique n’est pas encore nécessairement une preuve d’usage, d’industrialisation ou de marché.",
+      "noms_proposes": "Virginia Branco\nFatoumata Aonon \nStephanie Oger Roussel"
+    },
+    {
+      "module": "M2",
+      "code": "T4",
+      "video_temoin": "Protéger avant de communiquer",
+      "resume_chercheurs": "Sylvia : nécessité de protéger avant toute communication publique et articulation entre rédaction du brevet et publication. Muriel : protection de l’application d’un probiotique avant publication et soutenance. Jean-Jacques : brevet et preuve expérimentale menés en parallèle. Loïc : réflexion précoce avec les tutelles et les structures de valorisation.",
+      "videos_referent": "E6 — Le réflexe de déclaration avant toute divulgation. Confidentialité, nouveauté, publication, congrès, soutenance et DI. \nE7 — À qui parler et avec quoi arriver ? Premier contact, rôle du chargé de valorisation et informations utiles pour examiner un résultat.",
+      "objectif_pedagogique": "Face à un résultat potentiellement valorisable, l’apprenant sait qu’il doit contacter sa structure de valorisation avant de publier ou de communiquer. Il sait préparer ce premier échange.",
+      "noms_proposes": "Antoine La Treille\nSoizic LeFreuvre\nStephanie Sano\nEneli Vino"
+    },
+    {
+      "module": "M2",
+      "code": "T5",
+      "video_temoin": "Brevet, secret ou savoir-faire : construire une stratégie de protection",
+      "resume_chercheurs": "Loïc : combinaison d’un brevet et d’un secret industriel, car certaines copies seraient impossibles à démontrer. Sylvia : protection du mécanisme puis de plusieurs séries chimiques et gestion de plusieurs tutelles. Muriel : protection d’une application du vivant. Jean-Jacques : importance du brevet pour sécuriser le projet et convaincre les investisseurs.",
+      "videos_referent": "E8 — Choisir un mode de protection adapté. Brevetabilité, secret, savoir-faire, logiciel, preuve et confidentialité. \nE9 — La PI comme actif stratégique. Barrière à l’entrée, pouvoir de négociation, crédibilité et articulation avec le modèle de valorisation.",
+      "objectif_pedagogique": "L’apprenant comprend que « breveter » n’est pas une réponse automatique. Il sait identifier les principales questions qui orientent le choix entre brevet, secret et savoir-faire.",
+      "noms_proposes": "Antoine Latreille\nSophie DJEGA-MARIADASSOU\nEneli Vino\nSoizic LeFreuvre"
+    },
+    {
+      "module": "M2",
+      "code": "T6",
+      "video_temoin": "Création de start-up, licence ou partenariat : choisir une voie de transfert",
+      "resume_chercheurs": "Sylvia : nécessité de créer une société pour porter le risque jusqu’aux phases susceptibles d’intéresser l’industrie pharmaceutique. Muriel : licence exclusive accordée par l’INRAE à Carembouche. Jean-Jacques : choix de la start-up et transfert de propriété du brevet plutôt qu’une simple licence. Loïc : création d’entreprise choisie plutôt qu’une valorisation limitée à une licence.",
+      "videos_referent": "E10 — Quelle voie de valorisation pour quel projet ? Licence, création, co-développement, partenariat et critères de choix. \nE11 — Les mécanismes juridiques du transfert. Licence exclusive ou non, cession, contrat de collaboration, copropriété et principes de négociation.",
+      "objectif_pedagogique": "L’apprenant comprend que la création d’entreprise n’est qu’une voie possible. Il sait comparer les grandes options et identifier les questions à traiter avec les professionnels de la valorisation.",
+      "noms_proposes": "Fatoumata Aonon\nVirginia Branco\nSoizic Lefeuvre\nStéphanie Oger-Roussel"
+    },
+    {
+      "module": "M3",
+      "code": "T7",
+      "video_temoin": "Accompagnement et trajectoire du projet",
+      "resume_chercheurs": "Sylvia : la SATT transforme le projet en feuille de route et fait évoluer la posture. Muriel : formation chez IncubAlliance, apprentissage des entretiens, du marché et de l’entrepreneuriat. Jean-Jacques : succession de POC in Lab, Rise, IncubAlliance, Wilco et programmes de l’Institut d’Optique. Loïc : maturation SATT, accès au réseau, aux compétences juridiques et aux interlocuteurs économiques.",
+      "videos_referent": "E12 — De la prématuration à la maturation. Étapes, sélection, investissement, jalons et accompagnement. \nE13 — Ce que fait réellement un incubateur. Coaching, réseau, formation, confrontation, équipe et préparation de la création.\nE13 bis —  Autre structures (design spot, Fablab, pole de compétitivité,OTT, etc)",
+      "objectif_pedagogique": "L’apprenant sait distinguer maturation et incubation. Il sait identifier à quel moment et pour quel besoin solliciter chacune de ces structures.",
+      "noms_proposes": "Arielle Santé\nStephanie Oger-Roussel\nYoan Montenot\nFatoumata Aonon"
+    },
+    {
+      "module": "M3",
+      "code": "T8",
+      "video_temoin": "Choisir les bons financements au bon moment",
+      "resume_chercheurs": "Jean-Jacques : financements disponibles avant et après création, risque de créer trop tôt et accélération après levée de fonds. Sylvia : i-Lab avant création puis difficulté à lever des fonds dans un contexte défavorable. Muriel : financements qui permettent un pivot technologique et le recrutement. Loïc : choix d’investisseurs compatibles avec le rythme et les marges du secteur agricole.",
+      "videos_referent": "E14 — La chaîne des financements de l’innovation. Prématuration, maturation, aides non dilutives, concours, Bpifrance et financement privé. \nE15 — Comprendre la logique des investisseurs. Dilution, retour attendu, rythme de croissance, gouvernance et compatibilité avec le projet.",
+      "objectif_pedagogique": "L’apprenant sait qu’un financement correspond à un stade, à une dépense et à un niveau de risque. Il distingue subvention, avance, investissement en capital et chiffre d’affaires.",
+      "noms_proposes": "Arielle Santé\nStephanie Oger-Roussel\nFatoumata Aonon"
+    },
+    {
+      "module": "M4",
+      "code": "T9",
+      "video_temoin": "Construire une équipe complémentaire et trouver sa place",
+      "resume_chercheurs": "Jean-Jacques : l’équipe scientifique suffisait pour la POC mais pas pour créer l’entreprise ; recherche d’un troisième profil capable de gérer finance, vente, production et RH. Sylvia : choix de ne pas être CEO, recrutement d’un dirigeant expérimenté et positionnement comme conseil scientifique. Muriel : équipe de cofondatrices, CEO, ingénieur, comité stratégique et comité scientifique. Loïc : équipe issue du laboratoire, recherche infructueuse d’un profil business générique, puis choix d’un profil connaissant réellement le secteur agricole.",
+      "videos_referent": "E16 —  Cartographier les compétences nécessaires. Complémentarité, recrutement, rôle du CEO, du CSO et du CTO, et critères humains. \nE17 —  Organiser la relation entre fondateurs. Gouvernance, responsabilités, répartition du pouvoir, parts, pacte et prévention des conflits.",
+      "objectif_pedagogique": "L’apprenant sait identifier les compétences manquantes autour de son projet et réfléchir à la place qu’il souhaite réellement occuper.",
+      "noms_proposes": "Pascal Corbel\nArielle Santé"
+    },
+    {
+      "module": "M4",
+      "code": "T10",
+      "video_temoin": "S'appropier un language pour entreprendre",
+      "resume_chercheurs": "Muriel : apprendre progressivement à parler aux EHPAD, médecins, investisseurs et incubateurs ; le pitch se construit par répétitions. Jean-Jacques : apprentissage d’une nouvelle langue, celle de l’entrepreneuriat, de la finance et du droit. Loïc : passage du discours scientifique aux attentes économiques, réglementaires et industrielles. Sylvia : formation à l’écosystème pharmaceutique, au pitch, à la négociation et au market access.",
+      "videos_referent": "E18 —  Passer de la preuve scientifique à la valeur pour l’interlocuteur. Adapter le message selon l’utilisateur, le décideur, le partenaire ou l’investisseur. \nE19 —  La posture entrepreneuriale s’apprend. Feedback, entraînement, mentorat et évolution de l’identité professionnelle.",
+      "objectif_pedagogique": "L’apprenant sait présenter ses travaux autrement qu’à des pairs scientifiques, en partant du problème, de l’usage et de la valeur attendue.",
+      "noms_proposes": "Arielle Santé \nJoël Nguen\nPascal Corbel"
+    },
+    {
+      "module": "M4",
+      "code": "T11",
+      "video_temoin": "Les freins et leviers",
+      "resume_chercheurs": "Muriel : peur du manque de temps, de l’échec et de la perte de légitimité ; nécessité de réorganiser ses responsabilités. Jean-Jacques : impossibilité de tout maîtriser, risque d’échec et nécessité d’accepter l’incertitude. Loïc : caractère clivant de l’entrepreneuriat dans le milieu académique et ajustement du discours. Sylvia : urgence d’aller jusqu’au patient, difficultés de financement et accomplissement personnel. La fin rassemble leurs conseils les plus forts.",
+      "videos_referent": "E20 — Gérer les freins. Temps, légitimité, entourage, droit à l’apprentissage et sécurisation du parcours. \nE21 — Innover comme processus d’apprentissage. Incertitude, essais, erreurs, pivot et progression plutôt que réussite linéaire. (focaliser le discours sur les leviers existant pour vaincre les freins)",
+      "objectif_pedagogique": "L’apprenant identifie ses propres freins et comprend qu’ils ne doivent pas tous être résolus avant de faire le premier pas. Il choisit une première action réaliste et réversible.",
+      "noms_proposes": "Arielle Santé \nJoël Nguen\nPascal Corbel\nBernard Yannou"
+    },
+    {
+      "module": "M5",
+      "code": "T12",
+      "video_temoin": "Construire une collaboration qui produit réellement de la valeur",
+      "resume_chercheurs": "Muriel : cinq années de co-construction avec un EHPAD, implication des cuisiniers et nécessité de contractualiser les collaborations. Loïc : partenaires devenus clients après des démonstrations, puis entrée de l’un d’eux au capital. Sylvia : complémentarité entre biologistes, chimistes, pharmacologues, cliniciens et patients. Jean-Jacques : rôle des cofondateurs, des réseaux et des introductions dans la progression du projet.",
+      "videos_referent": "E22 — Pascal Corbel : Concevoir une collaboration équilibrée. Objectifs partagés, complémentarité, gouvernance, engagement, création et partage de valeur. \nE23 — Antoine Latreille : Sécuriser juridiquement la collaboration. Confidentialité, contrats, connaissances antérieures, résultats nouveaux, PI, publication et sortie du partenariat.",
+      "objectif_pedagogique": "L’apprenant sait préparer une première collaboration en clarifiant les contributions, les attentes, les règles de décision et les sujets de propriété intellectuelle.",
+      "noms_proposes": "Rémi Waché / Soizic LeFeuvre\nVirginia Branco\nEneli Vino / Fatoumata Aonon"
+    }
+  ]
+}
