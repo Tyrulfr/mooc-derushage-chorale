@@ -87,6 +87,10 @@ def load_affectations() -> dict:
     return read_json(DATA / "affectations.json")
 
 
+def load_programme_videos() -> dict:
+    return read_json(DATA / "programme_videos.json")
+
+
 def load_segments() -> list[dict]:
     segments: list[dict] = []
     for path in sorted((DATA / "segments").glob("*.json")):

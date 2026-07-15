@@ -19,6 +19,7 @@ from lib_derushage import (
     load_bab_encode,
     load_bab_encode_index,
     load_capsules,
+    load_programme_videos,
     load_segments,
     merge_bab_encode_blocs,
     bab_encode_stats,
@@ -794,7 +795,7 @@ BRIEF_PRECAUTION_ORATOIRE = (
 )
 
 EXPORT_BRIEF_SECTION_TITLE = "Proposition de cadrage pour la video expert"
-EXPORT_VIDEOS_TABLE_TITLE = "Tableau des videos expert a produire"
+EXPORT_VIDEOS_TABLE_TITLE = "Tableau du programme complet"
 
 BRIEF_CONSIGNES_COMMUNES = [
     "Partir des temoignages vus dans la chorale — pas d'un script a lire mot pour mot.",
@@ -1531,46 +1532,81 @@ def export_videos_expert_plaintext(capsule_data: dict) -> str:
     return "\n".join(lines).strip()
 
 
-def export_videos_table_html(capsule_data: dict) -> str:
-    videos = capsule_data.get("videos_expert", [])
-    if not videos:
+def export_programme_complet_table_html(
+    current_capsule_code: str, capsules: list[dict], programme: dict
+) -> str:
+    programme_capsules = programme.get("capsules", {})
+    rows: list[str] = []
+
+    for capsule in sorted(capsules, key=lambda item: item.get("ordre", 0)):
+        code = capsule["code"]
+        if code == "GEN":
+            continue
+        cap_prog = programme_capsules.get(code, {})
+        videos = cap_prog.get("videos_expert", [])
+        if not videos:
+            continue
+
+        module_short = cap_prog.get("module", "")
+        temoin = _label_video_temoin(code)
+        titre_capsule = capsule.get("titre", "")
+        highlight = code == current_capsule_code
+        row_bg = "background:#dff4f6;" if highlight else ""
+        count = len(videos)
+
+        for index, video in enumerate(videos):
+            cells: list[str] = []
+            if index == 0:
+                cells.extend(
+                    [
+                        f'<td rowspan="{count}" style="{row_bg}vertical-align:top;">{escape(module_short)}</td>',
+                        f'<td rowspan="{count}" style="{row_bg}vertical-align:top;">{escape(temoin)}</td>',
+                        f'<td rowspan="{count}" style="{row_bg}vertical-align:top;">{escape(titre_capsule)}</td>',
+                    ]
+                )
+            cells.extend(
+                [
+                    f'<td style="{row_bg}">{escape(_label_video_expert(video.get("code", "")))}</td>',
+                    f'<td style="{row_bg}">{escape(video.get("titre", ""))}</td>',
+                    f'<td style="{row_bg}">{escape(video.get("descriptif", ""))}</td>',
+                ]
+            )
+            rows.append("<tr>" + "".join(cells) + "</tr>")
+
+    if not rows:
         return ""
 
-    rows = []
-    for video in videos:
-        intervenant = video.get("intervenant") or "Intervenant a definir"
-        rows.append(
-            "<tr>"
-            f"<td>{escape(_label_video_expert(video.get('code', '')))}</td>"
-            f"<td>{escape(intervenant)}</td>"
-            f"<td>{escape(video.get('titre', ''))}</td>"
-            f"<td>{escape(video.get('descriptif', ''))}</td>"
-            "</tr>"
-        )
-
-    proposes = capsule_data.get("experts_proposes", [])
-    footnote = ""
-    if proposes:
-        footnote = (
-            '<p style="font-size:10pt;color:#555;margin:12pt 0 0;">'
-            f"<strong>Intervenants proposes (a confirmer) :</strong> "
-            f"{escape(', '.join(proposes))}</p>"
-        )
+    source = programme.get("source_document", "tableau de conception")
+    date_maj = programme.get("date_mise_a_jour", "")
+    date_label = f" — mis a jour le {date_maj}" if date_maj else ""
+    note = programme.get("note", "")
+    note_html = (
+        f'<p style="font-size:10pt;color:#555;margin:12pt 0 0;">{escape(note)}</p>'
+        if note
+        else ""
+    )
+    current_label = _label_video_temoin(current_capsule_code)
 
     return (
         '<p style="font-size:10pt;color:#555;margin:0 0 10pt;">'
-        "Programme de conception (source : 20260710_Prev_Vid.xlsx).</p>"
+        "Vue d'ensemble du programme MOOC pour situer votre intervention dans la sequence "
+        f"des videos temoin et expert. Les lignes en surbrillance correspondent a "
+        f"{escape(current_label)} (capsule exportee).</p>"
+        f'<p style="font-size:10pt;color:#555;margin:0 0 10pt;">'
+        f"Source : {escape(source)}{escape(date_label)}.</p>"
         '<table border="1" cellpadding="6" cellspacing="0" '
-        'style="width:100%;border-collapse:collapse;font-size:11pt;">'
+        'style="width:100%;border-collapse:collapse;font-size:10pt;">'
         "<thead><tr>"
-        "<th style='background:#f3f3f3;'>Video</th>"
-        "<th style='background:#f3f3f3;'>Intervenant</th>"
+        "<th style='background:#f3f3f3;'>Module</th>"
+        "<th style='background:#f3f3f3;'>Video temoin</th>"
+        "<th style='background:#f3f3f3;'>Capsule</th>"
+        "<th style='background:#f3f3f3;'>Video expert</th>"
         "<th style='background:#f3f3f3;'>Objectif</th>"
         "<th style='background:#f3f3f3;'>Descriptif</th>"
         "</tr></thead><tbody>"
         + "".join(rows)
         + "</tbody></table>"
-        + footnote
+        + note_html
     )
 
 
@@ -1589,11 +1625,16 @@ def _export_hidden_block(block_id: str, section_title: str, body: str) -> str:
 
 
 def export_word_section(
-    code: str, titre: str, capsule_data: dict, by_id: dict[str, dict]
+    code: str,
+    titre: str,
+    capsule_data: dict,
+    by_id: dict[str, dict],
+    capsules: list[dict],
+    programme: dict,
 ) -> str:
     brief_text = export_brief_intervenant_plaintext(code, capsule_data, by_id)
     synthese_text = export_synthese_temoignages_plaintext(code, capsule_data)
-    videos_table_html = export_videos_table_html(capsule_data)
+    videos_table_html = export_programme_complet_table_html(code, capsules, programme)
     hidden_blocks = ""
     if synthese_text:
         hidden_blocks += _export_hidden_block(
@@ -1617,7 +1658,7 @@ def export_word_section(
         f"""
 <section class="export-panel" id="export-word-panel" data-capsule-code="{escape(code)}" data-capsule-title="{escape(titre)}">
   <h2>Export Word</h2>
-  <p class="meta">Exporter le script final, la synthese des temoignages, la proposition de cadrage pour la video expert et le tableau des videos.</p>
+  <p class="meta">Exporter le script final, la synthese des temoignages, la proposition de cadrage pour la video expert et le tableau du programme complet.</p>
   <button type="button" class="btn" id="export-word-open" aria-expanded="false" aria-controls="export-word-modal">
     Exporter le dossier capsule
   </button>
@@ -1834,7 +1875,9 @@ def build_researcher_pages(segments: list[dict]) -> None:
         )
 
 
-def build_capsule_pages(capsules: list[dict], segments: list[dict], affectations: dict) -> None:
+def build_capsule_pages(
+    capsules: list[dict], segments: list[dict], affectations: dict, programme: dict
+) -> None:
     by_id = index_by_id(segments)
     overlaps = find_overlaps(segments)
     overlap_ids = {item.first_id for item in overlaps} | {item.second_id for item in overlaps}
@@ -1910,7 +1953,9 @@ def build_capsule_pages(capsules: list[dict], segments: list[dict], affectations
         if capsule_data.get("methodologie") or capsule_data.get("unites_de_sens"):
             sections.append(selection_unites_section(capsule_data))
         sections.append(referents_section(capsule_data))
-        sections.append(export_word_section(code, capsule["titre"], capsule_data, by_id))
+        sections.append(
+            export_word_section(code, capsule["titre"], capsule_data, by_id, capsules, programme)
+        )
         page_title = f"{code} - {capsule['titre']}"
         write_text(
             SITE / f"capsule_{code}.html",
@@ -2133,6 +2178,7 @@ if __name__ == "__main__":
     all_capsules = load_capsules()
     all_segments = load_segments()
     all_affectations = load_affectations()
+    programme = load_programme_videos()
     expected_capsule_pages = {f"capsule_{capsule['code']}.html" for capsule in all_capsules}
     for path in SITE.glob("capsule_*.html"):
         if path.name not in expected_capsule_pages:
@@ -2140,7 +2186,7 @@ if __name__ == "__main__":
     build_home(all_capsules, all_segments)
     build_dashboard(all_capsules, all_segments, all_affectations)
     build_researcher_pages(all_segments)
-    build_capsule_pages(all_capsules, all_segments, all_affectations)
+    build_capsule_pages(all_capsules, all_segments, all_affectations, programme)
     build_conflicts_page(all_segments)
     build_registry(all_segments)
     build_bab_encodes_index()

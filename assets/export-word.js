@@ -439,7 +439,7 @@
         "Proposition de cadrage pour la video expert"
       ),
       syntheseTitle: sectionTitle(syntheseEl, "Synthese des temoignages"),
-      videosTableTitle: sectionTitle(videosTableEl, "Tableau des videos expert a produire"),
+      videosTableTitle: sectionTitle(videosTableEl, "Tableau du programme complet"),
     };
   }
 
