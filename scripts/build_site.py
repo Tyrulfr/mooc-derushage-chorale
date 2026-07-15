@@ -794,6 +794,7 @@ BRIEF_PRECAUTION_ORATOIRE = (
 )
 
 EXPORT_BRIEF_SECTION_TITLE = "Proposition de cadrage pour la video expert"
+EXPORT_VIDEOS_TABLE_TITLE = "Tableau des videos expert a produire"
 
 BRIEF_CONSIGNES_COMMUNES = [
     "Partir des temoignages vus dans la chorale — pas d'un script a lire mot pour mot.",
@@ -1530,6 +1531,56 @@ def export_videos_expert_plaintext(capsule_data: dict) -> str:
     return "\n".join(lines).strip()
 
 
+def export_videos_table_html(capsule_data: dict) -> str:
+    videos = capsule_data.get("videos_expert", [])
+    if not videos:
+        return ""
+
+    rows = []
+    for video in videos:
+        intervenant = video.get("intervenant") or "Intervenant a definir"
+        rows.append(
+            "<tr>"
+            f"<td>{escape(_label_video_expert(video.get('code', '')))}</td>"
+            f"<td>{escape(intervenant)}</td>"
+            f"<td>{escape(video.get('titre', ''))}</td>"
+            f"<td>{escape(video.get('descriptif', ''))}</td>"
+            "</tr>"
+        )
+
+    proposes = capsule_data.get("experts_proposes", [])
+    footnote = ""
+    if proposes:
+        footnote = (
+            '<p style="font-size:10pt;color:#555;margin:12pt 0 0;">'
+            f"<strong>Intervenants proposes (a confirmer) :</strong> "
+            f"{escape(', '.join(proposes))}</p>"
+        )
+
+    return (
+        '<p style="font-size:10pt;color:#555;margin:0 0 10pt;">'
+        "Programme de conception (source : 20260710_Prev_Vid.xlsx).</p>"
+        '<table border="1" cellpadding="6" cellspacing="0" '
+        'style="width:100%;border-collapse:collapse;font-size:11pt;">'
+        "<thead><tr>"
+        "<th style='background:#f3f3f3;'>Video</th>"
+        "<th style='background:#f3f3f3;'>Intervenant</th>"
+        "<th style='background:#f3f3f3;'>Objectif</th>"
+        "<th style='background:#f3f3f3;'>Descriptif</th>"
+        "</tr></thead><tbody>"
+        + "".join(rows)
+        + "</tbody></table>"
+        + footnote
+    )
+
+
+def _export_hidden_html_block(block_id: str, section_title: str, html: str) -> str:
+    return (
+        f'<div class="sr-export" id="{block_id}" '
+        f'data-section-title="{escape(section_title)}" hidden>{html}</div>'
+    )
+
+
 def _export_hidden_block(block_id: str, section_title: str, body: str) -> str:
     return (
         f'<div class="sr-export" id="{block_id}" '
@@ -1542,6 +1593,7 @@ def export_word_section(
 ) -> str:
     brief_text = export_brief_intervenant_plaintext(code, capsule_data, by_id)
     synthese_text = export_synthese_temoignages_plaintext(code, capsule_data)
+    videos_table_html = export_videos_table_html(capsule_data)
     hidden_blocks = ""
     if synthese_text:
         hidden_blocks += _export_hidden_block(
@@ -1555,11 +1607,17 @@ def export_word_section(
             EXPORT_BRIEF_SECTION_TITLE,
             brief_text,
         )
+    if videos_table_html:
+        hidden_blocks += _export_hidden_html_block(
+            "export-videos-table",
+            EXPORT_VIDEOS_TABLE_TITLE,
+            videos_table_html,
+        )
     return (
         f"""
 <section class="export-panel" id="export-word-panel" data-capsule-code="{escape(code)}" data-capsule-title="{escape(titre)}">
   <h2>Export Word</h2>
-  <p class="meta">Exporter le script final, la synthese des temoignages et la proposition de cadrage pour la video expert.</p>
+  <p class="meta">Exporter le script final, la synthese des temoignages, la proposition de cadrage pour la video expert et le tableau des videos.</p>
   <button type="button" class="btn" id="export-word-open" aria-expanded="false" aria-controls="export-word-modal">
     Exporter le dossier capsule
   </button>

@@ -9,6 +9,7 @@
 
   const briefEl = document.getElementById("export-brief-intervenant");
   const syntheseEl = document.getElementById("export-synthese-temoignages");
+  const videosTableEl = document.getElementById("export-videos-table");
   const modal = document.getElementById("export-word-modal");
   const openBtn = document.getElementById("export-word-open");
   const cancelBtn = document.getElementById("export-word-cancel");
@@ -216,12 +217,23 @@
     `;
   }
 
+  function renderHtmlSection(title, html) {
+    if (!html) {
+      return "";
+    }
+    return `
+      <h2 style="font-size:15pt;margin:24pt 0 10pt;border-top:1pt solid #ccc;padding-top:16pt;">${escapeHtml(title)}</h2>
+      ${html}
+    `;
+  }
+
   function buildWordDocument(title, payload) {
     const generatedAt = new Date().toLocaleString("fr-FR");
     const scriptBlocks = parseScriptBlocks(payload.script);
     const scriptHtml = renderScriptBlocks(scriptBlocks, payload.script);
     const syntheseHtml = renderPlainSection(payload.syntheseTitle, payload.synthese);
     const briefHtml = renderPlainSection(payload.briefTitle, payload.brief);
+    const videosTableHtml = renderHtmlSection(payload.videosTableTitle, payload.videosTable);
 
     return `<!DOCTYPE html>
 <html xmlns:o="urn:schemas-microsoft-com:office:office"
@@ -255,6 +267,7 @@
   ${scriptHtml}
   ${syntheseHtml}
   ${briefHtml}
+  ${videosTableHtml}
 </body>
 </html>`;
   }
@@ -415,15 +428,18 @@
     const script = scriptEl.textContent.trim();
     const brief = briefEl ? briefEl.textContent.trim() : "";
     const synthese = syntheseEl ? syntheseEl.textContent.trim() : "";
+    const videosTable = videosTableEl ? videosTableEl.innerHTML.trim() : "";
     return {
       script,
       brief,
       synthese,
+      videosTable,
       briefTitle: sectionTitle(
         briefEl,
         "Proposition de cadrage pour la video expert"
       ),
       syntheseTitle: sectionTitle(syntheseEl, "Synthese des temoignages"),
+      videosTableTitle: sectionTitle(videosTableEl, "Tableau des videos expert a produire"),
     };
   }
 
@@ -435,8 +451,9 @@
     const hasScript = payload.script && payload.script !== "A construire.";
     const hasBrief = Boolean(payload.brief);
     const hasSynthese = Boolean(payload.synthese);
+    const hasVideosTable = Boolean(payload.videosTable);
 
-    if (!hasScript && !hasBrief && !hasSynthese) {
+    if (!hasScript && !hasBrief && !hasSynthese && !hasVideosTable) {
       setStatus("Aucun contenu a exporter pour cette capsule.", "error");
       exportBtn.disabled = false;
       return;
