@@ -348,8 +348,8 @@ def orientation_e12_e13(by_id: dict[str, dict]) -> list[dict]:
             ],
             "experts_proposes": [
                 "Arielle Sante",
-                "Stephanie Oger Roussel",
-                "Yoan Montenot",
+                "Stephanie Oger-Roussel",
+                "Yoann Montenot",
                 "Fatoumata Aonon",
             ],
         },
@@ -386,8 +386,8 @@ def orientation_e12_e13(by_id: dict[str, dict]) -> list[dict]:
             ],
             "experts_proposes": [
                 "Arielle Sante",
-                "Stephanie Oger Roussel",
-                "Yoan Montenot",
+                "Stephanie Oger-Roussel",
+                "Yoann Montenot",
                 "Fatoumata Aonon",
             ],
         },
@@ -424,8 +424,8 @@ def orientation_e12_e13(by_id: dict[str, dict]) -> list[dict]:
             ],
             "experts_proposes": [
                 "Arielle Sante",
-                "Stephanie Oger Roussel",
-                "Yoan Montenot",
+                "Stephanie Oger-Roussel",
+                "Yoann Montenot",
                 "Fatoumata Aonon",
             ],
         },

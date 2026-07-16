@@ -352,7 +352,7 @@ def orientation_e4_e5(by_id: dict[str, dict]) -> list[dict]:
                 }
                 for item in e4_items
             ],
-            "experts_proposes": ["Virginia Branco", "Fatoumata Aonon", "Stephanie Oger Roussel"],
+            "experts_proposes": ["Virginia Branco", "Fatoumata Aonon", "Stephanie Oger-Roussel"],
         },
         {
             "code": "E5",
@@ -387,7 +387,7 @@ def orientation_e4_e5(by_id: dict[str, dict]) -> list[dict]:
                 }
                 for item in e5_items
             ],
-            "experts_proposes": ["Virginia Branco", "Fatoumata Aonon", "Stephanie Oger Roussel"],
+            "experts_proposes": ["Virginia Branco", "Fatoumata Aonon", "Stephanie Oger-Roussel"],
         },
     ]
 

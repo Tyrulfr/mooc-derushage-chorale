@@ -1,0 +1,406 @@
+{
+  "profils": [
+    {
+      "nom": "Antoine Latreille",
+      "profil_cible": "Droit de l'innovation / propriete industrielle",
+      "statut": "probable",
+      "infos": [
+        "Professeur a Universite Paris-Saclay.",
+        "Direction du Master DIPI (innovation et propriete industrielle).",
+        "Implication sur transfert/valorisation dans l'ecosysteme Paris-Saclay."
+      ],
+      "sources": [
+        {
+          "label": "LinkedIn — LATREILLE Antoine",
+          "url": "https://fr.linkedin.com/in/antoine-latreille",
+          "type": "linkedin"
+        },
+        {
+          "label": "Master DIPI (post LinkedIn)",
+          "url": "https://fr.linkedin.com/posts/master-2-dipi7a0b50153_cher-r%C3%A9seau-le-master-dipi-sous-la-direction-activity-7122551925874536448-zG_P",
+          "type": "linkedin-post"
+        }
+      ],
+      "mots_cles": [
+        "propriete industrielle",
+        "droit de l innovation",
+        "transfert technologique",
+        "valorisation",
+        "master DIPI"
+      ]
+    },
+    {
+      "nom": "Arielle Sante",
+      "profil_cible": "Entrepreneuriat deeptech / incubation",
+      "statut": "confirme",
+      "infos": [
+        "Directrice generale d'IncubAlliance Paris-Saclay.",
+        "Parcours a l'interface recherche/industrie et management strategique.",
+        "Docteure en management (Paris-Saclay)."
+      ],
+      "sources": [
+        {
+          "label": "LinkedIn — Arielle Sante",
+          "url": "https://linkedin.com/in/arielle-sant%C3%A9-35174ba",
+          "type": "linkedin"
+        },
+        {
+          "label": "IncubAlliance — nomination DG",
+          "url": "https://www.incuballiance.fr/arielle-sante-est-nommee-directrice-generale-dincuballiance",
+          "type": "institution"
+        }
+      ],
+      "mots_cles": [
+        "incubation deeptech",
+        "entrepreneuriat",
+        "management strategique",
+        "Paris-Saclay",
+        "accompagnement de projets"
+      ]
+    },
+    {
+      "nom": "Bernard Yannou",
+      "profil_cible": "Innovation / design engineering / deeptech",
+      "statut": "confirme",
+      "infos": [
+        "Professeur a CentraleSupelec (Universite Paris-Saclay).",
+        "Direction du laboratoire de Genie Industriel (LGI).",
+        "Responsabilites sur valorisation/entrepreneuriat deeptech."
+      ],
+      "sources": [
+        {
+          "label": "CentraleSupelec — Bernard Yannou",
+          "url": "https://www.centralesupelec.fr/chercheurs/bernard-yannou",
+          "type": "institution"
+        },
+        {
+          "label": "LinkedIn — Bernard Yannou",
+          "url": "https://fr.linkedin.com/in/bernard-yannou-59186a29/en",
+          "type": "linkedin"
+        }
+      ],
+      "mots_cles": [
+        "design engineering",
+        "innovation",
+        "deeptech",
+        "genie industriel",
+        "valorisation"
+      ]
+    },
+    {
+      "nom": "Eneli Vino",
+      "profil_cible": "Juridique PI / contrats / valorisation",
+      "statut": "confirme",
+      "infos": [
+        "Responsable du pole Industrie et Valorisation (CNRS, delegation Ile-de-France).",
+        "Expertise en contrats et propriete intellectuelle.",
+        "Experience en management d'equipe juridique."
+      ],
+      "sources": [
+        {
+          "label": "LinkedIn — Eneli Vino",
+          "url": "https://linkedin.com/in/eneli-vino-56876813",
+          "type": "linkedin"
+        }
+      ],
+      "mots_cles": [
+        "contrats de recherche",
+        "propriete intellectuelle",
+        "negociation",
+        "valorisation CNRS",
+        "juridique"
+      ]
+    },
+    {
+      "nom": "Fatoumata Aonon",
+      "profil_cible": "Valorisation recherche / accompagnement projets",
+      "statut": "probable",
+      "infos": [
+        "Interventions identifiees via SPV DR4 CNRS sur valorisation et partenariats.",
+        "Animation de formations VaRRIWA (R&I, TRL, partenariats, modeles economiques).",
+        "Profil LinkedIn public non retrouve avec certitude."
+      ],
+      "sources": [
+        {
+          "label": "IJCLab Indico — seminaire SATT/SPV DR4",
+          "url": "https://indico.ijclab.in2p3.fr/event/10377/?print=1",
+          "type": "institution"
+        },
+        {
+          "label": "Post LinkedIn — Souleymane Kamara (VaRRIWA)",
+          "url": "https://fr.linkedin.com/posts/souleymane-kamara-5a7b3715a_retour-sur-les-ateliers-de-dakar-mission-activity-7331707304184070144-G3M1",
+          "type": "linkedin-post"
+        }
+      ],
+      "mots_cles": [
+        "valorisation recherche",
+        "partenariats",
+        "TRL",
+        "formation R&I",
+        "transfert"
+      ]
+    },
+    {
+      "nom": "Gregoire Burge",
+      "profil_cible": "Innovation agro / transfert technologique",
+      "statut": "confirme",
+      "infos": [
+        "Direction innovation a AgroParisTech.",
+        "Responsabilites recherche/innovation/transfert technologique.",
+        "Mise en place d'incubateurs thematiques (InnLabs)."
+      ],
+      "sources": [
+        {
+          "label": "Bpifrance BIG — Gregoire Burge",
+          "url": "https://evenements.bpifrance.fr/e/big-2024/fr/speaker/797cedcb-6265-ef11-bdfd-6045bd9540d7/gregoire-burge",
+          "type": "event"
+        },
+        {
+          "label": "Interview AgroParisTech (APT Alumni)",
+          "url": "https://www.aptalumni.org/news/interview-de-gregoire-burge-directeur-adjoint-de-la-recherche-de-l-innovation-et-du-transfert-technologique-a-agroparistech-3619",
+          "type": "institution"
+        }
+      ],
+      "mots_cles": [
+        "AgroParisTech",
+        "innovation agro",
+        "transfert technologique",
+        "bioeconomie",
+        "incubateurs"
+      ]
+    },
+    {
+      "nom": "Joel Nguen",
+      "profil_cible": "A verifier",
+      "statut": "a_verifier",
+      "infos": [
+        "Aucun profil LinkedIn certain retrouve avec cette orthographe.",
+        "Plusieurs homonymes (Joel Nguyen / Nguene) non relies au contexte Paris-Saclay.",
+        "Demande de validation manuelle recommandee."
+      ],
+      "sources": [
+        {
+          "label": "Recherche LinkedIn (homonymes non confirmes)",
+          "url": "https://www.linkedin.com/in/joel-nguyen-3306a02a",
+          "type": "linkedin"
+        }
+      ],
+      "mots_cles": [
+        "innovation",
+        "accompagnement de projets",
+        "ecosysteme Paris-Saclay",
+        "a confirmer"
+      ]
+    },
+    {
+      "nom": "Pascal Corbel",
+      "profil_cible": "Management innovation / PI / entrepreneuriat",
+      "statut": "confirme",
+      "infos": [
+        "Professeur a Universite Paris-Saclay.",
+        "Expert en management de l'innovation, PI et entrepreneuriat innovant.",
+        "Direction de Graduate School Economie & Management (informations publiques)."
+      ],
+      "sources": [
+        {
+          "label": "LinkedIn — Pascal Corbel (Universite Paris-Saclay)",
+          "url": "https://fr.linkedin.com/in/pascal-corbel-093217b",
+          "type": "linkedin"
+        },
+        {
+          "label": "Universite Paris-Saclay — portrait",
+          "url": "https://www.universite-paris-saclay.fr/en/news/pascal-corbel-business-minded-academic",
+          "type": "institution"
+        }
+      ],
+      "mots_cles": [
+        "management de l innovation",
+        "propriete intellectuelle",
+        "entrepreneuriat",
+        "strategie",
+        "Paris-Saclay"
+      ]
+    },
+    {
+      "nom": "Remi Wache",
+      "profil_cible": "Developpement de partenariats recherche-industrie",
+      "statut": "confirme",
+      "infos": [
+        "Responsable du developpement des partenariats a Universite Paris-Saclay.",
+        "Profil R&D/partenariats public-prive.",
+        "Experience anterieure en business development sur ecosysteme recherche."
+      ],
+      "sources": [
+        {
+          "label": "LinkedIn — Remi Wache",
+          "url": "https://fr.linkedin.com/in/remi-wache",
+          "type": "linkedin"
+        }
+      ],
+      "mots_cles": [
+        "partenariats public-prive",
+        "business development",
+        "transfert",
+        "R&D",
+        "Universite Paris-Saclay"
+      ]
+    },
+    {
+      "nom": "Soizic Lefeuvre",
+      "profil_cible": "Partenariat et valorisation / droit contrats et PI",
+      "statut": "confirme",
+      "infos": [
+        "Directrice adjointe, Direction Recherche et Valorisation (Universite Paris-Saclay).",
+        "Responsable du pole Partenariat et Valorisation.",
+        "Enseignement en droit des contrats et PI (M2 IVR)."
+      ],
+      "sources": [
+        {
+          "label": "LinkedIn — Soizic LEFEUVRE",
+          "url": "https://linkedin.com/in/soizic-lefeuvre-3165b7125",
+          "type": "linkedin"
+        },
+        {
+          "label": "Universite Paris-Saclay — document parcours valorisation",
+          "url": "https://www.universite-paris-saclay.fr/sites/default/files/2022-02/book-formation-parcours-valo-2022.pdf",
+          "type": "institution"
+        }
+      ],
+      "mots_cles": [
+        "partenariat et valorisation",
+        "droit des contrats",
+        "propriete intellectuelle",
+        "DiReV",
+        "Universite Paris-Saclay"
+      ]
+    },
+    {
+      "nom": "Sophie DJEGA-MARIADASSOU",
+      "profil_cible": "Propriete industrielle / INPI",
+      "statut": "confirme",
+      "infos": [
+        "Chargee d'affaires en propriete industrielle a l'INPI.",
+        "Animation d'ateliers sur marques/brevets/designs.",
+        "Accompagnement PI des entreprises et porteurs de projets."
+      ],
+      "sources": [
+        {
+          "label": "LinkedIn — Sophie DJEGA-MARIADASSOU",
+          "url": "https://linkedin.com/in/sophie-djega-mariadassou-81ab2733b",
+          "type": "linkedin"
+        },
+        {
+          "label": "GO Entrepreneurs — session INPI",
+          "url": "https://event.go-entrepreneurs.com/e/paris-2026/session/61f3c129-1b17-f111-8332-6045bd954af1/nom-d-entreprise-nom-commercial-nom-de-marque-les-cles-pour-se-distinguer-de-la-concurrence",
+          "type": "event"
+        }
+      ],
+      "mots_cles": [
+        "INPI",
+        "propriete industrielle",
+        "marques et brevets",
+        "accompagnement entreprises",
+        "protection innovation"
+      ]
+    },
+    {
+      "nom": "Stephanie Oger-Roussel",
+      "profil_cible": "Strategie innovation / transfert (SATT Paris-Saclay)",
+      "statut": "confirme",
+      "infos": [
+        "Directrice innovation/strategie a la SATT Paris-Saclay (HealthTech/Life Sciences).",
+        "Accompagnement de projets deeptech et valorisation des resultats de recherche.",
+        "Parcours anterieur en gestion de projets innovation."
+      ],
+      "sources": [
+        {
+          "label": "LinkedIn — Stephanie Oger-Roussel",
+          "url": "https://linkedin.com/in/stephanie-oger-roussel-a3737540",
+          "type": "linkedin"
+        },
+        {
+          "label": "POC Media — intervenante deeptech",
+          "url": "https://www.pocmedia.fr/club-poc-chercheurs-deeptech-france-2030/",
+          "type": "media"
+        }
+      ],
+      "mots_cles": [
+        "SATT Paris-Saclay",
+        "strategie innovation",
+        "healthtech",
+        "life sciences",
+        "deeptech"
+      ]
+    },
+    {
+      "nom": "Stephanie Sano",
+      "profil_cible": "A verifier",
+      "statut": "a_verifier",
+      "infos": [
+        "Le profil LinkedIn trouve correspond a une directrice finance aux Etats-Unis (hors contexte).",
+        "Aucune correspondance solide avec l'ecosysteme innovation/valorisation vise.",
+        "Validation manuelle necessaire avant usage."
+      ],
+      "sources": [
+        {
+          "label": "LinkedIn — Stephanie Sano (profil trouve, non pertinent probable)",
+          "url": "https://linkedin.com/in/stephanie-sano",
+          "type": "linkedin"
+        }
+      ],
+      "mots_cles": [
+        "profil homonyme",
+        "verification identite",
+        "a confirmer"
+      ]
+    },
+    {
+      "nom": "Virginia Branco",
+      "profil_cible": "Appui recherche-innovation / transfert technologique",
+      "statut": "probable",
+      "infos": [
+        "Profil probable : Directrice de l'appui a la recherche et a l'innovation (ENS Paris-Saclay).",
+        "Expertise mentionnee en PI, contrats, valorisation et transfert technologique.",
+        "Homonymes existent : verification humaine recommandee."
+      ],
+      "sources": [
+        {
+          "label": "LinkedIn — Virginia Branco (profil FR probable)",
+          "url": "https://fr.linkedin.com/in/virg%C3%ADnia-branco-09a09a10",
+          "type": "linkedin"
+        }
+      ],
+      "mots_cles": [
+        "appui recherche et innovation",
+        "transfert technologique",
+        "propriete intellectuelle",
+        "contrats",
+        "ENS Paris-Saclay"
+      ]
+    },
+    {
+      "nom": "Yoann Montenot",
+      "profil_cible": "Design d'innovation / Design Spot Paris-Saclay",
+      "statut": "probable",
+      "infos": [
+        "Profil probable sous orthographe Yoann Montenot.",
+        "Directeur de Design Spot (Universite Paris-Saclay).",
+        "Parcours en design d'innovation et accompagnement de projets."
+      ],
+      "sources": [
+        {
+          "label": "LinkedIn — Yoann Montenot",
+          "url": "https://fr.linkedin.com/in/yoannmontenot/en",
+          "type": "linkedin"
+        }
+      ],
+      "mots_cles": [
+        "design thinking",
+        "innovation par le design",
+        "Design Spot",
+        "co-conception",
+        "accompagnement de projets"
+      ]
+    }
+  ]
+}

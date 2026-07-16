@@ -13,6 +13,8 @@ BAB_ENCODES = DATA / "bab_encodes"
 NAV_ITEMS = (
     ("index.html", "Accueil"),
     ("tableau_de_bord.html", "Tableau de bord"),
+    ("cartes_chaleur.html", "Cartes de chaleur"),
+    ("profils_experts.html", "Profils experts"),
     ("bab_encodes.html", "BAB encodé"),
     ("conflits.html", "Conflits"),
     ("registre.html", "Registre"),
@@ -93,6 +95,10 @@ def load_programme_videos() -> dict:
 
 def load_programme_table() -> dict:
     return read_json(DATA / "programme_table.json")
+
+
+def load_experts_profils() -> dict:
+    return read_json(DATA / "experts_profils.json")
 
 
 def load_segments() -> list[dict]:

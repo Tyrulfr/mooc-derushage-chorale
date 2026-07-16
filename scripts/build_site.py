@@ -3,6 +3,7 @@ from __future__ import annotations
 import re
 from collections import Counter, defaultdict
 from pathlib import Path
+import unicodedata
 
 from lib_derushage import (
     ROOT,
@@ -19,6 +20,7 @@ from lib_derushage import (
     load_bab_encode,
     load_bab_encode_index,
     load_capsules,
+    load_experts_profils,
     load_programme_table,
     load_segments,
     merge_bab_encode_blocs,
@@ -614,6 +616,68 @@ tbody tr:last-child td { border-bottom: none; }
 }
 .site-footer p { margin: 0 0 6px; }
 .site-footer strong { color: var(--ink); }
+.heatmap-grid {
+  display: grid;
+  gap: 20px;
+}
+.heatmap-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+.heatmap-card h2 { margin: 0 0 6px; }
+.heatmap-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+}
+.heatmap-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 860px;
+}
+.heatmap-table th,
+.heatmap-table td {
+  border: 1px solid var(--line);
+  padding: 8px 10px;
+  vertical-align: top;
+}
+.heatmap-table thead th {
+  position: sticky;
+  top: 0;
+  background: #f8fafc;
+  z-index: 1;
+  text-align: center;
+  font-size: 12px;
+}
+.heatmap-table .heatmap-row-label {
+  background: #f8fafc;
+  min-width: 220px;
+  font-weight: 650;
+}
+.heatmap-table td.heatmap-cell {
+  text-align: center;
+  font-weight: 700;
+  min-width: 52px;
+}
+.heatmap-legend {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.heatmap-scale {
+  width: 180px;
+  height: 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: linear-gradient(90deg, rgba(11,110,119,0.15), rgba(11,110,119,0.85));
+}
 @media (max-width: 720px) {
   .site-header__inner { align-items: flex-start; }
   .site-nav { width: 100%; }
@@ -1709,6 +1773,18 @@ def build_home(capsules: list[dict], segments: list[dict]) -> None:
             "Vue d'ensemble des capsules, durees, chercheurs et acces aux montages.",
         ),
         (
+            "cartes_chaleur.html",
+            "▦",
+            "Cartes de chaleur",
+            "Relations sujets × intervenants proposes dans le programme.",
+        ),
+        (
+            "profils_experts.html",
+            "👤",
+            "Profils experts",
+            "Informations collectées (LinkedIn/institutions) et sources par profil.",
+        ),
+        (
             "bab_encodes.html",
             "▣",
             "BAB encodé",
@@ -1760,6 +1836,274 @@ def build_home(capsules: list[dict], segments: list[dict]) -> None:
             nav_current="index.html",
             page_header="",
             main_class="page-home",
+        ),
+    )
+
+
+def _normalize_for_match(text: str) -> str:
+    normalized = unicodedata.normalize("NFKD", text or "")
+    ascii_only = "".join(char for char in normalized if not unicodedata.combining(char))
+    return ascii_only.lower()
+
+
+def _extract_intervenants(raw: str) -> list[str]:
+    names = []
+    for part in re.split(r"[\n/]+", raw or ""):
+        cleaned = " ".join(part.strip().split())
+        if cleaned:
+            names.append(cleaned)
+    return names
+
+
+def _canonical_name_key(name: str) -> str:
+    base = _normalize_for_match(name)
+    return re.sub(r"[^a-z0-9]+", " ", base).strip()
+
+
+EXPERT_NAME_ALIASES = {
+    "soizic lefreuvre": "Soizic Lefeuvre",
+    "soizic lefeuvre": "Soizic Lefeuvre",
+}
+
+
+def _build_canonical_labels(names: list[str]) -> tuple[list[str], dict[str, str]]:
+    by_key: dict[str, str] = {}
+    for name in names:
+        key = _canonical_name_key(name)
+        if not key:
+            continue
+        alias = EXPERT_NAME_ALIASES.get(key)
+        if alias:
+            by_key[key] = alias
+            continue
+        current = by_key.get(key)
+        if current is None or len(name) > len(current):
+            by_key[key] = name
+    labels = sorted(set(by_key.values()))
+    return labels, {key: value for key, value in by_key.items()}
+
+
+def _extract_temoin_names(text: str) -> list[str]:
+    names = []
+    for match in re.finditer(r"([A-Za-zÀ-ÿ][A-Za-zÀ-ÿ\-']*)\s*:", text or ""):
+        names.append(match.group(1).strip())
+    return names
+
+
+def _heat_cell_style(value: int, max_value: int) -> str:
+    if value <= 0 or max_value <= 0:
+        return "background:#ffffff;color:#94a3b8;"
+    ratio = value / max_value
+    alpha = 0.15 + 0.7 * ratio
+    text = "#ffffff" if alpha >= 0.55 else "#0f172a"
+    return f"background:rgba(11,110,119,{alpha:.2f});color:{text};"
+
+
+def _render_heatmap_table(
+    title: str,
+    subtitle: str,
+    row_labels: list[str],
+    col_labels: list[str],
+    matrix: list[list[int]],
+) -> str:
+    max_value = max((max(row) if row else 0 for row in matrix), default=0)
+    header_cells = "".join(f"<th>{escape(label)}</th>" for label in col_labels)
+    body_rows = []
+    for row_label, values in zip(row_labels, matrix):
+        value_cells = "".join(
+            f"<td class='heatmap-cell' style='{_heat_cell_style(value, max_value)}'>{value or ''}</td>"
+            for value in values
+        )
+        body_rows.append(
+            "<tr>"
+            f"<th class='heatmap-row-label'>{escape(row_label)}</th>"
+            f"{value_cells}"
+            "</tr>"
+        )
+    return (
+        "<article class='heatmap-card'>"
+        f"<h2>{escape(title)}</h2>"
+        f"<p class='meta'>{escape(subtitle)}</p>"
+        "<div class='heatmap-wrap'>"
+        "<table class='heatmap-table'>"
+        "<thead><tr><th>Thématique</th>"
+        f"{header_cells}</tr></thead>"
+        f"<tbody>{''.join(body_rows)}</tbody>"
+        "</table></div>"
+        "<p class='heatmap-legend'>"
+        "<span>Faible</span>"
+        "<span class='heatmap-scale' aria-hidden='true'></span>"
+        "<span>Forte</span>"
+        "</p>"
+        "</article>"
+    )
+
+
+def build_heatmaps_page(capsules: list[dict], segments: list[dict]) -> None:
+    _ = segments
+    programme_table = load_programme_table()
+    rows = programme_table.get("rows", [])
+    rows_by_code = {row.get("code", ""): row for row in rows}
+    thematic_rows = [
+        capsule
+        for capsule in sorted(capsules, key=lambda item: item.get("ordre", 0))
+        if capsule.get("code", "").startswith("T")
+    ]
+    capsule_labels = [f"{capsule['code']} — {capsule['titre']}" for capsule in thematic_rows]
+
+    raw_intervenants = [
+        name for row in rows for name in _extract_intervenants(row.get("noms_proposes", ""))
+    ]
+    intervenants, intervenant_by_key = _build_canonical_labels(raw_intervenants)
+    intervenant_col = {label: idx for idx, label in enumerate(intervenants)}
+    capsule_matrix = [[0 for _ in intervenants] for _ in thematic_rows]
+
+    for row_idx, capsule in enumerate(thematic_rows):
+        row = rows_by_code.get(capsule["code"], {})
+        for raw_name in _extract_intervenants(row.get("noms_proposes", "")):
+            key = _canonical_name_key(raw_name)
+            label = intervenant_by_key.get(key)
+            if label is None:
+                continue
+            capsule_matrix[row_idx][intervenant_col[label]] += 1
+
+    subject_keywords = [
+        ("Origines innovation", ("innovation", "origine", "eureka", "serendipite")),
+        ("Besoin marche usage", ("besoin", "marche", "utilisateur", "usage", "pivot")),
+        ("Preuve et maturation", ("poc", "prototype", "trl", "prematuration", "maturation")),
+        ("Protection et PI", ("brevet", "protection", "confidentialite", "propriete intellectuelle", "pi")),
+        ("Transfert valorisation", ("licence", "start-up", "valorisation", "transfert", "partenariat")),
+        ("Financement", ("financement", "investisseur", "dilution", "bpifrance", "levee")),
+        ("Equipe gouvernance", ("equipe", "ceo", "cso", "cto", "gouvernance", "fondateur")),
+        ("Pitch et communication", ("pitch", "langage", "valeur", "interlocuteur", "negociation")),
+        ("Freins et leviers", ("freins", "legitimite", "incertitude", "echec", "temps")),
+        ("Collaboration", ("collaboration", "co-construction", "contrat", "partage de valeur")),
+    ]
+    subject_labels = [label for label, _ in subject_keywords]
+    subject_matrix = [[0 for _ in intervenants] for _ in subject_labels]
+    for row in rows:
+        text = _normalize_for_match(
+            " ".join(
+                [
+                    row.get("video_temoin", ""),
+                    row.get("videos_referent", ""),
+                    row.get("objectif_pedagogique", ""),
+                ]
+            )
+        )
+        matched = [
+            index
+            for index, (_, keywords) in enumerate(subject_keywords)
+            if any(keyword in text for keyword in keywords)
+        ]
+        if not matched:
+            continue
+        for raw_name in _extract_intervenants(row.get("noms_proposes", "")):
+            key = _canonical_name_key(raw_name)
+            label = intervenant_by_key.get(key)
+            if label is None:
+                continue
+            col_idx = intervenant_col[label]
+            for row_index in matched:
+                subject_matrix[row_index][col_idx] += 1
+
+    source = programme_table.get("source_document", "")
+    date_maj = programme_table.get("date_mise_a_jour", "")
+    date_label = f" · mise a jour {date_maj}" if date_maj else ""
+    source_line = f"Source : {source}{date_label}." if source else ""
+
+    body = (
+        "<div class='page-head'>"
+        "<h1>Cartes de chaleur — sujets et intervenants</h1>"
+        "<p class='lead'>Vue transversale des liens entre sujets du programme et intervenants proposes.</p>"
+        "</div>"
+        "<p class='meta'>"
+        "Chaque case represente une presence (capsule × intervenant) ou une intensite de recouvrement "
+        "(sujet-cle × intervenant). "
+        f"{escape(source_line)}"
+        "</p>"
+        "<section class='heatmap-grid'>"
+        + _render_heatmap_table(
+            "Sujets-cles × intervenants proposes",
+            "Intensite = nombre de capsules ou l'intervenant est associe a un sujet-cle.",
+            subject_labels,
+            intervenants,
+            subject_matrix,
+        )
+        + _render_heatmap_table(
+            "Thématiques du MOOC × intervenants proposes",
+            "Presence binaire (1 = intervenant propose sur la capsule).",
+            capsule_labels,
+            intervenants,
+            capsule_matrix,
+        )
+        + "</section>"
+    )
+    write_text(
+        SITE / "cartes_chaleur.html",
+        html_page(
+            "Cartes de chaleur",
+            body,
+            nav_current="cartes_chaleur.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Cartes de chaleur", None)),
+        ),
+    )
+
+
+def build_experts_profiles_page(profiles_data: dict) -> None:
+    profiles = profiles_data.get("profils", [])
+
+    def status_label(value: str) -> str:
+        labels = {
+            "confirme": "Profil confirme",
+            "probable": "Profil probable",
+            "a_verifier": "Profil a verifier",
+        }
+        return labels.get(value, value)
+
+    cards = []
+    for profile in profiles:
+        infos = "".join(f"<li>{escape(item)}</li>" for item in profile.get("infos", []))
+        mots_cles = "".join(f"<li>{escape(item)}</li>" for item in profile.get("mots_cles", []))
+        sources = "".join(
+            "<li>"
+            f"<a href='{escape(src.get('url', '#'))}' target='_blank' rel='noopener noreferrer'>"
+            f"{escape(src.get('label', src.get('url', 'source')))}</a>"
+            f" <span class='meta'>({escape(src.get('type', 'source'))})</span>"
+            "</li>"
+            for src in profile.get("sources", [])
+        )
+        cards.append(
+            "<article class='card'>"
+            f"<h2>{escape(profile.get('nom', 'Profil'))}</h2>"
+            f"<p class='meta'><strong>Statut :</strong> {escape(status_label(profile.get('statut', 'a_verifier')))}</p>"
+            f"<p><strong>Profil cible :</strong> {escape(profile.get('profil_cible', '—'))}</p>"
+            "<h3>Mots-cles</h3>"
+            f"<ul>{mots_cles or '<li>Aucun mot-cle renseigne.</li>'}</ul>"
+            "<h3>Informations recueillies</h3>"
+            f"<ul>{infos or '<li>Aucune information validee pour le moment.</li>'}</ul>"
+            "<h3>Sources</h3>"
+            f"<ul>{sources or '<li>Aucune source.</li>'}</ul>"
+            "</article>"
+        )
+
+    body = (
+        "<div class='page-head'>"
+        "<h1>Profils experts — auto-research</h1>"
+        "<p class='lead'>Fiches de travail par profil avec traces de collecte et niveau de confiance.</p>"
+        "</div>"
+        "<p class='meta'>"
+        "Les profils marques « a verifier » demandent une validation humaine avant usage editorial."
+        "</p>"
+        + "".join(cards)
+    )
+    write_text(
+        SITE / "profils_experts.html",
+        html_page(
+            "Profils experts",
+            body,
+            nav_current="profils_experts.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Profils experts", None)),
         ),
     )
 
@@ -2193,11 +2537,14 @@ if __name__ == "__main__":
     all_segments = load_segments()
     all_affectations = load_affectations()
     programme_table = load_programme_table()
+    experts_profils = load_experts_profils()
     expected_capsule_pages = {f"capsule_{capsule['code']}.html" for capsule in all_capsules}
     for path in SITE.glob("capsule_*.html"):
         if path.name not in expected_capsule_pages:
             path.unlink()
     build_home(all_capsules, all_segments)
+    build_heatmaps_page(all_capsules, all_segments)
+    build_experts_profiles_page(experts_profils)
     build_dashboard(all_capsules, all_segments, all_affectations)
     build_researcher_pages(all_segments)
     build_capsule_pages(all_capsules, all_segments, all_affectations, programme_table)

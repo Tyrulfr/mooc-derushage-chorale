@@ -348,7 +348,7 @@ def orientation_e14_e15(by_id: dict[str, dict]) -> list[dict]:
             ],
             "experts_proposes": [
                 "Arielle Sante",
-                "Stephanie Oger Roussel",
+                "Stephanie Oger-Roussel",
                 "Fatoumata Aonon",
             ],
         },
@@ -386,7 +386,7 @@ def orientation_e14_e15(by_id: dict[str, dict]) -> list[dict]:
             ],
             "experts_proposes": [
                 "Arielle Sante",
-                "Stephanie Oger Roussel",
+                "Stephanie Oger-Roussel",
                 "Fatoumata Aonon",
             ],
         },

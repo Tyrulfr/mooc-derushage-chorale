@@ -358,7 +358,7 @@ def orientation_e10_e11(by_id: dict[str, dict]) -> list[dict]:
                 "Fatoumata Aonon",
                 "Virginia Branco",
                 "Soizic Lefeuvre",
-                "Stephanie Oger Roussel",
+                "Stephanie Oger-Roussel",
             ],
         },
         {
@@ -398,7 +398,7 @@ def orientation_e10_e11(by_id: dict[str, dict]) -> list[dict]:
                 "Fatoumata Aonon",
                 "Virginia Branco",
                 "Soizic Lefeuvre",
-                "Stephanie Oger Roussel",
+                "Stephanie Oger-Roussel",
             ],
         },
     ]
