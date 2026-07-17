@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import csv
+import io
 import re
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -2661,6 +2663,7 @@ def build_correspondances_edito_page(programme_table: dict) -> None:
     edito_titles = _collect_edito_video_titles()
 
     table_rows = []
+    csv_rows = []
     for row in rows:
         title_programme = row.get("video_temoin", "")
         code = row.get("code", "")
@@ -2689,12 +2692,17 @@ def build_correspondances_edito_page(programme_table: dict) -> None:
                 "</li>"
                 for score, item in top
             )
+            corr_text = " | ".join(
+                f"{item['title']} (score={score:.2f}; temoins={', '.join(item.get('witnesses', [])) or '—'}; seq={item.get('nb_sequences', 0)})"
+                for score, item in top
+            )
             row_match_percent = max(
                 _pedagogical_match_percent(objective, item.get("texts", []))
                 for _, item in top
             )
         else:
             corr_html = "<li>Aucune correspondance solide detectee.</li>"
+            corr_text = "Aucune correspondance solide detectee."
             row_match_percent = 0
         expert_badge = _expert_label(row_match_percent)
 
@@ -2707,6 +2715,17 @@ def build_correspondances_edito_page(programme_table: dict) -> None:
             f"<td><ul>{corr_html}</ul></td>"
             f"<td><strong>{row_match_percent}%</strong><br><span class='meta'>{escape(expert_badge)}</span></td>"
             "</tr>"
+        )
+        csv_rows.append(
+            {
+                "module": row.get("module", ""),
+                "code": code,
+                "video_temoin": title_programme,
+                "objectif_pedagogique": objective,
+                "correspondances_edito": corr_text,
+                "match_objectif_pedagogique_pct": row_match_percent,
+                "niveau_expert": expert_badge,
+            }
         )
 
     all_titles = "".join(
@@ -2721,6 +2740,7 @@ def build_correspondances_edito_page(programme_table: dict) -> None:
         "<p class='meta'>Tableau reproduit depuis le document de conception "
         f"<code>{escape(programme_table.get('source_document', '20260710_Prev_Vid.xlsx'))}</code> "
         "et enrichi avec les correspondances de titres video issues des fichiers derushage edito.</p>"
+        "<p><a class='btn' href='tableau_correspondances_edito.csv' download>Télécharger le tableau (CSV)</a></p>"
         "<p class='meta'><strong>Expert correspondance :</strong> estimation du % de match calculee par recouvrement "
         "lexical entre l'objectif pedagogique de la ligne et les sequences edito liees aux titres apparies.</p>"
         "<div class='table-wrap'><table><thead><tr>"
@@ -2750,6 +2770,23 @@ def build_correspondances_edito_page(programme_table: dict) -> None:
             page_header="<div class=\"page-head\"><h1>Correspondances édito</h1><p class=\"lead\">Tableau du programme complet avec appariement des titres vidéo édito.</p></div>",
         ),
     )
+
+    csv_buffer = io.StringIO()
+    writer = csv.DictWriter(
+        csv_buffer,
+        fieldnames=[
+            "module",
+            "code",
+            "video_temoin",
+            "objectif_pedagogique",
+            "correspondances_edito",
+            "match_objectif_pedagogique_pct",
+            "niveau_expert",
+        ],
+    )
+    writer.writeheader()
+    writer.writerows(csv_rows)
+    write_text(SITE / "tableau_correspondances_edito.csv", csv_buffer.getvalue())
 
 
 def pct(value: float) -> str:
