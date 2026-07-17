@@ -20,7 +20,10 @@ from lib_derushage import (
     load_bab_encode,
     load_bab_encode_index,
     load_capsules,
+    load_derushage_edito,
+    load_derushage_edito_index,
     load_experts_profils,
+    load_match_derushage_edito,
     load_programme_table,
     load_segments,
     merge_bab_encode_blocs,
@@ -1785,6 +1788,24 @@ def build_home(capsules: list[dict], segments: list[dict]) -> None:
             "Informations collectées (LinkedIn/institutions) et sources par profil.",
         ),
         (
+            "derushage_edito.html",
+            "✎",
+            "Dérushage édito",
+            "Sequences surlignees par l'edito dans les transcripts corriges.",
+        ),
+        (
+            "tableau_correspondances_edito.html",
+            "⌗",
+            "Correspondances édito",
+            "Tableau de conception complet avec liens vers les titres video proposes par l'edito.",
+        ),
+        (
+            "match.html",
+            "⇄",
+            "Match",
+            "Comparaison derushage interne vs selection edito par temoin et module.",
+        ),
+        (
             "bab_encodes.html",
             "▣",
             "BAB encodé",
@@ -2389,6 +2410,549 @@ def build_registry(segments: list[dict]) -> None:
     )
 
 
+def render_derushage_edito_export(doc: dict) -> str:
+    lines = [
+        f"DERUSHAGE EDITO — {doc.get('intervenant', '')}",
+        f"Source : {doc.get('source', '')}",
+        f"Statut : {doc.get('statut_derushage', '')}",
+        f"Derniere mise a jour : {doc.get('date_maj', '')}",
+        "",
+    ]
+    for sequence in doc.get("sequences", []):
+        lines.append(
+            f"[{sequence.get('id', '-')}] {sequence.get('video') or 'Video non renseignee'}"
+        )
+        if sequence.get("module"):
+            lines.append(f"Module : {sequence['module']}")
+        if sequence.get("question"):
+            lines.append(f"Question : {sequence['question']}")
+        lines.append(
+            f"Surlignage : {sequence.get('couleur_surlignage', '-')} · "
+            f"Paragraphe source : {sequence.get('source_paragraphe', '-')}"
+        )
+        lines.append(sequence.get("texte", ""))
+        lines.append("")
+    return "\n".join(lines).strip() + "\n"
+
+
+def derushage_edito_sequence_html(sequence: dict) -> str:
+    video = sequence.get("video") or "Video non renseignee"
+    module = sequence.get("module") or "Module non renseigne"
+    question = sequence.get("question") or "Question non renseignee"
+    return (
+        "<div class='card bab-segment'>"
+        f"<strong>{escape(sequence.get('id', '-'))}</strong> "
+        f"<span class='meta'>{escape(sequence.get('statut_edito', 'RETENU_PAR_EDITO'))}</span>"
+        f"<p class='meta'><strong>{escape(video)}</strong> · {escape(module)}</p>"
+        f"<p class='meta'>Question : {escape(question)}</p>"
+        f"<p class='meta'>Surlignage : {escape(sequence.get('couleur_surlignage', '-'))} · "
+        f"Paragraphe source : {escape(sequence.get('source_paragraphe', '-'))}</p>"
+        f"<p>{escape(sequence.get('texte', ''))}</p>"
+        "</div>"
+    )
+
+
+def build_derushage_edito_index() -> None:
+    rows = []
+    for item in load_derushage_edito_index():
+        doc = load_derushage_edito(item["id"])
+        if not doc:
+            continue
+        rows.append(
+            "<tr>"
+            f"<td><a href='derushage_edito_{escape(item['id'])}.html'>{escape(item['intervenant'])}</a></td>"
+            f"<td>{escape(item['source'])}</td>"
+            f"<td>{escape(item.get('nb_sequences_retenues', 0))}</td>"
+            f"<td>{escape(item.get('nb_paragraphes_analyse', 0))}</td>"
+            f"<td>{escape(item.get('statut_derushage', '-'))}</td>"
+            f"<td>{escape(item.get('date_maj', '-'))}</td>"
+            "</tr>"
+        )
+    body = (
+        "<p class='meta'>Synthese des transcripts corriges et surlignes par l'edito (Clarisse). "
+        "Les extraits ci-dessous sont auto-extraits depuis les surlignages des fichiers <code>data/raw/*.docx</code>.</p>"
+        '<div class="table-wrap"><table><thead><tr><th>Intervenant</th><th>Source</th>'
+        "<th>Sequences retenues</th><th>Paragraphes analyses</th><th>Statut</th><th>Mise a jour</th></tr></thead><tbody>"
+        + ("\n".join(rows) or "<tr><td colspan='6'>Aucun derushage edito genere.</td></tr>")
+        + "</tbody></table></div>"
+    )
+    write_text(
+        SITE / "derushage_edito.html",
+        html_page(
+            "Dérushage édito",
+            body,
+            nav_current="derushage_edito.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Dérushage édito", None)),
+            page_header="<div class=\"page-head\"><h1>Dérushage édito</h1><p class=\"lead\">Sequences surlignees dans les transcripts corriges, structurees pour l'edition des videos.</p></div>",
+        ),
+    )
+
+
+def build_derushage_edito_pages() -> None:
+    expected = set()
+    for item in load_derushage_edito_index():
+        derushage_id = item["id"]
+        expected.add(f"derushage_edito_{derushage_id}.html")
+        doc = load_derushage_edito(derushage_id)
+        if not doc:
+            continue
+        sequences = doc.get("sequences", [])
+        export_text = render_derushage_edito_export(doc)
+        sections = [
+            f"<p class='meta'><strong>{len(sequences)}</strong> sequences retenues par surlignage "
+            f"sur <strong>{escape(doc.get('nb_paragraphes_analyse', 0))}</strong> paragraphes analyses.</p>"
+        ]
+        for sequence in sequences:
+            sections.append(derushage_edito_sequence_html(sequence))
+        sections.append(
+            f"<div class='script sr-export' id='script-final'>{escape(export_text)}</div>"
+        )
+        sections.append(export_word_modal(f"derushage_edito_{derushage_id}.doc"))
+        page_title = f"Dérushage édito — {doc.get('intervenant', derushage_id)}"
+        header = (
+            "<div class='page-header'>"
+            f"<div><h1>{escape(page_title)}</h1>"
+            f"<p class='meta'>Source : {escape(doc.get('source', '-'))} · "
+            f"Statut : {escape(doc.get('statut_derushage', '-'))} · "
+            f"Mise a jour : {escape(doc.get('date_maj', '-'))}</p></div>"
+            "<div class='export-toolbar' id='export-word-panel' "
+            f"data-capsule-code='derushage-{escape(derushage_id)}' "
+            f"data-capsule-title='{escape(doc.get('intervenant', derushage_id))} — Derushage edito'>"
+            "<button type='button' class='btn' id='export-word-open' "
+            "aria-expanded='false' aria-controls='export-word-modal'>Exporter en Word</button>"
+            "</div></div>"
+        )
+        write_text(
+            SITE / f"derushage_edito_{derushage_id}.html",
+            html_page(
+                page_title,
+                "\n".join(sections),
+                scripts=["assets/export-word.js"],
+                nav_current="derushage_edito.html",
+                page_header=header,
+                breadcrumb=html_breadcrumb(
+                    ("Accueil", "index.html"),
+                    ("Dérushage édito", "derushage_edito.html"),
+                    (doc.get("intervenant", derushage_id), None),
+                ),
+            ),
+        )
+    for path in SITE.glob("derushage_edito_*.html"):
+        if path.name not in expected:
+            path.unlink()
+
+
+def _edito_title_core(title: str) -> str:
+    text = _normalize_for_match(title or "")
+    text = re.sub(r"\bvideo\s*\d+\b", " ", text)
+    text = text.replace(":", " ").replace("/", " ").replace("-", " ")
+    return " ".join(text.split())
+
+
+def _title_similarity(a: str, b: str) -> float:
+    tokens_a = set(_edito_title_core(a).split())
+    tokens_b = set(_edito_title_core(b).split())
+    if not tokens_a or not tokens_b:
+        return 0.0
+    inter = len(tokens_a & tokens_b)
+    union = len(tokens_a | tokens_b)
+    jaccard = inter / union if union else 0.0
+    overlap = inter / min(len(tokens_a), len(tokens_b))
+    return 0.6 * overlap + 0.4 * jaccard
+
+
+def _collect_edito_video_titles() -> list[dict]:
+    by_title: dict[str, dict] = {}
+    for item in load_derushage_edito_index():
+        doc = load_derushage_edito(item["id"])
+        if not doc:
+            continue
+        witness = doc.get("intervenant", item.get("intervenant", ""))
+        for sequence in doc.get("sequences", []):
+            title = (sequence.get("video") or "").strip()
+            if not title:
+                continue
+            entry = by_title.setdefault(
+                title,
+                {
+                    "title": title,
+                    "witnesses": set(),
+                    "nb_sequences": 0,
+                    "texts": [],
+                },
+            )
+            entry["witnesses"].add(witness)
+            entry["nb_sequences"] += 1
+            if sequence.get("texte"):
+                entry["texts"].append(sequence["texte"])
+    titles = []
+    for entry in by_title.values():
+        titles.append(
+            {
+                "title": entry["title"],
+                "witnesses": sorted(w for w in entry["witnesses"] if w),
+                "nb_sequences": entry["nb_sequences"],
+                "texts": entry["texts"],
+            }
+        )
+    return sorted(titles, key=lambda item: item["title"].lower())
+
+
+def _target_codes_from_edito_title(title: str) -> set[str]:
+    text = _edito_title_core(title)
+    targets: set[str] = set()
+    if "pourquoi oser" in text:
+        targets.add("T1")
+    if "recherche fondamentale" in text:
+        targets.add("T1")
+    if "besoin reel" in text or "sortir du labo" in text:
+        targets.add("T2")
+    if "idee ne suffit pas" in text:
+        targets.add("T3")
+    if "protection intellectuelle" in text:
+        targets.update({"T4", "T5"})
+    if "transfert" in text or "licensing" in text:
+        targets.add("T6")
+    if "ne pas avancer seul" in text or "ecosysteme" in text:
+        targets.add("T7")
+    if "financements" in text or "concours" in text:
+        targets.add("T8")
+    if "partenariat" in text and "equipe" in text:
+        targets.update({"T9", "T12"})
+    if "changer de langage" in text:
+        targets.add("T10")
+    if "freins" in text or "doutes" in text or "legitimite" in text:
+        targets.add("T11")
+    if "dispositif accompagnement" in text and "collaboration" in text:
+        targets.update({"T7", "T12"})
+    if "passer a l action" in text:
+        targets.add("T11")
+    if "metier de chercheur" in text:
+        targets.add("T11")
+    return targets
+
+
+def _pedagogical_match_percent(objective_text: str, edito_texts: list[str]) -> int:
+    objective_tokens = set(_edito_title_core(objective_text).split())
+    if not objective_tokens or not edito_texts:
+        return 0
+    corpus = " ".join(edito_texts)
+    corpus_tokens = set(_edito_title_core(corpus).split())
+    if not corpus_tokens:
+        return 0
+    inter = len(objective_tokens & corpus_tokens)
+    coverage = inter / len(objective_tokens)
+    jaccard = inter / len(objective_tokens | corpus_tokens)
+    score = 0.75 * coverage + 0.25 * jaccard
+    return round(score * 100)
+
+
+def _expert_label(percent: int) -> str:
+    if percent >= 70:
+        return "Alignement fort"
+    if percent >= 45:
+        return "Alignement moyen"
+    return "Alignement faible"
+
+
+def build_correspondances_edito_page(programme_table: dict) -> None:
+    rows = programme_table.get("rows", [])
+    headers = programme_table.get("headers", {})
+    edito_titles = _collect_edito_video_titles()
+
+    table_rows = []
+    for row in rows:
+        title_programme = row.get("video_temoin", "")
+        code = row.get("code", "")
+        targeted = []
+        for edito in edito_titles:
+            if code and code in _target_codes_from_edito_title(edito["title"]):
+                score = _title_similarity(title_programme, edito["title"])
+                targeted.append((score, edito))
+        targeted.sort(key=lambda item: (item[0], item[1].get("nb_sequences", 0)), reverse=True)
+
+        scored = []
+        for edito in edito_titles:
+            score = _title_similarity(title_programme, edito["title"])
+            if score >= 0.2:
+                scored.append((score, edito))
+        scored.sort(key=lambda item: item[0], reverse=True)
+        top = targeted[:3] if targeted else scored[:3]
+        objective = row.get("objectif_pedagogique", "")
+        row_match_percent = 0
+        if top:
+            corr_html = "".join(
+                "<li>"
+                f"{escape(item['title'])} "
+                f"<span class='meta'>(score titre {score:.2f} · {escape(', '.join(item.get('witnesses', [])) or '—')} · "
+                f"{escape(item.get('nb_sequences', 0))} seq.)</span>"
+                "</li>"
+                for score, item in top
+            )
+            row_match_percent = max(
+                _pedagogical_match_percent(objective, item.get("texts", []))
+                for _, item in top
+            )
+        else:
+            corr_html = "<li>Aucune correspondance solide detectee.</li>"
+            row_match_percent = 0
+        expert_badge = _expert_label(row_match_percent)
+
+        table_rows.append(
+            "<tr>"
+            f"<td>{escape(row.get('module', ''))}</td>"
+            f"<td>{escape(code)}</td>"
+            f"<td>{escape(title_programme)}</td>"
+            f"<td>{escape(objective)}</td>"
+            f"<td><ul>{corr_html}</ul></td>"
+            f"<td><strong>{row_match_percent}%</strong><br><span class='meta'>{escape(expert_badge)}</span></td>"
+            "</tr>"
+        )
+
+    all_titles = "".join(
+        "<li>"
+        f"{escape(item['title'])} "
+        f"<span class='meta'>({escape(', '.join(item.get('witnesses', [])) or '—')} · {escape(item.get('nb_sequences', 0))} seq.)</span>"
+        "</li>"
+        for item in edito_titles
+    )
+
+    body = (
+        "<p class='meta'>Tableau reproduit depuis le document de conception "
+        f"<code>{escape(programme_table.get('source_document', '20260710_Prev_Vid.xlsx'))}</code> "
+        "et enrichi avec les correspondances de titres video issues des fichiers derushage edito.</p>"
+        "<p class='meta'><strong>Expert correspondance :</strong> estimation du % de match calculee par recouvrement "
+        "lexical entre l'objectif pedagogique de la ligne et les sequences edito liees aux titres apparies.</p>"
+        "<div class='table-wrap'><table><thead><tr>"
+        f"<th>{escape(headers.get('module', 'Module'))}</th>"
+        f"<th>{escape(headers.get('code', 'N°'))}</th>"
+        f"<th>{escape(headers.get('video_temoin', 'Vidéo chorale témoin'))}</th>"
+        f"<th>{escape(headers.get('objectif_pedagogique', 'Objectif pédagogique atteint'))}</th>"
+        "<th>Correspondances titres édito</th>"
+        "<th>% match objectif pédagogique (estimation expert)</th>"
+        "</tr></thead><tbody>"
+        + ("\n".join(table_rows) or "<tr><td colspan='6'>Aucune ligne programme.</td></tr>")
+        + "</tbody></table></div>"
+        "<section class='card'>"
+        "<h2>Référentiel titres édito détectés</h2>"
+        "<p class='meta'>Priorite d'appariement : regles editoriales par intention video (T1..T12), "
+        "puis similarite de titre en secours.</p>"
+        f"<ul>{all_titles or '<li>Aucun titre édito detecte.</li>'}</ul>"
+        "</section>"
+    )
+    write_text(
+        SITE / "tableau_correspondances_edito.html",
+        html_page(
+            "Correspondances édito",
+            body,
+            nav_current="tableau_correspondances_edito.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Correspondances édito", None)),
+            page_header="<div class=\"page-head\"><h1>Correspondances édito</h1><p class=\"lead\">Tableau du programme complet avec appariement des titres vidéo édito.</p></div>",
+        ),
+    )
+
+
+def pct(value: float) -> str:
+    return f"{round((value or 0.0) * 100, 1)} %"
+
+
+def build_match_pages(match_data: dict) -> None:
+    if not match_data:
+        body = "<p class='meta'>Aucune analyse match disponible. Lancez d'abord <code>python3 scripts/analyze_match_derushage_edito.py</code>.</p>"
+        write_text(
+            SITE / "match.html",
+            html_page(
+                "Match",
+                body,
+                nav_current="match.html",
+                breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Match", None)),
+                page_header='<div class="page-head"><h1>Match</h1><p class="lead">Comparaison derushage interne vs derushage edito.</p></div>',
+            ),
+        )
+        return
+
+    summary = match_data.get("resume", {})
+    temoins = match_data.get("temoins", [])
+    modules = match_data.get("modules", [])
+
+    witness_rows = []
+    for item in temoins:
+        witness_slug = slug(item.get("temoin", "temoin"))
+        witness_rows.append(
+            "<tr>"
+            f"<td><a href='match_temoin_{escape(witness_slug)}.html'>{escape(item.get('temoin', '-'))}</a></td>"
+            f"<td>{escape(item.get('nb_edito', 0))}</td>"
+            f"<td>{escape(item.get('nb_matchs', 0))}</td>"
+            f"<td>{pct(item.get('couverture_edito', 0.0))}</td>"
+            f"<td>{escape(item.get('nb_segments_derushage', 0))}</td>"
+            f"<td>{pct(item.get('recouvrement_derushage', 0.0))}</td>"
+            f"<td>{pct(item.get('metrics_derushage', {}).get('fluidite_score', 0.0))}</td>"
+            "</tr>"
+        )
+
+    module_rows = []
+    for module in modules:
+        module_key = module.get("module_id", "M?")
+        module_rows.append(
+            "<tr>"
+            f"<td><a href='match_module_{escape(module_key.lower())}.html'>{escape(module.get('module_label', module_key))}</a></td>"
+            f"<td>{escape(module.get('nb_edito', 0))}</td>"
+            f"<td>{escape(module.get('nb_edito_matches', 0))}</td>"
+            f"<td>{pct(module.get('couverture_edito', 0.0))}</td>"
+            f"<td>{escape(module.get('nb_derushage', 0))}</td>"
+            f"<td>{pct(module.get('recouvrement_derushage', 0.0))}</td>"
+            f"<td>{pct(module.get('metrics_derushage', {}).get('fluidite_score', 0.0))}</td>"
+            "</tr>"
+        )
+
+    body = (
+        "<p class='meta'>"
+        f"Objectif : {escape(match_data.get('objectif', ''))} "
+        f"· Regle de match : {escape(match_data.get('seuil_match_similarite', '-'))} "
+        f"· Mise a jour : {escape(match_data.get('date_maj', '-'))}"
+        "</p>"
+        "<section class='card'>"
+        "<h2>Resume global</h2>"
+        f"<p><strong>Temoins analyses :</strong> {escape(summary.get('nb_temoins', 0))} "
+        f"(dont {escape(summary.get('nb_temoins_avec_doc_edito', 0))} avec document edito "
+        f"et {escape(summary.get('nb_temoins_avec_edito', 0))} avec sequences edito retenues).</p>"
+        f"<p><strong>Couverture edito :</strong> {pct(summary.get('couverture_edito_globale', 0.0))} "
+        f"({escape(summary.get('nb_sequences_match', 0))}/{escape(summary.get('nb_sequences_edito', 0))} sequences).</p>"
+        f"<p><strong>Recouvrement derushage :</strong> {pct(summary.get('recouvrement_derushage_global', 0.0))} "
+        f"({escape(summary.get('nb_segments_derushage_matches', 0))}/{escape(summary.get('nb_segments_derushage', 0))} segments).</p>"
+        "<p><strong>Lecture pedagogique :</strong> plus la couverture edito et le score de fluidite sont hauts, "
+        "plus l'alignement editorial et la lisibilite du parcours sont solides.</p>"
+        "</section>"
+        "<h2>Detail par temoin</h2>"
+        '<div class="table-wrap"><table><thead><tr><th>Temoin</th><th>Seq. edito</th><th>Match</th><th>Couverture edito</th>'
+        "<th>Seg. derushage</th><th>Recouvrement derushage</th><th>Fluidite</th></tr></thead><tbody>"
+        + ("\n".join(witness_rows) or "<tr><td colspan='7'>Aucune donnee temoin.</td></tr>")
+        + "</tbody></table></div>"
+        "<h2>Detail par module</h2>"
+        '<div class="table-wrap"><table><thead><tr><th>Module</th><th>Seq. edito</th><th>Match</th><th>Couverture edito</th>'
+        "<th>Seg. derushage</th><th>Recouvrement derushage</th><th>Fluidite</th></tr></thead><tbody>"
+        + ("\n".join(module_rows) or "<tr><td colspan='7'>Aucune donnee module.</td></tr>")
+        + "</tbody></table></div>"
+    )
+    write_text(
+        SITE / "match.html",
+        html_page(
+            "Match",
+            body,
+            nav_current="match.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Match", None)),
+            page_header='<div class="page-head"><h1>Match</h1><p class="lead">Analyse de convergence et divergence entre derushage interne et derushage edito.</p></div>',
+        ),
+    )
+
+    expected_witness_pages = set()
+    for item in temoins:
+        witness = item.get("temoin", "Temoin")
+        witness_slug = slug(witness)
+        filename = f"match_temoin_{witness_slug}.html"
+        expected_witness_pages.add(filename)
+        strong_matches = "".join(
+            "<li>"
+            f"{escape(match.get('segment_id', '-'))} "
+            f"({escape(match.get('segment_debut', '-'))} → {escape(match.get('segment_fin', '-'))}) "
+            f"↔ {escape(match.get('edito_id', '-'))} ({escape(match.get('video', '-'))}) "
+            f"· similarite {escape(match.get('similarite', '-'))}"
+            "</li>"
+            for match in item.get("matchs", [])[:8]
+        )
+        gaps_edito = "".join(
+            "<li>"
+            f"{escape(seq.get('edito_id', '-'))} · {escape(seq.get('video', '-'))} "
+            f"(paragraphe {escape(seq.get('edito_paragraphe', '-'))})"
+            "</li>"
+            for seq in item.get("non_match_edito", [])[:10]
+        )
+        gaps_derushage = "".join(
+            "<li>"
+            f"{escape(seg.get('segment_id', '-'))} "
+            f"({escape(seg.get('debut', '-'))} → {escape(seg.get('fin', '-'))}) "
+            f"· {escape(seg.get('theme', '-'))}"
+            "</li>"
+            for seg in item.get("non_match_derushage", [])[:10]
+        )
+        metrics = item.get("metrics_derushage", {})
+        body = (
+            f"<p class='meta'>Source edito : {escape(item.get('source_edito', 'non renseignee'))}</p>"
+            "<section class='card'>"
+            "<h2>Indicateurs</h2>"
+            f"<p><strong>Couverture edito :</strong> {pct(item.get('couverture_edito', 0.0))} "
+            f"({escape(item.get('nb_matchs', 0))}/{escape(item.get('nb_edito', 0))})</p>"
+            f"<p><strong>Recouvrement derushage :</strong> {pct(item.get('recouvrement_derushage', 0.0))} "
+            f"({escape(item.get('nb_segments_derushage', 0) - item.get('nb_non_match_derushage', 0))}/{escape(item.get('nb_segments_derushage', 0))})</p>"
+            f"<p><strong>Fluidite :</strong> {pct(metrics.get('fluidite_score', 0.0))} "
+            f"(autonomie {pct(metrics.get('score_autonomie_moyen', 0.0))}, "
+            f"montabilite {pct(metrics.get('score_montage_moyen', 0.0))}, "
+            f"adequation composite {pct(metrics.get('score_composite_moyen', 0.0))}).</p>"
+            "</section>"
+            "<h2>Ce qui matche</h2>"
+            f"<ul>{strong_matches or '<li>Aucun match significatif detecte.</li>'}</ul>"
+            "<h2>Ce qui ne matche pas cote edito</h2>"
+            f"<ul>{gaps_edito or '<li>Aucune divergence edito restante.</li>'}</ul>"
+            "<h2>Ce qui ne matche pas cote derushage</h2>"
+            f"<ul>{gaps_derushage or '<li>Aucune divergence derushage restante.</li>'}</ul>"
+        )
+        write_text(
+            SITE / filename,
+            html_page(
+                f"Match — {witness}",
+                body,
+                nav_current="match.html",
+                breadcrumb=html_breadcrumb(
+                    ("Accueil", "index.html"),
+                    ("Match", "match.html"),
+                    (witness, None),
+                ),
+                page_header=f"<div class='page-head'><h1>Match — {escape(witness)}</h1><p class='lead'>Analyse detaillee des convergences et ecarts editoriaux.</p></div>",
+            ),
+        )
+    for path in SITE.glob("match_temoin_*.html"):
+        if path.name not in expected_witness_pages:
+            path.unlink()
+
+    expected_module_pages = set()
+    for module in modules:
+        module_key = module.get("module_id", "M?").lower()
+        filename = f"match_module_{module_key}.html"
+        expected_module_pages.add(filename)
+        metrics = module.get("metrics_derushage", {})
+        body = (
+            "<section class='card'>"
+            "<h2>Indicateurs module</h2>"
+            f"<p><strong>Couverture edito :</strong> {pct(module.get('couverture_edito', 0.0))} "
+            f"({escape(module.get('nb_edito_matches', 0))}/{escape(module.get('nb_edito', 0))})</p>"
+            f"<p><strong>Recouvrement derushage :</strong> {pct(module.get('recouvrement_derushage', 0.0))} "
+            f"({escape(module.get('nb_derushage_matches', 0))}/{escape(module.get('nb_derushage', 0))})</p>"
+            f"<p><strong>Fluidite :</strong> {pct(metrics.get('fluidite_score', 0.0))}</p>"
+            f"<p><strong>Autonomie moyenne :</strong> {pct(metrics.get('score_autonomie_moyen', 0.0))} · "
+            f"<strong>Montabilite moyenne :</strong> {pct(metrics.get('score_montage_moyen', 0.0))} · "
+            f"<strong>Score composite moyen :</strong> {pct(metrics.get('score_composite_moyen', 0.0))}</p>"
+            "</section>"
+            "<p class='meta'>Les details temoins de ce module sont accessibles depuis la page resume <code>match.html</code>.</p>"
+        )
+        write_text(
+            SITE / filename,
+            html_page(
+                f"Match — {module.get('module_label', module_key)}",
+                body,
+                nav_current="match.html",
+                breadcrumb=html_breadcrumb(
+                    ("Accueil", "index.html"),
+                    ("Match", "match.html"),
+                    (module.get("module_label", module_key), None),
+                ),
+                page_header=f"<div class='page-head'><h1>Match — {escape(module.get('module_label', module_key))}</h1><p class='lead'>Lecture pedagogique et ecarts editoriaux au niveau module.</p></div>",
+            ),
+        )
+    for path in SITE.glob("match_module_*.html"):
+        if path.name not in expected_module_pages:
+            path.unlink()
+
+
 def capsule_tags_html(capsules: dict) -> str:
     if not capsules:
         return "<span class='meta'>Aucune capsule</span>"
@@ -2538,6 +3102,7 @@ if __name__ == "__main__":
     all_affectations = load_affectations()
     programme_table = load_programme_table()
     experts_profils = load_experts_profils()
+    match_data = load_match_derushage_edito()
     expected_capsule_pages = {f"capsule_{capsule['code']}.html" for capsule in all_capsules}
     for path in SITE.glob("capsule_*.html"):
         if path.name not in expected_capsule_pages:
@@ -2545,11 +3110,15 @@ if __name__ == "__main__":
     build_home(all_capsules, all_segments)
     build_heatmaps_page(all_capsules, all_segments)
     build_experts_profiles_page(experts_profils)
+    build_correspondances_edito_page(programme_table)
+    build_match_pages(match_data)
     build_dashboard(all_capsules, all_segments, all_affectations)
     build_researcher_pages(all_segments)
     build_capsule_pages(all_capsules, all_segments, all_affectations, programme_table)
     build_conflicts_page(all_segments)
     build_registry(all_segments)
+    build_derushage_edito_index()
+    build_derushage_edito_pages()
     build_bab_encodes_index()
     build_bab_encode_pages()
     print(f"Site genere dans {SITE}")

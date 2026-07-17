@@ -13,9 +13,7 @@ from xml.etree import ElementTree as ET
 from lib_derushage import DATA, ROOT, read_json, write_text
 
 NS = {"m": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
-DEFAULT_XLSX = Path(
-    "/Users/ups_ifpoc/Documents/01_Ingenierie/01_INNOV/04_Conception/20260710_Prev_Vid.xlsx"
-)
+DEFAULT_XLSX = DATA / "raw" / "20260710_Prev_Vid.xlsx"
 OUTPUT_PATH = DATA / "programme_table.json"
 HEADER_ROW = 2
 DATA_COLUMNS = {

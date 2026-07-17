@@ -9,12 +9,17 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 SITE = ROOT / "site"
 BAB_ENCODES = DATA / "bab_encodes"
+DERUSHAGE_EDITO = DATA / "derushage_edito"
+MATCH_DATA = DATA / "match"
 
 NAV_ITEMS = (
     ("index.html", "Accueil"),
     ("tableau_de_bord.html", "Tableau de bord"),
     ("cartes_chaleur.html", "Cartes de chaleur"),
     ("profils_experts.html", "Profils experts"),
+    ("derushage_edito.html", "Dérushage édito"),
+    ("tableau_correspondances_edito.html", "Correspondances édito"),
+    ("match.html", "Match"),
     ("bab_encodes.html", "BAB encodé"),
     ("conflits.html", "Conflits"),
     ("registre.html", "Registre"),
@@ -131,6 +136,27 @@ def load_bab_encodes() -> list[dict]:
         if doc:
             documents.append(doc)
     return documents
+
+
+def load_derushage_edito_index() -> list[dict]:
+    path = DERUSHAGE_EDITO / "index.json"
+    if not path.exists():
+        return []
+    return read_json(path)
+
+
+def load_derushage_edito(derushage_id: str) -> dict | None:
+    path = DERUSHAGE_EDITO / f"{derushage_id}.json"
+    if not path.exists():
+        return None
+    return read_json(path)
+
+
+def load_match_derushage_edito() -> dict:
+    path = MATCH_DATA / "match_derushage_edito.json"
+    if not path.exists():
+        return {}
+    return read_json(path)
 
 
 def parse_bab_raw(source: str | Path) -> list[dict]:
