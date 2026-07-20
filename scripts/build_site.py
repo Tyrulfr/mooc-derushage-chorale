@@ -3907,6 +3907,8 @@ def build_mails_experts_pages(programme_table: dict, experts_profils: dict) -> N
         send_href = _mailto_href(TEST_MAIL_RECIPIENT, subject, mail_text)
         mail_name = f"mail_expert_{expert['slug']}.html"
         doc_name = f"guide_editorial_{expert['slug']}.doc"
+        doc_abs_path = str((SITE / doc_name).resolve())
+        doc_file_uri = (SITE / doc_name).resolve().as_uri()
         expected.add(mail_name)
         expected_docs.add(doc_name)
         write_text(SITE / doc_name, _guide_editorial_expert_doc_html(expert, grouped_tb, rows_by_code))
@@ -3928,7 +3930,9 @@ def build_mails_experts_pages(programme_table: dict, experts_profils: dict) -> N
             f"<p><a class='btn' href='{escape(send_href)}'>Envoyer le mail test (Christophe)</a></p>"
             f"<p><a class='btn' href='{escape(doc_name)}' download>Exporter le guide éditorial (Word)</a></p>"
             f"<p><a class='btn' href='{escape(doc_name)}' target='_blank' rel='noopener'>Ouvrir le guide éditorial (Word)</a></p>"
+            f"<p><a class='btn' href='{escape(doc_file_uri)}'>Ouvrir le fichier Word (lien local absolu)</a></p>"
             f"<p class='meta'><strong>Pièce jointe prête :</strong> <code>{escape(doc_name)}</code></p>"
+            f"<p class='meta'><strong>Chemin local :</strong> <code>{escape(doc_abs_path)}</code></p>"
             "<h2>Mail prêt à envoyer</h2>"
             f"<pre class='script mail-ready'>{escape(mail_text)}</pre>"
             "<h2>Capsules et sujets concernés</h2>"
