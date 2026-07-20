@@ -3759,9 +3759,10 @@ def _highlight_tb_edito_syntagmes(text: str, code: str) -> str:
 
 def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[dict]], rows_by_code: dict[str, dict]) -> str:
     sections = []
-    summary_items = []
+    toc_rows = []
     for item in expert.get("videos", []):
         code = item.get("code", "")
+        chapter_anchor = f"chap_{code}"
         row = rows_by_code.get(code, {})
         sequences = grouped_tb.get(code, [])
         ordered = _tb_edito_order_for_code(code, sequences)
@@ -3800,14 +3801,21 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
             script_rows.append("<p>Aucun extrait édito apparié pour cette vidéo.</p>")
 
         expertise_labels = _tb_expertise_label(" | ".join(item.get("expert_video_labels", [])) or "À définir")
-        summary_items.append(
-            "<li>"
-            f"<strong>{escape(code)}</strong> — {escape(item.get('video_temoin_label', ''))}<br>"
-            f"<span>Vidéo expertise : {escape(expertise_labels)}</span>"
-            "</li>"
+        page_field = (
+            f"<span style='mso-element:field-begin'></span> PAGEREF {escape(chapter_anchor)} \\h "
+            "<span style='mso-element:field-separator'></span>"
+            "<span>0</span>"
+            "<span style='mso-element:field-end'></span>"
+        )
+        toc_rows.append(
+            "<tr>"
+            f"<td><a href='#{escape(chapter_anchor)}'>{escape(code)} — {escape(item.get('video_temoin_label', ''))}</a></td>"
+            f"<td style='text-align:right;white-space:nowrap;'>{page_field}</td>"
+            "</tr>"
         )
         sections.append(
             "<section style='margin-top:28px;padding-top:10px;border-top:1px solid #cbd5e1;'>"
+            f"<a name='{escape(chapter_anchor)}'></a>"
             f"<h2>{escape(code)} — {escape(item.get('video_temoin_label', ''))}</h2>"
             f"<p><strong>Vidéos expertise proposées :</strong> {escape(expertise_labels)}</p>"
             f"<p><strong>Objectif pédagogique :</strong> {escape(item.get('objectif', ''))}</p>"
@@ -3829,6 +3837,8 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
         "h1{font-size:18pt;margin-bottom:6px;}"
         "h2{font-size:14pt;margin-bottom:6px;}"
         "h3{font-size:12.5pt;margin-bottom:6px;}"
+        ".toc{width:100%;border-collapse:collapse;margin:10px 0 16px;}"
+        ".toc td{padding:6px 2px;border-bottom:1px dotted #94a3b8;}"
         "</style>"
         "</head><body>"
         f"<h1>Guide éditorial — {escape(expert.get('nom', 'Expert'))}</h1>"
@@ -3839,8 +3849,10 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
         "<li><strong>Script témoin</strong> servant de base éditoriale (avec mise en évidence des syntagmes clés quand détectés).</li>"
         "</ol>"
         "<p>Objectif : faciliter votre positionnement et préparer une contribution expertise cohérente avec le montage témoin.</p>"
-        "<h2>Mini sommaire</h2>"
-        f"<ul>{''.join(summary_items) if summary_items else '<li>Aucune capsule témoin associée à ce stade.</li>'}</ul>"
+        "<h2>Sommaire du guide éditorial</h2>"
+        "<p class='meta'>Liens actifs vers les chapitres et numéros de page dynamiques "
+        "(mettre à jour les champs dans Word si besoin).</p>"
+        f"<table class='toc'><tbody>{''.join(toc_rows) if toc_rows else '<tr><td>Aucune capsule témoin associée à ce stade.</td><td></td></tr>'}</tbody></table>"
         f"{''.join(sections) if sections else '<p>Aucune capsule témoin associée à ce stade.</p>'}"
         "<hr style='margin:24px 0;border:none;border-top:1px solid #cbd5e1;'>"
         "<p><strong>Contact pour informations complémentaires :</strong><br>"
