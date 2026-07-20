@@ -3721,7 +3721,7 @@ def _compose_expert_mail(expert: dict) -> tuple[str, str]:
         "avant envoi final aux experts.\n\n"
         "Merci d'avance pour votre retour,\n"
         "Bien cordialement,\n"
-        "Equipe Action 2 pilier 1 PUI alliance Paris Scalay."
+        "Equipe Action 2 pilier 1 PUI alliance Paris Saclay."
     )
     return subject, mail_text
 
@@ -3936,7 +3936,7 @@ def build_mails_experts_pages(programme_table: dict, experts_profils: dict) -> N
             f"<p class='meta'><strong>Objet proposé :</strong> {escape(subject)}</p>"
             f"<p class='meta'><strong>Destinataire test actuel :</strong> {escape(TEST_MAIL_RECIPIENT)} "
             f"(validation éditoriale ensuite via {escape(REVIEW_MAIL_RECIPIENT)}).</p>"
-            f"<p><a class='btn' href='{escape(send_href)}'>Envoyer le mail test (Christophe)</a></p>"
+            f"<p><a class='btn' href='{escape(send_href)}'>Mail à envoyer</a></p>"
             f"<p><a class='btn' href='{escape(doc_name)}' download>Exporter le guide éditorial (Word)</a></p>"
             f"<p><a class='btn' href='{escape(doc_name)}' target='_blank' rel='noopener'>Ouvrir le guide éditorial (Word)</a></p>"
             f"<p><a class='btn' href='{escape(doc_file_uri)}'>Ouvrir le fichier Word (lien local absolu)</a></p>"
