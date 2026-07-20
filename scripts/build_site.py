@@ -5,7 +5,6 @@ import io
 import re
 from collections import Counter, defaultdict
 from email.message import EmailMessage
-from email.policy import SMTP
 from pathlib import Path
 import unicodedata
 from urllib.parse import quote
@@ -3698,7 +3697,7 @@ def _compose_expert_mail(expert: dict) -> tuple[str, str]:
     video_codes_label = ", ".join(_label_video_expert(code) for code in video_codes) if video_codes else "à définir"
     tb_edito_list = ", ".join(item["code"] for item in videos) if videos else "à définir"
 
-    subject = f"MOOC L'Esprit d'innover — {nom} — confirmation de vos videos expertise pressenties"
+    subject = f"MOOC L'Esprit d'innover — confirmation de vos videos expertise pressenties"
     mail_text = (
         f"Objet : {subject}\n\n"
         f"Bonjour {prenom},\n\n"
@@ -3739,50 +3738,18 @@ def _eml_with_attachment_bytes(
     attachment_name: str,
     attachment_bytes: bytes,
 ) -> bytes:
-    msg = EmailMessage(policy=SMTP)
+    msg = EmailMessage()
     msg["To"] = recipient
     msg["Subject"] = subject
-    msg["From"] = "Equipe Action 2 pilier 1 PUI alliance Paris Scalay <christophe.dubois@universite-paris-saclay.fr>"
-    msg["X-Unsent"] = "1"
+    msg["From"] = "Equipe Action 2 pilier 1 PUI alliance Paris Scalay"
     msg.set_content(body)
     msg.add_attachment(
         attachment_bytes,
         maintype="application",
-        subtype="octet-stream",
+        subtype="msword",
         filename=attachment_name,
     )
-    return msg.as_bytes(policy=SMTP)
-
-
-def _applescript_escape(value: str) -> str:
-    return (value or "").replace("\\", "\\\\").replace('"', '\\"')
-
-
-def _mailapp_command_script(recipient: str, subject: str, body: str, attachment_abs_path: str) -> str:
-    subject_escaped = _applescript_escape(subject)
-    body_escaped = _applescript_escape(body + "\n")
-    path_escaped = _applescript_escape(attachment_abs_path)
-    recipient_escaped = _applescript_escape(recipient)
-    return (
-        "#!/bin/bash\n"
-        "set -euo pipefail\n"
-        "osascript <<'APPLESCRIPT'\n"
-        f'set mailSubject to "{subject_escaped}"\n'
-        f'set mailBody to "{body_escaped}"\n'
-        f'set recipientAddress to "{recipient_escaped}"\n'
-        f'set attachmentPath to POSIX file "{path_escaped}"\n'
-        'tell application "Mail"\n'
-        "  set newMessage to make new outgoing message with properties {subject:mailSubject, content:mailBody, visible:true}\n"
-        "  tell newMessage\n"
-        "    make new to recipient at end of to recipients with properties {address:recipientAddress}\n"
-        "    try\n"
-        "      make new attachment with properties {file name:attachmentPath} at after the last paragraph\n"
-        "    end try\n"
-        "  end tell\n"
-        "  activate\n"
-        "end tell\n"
-        "APPLESCRIPT\n"
-    )
+    return msg.as_bytes()
 
 
 def _tb_expertise_label(text: str) -> str:
@@ -3815,7 +3782,6 @@ def _highlight_tb_edito_syntagmes(text: str, code: str) -> str:
 def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[dict]], rows_by_code: dict[str, dict]) -> str:
     sections = []
     summary_items = []
-    concerned_codes = {item.get("code", "") for item in expert.get("videos", []) if item.get("code")}
     for item in expert.get("videos", []):
         code = item.get("code", "")
         row = rows_by_code.get(code, {})
@@ -3885,9 +3851,6 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
         "h1{font-size:18pt;margin-bottom:6px;}"
         "h2{font-size:14pt;margin-bottom:6px;}"
         "h3{font-size:12.5pt;margin-bottom:6px;}"
-        "table{border-collapse:collapse;width:100%;margin-top:8px;}"
-        "th,td{border:1px solid #cbd5e1;padding:8px;vertical-align:top;text-align:left;}"
-        "th{background:#f1f5f9;}"
         "</style>"
         "</head><body>"
         f"<h1>Guide éditorial — {escape(expert.get('nom', 'Expert'))}</h1>"
@@ -3901,28 +3864,6 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
         "<h2>Mini sommaire</h2>"
         f"<ul>{''.join(summary_items) if summary_items else '<li>Aucune capsule témoin associée à ce stade.</li>'}</ul>"
         f"{''.join(sections) if sections else '<p>Aucune capsule témoin associée à ce stade.</p>'}"
-        "<h2>Tableau complet des vidéos (sujets et objectifs)</h2>"
-        "<p>Lecture : les lignes surlignées correspondent aux capsules concernées par votre contribution expertise.</p>"
-        "<table><thead><tr>"
-        "<th>Capsule</th><th>Sujet vidéo témoin</th><th>Vidéos expertise envisagées</th><th>Objectif pédagogique</th>"
-        "</tr></thead><tbody>"
-        + "".join(
-            (
-                "<tr"
-                + (" style='background:#fff3b0;'" if code in concerned_codes else "")
-                + ">"
-                f"<td>{escape(code)}</td>"
-                f"<td>{escape(FIXED_TEMOIN_PLAN.get(code, {}).get('label', row.get('video_temoin', '')))}</td>"
-                f"<td>{escape(_tb_expertise_label(' | '.join(item.get('titre', '') for item in _tb_edito_parse_videos_expert(row.get('videos_referent', ''))) or 'À définir'))}</td>"
-                f"<td>{escape(row.get('objectif_pedagogique', ''))}</td>"
-                "</tr>"
-            )
-            for code, row in (
-                (f"T{idx}", rows_by_code.get(f"T{idx}", {}))
-                for idx in range(1, 13)
-            )
-        )
-        + "</tbody></table>"
         "<hr style='margin:24px 0;border:none;border-top:1px solid #cbd5e1;'>"
         "<p><strong>Contact pour informations complémentaires :</strong><br>"
         "Christophe Dubois (Ingénieur pédagogique)<br>"
@@ -3971,31 +3912,17 @@ def build_mails_experts_pages(programme_table: dict, experts_profils: dict) -> N
     expected = set()
     expected_docs = set()
     expected_emls = set()
-    expected_mailapp_cmds = set()
     for expert in experts:
         subject, mail_text = _compose_expert_mail(expert)
         mail_name = f"mail_expert_{expert['slug']}.html"
         doc_name = f"guide_editorial_{expert['slug']}.doc"
         eml_name = f"mail_expert_{expert['slug']}_test.eml"
-        mailapp_cmd_name = f"mail_expert_{expert['slug']}_applemail.command"
         expected.add(mail_name)
         expected_docs.add(doc_name)
         expected_emls.add(eml_name)
-        expected_mailapp_cmds.add(mailapp_cmd_name)
         guide_content = _guide_editorial_expert_doc_html(expert, grouped_tb, rows_by_code)
         guide_bytes = guide_content.encode("utf-8")
         write_text(SITE / doc_name, guide_content)
-        guide_abs_path = str((SITE / doc_name).resolve())
-        write_text(
-            SITE / mailapp_cmd_name,
-            _mailapp_command_script(
-                TEST_MAIL_RECIPIENT,
-                subject,
-                mail_text,
-                guide_abs_path,
-            ),
-        )
-        (SITE / mailapp_cmd_name).chmod(0o755)
         (SITE / eml_name).write_bytes(
             _eml_with_attachment_bytes(
                 TEST_MAIL_RECIPIENT,
@@ -4020,7 +3947,6 @@ def build_mails_experts_pages(programme_table: dict, experts_profils: dict) -> N
             f"<p class='meta'><strong>Objet proposé :</strong> {escape(subject)}</p>"
             f"<p class='meta'><strong>Destinataire test actuel :</strong> {escape(TEST_MAIL_RECIPIENT)} "
             f"(validation éditoriale ensuite via {escape(REVIEW_MAIL_RECIPIENT)}).</p>"
-            f"<p><a class='btn' href='{escape(mailapp_cmd_name)}' download>Créer brouillon Apple Mail avec pièce jointe (recommandé Mac)</a></p>"
             f"<p><a class='btn' href='{escape(eml_name)}' download>Envoyer le mail test avec pièce jointe</a></p>"
             f"<p><a class='btn' href='{escape(doc_name)}' download>Exporter le guide éditorial (Word)</a></p>"
             "<h2>Mail prêt à envoyer</h2>"
@@ -4059,9 +3985,6 @@ def build_mails_experts_pages(programme_table: dict, experts_profils: dict) -> N
             path.unlink()
     for path in SITE.glob("mail_expert_*_test.eml"):
         if path.name not in expected_emls:
-            path.unlink()
-    for path in SITE.glob("mail_expert_*_applemail.command"):
-        if path.name not in expected_mailapp_cmds:
             path.unlink()
     for path in SITE.glob("package_mail_expert_*.zip"):
         path.unlink()
