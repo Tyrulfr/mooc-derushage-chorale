@@ -3,28 +3,28 @@
   "objectif": "Comparer le derushage actuel aux sequences retenues par l'edito pour optimiser l'adequation pedagogique.",
   "seuil_match_similarite": "inclusion_sequence (>= 6 mots consecutifs), meme video et meme module",
   "resume": {
-    "nb_temoins": 5,
-    "nb_temoins_avec_doc_edito": 3,
-    "nb_temoins_avec_edito": 2,
-    "nb_sequences_edito": 123,
-    "nb_sequences_match": 5,
+    "nb_temoins": 6,
+    "nb_temoins_avec_doc_edito": 4,
+    "nb_temoins_avec_edito": 4,
+    "nb_sequences_edito": 274,
+    "nb_sequences_match": 35,
     "nb_segments_derushage": 59,
-    "nb_segments_derushage_matches": 4,
-    "couverture_edito_globale": 0.041,
-    "recouvrement_derushage_global": 0.068
+    "nb_segments_derushage_matches": 14,
+    "couverture_edito_globale": 0.128,
+    "recouvrement_derushage_global": 0.237
   },
   "temoins": [
     {
       "temoin": "Jean-Jacques Greffet",
-      "source_edito": "00-Mooc_Questionnaire_JJ_GREFFET.docx",
+      "source_edito": "00_Mooc_Transcript_JJ Greffet.docx",
       "id_edito": "jjg_edito",
-      "nb_edito": 0,
-      "nb_matchs": 0,
-      "nb_non_match_edito": 0,
+      "nb_edito": 71,
+      "nb_matchs": 15,
+      "nb_non_match_edito": 56,
       "nb_segments_derushage": 15,
-      "nb_non_match_derushage": 15,
-      "couverture_edito": 0.0,
-      "recouvrement_derushage": 0.0,
+      "nb_non_match_derushage": 10,
+      "couverture_edito": 0.211,
+      "recouvrement_derushage": 0.333,
       "metrics_derushage": {
         "nb_segments": 15,
         "score_autonomie_moyen": 0.833,
@@ -32,23 +32,598 @@
         "score_composite_moyen": 0.692,
         "fluidite_score": 0.753
       },
-      "matchs": [],
-      "non_match_edito": [],
-      "non_match_derushage": [
+      "matchs": [
         {
+          "edito_id": "JJGE-0002",
+          "video": "Vidéo 1 : pourquoi oser",
+          "question": "",
+          "edito_paragraphe": 41,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "je travaille dans le domaine de la nano photonique c est a dire l etude de la lumiere a l echelle du nanometre",
           "segment_id": "JJG-0001",
-          "theme": "T1",
-          "debut": "01:00:43.390",
-          "fin": "01:00:55.030",
-          "commentaire": "Presentation : nano photonique."
+          "segment_theme": "T1",
+          "segment_debut": "01:00:43.390",
+          "segment_fin": "01:00:55.030"
         },
         {
-          "segment_id": "JJG-0002",
-          "theme": "T1",
-          "debut": "01:01:13.210",
-          "fin": "01:02:15.030",
-          "commentaire": "Market-pull et rencontre ; couper apres « le fait d'oser a deux »."
+          "edito_id": "JJGE-0003",
+          "video": "Vidéo 1 : pourquoi oser",
+          "question": "",
+          "edito_paragraphe": 41,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "est par exemple etudier detecter des toutes petites particules avec de la lumiere",
+          "segment_id": "JJG-0001",
+          "segment_theme": "T1",
+          "segment_debut": "01:00:43.390",
+          "segment_fin": "01:00:55.030"
         },
+        {
+          "edito_id": "JJGE-0004",
+          "video": "Vidéo 1 : pourquoi oser",
+          "question": "Comment est née votre innovation ?",
+          "edito_paragraphe": 46,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "ce qui n est pas habituel et c est des le le resultat d une rencontre une rencontre avec un jeune startuper qui travaillait dans une start up qui avait une problematique de detection de virus et il y avait un besoin du marche de voir des objets des virus plus petits que ce qu il pouvait detecter",
+          "segment_id": "JJG-0002",
+          "segment_theme": "T1",
+          "segment_debut": "01:01:13.210",
+          "segment_fin": "01:02:15.030"
+        },
+        {
+          "edito_id": "JJGE-0036",
+          "video": "Vidéo 8 : transfert et licensing",
+          "question": "",
+          "edito_paragraphe": 179,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "on a un brevet une innovation technologique un produit sans equivalent et donc la valorisation par creation de start up est assez adaptee",
+          "segment_id": "JJG-0009",
+          "segment_theme": "T6",
+          "segment_debut": "01:22:03.910",
+          "segment_fin": "01:23:28.850"
+        },
+        {
+          "edito_id": "JJGE-0037",
+          "video": "Vidéo 8 : transfert et licensing",
+          "question": "",
+          "edito_paragraphe": 180,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "alors ce brevet quand on l exploite soit on peut utiliser une licence exclusive qui est delivree par les etablissements qui sont coproprietaires du brevet ou il peut y avoir un transfert de propriete en echange d une part de participation dans la societe",
+          "segment_id": "JJG-0009",
+          "segment_theme": "T6",
+          "segment_debut": "01:22:03.910",
+          "segment_fin": "01:23:28.850"
+        },
+        {
+          "edito_id": "JJGE-0038",
+          "video": "Vidéo 8 : transfert et licensing",
+          "question": "",
+          "edito_paragraphe": 181,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "il se trouve que dans notre cas nous sommes partis a la demande des etablissements sur le deuxieme cas et je dois dire que c est du point de vue des de l entreprise c est favorable puisque lorsque vous rencontrez des investisseurs s ils savent que vous avez la propriete pleine et entiere du brevet",
+          "segment_id": "JJG-0009",
+          "segment_theme": "T6",
+          "segment_debut": "01:22:03.910",
+          "segment_fin": "01:23:28.850"
+        },
+        {
+          "edito_id": "JJGE-0044",
+          "video": "Vidéo 10 : financements, concours et temps pour entreprendre",
+          "question": "",
+          "edito_paragraphe": 192,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "on a besoin de beaucoup d argent a differentes etapes",
+          "segment_id": "JJG-0011",
+          "segment_theme": "T8",
+          "segment_debut": "01:25:09.690",
+          "segment_fin": "01:27:41.830"
+        },
+        {
+          "edito_id": "JJGE-0045",
+          "video": "Vidéo 10 : financements, concours et temps pour entreprendre",
+          "question": "",
+          "edito_paragraphe": 194,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "et donc pour vous citez tres brievement les aides qui sont assez nombreuses",
+          "segment_id": "JJG-0011",
+          "segment_theme": "T8",
+          "segment_debut": "01:25:09.690",
+          "segment_fin": "01:27:41.830"
+        },
+        {
+          "edito_id": "JJGE-0046",
+          "video": "Vidéo 10 : financements, concours et temps pour entreprendre",
+          "question": "",
+          "edito_paragraphe": 194,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "ce sont des financements des programmes de valorisation des universites des financements des programmes de valorisation du cnrs",
+          "segment_id": "JJG-0011",
+          "segment_theme": "T8",
+          "segment_debut": "01:25:09.690",
+          "segment_fin": "01:27:41.830"
+        },
+        {
+          "edito_id": "JJGE-0047",
+          "video": "Vidéo 10 : financements, concours et temps pour entreprendre",
+          "question": "",
+          "edito_paragraphe": 201,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "apres il faut trouver des investisseurs ou des clients",
+          "segment_id": "JJG-0011",
+          "segment_theme": "T8",
+          "segment_debut": "01:25:09.690",
+          "segment_fin": "01:27:41.830"
+        },
+        {
+          "edito_id": "JJGE-0048",
+          "video": "Vidéo 10 : financements, concours et temps pour entreprendre",
+          "question": "Est ce qu'il y a eu un moment où votre projet a fortement accéléré?",
+          "edito_paragraphe": 203,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "le gros coup d accelerateur c est lorsqu on a la levee de fond",
+          "segment_id": "JJG-0011",
+          "segment_theme": "T8",
+          "segment_debut": "01:25:09.690",
+          "segment_fin": "01:27:41.830"
+        },
+        {
+          "edito_id": "JJGE-0049",
+          "video": "Vidéo 10 : financements, concours et temps pour entreprendre",
+          "question": "Est ce qu'il y a eu un moment où votre projet a fortement accéléré?",
+          "edito_paragraphe": 205,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "et la l equipe double de taille et tout se met a aller plus vite",
+          "segment_id": "JJG-0011",
+          "segment_theme": "T8",
+          "segment_debut": "01:25:09.690",
+          "segment_fin": "01:27:41.830"
+        },
+        {
+          "edito_id": "JJGE-0050",
+          "video": "Vidéo 12 : changer de langage",
+          "question": "",
+          "edito_paragraphe": 208,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "lorsqu on est academique et qu on se lance dans un projet de creation d entreprise il faut apprendre a parler le langage de la creation d entreprise",
+          "segment_id": "JJG-0013",
+          "segment_theme": "T10",
+          "segment_debut": "01:27:49.270",
+          "segment_fin": "01:28:43.160"
+        },
+        {
+          "edito_id": "JJGE-0051",
+          "video": "Vidéo 12 : changer de langage",
+          "question": "",
+          "edito_paragraphe": 209,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "j avais un petit cahier dans lequel je notais des mots de vocabulaire comme lorsque j etais aux etats unis et que je notais les mots de vocabulaire d anglais que j apprenais tous les jours mais la j apprenais la langue de l entrepreneuriat",
+          "segment_id": "JJG-0013",
+          "segment_theme": "T10",
+          "segment_debut": "01:27:49.270",
+          "segment_fin": "01:28:43.160"
+        },
+        {
+          "edito_id": "JJGE-0052",
+          "video": "Vidéo 12 : changer de langage",
+          "question": "",
+          "edito_paragraphe": 210,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "il y a un deuxieme niveau qui necessite un peu plus de maitrise qui concerne des disciplines telles que la finance la comptabilite et le droit",
+          "segment_id": "JJG-0013",
+          "segment_theme": "T10",
+          "segment_debut": "01:27:49.270",
+          "segment_fin": "01:28:43.160"
+        }
+      ],
+      "non_match_edito": [
+        {
+          "edito_id": "JJGE-0001",
+          "video": "Vidéo 1 : pourquoi oser",
+          "question": "",
+          "edito_paragraphe": 37,
+          "texte": "Jean-Jacques Greffé Je suis professeur à l'Institut d'optique."
+        },
+        {
+          "edito_id": "JJGE-0005",
+          "video": "Vidéo 2 : de la recherche fondamentale à l’innovation",
+          "question": "",
+          "edito_paragraphe": 55,
+          "texte": "Notre innovation concerne apporte la réponse à la question de la détection de nanoparticules qui sont utilisées dans des applications médicales. Très concrètement, le vaccin que nous avons tous connu contre le Covid, véhicule de l'ARN, cette ARN. Si on l'injecte dans le corps, il est détruit par le système immunitaire extrêmement vite. Il faut le protéger. En langue balan, il est dans une petite particule qui le protège."
+        },
+        {
+          "edito_id": "JJGE-0006",
+          "video": "Vidéo 2 : de la recherche fondamentale à l’innovation",
+          "question": "",
+          "edito_paragraphe": 56,
+          "texte": "Et donc ça, ça pose la question de compter ces particules, savoir combien on en a fabriqué et de savoir si elles sont remplies, oui ou non. Et c'est beaucoup plus difficile de répondre à cette question que dans le cas d'une aspirine. Savoir si le comprimé contient le produit actif, parce que ce n'est pas de la synthèse chimique."
+        },
+        {
+          "edito_id": "JJGE-0007",
+          "video": "Vidéo 3 : identifier un besoin réel",
+          "question": "",
+          "edito_paragraphe": 73,
+          "texte": "Alors, dans notre cas, nous sommes partis d'un besoin du marché qui était connu par mon co-fondateur."
+        },
+        {
+          "edito_id": "JJGE-0008",
+          "video": "Vidéo 3 : identifier un besoin réel",
+          "question": "",
+          "edito_paragraphe": 75,
+          "texte": "nous avons bénéficié de l'aide de la SATT de Paris-Saclay qui a réalisé une étude de marché."
+        },
+        {
+          "edito_id": "JJGE-0009",
+          "video": "Vidéo 3 : identifier un besoin réel",
+          "question": "",
+          "edito_paragraphe": 78,
+          "texte": "En parallèle, nous avons assisté à beaucoup de conférences dans les domaines des utilisateurs potentiels de l'innovation pour identifier ce qu'étaient les problèmes importants. Et l'ensemble de ces de ces étapes nous a conduit à modifier en fait notre cible."
+        },
+        {
+          "edito_id": "JJGE-0010",
+          "video": "Vidéo 3 : identifier un besoin réel",
+          "question": "",
+          "edito_paragraphe": 79,
+          "texte": "Et nous avons fait ce qu'on appelle un pivot. C'est à dire qu'on a changé, on a adapté notre technologie pour répondre à un autre besoin qu'on a défini à ce moment là."
+        },
+        {
+          "edito_id": "JJGE-0011",
+          "video": "Vidéo 4 : sortir du labo",
+          "question": "",
+          "edito_paragraphe": 82,
+          "texte": "on n'est pas là pour faire un beau projet de physicien, on est là pour répondre à des besoins réels de clients et un besoin réel."
+        },
+        {
+          "edito_id": "JJGE-0012",
+          "video": "Vidéo 4 : sortir du labo",
+          "question": "",
+          "edito_paragraphe": 82,
+          "texte": "Ça veut dire que le client va payer. Donc en fait, on distingue entre le nice to have et le must have."
+        },
+        {
+          "edito_id": "JJGE-0013",
+          "video": "Vidéo 4 : sortir du labo",
+          "question": "",
+          "edito_paragraphe": 84,
+          "texte": "Et une première façon d'ailleurs de le faire, c'est de vérifier s'ils sont prêts à payer un petit peu pour voir, c'est à dire louer un instrument par exemple."
+        },
+        {
+          "edito_id": "JJGE-0014",
+          "video": "Vidéo 5 : une idée ne suffit pas",
+          "question": "",
+          "edito_paragraphe": 96,
+          "texte": "Alors, le point de départ n'était pas un résultat scientifique, mais une idée scientifique qui répondait à un besoin."
+        },
+        {
+          "edito_id": "JJGE-0015",
+          "video": "Vidéo 5 : une idée ne suffit pas",
+          "question": "",
+          "edito_paragraphe": 113,
+          "texte": "en tant qu'entrepreneur, on est toujours dans l'hypothèse où tout va marcher, On est forcément optimiste, sinon on ne serait pas là."
+        },
+        {
+          "edito_id": "JJGE-0016",
+          "video": "Vidéo 5 : une idée ne suffit pas",
+          "question": "",
+          "edito_paragraphe": 115,
+          "texte": "Il nous manquait à l'évidence quelqu'un qui ait des compétences dans le domaine de finance, de marketing, de logistique, de production, de ressources humaines"
+        },
+        {
+          "edito_id": "JJGE-0017",
+          "video": "Vidéo 5 : une idée ne suffit pas",
+          "question": "",
+          "edito_paragraphe": 118,
+          "texte": "Donc, dans cette phase de preuve de concept"
+        },
+        {
+          "edito_id": "JJGE-0018",
+          "video": "Vidéo 5 : une idée ne suffit pas",
+          "question": "",
+          "edito_paragraphe": 118,
+          "texte": "Tout d'abord, il y a l'aspect technique et là il faut déboguer, c'est à dire trouver tous les problèmes réels que l'on rencontre dans la vie réelle et apprendre à les résoudre,"
+        },
+        {
+          "edito_id": "JJGE-0019",
+          "video": "Vidéo 5 : une idée ne suffit pas",
+          "question": "",
+          "edito_paragraphe": 120,
+          "texte": "l y a un autre aspect qui est absolument crucial et critique, c'est le développement de l'équipe. En tant qu'entrepreneur, on se met dans la situation où de toute façon, ça va marcher. Donc il faut se poser la question de l'après et l'étape d'après, c'est l'équipe qui va créer l'entreprise."
+        },
+        {
+          "edito_id": "JJGE-0020",
+          "video": "Vidéo 5 : une idée ne suffit pas",
+          "question": "",
+          "edito_paragraphe": 127,
+          "texte": "C'est à dire que l'estimation technique du projet n'a aucune valeur puisque de toute façon, ce n'est pas ça qui va survivre, qui va résister et ce qui va survivre, c'est l'équipe. Et donc il faut choisir une équipe qui va être capable de prendre des virages quand il faut prendre des virages."
+        },
+        {
+          "edito_id": "JJGE-0021",
+          "video": "Vidéo 6 : freins, doutes et légitimité",
+          "question": "",
+          "edito_paragraphe": 137,
+          "texte": "À vrai dire, on n'avait pas beaucoup de craintes. Et ce qu'il faut surtout finalement dire, c'est qu'il est impossible de tout maîtriser et que de toute façon, il faut se jeter à l'eau. Et quand on se jette à l'eau, la seule chose qu'il faut savoir, c'est que si ça ne marche pas, on essaiera autre chose."
+        },
+        {
+          "edito_id": "JJGE-0022",
+          "video": "Vidéo 6 : freins, doutes et légitimité",
+          "question": "",
+          "edito_paragraphe": 141,
+          "texte": "Lorsqu'on se lance dans une activité d'entrepreneuriat, il y a toujours des obstacles. Tous les jours, il y a des obstacles."
+        },
+        {
+          "edito_id": "JJGE-0023",
+          "video": "Vidéo 6 : freins, doutes et légitimité",
+          "question": "",
+          "edito_paragraphe": 143,
+          "texte": "Alors, il y a les négociations de transfert de propriété intellectuelle avec les propriétaires qui sont les tutelles, qui sont des choses qui sont assez longues."
+        },
+        {
+          "edito_id": "JJGE-0024",
+          "video": "Vidéo 6 : freins, doutes et légitimité",
+          "question": "",
+          "edito_paragraphe": 145,
+          "texte": "Ensuite, il y a un processus qui est extrêmement difficile et la longueur dépend de l'état de l'économie. C'est l'obtention de financements, la levée de fonds."
+        },
+        {
+          "edito_id": "JJGE-0025",
+          "video": "Vidéo 6 : freins, doutes et légitimité",
+          "question": "",
+          "edito_paragraphe": 147,
+          "texte": "Il va rechercher dix projets sur lesquels il va investir. Il va avoir 1000 projets à examiner. Ça vous donne une idée du taux de sélection."
+        },
+        {
+          "edito_id": "JJGE-0026",
+          "video": "Vidéo 6 : freins, doutes et légitimité",
+          "question": "",
+          "edito_paragraphe": 149,
+          "texte": "il y a un autre aspect qui est difficile dans qui est, qui est qui peut être assez long, c'est le recrutement"
+        },
+        {
+          "edito_id": "JJGE-0027",
+          "video": "Vidéo 6 : freins, doutes et légitimité",
+          "question": "",
+          "edito_paragraphe": 149,
+          "texte": "dans le cadre d'une startup, la qualité de l'équipe, c'est une grosse, grosse partie du succès."
+        },
+        {
+          "edito_id": "JJGE-0028",
+          "video": "Vidéo 7 : protection intellectuelle",
+          "question": "",
+          "edito_paragraphe": 154,
+          "texte": "Alors lorsqu'on se lance dans un projet de. Valorisation."
+        },
+        {
+          "edito_id": "JJGE-0029",
+          "video": "Vidéo 7 : protection intellectuelle",
+          "question": "",
+          "edito_paragraphe": 155,
+          "texte": "on a un premier environnement immédiat qui est l'établissement dans lequel on se trouve. Donc en général, il y a un labo CNRS"
+        },
+        {
+          "edito_id": "JJGE-0030",
+          "video": "Vidéo 7 : protection intellectuelle",
+          "question": "",
+          "edito_paragraphe": 156,
+          "texte": "ce Sont eux. Qui accompagnent dans la toute première étape qui est le dépôt de brevet et qui c'est eux qui qui héberge."
+        },
+        {
+          "edito_id": "JJGE-0031",
+          "video": "Vidéo 7 : protection intellectuelle",
+          "question": "",
+          "edito_paragraphe": 156,
+          "texte": "ils les accompagnent parce qu'ils fournissent les locaux, les moyens, les services techniques. Et ça, c'est extrêmement important."
+        },
+        {
+          "edito_id": "JJGE-0032",
+          "video": "Vidéo 7 : protection intellectuelle",
+          "question": "",
+          "edito_paragraphe": 157,
+          "texte": "Le deuxième accompagnateur. Que l'on oublie généralement de citer, c'est France Travail. Très souvent, s'il y a des gens qui se lancent et c'est le cas de mon co-fondateur et qui démissionne."
+        },
+        {
+          "edito_id": "JJGE-0033",
+          "video": "Vidéo 7 : protection intellectuelle",
+          "question": "",
+          "edito_paragraphe": 157,
+          "texte": "si France travail un jour décide que ce sera 18 mois, ça sera un énorme problème pour pour l'innovation parce que parce que c'est moi, là, on les compte dans notre situation."
+        },
+        {
+          "edito_id": "JJGE-0034",
+          "video": "Vidéo 8 : transfert et licensing",
+          "question": "",
+          "edito_paragraphe": 173,
+          "texte": "par ordre d'entrée, il y a tout d'abord tout au début, un programme de l'université qui s'appelle POC in Lab,"
+        },
+        {
+          "edito_id": "JJGE-0035",
+          "video": "Vidéo 8 : transfert et licensing",
+          "question": "",
+          "edito_paragraphe": 173,
+          "texte": "nous avons bénéficié dans ce cadre là de projet d'un programme de formation organisé par l'incubAlliance de l'Université Paris-Saclay."
+        },
+        {
+          "edito_id": "JJGE-0039",
+          "video": "Vidéo 9 : ne pas avancer seul/ ecosysteme",
+          "question": "",
+          "edito_paragraphe": 184,
+          "texte": "L'écosystème est également très utile à cet à cette étape là pour faire des introductions."
+        },
+        {
+          "edito_id": "JJGE-0040",
+          "video": "Vidéo 9 : ne pas avancer seul/ ecosysteme",
+          "question": "",
+          "edito_paragraphe": 185,
+          "texte": "Lorsqu'on a démarré le projet, nous étions deux et un ingénieur, un scientifique et donc il manquait à l'évidence une compétence qui est la compétence de management, la compétence finance comptable, ressources humaines."
+        },
+        {
+          "edito_id": "JJGE-0041",
+          "video": "Vidéo 9 : ne pas avancer seul/ ecosysteme",
+          "question": "",
+          "edito_paragraphe": 186,
+          "texte": "Et donc nous avons tout de suite cherché à pallier ce manque en cherchant un troisième co-fondateur"
+        },
+        {
+          "edito_id": "JJGE-0042",
+          "video": "Vidéo 9 : ne pas avancer seul/ ecosysteme",
+          "question": "",
+          "edito_paragraphe": 186,
+          "texte": "c'est parce que nous avons eu la chance de trouver quelqu'un de remarquable que. qu'ENSUITE nous avons pu nous présenter devant les investisseurs avec une équipe très complémentaire"
+        },
+        {
+          "edito_id": "JJGE-0043",
+          "video": "Vidéo 9 : ne pas avancer seul/ ecosysteme",
+          "question": "",
+          "edito_paragraphe": 187,
+          "texte": "n'investissent jamais en évaluant la pertinence d'un projet technique. Ils investissent en pariant sur une équipe humaine."
+        },
+        {
+          "edito_id": "JJGE-0053",
+          "video": "Vidéo 12 : changer de langage",
+          "question": "",
+          "edito_paragraphe": 212,
+          "texte": "oui, nous avons été aidés par plusieurs programmes"
+        },
+        {
+          "edito_id": "JJGE-0054",
+          "video": "Vidéo 12 : changer de langage",
+          "question": "",
+          "edito_paragraphe": 213,
+          "texte": "le CNRS a un programme de prématurés et un programme de coaching pour les entrepreneurs qui s'appelle Rise, qui nous a fait beaucoup d'introduction."
+        },
+        {
+          "edito_id": "JJGE-0055",
+          "video": "Vidéo 12 : changer de langage",
+          "question": "",
+          "edito_paragraphe": 214,
+          "texte": "Au niveau de l'université, nous avons été accompagnés par un incubateur qui s'appelle Incube Alliance"
+        },
+        {
+          "edito_id": "JJGE-0056",
+          "video": "Vidéo 12 : changer de langage",
+          "question": "",
+          "edito_paragraphe": 216,
+          "texte": "Nous avons bénéficié du programme de Lumina Edge,"
+        },
+        {
+          "edito_id": "JJGE-0057",
+          "video": "Vidéo 12 : changer de langage",
+          "question": "",
+          "edito_paragraphe": 218,
+          "texte": "et puis nous avons aussi bénéficié d'un programme privé qui s'appelle Wilco,"
+        },
+        {
+          "edito_id": "JJGE-0058",
+          "video": "Vidéo 12 : changer de langage",
+          "question": "",
+          "edito_paragraphe": 218,
+          "texte": "dans lequel il y a et des prêts d'honneur qui sont faits,"
+        },
+        {
+          "edito_id": "JJGE-0059",
+          "video": "Vidéo 12 : changer de langage",
+          "question": "",
+          "edito_paragraphe": 218,
+          "texte": "de l'ordre de 100 000 €, avec une formation qui accompagne les investisseurs."
+        },
+        {
+          "edito_id": "JJGE-0060",
+          "video": "Vidéo 13 : ce que cela change dans le métier de chercheur",
+          "question": "",
+          "edito_paragraphe": 224,
+          "texte": "depuis la création de l'entreprise, je fais partie du conseil de surveillance de l'entreprise"
+        },
+        {
+          "edito_id": "JJGE-0061",
+          "video": "Vidéo 13 : ce que cela change dans le métier de chercheur",
+          "question": "",
+          "edito_paragraphe": 224,
+          "texte": "donc à ce titre là, j'ai une tout autre type d'activité avec une dimension stratégique extrêmement importante"
+        },
+        {
+          "edito_id": "JJGE-0062",
+          "video": "Vidéo 13 : ce que cela change dans le métier de chercheur",
+          "question": "",
+          "edito_paragraphe": 227,
+          "texte": "voir que ce que l'on a fait se transforme en un produit qui va avoir un impact sur le développement de maladies, des solutions, des maladies auto-immunes ou des cancers."
+        },
+        {
+          "edito_id": "JJGE-0063",
+          "video": "Vidéo 13 : ce que cela change dans le métier de chercheur",
+          "question": "",
+          "edito_paragraphe": 228,
+          "texte": "Les l'innovation que nous avons développé aujourd'hui, elle s'est traduite par un prototype d'appareil. On parle de MVP dans le jargon entrepreneurial, donc de Minimum Viable Product."
+        },
+        {
+          "edito_id": "JJGE-0064",
+          "video": "Vidéo 13 : ce que cela change dans le métier de chercheur",
+          "question": "",
+          "edito_paragraphe": 229,
+          "texte": "Ce n'est pas encore un produit commercial stabilisé et fiable, et on l'a déjà vendu à deux entreprises. Et donc là, on voit les conséquences concrètes."
+        },
+        {
+          "edito_id": "JJGE-0065",
+          "video": "Vidéo 13 : ce que cela change dans le métier de chercheur",
+          "question": "",
+          "edito_paragraphe": 231,
+          "texte": "c'est l'une des rares solutions alternatives aux antibiotiques, ce qui est aujourd'hui un problème majeur compte tenu des résistances aux antibiotiques qui apparaissent de plus en plus."
+        },
+        {
+          "edito_id": "JJGE-0066",
+          "video": "Vidéo 15 : Passer à l’action",
+          "question": "",
+          "edito_paragraphe": 235,
+          "texte": "Si vous attendez d'être sûr que ça va marcher. Vous ne saurez jamais."
+        },
+        {
+          "edito_id": "JJGE-0067",
+          "video": "Vidéo 15 : Passer à l’action",
+          "question": "",
+          "edito_paragraphe": 236,
+          "texte": "Donc se lancer dans l'entrepreneuriat, ça veut juste décider qu'on choisit de se lancer vers un chemin où on ne sait pas si on ira au bout, mais où on pense que l'on aura la capacité à contourner les obstacles parce que ce sera fait d'obstacles."
+        },
+        {
+          "edito_id": "JJGE-0068",
+          "video": "Vidéo 15 : Passer à l’action",
+          "question": "",
+          "edito_paragraphe": 237,
+          "texte": "si vous avez confiance en votre capacité à résoudre les problèmes du quotidien, c'est juste une collection de problèmes quotidiens qui sont devant vous, mais avec un objectif au bout qui est assez exaltant."
+        },
+        {
+          "edito_id": "JJGE-0069",
+          "video": "Vidéo 15 : Passer à l’action",
+          "question": "",
+          "edito_paragraphe": 240,
+          "texte": "ceux qui sont passés dix ans, 20 ans avant et qui ont réussi sont toujours prêts à vous aider."
+        },
+        {
+          "edito_id": "JJGE-0070",
+          "video": "Vidéo 15 : Passer à l’action",
+          "question": "",
+          "edito_paragraphe": 240,
+          "texte": "J'ai eu beaucoup de coup de fil très long avec des gens"
+        },
+        {
+          "edito_id": "JJGE-0071",
+          "video": "Vidéo 15 : Passer à l’action",
+          "question": "",
+          "edito_paragraphe": 240,
+          "texte": "et qui prennent 1 h, 2 h, 3 h pour transmettre leur expérience."
+        }
+      ],
+      "non_match_derushage": [
         {
           "segment_id": "JJG-0005",
           "theme": "T2",
@@ -106,13 +681,6 @@
           "commentaire": "POC in Lab, IncubAlliance, Rise, maturation, incubateur, Wilco, Institut d'Optique."
         },
         {
-          "segment_id": "JJG-0009",
-          "theme": "T6",
-          "debut": "01:22:03.910",
-          "fin": "01:23:28.850",
-          "commentaire": "Start-up basee sur un brevet ; licence exclusive vs transfert de propriete."
-        },
-        {
           "segment_id": "JJG-0008",
           "theme": "T5",
           "debut": "01:22:18.830",
@@ -125,20 +693,6 @@
           "debut": "01:23:37.970",
           "fin": "01:23:58.080",
           "commentaire": "Ecosysteme local utile pour introductions investisseurs lors de la levee de fonds."
-        },
-        {
-          "segment_id": "JJG-0011",
-          "theme": "T8",
-          "debut": "01:25:09.690",
-          "fin": "01:27:41.830",
-          "commentaire": "Financements avant/apres creation ; ne pas creer trop tot ; acceleration apres levee."
-        },
-        {
-          "segment_id": "JJG-0013",
-          "theme": "T10",
-          "debut": "01:27:49.270",
-          "fin": "01:28:43.160",
-          "commentaire": "Apprendre la langue de l'entrepreneuriat, finance, droit et PI."
         }
       ]
     },
@@ -250,16 +804,599 @@
       ]
     },
     {
+      "temoin": "Loïc Rajjou",
+      "source_edito": "00_Mooc_Transcript_Loic Rajjou.docx",
+      "id_edito": "loi_edito",
+      "nb_edito": 80,
+      "nb_matchs": 0,
+      "nb_non_match_edito": 80,
+      "nb_segments_derushage": 0,
+      "nb_non_match_derushage": 0,
+      "couverture_edito": 0.0,
+      "recouvrement_derushage": 0.0,
+      "metrics_derushage": {
+        "nb_segments": 0,
+        "score_autonomie_moyen": 0.0,
+        "score_montage_moyen": 0.0,
+        "score_composite_moyen": 0.0,
+        "fluidite_score": 0.0
+      },
+      "matchs": [],
+      "non_match_edito": [
+        {
+          "edito_id": "LOIE-0001",
+          "video": "Vidéo 1 : pourquoi oser",
+          "question": "",
+          "edito_paragraphe": 35,
+          "texte": "je m’appelle Loïc Rajou, je suis professeur à AgroParisTech en biologie végétale et je m’intéresse particulièrement à tout ce qui est biologie cellulaire, génomique, métabolisme et biochimie."
+        },
+        {
+          "edito_id": "LOIE-0002",
+          "video": "Vidéo 1 : pourquoi oser",
+          "question": "",
+          "edito_paragraphe": 37,
+          "texte": "Comment est née mon innovation ? Alors ça a été un, un chemin assez long de plusieurs années de, de recherche plutôt fondamentale exploratoire sur la compréhension des mécanismes cellulaires et moléculaires qui conduisent à la germination et à la croissance des plantes. Et toutes les connaissances qu’on a pu générer au cours de toutes ces années m’ont amené à réfléchir, à savoir qu’est-ce qu’on peut faire de ces travaux, au-delà de les publier et de générer de la connaissance."
+        },
+        {
+          "edito_id": "LOIE-0003",
+          "video": "Vidéo 1 : pourquoi oser",
+          "question": "",
+          "edito_paragraphe": 39,
+          "texte": "j’ai toujours fait du lien, en fait, entre la recherche très académique et très fondamentale et avec de la recherche plutôt appliquée et finalisée"
+        },
+        {
+          "edito_id": "LOIE-0004",
+          "video": "Vidéo 1 : pourquoi oser",
+          "question": "",
+          "edito_paragraphe": 39,
+          "texte": "avec aussi peut-être une conviction personnelle qu’on est payé par de l’argent public et que l’argent public doit aussi servir à être valorisé,"
+        },
+        {
+          "edito_id": "LOIE-0005",
+          "video": "Vidéo 1 : pourquoi oser",
+          "question": "",
+          "edito_paragraphe": 43,
+          "texte": "On travaille dans le monde académique et une de nos missions, c’est aussi de partager les connaissances, de partager ce qu’on produit."
+        },
+        {
+          "edito_id": "LOIE-0006",
+          "video": "Vidéo 1 : pourquoi oser",
+          "question": "",
+          "edito_paragraphe": 48,
+          "texte": "Et ça, en fait, ça a créé vraiment un, un lien très fort en fait, euh, entre, ben, notre réseau d’acteurs filière semences et plants en France et puis notre laboratoire."
+        },
+        {
+          "edito_id": "LOIE-0007",
+          "video": "Vidéo 1 : pourquoi oser",
+          "question": "",
+          "edito_paragraphe": 53,
+          "texte": "Alors au tout début de la genèse de ce projet, euh, il y a une chance, c’est qu’effectivement, j’avais un doctorant"
+        },
+        {
+          "edito_id": "LOIE-0008",
+          "video": "Vidéo 1 : pourquoi oser",
+          "question": "",
+          "edito_paragraphe": 53,
+          "texte": "qui ne se voyait pas aller vers, euh, une carrière académique."
+        },
+        {
+          "edito_id": "LOIE-0009",
+          "video": "Vidéo 1 : pourquoi oser",
+          "question": "",
+          "edito_paragraphe": 54,
+          "texte": "Et autour de ça, on avait une équipe technique"
+        },
+        {
+          "edito_id": "LOIE-0010",
+          "video": "Vidéo 1 : pourquoi oser",
+          "question": "",
+          "edito_paragraphe": 54,
+          "texte": "je pense qu’un point clé, c’est constituer une équipe. Et ça a été vraiment un déclencheur de se dire : « On n’est pas tout seul. On est trois, quatre personnes où on croit au projet. »"
+        },
+        {
+          "edito_id": "LOIE-0011",
+          "video": "Vidéo 1 : pourquoi oser",
+          "question": "",
+          "edito_paragraphe": 56,
+          "texte": "Pourquoi oser ? Moi, je dirais : pourquoi pas oser ? Euh, parce que finalement, la recherche académique, c’est passionnant et on peut très bien faire de l’entrepreneuriat en maintenant un très très bon niveau de recherche académique."
+        },
+        {
+          "edito_id": "LOIE-0012",
+          "video": "Vidéo 2 : de la recherche fondamentale à l’innovation",
+          "question": "",
+          "edito_paragraphe": 62,
+          "texte": "les producteurs de plants veulent une graine efficace pour un plant efficace. Donc ils cherchent à atteindre un, un taux de germination proche de cent pour cent. Or, on sait que c'est une biologie complexe."
+        },
+        {
+          "edito_id": "LOIE-0013",
+          "video": "Vidéo 2 : de la recherche fondamentale à l’innovation",
+          "question": "",
+          "edito_paragraphe": 62,
+          "texte": "Donc nous, on cherche à comprendre les mécanismes moléculaires qui conduisent à l'efficacité de levée."
+        },
+        {
+          "edito_id": "LOIE-0014",
+          "video": "Vidéo 2 : de la recherche fondamentale à l’innovation",
+          "question": "",
+          "edito_paragraphe": 62,
+          "texte": "donc là, ça nous a vraiment fait réfléchir, nous, sur les connaissances qu'on avait, comment on pouvait les valoriser et comment est-ce qu'on pouvait développer quelque chose d'un petit peu nouveau qui se positionnerait dans le paysage au moins européen, en commençant par le paysage français."
+        },
+        {
+          "edito_id": "LOIE-0015",
+          "video": "Vidéo 2 : de la recherche fondamentale à l’innovation",
+          "question": "",
+          "edito_paragraphe": 64,
+          "texte": "je dirais comme un peu dans tout projet, on commence avec des idées un peu préconçues"
+        },
+        {
+          "edito_id": "LOIE-0016",
+          "video": "Vidéo 2 : de la recherche fondamentale à l’innovation",
+          "question": "",
+          "edito_paragraphe": 64,
+          "texte": "en discutant avec des acteurs, ben, on s'est aperçu que c'était beaucoup plus large que ça."
+        },
+        {
+          "edito_id": "LOIE-0017",
+          "video": "Vidéo 2 : de la recherche fondamentale à l’innovation",
+          "question": "",
+          "edito_paragraphe": 69,
+          "texte": "elle est innovante parce que d'une part, elle est biosourcée. Elle est sans usage de produits chimiques artificiels"
+        },
+        {
+          "edito_id": "LOIE-0018",
+          "video": "Vidéo 2 : de la recherche fondamentale à l’innovation",
+          "question": "",
+          "edito_paragraphe": 69,
+          "texte": "Donc c'est un traitement de semences naturel par amorçage de germination."
+        },
+        {
+          "edito_id": "LOIE-0019",
+          "video": "Vidéo 2 : de la recherche fondamentale à l’innovation",
+          "question": "",
+          "edito_paragraphe": 69,
+          "texte": "elle offre des solutions qui n'existent pas aujourd'hui sur le marché."
+        },
+        {
+          "edito_id": "LOIE-0020",
+          "video": "Vidéo 3 : identifier un besoin réel",
+          "question": "",
+          "edito_paragraphe": 74,
+          "texte": "on a beaucoup échangé avec euh déjà notre environnement de proximité au laboratoire, avec les visions qu'on pouvait avoir des, des besoins en interne. Euh on a échangé aussi dans le cadre d'une étude de marché qu'on a réalisée, qu'on a fait réaliser, portée par la, par la SATT Paris-Saclay,"
+        },
+        {
+          "edito_id": "LOIE-0021",
+          "video": "Vidéo 3 : identifier un besoin réel",
+          "question": "",
+          "edito_paragraphe": 74,
+          "texte": "Et puis après, on a beaucoup échangé avec les acteurs eux-mêmes,"
+        },
+        {
+          "edito_id": "LOIE-0022",
+          "video": "Vidéo 3 : identifier un besoin réel",
+          "question": "",
+          "edito_paragraphe": 74,
+          "texte": "Et on s'est aperçu qu'en fait les exigences étaient très différentes en termes de qualité euh, d'une filière à l'autre."
+        },
+        {
+          "edito_id": "LOIE-0023",
+          "video": "Vidéo 3 : identifier un besoin réel",
+          "question": "",
+          "edito_paragraphe": 76,
+          "texte": "donc à partir de là, on a commencé vraiment à creuser, euh, une approche plutôt effectivement entrepreneuriale sur la question de la valeur."
+        },
+        {
+          "edito_id": "LOIE-0024",
+          "video": "Vidéo 3 : identifier un besoin réel",
+          "question": "",
+          "edito_paragraphe": 79,
+          "texte": "Alors, euh, est-ce que notre idée de départ a évolué ? Très certainement. Elle a même beaucoup évolué."
+        },
+        {
+          "edito_id": "LOIE-0025",
+          "video": "Vidéo 3 : identifier un besoin réel",
+          "question": "",
+          "edito_paragraphe": 79,
+          "texte": "ce qui a évolué, c'est comment on l'a ajustée aux acteurs."
+        },
+        {
+          "edito_id": "LOIE-0026",
+          "video": "Vidéo 3 : identifier un besoin réel",
+          "question": "",
+          "edito_paragraphe": 79,
+          "texte": "Je vous donne un exemple : aujourd'hui, en laitue, pour produire un plan de laitue Ils cherchent pas 95 % de germination, ils cherchent pas 97 % de germination, ils veulent au moins 98, 99"
+        },
+        {
+          "edito_id": "LOIE-0027",
+          "video": "Vidéo 3 : identifier un besoin réel",
+          "question": "",
+          "edito_paragraphe": 81,
+          "texte": "Alors le conseil que je pourrais donner à un chercheur ou un enseignant-chercheur"
+        },
+        {
+          "edito_id": "LOIE-0028",
+          "video": "Vidéo 3 : identifier un besoin réel",
+          "question": "",
+          "edito_paragraphe": 81,
+          "texte": "il doit en imaginer la capacité à, à faire du scale-up, à monter à une échelle qui soit applicable pour les acteurs. Et donc, il doit bien connaître le mode de fonctionnement des acteurs industriels."
+        },
+        {
+          "edito_id": "LOIE-0029",
+          "video": "Vidéo 3 : identifier un besoin réel",
+          "question": "",
+          "edito_paragraphe": 84,
+          "texte": "Et nous, en tant que, modestement, chercheurs académiques, on essaye de venir contribuer"
+        },
+        {
+          "edito_id": "LOIE-0030",
+          "video": "Vidéo 3 : identifier un besoin réel",
+          "question": "",
+          "edito_paragraphe": 84,
+          "texte": "à une stratégie qui soit collective et qui soit utile finalement pour la société et pour l'environnement"
+        },
+        {
+          "edito_id": "LOIE-0031",
+          "video": "Vidéo 3 : identifier un besoin réel",
+          "question": "",
+          "edito_paragraphe": 84,
+          "texte": "on a vocation à travailler pour finalement quelque chose qui soit du bien collectif."
+        },
+        {
+          "edito_id": "LOIE-0032",
+          "video": "Vidéo 3 : identifier un besoin réel",
+          "question": "",
+          "edito_paragraphe": 86,
+          "texte": "En termes de recherche académique, on peut avoir des convictions, mais le chemin pour y aller peut difficilement être sans les acteurs ac-, industriels. Donc ma, ma conviction, euh, c'est qu'effectivement, il faut qu'on réussisse à trouver une articulation qui permette de, d'avoir un, un bénéfice commun"
+        },
+        {
+          "edito_id": "LOIE-0033",
+          "video": "Vidéo 3 : identifier un besoin réel",
+          "question": "",
+          "edito_paragraphe": 86,
+          "texte": "à partir des connaissances académiques et à travers les stratégies individuelles des entreprises ou collectives"
+        },
+        {
+          "edito_id": "LOIE-0034",
+          "video": "Vidéo 4 : sortir du labo",
+          "question": "",
+          "edito_paragraphe": 92,
+          "texte": "nous, dans le cas de la semence, on est capable de travailler sur quelques milligrammes, quelques grammes. Dans l'industrie, on travaille sur quelques kilos ou quelques centaines de kilos"
+        },
+        {
+          "edito_id": "LOIE-0035",
+          "video": "Vidéo 4 : sortir du labo",
+          "question": "",
+          "edito_paragraphe": 92,
+          "texte": "si on ne f-- si on n'articule pas ça, euh, il est improbable, impossible d'aller au marché derrière"
+        },
+        {
+          "edito_id": "LOIE-0036",
+          "video": "Vidéo 4 : sortir du labo",
+          "question": "",
+          "edito_paragraphe": 94,
+          "texte": "alors ce qu'on a découvert, qu'on n'aurait jamais appris si on était resté, euh, simplement au laboratoire,"
+        },
+        {
+          "edito_id": "LOIE-0037",
+          "video": "Vidéo 4 : sortir du labo",
+          "question": "",
+          "edito_paragraphe": 94,
+          "texte": "quand on est au labo, euh, dans le monde académique, on est assez peu contraint aux exigences réglementaires ou aux exigences économiques des industries Et ça, euh, il fallait qu'on le prenne en compte dans notre dimensionnement."
+        },
+        {
+          "edito_id": "LOIE-0038",
+          "video": "Vidéo 4 : sortir du labo",
+          "question": "",
+          "edito_paragraphe": 94,
+          "texte": "ça nous a permis aussi de se positionner pour leur apporter notre technologie."
+        },
+        {
+          "edito_id": "LOIE-0039",
+          "video": "Vidéo 5 : une idée ne suffit pas",
+          "question": "",
+          "edito_paragraphe": 100,
+          "texte": "Alors pour passer de résultats académiques de, de recherche exploratoire vers des résultats concrets applicables, euh, on a fait des choix"
+        },
+        {
+          "edito_id": "LOIE-0040",
+          "video": "Vidéo 5 : une idée ne suffit pas",
+          "question": "",
+          "edito_paragraphe": 102,
+          "texte": "Pour passer de nos résultats académiques vers des, euh, technologies applicables, euh, on a dû faire des choix."
+        },
+        {
+          "edito_id": "LOIE-0041",
+          "video": "Vidéo 5 : une idée ne suffit pas",
+          "question": "",
+          "edito_paragraphe": 102,
+          "texte": "on a choisi de se concentrer sur des espèces potagères pour lesquelles des besoins en traitement de semences étaient très forts aujourd'hui par les industriels. Donc on a choisi la tomate et la laitue."
+        },
+        {
+          "edito_id": "LOIE-0042",
+          "video": "Vidéo 5 : une idée ne suffit pas",
+          "question": "",
+          "edito_paragraphe": 103,
+          "texte": "Il fallait qu'on fasse la démonstration au terrain. Ça, ça a été un point hyper important pour nous."
+        },
+        {
+          "edito_id": "LOIE-0043",
+          "video": "Vidéo 5 : une idée ne suffit pas",
+          "question": "",
+          "edito_paragraphe": 105,
+          "texte": "Comment on passe du labo à convaincre les utilisateurs. Convaincre scientifiquement, on savait faire. Convaincre les utilisateurs agricoles, ben, on s'est aperçu qu'on ne savait pas faire. Donc il fallait qu'on dimensionne différemment nos essais."
+        },
+        {
+          "edito_id": "LOIE-0044",
+          "video": "Vidéo 5 : une idée ne suffit pas",
+          "question": "",
+          "edito_paragraphe": 108,
+          "texte": "Comment est-ce qu'on est passé de nos, euh, quelques grammes à quelques dizaines de kilos de traitement ? À partir du moment où on a vu que nos technologies, à ces échelles-là, répondaient bien, on savait qu'on était capable de maîtriser le process et donc de le transférer."
+        },
+        {
+          "edito_id": "LOIE-0045",
+          "video": "Vidéo 5 : une idée ne suffit pas",
+          "question": "",
+          "edito_paragraphe": 110,
+          "texte": "on a appris que, ben, une culture, c'est une saison. Donc, si on rate notre culture, ben on attend l'année d'après. Alors qu'au laboratoire, ben finalement, on est en conditions contrôlées."
+        },
+        {
+          "edito_id": "LOIE-0046",
+          "video": "Vidéo 5 : une idée ne suffit pas",
+          "question": "",
+          "edito_paragraphe": 110,
+          "texte": "Donc ça nous a changé complètement la vision aussi de la temporalité."
+        },
+        {
+          "edito_id": "LOIE-0047",
+          "video": "Vidéo 6 : freins, doutes et légitimité",
+          "question": "",
+          "edito_paragraphe": 116,
+          "texte": "Alors les freins et les craintes pour s'engager dans la valorisation. Je garderai une phrase de Xavier Apollinerski, qui était président de la SAT à l'époque, qui disait : “Si vous voulez entreprendre, rentrez chez vous et parlez-en à votre compagne ou à votre compagnon pour être sûr que familialement, tout le monde est prêt à entreprendre” . Et cette phrase, elle m'a fait prendre conscience d'une chose, c'est qu'entreprendre, c'est aussi une prise de risque individuelle"
+        },
+        {
+          "edito_id": "LOIE-0048",
+          "video": "Vidéo 6 : freins, doutes et légitimité",
+          "question": "",
+          "edito_paragraphe": 118,
+          "texte": "une étude de marché, on sait pas faire. Euh, une étude de brevetabilité, on sait pas faire."
+        },
+        {
+          "edito_id": "LOIE-0049",
+          "video": "Vidéo 6 : freins, doutes et légitimité",
+          "question": "",
+          "edito_paragraphe": 118,
+          "texte": "aller chercher des financeurs et vendre un produit, on sait pas faire. Et donc, il faut qu'on aille chercher des experts. Donc, on est rentrés en prématuration, puis en maturation à l'ASAT. Et l'ASAT, ça a été vraiment une structure qui nous a apporté beaucoup."
+        },
+        {
+          "edito_id": "LOIE-0050",
+          "video": "Vidéo 6 : freins, doutes et légitimité",
+          "question": "",
+          "edito_paragraphe": 119,
+          "texte": "Beaucoup en termes de réseau, en termes de compréhension des différentes problématiques qui peuvent conduire sur le chemin de la valorisation."
+        },
+        {
+          "edito_id": "LOIE-0051",
+          "video": "Vidéo 6 : freins, doutes et légitimité",
+          "question": "",
+          "edito_paragraphe": 120,
+          "texte": "mise en relation avec des incubateurs, avec des investisseurs, avec des juristes sur l'aspect, euh, brevet."
+        },
+        {
+          "edito_id": "LOIE-0052",
+          "video": "Vidéo 6 : freins, doutes et légitimité",
+          "question": "",
+          "edito_paragraphe": 120,
+          "texte": "et effectivement, comprendre un peu les, les clés"
+        },
+        {
+          "edito_id": "LOIE-0053",
+          "video": "Vidéo 6 : freins, doutes et légitimité",
+          "question": "",
+          "edito_paragraphe": 122,
+          "texte": "j'avais une, une connaissance dans mon réseau qui était un, un, un ancien scientifique"
+        },
+        {
+          "edito_id": "LOIE-0054",
+          "video": "Vidéo 6 : freins, doutes et légitimité",
+          "question": "",
+          "edito_paragraphe": 123,
+          "texte": "Et j'ai contacté cette personne, je lui ai demandé de venir nous coacher."
+        },
+        {
+          "edito_id": "LOIE-0055",
+          "video": "Vidéo 6 : freins, doutes et légitimité",
+          "question": "",
+          "edito_paragraphe": 123,
+          "texte": "Il nous a dit : « Le scientifique, c'est pas le bon interlocuteur. Il faut discuter avec le responsable commercial, avec, euh, le directeur business de l'entreprise."
+        },
+        {
+          "edito_id": "LOIE-0056",
+          "video": "Vidéo 6 : freins, doutes et légitimité",
+          "question": "",
+          "edito_paragraphe": 123,
+          "texte": "ça a changé complètement notre panorama aussi de, d'interlocuteurs."
+        },
+        {
+          "edito_id": "LOIE-0057",
+          "video": "Vidéo 7 : protection intellectuelle",
+          "question": "",
+          "edito_paragraphe": 130,
+          "texte": "Une grande question qui s'est posée, nous, sur notre technologie, c'est qu'est-ce qui est brevetable OK. Mais surtout, qu'est-ce qui est divulgable ? Potentiellement, tout était brevetable. Par contre, il y avait une partie de la techno qu'on ne souhaitait pas divulguer pour une question assez simple, c'est qu'on était incapable de démontrer la copie de cette partie de la technologie"
+        },
+        {
+          "edito_id": "LOIE-0058",
+          "video": "Vidéo 7 : protection intellectuelle",
+          "question": "",
+          "edito_paragraphe": 131,
+          "texte": "Donc là, ça nous a amenés à réfléchir à une stratégie qui était plus une stratégie de secret industrie"
+        },
+        {
+          "edito_id": "LOIE-0059",
+          "video": "Vidéo 7 : protection intellectuelle",
+          "question": "",
+          "edito_paragraphe": 132,
+          "texte": "Et donc on a deux volets en fait dans notre pays, on a un brevet,"
+        },
+        {
+          "edito_id": "LOIE-0060",
+          "video": "Vidéo 7 : protection intellectuelle",
+          "question": "",
+          "edito_paragraphe": 132,
+          "texte": "Et on a toute une partie, en fait, euh, sur le procédé même d'application qui est resté sur du secret industriel."
+        },
+        {
+          "edito_id": "LOIE-0061",
+          "video": "Vidéo 8 : transfert et licensing",
+          "question": "",
+          "edito_paragraphe": 141,
+          "texte": "Est-ce qu'on peut avancer seul ? Probablement qu'il y a des entrepreneurs qui peuvent avancer seuls. Dans le monde agricole, on ne peut pas avancer seul."
+        },
+        {
+          "edito_id": "LOIE-0062",
+          "video": "Vidéo 8 : transfert et licensing",
+          "question": "",
+          "edito_paragraphe": 141,
+          "texte": "pour tout un tas de compétences qu'on n'avait pas : marché, euh, juridique, propriété intellectuelle. Euh, et puis, euh, on a été, on a eu besoin d'être accompagné aussi pour être financé."
+        },
+        {
+          "edito_id": "LOIE-0063",
+          "video": "Vidéo 8 : transfert et licensing",
+          "question": "",
+          "edito_paragraphe": 144,
+          "texte": "Donc, on a frappé à la porte de l'écosystème d'innovation Paris-Saclay, donc à la SAT Paris-Saclay,"
+        },
+        {
+          "edito_id": "LOIE-0064",
+          "video": "Vidéo 8 : transfert et licensing",
+          "question": "",
+          "edito_paragraphe": 144,
+          "texte": "où on a eu un financement de maturation."
+        },
+        {
+          "edito_id": "LOIE-0065",
+          "video": "Vidéo 8 : transfert et licensing",
+          "question": "",
+          "edito_paragraphe": 146,
+          "texte": "On a eu à nouveau besoin de financement, donc au moment de la création. Donc on a été vers d'autres sources de financement, notamment, euh, à BPI France, sur le programme i-Lab, euh, pour lequel on a été lauréat."
+        },
+        {
+          "edito_id": "LOIE-0066",
+          "video": "Vidéo 8 : transfert et licensing",
+          "question": "",
+          "edito_paragraphe": 147,
+          "texte": "On s'est beaucoup appuyé sur les pôles de compétitivité, notamment le pôle VegEpolis Vallée"
+        },
+        {
+          "edito_id": "LOIE-0067",
+          "video": "Vidéo 8 : transfert et licensing",
+          "question": "",
+          "edito_paragraphe": 149,
+          "texte": "On a eu cette chance-là d'avoir des personnes"
+        },
+        {
+          "edito_id": "LOIE-0068",
+          "video": "Vidéo 13 : ce que cela change dans le métier de chercheur",
+          "question": "",
+          "edito_paragraphe": 176,
+          "texte": "aujourd'hui, je participe à-- au comité scientifique de l'entreprise, euh, tout en gardant mes fonctions d'enseignant-chercheur."
+        },
+        {
+          "edito_id": "LOIE-0069",
+          "video": "Vidéo 13 : ce que cela change dans le métier de chercheur",
+          "question": "",
+          "edito_paragraphe": 176,
+          "texte": "tout ce qui est, euh, ce qui incombe à, à ma fonction, euh, de, de, de, d'enseignant-chercheur du monde académique, à être impartial, euh, à garder, euh, cette neutralité,"
+        },
+        {
+          "edito_id": "LOIE-0070",
+          "video": "Vidéo 13 : ce que cela change dans le métier de chercheur",
+          "question": "",
+          "edito_paragraphe": 176,
+          "texte": "je peux faire-- occuper ces deux fonctions-là, euh, sans forcément avoir de, de, de pénalités dans mon activité académique pleine."
+        },
+        {
+          "edito_id": "LOIE-0071",
+          "video": "Vidéo 15 : passer à l’action",
+          "question": "",
+          "edito_paragraphe": 183,
+          "texte": "Alors les messages que j'aimerais transmettre à tous les acteurs académiques, euh, ou autres d'ailleurs qui veulent se lancer dans de l'entrepreneuriat, c'est de construire leur environnement, de bien savoir, euh, quels sont leurs objectifs."
+        },
+        {
+          "edito_id": "LOIE-0072",
+          "video": "Vidéo 15 : passer à l’action",
+          "question": "",
+          "edito_paragraphe": 183,
+          "texte": "Est-ce que leurs objectifs sont financiers ou est-ce que leurs objectifs sont vraiment un apport d'une proposition de valeur pour des acteurs particuliers"
+        },
+        {
+          "edito_id": "LOIE-0073",
+          "video": "Vidéo 15 : passer à l’action",
+          "question": "",
+          "edito_paragraphe": 184,
+          "texte": "Ça peut être les deux, euh, mais je pense que le, le chemin peut être différent."
+        },
+        {
+          "edito_id": "LOIE-0074",
+          "video": "Vidéo 15 : passer à l’action",
+          "question": "",
+          "edito_paragraphe": 189,
+          "texte": "il faut connaître l'environnement parce qu'il faut connaître les acteurs qui sont les concurrents, mais qui sont aussi les potentiels collaborateurs"
+        },
+        {
+          "edito_id": "LOIE-0075",
+          "video": "Vidéo 15 : passer à l’action",
+          "question": "",
+          "edito_paragraphe": 191,
+          "texte": "construire, euh, s'équiper effectivement de, d'experts qui vont venir vous, vous accompagner."
+        },
+        {
+          "edito_id": "LOIE-0076",
+          "video": "Vidéo 15 : passer à l’action",
+          "question": "",
+          "edito_paragraphe": 196,
+          "texte": "Donc si je devais ren-- résumer en un mot, euh, cette démarche entrepreneuriale, euh, gérer le risque"
+        },
+        {
+          "edito_id": "LOIE-0077",
+          "video": "Vidéo 15 : passer à l’action",
+          "question": "",
+          "edito_paragraphe": 196,
+          "texte": "quand on est un acteur académique en France, on est rattaché à une tutelle académique,"
+        },
+        {
+          "edito_id": "LOIE-0078",
+          "video": "Vidéo 15 : passer à l’action",
+          "question": "",
+          "edito_paragraphe": 196,
+          "texte": "le risque, il est porté par l'individu. Il n'est pas porté par l'institution. Et ça, c'est quelque chose que j'aimerais changer, peut-être d'ici la ma fin de carrière,"
+        },
+        {
+          "edito_id": "LOIE-0079",
+          "video": "Vidéo 15 : passer à l’action",
+          "question": "",
+          "edito_paragraphe": 200,
+          "texte": "Pour des personnes qui hésitent à rentrer dans une démarche entrepreneuriale, euh, mon seul conseil, c'est aller discuter avec des entrepreneurs, aller discuter avec des personnes dans votre secteur d'activité ou dans d'autres secteurs qui ont pris le risque d'entreprendre, qui ont pris le risque de créer."
+        },
+        {
+          "edito_id": "LOIE-0080",
+          "video": "Vidéo 15 : passer à l’action",
+          "question": "",
+          "edito_paragraphe": 201,
+          "texte": "Moi, ce qu'on aurait aimé savoir avant de démarrer cette aventure-là, c'est peut-être mieux connaître effectivement toutes les démarches, euh, qui conduisent à lever des fonds, euh, pour pouvoir mener l'aventure entrepreneuriale."
+        }
+      ],
+      "non_match_derushage": []
+    },
+    {
       "temoin": "Muriel Thomas",
       "source_edito": "00-Mooc_Transcript_Muriel Thomas.docx",
       "id_edito": "mur_edito",
       "nb_edito": 74,
-      "nb_matchs": 2,
-      "nb_non_match_edito": 72,
+      "nb_matchs": 17,
+      "nb_non_match_edito": 57,
       "nb_segments_derushage": 15,
-      "nb_non_match_derushage": 13,
-      "couverture_edito": 0.027,
-      "recouvrement_derushage": 0.133,
+      "nb_non_match_derushage": 8,
+      "couverture_edito": 0.23,
+      "recouvrement_derushage": 0.467,
       "metrics_derushage": {
         "nb_segments": 15,
         "score_autonomie_moyen": 0.883,
@@ -268,6 +1405,201 @@
         "fluidite_score": 0.755
       },
       "matchs": [
+        {
+          "edito_id": "MURE-0040",
+          "video": "Vidéo 7 : protection intellectuelle",
+          "question": "",
+          "edito_paragraphe": 125,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "on ne peut pas breveter du vivant donc on ne peut pas breveter une bacterie en revanche on peut breveter son application",
+          "segment_id": "MUR-0007",
+          "segment_theme": "T5",
+          "segment_debut": "01:22:21.940",
+          "segment_fin": "01:23:46.160"
+        },
+        {
+          "edito_id": "MURE-0046",
+          "video": "Vidéo 8 : transfert et licensing",
+          "question": "",
+          "edito_paragraphe": 143,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "et donc la on combine a la fois une structure matricielle alimentaire riche en nutriments pour nourrir notre corps et un probiotique pour nourrir notre microbiote",
+          "segment_id": "MUR-0008",
+          "segment_theme": "T6",
+          "segment_debut": "01:26:50.860",
+          "segment_fin": "01:27:54.760"
+        },
+        {
+          "edito_id": "MURE-0048",
+          "video": "Vidéo 8 : transfert et licensing",
+          "question": "",
+          "edito_paragraphe": 145,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "danslecadredelastartuponanegocieaveclinraeunelicenceexclusivedexploitationcestadirequelasoucheappartientalinrae",
+          "segment_id": "MUR-0008",
+          "segment_theme": "T6",
+          "segment_debut": "01:26:50.860",
+          "segment_fin": "01:27:54.760"
+        },
+        {
+          "edito_id": "MURE-0060",
+          "video": "Vidéo 11 : partenariat et posture/ l’équipe autour du chercheur",
+          "question": "",
+          "edito_paragraphe": 175,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "quand on etablit des collaborations tout au long du projet il est vraiment important de le faire dans le cadre de contrats soit des contrats de collaboration soit des contrats de prestation",
+          "segment_id": "MUR-0011",
+          "segment_theme": "T9",
+          "segment_debut": "01:32:23.570",
+          "segment_fin": "01:33:54.000"
+        },
+        {
+          "edito_id": "MURE-0062",
+          "video": "Vidéo 11 : partenariat et posture/ l’équipe autour du chercheur",
+          "question": "",
+          "edito_paragraphe": 175,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "ca donne des regles et ca donne un cadre qui est tout a fait essentiel surtout au debut quand vous pouvez aller dans tous les sens",
+          "segment_id": "MUR-0011",
+          "segment_theme": "T9",
+          "segment_debut": "01:32:23.570",
+          "segment_fin": "01:33:54.000"
+        },
+        {
+          "edito_id": "MURE-0049",
+          "video": "Vidéo 8 : transfert et licensing",
+          "question": "",
+          "edito_paragraphe": 145,
+          "similarite": 0.818,
+          "match_phrase": true,
+          "sequence_contenue": "a la licence exclusive d exploitation de ce brevet",
+          "segment_id": "MUR-0008",
+          "segment_theme": "T6",
+          "segment_debut": "01:26:50.860",
+          "segment_fin": "01:27:54.760"
+        },
+        {
+          "edito_id": "MURE-0063",
+          "video": "Vidéo 12 : changer de langage",
+          "question": "",
+          "edito_paragraphe": 180,
+          "similarite": 0.75,
+          "match_phrase": true,
+          "sequence_contenue": "il faut changer de posture il faut changer de vocabulaire et il faut s adapter",
+          "segment_id": "MUR-0012",
+          "segment_theme": "T10",
+          "segment_debut": "01:33:59.440",
+          "segment_fin": "01:36:02.710"
+        },
+        {
+          "edito_id": "MURE-0045",
+          "video": "Vidéo 8 : transfert et licensing",
+          "question": "",
+          "edito_paragraphe": 143,
+          "similarite": 0.692,
+          "match_phrase": true,
+          "sequence_contenue": "il se trouve que j avais travaille pendant quinze ans plus de quinze ans sur ce projet et",
+          "segment_id": "MUR-0008",
+          "segment_theme": "T6",
+          "segment_debut": "01:26:50.860",
+          "segment_fin": "01:27:54.760"
+        },
+        {
+          "edito_id": "MURE-0056",
+          "video": "Vidéo 10 : financements, concours et temps pour entreprendre",
+          "question": "",
+          "edito_paragraphe": 163,
+          "similarite": 0.692,
+          "match_phrase": true,
+          "sequence_contenue": "apres il y a d autres marches qui vont etre peut etre un peu plus petites mais non",
+          "segment_id": "MUR-0010",
+          "segment_theme": "T8",
+          "segment_debut": "01:30:20.660",
+          "segment_fin": "01:31:35.899"
+        },
+        {
+          "edito_id": "MURE-0047",
+          "video": "Vidéo 8 : transfert et licensing",
+          "question": "",
+          "edito_paragraphe": 144,
+          "similarite": 0.6,
+          "match_phrase": true,
+          "sequence_contenue": "et c est cette coherence la qui m a",
+          "segment_id": "MUR-0008",
+          "segment_theme": "T6",
+          "segment_debut": "01:26:50.860",
+          "segment_fin": "01:27:54.760"
+        },
+        {
+          "edito_id": "MURE-0059",
+          "video": "Vidéo 11 : partenariat et posture/ l’équipe autour du chercheur",
+          "question": "",
+          "edito_paragraphe": 168,
+          "similarite": 0.545,
+          "match_phrase": true,
+          "sequence_contenue": "plus un projet est ambitieux plus",
+          "segment_id": "MUR-0011",
+          "segment_theme": "T9",
+          "segment_debut": "01:32:23.570",
+          "segment_fin": "01:33:54.000"
+        },
+        {
+          "edito_id": "MURE-0055",
+          "video": "Vidéo 10 : financements, concours et temps pour entreprendre",
+          "question": "",
+          "edito_paragraphe": 161,
+          "similarite": 0.524,
+          "match_phrase": true,
+          "sequence_contenue": "qui va s occuper de tous les developpements scientifiques et cliniques",
+          "segment_id": "MUR-0010",
+          "segment_theme": "T8",
+          "segment_debut": "01:30:20.660",
+          "segment_fin": "01:31:35.899"
+        },
+        {
+          "edito_id": "MURE-0041",
+          "video": "Vidéo 7 : protection intellectuelle",
+          "question": "",
+          "edito_paragraphe": 126,
+          "similarite": 0.483,
+          "match_phrase": true,
+          "sequence_contenue": "dans tous les brevets qui existent dans le monde ce brevet a une place",
+          "segment_id": "MUR-0007",
+          "segment_theme": "T5",
+          "segment_debut": "01:22:21.940",
+          "segment_fin": "01:23:46.160"
+        },
+        {
+          "edito_id": "MURE-0054",
+          "video": "Vidéo 10 : financements, concours et temps pour entreprendre",
+          "question": "",
+          "edito_paragraphe": 160,
+          "similarite": 0.419,
+          "match_phrase": true,
+          "sequence_contenue": "ilabcanousafaitpasserunemarcheparcequonapupasserdesalimentsprets",
+          "segment_id": "MUR-0010",
+          "segment_theme": "T8",
+          "segment_debut": "01:30:20.660",
+          "segment_fin": "01:31:35.899"
+        },
+        {
+          "edito_id": "MURE-0039",
+          "video": "Vidéo 7 : protection intellectuelle",
+          "question": "",
+          "edito_paragraphe": 124,
+          "similarite": 0.286,
+          "match_phrase": true,
+          "sequence_contenue": "on a abouti a la caracterisation du probiotique et la",
+          "segment_id": "MUR-0007",
+          "segment_theme": "T5",
+          "segment_debut": "01:22:21.940",
+          "segment_fin": "01:23:46.160"
+        },
         {
           "edito_id": "MURE-0013",
           "video": "Vidéo 2 : de la recherche fondamentale à l’innovation",
@@ -549,27 +1881,6 @@
           "texte": "C'est vrai, peut-être, vous allez publier un petit peu moins parce que votre temps est plus contraint, mais vous produisez autre chose. Vous produisez un produit, vous produisez un réseau, vous produisez d'autres connaissances et d'autres applications."
         },
         {
-          "edito_id": "MURE-0039",
-          "video": "Vidéo 7 : protection intellectuelle",
-          "question": "",
-          "edito_paragraphe": 124,
-          "texte": "pendant un pro- un projet de, de recherche qui était financé par Carnot Caliment, on a abouti à la caractérisation du probiotique. Et là, euh, je savais qu'il y avait un potentiel de valorisation."
-        },
-        {
-          "edito_id": "MURE-0040",
-          "video": "Vidéo 7 : protection intellectuelle",
-          "question": "",
-          "edito_paragraphe": 125,
-          "texte": "on ne peut pas breveter du vivant, donc on ne peut pas breveter une bactérie. En revanche, on peut breveter son application"
-        },
-        {
-          "edito_id": "MURE-0041",
-          "video": "Vidéo 7 : protection intellectuelle",
-          "question": "",
-          "edito_paragraphe": 126,
-          "texte": "cette application, elle est travaillée par les ingénieurs d'INRAe Transfert qui regardent si, euh, dans tous les brevets qui existent dans le monde, ce brevet a une place,"
-        },
-        {
           "edito_id": "MURE-0042",
           "video": "Vidéo 7 : protection intellectuelle",
           "question": "",
@@ -589,41 +1900,6 @@
           "question": "",
           "edito_paragraphe": 140,
           "texte": "un acteur territorial, qui est le réseau Entreprendre de l'Essonne"
-        },
-        {
-          "edito_id": "MURE-0045",
-          "video": "Vidéo 8 : transfert et licensing",
-          "question": "",
-          "edito_paragraphe": 143,
-          "texte": "il se trouve que j'avais travaillé pendant quinze ans, plus de quinze ans sur ce projet et j'avais envie d'aller jusqu'au bout."
-        },
-        {
-          "edito_id": "MURE-0046",
-          "video": "Vidéo 8 : transfert et licensing",
-          "question": "",
-          "edito_paragraphe": 143,
-          "texte": "Et donc là, on combine à la fois une structure matricielle alimentaire riche en nutriments pour nourrir notre corps et un probiotique pour nourrir notre microbiote."
-        },
-        {
-          "edito_id": "MURE-0047",
-          "video": "Vidéo 8 : transfert et licensing",
-          "question": "",
-          "edito_paragraphe": 144,
-          "texte": "Et c'est cette cohérence-là qui m'a motivée à créer une start-up."
-        },
-        {
-          "edito_id": "MURE-0048",
-          "video": "Vidéo 8 : transfert et licensing",
-          "question": "",
-          "edito_paragraphe": 145,
-          "texte": "Dans le cadre de la start-up, on a négocié avec l'INRAE une licence exclusive d'exploitation, c'est-à-dire que la souche appartient à l'INRAE,"
-        },
-        {
-          "edito_id": "MURE-0049",
-          "video": "Vidéo 8 : transfert et licensing",
-          "question": "",
-          "edito_paragraphe": 145,
-          "texte": "mais Carambouges a la licence exclusive d'exploitation de ce brevet,"
         },
         {
           "edito_id": "MURE-0050",
@@ -654,27 +1930,6 @@
           "texte": "c'est en s'entourant que vous commencez à acquérir des nouvelles compétences et en se formant."
         },
         {
-          "edito_id": "MURE-0054",
-          "video": "Vidéo 10 : financements, concours et temps pour entreprendre",
-          "question": "",
-          "edito_paragraphe": 160,
-          "texte": "le fait d'avoir été lauréat du concours i-Lab, ça nous a fait passer une marche parce qu'on a pu passer des aliments prêts à consommer à des aliments en poudre qui vont se garder à température ambiante pendant très longtemps."
-        },
-        {
-          "edito_id": "MURE-0055",
-          "video": "Vidéo 10 : financements, concours et temps pour entreprendre",
-          "question": "",
-          "edito_paragraphe": 161,
-          "texte": "On a pu également recruter le premier ingénieur de Carambouges qui va s'occuper de tous les développements scientifiques et cliniques"
-        },
-        {
-          "edito_id": "MURE-0056",
-          "video": "Vidéo 10 : financements, concours et temps pour entreprendre",
-          "question": "",
-          "edito_paragraphe": 163,
-          "texte": "Après, il y a d'autres marches qui vont être peut-être un peu plus petites, mais non moins déterminantes, comme par exemple créer une équipe"
-        },
-        {
           "edito_id": "MURE-0057",
           "video": "Vidéo 10 : financements, concours et temps pour entreprendre",
           "question": "",
@@ -689,39 +1944,11 @@
           "texte": "Ça signifie que je garde mon salaire et je suis simplement soixante pour cent de mon temps en labo, puis quarante pour cent en Carambouges."
         },
         {
-          "edito_id": "MURE-0059",
-          "video": "Vidéo 11 : partenariat et posture/ l’équipe autour du chercheur",
-          "question": "",
-          "edito_paragraphe": 168,
-          "texte": "plus un projet est ambitieux, plus, euh, l'entourage est important"
-        },
-        {
-          "edito_id": "MURE-0060",
-          "video": "Vidéo 11 : partenariat et posture/ l’équipe autour du chercheur",
-          "question": "",
-          "edito_paragraphe": 175,
-          "texte": "Quand on établit des collaborations tout au long du projet, il est vraiment important de le faire dans le cadre de contrats, soit des contrats de collaboration, soit des contrats de prestation,"
-        },
-        {
           "edito_id": "MURE-0061",
           "video": "Vidéo 11 : partenariat et posture/ l’équipe autour du chercheur",
           "question": "",
           "edito_paragraphe": 175,
           "texte": "Dans le cas de Caranbouch, c'est une SAS."
-        },
-        {
-          "edito_id": "MURE-0062",
-          "video": "Vidéo 11 : partenariat et posture/ l’équipe autour du chercheur",
-          "question": "",
-          "edito_paragraphe": 175,
-          "texte": "ça donne des règles et ça donne un cadre qui est tout à fait essentiel, surtout au début, quand vous pouvez aller dans tous les sens."
-        },
-        {
-          "edito_id": "MURE-0063",
-          "video": "Vidéo 12 : changer de langage",
-          "question": "",
-          "edito_paragraphe": 180,
-          "texte": "il faut changer de posture, il faut changer de vocabulaire et il faut s'adapter aux, à d'autres interlocuteurs."
         },
         {
           "edito_id": "MURE-0064",
@@ -852,46 +2079,11 @@
           "commentaire": "Breveter l'application (vivant) ; protection avant publication et soutenance."
         },
         {
-          "segment_id": "MUR-0007",
-          "theme": "T5",
-          "debut": "01:22:21.940",
-          "fin": "01:23:46.160",
-          "commentaire": "Vivant non brevetable ; breveter l'application avec INRA Transfert."
-        },
-        {
-          "segment_id": "MUR-0008",
-          "theme": "T6",
-          "debut": "01:26:50.860",
-          "fin": "01:27:54.760",
-          "commentaire": "Licence a un industriel ou start-up ; licence exclusive INRAE a Carembouche."
-        },
-        {
-          "segment_id": "MUR-0010",
-          "theme": "T8",
-          "debut": "01:30:20.660",
-          "fin": "01:31:35.899",
-          "commentaire": "Concours i-Lab : pivot poudre, recrutement premier ingenieur."
-        },
-        {
-          "segment_id": "MUR-0011",
-          "theme": "T9",
-          "debut": "01:32:23.570",
-          "fin": "01:33:54.000",
-          "commentaire": "Cofondatrices, CEO, ingenieur ; comites strategique et scientifique."
-        },
-        {
           "segment_id": "MUR-0015",
           "theme": "T12",
           "debut": "01:32:41.690",
           "fin": "01:33:54.000",
           "commentaire": "Contractualiser les collaborations : contrats collaboration, prestation, SAS."
-        },
-        {
-          "segment_id": "MUR-0012",
-          "theme": "T10",
-          "debut": "01:33:59.440",
-          "fin": "01:36:02.710",
-          "commentaire": "Adapter le discours EHPAD, medecins, investisseurs ; pitch par repetitions."
         }
       ]
     },
@@ -1414,12 +2606,12 @@
     {
       "module_id": "M1",
       "module_label": "Module 1",
-      "nb_edito": 45,
-      "nb_edito_matches": 5,
+      "nb_edito": 152,
+      "nb_edito_matches": 8,
       "nb_derushage": 26,
-      "nb_derushage_matches": 4,
-      "couverture_edito": 0.111,
-      "recouvrement_derushage": 0.154,
+      "nb_derushage_matches": 6,
+      "couverture_edito": 0.053,
+      "recouvrement_derushage": 0.231,
       "metrics_derushage": {
         "nb_segments": 26,
         "score_autonomie_moyen": 0.875,
@@ -1431,12 +2623,12 @@
     {
       "module_id": "M2",
       "module_label": "Module 2",
-      "nb_edito": 24,
-      "nb_edito_matches": 0,
+      "nb_edito": 39,
+      "nb_edito_matches": 11,
       "nb_derushage": 8,
-      "nb_derushage_matches": 0,
-      "couverture_edito": 0.0,
-      "recouvrement_derushage": 0.0,
+      "nb_derushage_matches": 3,
+      "couverture_edito": 0.282,
+      "recouvrement_derushage": 0.375,
       "metrics_derushage": {
         "nb_segments": 8,
         "score_autonomie_moyen": 0.906,
@@ -1448,12 +2640,12 @@
     {
       "module_id": "M3",
       "module_label": "Module 3",
-      "nb_edito": 17,
-      "nb_edito_matches": 0,
+      "nb_edito": 28,
+      "nb_edito_matches": 9,
       "nb_derushage": 8,
-      "nb_derushage_matches": 0,
-      "couverture_edito": 0.0,
-      "recouvrement_derushage": 0.0,
+      "nb_derushage_matches": 2,
+      "couverture_edito": 0.321,
+      "recouvrement_derushage": 0.25,
       "metrics_derushage": {
         "nb_segments": 8,
         "score_autonomie_moyen": 0.875,
@@ -1465,12 +2657,12 @@
     {
       "module_id": "M4",
       "module_label": "Module 4",
-      "nb_edito": 15,
-      "nb_edito_matches": 0,
+      "nb_edito": 18,
+      "nb_edito_matches": 7,
       "nb_derushage": 8,
-      "nb_derushage_matches": 0,
-      "couverture_edito": 0.0,
-      "recouvrement_derushage": 0.0,
+      "nb_derushage_matches": 3,
+      "couverture_edito": 0.389,
+      "recouvrement_derushage": 0.375,
       "metrics_derushage": {
         "nb_segments": 8,
         "score_autonomie_moyen": 0.844,
@@ -1482,7 +2674,7 @@
     {
       "module_id": "M5",
       "module_label": "Module 5",
-      "nb_edito": 8,
+      "nb_edito": 0,
       "nb_edito_matches": 0,
       "nb_derushage": 9,
       "nb_derushage_matches": 0,
@@ -1499,7 +2691,7 @@
     {
       "module_id": "M6",
       "module_label": "Module 6",
-      "nb_edito": 14,
+      "nb_edito": 37,
       "nb_edito_matches": 0,
       "nb_derushage": 0,
       "nb_derushage_matches": 0,

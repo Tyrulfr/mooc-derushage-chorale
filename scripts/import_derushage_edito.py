@@ -23,7 +23,7 @@ DOCS = [
     },
     {
         "id": "jjg_edito",
-        "source": "00-Mooc_Questionnaire_JJ_GREFFET.docx",
+        "source": "00_Mooc_Transcript_JJ Greffet.docx",
         "intervenant": "Jean-Jacques Greffet",
         "prefix": "JJGE",
     },
@@ -32,6 +32,12 @@ DOCS = [
         "source": "00-Mooc_Transcript_Muriel Thomas.docx",
         "intervenant": "Muriel Thomas",
         "prefix": "MURE",
+    },
+    {
+        "id": "loi_edito",
+        "source": "00_Mooc_Transcript_Loic Rajjou.docx",
+        "intervenant": "Loïc Rajjou",
+        "prefix": "LOIE",
     },
 ]
 

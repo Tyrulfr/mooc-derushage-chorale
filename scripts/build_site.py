@@ -6,6 +6,7 @@ import re
 from collections import Counter, defaultdict
 from pathlib import Path
 import unicodedata
+from urllib.parse import quote
 
 from lib_derushage import (
     ROOT,
@@ -25,7 +26,6 @@ from lib_derushage import (
     load_derushage_edito,
     load_derushage_edito_index,
     load_experts_profils,
-    load_match_derushage_edito,
     load_programme_table,
     load_segments,
     merge_bab_encode_blocs,
@@ -35,6 +35,9 @@ from lib_derushage import (
     total_score,
     write_text,
 )
+
+TEST_MAIL_RECIPIENT = "christophe.dubois@universite-paris-saclay.fr"
+REVIEW_MAIL_RECIPIENT = "ritanoelle.moussa@agroparistech.fr"
 
 
 STYLE = """
@@ -418,6 +421,9 @@ tbody tr:last-child td { border-bottom: none; }
   border-radius: var(--radius);
   font-size: 14px;
   line-height: 1.55;
+}
+.mail-ready {
+  font-family: Aptos, "Segoe UI", Arial, sans-serif;
 }
 .methodology-panel {
   margin-top: 28px;
@@ -1063,8 +1069,16 @@ def _humanize_capsule_labels(text: str) -> str:
 
 def _strip_chercheur_prefix(text: str, chercheur: str) -> str:
     cleaned = text.strip()
-    if chercheur and cleaned.startswith(chercheur):
-        cleaned = cleaned[len(chercheur) :].lstrip(" :—-\u2014")
+    aliases: list[str] = []
+    if chercheur:
+        aliases.append(chercheur)
+    key = _canonical_name_key(chercheur or "")
+    if key == "yann meunier":
+        aliases.extend(["Yann Monier", "Yan Monier"])
+    for alias in aliases:
+        if alias and cleaned.startswith(alias):
+            cleaned = cleaned[len(alias) :].lstrip(" :—-\u2014")
+            break
     return cleaned.strip()
 
 
@@ -1778,10 +1792,16 @@ def build_home(capsules: list[dict], segments: list[dict]) -> None:
             "Vue d'ensemble des capsules, durees, chercheurs et acces aux montages.",
         ),
         (
-            "cartes_chaleur.html",
-            "▦",
-            "Cartes de chaleur",
-            "Relations sujets × intervenants proposes dans le programme.",
+            "tb_edito.html",
+            "🗂",
+            "Capsules témoins",
+            "Tableau de bord des selections surlignees de l'edito (documents source .docx).",
+        ),
+        (
+            "mails_experts.html",
+            "✉",
+            "Mails experts",
+            "Brouillons personnalises pour solliciter les intervenants experts par video.",
         ),
         (
             "profils_experts.html",
@@ -1800,12 +1820,6 @@ def build_home(capsules: list[dict], segments: list[dict]) -> None:
             "⌗",
             "Correspondances édito",
             "Tableau de conception complet avec liens vers les titres video proposes par l'edito.",
-        ),
-        (
-            "match.html",
-            "⇄",
-            "Match",
-            "Comparaison derushage interne vs selection edito par temoin et module.",
         ),
         (
             "bab_encodes.html",
@@ -1884,8 +1898,12 @@ def _canonical_name_key(name: str) -> str:
 
 
 EXPERT_NAME_ALIASES = {
+    "antoine la treille": "Antoine Latreille",
+    "antoine latreille": "Antoine Latreille",
     "soizic lefreuvre": "Soizic Lefeuvre",
     "soizic lefeuvre": "Soizic Lefeuvre",
+    "yoan montenot": "Yoann Montenot",
+    "yoann montenot": "Yoann Montenot",
 }
 
 
@@ -2204,6 +2222,502 @@ def build_dashboard(capsules: list[dict], segments: list[dict], affectations: di
             nav_current="tableau_de_bord.html",
             breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Tableau de bord", None)),
             page_header='<div class="page-head"><h1>Tableau de bord</h1><p class="lead">Suivi des capsules, montages provisoires et equilibre des voix chercheurs.</p></div>',
+        ),
+    )
+
+
+def _tb_edito_parse_videos_expert(raw: str) -> list[dict]:
+    videos: list[dict] = []
+    text = (raw or "").replace("\r", "").strip()
+    if not text:
+        return videos
+
+    chunks = re.split(r"(?=(?:^|\n)\s*E\d+(?:\s*bis)?\s*[—–-])", text, flags=re.IGNORECASE)
+    for chunk in chunks:
+        candidate = chunk.strip()
+        if not candidate:
+            continue
+        match = re.match(r"^\s*(E\d+(?:\s*bis)?)\s*[—–-]\s*(.+)$", candidate, flags=re.IGNORECASE | re.DOTALL)
+        if not match:
+            continue
+        code = re.sub(r"\s+", "", match.group(1))
+        desc = " ".join(match.group(2).split())
+        videos.append(
+            {
+                "code": code,
+                "intervenant": "",
+                "titre": desc,
+                "descriptif": "",
+            }
+        )
+    return videos
+
+
+def _tb_edito_resume_temoignages(sequences: list[dict]) -> str:
+    by_voice: dict[str, list[str]] = defaultdict(list)
+    for sequence in sequences:
+        voice = sequence.get("intervenant", "").strip() or "Temoin"
+        text = _strip_chercheur_prefix((sequence.get("texte") or "").strip(), voice)
+        if text and text not in by_voice[voice]:
+            by_voice[voice].append(text)
+    lines: list[str] = []
+    for voice in sorted(by_voice):
+        snippets = by_voice[voice][:2]
+        if snippets:
+            lines.append(f"{voice}: {' / '.join(snippets)}")
+    return "\n".join(lines)
+
+
+def _tb_edito_sequences_by_code() -> dict[str, list[dict]]:
+    grouped: dict[str, list[dict]] = defaultdict(list)
+    for item in load_derushage_edito_index():
+        doc = load_derushage_edito(item.get("id", ""))
+        if not doc:
+            continue
+        for sequence in doc.get("sequences", []):
+            video_title = (sequence.get("video") or "").strip()
+            if not video_title:
+                continue
+            targets = _target_codes_from_edito_title(video_title)
+            for code in targets:
+                grouped[code].append(
+                    {
+                        **sequence,
+                        "intervenant": doc.get("intervenant", item.get("intervenant", "")),
+                        "source_doc": doc.get("source", item.get("source", "")),
+                        "video": video_title,
+                    }
+                )
+    return grouped
+
+
+def _tb_edito_chorale_order(sequences: list[dict]) -> list[dict]:
+    if not sequences:
+        return []
+
+    def _bucket_key(item: dict) -> str:
+        question = (item.get("question") or "").strip()
+        if question:
+            return f"q::{_edito_title_core(question)}"
+        video = (item.get("video") or "").strip()
+        return f"v::{_edito_title_core(video)}"
+
+    # Regroupe d'abord par unite de sujet/question, puis alterne les voix.
+    buckets: dict[str, list[dict]] = defaultdict(list)
+    for sequence in sequences:
+        buckets[_bucket_key(sequence)].append(sequence)
+
+    ordered_bucket_keys = sorted(
+        buckets.keys(),
+        key=lambda key: (
+            0 if key.startswith("q::") else 1,
+            key,
+        ),
+    )
+
+    chorale: list[dict] = []
+    for key in ordered_bucket_keys:
+        bucket_sequences = sorted(
+            buckets[key],
+            key=lambda item: (
+                _canonical_name_key(item.get("intervenant", "")),
+                int(item.get("ordre", 0) or 0),
+            ),
+        )
+        by_voice: dict[str, list[dict]] = defaultdict(list)
+        for sequence in bucket_sequences:
+            voice = (sequence.get("intervenant") or "temoin").strip().lower()
+            by_voice[voice].append(sequence)
+
+        voices = sorted(by_voice.keys())
+        while True:
+            progressed = False
+            for voice in voices:
+                if by_voice[voice]:
+                    chorale.append(by_voice[voice].pop(0))
+                    progressed = True
+            if not progressed:
+                break
+
+    return chorale
+
+
+def _tb_edito_is_presentation_sequence(sequence: dict) -> bool:
+    text = _normalize_for_match(sequence.get("texte", ""))
+    question = _normalize_for_match(sequence.get("question", ""))
+    video = _normalize_for_match(sequence.get("video", ""))
+    indicators = (
+        "je suis",
+        "je m appelle",
+        "je travaille",
+        "mon domaine de recherche",
+        "quel est votre domaine de recherche",
+        "qui etes vous",
+    )
+    if any(token in question for token in indicators):
+        return True
+    if "pourquoi oser" in video and any(token in text for token in indicators):
+        return True
+    return False
+
+
+def _tb_edito_order_for_code(code: str, sequences: list[dict]) -> list[dict]:
+    if code != "T1":
+        return _tb_edito_chorale_order(sequences)
+
+    # Regle editoriale T1: ne jamais omettre la presentation des temoins.
+    intro_sequences = [seq for seq in sequences if _tb_edito_is_presentation_sequence(seq)]
+    remaining_sequences = [seq for seq in sequences if seq not in intro_sequences]
+    return _tb_edito_chorale_order(intro_sequences) + _tb_edito_chorale_order(remaining_sequences)
+
+
+def _tb_edito_build_cadrage(code: str, ordered_ids: list[str], by_seq_id: dict[str, dict], videos_expert: list[dict]) -> dict:
+    video_label = FIXED_TEMOIN_PLAN.get(code, {}).get("label", _label_video_temoin(code))
+    expert_codes = [item.get("code", "") for item in videos_expert if item.get("code")]
+    expert_chain = ", ".join(_label_video_expert(code) for code in expert_codes) if expert_codes else ""
+    transitions = []
+    for idx in range(len(ordered_ids) - 1):
+        current = by_seq_id.get(ordered_ids[idx], {})
+        nxt = by_seq_id.get(ordered_ids[idx + 1], {})
+        current_video = _edito_title_core(current.get("video", ""))
+        next_video = _edito_title_core(nxt.get("video", ""))
+        if not current_video or not next_video or current_video == next_video:
+            continue
+        transitions.append(
+            {
+                "id": f"TR_{len(transitions) + 1:02d}",
+                "position": "Entre deux extraits sur changement de sujet",
+                "fonction": "Transition de sujet",
+                "apres_extrait": ordered_ids[idx],
+                "avant_extrait": ordered_ids[idx + 1],
+                "texte_intervenant": "Nous changeons maintenant d'angle pour poursuivre la progression pedagogique de cette video.",
+                "texte_pancarte": "Transition : nouveau sujet",
+                "enchainement_expert": expert_chain,
+            }
+        )
+    return {
+        "statut": "PROPOSITION_AUTO",
+        "dispositif": "Proposition de conduite narrative pour la capsule temoin.",
+        "note": "Transitions insérées uniquement lors d'un changement de sujet explicite.",
+        "intro": {
+            "position": "Avant le premier extrait",
+            "fonction": "Ouvrir la video temoin et annoncer l'objectif pedagogique",
+            "texte_intervenant": f"Dans cette {video_label}, nous allons partager des experiences concretes pour eclairer les points cles du sujet.",
+            "texte_pancarte": video_label,
+            "enchainement_expert": expert_chain,
+        },
+        "transitions": transitions,
+        "outro": {
+            "position": "Apres le dernier extrait",
+            "fonction": "Clore la video temoin et ouvrir vers les videos expert",
+            "texte_intervenant": "Vous avez maintenant les points essentiels. Passons aux videos expert pour approfondir avec des reperes pratiques.",
+            "texte_pancarte": "Suite : approfondissements expert",
+            "enchainement_expert": expert_chain,
+        },
+    }
+
+
+def _tb_edito_script_with_cadrage(ordre: list[str], by_seq_id: dict[str, dict], cadrage: dict) -> str:
+    if not ordre:
+        return "Aucun extrait edito apparie pour cette video."
+
+    def _seq_line(sequence: dict) -> str:
+        verbatim = sequence.get("texte", "")
+        return (
+            f"[{sequence.get('id', '-')}] {sequence.get('intervenant', '')} | "
+            f"{sequence.get('source_doc', '')} | {sequence.get('video', '')}\n"
+            f"{verbatim}"
+        ).strip()
+
+    def _cadrage_line(kind: str, bloc: dict, label: str = "") -> str:
+        kind_label = kind.upper()
+        if label:
+            kind_label = f"{kind_label} ({label})"
+        position = bloc.get("position", "")
+        header = f"[CADRAGE — NON PRONONCE — {kind_label}] Animateur | {position}"
+        lines = [header]
+        if bloc.get("texte_intervenant"):
+            lines.append(bloc["texte_intervenant"])
+        if bloc.get("texte_pancarte"):
+            lines.append(f"[PANCARTE]\n{bloc['texte_pancarte']}")
+        if bloc.get("enchainement_expert"):
+            lines.append(f"[EXPERT] {bloc['enchainement_expert']}")
+        return "\n".join(lines)
+
+    parts: list[str] = []
+    intro = cadrage.get("intro", {})
+    if intro:
+        parts.append(_cadrage_line("intro", intro))
+
+    for idx, seq_id in enumerate(ordre):
+        sequence = by_seq_id.get(seq_id)
+        if not sequence:
+            continue
+        parts.append(_seq_line(sequence))
+        next_id = ordre[idx + 1] if idx + 1 < len(ordre) else None
+        for transition in cadrage.get("transitions", []):
+            if transition.get("apres_extrait") != seq_id:
+                continue
+            before = transition.get("avant_extrait")
+            if before is not None and before != next_id:
+                continue
+            parts.append(_cadrage_line("transition", transition, transition.get("id", "")))
+
+    outro = cadrage.get("outro", {})
+    if outro:
+        parts.append(_cadrage_line("outro", outro))
+
+    return "\n\n".join(parts)
+
+
+def build_tb_edito_capsule_pages(programme_table: dict) -> None:
+    rows_by_code = {row.get("code", ""): row for row in programme_table.get("rows", [])}
+    grouped = _tb_edito_sequences_by_code()
+    all_edito_intervenants = sorted(
+        {
+            item.get("intervenant", "").strip()
+            for item in load_derushage_edito_index()
+            if item.get("intervenant", "").strip()
+        }
+    )
+    expected: set[str] = set()
+    empty_by_id: dict[str, dict] = {}
+
+    for code, spec in sorted(FIXED_TEMOIN_PLAN.items(), key=lambda item: int(item[0][1:])):
+        page_name = f"tb_edito_{code}.html"
+        expected.add(page_name)
+        row = rows_by_code.get(code, {})
+        sequences = grouped.get(code, [])
+        sequences_sorted = _tb_edito_order_for_code(code, sequences)
+        by_seq_id = {item.get("id", f"{code}-NOID"): item for item in sequences_sorted}
+        ordre = [item.get("id", f"{code}-NOID") for item in sequences_sorted]
+
+        videos_expert = _tb_edito_parse_videos_expert(row.get("videos_referent", ""))
+        experts_proposes = _extract_intervenants(row.get("noms_proposes", ""))
+        resume = ""
+        cadrage = _tb_edito_build_cadrage(code, ordre, by_seq_id, videos_expert)
+
+        script_final = _tb_edito_script_with_cadrage(ordre, by_seq_id, cadrage)
+
+        capsule_data = {
+            "ordre_montage": ordre,
+            "script_final": script_final,
+            "resume_temoignages": resume,
+            "videos_expert": videos_expert,
+            "experts_proposes": experts_proposes,
+            "cadrage_animateur": cadrage,
+        }
+
+        sections = [
+            f"<p><strong>Objectif pedagogique :</strong> {escape(row.get('objectif_pedagogique', 'A renseigner.'))}</p>",
+            f"<p><strong>Video temoin :</strong> {escape(spec.get('label', _label_video_temoin(code)))}</p>",
+            f"<p class='meta'><strong>Sequences edito apparies :</strong> {len(sequences_sorted)}</p>",
+            "<h2>Montage édito retenu</h2>",
+        ]
+        if code == "T1":
+            sections.append(
+                "<p class='meta'><strong>Regle T1 :</strong> les presentations des temoins sont conservees en ouverture du montage choral.</p>"
+            )
+        if sequences_sorted:
+            for sequence in sequences_sorted:
+                verbatim = sequence.get("texte", "")
+                sections.append(
+                    "<div class='card'>"
+                    f"<strong>{escape(sequence.get('id', '-'))}</strong> "
+                    f"<span class='meta'>{escape(sequence.get('intervenant', ''))} · {escape(sequence.get('source_doc', ''))}</span>"
+                    f"<p class='meta'><strong>{escape(sequence.get('video', 'Video non renseignee'))}</strong></p>"
+                    f"<p>{escape(verbatim)}</p>"
+                    "</div>"
+                )
+        else:
+            sections.append("<p class='meta'>Aucun extrait surligne apparié automatiquement a cette video.</p>")
+        voices_in_code = {
+            item.get("intervenant", "").strip()
+            for item in sequences_sorted
+            if item.get("intervenant", "").strip()
+        }
+        missing_intervenants = [name for name in all_edito_intervenants if name not in voices_in_code]
+        if missing_intervenants:
+            sections.append("<h3>Témoins sans extrait surligné sur cette vidéo</h3>")
+            sections.append(
+                "<p class='meta'>Presence documentaire uniquement (pas de sequence verbatim retenue pour cette video dans les surlignages).</p>"
+            )
+            sections.append(
+                "<ul>"
+                + "".join(f"<li>{escape(name)}</li>" for name in missing_intervenants)
+                + "</ul>"
+            )
+        sections.append(cadrage_animateur_section(capsule_data))
+        sections.append("<h2>Script final</h2>")
+        sections.append(f"<div class='script' id='script-final'>{escape(script_final)}</div>")
+        sections.append(synthese_temoignages_section(code, capsule_data))
+        sections.append(brief_intervenant_section(code, capsule_data, empty_by_id))
+        sections.append(referents_section(capsule_data))
+        sections.append(export_word_section(code, spec.get("label", code), capsule_data, empty_by_id, programme_table))
+
+        write_text(
+            SITE / page_name,
+            html_page(
+                f"Capsule témoin — {code}",
+                "\n".join(part for part in sections if part),
+                scripts=["assets/export-word.js"],
+                nav_current="tb_edito.html",
+                breadcrumb=html_breadcrumb(
+                    ("Accueil", "index.html"),
+                    ("Capsules témoins", "tb_edito.html"),
+                    (code, None),
+                ),
+                page_header=(
+                    "<div class='page-head'>"
+                    f"<h1>{escape(code)} — Capsule témoin</h1>"
+                    f"<p class='lead'>{escape(spec.get('label', _label_video_temoin(code)))}</p>"
+                    "</div>"
+                ),
+            ),
+        )
+
+    for path in SITE.glob("tb_edito_T*.html"):
+        if path.name not in expected:
+            path.unlink()
+
+
+def build_tb_edito_page() -> None:
+    docs = []
+    for item in load_derushage_edito_index():
+        doc = load_derushage_edito(item.get("id", ""))
+        if doc:
+            docs.append(doc)
+
+    total_sequences = sum(len(doc.get("sequences", [])) for doc in docs)
+    total_paragraphs = sum(int(doc.get("nb_paragraphes_analyse", 0) or 0) for doc in docs)
+    docs_with_sequences = sum(1 for doc in docs if doc.get("sequences"))
+    all_sequences = [sequence for doc in docs for sequence in doc.get("sequences", [])]
+    unique_video_titles = sorted(
+        {
+            (sequence.get("video") or "").strip()
+            for sequence in all_sequences
+            if (sequence.get("video") or "").strip()
+        }
+    )
+    questions_count = sum(1 for sequence in all_sequences if (sequence.get("question") or "").strip())
+    unresolved_videos = sum(1 for sequence in all_sequences if not (sequence.get("video") or "").strip())
+
+    coverage_counter = Counter()
+    unresolved_titles = Counter()
+    for sequence in all_sequences:
+        title = (sequence.get("video") or "").strip()
+        if not title:
+            continue
+        targets = _target_codes_from_edito_title(title)
+        if targets:
+            for code in targets:
+                coverage_counter[code] += 1
+        else:
+            unresolved_titles[title] += 1
+
+    covered_codes = {code for code, count in coverage_counter.items() if count > 0}
+    rows = []
+    for doc in docs:
+        doc_id = doc.get("id", "")
+        sequences = doc.get("sequences", [])
+        seq_count = len(sequences)
+        question_doc_count = sum(1 for sequence in sequences if (sequence.get("question") or "").strip())
+        video_titles = {
+            (sequence.get("video") or "").strip()
+            for sequence in sequences
+            if (sequence.get("video") or "").strip()
+        }
+        targets = set()
+        for title in video_titles:
+            targets.update(_target_codes_from_edito_title(title))
+        targets_label = ", ".join(sorted(targets)) if targets else "-"
+        rows.append(
+            "<tr>"
+            f"<td><a href='derushage_edito_{escape(doc_id)}.html'>{escape(doc.get('intervenant', doc_id))}</a></td>"
+            f"<td>{escape(doc.get('source', '-'))}</td>"
+            f"<td>{seq_count}</td>"
+            f"<td>{escape(doc.get('nb_paragraphes_analyse', 0))}</td>"
+            f"<td>{len(video_titles)}</td>"
+            f"<td>{escape(targets_label)}</td>"
+            f"<td>{question_doc_count}</td>"
+            f"<td>{escape(doc.get('date_maj', '-'))}</td>"
+            "</tr>"
+        )
+
+    coverage_rows = []
+    for code, spec in sorted(FIXED_TEMOIN_PLAN.items(), key=lambda item: int(item[0][1:])):
+        code_link = f"<a href='tb_edito_{escape(code)}.html'>{escape(code)}</a>"
+        coverage_rows.append(
+            "<tr>"
+            f"<td>{escape(spec.get('module', '-'))}</td>"
+            f"<td>{code_link}</td>"
+            f"<td>{escape(spec.get('label', '-'))}</td>"
+            f"<td>{coverage_counter.get(code, 0)}</td>"
+            "</tr>"
+        )
+
+    unresolved_rows = "".join(
+        f"<li>{escape(title)} <span class='meta'>({count} seq.)</span></li>"
+        for title, count in unresolved_titles.most_common(10)
+    )
+    intervenants = sorted({doc.get("intervenant", "").strip() for doc in docs if doc.get("intervenant")})
+    chips = "".join(
+        f"<a class='chip' href='derushage_edito_{escape(doc.get('id', ''))}.html'>{escape(doc.get('intervenant', 'Intervenant'))}</a>"
+        for doc in sorted(docs, key=lambda item: (item.get("intervenant", ""), item.get("id", "")))
+    )
+    body = (
+        "<section class='stats-grid'>"
+        "<div class='stat-card'>"
+        "<div class='stat-card__label'>Documents édito</div>"
+        f"<div class='stat-card__value'>{len(docs)}</div>"
+        f"<div class='stat-card__meta'>{docs_with_sequences} avec sequences retenues</div>"
+        "</div>"
+        "<div class='stat-card'>"
+        "<div class='stat-card__label'>Séquences surlignées</div>"
+        f"<div class='stat-card__value'>{total_sequences}</div>"
+        f"<div class='stat-card__meta'>{questions_count} avec question renseignee</div>"
+        "</div>"
+        "<div class='stat-card'>"
+        "<div class='stat-card__label'>Couverture vidéos édito</div>"
+        f"<div class='stat-card__value'>{len(covered_codes)}/12</div>"
+        f"<div class='stat-card__meta'>{len(unique_video_titles)} titres video detectes · {unresolved_videos} sequences sans video</div>"
+        "</div>"
+        "<div class='stat-card'>"
+        "<div class='stat-card__label'>Paragraphes analysés</div>"
+        f"<div class='stat-card__value'>{total_paragraphs}</div>"
+        "<div class='stat-card__meta'>issus des transcripts corriges fournis</div>"
+        "</div>"
+        "</section>"
+        "<h2>Documents édito</h2>"
+        "<div class='table-wrap'><table><thead><tr>"
+        "<th>Intervenant</th><th>Source</th><th>Sequences retenues</th><th>Paragraphes analyses</th>"
+        "<th>Videos distinctes</th><th>Cibles T1..T12</th><th>Questions</th><th>Mise a jour</th>"
+        "</tr></thead><tbody>"
+        + ("\n".join(rows) or "<tr><td colspan='8'>Aucun document edito detecte.</td></tr>")
+        + "</tbody></table></div>"
+        "<h2>Couverture du plan témoin édito</h2>"
+        "<div class='table-wrap'><table><thead><tr>"
+        "<th>Module</th><th>Code</th><th>Vidéo témoin fixée</th><th>Seq. édito appariées</th>"
+        "</tr></thead><tbody>"
+        + ("\n".join(coverage_rows) or "<tr><td colspan='4'>Aucune couverture.</td></tr>")
+        + "</tbody></table></div>"
+        + (
+            "<h2>Titres vidéo édito non appariés automatiquement</h2>"
+            f"<ul>{unresolved_rows}</ul>"
+            if unresolved_rows
+            else ""
+        )
+        + "<h2>Intervenants édito</h2>"
+        + (f"<div class='chip-grid'>{chips}</div>" if chips else "<p class='meta'>Aucun intervenant edito.</p>")
+    )
+    write_text(
+        SITE / "tb_edito.html",
+        html_page(
+            "Capsules témoins",
+            body,
+            nav_current="tb_edito.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Capsules témoins", None)),
+            page_header='<div class="page-head"><h1>Capsules témoins</h1><p class="lead">Suivi des selections surlignees de l\'edito, avec couverture des videos temoins fixees.</p></div>',
         ),
     )
 
@@ -2600,37 +3114,109 @@ def _collect_edito_video_titles() -> list[dict]:
     return sorted(titles, key=lambda item: item["title"].lower())
 
 
+FIXED_TEMOIN_PLAN = {
+    "T1": {
+        "module": "M1",
+        "label": "VIDÉO 1 : POURQUOI OSER ?",
+        "questions": [
+            "Quel est votre domaine de recherche (en une phrase)",
+        ],
+    },
+    "T2": {
+        "module": "M1",
+        "label": "VIDÉO 2 : DE LA RECHERCHE À L’INNOVATION",
+        "questions": [
+            "À quel moment vous êtes-vous posé la question de l’usage ou de l’utilité de votre innovation ?",
+            "Quel problème concret votre innovation permet-elle de résoudre ?",
+        ],
+    },
+    "T3": {
+        "module": "M1",
+        "label": "VIDÉO 3 : IDENTIFIER UN BESOIN RÉEL + SORTIR DU LABORATOIRE (fusion)",
+        "questions": [
+            "Comment avez-vous validé qu’il existait un besoin ou un intérêt",
+            "Pourquoi est-il essentiel de sortir du laboratoire pour innover ?",
+            "Qu'est-ce qui vous a poussé à aller rencontrer des acteurs extérieurs ?",
+            "Y a-t-il eu une rencontre ou un échange déterminant dans votre parcours",
+        ],
+    },
+    "T4": {
+        "module": "M1",
+        "label": "VIDÉO 4 : UNE IDÉE NE SUFFIT PAS + FREINS ET LEVIERS (fusion)",
+        "questions": [],
+    },
+    "T5": {
+        "module": "M2",
+        "label": "VIDÉO 5 : PROTECTION ET VALORISATION",
+        "questions": [],
+    },
+    "T6": {
+        "module": "M2",
+        "label": "VIDÉO 6 : TRANSFERT ET LICENSING",
+        "questions": [],
+    },
+    "T7": {
+        "module": "M3",
+        "label": "VIDÉO 7 : VOUS N'ÊTES PAS SEUL(E)",
+        "questions": [],
+    },
+    "T8": {
+        "module": "M3",
+        "label": "VIDÉO 8 : FINANCEMENTS, CONCOURS ET TEMPS POUR ENTREPRENDRE",
+        "questions": [],
+    },
+    "T9": {
+        "module": "M4",
+        "label": "VIDÉO 9 : PARTENARIATS ET POSTURE : CONSTRUIRE UNE ÉQUIPE",
+        "questions": [],
+    },
+    "T10": {
+        "module": "M4",
+        "label": "VIDÉO 10 : ENRICHIR SON LANGAGE",
+        "questions": [],
+    },
+    "T11": {
+        "module": "M5",
+        "label": "VIDÉO 11 : EVOLUTION DANS LE MÉTIER DU CHERCHEUR.EUSE",
+        "questions": [],
+    },
+    "T12": {
+        "module": "M6",
+        "label": "VIDÉO 12 : DE CONCLUSION : PASSER À L’ACTION",
+        "questions": [],
+    },
+}
+
+
 def _target_codes_from_edito_title(title: str) -> set[str]:
     text = _edito_title_core(title)
     targets: set[str] = set()
     if "pourquoi oser" in text:
         targets.add("T1")
     if "recherche fondamentale" in text:
-        targets.add("T1")
-    if "besoin reel" in text or "sortir du labo" in text:
         targets.add("T2")
-    if "idee ne suffit pas" in text:
+    if "besoin reel" in text or "sortir du labo" in text:
         targets.add("T3")
+    if "idee ne suffit pas" in text or "freins" in text or "doutes" in text or "legitimite" in text:
+        targets.add("T4")
     if "protection intellectuelle" in text:
-        targets.update({"T4", "T5"})
+        targets.add("T5")
     if "transfert" in text or "licensing" in text:
         targets.add("T6")
-    if "ne pas avancer seul" in text or "ecosysteme" in text:
+    if "ne pas avancer seul" in text or "ecosysteme" in text or "vous n etes pas seul" in text:
         targets.add("T7")
     if "financements" in text or "concours" in text:
         targets.add("T8")
     if "partenariat" in text and "equipe" in text:
-        targets.update({"T9", "T12"})
+        targets.add("T9")
     if "changer de langage" in text:
         targets.add("T10")
-    if "freins" in text or "doutes" in text or "legitimite" in text:
+    if "evolution" in text and "metier" in text and "chercheur" in text:
         targets.add("T11")
     if "dispositif accompagnement" in text and "collaboration" in text:
-        targets.update({"T7", "T12"})
+        targets.add("T7")
     if "passer a l action" in text:
-        targets.add("T11")
-    if "metier de chercheur" in text:
-        targets.add("T11")
+        targets.add("T12")
     return targets
 
 
@@ -2657,108 +3243,815 @@ def _expert_label(percent: int) -> str:
     return "Alignement faible"
 
 
+def _alignment_comment(percent: int, objective: str, top_matches: list[tuple[float, dict]]) -> str:
+    if percent >= 70:
+        return "Les sequences edito couvrent bien le vocabulaire et l'intention pedagogique de l'objectif."
+    if percent >= 45:
+        return "Alignement partiel : une partie de l'objectif est couverte, mais certains axes restent peu explicites."
+
+    reasons: list[str] = []
+    if not top_matches:
+        reasons.append("Aucune correspondance edito suffisamment robuste n'a ete detectee pour cette ligne.")
+    else:
+        best_score = top_matches[0][0]
+        if best_score < 0.2:
+            reasons.append("Les titres edito relies sont semantiquement proches mais lexicalement differents du titre cible.")
+        total_sequences = sum(item.get("nb_sequences", 0) for _, item in top_matches)
+        if total_sequences < 5:
+            reasons.append("Le volume de sequences edito exploitees pour cette ligne est faible.")
+        objective_tokens = set(_edito_title_core(objective).split())
+        match_tokens = set()
+        for _, item in top_matches:
+            match_tokens.update(_edito_title_core(" ".join(item.get("texts", []))).split())
+        missing_ratio = 1.0
+        if objective_tokens:
+            covered = len(objective_tokens & match_tokens)
+            missing_ratio = 1 - (covered / len(objective_tokens))
+        if missing_ratio > 0.55:
+            reasons.append("L'objectif pedagogique utilise des notions peu presentes explicitement dans les verbatims edito apparies.")
+    if not reasons:
+        reasons.append("Le recouvrement lexical entre objectif et sequences edito reste limite.")
+    return " ".join(reasons)
+
+
+def _truncate_clean(text: str, limit: int = 220) -> str:
+    compact = " ".join((text or "").split())
+    if len(compact) <= limit:
+        return compact
+    return compact[: limit - 1].rstrip() + "…"
+
+
+def _tb_edito_researcher_summary(code: str, sequences: list[dict]) -> tuple[str, str]:
+    if not sequences:
+        html = "<span class='meta'>Aucune sequence capsule temoin appariée.</span>"
+        return html, "Aucune sequence capsule temoin appariée."
+
+    by_voice: dict[str, list[str]] = defaultdict(list)
+    for sequence in sequences:
+        voice = (sequence.get("intervenant") or "Temoin").strip()
+        text = (sequence.get("texte") or "").strip()
+        if text and text not in by_voice[voice]:
+            by_voice[voice].append(text)
+
+    corpus_text = _edito_title_core(" ".join(sequence.get("texte", "") for sequence in sequences))
+    corpus_tokens = set(corpus_text.split())
+    covered_dims, missing_dims = _tb_edito_dimension_coverage(code, corpus_text, corpus_tokens)
+    voices = sorted(by_voice)
+    voice_label = ", ".join(voices)
+
+    covered_text = "; ".join(covered_dims[:2]) if covered_dims else "le sujet reste encore peu explicite dans les verbatims"
+    missing_text = "; ".join(missing_dims[:2]) if missing_dims else "pas de manque majeur au niveau du cadrage sujet"
+
+    html = (
+        f"<p class='meta'><strong>{len(sequences)}</strong> sequences capsule temoin appariees, "
+        f"<strong>{len(voices)}</strong> temoins mobilises.</p>"
+        f"<p><strong>Résumé :</strong> Les chercheurs racontent principalement {escape(covered_text)}.</p>"
+        f"<p><strong>Point de vigilance :</strong> {escape(missing_text)}.</p>"
+        f"<p class='meta'>Témoins: {escape(voice_label)}.</p>"
+    )
+    csv_text = (
+        f"{len(sequences)} seq., {len(voices)} temoins. "
+        f"Resume: {covered_text}. "
+        f"Vigilance: {missing_text}. "
+        f"Temoins: {voice_label}."
+    )
+    return html, csv_text
+
+
+TOPIC_KEYWORDS_BY_CODE = {
+    "T1": ["oser", "innovation", "recherche", "utilite", "parcours"],
+    "T2": ["besoin", "usage", "probleme", "utilisateur", "valeur"],
+    "T3": ["besoin", "terrain", "validation", "preuve", "labo"],
+    "T4": ["idee", "freins", "leviers", "doutes", "legitimite"],
+    "T5": ["protection", "valorisation", "propriete intellectuelle", "brevet", "secret", "pi"],
+    "T6": ["transfert", "licensing", "licence", "startup", "valorisation"],
+    "T7": ["ecosysteme", "accompagnement", "maturation", "incubation", "reseau"],
+    "T8": ["financement", "concours", "investisseur", "levee", "temps"],
+    "T9": ["partenariat", "posture", "equipe", "gouvernance", "competences"],
+    "T10": ["langage", "pitch", "communication", "valeur", "interlocuteur"],
+    "T11": ["evolution", "metier", "chercheur", "freins", "leviers"],
+    "T12": ["conclusion", "action", "collaboration", "engagement", "passage"],
+}
+
+ALIGNMENT_DIMENSIONS_BY_CODE = {
+    "T1": [
+        {
+            "label": "leurs motivations pour innover et le sens qu'ils donnent a leur demarche",
+            "keywords": ["innovation", "innover", "motivation", "envie", "utile", "utilite", "pourquoi"],
+        },
+        {
+            "label": "leur parcours de recherche comme point de depart de l'innovation",
+            "keywords": ["recherche", "parcours", "these", "postdoc", "travaux", "laboratoire"],
+        },
+    ],
+    "T2": [
+        {
+            "label": "la necessite d'aller voir hors du laboratoire pour comprendre le besoin reel",
+            "keywords": ["besoin", "usage", "marche", "acteur", "acteurs", "terrain", "exterieur", "utilisateur"],
+        },
+        {
+            "label": "la facon de qualifier le probleme concret a resoudre",
+            "keywords": ["probleme", "valeur", "benefice", "client", "situation"],
+        },
+        {
+            "label": "des methodes explicites de validation (tests, hypotheses, indicateurs)",
+            "keywords": ["methode", "hypothese", "test", "preuve", "valider", "indicateur", "protocole"],
+        },
+    ],
+    "T3": [
+        {
+            "label": "la validation terrain du besoin et les echanges avec des acteurs externes",
+            "keywords": ["terrain", "besoin", "echange", "acteurs", "marche", "etude"],
+        },
+        {
+            "label": "la sortie du laboratoire pour confronter l'idee aux usages",
+            "keywords": ["laboratoire", "labo", "sortir", "usage", "rencontre"],
+        },
+    ],
+    "T4": [
+        {
+            "label": "les freins concrets rencontres pour transformer une idee en projet viable",
+            "keywords": ["freins", "difficile", "obstacle", "pivot", "risque"],
+        },
+        {
+            "label": "les leviers mobilises pour avancer malgre les incertitudes",
+            "keywords": ["levier", "accompagnement", "choix", "strategie", "decision"],
+        },
+    ],
+    "T5": [
+        {
+            "label": "les enjeux de propriete intellectuelle (brevet, secret, divulgation)",
+            "keywords": ["propriete intellectuelle", "brevet", "secret", "divulgable", "divulgation", "pi"],
+        },
+        {
+            "label": "la logique de valorisation et de protection en amont des publications",
+            "keywords": ["valorisation", "protection", "publier", "publication", "strategie"],
+        },
+    ],
+    "T6": [
+        {
+            "label": "les options de transfert et de mise en marche de la valorisation (licence, startup, partenariats)",
+            "keywords": ["transfert", "licence", "licensing", "startup", "partenariat", "valorisation"],
+        },
+        {
+            "label": "les choix entre plusieurs voies selon le projet et son niveau de maturite",
+            "keywords": ["choix", "maturite", "voie", "strategie", "decision"],
+        },
+    ],
+    "T7": [
+        {
+            "label": "l'importance de l'ecosysteme d'accompagnement et des relais autour du projet",
+            "keywords": ["ecosysteme", "accompagnement", "incubateur", "reseau", "satt", "aide"],
+        },
+        {
+            "label": "le besoin de competences complementaires pour ne pas avancer seul",
+            "keywords": ["equipe", "competence", "management", "complementaire", "seul"],
+        },
+    ],
+    "T8": [
+        {
+            "label": "les besoins de financement a differents moments du projet",
+            "keywords": ["financement", "aides", "argent", "budget", "concours", "laureat"],
+        },
+        {
+            "label": "l'articulation entre financement et progression concrète du projet",
+            "keywords": ["recruter", "etape", "maturation", "jalon", "developpement", "temps"],
+        },
+    ],
+    "T9": [
+        {
+            "label": "la construction d'une equipe et de partenariats pour porter un projet ambitieux",
+            "keywords": ["equipe", "partenariat", "entourage", "collaboration", "competence"],
+        },
+        {
+            "label": "la posture et le cadre relationnel (roles, contrats, gouvernance)",
+            "keywords": ["posture", "contrat", "gouvernance", "role", "fondateur"],
+        },
+    ],
+    "T10": [
+        {
+            "label": "la necessite d'adapter son langage selon les interlocuteurs",
+            "keywords": ["langage", "vocabulaire", "interlocuteur", "adapter", "posture"],
+        },
+        {
+            "label": "le passage d'un discours academique a un discours de valeur et d'usage",
+            "keywords": ["valeur", "usage", "entreprise", "pitch", "communication"],
+        },
+    ],
+    "T11": [
+        {
+            "label": "l'evolution du metier de chercheur vers des roles hybrides",
+            "keywords": ["evolution", "metier", "chercheur", "posture", "transformation"],
+        },
+        {
+            "label": "les freins et leviers personnels pour passer a l'action",
+            "keywords": ["freins", "leviers", "temps", "legitimite", "engagement"],
+        },
+    ],
+    "T12": [
+        {
+            "label": "la capacite a conclure avec des actions concrètes et progressives",
+            "keywords": ["conclusion", "action", "premier pas", "engagement", "passage"],
+        },
+        {
+            "label": "la projection vers des collaborations structurées",
+            "keywords": ["collaboration", "partenariat", "collectif", "coordination"],
+        },
+    ],
+}
+
+
+def _topic_keyword_covered(keyword: str, corpus_text: str, corpus_tokens: set[str]) -> bool:
+    normalized = _edito_title_core(keyword)
+    if not normalized:
+        return False
+    if " " in normalized:
+        return normalized in corpus_text
+    return normalized in corpus_tokens
+
+
+def _tb_edito_subject_alignment_percent(code: str, sequences: list[dict]) -> int:
+    keywords = TOPIC_KEYWORDS_BY_CODE.get(code, [])
+    if not keywords or not sequences:
+        return 0
+    corpus_text = _edito_title_core(" ".join(sequence.get("texte", "") for sequence in sequences))
+    corpus_tokens = set(corpus_text.split())
+    covered = sum(1 for keyword in keywords if _topic_keyword_covered(keyword, corpus_text, corpus_tokens))
+    return round((covered / len(keywords)) * 100)
+
+
+def _tb_edito_dimension_coverage(code: str, corpus_text: str, corpus_tokens: set[str]) -> tuple[list[str], list[str]]:
+    dims = ALIGNMENT_DIMENSIONS_BY_CODE.get(code, [])
+    if not dims:
+        return [], []
+    covered: list[str] = []
+    missing: list[str] = []
+    for dim in dims:
+        keywords = dim.get("keywords", [])
+        is_hit = any(_topic_keyword_covered(str(keyword), corpus_text, corpus_tokens) for keyword in keywords)
+        label = str(dim.get("label", ""))
+        if is_hit:
+            covered.append(label)
+        else:
+            missing.append(label)
+    return covered, missing
+
+
+def _tb_edito_alignment_comment(code: str, percent: int, seq_count: int, sequences: list[dict]) -> str:
+    if seq_count == 0:
+        return "Aucune sequence capsule temoin exploitable pour estimer l'alignement sujet."
+
+    corpus_text = _edito_title_core(" ".join(sequence.get("texte", "") for sequence in sequences))
+    corpus_tokens = set(corpus_text.split())
+    covered_dims, missing_dims = _tb_edito_dimension_coverage(code, corpus_text, corpus_tokens)
+
+    if percent >= 70:
+        level_intro = "Alignement sujet fort"
+    elif percent >= 45:
+        level_intro = "Alignement sujet moyen"
+    else:
+        level_intro = "Alignement sujet faible"
+
+    if covered_dims:
+        concrete_part = f"les temoins abordent clairement {covered_dims[0]}"
+    else:
+        concrete_part = "les temoins restent generaux sur le sujet"
+
+    if missing_dims:
+        gap_part = f"mais ils explicitent peu {missing_dims[0]}"
+    elif percent < 45:
+        gap_part = "mais la profondeur de traitement reste encore partielle"
+    else:
+        gap_part = "et les principaux axes attendus apparaissent globalement couverts"
+
+    return f"{level_intro}: {concrete_part}, {gap_part}."
+
+
+def _tb_edito_coverage_gap(code: str, sequences: list[dict]) -> tuple[str, str]:
+    keywords = TOPIC_KEYWORDS_BY_CODE.get(code, [])
+    if not keywords:
+        html = "<span class='meta'>Referentiel sujet non defini.</span>"
+        return html, "Referentiel sujet non defini."
+
+    corpus_text = _edito_title_core(" ".join(sequence.get("texte", "") for sequence in sequences))
+    corpus_tokens = set(corpus_text.split())
+    covered = [keyword for keyword in keywords if _topic_keyword_covered(keyword, corpus_text, corpus_tokens)]
+    missing = [keyword for keyword in keywords if keyword not in covered]
+    covered_label = ", ".join(covered) if covered else "Aucun axe sujet explicite detecte"
+    missing_label = ", ".join(missing) if missing else "Aucun axe sujet manquant majeur detecte"
+    html = (
+        f"<p><strong>Abordé :</strong> {escape(covered_label)}</p>"
+        f"<p><strong>A développer :</strong> {escape(missing_label)}</p>"
+    )
+    csv_text = f"Abordé: {covered_label} | A développer: {missing_label}"
+    return html, csv_text
+
+
+def _tb_edito_expertise_preconisation(
+    code: str,
+    sequences: list[dict],
+    videos_expert: list[dict],
+    row_match_percent: int,
+) -> tuple[str, str]:
+    if not videos_expert:
+        html = (
+            "<p><strong>Préconisation :</strong> Définir au moins une vidéo expertise dédiée à ce sujet.</p>"
+            "<p class='meta'>Sans vidéo expert, le passage de l'amorce témoin à l'outillage pédagogique reste incomplet.</p>"
+        )
+        csv_text = "Definir une video expertise dediee avant arbitrage final."
+        return html, csv_text
+
+    corpus_text = _edito_title_core(" ".join(sequence.get("texte", "") for sequence in sequences))
+    corpus_tokens = set(corpus_text.split())
+    covered_dims, missing_dims = _tb_edito_dimension_coverage(code, corpus_text, corpus_tokens)
+    expert_targets = ", ".join(_label_video_expert(item.get("code", "")) for item in videos_expert[:2])
+
+    if not sequences:
+        action = (
+            "Poser les fondamentaux du sujet, definir le vocabulaire de reference et proposer une methode pas-a-pas."
+        )
+    elif missing_dims:
+        action = (
+            f"Prioriser {missing_dims[0]}, puis structurer un cadre operatoire concret (methode, criteres, points de decision)."
+        )
+    elif row_match_percent < 70:
+        action = (
+            "Transformer les retours temoins en methode transmissible (etapes, outils, points de vigilance)."
+        )
+    else:
+        action = (
+            "Consolider les acquis avec des cas d'application, des erreurs frequentes et des reperes de mise en oeuvre."
+        )
+
+    covered_hint = covered_dims[0] if covered_dims else "l'amorce temoin existe mais reste diffuse"
+    html = (
+        f"<p><strong>Cible expert ({escape(expert_targets)}) :</strong> {escape(action)}</p>"
+        f"<p class='meta'>Point d'appui temoins : {escape(covered_hint)}.</p>"
+    )
+    csv_text = f"Cible expert ({expert_targets}): {action} | Point d'appui temoins: {covered_hint}."
+    return html, csv_text
+
+
+def _expert_org_from_profile(profile: dict | None) -> str:
+    if not profile:
+        return "Organisme de rattachement à confirmer"
+    corpus = _normalize_for_match(
+        " ".join(
+            [
+                profile.get("profil_cible", ""),
+                " ".join(profile.get("infos", [])),
+                " ".join(profile.get("mots_cles", [])),
+            ]
+        )
+    )
+    if "inpi" in corpus:
+        return "INPI"
+    if "incuballiance" in corpus:
+        return "IncubAlliance"
+    if "centralesupelec" in corpus:
+        return "CentraleSupélec"
+    if "agroparistech" in corpus:
+        return "AgroParisTech"
+    if "cnrs" in corpus:
+        return "CNRS"
+    if "satt" in corpus:
+        return "SATT Paris-Saclay"
+    if "ens paris-saclay" in corpus:
+        return "ENS Paris-Saclay"
+    if "universite paris-saclay" in corpus:
+        return "Université Paris-Saclay"
+    return "Organisme de rattachement à confirmer"
+
+
+def _mail_experts_rows(programme_table: dict, experts_profils: dict) -> list[dict]:
+    rows = programme_table.get("rows", [])
+    profils = experts_profils.get("profils", [])
+    profile_by_key = {_canonical_name_key(item.get("nom", "")): item for item in profils}
+
+    assignments: dict[str, dict] = {}
+    for row in rows:
+        code = row.get("code", "")
+        if not code:
+            continue
+        fixed = FIXED_TEMOIN_PLAN.get(code, {})
+        video_temoin_label = fixed.get("label") or row.get("video_temoin", "")
+        objective = row.get("objectif_pedagogique", "")
+        expert_videos = _tb_edito_parse_videos_expert(row.get("videos_referent", ""))
+        expert_codes = [item.get("code", "") for item in expert_videos if item.get("code")]
+        expert_labels = [f"{_label_video_expert(item.get('code', ''))} — {item.get('titre', '')}" for item in expert_videos]
+
+        for raw_name in _extract_intervenants(row.get("noms_proposes", "")):
+            key = _canonical_name_key(raw_name)
+            if not key:
+                continue
+            profile = profile_by_key.get(key)
+            canonical = EXPERT_NAME_ALIASES.get(key) or (profile.get("nom") if profile else raw_name)
+            canonical_key = _canonical_name_key(canonical)
+            profile = profile_by_key.get(canonical_key) or profile
+            bucket = assignments.setdefault(
+                canonical_key,
+                {
+                    "nom": canonical,
+                    "profile": profile,
+                    "organisme": _expert_org_from_profile(profile),
+                    "videos": [],
+                },
+            )
+            bucket["videos"].append(
+                {
+                    "code": code,
+                    "video_temoin_label": video_temoin_label,
+                    "tb_edito_href": f"tb_edito_{code}.html",
+                    "expert_video_codes": expert_codes,
+                    "expert_video_labels": expert_labels,
+                    "objectif": objective,
+                }
+            )
+
+    prepared = []
+    for _, item in assignments.items():
+        videos = sorted(item["videos"], key=lambda entry: int(entry["code"][1:]) if entry["code"][1:].isdigit() else 999)
+        prepared.append(
+            {
+                "nom": item["nom"],
+                "organisme": item["organisme"],
+                "slug": slug(item["nom"]),
+                "profile": item["profile"],
+                "videos": videos,
+            }
+        )
+    return sorted(prepared, key=lambda entry: _normalize_for_match(entry["nom"]))
+
+
+def _compose_expert_mail(expert: dict) -> tuple[str, str]:
+    nom = expert["nom"]
+    prenom = " ".join((nom or "").split()).split(" ")[0] if nom else "Madame, Monsieur"
+    organisme = expert["organisme"]
+    videos = expert["videos"]
+    video_codes = []
+    for item in videos:
+        for code in item.get("expert_video_codes", []):
+            if code and code not in video_codes:
+                video_codes.append(code)
+    video_codes_label = ", ".join(_label_video_expert(code) for code in video_codes) if video_codes else "à définir"
+    tb_edito_list = ", ".join(item["code"] for item in videos) if videos else "à définir"
+
+    subject = f"MOOC L'Esprit d'innover — confirmation de vos videos expertise pressenties"
+    mail_text = (
+        f"Objet : {subject}\n\n"
+        f"Bonjour {prenom},\n\n"
+        "Dans le cadre de la conception du MOOC \"L'Esprit d'innover\", nous préparons les vidéos expertise qui "
+        "complètent les capsules témoins chorales.\n\n"
+        "Nous partageons dans le guide de travail les informations utiles sur les intervenants et leurs organismes de rattachement ; "
+        f"vous y apparaissez comme expert(e) proposé(e) ({organisme}).\n\n"
+        "À ce stade, les documents explicitent les transcripts de quatre chercheurs ; "
+        "dans la semaine, le transcript d'un cinquième chercheur sera intégré.\n\n"
+        f"Selon l'état actuel de la conception, vous êtes proposé(e) sur : {video_codes_label}.\n\n"
+        "Afin d'éviter de produire des scripts inutiles, pourriez-vous nous confirmer les vidéos expertise "
+        "sur lesquelles vous souhaitez intervenir selon ce calendrier :\n"
+        "- 23 juillet : positionnement de votre part sur les vidéos expertise ;\n"
+        "- 27 juillet : retour de notre part sur le positionnement retenu ;\n"
+        "- 1er septembre : script pour le prompteur (a minima 15 jours avant la date de tournage).\n\n"
+        "Pièces jointes proposées :\n"
+        f"- Guide éditorial (propos témoins, objectifs pédagogiques, consignes envisagées et tableau récapitulatif des candidatures) ;\n"
+        f"- Capsules témoins concernées : {tb_edito_list}.\n\n"
+        "Le travail d'ingénierie pédagogique vise à refléter au mieux votre expertise sans s'y substituer ; "
+        "vous êtes bien entendu libre d'aller plus loin, d'ajuster, ou de recadrer si vous jugez cela pertinent.\n\n"
+        "Processus d'envoi : tous les mails sont d'abord transmis à Rita pour vérification (et éventuelle réécriture) "
+        "avant envoi final aux experts.\n\n"
+        "Merci d'avance pour votre retour,\n"
+        "Bien cordialement,\n"
+        "Equipe Action 2 pilier 1 PUI alliance Paris Scalay."
+    )
+    return subject, mail_text
+
+
+def _mailto_href(recipient: str, subject: str, body: str) -> str:
+    return f"mailto:{recipient}?subject={quote(subject)}&body={quote(body)}"
+
+
+def _tb_expertise_label(text: str) -> str:
+    value = text or ""
+    replacements = [
+        ("Vidéo Expert", "Vidéo expertise"),
+        ("Video Expert", "Vidéo expertise"),
+        ("videos expert", "videos expertise"),
+        ("vidéos expert", "vidéos expertise"),
+        ("video expert", "video expertise"),
+        ("vidéo expert", "vidéo expertise"),
+    ]
+    for src, dst in replacements:
+        value = value.replace(src, dst)
+    return value
+
+
+def _highlight_tb_edito_syntagmes(text: str, code: str) -> str:
+    html = escape(text or "")
+    keywords = sorted(TOPIC_KEYWORDS_BY_CODE.get(code, []), key=len, reverse=True)
+    for keyword in keywords:
+        raw = (keyword or "").strip()
+        if len(raw) < 4:
+            continue
+        pattern = re.compile(re.escape(raw), re.IGNORECASE)
+        html = pattern.sub(lambda match: f"<strong>{match.group(0)}</strong>", html, count=1)
+    return html
+
+
+def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[dict]], rows_by_code: dict[str, dict]) -> str:
+    sections = []
+    summary_items = []
+    for item in expert.get("videos", []):
+        code = item.get("code", "")
+        row = rows_by_code.get(code, {})
+        sequences = grouped_tb.get(code, [])
+        ordered = _tb_edito_order_for_code(code, sequences)
+        by_seq_id = {seq.get("id", f"{code}-NOID"): seq for seq in ordered}
+        ordre = [seq.get("id", f"{code}-NOID") for seq in ordered]
+        videos_expert = _tb_edito_parse_videos_expert(row.get("videos_referent", ""))
+        cadrage = _tb_edito_build_cadrage(code, ordre, by_seq_id, videos_expert)
+
+        intro = cadrage.get("intro", {})
+        transitions = cadrage.get("transitions", [])
+        outro = cadrage.get("outro", {})
+        transition_html = "".join(
+            "<li>"
+            f"<strong>{escape(transition.get('id', 'Transition'))}</strong> — "
+            f"{escape(_tb_expertise_label(transition.get('texte_intervenant', '')))}"
+            "</li>"
+            for transition in transitions
+        )
+        if not transition_html:
+            transition_html = "<li>Aucune transition nécessaire détectée.</li>"
+
+        script_rows = []
+        for seq_id in ordre:
+            seq = by_seq_id.get(seq_id)
+            if not seq:
+                continue
+            verbatim_html = _highlight_tb_edito_syntagmes(seq.get("texte", ""), code)
+            script_rows.append(
+                "<div style='margin-bottom:12px;padding:10px;border:1px solid #dbe2ea;border-radius:8px;'>"
+                f"<p style='margin:0 0 6px 0;'><strong>{escape(seq.get('intervenant', 'Temoin'))}</strong> "
+                f"<span style='color:#475569;'>[{escape(seq.get('id', '-'))}]</span></p>"
+                f"<p style='margin:0;color:#0f172a;'>{verbatim_html}</p>"
+                "</div>"
+            )
+        if not script_rows:
+            script_rows.append("<p>Aucun extrait édito apparié pour cette vidéo.</p>")
+
+        expertise_labels = _tb_expertise_label(" | ".join(item.get("expert_video_labels", [])) or "À définir")
+        summary_items.append(
+            "<li>"
+            f"<strong>{escape(code)}</strong> — {escape(item.get('video_temoin_label', ''))}<br>"
+            f"<span>Vidéo expertise : {escape(expertise_labels)}</span>"
+            "</li>"
+        )
+        sections.append(
+            "<section style='margin-top:28px;padding-top:10px;border-top:1px solid #cbd5e1;'>"
+            f"<h2>{escape(code)} — {escape(item.get('video_temoin_label', ''))}</h2>"
+            f"<p><strong>Vidéos expertise proposées :</strong> {escape(expertise_labels)}</p>"
+            f"<p><strong>Objectif pédagogique :</strong> {escape(item.get('objectif', ''))}</p>"
+            "<h3>Proposition de cadrage de la vidéo expertise</h3>"
+            f"<p><strong>Introduction proposée :</strong> {escape(_tb_expertise_label(intro.get('texte_intervenant', '')))}</p>"
+            "<p><strong>Transitions proposées :</strong></p>"
+            f"<ul>{transition_html}</ul>"
+            f"<p><strong>Conclusion proposée :</strong> {escape(_tb_expertise_label(outro.get('texte_intervenant', '')))}</p>"
+            "<h3>Script témoin</h3>"
+            "<p><em>Les syntagmes clés du sujet sont mis en gras lorsqu'ils sont détectés.</em></p>"
+            f"{''.join(script_rows)}"
+            "</section>"
+        )
+
+    return (
+        "<html><head><meta charset='utf-8'>"
+        "<style>"
+        "body{font-family:Aptos,Segoe UI,Arial,sans-serif;font-size:12pt;line-height:1.5;}"
+        "h1{font-size:18pt;margin-bottom:6px;}"
+        "h2{font-size:14pt;margin-bottom:6px;}"
+        "h3{font-size:12.5pt;margin-bottom:6px;}"
+        "</style>"
+        "</head><body>"
+        f"<h1>Guide éditorial — {escape(expert.get('nom', 'Expert'))}</h1>"
+        f"<p><strong>Organisme :</strong> {escape(expert.get('organisme', ''))}</p>"
+        "<p>Ce document est structuré en deux parties pour chaque capsule témoin concernée :</p>"
+        "<ol>"
+        "<li><strong>Proposition de cadrage de la vidéo expertise</strong> (introduction, transitions éventuelles, conclusion) ;</li>"
+        "<li><strong>Script témoin</strong> servant de base éditoriale (avec mise en évidence des syntagmes clés quand détectés).</li>"
+        "</ol>"
+        "<p>Objectif : faciliter votre positionnement et préparer une contribution expertise cohérente avec le montage témoin.</p>"
+        "<h2>Mini sommaire</h2>"
+        f"<ul>{''.join(summary_items) if summary_items else '<li>Aucune capsule témoin associée à ce stade.</li>'}</ul>"
+        f"{''.join(sections) if sections else '<p>Aucune capsule témoin associée à ce stade.</p>'}"
+        "<hr style='margin:24px 0;border:none;border-top:1px solid #cbd5e1;'>"
+        "<p><strong>Contact pour informations complémentaires :</strong><br>"
+        "Christophe Dubois (Ingénieur pédagogique)<br>"
+        "christophe.dubois@universite-paris-saclay<br>"
+        "Tel : 07 85 99 08 12</p>"
+        "</body></html>"
+    )
+
+
+def build_mails_experts_pages(programme_table: dict, experts_profils: dict) -> None:
+    experts = _mail_experts_rows(programme_table, experts_profils)
+    grouped_tb = _tb_edito_sequences_by_code()
+    rows_by_code = {row.get("code", ""): row for row in programme_table.get("rows", [])}
+    cards = []
+    for expert in experts:
+        mail_file = f"mail_expert_{expert['slug']}.html"
+        video_refs = ", ".join(item["code"] for item in expert["videos"]) or "Aucune capsule témoin"
+        cards.append(
+            "<article class='card'>"
+            f"<h2><a href='{escape(mail_file)}'>{escape(expert['nom'])}</a></h2>"
+            f"<p class='meta'>{escape(expert['organisme'])}</p>"
+            f"<p>Capsules témoins concernées : <strong>{escape(video_refs)}</strong></p>"
+            f"<p><a class='btn' href='{escape(mail_file)}'>Ouvrir le mail</a></p>"
+            "</article>"
+        )
+
+    body = (
+        "<p class='meta'>Brouillons de mails individualisés pour solliciter les intervenants experts. "
+        "Chaque mail reprend les sujets de capsules témoins concernés, les vidéos expertise proposées, l'information sur les "
+        "transcripts disponibles (4 actuellement, 5e en cours d'intégration) et les jalons : "
+        "<strong>23 juillet</strong> (positionnement), <strong>27 juillet</strong> (retour d'arbitrage), "
+        "<strong>1er septembre</strong> (script prompteur, a minima 15 jours avant tournage).</p>"
+        f"<section class='cards'>{''.join(cards) if cards else '<p>Aucun expert proposé dans le programme_table.</p>'}</section>"
+    )
+    write_text(
+        SITE / "mails_experts.html",
+        html_page(
+            "Mails experts",
+            body,
+            nav_current="mails_experts.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Mails experts", None)),
+            page_header='<div class="page-head"><h1>Mails experts</h1><p class="lead">Préparation des messages de sollicitation par intervenant expert.</p></div>',
+        ),
+    )
+
+    expected = set()
+    expected_docs = set()
+    for expert in experts:
+        subject, mail_text = _compose_expert_mail(expert)
+        send_href = _mailto_href(TEST_MAIL_RECIPIENT, subject, mail_text)
+        mail_name = f"mail_expert_{expert['slug']}.html"
+        doc_name = f"guide_editorial_{expert['slug']}.doc"
+        expected.add(mail_name)
+        expected_docs.add(doc_name)
+        write_text(SITE / doc_name, _guide_editorial_expert_doc_html(expert, grouped_tb, rows_by_code))
+        video_rows = []
+        for item in expert["videos"]:
+            video_rows.append(
+                "<tr>"
+                f"<td><a href='{escape(item['tb_edito_href'])}'>{escape(item['code'])}</a></td>"
+                f"<td>{escape(item['video_temoin_label'])}</td>"
+                f"<td>{escape(' | '.join(item['expert_video_labels']) or 'À définir')}</td>"
+                f"<td>{escape(item['objectif'])}</td>"
+                "</tr>"
+            )
+        detail_body = (
+            f"<p class='meta'><strong>Expert :</strong> {escape(expert['nom'])} · <strong>Organisme :</strong> {escape(expert['organisme'])}</p>"
+            f"<p class='meta'><strong>Objet proposé :</strong> {escape(subject)}</p>"
+            f"<p class='meta'><strong>Destinataire test actuel :</strong> {escape(TEST_MAIL_RECIPIENT)} "
+            f"(validation éditoriale ensuite via {escape(REVIEW_MAIL_RECIPIENT)}).</p>"
+            f"<p><a class='btn' href='{escape(send_href)}'>Envoyer le mail test (Christophe)</a></p>"
+            f"<p><a class='btn' href='{escape(doc_name)}' download>Exporter le guide éditorial (Word)</a></p>"
+            "<h2>Mail prêt à envoyer</h2>"
+            f"<pre class='script mail-ready'>{escape(mail_text)}</pre>"
+            "<h2>Capsules et sujets concernés</h2>"
+            "<div class='table-wrap'><table><thead><tr>"
+            "<th>Capsule témoin</th><th>Vidéo témoin</th><th>Vidéos expertise proposées</th><th>Objectif pédagogique</th>"
+            "</tr></thead><tbody>"
+            + ("".join(video_rows) or "<tr><td colspan='4'>Aucune affectation.</td></tr>")
+            + "</tbody></table></div>"
+            "<p class='meta'>Pièces jointes recommandées : <code>tableau_correspondances_edito.html</code> "
+            "et les pages de capsules témoins listées ci-dessus.</p>"
+        )
+        write_text(
+            SITE / mail_name,
+            html_page(
+                f"Mail expert — {expert['nom']}",
+                detail_body,
+                nav_current="mails_experts.html",
+                breadcrumb=html_breadcrumb(
+                    ("Accueil", "index.html"),
+                    ("Mails experts", "mails_experts.html"),
+                    (expert["nom"], None),
+                ),
+                page_header=f'<div class="page-head"><h1>Mail expert — {escape(expert["nom"])}</h1><p class="lead">Brouillon de message et périmètre des vidéos expertise proposées.</p></div>',
+            ),
+        )
+
+    for path in SITE.glob("mail_expert_*.html"):
+        if path.name not in expected:
+            path.unlink()
+    for path in SITE.glob("mail_expert_*.doc"):
+        path.unlink()
+    for path in SITE.glob("guide_editorial_*.doc"):
+        if path.name not in expected_docs:
+            path.unlink()
+    for path in SITE.glob("package_mail_expert_*.zip"):
+        path.unlink()
+    for path in SITE.glob("tb_edito_T*_*.doc"):
+        path.unlink()
+
+
 def build_correspondances_edito_page(programme_table: dict) -> None:
     rows = programme_table.get("rows", [])
     headers = programme_table.get("headers", {})
-    edito_titles = _collect_edito_video_titles()
+    grouped_tb = _tb_edito_sequences_by_code()
 
     table_rows = []
     csv_rows = []
     for row in rows:
-        title_programme = row.get("video_temoin", "")
         code = row.get("code", "")
-        targeted = []
-        for edito in edito_titles:
-            if code and code in _target_codes_from_edito_title(edito["title"]):
-                score = _title_similarity(title_programme, edito["title"])
-                targeted.append((score, edito))
-        targeted.sort(key=lambda item: (item[0], item[1].get("nb_sequences", 0)), reverse=True)
-
-        scored = []
-        for edito in edito_titles:
-            score = _title_similarity(title_programme, edito["title"])
-            if score >= 0.2:
-                scored.append((score, edito))
-        scored.sort(key=lambda item: item[0], reverse=True)
-        top = targeted[:3] if targeted else scored[:3]
+        fixed = FIXED_TEMOIN_PLAN.get(code, {})
+        module_label = fixed.get("module") or row.get("module", "")
+        title_programme = fixed.get("label") or row.get("video_temoin", "")
+        sequences = grouped_tb.get(code, [])
+        chercheurs_html, chercheurs_csv = _tb_edito_researcher_summary(code, sequences)
         objective = row.get("objectif_pedagogique", "")
-        row_match_percent = 0
-        if top:
-            corr_html = "".join(
-                "<li>"
-                f"{escape(item['title'])} "
-                f"<span class='meta'>(score titre {score:.2f} · {escape(', '.join(item.get('witnesses', [])) or '—')} · "
-                f"{escape(item.get('nb_sequences', 0))} seq.)</span>"
-                "</li>"
-                for score, item in top
+        row_match_percent = _tb_edito_subject_alignment_percent(code, sequences)
+        expert_badge = _expert_label(row_match_percent)
+        expert_comment = _tb_edito_alignment_comment(code, row_match_percent, len(sequences), sequences)
+        coverage_html, coverage_csv = _tb_edito_coverage_gap(code, sequences)
+
+        videos_expert = _tb_edito_parse_videos_expert(row.get("videos_referent", ""))
+        if videos_expert:
+            expert_html = (
+                "<ul>"
+                + "".join(
+                    f"<li><strong>{escape(_label_video_expert(item.get('code', '')))}</strong> — {escape(item.get('titre', ''))}</li>"
+                    for item in videos_expert
+                )
+                + "</ul>"
             )
-            corr_text = " | ".join(
-                f"{item['title']} (score={score:.2f}; temoins={', '.join(item.get('witnesses', [])) or '—'}; seq={item.get('nb_sequences', 0)})"
-                for score, item in top
-            )
-            row_match_percent = max(
-                _pedagogical_match_percent(objective, item.get("texts", []))
-                for _, item in top
+            expert_csv = " | ".join(
+                f"{_label_video_expert(item.get('code', ''))}: {item.get('titre', '')}"
+                for item in videos_expert
             )
         else:
-            corr_html = "<li>Aucune correspondance solide detectee.</li>"
-            corr_text = "Aucune correspondance solide detectee."
-            row_match_percent = 0
-        expert_badge = _expert_label(row_match_percent)
+            expert_html = "<span class='meta'>Aucune video expert renseignee.</span>"
+            expert_csv = "Aucune video expert renseignee."
+        preconisation_html, preconisation_csv = _tb_edito_expertise_preconisation(
+            code, sequences, videos_expert, row_match_percent
+        )
+
+        intervenants = _extract_intervenants(row.get("noms_proposes", ""))
+        intervenants_html = escape(", ".join(intervenants)) if intervenants else "<span class='meta'>A definir</span>"
+        intervenants_csv = ", ".join(intervenants) if intervenants else "A definir"
 
         table_rows.append(
             "<tr>"
-            f"<td>{escape(row.get('module', ''))}</td>"
+            f"<td>{escape(module_label)}</td>"
             f"<td>{escape(code)}</td>"
-            f"<td>{escape(title_programme)}</td>"
+            f"<td><a href='tb_edito_{escape(code)}.html'>{escape(title_programme)}</a></td>"
+            f"<td>{chercheurs_html}</td>"
+            f"<td>{expert_html}</td>"
+            f"<td>{preconisation_html}</td>"
             f"<td>{escape(objective)}</td>"
-            f"<td><ul>{corr_html}</ul></td>"
-            f"<td><strong>{row_match_percent}%</strong><br><span class='meta'>{escape(expert_badge)}</span></td>"
+            f"<td>{coverage_html}</td>"
+            f"<td>{intervenants_html}</td>"
+            f"<td><strong>{row_match_percent}%</strong> <span class='meta'>({escape(expert_badge)})</span><br>{escape(expert_comment)}</td>"
             "</tr>"
         )
         csv_rows.append(
             {
-                "module": row.get("module", ""),
+                "module": module_label,
                 "code": code,
-                "video_temoin": title_programme,
+                "video_chorale_tb_edito": title_programme,
+                "ce_que_racontent_les_chercheurs_tb_edito": chercheurs_csv,
+                "videos_expert_envisagees": expert_csv,
+                "vue_preconisation_videos_expertise": preconisation_csv,
                 "objectif_pedagogique": objective,
-                "correspondances_edito": corr_text,
-                "match_objectif_pedagogique_pct": row_match_percent,
-                "niveau_expert": expert_badge,
+                "aborde_par_temoins_et_points_a_developper": coverage_csv,
+                "intervenants_experts_proposes": intervenants_csv,
+                "alignement_sujet_temoin_pct": row_match_percent,
+                "niveau_alignement_sujet": expert_badge,
+                "commentaire_alignement_sujet": expert_comment,
             }
         )
 
-    all_titles = "".join(
-        "<li>"
-        f"{escape(item['title'])} "
-        f"<span class='meta'>({escape(', '.join(item.get('witnesses', [])) or '—')} · {escape(item.get('nb_sequences', 0))} seq.)</span>"
-        "</li>"
-        for item in edito_titles
-    )
-
     body = (
-        "<p class='meta'>Tableau reproduit depuis le document de conception "
+        "<p class='meta'>Tableau base sur le programme de conception "
         f"<code>{escape(programme_table.get('source_document', '20260710_Prev_Vid.xlsx'))}</code> "
-        "et enrichi avec les correspondances de titres video issues des fichiers derushage edito.</p>"
+        "avec remplacement de la colonne video chorale par les capsules temoins T1..T12.</p>"
         "<p><a class='btn' href='tableau_correspondances_edito.csv' download>Télécharger le tableau (CSV)</a></p>"
-        "<p class='meta'><strong>Expert correspondance :</strong> estimation du % de match calculee par recouvrement "
-        "lexical entre l'objectif pedagogique de la ligne et les sequences edito liees aux titres apparies.</p>"
+        "<p><a class='btn' href='tableau_corr.html'>Voir le tableau corrigé (HTML)</a></p>"
+        "<p class='meta'><strong>Alignement sujet témoin :</strong> estimation du % de presence du sujet de la video "
+        "dans les verbatims des capsules temoins (sans attendre une couverture pedagogique complete, qui est portee par la video expertise).</p>"
         "<div class='table-wrap'><table><thead><tr>"
         f"<th>{escape(headers.get('module', 'Module'))}</th>"
         f"<th>{escape(headers.get('code', 'N°'))}</th>"
-        f"<th>{escape(headers.get('video_temoin', 'Vidéo chorale témoin'))}</th>"
+        "<th>Vidéo chorale (capsule témoin)</th>"
+        "<th>Ce que racontent les chercheurs (capsule témoin)</th>"
+        "<th>Vidéo(s) expert envisagée(s)</th>"
+        "<th>Vue de préconisation pour les vidéos expertise</th>"
         f"<th>{escape(headers.get('objectif_pedagogique', 'Objectif pédagogique atteint'))}</th>"
-        "<th>Correspondances titres édito</th>"
-        "<th>% match objectif pédagogique (estimation expert)</th>"
+        "<th>Abordé par les témoins / à développer</th>"
+        f"<th>{escape(headers.get('noms_proposes', 'Intervenants experts proposés'))}</th>"
+        "<th>Alignement sujet témoin estimé</th>"
         "</tr></thead><tbody>"
-        + ("\n".join(table_rows) or "<tr><td colspan='6'>Aucune ligne programme.</td></tr>")
+        + ("\n".join(table_rows) or "<tr><td colspan='9'>Aucune ligne programme.</td></tr>")
         + "</tbody></table></div>"
-        "<section class='card'>"
-        "<h2>Référentiel titres édito détectés</h2>"
-        "<p class='meta'>Priorite d'appariement : regles editoriales par intention video (T1..T12), "
-        "puis similarite de titre en secours.</p>"
-        f"<ul>{all_titles or '<li>Aucun titre édito detecte.</li>'}</ul>"
-        "</section>"
     )
     write_text(
         SITE / "tableau_correspondances_edito.html",
@@ -2767,7 +4060,7 @@ def build_correspondances_edito_page(programme_table: dict) -> None:
             body,
             nav_current="tableau_correspondances_edito.html",
             breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Correspondances édito", None)),
-            page_header="<div class=\"page-head\"><h1>Correspondances édito</h1><p class=\"lead\">Tableau du programme complet avec appariement des titres vidéo édito.</p></div>",
+            page_header="<div class=\"page-head\"><h1>Correspondances édito</h1><p class=\"lead\">Tableau de conception relu via les capsules témoins : videos chorales, contenus temoins, videos expertise et alignement pedagogique.</p></div>",
         ),
     )
 
@@ -2777,16 +4070,124 @@ def build_correspondances_edito_page(programme_table: dict) -> None:
         fieldnames=[
             "module",
             "code",
-            "video_temoin",
+            "video_chorale_tb_edito",
+            "ce_que_racontent_les_chercheurs_tb_edito",
+            "videos_expert_envisagees",
+            "vue_preconisation_videos_expertise",
             "objectif_pedagogique",
-            "correspondances_edito",
-            "match_objectif_pedagogique_pct",
-            "niveau_expert",
+            "aborde_par_temoins_et_points_a_developper",
+            "intervenants_experts_proposes",
+            "alignement_sujet_temoin_pct",
+            "niveau_alignement_sujet",
+            "commentaire_alignement_sujet",
         ],
     )
     writer.writeheader()
     writer.writerows(csv_rows)
     write_text(SITE / "tableau_correspondances_edito.csv", csv_buffer.getvalue())
+
+
+def _tableau_corr_rows_from_programme() -> tuple[list[str], list[dict[str, str]]]:
+    fieldnames = [
+        "module",
+        "code",
+        "video_temoin_edito",
+        "videos_expert",
+        "objectif_pedagogique_atteint",
+    ]
+    programme = load_programme_table()
+    rows = []
+    for row in programme.get("rows", []):
+        rows.append(
+            {
+                "module": row.get("module", ""),
+                "code": row.get("code", ""),
+                "video_temoin_edito": row.get("video_temoin", ""),
+                "videos_expert": row.get("videos_referent", ""),
+                "objectif_pedagogique_atteint": row.get("objectif_pedagogique", ""),
+            }
+        )
+    return fieldnames, rows
+
+
+def _load_tableau_corr_rows() -> tuple[list[str], list[dict[str, str]]]:
+    path = ROOT / "data" / "tableau.corr"
+    if not path.exists():
+        return _tableau_corr_rows_from_programme()
+
+    with path.open(encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle)
+        fieldnames = reader.fieldnames or []
+        raw_rows = list(reader)
+
+    has_malformed_rows = any(None in row for row in raw_rows)
+    if not fieldnames or has_malformed_rows:
+        return _tableau_corr_rows_from_programme()
+
+    rows = [{key: (value or "") for key, value in row.items()} for row in raw_rows]
+    return fieldnames, rows
+
+
+def build_tableau_corr_page() -> None:
+    headers, rows = _load_tableau_corr_rows()
+    if not headers:
+        body = (
+            "<p class='meta'>Aucun fichier <code>data/tableau.corr</code> detecte.</p>"
+            "<p class='meta'>Generez d'abord le tableau corrige puis relancez <code>python3 scripts/build_site.py</code>.</p>"
+        )
+        write_text(
+            SITE / "tableau_corr.html",
+            html_page(
+                "Tableau corrige",
+                body,
+                nav_current="tableau_correspondances_edito.html",
+                breadcrumb=html_breadcrumb(
+                    ("Accueil", "index.html"),
+                    ("Correspondances édito", "tableau_correspondances_edito.html"),
+                    ("Tableau corrige", None),
+                ),
+                page_header="<div class=\"page-head\"><h1>Tableau corrigé</h1><p class=\"lead\">Version corrigée du tableau d'origine avec vidéos témoin fixées selon l'EDITO.</p></div>",
+            ),
+        )
+        return
+
+    table_head = "".join(f"<th>{escape(name)}</th>" for name in headers)
+    table_rows = []
+    for row in rows:
+        table_rows.append(
+            "<tr>" + "".join(f"<td>{escape(row.get(col, ''))}</td>" for col in headers) + "</tr>"
+        )
+
+    csv_buffer = io.StringIO()
+    writer = csv.DictWriter(csv_buffer, fieldnames=headers)
+    writer.writeheader()
+    writer.writerows(rows)
+    write_text(SITE / "tableau_corr.csv", csv_buffer.getvalue())
+
+    body = (
+        "<p class='meta'>Tableau corrige derive de <code>data/tableau.corr</code> : "
+        "videos temoins fixees selon l'EDITO, avec conservation des videos experts et des objectifs pedagogiques.</p>"
+        "<p><a class='btn' href='tableau_corr.csv' download>Télécharger le tableau corrigé (CSV)</a></p>"
+        "<div class='table-wrap'><table><thead><tr>"
+        + table_head
+        + "</tr></thead><tbody>"
+        + ("\n".join(table_rows) or f"<tr><td colspan='{len(headers)}'>Aucune ligne.</td></tr>")
+        + "</tbody></table></div>"
+    )
+    write_text(
+        SITE / "tableau_corr.html",
+        html_page(
+            "Tableau corrigé",
+            body,
+            nav_current="tableau_correspondances_edito.html",
+            breadcrumb=html_breadcrumb(
+                ("Accueil", "index.html"),
+                ("Correspondances édito", "tableau_correspondances_edito.html"),
+                ("Tableau corrigé", None),
+            ),
+            page_header="<div class=\"page-head\"><h1>Tableau corrigé</h1><p class=\"lead\">Correction du tableau d'origine avec cadre vidéos témoin fixé par l'EDITO.</p></div>",
+        ),
+    )
 
 
 def pct(value: float) -> str:
@@ -3139,16 +4540,25 @@ if __name__ == "__main__":
     all_affectations = load_affectations()
     programme_table = load_programme_table()
     experts_profils = load_experts_profils()
-    match_data = load_match_derushage_edito()
     expected_capsule_pages = {f"capsule_{capsule['code']}.html" for capsule in all_capsules}
     for path in SITE.glob("capsule_*.html"):
         if path.name not in expected_capsule_pages:
             path.unlink()
+    if (SITE / "cartes_chaleur.html").exists():
+        (SITE / "cartes_chaleur.html").unlink()
+    if (SITE / "match.html").exists():
+        (SITE / "match.html").unlink()
+    for path in SITE.glob("match_temoin_*.html"):
+        path.unlink()
+    for path in SITE.glob("match_module_*.html"):
+        path.unlink()
     build_home(all_capsules, all_segments)
-    build_heatmaps_page(all_capsules, all_segments)
     build_experts_profiles_page(experts_profils)
+    build_tb_edito_capsule_pages(programme_table)
+    build_tb_edito_page()
+    build_mails_experts_pages(programme_table, experts_profils)
     build_correspondances_edito_page(programme_table)
-    build_match_pages(match_data)
+    build_tableau_corr_page()
     build_dashboard(all_capsules, all_segments, all_affectations)
     build_researcher_pages(all_segments)
     build_capsule_pages(all_capsules, all_segments, all_affectations, programme_table)

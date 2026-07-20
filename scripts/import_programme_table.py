@@ -35,6 +35,21 @@ DISPLAY_HEADERS = {
     "noms_proposes": "Nom proposé",
 }
 
+FIXED_EDITO_VIDEOS = {
+    "T1": {"module": "M1", "video_temoin": "VIDÉO 1 : POURQUOI OSER ?"},
+    "T2": {"module": "M1", "video_temoin": "VIDÉO 2 : DE LA RECHERCHE À L’INNOVATION"},
+    "T3": {"module": "M1", "video_temoin": "VIDÉO 3 : IDENTIFIER UN BESOIN RÉEL + SORTIR DU LABORATOIRE (fusion)"},
+    "T4": {"module": "M1", "video_temoin": "VIDÉO 4 : UNE IDÉE NE SUFFIT PAS + FREINS ET LEVIERS (fusion)"},
+    "T5": {"module": "M2", "video_temoin": "VIDÉO 5 : PROTECTION ET VALORISATION"},
+    "T6": {"module": "M2", "video_temoin": "VIDÉO 6 : TRANSFERT ET LICENSING"},
+    "T7": {"module": "M3", "video_temoin": "VIDÉO 7 : VOUS N'ÊTES PAS SEUL(E)"},
+    "T8": {"module": "M3", "video_temoin": "VIDÉO 8 : FINANCEMENTS, CONCOURS ET TEMPS POUR ENTREPRENDRE"},
+    "T9": {"module": "M4", "video_temoin": "VIDÉO 9 : PARTENARIATS ET POSTURE : CONSTRUIRE UNE ÉQUIPE"},
+    "T10": {"module": "M4", "video_temoin": "VIDÉO 10 : ENRICHIR SON LANGAGE"},
+    "T11": {"module": "M5", "video_temoin": "VIDÉO 11 : EVOLUTION DANS LE MÉTIER DU CHERCHEUR.EUSE"},
+    "T12": {"module": "M6", "video_temoin": "VIDÉO 12 : DE CONCLUSION : PASSER À L’ACTION"},
+}
+
 
 def col_to_idx(col: str) -> int:
     index = 0
@@ -91,14 +106,16 @@ def import_programme_table(path: Path) -> dict:
         code = cells.get(2, "").strip()
         if not re.fullmatch(r"T\d+", code):
             continue
+        fixed = FIXED_EDITO_VIDEOS.get(code, {})
         module = cells.get(1, "").strip()
         if module:
             current_module = module
+        current_module = fixed.get("module", current_module)
         imported_rows.append(
             {
                 "module": current_module,
                 "code": code,
-                "video_temoin": cells.get(3, "").strip(),
+                "video_temoin": fixed.get("video_temoin", cells.get(3, "").strip()),
                 "resume_chercheurs": cells.get(4, "").strip(),
                 "videos_referent": cells.get(5, "").strip(),
                 "objectif_pedagogique": cells.get(6, "").strip(),

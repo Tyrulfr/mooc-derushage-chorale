@@ -108,6 +108,33 @@ VIDEO_TO_MODULE = {
 }
 MIN_SEQUENCE_WORDS = 6
 
+TITLE_TO_THEME_RULES = [
+    ("pourquoi oser", "T1"),
+    ("recherche fondamentale", "T2"),
+    ("besoin reel", "T3"),
+    ("sortir du labo", "T3"),
+    ("idee ne suffit pas", "T4"),
+    ("freins", "T4"),
+    ("doutes", "T4"),
+    ("legitimite", "T4"),
+    ("protection intellectuelle", "T5"),
+    ("transfert", "T6"),
+    ("licensing", "T6"),
+    ("ne pas avancer seul", "T7"),
+    ("ecosysteme", "T7"),
+    ("vous n etes pas seul", "T7"),
+    ("dispositif accompagnement", "T7"),
+    ("financements", "T8"),
+    ("concours", "T8"),
+    ("partenariat", "T9"),
+    ("construire une equipe", "T9"),
+    ("changer de langage", "T10"),
+    ("enrichir son langage", "T10"),
+    ("evolution", "T11"),
+    ("metier du chercheur", "T11"),
+    ("passer a l action", "T12"),
+]
+
 
 def normalize(text: str) -> str:
     ascii_text = "".join(
@@ -188,6 +215,17 @@ def parse_video_number(video_label: str) -> int | None:
     if not match:
         return None
     return int(match.group(1))
+
+
+def theme_from_edito_video(video_label: str) -> str | None:
+    normalized = normalize(video_label or "")
+    for marker, theme in TITLE_TO_THEME_RULES:
+        if marker in normalized:
+            return theme
+    number = parse_video_number(video_label or "")
+    if number is not None:
+        return VIDEO_TO_THEME.get(number)
+    return None
 
 
 def parse_timecode(value: str) -> float:
@@ -302,8 +340,8 @@ def build_match() -> dict:
 
         for sequence in edito_sequences:
             video_number = parse_video_number(sequence.get("video", ""))
-            module_key = VIDEO_TO_MODULE.get(video_number, "M6")
-            theme_target = VIDEO_TO_THEME.get(video_number)
+            theme_target = theme_from_edito_video(sequence.get("video", ""))
+            module_key = module_from_theme(theme_target) or VIDEO_TO_MODULE.get(video_number, "M6")
             module_counters[module_key]["edito"] += 1
 
             if not theme_target:

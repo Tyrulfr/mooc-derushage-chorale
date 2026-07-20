@@ -15,11 +15,11 @@ MATCH_DATA = DATA / "match"
 NAV_ITEMS = (
     ("index.html", "Accueil"),
     ("tableau_de_bord.html", "Tableau de bord"),
-    ("cartes_chaleur.html", "Cartes de chaleur"),
+    ("tb_edito.html", "Capsules témoins"),
+    ("mails_experts.html", "Mails experts"),
     ("profils_experts.html", "Profils experts"),
     ("derushage_edito.html", "Dérushage édito"),
     ("tableau_correspondances_edito.html", "Correspondances édito"),
-    ("match.html", "Match"),
     ("bab_encodes.html", "BAB encodé"),
     ("conflits.html", "Conflits"),
     ("registre.html", "Registre"),

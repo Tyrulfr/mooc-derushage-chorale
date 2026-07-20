@@ -380,6 +380,9 @@ tbody tr:last-child td { border-bottom: none; }
   font-size: 14px;
   line-height: 1.55;
 }
+.mail-ready {
+  font-family: Aptos, "Segoe UI", Arial, sans-serif;
+}
 .methodology-panel {
   margin-top: 28px;
   padding: 20px;

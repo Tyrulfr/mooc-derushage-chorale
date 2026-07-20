@@ -12,12 +12,12 @@
   {
     "id": "jjg_edito",
     "fichier": "jjg_edito.json",
-    "source": "00-Mooc_Questionnaire_JJ_GREFFET.docx",
+    "source": "00_Mooc_Transcript_JJ Greffet.docx",
     "intervenant": "Jean-Jacques Greffet",
     "statut_derushage": "AUTO_GENERE_DEPUIS_SURLIGNAGE",
     "date_maj": "2026-07-17",
-    "nb_sequences_retenues": 0,
-    "nb_paragraphes_analyse": 169
+    "nb_sequences_retenues": 71,
+    "nb_paragraphes_analyse": 243
   },
   {
     "id": "mur_edito",
@@ -28,5 +28,15 @@
     "date_maj": "2026-07-17",
     "nb_sequences_retenues": 74,
     "nb_paragraphes_analyse": 211
+  },
+  {
+    "id": "loi_edito",
+    "fichier": "loi_edito.json",
+    "source": "00_Mooc_Transcript_Loic Rajjou.docx",
+    "intervenant": "Loïc Rajjou",
+    "statut_derushage": "AUTO_GENERE_DEPUIS_SURLIGNAGE",
+    "date_maj": "2026-07-17",
+    "nb_sequences_retenues": 80,
+    "nb_paragraphes_analyse": 201
   }
 ]
