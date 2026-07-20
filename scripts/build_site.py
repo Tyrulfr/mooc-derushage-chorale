@@ -3761,16 +3761,6 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
     sections = []
     toc_rows = []
 
-    def _render_intro_outro(bloc: dict, label: str) -> str:
-        if not bloc:
-            return f"<p><strong>{escape(label)} :</strong> A compléter.</p>"
-        items = []
-        if bloc.get("texte_intervenant"):
-            items.append(f"<li><strong>Texte proposé :</strong> {escape(_tb_expertise_label(str(bloc.get('texte_intervenant', ''))))}</li>")
-        if not items:
-            items.append("<li>Aucun élément proposé.</li>")
-        return f"<p><strong>{escape(label)}</strong></p><ul>{''.join(items)}</ul>"
-
     for item in expert.get("videos", []):
         code = item.get("code", "")
         chapter_anchor = f"chap_{code}"
@@ -3781,24 +3771,12 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
         ordre = [seq.get("id", f"{code}-NOID") for seq in ordered]
         videos_expert = _tb_edito_parse_videos_expert(row.get("videos_referent", ""))
         cadrage = _tb_edito_build_cadrage(code, ordre, by_seq_id, videos_expert)
-
-        intro = cadrage.get("intro", {})
-        transitions = cadrage.get("transitions", [])
-        outro = cadrage.get("outro", {})
-        transition_rows = []
-        for idx, transition in enumerate(transitions):
-            text = (transition.get("texte_intervenant") or "").strip()
-            if text:
-                transition_rows.append(
-                    f"<li><strong>Transition {idx + 1} :</strong> {escape(_tb_expertise_label(text))}</li>"
-                )
-        transition_html = (
-            "<ul>" + "".join(transition_rows) + "</ul>"
-            if transition_rows
-            else "<p>Aucune transition nécessaire proposée pour cette capsule.</p>"
-        )
-
-        expertise_labels = _tb_expertise_label(" | ".join(item.get("expert_video_labels", [])) or "À définir")
+        script_final = _tb_expertise_label(_tb_edito_script_with_cadrage(ordre, by_seq_id, cadrage))
+        capsule_data = {
+            "videos_expert": videos_expert,
+            "experts_proposes": _extract_intervenants(row.get("noms_proposes", "")),
+        }
+        brief_text = _tb_expertise_label(export_brief_intervenant_plaintext(code, capsule_data, {}))
         toc_rows.append(
             "<tr>"
             f"<td><a href='#{escape(chapter_anchor)}'>{escape(code)} — {escape(item.get('video_temoin_label', ''))}</a></td>"
@@ -3808,17 +3786,18 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
             "<section style='margin-top:28px;padding-top:10px;border-top:1px solid #cbd5e1;'>"
             f"<a name='{escape(chapter_anchor)}'></a>"
             f"<h2>{escape(code)} — {escape(item.get('video_temoin_label', ''))}</h2>"
-            f"<p><strong>Vidéos expertise proposées :</strong> {escape(expertise_labels)}</p>"
-            f"<p><strong>Objectif pédagogique :</strong> {escape(item.get('objectif', ''))}</p>"
-            "<h3>Proposition de cadrage de la vidéo expertise</h3>"
-            "<p>Cette proposition est formulée pour l'expert : elle ne reprend pas les codes internes de montage.</p>"
-            f"{_render_intro_outro(intro, 'Ouverture proposée')}"
-            "<p><strong>Transitions proposées (si changement de sous-sujet) :</strong></p>"
-            f"{transition_html}"
-            f"{_render_intro_outro(outro, 'Clôture proposée')}"
+            "<h3>Proposition de cadrage pour la video expert</h3>"
+            f"<pre style='white-space:pre-wrap;border:1px solid #dbe2ea;border-radius:8px;padding:10px;background:#f8fafc;'>{escape(brief_text)}</pre>"
+            "<h3>Script final</h3>"
+            f"<pre style='white-space:pre-wrap;border:1px solid #dbe2ea;border-radius:8px;padding:10px;background:#ffffff;'>{escape(script_final)}</pre>"
             "</section>"
         )
 
+    toc_intro = (
+        "<p class='meta'>Liens actifs vers chaque capsule témoin concernée.</p>"
+        if len(toc_rows) > 1
+        else "<p class='meta'>Lien actif vers la capsule témoin concernée.</p>"
+    )
     return (
         "<html><head><meta charset='utf-8'>"
         "<style>"
@@ -3831,18 +3810,10 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
         "</style>"
         "</head><body>"
         f"<h1>Guide éditorial — {escape(expert.get('nom', 'Expert'))}</h1>"
-        f"<p><strong>Organisme :</strong> {escape(expert.get('organisme', ''))}</p>"
-        "<p>Une vidéo témoin parle d'un sujet ; nous créons ensuite des vidéos expertise pour structurer ce sujet et compléter les notions clés.</p>"
-        "<p>Ce guide ne contient que des propositions de cadrage pour les vidéos expertise (ouverture, transitions éventuelles, clôture), sans codes techniques internes de construction.</p>"
         "<h2>Sommaire du guide éditorial</h2>"
-        "<p class='meta'>Liens actifs vers les chapitres du guide.</p>"
+        f"{toc_intro}"
         f"<table class='toc'><tbody>{''.join(toc_rows) if toc_rows else '<tr><td>Aucune capsule témoin associée à ce stade.</td></tr>'}</tbody></table>"
         f"{''.join(sections) if sections else '<p>Aucune capsule témoin associée à ce stade.</p>'}"
-        "<hr style='margin:24px 0;border:none;border-top:1px solid #cbd5e1;'>"
-        "<p><strong>Contact pour informations complémentaires :</strong><br>"
-        "Christophe Dubois (Ingénieur pédagogique)<br>"
-        "christophe.dubois@universite-paris-saclay<br>"
-        "Tel : 07 85 99 08 12</p>"
         "</body></html>"
     )
 
