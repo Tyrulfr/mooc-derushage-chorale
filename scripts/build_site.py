@@ -4,6 +4,7 @@ import csv
 import io
 import re
 from collections import Counter, defaultdict
+from email.message import EmailMessage
 from pathlib import Path
 import unicodedata
 from urllib.parse import quote
@@ -3730,6 +3731,27 @@ def _mailto_href(recipient: str, subject: str, body: str) -> str:
     return f"mailto:{recipient}?subject={quote(subject)}&body={quote(body)}"
 
 
+def _eml_with_attachment_bytes(
+    recipient: str,
+    subject: str,
+    body: str,
+    attachment_name: str,
+    attachment_bytes: bytes,
+) -> bytes:
+    msg = EmailMessage()
+    msg["To"] = recipient
+    msg["Subject"] = subject
+    msg["From"] = "Equipe Action 2 pilier 1 PUI alliance Paris Scalay"
+    msg.set_content(body)
+    msg.add_attachment(
+        attachment_bytes,
+        maintype="application",
+        subtype="msword",
+        filename=attachment_name,
+    )
+    return msg.as_bytes()
+
+
 def _tb_expertise_label(text: str) -> str:
     value = text or ""
     replacements = [
@@ -3889,14 +3911,27 @@ def build_mails_experts_pages(programme_table: dict, experts_profils: dict) -> N
 
     expected = set()
     expected_docs = set()
+    expected_emls = set()
     for expert in experts:
         subject, mail_text = _compose_expert_mail(expert)
-        send_href = _mailto_href(TEST_MAIL_RECIPIENT, subject, mail_text)
         mail_name = f"mail_expert_{expert['slug']}.html"
         doc_name = f"guide_editorial_{expert['slug']}.doc"
+        eml_name = f"mail_expert_{expert['slug']}_test.eml"
         expected.add(mail_name)
         expected_docs.add(doc_name)
-        write_text(SITE / doc_name, _guide_editorial_expert_doc_html(expert, grouped_tb, rows_by_code))
+        expected_emls.add(eml_name)
+        guide_content = _guide_editorial_expert_doc_html(expert, grouped_tb, rows_by_code)
+        guide_bytes = guide_content.encode("utf-8")
+        write_text(SITE / doc_name, guide_content)
+        (SITE / eml_name).write_bytes(
+            _eml_with_attachment_bytes(
+                TEST_MAIL_RECIPIENT,
+                subject,
+                mail_text,
+                doc_name,
+                guide_bytes,
+            )
+        )
         video_rows = []
         for item in expert["videos"]:
             video_rows.append(
@@ -3912,7 +3947,7 @@ def build_mails_experts_pages(programme_table: dict, experts_profils: dict) -> N
             f"<p class='meta'><strong>Objet proposé :</strong> {escape(subject)}</p>"
             f"<p class='meta'><strong>Destinataire test actuel :</strong> {escape(TEST_MAIL_RECIPIENT)} "
             f"(validation éditoriale ensuite via {escape(REVIEW_MAIL_RECIPIENT)}).</p>"
-            f"<p><a class='btn' href='{escape(send_href)}'>Envoyer le mail test (Christophe)</a></p>"
+            f"<p><a class='btn' href='{escape(eml_name)}' download>Envoyer le mail test avec pièce jointe</a></p>"
             f"<p><a class='btn' href='{escape(doc_name)}' download>Exporter le guide éditorial (Word)</a></p>"
             "<h2>Mail prêt à envoyer</h2>"
             f"<pre class='script mail-ready'>{escape(mail_text)}</pre>"
@@ -3947,6 +3982,9 @@ def build_mails_experts_pages(programme_table: dict, experts_profils: dict) -> N
         path.unlink()
     for path in SITE.glob("guide_editorial_*.doc"):
         if path.name not in expected_docs:
+            path.unlink()
+    for path in SITE.glob("mail_expert_*_test.eml"):
+        if path.name not in expected_emls:
             path.unlink()
     for path in SITE.glob("package_mail_expert_*.zip"):
         path.unlink()
