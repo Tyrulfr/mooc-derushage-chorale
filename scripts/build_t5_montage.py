@@ -353,7 +353,7 @@ def orientation_e8_e9(by_id: dict[str, dict]) -> list[dict]:
             ],
             "experts_proposes": [
                 "Antoine Latreille",
-                "Sophie DJEGA-MARIADASSOU",
+                "Stanislas De Lapasse",
                 "Eneli Vino",
                 "Soizic Lefeuvre",
             ],
@@ -392,7 +392,7 @@ def orientation_e8_e9(by_id: dict[str, dict]) -> list[dict]:
             ],
             "experts_proposes": [
                 "Antoine Latreille",
-                "Sophie DJEGA-MARIADASSOU",
+                "Stanislas De Lapasse",
                 "Eneli Vino",
                 "Soizic Lefeuvre",
             ],

@@ -3760,6 +3760,22 @@ def _highlight_tb_edito_syntagmes(text: str, code: str) -> str:
 def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[dict]], rows_by_code: dict[str, dict]) -> str:
     sections = []
     toc_rows = []
+
+    def _render_cadrage_fields(bloc: dict) -> str:
+        if not bloc:
+            return "<li>Aucun champ renseigné.</li>"
+        rows = []
+        for key, value in bloc.items():
+            if value is None or value == "":
+                continue
+            rows.append(
+                "<li>"
+                f"<strong>{escape(str(key).replace('_', ' ').capitalize())} :</strong> "
+                f"{escape(_tb_expertise_label(str(value)))}"
+                "</li>"
+            )
+        return "".join(rows) if rows else "<li>Aucun champ renseigné.</li>"
+
     for item in expert.get("videos", []):
         code = item.get("code", "")
         chapter_anchor = f"chap_{code}"
@@ -3774,15 +3790,21 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
         intro = cadrage.get("intro", {})
         transitions = cadrage.get("transitions", [])
         outro = cadrage.get("outro", {})
+        general_fields = {
+            "statut": cadrage.get("statut", ""),
+            "dispositif": cadrage.get("dispositif", ""),
+            "note": cadrage.get("note", ""),
+        }
+        general_html = f"<ul>{_render_cadrage_fields(general_fields)}</ul>"
         transition_html = "".join(
-            "<li>"
-            f"<strong>{escape(transition.get('id', 'Transition'))}</strong> — "
-            f"{escape(_tb_expertise_label(transition.get('texte_intervenant', '')))}"
-            "</li>"
-            for transition in transitions
+            "<div style='margin-bottom:10px;'>"
+            f"<p><strong>Transition {idx + 1}</strong></p>"
+            f"<ul>{_render_cadrage_fields(transition)}</ul>"
+            "</div>"
+            for idx, transition in enumerate(transitions)
         )
         if not transition_html:
-            transition_html = "<li>Aucune transition nécessaire détectée.</li>"
+            transition_html = "<p>Aucune transition nécessaire détectée.</p>"
 
         script_rows = []
         for seq_id in ordre:
@@ -3801,16 +3823,9 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
             script_rows.append("<p>Aucun extrait édito apparié pour cette vidéo.</p>")
 
         expertise_labels = _tb_expertise_label(" | ".join(item.get("expert_video_labels", [])) or "À définir")
-        page_field = (
-            f"<span style='mso-element:field-begin'></span> PAGEREF {escape(chapter_anchor)} \\h "
-            "<span style='mso-element:field-separator'></span>"
-            "<span>0</span>"
-            "<span style='mso-element:field-end'></span>"
-        )
         toc_rows.append(
             "<tr>"
             f"<td><a href='#{escape(chapter_anchor)}'>{escape(code)} — {escape(item.get('video_temoin_label', ''))}</a></td>"
-            f"<td style='text-align:right;white-space:nowrap;'>{page_field}</td>"
             "</tr>"
         )
         sections.append(
@@ -3820,10 +3835,14 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
             f"<p><strong>Vidéos expertise proposées :</strong> {escape(expertise_labels)}</p>"
             f"<p><strong>Objectif pédagogique :</strong> {escape(item.get('objectif', ''))}</p>"
             "<h3>Proposition de cadrage de la vidéo expertise</h3>"
-            f"<p><strong>Introduction proposée :</strong> {escape(_tb_expertise_label(intro.get('texte_intervenant', '')))}</p>"
-            "<p><strong>Transitions proposées :</strong></p>"
-            f"<ul>{transition_html}</ul>"
-            f"<p><strong>Conclusion proposée :</strong> {escape(_tb_expertise_label(outro.get('texte_intervenant', '')))}</p>"
+            "<p><strong>Consignes générales :</strong></p>"
+            f"{general_html}"
+            "<p><strong>Introduction :</strong></p>"
+            f"<ul>{_render_cadrage_fields(intro)}</ul>"
+            "<p><strong>Transitions :</strong></p>"
+            f"{transition_html}"
+            "<p><strong>Conclusion :</strong></p>"
+            f"<ul>{_render_cadrage_fields(outro)}</ul>"
             "<h3>Script témoin</h3>"
             "<p><em>Les syntagmes clés du sujet sont mis en gras lorsqu'ils sont détectés.</em></p>"
             f"{''.join(script_rows)}"
@@ -3850,9 +3869,8 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
         "</ol>"
         "<p>Objectif : faciliter votre positionnement et préparer une contribution expertise cohérente avec le montage témoin.</p>"
         "<h2>Sommaire du guide éditorial</h2>"
-        "<p class='meta'>Liens actifs vers les chapitres et numéros de page dynamiques "
-        "(mettre à jour les champs dans Word si besoin).</p>"
-        f"<table class='toc'><tbody>{''.join(toc_rows) if toc_rows else '<tr><td>Aucune capsule témoin associée à ce stade.</td><td></td></tr>'}</tbody></table>"
+        "<p class='meta'>Liens actifs vers les chapitres du guide.</p>"
+        f"<table class='toc'><tbody>{''.join(toc_rows) if toc_rows else '<tr><td>Aucune capsule témoin associée à ce stade.</td></tr>'}</tbody></table>"
         f"{''.join(sections) if sections else '<p>Aucune capsule témoin associée à ce stade.</p>'}"
         "<hr style='margin:24px 0;border:none;border-top:1px solid #cbd5e1;'>"
         "<p><strong>Contact pour informations complémentaires :</strong><br>"
