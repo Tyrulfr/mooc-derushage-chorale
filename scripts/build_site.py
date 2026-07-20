@@ -3910,6 +3910,8 @@ def build_mails_experts_pages(programme_table: dict, experts_profils: dict) -> N
             f"(validation éditoriale ensuite via {escape(REVIEW_MAIL_RECIPIENT)}).</p>"
             f"<p><a class='btn' href='{escape(send_href)}'>Envoyer le mail test (Christophe)</a></p>"
             f"<p><a class='btn' href='{escape(doc_name)}' download>Exporter le guide éditorial (Word)</a></p>"
+            f"<p><a class='btn' href='{escape(doc_name)}' target='_blank' rel='noopener'>Ouvrir le guide éditorial (Word)</a></p>"
+            f"<p class='meta'><strong>Pièce jointe prête :</strong> <code>{escape(doc_name)}</code></p>"
             "<h2>Mail prêt à envoyer</h2>"
             f"<pre class='script mail-ready'>{escape(mail_text)}</pre>"
             "<h2>Capsules et sujets concernés</h2>"
