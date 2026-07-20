@@ -3794,8 +3794,16 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
         return "".join(chunks) if chunks else "<p>Aucun contenu.</p>"
 
     def _ergo_script_html(text: str) -> str:
-        safe = escape(text or "").replace("\n", "<br>")
-        return f"<div class='script-body'>{safe}</div>"
+        lines = (text or "").splitlines()
+        rendered: list[str] = []
+        ref_pattern = re.compile(r"^\[[A-Z0-9-]+\]\s.+\|\s.+\|\s.+$")
+        for line in lines:
+            safe_line = escape(line)
+            if ref_pattern.match(line.strip()):
+                rendered.append(f"<span class='script-ref'>{safe_line}</span>")
+            else:
+                rendered.append(safe_line)
+        return f"<div class='script-body'>{'<br>'.join(rendered)}</div>"
 
     for item in expert.get("videos", []):
         code = item.get("code", "")
@@ -3851,6 +3859,7 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
         ".brief-video{background:#eef2ff;padding:6px 8px;border-radius:6px;}"
         ".brief-precaution{background:#fff7ed;padding:8px;border-left:3px solid #fdba74;border-radius:4px;}"
         ".script-body{font-size:11pt;line-height:1.62;word-break:break-word;}"
+        ".script-ref{font-size:9pt;color:#94a3b8;}"
         ".toc{width:100%;border-collapse:collapse;margin:10px 0 16px;}"
         ".toc td{padding:6px 2px;border-bottom:1px dotted #94a3b8;}"
         "</style>"
