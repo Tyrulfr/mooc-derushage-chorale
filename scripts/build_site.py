@@ -3696,17 +3696,17 @@ def _compose_expert_mail(expert: dict) -> tuple[str, str]:
     video_codes_label = ", ".join(_label_video_expert(code) for code in video_codes) if video_codes else "à définir"
     tb_edito_list = ", ".join(item["code"] for item in videos) if videos else "à définir"
 
-    subject = f"MOOC L'Esprit d'innover — confirmation de vos videos expertise pressenties"
+    subject = f"MOOC L'Esprit d'innover — confirmation de vos videos expertise ({nom})"
     mail_text = (
         f"Objet : {subject}\n\n"
         f"Bonjour {prenom},\n\n"
         "Dans le cadre de la conception du MOOC \"L'Esprit d'innover\", nous préparons les vidéos expertise qui "
         "complètent les capsules témoins chorales.\n\n"
-        "Nous partageons dans le guide de travail les informations utiles sur les intervenants et leurs organismes de rattachement ; "
-        f"vous y apparaissez comme expert(e) proposé(e) ({organisme}).\n\n"
+        "Nous partageons dans le guide de travail les informations utiles sur les experts et leurs organismes de rattachement ; "
+        f"vous y apparaissez comme expert pressenti ({organisme}).\n\n"
         "À ce stade, les documents explicitent les transcripts de quatre chercheurs ; "
         "dans la semaine, le transcript d'un cinquième chercheur sera intégré.\n\n"
-        f"Selon l'état actuel de la conception, vous êtes proposé(e) sur : {video_codes_label}.\n\n"
+        f"Selon l'état actuel de la conception, vous êtes pressenti sur : {video_codes_label}.\n\n"
         "Afin d'éviter de produire des scripts inutiles, pourriez-vous nous confirmer les vidéos expertise "
         "sur lesquelles vous souhaitez intervenir selon ce calendrier :\n"
         "- 23 juillet : positionnement de votre part sur les vidéos expertise ;\n"
@@ -3716,7 +3716,7 @@ def _compose_expert_mail(expert: dict) -> tuple[str, str]:
         f"- Guide éditorial (propos témoins, objectifs pédagogiques, consignes envisagées et tableau récapitulatif des candidatures) ;\n"
         f"- Capsules témoins concernées : {tb_edito_list}.\n\n"
         "Le travail d'ingénierie pédagogique vise à refléter au mieux votre expertise sans s'y substituer ; "
-        "vous êtes bien entendu libre d'aller plus loin, d'ajuster, ou de recadrer si vous jugez cela pertinent.\n\n"
+        "vous êtes bien entendu libre d'aller plus loin, d'ajuster, ou de recadrer selon votre jugement.\n\n"
         "Processus d'envoi : tous les mails sont d'abord transmis à Rita pour vérification (et éventuelle réécriture) "
         "avant envoi final aux experts.\n\n"
         "Merci d'avance pour votre retour,\n"
@@ -3767,10 +3767,6 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
         items = []
         if bloc.get("texte_intervenant"):
             items.append(f"<li><strong>Texte proposé :</strong> {escape(_tb_expertise_label(str(bloc.get('texte_intervenant', ''))))}</li>")
-        if bloc.get("texte_pancarte"):
-            items.append(f"<li><strong>Pancarte proposée :</strong> {escape(_tb_expertise_label(str(bloc.get('texte_pancarte', ''))))}</li>")
-        if bloc.get("enchainement_expert"):
-            items.append(f"<li><strong>Enchaînement expertise :</strong> {escape(_tb_expertise_label(str(bloc.get('enchainement_expert', ''))))}</li>")
         if not items:
             items.append("<li>Aucun élément proposé.</li>")
         return f"<p><strong>{escape(label)}</strong></p><ul>{''.join(items)}</ul>"
@@ -3869,7 +3865,7 @@ def build_mails_experts_pages(programme_table: dict, experts_profils: dict) -> N
         )
 
     body = (
-        "<p class='meta'>Brouillons de mails individualisés pour solliciter les intervenants experts. "
+        "<p class='meta'>Brouillons de mails individualisés pour solliciter les experts. "
         "Chaque mail reprend les sujets de capsules témoins concernés, les vidéos expertise proposées, l'information sur les "
         "transcripts disponibles (4 actuellement, 5e en cours d'intégration) et les jalons : "
         "<strong>23 juillet</strong> (positionnement), <strong>27 juillet</strong> (retour d'arbitrage), "
@@ -3883,7 +3879,7 @@ def build_mails_experts_pages(programme_table: dict, experts_profils: dict) -> N
             body,
             nav_current="mails_experts.html",
             breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Mails experts", None)),
-            page_header='<div class="page-head"><h1>Mails experts</h1><p class="lead">Préparation des messages de sollicitation par intervenant expert.</p></div>',
+            page_header='<div class="page-head"><h1>Mails experts</h1><p class="lead">Préparation des messages de sollicitation par expert.</p></div>',
         ),
     )
 
