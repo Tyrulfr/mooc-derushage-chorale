@@ -3761,20 +3761,19 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
     sections = []
     toc_rows = []
 
-    def _render_cadrage_fields(bloc: dict) -> str:
+    def _render_intro_outro(bloc: dict, label: str) -> str:
         if not bloc:
-            return "<li>Aucun champ renseigné.</li>"
-        rows = []
-        for key, value in bloc.items():
-            if value is None or value == "":
-                continue
-            rows.append(
-                "<li>"
-                f"<strong>{escape(str(key).replace('_', ' ').capitalize())} :</strong> "
-                f"{escape(_tb_expertise_label(str(value)))}"
-                "</li>"
-            )
-        return "".join(rows) if rows else "<li>Aucun champ renseigné.</li>"
+            return f"<p><strong>{escape(label)} :</strong> A compléter.</p>"
+        items = []
+        if bloc.get("texte_intervenant"):
+            items.append(f"<li><strong>Texte proposé :</strong> {escape(_tb_expertise_label(str(bloc.get('texte_intervenant', ''))))}</li>")
+        if bloc.get("texte_pancarte"):
+            items.append(f"<li><strong>Pancarte proposée :</strong> {escape(_tb_expertise_label(str(bloc.get('texte_pancarte', ''))))}</li>")
+        if bloc.get("enchainement_expert"):
+            items.append(f"<li><strong>Enchaînement expertise :</strong> {escape(_tb_expertise_label(str(bloc.get('enchainement_expert', ''))))}</li>")
+        if not items:
+            items.append("<li>Aucun élément proposé.</li>")
+        return f"<p><strong>{escape(label)}</strong></p><ul>{''.join(items)}</ul>"
 
     for item in expert.get("videos", []):
         code = item.get("code", "")
@@ -3790,37 +3789,18 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
         intro = cadrage.get("intro", {})
         transitions = cadrage.get("transitions", [])
         outro = cadrage.get("outro", {})
-        general_fields = {
-            "statut": cadrage.get("statut", ""),
-            "dispositif": cadrage.get("dispositif", ""),
-            "note": cadrage.get("note", ""),
-        }
-        general_html = f"<ul>{_render_cadrage_fields(general_fields)}</ul>"
-        transition_html = "".join(
-            "<div style='margin-bottom:10px;'>"
-            f"<p><strong>Transition {idx + 1}</strong></p>"
-            f"<ul>{_render_cadrage_fields(transition)}</ul>"
-            "</div>"
-            for idx, transition in enumerate(transitions)
+        transition_rows = []
+        for idx, transition in enumerate(transitions):
+            text = (transition.get("texte_intervenant") or "").strip()
+            if text:
+                transition_rows.append(
+                    f"<li><strong>Transition {idx + 1} :</strong> {escape(_tb_expertise_label(text))}</li>"
+                )
+        transition_html = (
+            "<ul>" + "".join(transition_rows) + "</ul>"
+            if transition_rows
+            else "<p>Aucune transition nécessaire proposée pour cette capsule.</p>"
         )
-        if not transition_html:
-            transition_html = "<p>Aucune transition nécessaire détectée.</p>"
-
-        script_rows = []
-        for seq_id in ordre:
-            seq = by_seq_id.get(seq_id)
-            if not seq:
-                continue
-            verbatim_html = _highlight_tb_edito_syntagmes(seq.get("texte", ""), code)
-            script_rows.append(
-                "<div style='margin-bottom:12px;padding:10px;border:1px solid #dbe2ea;border-radius:8px;'>"
-                f"<p style='margin:0 0 6px 0;'><strong>{escape(seq.get('intervenant', 'Temoin'))}</strong> "
-                f"<span style='color:#475569;'>[{escape(seq.get('id', '-'))}]</span></p>"
-                f"<p style='margin:0;color:#0f172a;'>{verbatim_html}</p>"
-                "</div>"
-            )
-        if not script_rows:
-            script_rows.append("<p>Aucun extrait édito apparié pour cette vidéo.</p>")
 
         expertise_labels = _tb_expertise_label(" | ".join(item.get("expert_video_labels", [])) or "À définir")
         toc_rows.append(
@@ -3835,17 +3815,11 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
             f"<p><strong>Vidéos expertise proposées :</strong> {escape(expertise_labels)}</p>"
             f"<p><strong>Objectif pédagogique :</strong> {escape(item.get('objectif', ''))}</p>"
             "<h3>Proposition de cadrage de la vidéo expertise</h3>"
-            "<p><strong>Consignes générales :</strong></p>"
-            f"{general_html}"
-            "<p><strong>Introduction :</strong></p>"
-            f"<ul>{_render_cadrage_fields(intro)}</ul>"
-            "<p><strong>Transitions :</strong></p>"
+            "<p>Cette proposition est formulée pour l'expert : elle ne reprend pas les codes internes de montage.</p>"
+            f"{_render_intro_outro(intro, 'Ouverture proposée')}"
+            "<p><strong>Transitions proposées (si changement de sous-sujet) :</strong></p>"
             f"{transition_html}"
-            "<p><strong>Conclusion :</strong></p>"
-            f"<ul>{_render_cadrage_fields(outro)}</ul>"
-            "<h3>Script témoin</h3>"
-            "<p><em>Les syntagmes clés du sujet sont mis en gras lorsqu'ils sont détectés.</em></p>"
-            f"{''.join(script_rows)}"
+            f"{_render_intro_outro(outro, 'Clôture proposée')}"
             "</section>"
         )
 
@@ -3862,12 +3836,8 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
         "</head><body>"
         f"<h1>Guide éditorial — {escape(expert.get('nom', 'Expert'))}</h1>"
         f"<p><strong>Organisme :</strong> {escape(expert.get('organisme', ''))}</p>"
-        "<p>Ce document est structuré en deux parties pour chaque capsule témoin concernée :</p>"
-        "<ol>"
-        "<li><strong>Proposition de cadrage de la vidéo expertise</strong> (introduction, transitions éventuelles, conclusion) ;</li>"
-        "<li><strong>Script témoin</strong> servant de base éditoriale (avec mise en évidence des syntagmes clés quand détectés).</li>"
-        "</ol>"
-        "<p>Objectif : faciliter votre positionnement et préparer une contribution expertise cohérente avec le montage témoin.</p>"
+        "<p>Une vidéo témoin parle d'un sujet ; nous créons ensuite des vidéos expertise pour structurer ce sujet et compléter les notions clés.</p>"
+        "<p>Ce guide ne contient que des propositions de cadrage pour les vidéos expertise (ouverture, transitions éventuelles, clôture), sans codes techniques internes de construction.</p>"
         "<h2>Sommaire du guide éditorial</h2>"
         "<p class='meta'>Liens actifs vers les chapitres du guide.</p>"
         f"<table class='toc'><tbody>{''.join(toc_rows) if toc_rows else '<tr><td>Aucune capsule témoin associée à ce stade.</td></tr>'}</tbody></table>"
