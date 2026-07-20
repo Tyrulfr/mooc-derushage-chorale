@@ -3761,6 +3761,42 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
     sections = []
     toc_rows = []
 
+    def _ergo_brief_html(text: str) -> str:
+        lines = (text or "").splitlines()
+        chunks: list[str] = []
+        list_items: list[str] = []
+
+        def flush_list() -> None:
+            nonlocal list_items
+            if list_items:
+                chunks.append("<ul>" + "".join(list_items) + "</ul>")
+                list_items = []
+
+        for raw in lines:
+            stripped = raw.strip()
+            if not stripped:
+                flush_list()
+                continue
+            if stripped.startswith("- "):
+                list_items.append(f"<li>{escape(stripped[2:].strip())}</li>")
+                continue
+            flush_list()
+            if stripped.startswith("Precaution :"):
+                chunks.append(f"<p class='brief-precaution'><strong>Precaution :</strong> {escape(stripped.split(':', 1)[1].strip())}</p>")
+            elif stripped.startswith("Vidéo expertise ") and " — " in stripped:
+                left, right = stripped.split(" — ", 1)
+                chunks.append(f"<p class='brief-video'><strong>{escape(left)}</strong> — {escape(right)}</p>")
+            elif stripped.endswith(":"):
+                chunks.append(f"<p class='brief-label'><strong>{escape(stripped)}</strong></p>")
+            else:
+                chunks.append(f"<p>{escape(stripped)}</p>")
+        flush_list()
+        return "".join(chunks) if chunks else "<p>Aucun contenu.</p>"
+
+    def _ergo_script_html(text: str) -> str:
+        safe = escape(text or "").replace("\n", "<br>")
+        return f"<div class='script-body'>{safe}</div>"
+
     for item in expert.get("videos", []):
         code = item.get("code", "")
         chapter_anchor = f"chap_{code}"
@@ -3787,9 +3823,9 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
             f"<a name='{escape(chapter_anchor)}'></a>"
             f"<h2>{escape(code)} — {escape(item.get('video_temoin_label', ''))}</h2>"
             "<h3>Proposition de cadrage pour la video expert</h3>"
-            f"<pre style='white-space:pre-wrap;border:1px solid #dbe2ea;border-radius:8px;padding:10px;background:#f8fafc;'>{escape(brief_text)}</pre>"
+            f"<div class='doc-block brief-block'>{_ergo_brief_html(brief_text)}</div>"
             "<h3>Script final</h3>"
-            f"<pre style='white-space:pre-wrap;border:1px solid #dbe2ea;border-radius:8px;padding:10px;background:#ffffff;'>{escape(script_final)}</pre>"
+            f"<div class='doc-block script-block'>{_ergo_script_html(script_final)}</div>"
             "</section>"
         )
 
@@ -3805,6 +3841,16 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
         "h1{font-size:18pt;margin-bottom:6px;}"
         "h2{font-size:14pt;margin-bottom:6px;}"
         "h3{font-size:12.5pt;margin-bottom:6px;}"
+        ".doc-block{border:1px solid #dbe2ea;border-radius:8px;padding:12px 14px;margin-bottom:14px;}"
+        ".brief-block{background:#f8fafc;line-height:1.65;}"
+        ".script-block{background:#ffffff;line-height:1.6;}"
+        ".doc-block p{margin:0 0 8px 0;}"
+        ".doc-block ul{margin:4px 0 10px 24px;padding:0;}"
+        ".doc-block li{margin:0 0 6px 0;}"
+        ".brief-label{margin-top:10px;}"
+        ".brief-video{background:#eef2ff;padding:6px 8px;border-radius:6px;}"
+        ".brief-precaution{background:#fff7ed;padding:8px;border-left:3px solid #fdba74;border-radius:4px;}"
+        ".script-body{font-size:11pt;line-height:1.62;word-break:break-word;}"
         ".toc{width:100%;border-collapse:collapse;margin:10px 0 16px;}"
         ".toc td{padding:6px 2px;border-bottom:1px dotted #94a3b8;}"
         "</style>"
