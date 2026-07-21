@@ -6,6 +6,7 @@ import re
 from collections import Counter, defaultdict
 from pathlib import Path
 import unicodedata
+import json
 from urllib.parse import quote
 
 from lib_derushage import (
@@ -1796,6 +1797,24 @@ def build_home(capsules: list[dict], segments: list[dict]) -> None:
             "🗂",
             "Capsules témoins",
             "Tableau de bord des selections surlignees de l'edito (documents source .docx).",
+        ),
+        (
+            "proposition_edito.html",
+            "➕",
+            "Proposition édito",
+            "Validation des selections Clarisse et propositions d'ajouts BAB non retenus quand utiles.",
+        ),
+        (
+            "proposition_titres_temoin.html",
+            "🏷",
+            "Titres témoins",
+            "Propositions de titres par video temoin a partir du sujet et des selections edito.",
+        ),
+        (
+            "fonctions_temoins.html",
+            "🪪",
+            "Fonctions témoins",
+            "Formulations professionnelles et officielles des temoins (exportables).",
         ),
         (
             "mails_experts.html",
@@ -3592,6 +3611,589 @@ def _tb_edito_expertise_preconisation(
     return html, csv_text
 
 
+TITLE_RULES_BY_CODE = {
+    "T1": [
+        ("pourquoi oser", "Pourquoi oser ? De la recherche a l'envie d'innover"),
+        ("innovation", "Oser innover : des parcours qui creent de la valeur"),
+    ],
+    "T2": [
+        ("acteurs", "Du laboratoire au terrain : comprendre le besoin reel"),
+        ("besoin", "De la recherche a l'innovation : clarifier le besoin"),
+    ],
+    "T3": [
+        ("terrain", "Valider sur le terrain : sortir du laboratoire"),
+        ("preuve", "Du laboratoire au reel : eprouver la solution"),
+    ],
+    "T4": [
+        ("frein", "Une idee ne suffit pas : freins, leviers et decisions"),
+        ("levier", "Transformer l'idee en projet : freins et leviers"),
+    ],
+    "T5": [
+        ("secret", "Proteger et valoriser : arbitrer entre brevet et secret"),
+        ("brevet", "Protection et valorisation : choisir la bonne strategie PI"),
+    ],
+    "T6": [
+        ("licence", "Du transfert a l'impact : choisir la bonne voie"),
+        ("startup", "Transfert et licensing : de la recherche au marche"),
+    ],
+    "T7": [
+        ("ecosysteme", "Vous n'etes pas seul : activer l'ecosysteme d'accompagnement"),
+        ("accompagnement", "S'entourer pour avancer : maturation, incubation, reseau"),
+    ],
+    "T8": [
+        ("investisseur", "Financer l'innovation : choisir les bons partenaires"),
+        ("financement", "Financements et concours : financer au bon rythme"),
+    ],
+    "T9": [
+        ("equipe", "Construire l'equipe : partnerships et posture entrepreneuriale"),
+        ("partenariat", "Partenariats et equipe : trouver la bonne complementarite"),
+    ],
+    "T10": [
+        ("langage", "Changer de langage : rendre la science desirable"),
+        ("vocabulaire", "Enrichir son langage : de la preuve a la valeur"),
+    ],
+    "T11": [
+        ("frein", "Chercheur et entrepreneur : depasser les freins pour agir"),
+        ("metier", "Faire evoluer son metier de chercheur vers l'innovation"),
+    ],
+    "T12": [
+        ("action", "Passer a l'action : de l'intention a la collaboration"),
+        ("collaboration", "Conclusion : structurer les premieres collaborations"),
+    ],
+}
+
+
+def _proposed_temoin_title(code: str, sequences: list[dict], fallback_label: str) -> tuple[str, str]:
+    corpus = _edito_title_core(" ".join(sequence.get("texte", "") for sequence in sequences))
+    covered_keywords = [
+        keyword
+        for keyword in TOPIC_KEYWORDS_BY_CODE.get(code, [])
+        if _topic_keyword_covered(keyword, corpus, set(corpus.split()))
+    ]
+    for trigger, title in TITLE_RULES_BY_CODE.get(code, []):
+        if trigger in corpus:
+            if covered_keywords:
+                justification = f"Indices reperes dans les selections: {', '.join(covered_keywords[:3])}."
+            else:
+                justification = "Formulation alignee avec les themes explicites dans les selections retenues."
+            return title, justification
+
+    dims, _ = _tb_edito_dimension_coverage(code, corpus, set(corpus.split()))
+    if dims:
+        return (
+            fallback_label,
+            f"Le titre actuel reste pertinent au regard des selections; point saillant detecte: {dims[0]}.",
+        )
+    return (
+        fallback_label,
+        "Le titre actuel est conserve faute de marqueur suffisamment net dans les selections.",
+    )
+
+
+def build_proposition_titres_temoin_page(programme_table: dict) -> None:
+    rows_by_code = {row.get("code", ""): row for row in programme_table.get("rows", [])}
+    grouped = _tb_edito_sequences_by_code()
+    rows_html = []
+    title_rows: list[dict] = []
+
+    for code, spec in sorted(FIXED_TEMOIN_PLAN.items(), key=lambda item: int(item[0][1:])):
+        current_title = spec.get("label", _label_video_temoin(code))
+        sequences = _tb_edito_order_for_code(code, grouped.get(code, []))
+        objective = rows_by_code.get(code, {}).get("objectif_pedagogique", "")
+        proposed_title, justification = _proposed_temoin_title(code, sequences, current_title)
+        corpus = _edito_title_core(" ".join(seq.get("texte", "") for seq in sequences))
+        corpus_tokens = set(corpus.split())
+        markers = [
+            keyword
+            for keyword in TOPIC_KEYWORDS_BY_CODE.get(code, [])
+            if _topic_keyword_covered(keyword, corpus, corpus_tokens)
+        ]
+        markers_label = ", ".join(markers[:5]) if markers else "aucun marqueur lexical fort detecte"
+        title_rows.append(
+            {
+                "code": code,
+                "titre_actuel": current_title,
+                "titre_propose": proposed_title,
+                "objectif": objective,
+                "nb_extraits": len(sequences),
+                "marqueurs": markers_label,
+                "justification": justification,
+            }
+        )
+        rows_html.append(
+            "<tr>"
+            f"<td><a href='tb_edito_{escape(code)}.html'>{escape(code)}</a></td>"
+            f"<td>{escape(current_title)}</td>"
+            f"<td><strong>{escape(proposed_title)}</strong></td>"
+            f"<td>{escape(objective)}</td>"
+            f"<td>{len(sequences)}</td>"
+            f"<td>{escape(markers_label)}</td>"
+            f"<td>{escape(justification)}</td>"
+            "</tr>"
+        )
+
+    doc_table_rows = []
+    doc_title_items = []
+    for row in title_rows:
+        doc_table_rows.append(
+            "<tr>"
+            f"<td>{escape(row['code'])}</td>"
+            f"<td>{escape(row['titre_actuel'])}</td>"
+            f"<td>{escape(row['titre_propose'])}</td>"
+            f"<td>{escape(row['objectif'])}</td>"
+            f"<td>{escape(str(row['nb_extraits']))}</td>"
+            f"<td>{escape(row['marqueurs'])}</td>"
+            f"<td>{escape(row['justification'])}</td>"
+            "</tr>"
+        )
+        doc_title_items.append(
+            f"<li><strong>{escape(row['code'])}</strong> — {escape(row['titre_propose'])}</li>"
+        )
+    doc_empty_row = "<tr><td colspan='7'>Aucune capsule disponible.</td></tr>"
+    doc_html = (
+        "<html><head><meta charset='utf-8'>"
+        "<style>"
+        "body{font-family:Aptos,Segoe UI,Arial,sans-serif;font-size:11.5pt;line-height:1.5;}"
+        "h1{font-size:18pt;margin-bottom:6px;} h2{font-size:14pt;margin:16px 0 8px;}"
+        "table{width:100%;border-collapse:collapse;font-size:10.5pt;}"
+        "th,td{border:1px solid #cbd5e1;padding:6px 8px;vertical-align:top;}"
+        "th{background:#f1f5f9;text-align:left;} ul{margin:8px 0 0 18px;}"
+        "</style></head><body>"
+        "<h1>Proposition des titres témoins</h1>"
+        "<h2>Tableau des titres proposés</h2>"
+        "<table><thead><tr>"
+        "<th>Capsule</th><th>Titre actuel</th><th>Titre propose</th><th>Objectif video temoin</th><th>Extraits retenus</th><th>Marqueurs reperes</th><th>Justification</th>"
+        "</tr></thead><tbody>"
+        f"{''.join(doc_table_rows) if doc_table_rows else doc_empty_row}"
+        "</tbody></table>"
+        "<h2>Liste des titres proposes uniquement</h2>"
+        f"<ul>{''.join(doc_title_items) if doc_title_items else '<li>Aucun titre propose.</li>'}</ul>"
+        "</body></html>"
+    )
+    write_text(SITE / "proposition_titres_temoin.doc", doc_html)
+
+    body = (
+        "<p class='meta'>Propositions de titres pour chaque video temoin, basees sur le sujet capsule, l'objectif pedagogique et les selections edito retenues.</p>"
+        "<p><a class='btn' href='proposition_titres_temoin.doc' download>Exporter les titres témoins (Word)</a></p>"
+        "<div class='table-wrap'><table><thead><tr>"
+        "<th>Capsule</th><th>Titre actuel</th><th>Titre propose</th><th>Objectif video temoin</th><th>Extraits retenus</th><th>Marqueurs reperes</th><th>Justification</th>"
+        "</tr></thead><tbody>"
+        + ("".join(rows_html) if rows_html else "<tr><td colspan='7'>Aucune capsule disponible.</td></tr>")
+        + "</tbody></table></div>"
+    )
+    write_text(
+        SITE / "proposition_titres_temoin.html",
+        html_page(
+            "Titres témoins",
+            body,
+            nav_current="proposition_titres_temoin.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Titres témoins", None)),
+            page_header='<div class="page-head"><h1>Titres témoins — Propositions</h1><p class="lead">Un titre proposé par capsule témoin, selon le sujet et le texte effectivement sélectionné.</p></div>',
+        ),
+    )
+
+
+def _clean_temoin_intro_text(text: str, intervenant: str) -> str:
+    value = " ".join((text or "").split())
+    if not value:
+        return ""
+    value = re.sub(rf"^{re.escape(intervenant)}\s+", "", value, flags=re.IGNORECASE)
+    value = re.sub(r"^je m['’]appelle\s+[^,]+,\s*", "", value, flags=re.IGNORECASE)
+    value = value.strip(" .")
+    if value:
+        value = value[0].upper() + value[1:]
+    return value
+
+
+def _extract_temoin_function(doc: dict) -> dict:
+    intervenant = (doc.get("intervenant") or "").strip()
+    sequences = sorted(
+        [
+            seq
+            for seq in doc.get("sequences", [])
+            if seq.get("statut_edito") == "RETENU_PAR_EDITO"
+        ],
+        key=lambda item: int(item.get("ordre", 0) or 0),
+    )
+    patterns = (
+        r"\bje suis\b",
+        r"\bje travaille\b",
+        r"\benseignant[-\s]?chercheur\b",
+        r"\bprofesseur\b",
+    )
+    selected = None
+    for sequence in sequences:
+        text = (sequence.get("texte") or "").strip()
+        if not text:
+            continue
+        normalized = _normalize_for_match(text)
+        if any(re.search(pattern, normalized) for pattern in patterns):
+            selected = sequence
+            break
+    if selected is None and sequences:
+        selected = sequences[0]
+
+    officiel = (selected or {}).get("texte", "").strip() if selected else ""
+    formulation = _clean_temoin_intro_text(officiel, intervenant) if officiel else "Information non explicite dans les selections retenues."
+    reference = (
+        f"{selected.get('id', '')} (paragraphe {selected.get('source_paragraphe', '-')})"
+        if selected
+        else "Non disponible"
+    )
+    fonction_academique = formulation
+    fonction_professionnelle = "Non explicite dans les selections retenues."
+    officiel_entreprise = ""
+
+    corpus = " ".join((seq.get("texte") or "") for seq in sequences)
+    normalized_corpus = _normalize_for_match(corpus)
+    if "co-fondatrice" in normalized_corpus or "cofondatrice" in normalized_corpus:
+        fonction_professionnelle = "Co-fondatrice d'entreprise."
+        officiel_entreprise = "Mention explicite de co-fondatrice dans les verbatims retenus."
+    elif "co-fondateur" in normalized_corpus or "cofondateur" in normalized_corpus:
+        fonction_professionnelle = "Co-fondateur d'entreprise."
+        officiel_entreprise = "Mention explicite de co-fondateur dans les verbatims retenus."
+    elif "cso" in normalized_corpus:
+        fonction_professionnelle = "CSO d'entreprise."
+        officiel_entreprise = "Mention explicite de CSO dans les verbatims retenus."
+
+    return {
+        "temoin": intervenant,
+        "source": doc.get("source", ""),
+        "fonction_academique": fonction_academique,
+        "fonction_professionnelle": fonction_professionnelle,
+        "fonction_officielle_academique": officiel or "Non disponible dans les selections retenues.",
+        "fonction_officielle_professionnelle": officiel_entreprise or "Non disponible dans les selections retenues.",
+        "reference_academique": reference,
+        "reference_professionnelle": "A preciser",
+    }
+
+
+def build_fonctions_temoins_page() -> None:
+    rows = []
+    export_rows = []
+    for item in load_derushage_edito_index():
+        doc = load_derushage_edito(item.get("id", ""))
+        if not doc:
+            continue
+        rec = _extract_temoin_function(doc)
+        if rec["temoin"] == "Jean-Jacques Greffet":
+            rec["fonction_academique"] = "Professeur émérite."
+            rec["fonction_professionnelle"] = "CSO de UNVEIL."
+            rec["fonction_officielle_professionnelle"] = "Information fournie pour cadrage éditorial (verification documentaire complémentaire recommandée)."
+            rec["reference_professionnelle"] = "A confirmer dans BAB brut complet"
+        elif rec["temoin"] == "Muriel Thomas":
+            rec["fonction_academique"] = "Chargée de recherche à l'INRAE."
+            rec["fonction_professionnelle"] = "Co-fondatrice de Carembouche."
+            rec["fonction_officielle_professionnelle"] = "Mentions BAB : creation de start-up et references a Carembouche/Car en bouche."
+            rec["reference_professionnelle"] = "MUR-0008 (BAB encode)"
+        elif rec["temoin"] == "Loïc Rajjou":
+            rec["fonction_academique"] = "Professeur à AgroParisTech."
+            rec["fonction_professionnelle"] = "Co-fondateur de son entreprise (nom a confirmer)."
+            rec["fonction_officielle_professionnelle"] = "Mentions BAB : co-fondateur et role au comite scientifique de l'entreprise."
+            rec["reference_professionnelle"] = "LOI-0011 / LOI-0014 (BAB encode)"
+
+        rows.append(
+            "<tr>"
+            f"<td>{escape(rec['temoin'])}</td>"
+            f"<td>{escape(rec['fonction_academique'])}</td>"
+            f"<td>{escape(rec['fonction_professionnelle'])}</td>"
+            f"<td>{escape(rec['fonction_officielle_academique'])}</td>"
+            f"<td>{escape(rec['fonction_officielle_professionnelle'])}</td>"
+            f"<td>{escape(rec['reference_academique'])}</td>"
+            f"<td>{escape(rec['reference_professionnelle'])}</td>"
+            f"<td>{escape(rec['source'])}</td>"
+            "</tr>"
+        )
+        export_rows.append(rec)
+
+    csv_buffer = io.StringIO()
+    writer = csv.DictWriter(
+        csv_buffer,
+        fieldnames=[
+            "temoin",
+            "fonction_academique",
+            "fonction_professionnelle",
+            "fonction_officielle_academique",
+            "fonction_officielle_professionnelle",
+            "reference_academique",
+            "reference_professionnelle",
+            "source",
+        ],
+    )
+    writer.writeheader()
+    writer.writerows(export_rows)
+    write_text(SITE / "fonctions_temoins.csv", csv_buffer.getvalue())
+
+    json_payload = {"temoins": export_rows}
+    write_text(
+        SITE / "fonctions_temoins.json",
+        json.dumps(json_payload, ensure_ascii=False, indent=2),
+    )
+
+    body = (
+        "<p class='meta'>Fonctions academiques et professionnelles des temoins, avec formulations officielles basees sur les sequences retenues par l'edito.</p>"
+        "<p><a class='btn' href='fonctions_temoins.csv' download>Télécharger les fonctions témoins (CSV)</a> "
+        "<a class='btn' href='fonctions_temoins.json' download>Télécharger les fonctions témoins (JSON)</a></p>"
+        "<div class='table-wrap'><table><thead><tr>"
+        "<th>Témoin</th><th>Fonction académique</th><th>Fonction professionnelle</th><th>Verbatim officiel académique</th><th>Verbatim officiel professionnel</th><th>Réf. académique</th><th>Réf. professionnelle</th><th>Source</th>"
+        "</tr></thead><tbody>"
+        + ("".join(rows) if rows else "<tr><td colspan='8'>Aucune donnée témoin disponible.</td></tr>")
+        + "</tbody></table></div>"
+    )
+    write_text(
+        SITE / "fonctions_temoins.html",
+        html_page(
+            "Fonctions témoins",
+            body,
+            nav_current="fonctions_temoins.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Fonctions témoins", None)),
+            page_header='<div class="page-head"><h1>Fonctions témoins</h1><p class="lead">Version academique et professionnelle des fonctions des temoins, avec export.</p></div>',
+        ),
+    )
+
+
+PUNCHLINE_HINTS = (
+    "il faut",
+    "point cle",
+    "on s est apercu",
+    "ça a change",
+    "a change",
+    "risque",
+    "important",
+    "obstacle",
+    "levier",
+    "pivot",
+    "retenez",
+    "premier pas",
+)
+
+
+def _proposition_edito_candidates(code: str, selected_sequences: list[dict]) -> list[dict]:
+    selected_text = " ".join(sequence.get("texte", "") for sequence in selected_sequences)
+    selected_tokens = set(_edito_title_core(selected_text).split())
+    keywords = TOPIC_KEYWORDS_BY_CODE.get(code, [])
+    dimensions = ALIGNMENT_DIMENSIONS_BY_CODE.get(code, [])
+    candidates: list[dict] = []
+
+    for item in load_bab_encode_index():
+        doc = load_bab_encode(item["id"])
+        if not doc:
+            continue
+        chercheur = doc.get("chercheur", item.get("chercheur", ""))
+        source = doc.get("source", item.get("source", ""))
+        for bloc in merge_bab_encode_blocs(doc):
+            verbatim = (bloc.get("verbatim") or "").strip()
+            if not verbatim:
+                continue
+            capsules_info = bloc.get("capsules", {}) or {}
+            capsule_info = capsules_info.get(code, {}) if isinstance(capsules_info, dict) else {}
+            global_status = _normalize_for_match(bloc.get("statut", ""))
+            capsule_status = _normalize_for_match(capsule_info.get("statut", ""))
+            if "utilise" in global_status or "utilise" in capsule_status:
+                continue
+            if "rejete" in global_status or "rejete" in capsule_status:
+                continue
+
+            theme = _normalize_for_match(bloc.get("theme_principal", ""))
+            if theme != _normalize_for_match(code) and code not in capsules_info:
+                continue
+
+            normalized = _edito_title_core(verbatim)
+            tokens = set(normalized.split())
+            if not tokens:
+                continue
+
+            keyword_hits = sum(1 for keyword in keywords if _topic_keyword_covered(keyword, normalized, tokens))
+            covered_dims = []
+            for dim in dimensions:
+                dim_keywords = dim.get("keywords", [])
+                if any(_topic_keyword_covered(str(keyword), normalized, tokens) for keyword in dim_keywords):
+                    covered_dims.append(str(dim.get("label", "")))
+            hint_hits = sum(1 for hint in PUNCHLINE_HINTS if hint in normalized)
+            word_count = len(verbatim.split())
+            overlap_ratio = len(tokens & selected_tokens) / max(1, len(tokens))
+            score = (
+                keyword_hits * 1.3
+                + len(covered_dims) * 1.5
+                + hint_hits * 0.7
+                + (0.8 if 12 <= word_count <= 90 else 0.0)
+                - overlap_ratio * 2.0
+            )
+            if "reserve" in global_status or "reserve" in capsule_status:
+                score += 0.3
+            if score < 2.6:
+                continue
+
+            reasons = []
+            if covered_dims:
+                reasons.append(f"Renforce {covered_dims[0]}.")
+            elif keyword_hits:
+                reasons.append("Renforce des marqueurs du sujet capsule.")
+            if hint_hits:
+                reasons.append("Formulation dynamique potentiellement marquante.")
+            if overlap_ratio < 0.35:
+                reasons.append("Angle peu redondant avec la selection actuelle.")
+            if not reasons:
+                reasons.append("Ajout potentiel pour enrichir la dynamique du temoignage.")
+
+            candidates.append(
+                {
+                    "id": bloc.get("id", ""),
+                    "chercheur": chercheur,
+                    "source": source,
+                    "debut": bloc.get("debut", ""),
+                    "fin": bloc.get("fin", ""),
+                    "verbatim": verbatim,
+                    "score": round(score, 2),
+                    "raison": " ".join(reasons),
+                    "statut": bloc.get("statut", ""),
+                }
+            )
+
+    candidates.sort(key=lambda item: (-item["score"], item["id"]))
+    seen_ids: set[str] = set()
+    deduped: list[dict] = []
+    for item in candidates:
+        seg_id = item.get("id", "")
+        if seg_id in seen_ids:
+            continue
+        seen_ids.add(seg_id)
+        deduped.append(item)
+    return deduped
+
+
+def build_proposition_edito_pages(programme_table: dict) -> None:
+    rows_by_code = {row.get("code", ""): row for row in programme_table.get("rows", [])}
+    grouped = _tb_edito_sequences_by_code()
+    summary_rows = []
+    expected: set[str] = set()
+
+    for code, spec in sorted(FIXED_TEMOIN_PLAN.items(), key=lambda item: int(item[0][1:])):
+        row = rows_by_code.get(code, {})
+        objective = row.get("objectif_pedagogique", "")
+        selected_sequences = _tb_edito_order_for_code(code, grouped.get(code, []))
+        voices = sorted(
+            {
+                (sequence.get("intervenant") or "").strip()
+                for sequence in selected_sequences
+                if (sequence.get("intervenant") or "").strip()
+            }
+        )
+        corpus_text = _edito_title_core(" ".join(sequence.get("texte", "") for sequence in selected_sequences))
+        corpus_tokens = set(corpus_text.split())
+        covered_dims, missing_dims = _tb_edito_dimension_coverage(code, corpus_text, corpus_tokens)
+        align_percent = _tb_edito_subject_alignment_percent(code, selected_sequences)
+
+        candidates = _proposition_edito_candidates(code, selected_sequences)
+        if align_percent >= 70 and not missing_dims:
+            candidates = []
+        else:
+            candidates = candidates[:2]
+
+        if not candidates:
+            if align_percent >= 70 and not missing_dims:
+                verdict = "VALIDER EN L'ETAT"
+                validation_msg = "Le script final temoin couvre bien le sujet et l'objectif de la video. Aucun ajout n'est necessaire a ce stade."
+            elif align_percent >= 55:
+                verdict = "VALIDER EN L'ETAT"
+                validation_msg = "La proposition Clarisse est globalement solide et aucun ajout pertinent n'est detecte dans les BAB non utilises."
+            else:
+                verdict = "A CONSOLIDER"
+                validation_msg = "Le script final temoin presente encore des zones a clarifier, sans ajout BAB pertinent detecte automatiquement."
+            add_block = "<p class='meta'>Aucun ajout propose : la selection Clarisse est consideree suffisante a ce stade, au regard des BAB disponibles.</p>"
+            add_count = 0
+        else:
+            if align_percent >= 55:
+                verdict = "VALIDER AVEC AJOUT OPTIONNEL"
+                validation_msg = "La proposition Clarisse est globalement solide. Les ajouts ci-dessous peuvent renforcer la dynamique."
+            else:
+                verdict = "A CONSOLIDER AVEC AJOUT"
+                validation_msg = "Le script final temoin gagnerait a etre renforce. Les ajouts ci-dessous sont recommandes."
+            add_count = len(candidates)
+            cards = []
+            for candidate in candidates:
+                cards.append(
+                    "<article class='card'>"
+                    f"<p><strong>{escape(candidate.get('id', ''))}</strong> — {escape(candidate.get('chercheur', ''))}</p>"
+                    f"<p class='meta'>{escape(candidate.get('debut', ''))} → {escape(candidate.get('fin', ''))} · {escape(candidate.get('source', ''))}</p>"
+                    f"<p><strong>Pourquoi proposer :</strong> {escape(candidate.get('raison', ''))}</p>"
+                    f"<p><strong>Extrait BAB :</strong> {escape(_truncate_clean(candidate.get('verbatim', ''), 360))}</p>"
+                    "</article>"
+                )
+            add_block = "".join(cards)
+
+        covered_label = covered_dims[0] if covered_dims else "aucun axe clairement explicite"
+        missing_label = missing_dims[0] if missing_dims else "pas de manque majeur detecte"
+        detail_body = (
+            f"<p><strong>Capsule témoin :</strong> {escape(code)} — {escape(spec.get('label', ''))}</p>"
+            f"<p><strong>Objectif vidéo témoin :</strong> {escape(objective)}</p>"
+            f"<p><strong>Script final Clarisse :</strong> {len(selected_sequences)} extraits retenus · {len(voices)} voix mobilisées.</p>"
+            "<h2>Validation de la proposition Clarisse</h2>"
+            f"<p><strong>Verdict :</strong> {escape(verdict)}</p>"
+            f"<p>{escape(validation_msg)}</p>"
+            f"<p><strong>Point couvert :</strong> {escape(covered_label)}</p>"
+            f"<p><strong>Point de vigilance :</strong> {escape(missing_label)}</p>"
+            "<h2>Ajouts BAB non utilises (si utiles)</h2>"
+            "<p class='meta'>Objectif : ne pas passer a cote d'une punchline utile a la dynamique du recit, sans surcharger le montage.</p>"
+            f"{add_block}"
+        )
+
+        page_name = f"proposition_edito_{code}.html"
+        expected.add(page_name)
+        write_text(
+            SITE / page_name,
+            html_page(
+                f"Proposition édito — {code}",
+                detail_body,
+                nav_current="proposition_edito.html",
+                breadcrumb=html_breadcrumb(
+                    ("Accueil", "index.html"),
+                    ("Proposition édito", "proposition_edito.html"),
+                    (code, None),
+                ),
+                page_header=(
+                    "<div class='page-head'>"
+                    f"<h1>Proposition édito — {escape(code)}</h1>"
+                    f"<p class='lead'>{escape(spec.get('label', ''))}</p>"
+                    "</div>"
+                ),
+            ),
+        )
+
+        summary_rows.append(
+            "<tr>"
+            f"<td><a href='{escape(page_name)}'>{escape(code)}</a></td>"
+            f"<td>{escape(spec.get('label', ''))}</td>"
+            f"<td>{escape(verdict)}</td>"
+            f"<td>{align_percent}%</td>"
+            f"<td>{add_count}</td>"
+            "</tr>"
+        )
+
+    index_body = (
+        "<p class='meta'>Validation des scripts finaux temoins (selection Clarisse) et proposition d'ajouts BAB uniquement lorsqu'un gain editorial est detecte.</p>"
+        "<div class='table-wrap'><table><thead><tr>"
+        "<th>Capsule</th><th>Vidéo témoin</th><th>Validation Clarisse</th><th>Alignement sujet</th><th>Ajouts proposes</th>"
+        "</tr></thead><tbody>"
+        + ("".join(summary_rows) if summary_rows else "<tr><td colspan='5'>Aucune capsule disponible.</td></tr>")
+        + "</tbody></table></div>"
+    )
+    write_text(
+        SITE / "proposition_edito.html",
+        html_page(
+            "Proposition édito",
+            index_body,
+            nav_current="proposition_edito.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Proposition édito", None)),
+            page_header='<div class="page-head"><h1>Proposition édito</h1><p class="lead">Validation des choix Clarisse + compléments BAB potentiels quand ils apportent une vraie dynamique.</p></div>',
+        ),
+    )
+
+    for path in SITE.glob("proposition_edito_T*.html"):
+        if path.name not in expected:
+            path.unlink()
+
+
 def _expert_org_from_profile(profile: dict | None) -> str:
     if not profile:
         return "Organisme de rattachement à confirmer"
@@ -4584,6 +5186,9 @@ if __name__ == "__main__":
     build_experts_profiles_page(experts_profils)
     build_tb_edito_capsule_pages(programme_table)
     build_tb_edito_page()
+    build_proposition_titres_temoin_page(programme_table)
+    build_proposition_edito_pages(programme_table)
+    build_fonctions_temoins_page()
     build_mails_experts_pages(programme_table, experts_profils)
     build_correspondances_edito_page(programme_table)
     build_tableau_corr_page()

@@ -1,0 +1,44 @@
+{
+  "temoins": [
+    {
+      "temoin": "Yann Meunier",
+      "source": "00_Mooc_Transcript_Yann Monier.docx",
+      "fonction_academique": "Yann Monier Je travaille dans le domaine de l'automatique, plus précisément sur la construction automatisée de jumeaux numériques de chaîne de production industrielle à partir de l'analyse de données",
+      "fonction_professionnelle": "Non explicite dans les selections retenues.",
+      "fonction_officielle_academique": "Yann Monier Je travaille dans le domaine de l'automatique, plus précisément sur la construction automatisée de jumeaux numériques de chaîne de production industrielle à partir de l'analyse de données.",
+      "fonction_officielle_professionnelle": "Non disponible dans les selections retenues.",
+      "reference_academique": "YANE-0001 (paragraphe 38)",
+      "reference_professionnelle": "A preciser"
+    },
+    {
+      "temoin": "Jean-Jacques Greffet",
+      "source": "00_Mooc_Transcript_JJ Greffet.docx",
+      "fonction_academique": "Professeur émérite.",
+      "fonction_professionnelle": "CSO de UNVEIL.",
+      "fonction_officielle_academique": "Jean-Jacques Greffé Je suis professeur à l'Institut d'optique.",
+      "fonction_officielle_professionnelle": "Information fournie pour cadrage éditorial (verification documentaire complémentaire recommandée).",
+      "reference_academique": "JJGE-0001 (paragraphe 37)",
+      "reference_professionnelle": "A confirmer dans BAB brut complet"
+    },
+    {
+      "temoin": "Muriel Thomas",
+      "source": "00-Mooc_Transcript_Muriel Thomas.docx",
+      "fonction_academique": "Chargée de recherche à l'INRAE.",
+      "fonction_professionnelle": "Co-fondatrice de Carembouche.",
+      "fonction_officielle_academique": "Je suis Muriel Thomas, je travaille sur les liens entre l'alimentation, les microbiotes et la santé.",
+      "fonction_officielle_professionnelle": "Mentions BAB : creation de start-up et references a Carembouche/Car en bouche.",
+      "reference_academique": "MURE-0001 (paragraphe 37)",
+      "reference_professionnelle": "MUR-0008 (BAB encode)"
+    },
+    {
+      "temoin": "Loïc Rajjou",
+      "source": "00_Mooc_Transcript_Loic Rajjou.docx",
+      "fonction_academique": "Professeur à AgroParisTech.",
+      "fonction_professionnelle": "Co-fondateur de son entreprise (nom a confirmer).",
+      "fonction_officielle_academique": "je m’appelle Loïc Rajou, je suis professeur à AgroParisTech en biologie végétale et je m’intéresse particulièrement à tout ce qui est biologie cellulaire, génomique, métabolisme et biochimie.",
+      "fonction_officielle_professionnelle": "Mentions BAB : co-fondateur et role au comite scientifique de l'entreprise.",
+      "reference_academique": "LOIE-0001 (paragraphe 35)",
+      "reference_professionnelle": "LOI-0011 / LOI-0014 (BAB encode)"
+    }
+  ]
+}
