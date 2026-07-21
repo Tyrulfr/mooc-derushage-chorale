@@ -4009,12 +4009,170 @@ PUNCHLINE_HINTS = (
     "pivot",
     "retenez",
     "premier pas",
+    "foncez",
+    "oser",
+    "conseil",
+    "impossible",
+    "protege",
+    "sortir du labo",
 )
 
 
-def _proposition_edito_candidates(code: str, selected_sequences: list[dict]) -> list[dict]:
-    selected_text = " ".join(sequence.get("texte", "") for sequence in selected_sequences)
-    selected_tokens = set(_edito_title_core(selected_text).split())
+def _all_clarisse_retained_texts() -> list[str]:
+    texts: list[str] = []
+    for item in load_derushage_edito_index():
+        doc = load_derushage_edito(item.get("id", ""))
+        if not doc:
+            continue
+        for sequence in doc.get("sequences", []):
+            if sequence.get("statut_edito") and sequence.get("statut_edito") != "RETENU_PAR_EDITO":
+                continue
+            text = _edito_title_core(sequence.get("texte", ""))
+            if text:
+                texts.append(text)
+    return list(dict.fromkeys(texts))
+
+
+def _clarisse_exclusion_corpus(selected_sequences: list[dict], global_texts: list[str] | None = None) -> tuple[str, set[str], list[str]]:
+    """Corpus Clarisse pour exclure les passages deja retenus par l'edito."""
+    selected_texts: list[str] = []
+    for sequence in selected_sequences:
+        raw = (sequence.get("texte") or "").strip()
+        if not raw:
+            continue
+        selected_texts.append(_edito_title_core(raw))
+    texts = list(dict.fromkeys([*selected_texts, *(global_texts or [])] ))
+    texts = [t for t in texts if t]
+    corpus = " ".join(texts)
+    selected_tokens = set(" ".join(selected_texts).split())
+    return corpus, selected_tokens, texts
+
+
+def _already_used_by_clarisse(verbatim: str, clarisse_corpus: str, clarisse_texts: list[str]) -> bool:
+    """True si le BAB non encode recouvre un passage deja selectionne par Clarisse."""
+    normalized = _edito_title_core(verbatim)
+    tokens = normalized.split()
+    if len(tokens) < 8:
+        return False
+    for size in (12, 10, 8):
+        if len(tokens) < size:
+            continue
+        for index in range(0, len(tokens) - size + 1, max(1, size // 2)):
+            window = " ".join(tokens[index : index + size])
+            if window and window in clarisse_corpus:
+                return True
+    for clarisse_text in clarisse_texts:
+        clarisse_tokens = clarisse_text.split()
+        if len(clarisse_tokens) < 10:
+            continue
+        compact = " ".join(clarisse_tokens)
+        if compact in normalized:
+            return True
+        if len(tokens) <= 40 and normalized in clarisse_text:
+            return True
+    return False
+
+
+def _best_matching_question(
+    code: str,
+    normalized_verbatim: str,
+    selected_sequences: list[dict] | None = None,
+) -> str:
+    questions: list[str] = []
+    for sequence in selected_sequences or []:
+        question = (sequence.get("question") or "").strip()
+        if question and question not in questions:
+            questions.append(question)
+    for question in FIXED_TEMOIN_PLAN.get(code, {}).get("questions") or []:
+        q = str(question).strip()
+        if q and q not in questions:
+            questions.append(q)
+    if not questions:
+        return ""
+    best = ""
+    best_score = 0.0
+    verbatim_tokens = set(normalized_verbatim.split())
+    for question in questions:
+        q_norm = _edito_title_core(question)
+        q_tokens = set(q_norm.split())
+        if not q_tokens:
+            continue
+        score = len(verbatim_tokens & q_tokens) / len(q_tokens)
+        if score > best_score:
+            best_score = score
+            best = question.strip()
+    if best_score >= 0.08:
+        return best
+    return questions[0]
+
+
+def _editorial_ajout_raison(
+    code: str,
+    *,
+    normalized_verbatim: str,
+    covered_dims: list[str],
+    keyword_hits: int,
+    hint_hits: int,
+    missing_dims: list[str] | None = None,
+    selected_sequences: list[dict] | None = None,
+) -> str:
+    """Justification editoriale lisible (sans jargon technique interne)."""
+    label = FIXED_TEMOIN_PLAN.get(code, {}).get("label", code)
+    title = re.sub(r"^vid[eé]o\s*\d+\s*:\s*", "", label, flags=re.IGNORECASE).strip() or label
+    question = _best_matching_question(code, normalized_verbatim, selected_sequences)
+
+    parts: list[str] = [
+        "Passage non utilise dans aucun edito Clarisse.",
+    ]
+    if question:
+        parts.append(f"Il ressort autour de la question : « {question} ».")
+    else:
+        parts.append(f"Il ressort hors selection actuelle, sur le sujet de la video « {title} ».")
+
+    if covered_dims:
+        apport = covered_dims[0]
+        parts.append(f"Pour la video « {title} », il apporte des elements concrets sur {apport}.")
+    elif keyword_hits:
+        parts.append(
+            f"Pour la video « {title} », il complete le propos temoin avec des elements directement lies au sujet."
+        )
+    else:
+        parts.append(
+            f"Pour la video « {title} », il ajoute une formulation utile au recit temoin."
+        )
+
+    if missing_dims:
+        parts.append(
+            f"Pourquoi le proposer : il renforce {missing_dims[0]}, encore peu explicite dans la selection Clarisse."
+        )
+    elif covered_dims:
+        parts.append(
+            f"Pourquoi le proposer : il renforce {covered_dims[0]} et donne une prise plus nette a l'apprenant."
+        )
+    elif hint_hits:
+        parts.append(
+            "Pourquoi le proposer : formulation dynamique qui peut servir de pivot narratif dans le montage."
+        )
+    else:
+        parts.append(
+            "Pourquoi le proposer : il eclaircit un point cle du sujet sans redire ce que Clarisse a deja retenu."
+        )
+    return " ".join(parts)
+
+
+def _proposition_edito_candidates(
+    code: str,
+    selected_sequences: list[dict],
+    *,
+    clarisse_global_texts: list[str] | None = None,
+    missing_dims: list[str] | None = None,
+) -> list[dict]:
+    """Propose des ajouts depuis les BAB NON_ENCODE, hors passages deja retenus par Clarisse."""
+    clarisse_corpus, selected_tokens, clarisse_texts = _clarisse_exclusion_corpus(
+        selected_sequences,
+        clarisse_global_texts,
+    )
+
     keywords = TOPIC_KEYWORDS_BY_CODE.get(code, [])
     dimensions = ALIGNMENT_DIMENSIONS_BY_CODE.get(code, [])
     candidates: list[dict] = []
@@ -4026,20 +4184,15 @@ def _proposition_edito_candidates(code: str, selected_sequences: list[dict]) -> 
         chercheur = doc.get("chercheur", item.get("chercheur", ""))
         source = doc.get("source", item.get("source", ""))
         for bloc in merge_bab_encode_blocs(doc):
+            if bloc.get("encodage") != "NON_ENCODE":
+                continue
             verbatim = (bloc.get("verbatim") or "").strip()
             if not verbatim:
                 continue
-            capsules_info = bloc.get("capsules", {}) or {}
-            capsule_info = capsules_info.get(code, {}) if isinstance(capsules_info, dict) else {}
-            global_status = _normalize_for_match(bloc.get("statut", ""))
-            capsule_status = _normalize_for_match(capsule_info.get("statut", ""))
-            if "utilise" in global_status or "utilise" in capsule_status:
+            word_count = len(verbatim.split())
+            if word_count < 12 or word_count > 140:
                 continue
-            if "rejete" in global_status or "rejete" in capsule_status:
-                continue
-
-            theme = _normalize_for_match(bloc.get("theme_principal", ""))
-            if theme != _normalize_for_match(code) and code not in capsules_info:
+            if _already_used_by_clarisse(verbatim, clarisse_corpus, clarisse_texts):
                 continue
 
             normalized = _edito_title_core(verbatim)
@@ -4054,54 +4207,53 @@ def _proposition_edito_candidates(code: str, selected_sequences: list[dict]) -> 
                 if any(_topic_keyword_covered(str(keyword), normalized, tokens) for keyword in dim_keywords):
                     covered_dims.append(str(dim.get("label", "")))
             hint_hits = sum(1 for hint in PUNCHLINE_HINTS if hint in normalized)
-            word_count = len(verbatim.split())
             overlap_ratio = len(tokens & selected_tokens) / max(1, len(tokens))
             score = (
-                keyword_hits * 1.3
-                + len(covered_dims) * 1.5
-                + hint_hits * 0.7
-                + (0.8 if 12 <= word_count <= 90 else 0.0)
-                - overlap_ratio * 2.0
+                keyword_hits * 1.4
+                + len(covered_dims) * 1.6
+                + hint_hits * 0.8
+                + (0.6 if 18 <= word_count <= 90 else 0.0)
+                - overlap_ratio * 1.5
             )
-            if "reserve" in global_status or "reserve" in capsule_status:
-                score += 0.3
-            if score < 2.6:
+            if score < 2.2:
+                continue
+            if keyword_hits == 0 and not covered_dims and hint_hits < 2:
                 continue
 
-            reasons = []
-            if covered_dims:
-                reasons.append(f"Renforce {covered_dims[0]}.")
-            elif keyword_hits:
-                reasons.append("Renforce des marqueurs du sujet capsule.")
-            if hint_hits:
-                reasons.append("Formulation dynamique potentiellement marquante.")
-            if overlap_ratio < 0.35:
-                reasons.append("Angle peu redondant avec la selection actuelle.")
-            if not reasons:
-                reasons.append("Ajout potentiel pour enrichir la dynamique du temoignage.")
+            raison = _editorial_ajout_raison(
+                code,
+                normalized_verbatim=normalized,
+                covered_dims=covered_dims,
+                keyword_hits=keyword_hits,
+                hint_hits=hint_hits,
+                missing_dims=missing_dims,
+                selected_sequences=selected_sequences,
+            )
 
+            first_name = (chercheur.split()[0] if chercheur else "X")
+            bloc_id = f"NONENC-{code}-{first_name}-{bloc.get('numero', '?')}"
             candidates.append(
                 {
-                    "id": bloc.get("id", ""),
+                    "id": bloc_id,
                     "chercheur": chercheur,
                     "source": source,
                     "debut": bloc.get("debut", ""),
                     "fin": bloc.get("fin", ""),
                     "verbatim": verbatim,
                     "score": round(score, 2),
-                    "raison": " ".join(reasons),
-                    "statut": bloc.get("statut", ""),
+                    "raison": raison,
+                    "statut": "NON_ENCODE",
                 }
             )
 
-    candidates.sort(key=lambda item: (-item["score"], item["id"]))
-    seen_ids: set[str] = set()
+    candidates.sort(key=lambda item: (-item["score"], item.get("debut", ""), item["id"]))
+    seen_keys: set[str] = set()
     deduped: list[dict] = []
     for item in candidates:
-        seg_id = item.get("id", "")
-        if seg_id in seen_ids:
+        key = f"{item.get('chercheur','')}|{item.get('debut','')}|{item.get('fin','')}"
+        if key in seen_keys:
             continue
-        seen_ids.add(seg_id)
+        seen_keys.add(key)
         deduped.append(item)
     return deduped
 
@@ -4109,6 +4261,7 @@ def _proposition_edito_candidates(code: str, selected_sequences: list[dict]) -> 
 def build_proposition_edito_pages(programme_table: dict) -> None:
     rows_by_code = {row.get("code", ""): row for row in programme_table.get("rows", [])}
     grouped = _tb_edito_sequences_by_code()
+    clarisse_global_texts = _all_clarisse_retained_texts()
     summary_rows = []
     expected: set[str] = set()
 
@@ -4128,11 +4281,17 @@ def build_proposition_edito_pages(programme_table: dict) -> None:
         covered_dims, missing_dims = _tb_edito_dimension_coverage(code, corpus_text, corpus_tokens)
         align_percent = _tb_edito_subject_alignment_percent(code, selected_sequences)
 
-        candidates = _proposition_edito_candidates(code, selected_sequences)
-        if align_percent >= 70 and not missing_dims:
+        candidates = _proposition_edito_candidates(
+            code,
+            selected_sequences,
+            clarisse_global_texts=clarisse_global_texts,
+            missing_dims=missing_dims,
+        )
+        # On ne propose des NON_ENCODE que s'ils apportent vraiment quelque chose.
+        if align_percent >= 75 and not missing_dims:
             candidates = []
         else:
-            candidates = candidates[:2]
+            candidates = candidates[:3]
 
         if not candidates:
             if align_percent >= 70 and not missing_dims:
@@ -4140,28 +4299,29 @@ def build_proposition_edito_pages(programme_table: dict) -> None:
                 validation_msg = "Le script final temoin couvre bien le sujet et l'objectif de la video. Aucun ajout n'est necessaire a ce stade."
             elif align_percent >= 55:
                 verdict = "VALIDER EN L'ETAT"
-                validation_msg = "La proposition Clarisse est globalement solide et aucun ajout pertinent n'est detecte dans les BAB non utilises."
+                validation_msg = "La proposition Clarisse est globalement solide et aucun passage complementaire pertinent n'est detecte hors selection edito."
             else:
                 verdict = "A CONSOLIDER"
-                validation_msg = "Le script final temoin presente encore des zones a clarifier, sans ajout BAB pertinent detecte automatiquement."
-            add_block = "<p class='meta'>Aucun ajout propose : la selection Clarisse est consideree suffisante a ce stade, au regard des BAB disponibles.</p>"
+                validation_msg = "Le script final temoin presente encore des zones a clarifier, sans passage complementaire pertinent detecte hors selection Clarisse."
+            add_block = "<p class='meta'>Aucun ajout propose : pas de passage inedit pertinent au-dela des selections Clarisse.</p>"
             add_count = 0
         else:
             if align_percent >= 55:
                 verdict = "VALIDER AVEC AJOUT OPTIONNEL"
-                validation_msg = "La proposition Clarisse est globalement solide. Les ajouts ci-dessous peuvent renforcer la dynamique."
+                validation_msg = "La proposition Clarisse est globalement solide. Les passages ci-dessous peuvent renforcer la dynamique."
             else:
                 verdict = "A CONSOLIDER AVEC AJOUT"
-                validation_msg = "Le script final temoin gagnerait a etre renforce. Les ajouts ci-dessous sont recommandes."
+                validation_msg = "Le script final temoin gagnerait a etre renforce. Les passages ci-dessous sont recommandes car absents des selections Clarisse."
             add_count = len(candidates)
             cards = []
             for candidate in candidates:
                 cards.append(
                     "<article class='card'>"
-                    f"<p><strong>{escape(candidate.get('id', ''))}</strong> — {escape(candidate.get('chercheur', ''))}</p>"
-                    f"<p class='meta'>{escape(candidate.get('debut', ''))} → {escape(candidate.get('fin', ''))} · {escape(candidate.get('source', ''))}</p>"
-                    f"<p><strong>Pourquoi proposer :</strong> {escape(candidate.get('raison', ''))}</p>"
-                    f"<p><strong>Extrait BAB :</strong> {escape(_truncate_clean(candidate.get('verbatim', ''), 360))}</p>"
+                    f"<p><strong>{escape(candidate.get('chercheur', ''))}</strong>"
+                    f" <span class='meta'>{escape(candidate.get('debut', ''))} → {escape(candidate.get('fin', ''))}</span></p>"
+                    f"<p class='meta'>{escape(candidate.get('source', ''))}</p>"
+                    f"<p><strong>Pourquoi proposer cet ajout :</strong> {escape(candidate.get('raison', ''))}</p>"
+                    f"<p><strong>Extrait :</strong> {escape(_truncate_clean(candidate.get('verbatim', ''), 360))}</p>"
                     "</article>"
                 )
             add_block = "".join(cards)
@@ -4177,8 +4337,8 @@ def build_proposition_edito_pages(programme_table: dict) -> None:
             f"<p>{escape(validation_msg)}</p>"
             f"<p><strong>Point couvert :</strong> {escape(covered_label)}</p>"
             f"<p><strong>Point de vigilance :</strong> {escape(missing_label)}</p>"
-            "<h2>Ajouts BAB non utilises (si utiles)</h2>"
-            "<p class='meta'>Objectif : ne pas passer a cote d'une punchline utile a la dynamique du recit, sans surcharger le montage.</p>"
+            "<h2>Ajouts proposés (passages non retenus par Clarisse)</h2>"
+            "<p class='meta'>Chaque proposition est absente des éditos Clarisse et justifiée par son apport au sujet de la vidéo témoin.</p>"
             f"{add_block}"
         )
 
