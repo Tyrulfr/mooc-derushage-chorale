@@ -4324,6 +4324,32 @@
           ]
         }
       ]
+    },
+    "T13": {
+      "extraits_candidats": [],
+      "extraits_reserves": [],
+      "extraits_utilises": [],
+      "ordre_montage": [],
+      "script_final": "",
+      "manques": [
+        "Cartographier les selections Clarisse « Passer a l'action » vers un montage T13."
+      ],
+      "contenus_referents": [],
+      "decisions_editoriales": [
+        "Capsule conclusion creee pour aligner le plan edito a 13 videos ; contenu a construire sans toucher aux montages T1-T12 deja envoyes."
+      ],
+      "plan_montage": [],
+      "unites_de_sens": [],
+      "reutilisations_arbitrees": [],
+      "methodologie": {
+        "fil_pedagogique": "Conclusion — passer a l'action",
+        "statut_montage": "A_CARTOGRAPHIER"
+      },
+      "cadrage_animateur": null,
+      "videos_expert": [],
+      "experts_proposes": [],
+      "resume_temoignages": "A constituer a partir des selections Clarisse « Passer a l'action ».",
+      "orientations_expert": []
     }
   }
 }

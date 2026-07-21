@@ -300,6 +300,12 @@
           "intervenant": null
         }
       ]
+    },
+    "T13": {
+      "module": "M6",
+      "resume_temoignages": "A constituer a partir des selections Clarisse « Passer a l'action ».",
+      "experts_proposes": [],
+      "videos_expert": []
     }
   }
 }

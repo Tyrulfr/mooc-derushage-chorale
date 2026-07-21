@@ -2197,13 +2197,14 @@ def build_dashboard(capsules: list[dict], segments: list[dict], affectations: di
         )
     researcher_counts = Counter(segment["chercheur"] for segment in segments if segment["statut"] == "UTILISE")
     used_count = sum(researcher_counts.values())
-    en_construction = sum(1 for capsule in capsules if capsule.get("statut") == "EN_CONSTRUCTION")
+    temoin_capsules = [c for c in capsules if str(c.get("code", "")).startswith("T")]
+    en_construction = sum(1 for capsule in temoin_capsules if capsule.get("statut") == "EN_CONSTRUCTION")
     body = f"""
 <section class="stats-grid">
   <div class="stat-card">
-    <div class="stat-card__label">Capsules</div>
-    <div class="stat-card__value">{len(capsules)}</div>
-    <div class="stat-card__meta">{en_construction} en construction</div>
+    <div class="stat-card__label">Vidéos témoins</div>
+    <div class="stat-card__value">{len(temoin_capsules)}</div>
+    <div class="stat-card__meta">{en_construction} en construction · + GEN laboratoire</div>
   </div>
   <div class="stat-card">
     <div class="stat-card__label">Extraits</div>
@@ -3080,7 +3081,14 @@ def build_derushage_edito_pages() -> None:
 def _edito_title_core(title: str) -> str:
     text = _normalize_for_match(title or "")
     text = re.sub(r"\bvideo\s*\d+\b", " ", text)
-    text = text.replace(":", " ").replace("/", " ").replace("-", " ")
+    text = (
+        text.replace(":", " ")
+        .replace("/", " ")
+        .replace("-", " ")
+        .replace("'", " ")
+        .replace("’", " ")
+        .replace("`", " ")
+    )
     return " ".join(text.split())
 
 
@@ -3197,12 +3205,27 @@ FIXED_TEMOIN_PLAN = {
     "T11": {
         "module": "M5",
         "label": "VIDÉO 11 : EVOLUTION DANS LE MÉTIER DU CHERCHEUR.EUSE",
-        "questions": [],
+        "questions": [
+            "Quels sont les principaux enseignements que vous retenez ?",
+        ],
     },
     "T12": {
+        "module": "M5",
+        "label": "VIDÉO 12 : DISPOSITIFS D’ACCOMPAGNEMENT & COLLAB",
+        "questions": [
+            "Comment les collaborations ou consortiums ont-ils amplifié votre projet ?",
+            "À quoi faut-il se préparer pour qu'ils fonctionnent ?",
+        ],
+    },
+    "T13": {
         "module": "M6",
-        "label": "VIDÉO 12 : DE CONCLUSION : PASSER À L’ACTION",
-        "questions": [],
+        "label": "VIDÉO 13 : DE CONCLUSION : PASSER À L’ACTION",
+        "questions": [
+            "Quel conseil donneriez-vous ?",
+            "Quelle est l'idée reçue la plus fréquente sur l'innovation qu'il faudrait déconstruire ?",
+            "Si vous deviez résumer votre message en un mot ou une phrase",
+            "Si vous pouviez vous adresser à la personne que vous étiez avant, que lui diriez-vous aujourd'hui ?",
+        ],
     },
 }
 
@@ -3230,12 +3253,22 @@ def _target_codes_from_edito_title(title: str) -> set[str]:
         targets.add("T9")
     if "changer de langage" in text:
         targets.add("T10")
-    if "evolution" in text and "metier" in text and "chercheur" in text:
+    # Clarisse: "Video 13 : ce que cela change dans le metier de chercheur"
+    if (
+        ("evolution" in text and "metier" in text)
+        or ("change" in text and "metier" in text and "chercheur" in text)
+    ):
         targets.add("T11")
-    if "dispositif accompagnement" in text and "collaboration" in text:
-        targets.add("T7")
-    if "passer a l action" in text:
+    # Clarisse: "Video 14 : Dispositif accompagnement-collaboration" -> T12 (pas T7)
+    if ("dispositif" in text and "accompagnement" in text) or (
+        "dispositif" in text and "collaboration" in text
+    ):
         targets.add("T12")
+    # Clarisse: "Video 15 : Passer a l'action"
+    if "passer a l action" in text or (
+        "passer" in text and "action" in text and "dispositif" not in text
+    ):
+        targets.add("T13")
     return targets
 
 
@@ -3349,7 +3382,8 @@ TOPIC_KEYWORDS_BY_CODE = {
     "T9": ["partenariat", "posture", "equipe", "gouvernance", "competences"],
     "T10": ["langage", "pitch", "communication", "valeur", "interlocuteur"],
     "T11": ["evolution", "metier", "chercheur", "freins", "leviers"],
-    "T12": ["conclusion", "action", "collaboration", "engagement", "passage"],
+    "T12": ["collaboration", "accompagnement", "consortium", "partenariat", "contrat"],
+    "T13": ["conclusion", "action", "conseil", "engagement", "message"],
 }
 
 ALIGNMENT_DIMENSIONS_BY_CODE = {
@@ -3469,12 +3503,22 @@ ALIGNMENT_DIMENSIONS_BY_CODE = {
     ],
     "T12": [
         {
-            "label": "la capacite a conclure avec des actions concrètes et progressives",
-            "keywords": ["conclusion", "action", "premier pas", "engagement", "passage"],
+            "label": "le role des collaborations et consortiums pour amplifer le projet",
+            "keywords": ["collaboration", "consortium", "partenariat", "collectif", "amplifie"],
         },
         {
-            "label": "la projection vers des collaborations structurées",
-            "keywords": ["collaboration", "partenariat", "collectif", "coordination"],
+            "label": "les conditions pour que ces collaborations fonctionnent (cadre, contrats, preparation)",
+            "keywords": ["contrat", "cadre", "preparation", "regles", "gouvernance"],
+        },
+    ],
+    "T13": [
+        {
+            "label": "la capacite a conclure avec des actions concretes et progressives",
+            "keywords": ["conclusion", "action", "premier pas", "engagement", "conseil"],
+        },
+        {
+            "label": "le message cle a transmettre pour oser passer a l'action",
+            "keywords": ["message", "conseil", "oser", "innovation", "idee recue"],
         },
     ],
 }

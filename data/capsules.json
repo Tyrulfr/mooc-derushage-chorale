@@ -259,8 +259,8 @@
   {
     "code": "T11",
     "ordre": 11,
-    "module": "Module 4 - Entreprendre et faire grandir le projet",
-    "titre": "Les freins et leviers",
+    "module": "Module 5 - Collaborer et evoluer dans le metier",
+    "titre": "Evolution dans le metier du chercheur",
     "objectif_pedagogique": "L'apprenant identifie ses propres freins et comprend qu'ils ne doivent pas tous etre resolus avant de faire le premier pas. Il choisit une premiere action realiste et reversible.",
     "message_central": "Peur, manque de temps et perte de legitimite sont des freins courants mais travaillables.",
     "criteres_inclusion": [
@@ -282,8 +282,8 @@
   {
     "code": "T12",
     "ordre": 12,
-    "module": "Module 4 - Entreprendre et faire grandir le projet",
-    "titre": "Construire une collaboration qui produit reellement de la valeur",
+    "module": "Module 5 - Collaborer et evoluer dans le metier",
+    "titre": "Dispositifs d'accompagnement et collaborations",
     "objectif_pedagogique": "L'apprenant sait preparer une premiere collaboration en clarifiant les contributions, les attentes, les regles de decision et les sujets de propriete intellectuelle.",
     "message_central": "Une collaboration durable repose sur la co-construction, la contractualisation et le partage de valeur.",
     "criteres_inclusion": [
@@ -302,5 +302,27 @@
     ],
     "duree_cible_secondes": 300,
     "statut": "EN_CONSTRUCTION"
+  },
+  {
+    "code": "T13",
+    "ordre": 13,
+    "module": "Module 6 - Passer a l'action",
+    "titre": "Conclusion : passer a l'action",
+    "objectif_pedagogique": "L'apprenant repart avec un premier pas concret et un message clair pour oser engager une demarche d'innovation.",
+    "message_central": "Innover commence par un premier pas realiste, informe et reversible.",
+    "criteres_inclusion": [
+      "conseil",
+      "idee recue",
+      "message final",
+      "premier pas",
+      "oser"
+    ],
+    "criteres_exclusion": [
+      "montage technique detaille",
+      "choix de licence",
+      "detail contractuel"
+    ],
+    "duree_cible_secondes": 300,
+    "statut": "A_CARTOGRAPHIER"
   }
 ]

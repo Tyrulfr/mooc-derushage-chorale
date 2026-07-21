@@ -113,13 +113,22 @@
       "noms_proposes": "Arielle Santé \nJoël Nguen\nPascal Corbel\nBernard Yannou"
     },
     {
-      "module": "M6",
+      "module": "M5",
       "code": "T12",
-      "video_temoin": "VIDÉO 12 : DE CONCLUSION : PASSER À L’ACTION",
+      "video_temoin": "VIDÉO 12 : DISPOSITIFS D’ACCOMPAGNEMENT & COLLAB",
       "resume_chercheurs": "Muriel : cinq années de co-construction avec un EHPAD, implication des cuisiniers et nécessité de contractualiser les collaborations. Loïc : partenaires devenus clients après des démonstrations, puis entrée de l’un d’eux au capital. Sylvia : complémentarité entre biologistes, chimistes, pharmacologues, cliniciens et patients. Jean-Jacques : rôle des cofondateurs, des réseaux et des introductions dans la progression du projet.",
       "videos_referent": "E22 — Pascal Corbel : Concevoir une collaboration équilibrée. Objectifs partagés, complémentarité, gouvernance, engagement, création et partage de valeur. \nE23 — Antoine Latreille : Sécuriser juridiquement la collaboration. Confidentialité, contrats, connaissances antérieures, résultats nouveaux, PI, publication et sortie du partenariat.",
       "objectif_pedagogique": "L’apprenant sait préparer une première collaboration en clarifiant les contributions, les attentes, les règles de décision et les sujets de propriété intellectuelle.",
       "noms_proposes": "Rémi Waché / Soizic LeFeuvre\nVirginia Branco\nEneli Vino / Fatoumata Aonon"
+    },
+    {
+      "module": "M6",
+      "code": "T13",
+      "video_temoin": "VIDÉO 13 : DE CONCLUSION : PASSER À L’ACTION",
+      "resume_chercheurs": "À constituer à partir des sélections Clarisse « Passer à l’action » (conseils, idées reçues à déconstruire, message final).",
+      "videos_referent": "",
+      "objectif_pedagogique": "L’apprenant repart avec un premier pas concret et un message clair pour oser engager une démarche d’innovation.",
+      "noms_proposes": ""
     }
   ]
 }
