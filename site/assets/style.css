@@ -414,6 +414,28 @@ tbody tr:last-child td { border-bottom: none; }
   border-radius: var(--radius);
   line-height: 1.5;
 }
+.script-placeholder {
+  margin-top: 16px;
+  min-height: 160px;
+  padding: 28px 20px;
+  border: 2px dashed var(--line);
+  border-radius: var(--radius);
+  background: #f8fafc;
+  color: var(--muted);
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+.script-recu-block {
+  margin-top: 14px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #f8fafc;
+  line-height: 1.65;
+  white-space: normal;
+}
+.script-attente-panel { border-left: 4px solid var(--warn); }
 .brief-point {
   margin: 14px 0;
   padding: 14px 16px;

@@ -19,6 +19,7 @@ NAV_ITEMS = (
     ("proposition_edito.html", "Proposition édito"),
     ("proposition_titres_temoin.html", "Titres témoins"),
     ("fonctions_temoins.html", "Fonctions témoins"),
+    ("videos_expert.html", "Vidéos expert"),
     ("mails_experts.html", "Mails experts"),
     ("profils_experts.html", "Profils experts"),
     ("derushage_edito.html", "Dérushage édito"),

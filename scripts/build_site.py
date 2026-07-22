@@ -457,6 +457,28 @@ tbody tr:last-child td { border-bottom: none; }
   border-radius: var(--radius);
   line-height: 1.5;
 }
+.script-placeholder {
+  margin-top: 16px;
+  min-height: 160px;
+  padding: 28px 20px;
+  border: 2px dashed var(--line);
+  border-radius: var(--radius);
+  background: #f8fafc;
+  color: var(--muted);
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+.script-recu-block {
+  margin-top: 14px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #f8fafc;
+  line-height: 1.65;
+  white-space: normal;
+}
+.script-attente-panel { border-left: 4px solid var(--warn); }
 .brief-point {
   margin: 14px 0;
   padding: 14px 16px;
@@ -1815,6 +1837,12 @@ def build_home(capsules: list[dict], segments: list[dict]) -> None:
             "🪪",
             "Fonctions témoins",
             "Formulations professionnelles et officielles des temoins (exportables).",
+        ),
+        (
+            "videos_expert.html",
+            "▶",
+            "Vidéos expert",
+            "Tableau des videos expertise, consignes envoyees (guides Word) et scripts recus.",
         ),
         (
             "mails_experts.html",
@@ -4523,8 +4551,6 @@ def _compose_expert_mail(expert: dict) -> tuple[str, str]:
         f"- Capsules témoins concernées : {tb_edito_list}.\n\n"
         "Le travail d'ingénierie pédagogique vise à refléter au mieux votre expertise sans s'y substituer ; "
         "vous êtes bien entendu libre d'aller plus loin, d'ajuster, ou de recadrer selon votre jugement.\n\n"
-        "Processus d'envoi : tous les mails sont d'abord transmis à Rita pour vérification (et éventuelle réécriture) "
-        "avant envoi final aux experts.\n\n"
         "Merci d'avance pour votre retour,\n"
         "Bien cordialement,\n"
         "Equipe Action 2 pilier 1 PUI alliance Paris Saclay."
@@ -4677,6 +4703,344 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
         f"{''.join(sections) if sections else '<p>Aucune capsule témoin associée à ce stade.</p>'}"
         "</body></html>"
     )
+
+
+VIDEOS_EXPERT_DATA = ROOT / "data" / "videos_expert"
+VIDEOS_EXPERT_SCRIPTS = VIDEOS_EXPERT_DATA / "scripts_recus"
+
+
+def _expert_video_sort_key(code: str) -> tuple[int, int, str]:
+    match = re.fullmatch(r"E(\d+)(bis)?", code or "", re.IGNORECASE)
+    if not match:
+        return (9999, 1, code or "")
+    return (int(match.group(1)), 1 if match.group(2) else 0, code.upper())
+
+
+def _expert_video_page_name(code: str) -> str:
+    return f"video_expert_{code}.html"
+
+
+def _load_expert_script_recu(code: str) -> dict:
+    """Charge le script renvoye par l'expert s'il est depose dans scripts_recus/."""
+    VIDEOS_EXPERT_SCRIPTS.mkdir(parents=True, exist_ok=True)
+    for suffix in (".txt", ".md", ".docx.txt"):
+        path = VIDEOS_EXPERT_SCRIPTS / f"{code}{suffix}"
+        if path.exists() and path.is_file():
+            text = path.read_text(encoding="utf-8").strip()
+            if text:
+                return {
+                    "statut": "RECU",
+                    "fichier": path.name,
+                    "contenu": text,
+                }
+    return {
+        "statut": "EN_ATTENTE",
+        "fichier": "",
+        "contenu": "",
+    }
+
+
+def _inventory_videos_expert(programme_table: dict, experts_profils: dict) -> list[dict]:
+    """Inventaire des videos expertise depuis programme_table + experts proposes."""
+    mail_rows = _mail_experts_rows(programme_table, experts_profils)
+    experts_by_capsule: dict[str, list[dict]] = defaultdict(list)
+    for expert in mail_rows:
+        for video in expert.get("videos", []):
+            capsule = video.get("code", "")
+            if not capsule:
+                continue
+            experts_by_capsule[capsule].append(
+                {
+                    "nom": expert.get("nom", ""),
+                    "slug": expert.get("slug", ""),
+                    "organisme": expert.get("organisme", ""),
+                    "guide_href": f"guide_editorial_{expert.get('slug', '')}.doc",
+                    "mail_href": f"mail_expert_{expert.get('slug', '')}.html",
+                }
+            )
+
+    inventory: list[dict] = []
+    for row in programme_table.get("rows", []):
+        capsule_code = row.get("code", "")
+        if not capsule_code:
+            continue
+        fixed = FIXED_TEMOIN_PLAN.get(capsule_code, {})
+        temoin_label = fixed.get("label") or row.get("video_temoin", "")
+        experts = experts_by_capsule.get(capsule_code, [])
+        for video in _tb_edito_parse_videos_expert(row.get("videos_referent", "")):
+            code = video.get("code", "")
+            if not code:
+                continue
+            script = _load_expert_script_recu(code)
+            inventory.append(
+                {
+                    "code": code,
+                    "titre": video.get("titre", ""),
+                    "capsule_code": capsule_code,
+                    "temoin_label": temoin_label,
+                    "module": row.get("module", ""),
+                    "objectif_pedagogique": row.get("objectif_pedagogique", ""),
+                    "experts": experts,
+                    "experts_label": ", ".join(item["nom"] for item in experts if item.get("nom"))
+                    or "A confirmer",
+                    "script_statut": script["statut"],
+                    "script_fichier": script["fichier"],
+                    "script_contenu": script["contenu"],
+                    "page_href": _expert_video_page_name(code),
+                    "tb_edito_href": f"tb_edito_{capsule_code}.html",
+                }
+            )
+
+    inventory.sort(key=lambda item: _expert_video_sort_key(item["code"]))
+    return inventory
+
+
+def _consignes_envoyees_expert_html(item: dict) -> str:
+    """Reprend les consignes transmises dans les guides Word (cadrage + consignes generales)."""
+    consignes = [_humanize_capsule_labels(line) for line in BRIEF_CONSIGNES_COMMUNES]
+    consignes_html = "".join(f"<li>{escape(line)}</li>" for line in consignes)
+    expert_links = []
+    for expert in item.get("experts", []):
+        nom = expert.get("nom", "")
+        guide = expert.get("guide_href", "")
+        mail = expert.get("mail_href", "")
+        if not nom:
+            continue
+        bits = [escape(nom)]
+        if guide:
+            bits.append(f"<a href='{escape(guide)}'>Guide Word</a>")
+        if mail:
+            bits.append(f"<a href='{escape(mail)}'>Mail</a>")
+        expert_links.append("<li>" + " — ".join(bits) + "</li>")
+
+    experts_block = (
+        "<ul>" + "".join(expert_links) + "</ul>"
+        if expert_links
+        else "<p class='meta'>Aucun expert propose pour cette capsule a ce stade.</p>"
+    )
+
+    return f"""
+<section class="methodology-panel brief-intervenant-panel">
+  <h2>Consignes envoyees a l'expert</h2>
+  <p class="meta">Contenu repris du guide editorial Word transmis avec le mail de sollicitation
+  (proposition de cadrage + consignes generales). Document source : guides
+  <code>guide_editorial_*.doc</code>.</p>
+  <p class="brief-precaution"><strong>Precaution :</strong> {escape(BRIEF_PRECAUTION_ORATOIRE)}</p>
+  <h3>{escape(_label_video_expert(item['code']))}</h3>
+  <p><strong>Objectif :</strong> {escape(item.get('titre') or 'A preciser')}</p>
+  <p><strong>Capsule temoin associee :</strong>
+    <a href="{escape(item['tb_edito_href'])}">{escape(item['capsule_code'])} — {escape(item.get('temoin_label', ''))}</a>
+  </p>
+  <p><strong>Objectif pedagogique de la capsule :</strong> {escape(item.get('objectif_pedagogique') or '—')}</p>
+  <h3>Consignes generales</h3>
+  <ul>{consignes_html}</ul>
+  <h3>Experts sollicites (guides / mails)</h3>
+  {experts_block}
+</section>
+"""
+
+
+def _script_expert_recu_html(item: dict) -> str:
+    """Bloc d'accueil du script renvoye par l'expert."""
+    code = item["code"]
+    statut = item.get("script_statut", "EN_ATTENTE")
+    if statut == "RECU" and item.get("script_contenu"):
+        fichier = item.get("script_fichier", "")
+        body = escape(item["script_contenu"]).replace("\n", "<br>")
+        return f"""
+<section class="methodology-panel">
+  <h2>Script renvoye par l'expert</h2>
+  <p>{status_badge('VALIDEE')} <span class="meta">Fichier : <code>{escape(fichier)}</code></span></p>
+  <div class="script-recu-block">{body}</div>
+</section>
+"""
+
+    depot = f"data/videos_expert/scripts_recus/{code}.txt"
+    return f"""
+<section class="methodology-panel script-attente-panel">
+  <h2>Script renvoye par l'expert</h2>
+  <p>{status_badge('EN_CONSTRUCTION')} <strong>En attente</strong> du script prompteur.</p>
+  <p class="meta">Quand l'expert renverra son script, deposer le texte brut dans
+  <code>{escape(depot)}</code> puis regenerer le site (<code>python3 scripts/build_site.py</code>).
+  Formats acceptes : <code>{escape(code)}.txt</code> ou <code>{escape(code)}.md</code>.</p>
+  <div class="script-placeholder" aria-label="Emplacement reserve au script expert">
+    <p>Emplacement reserve — script expert a venir.</p>
+  </div>
+</section>
+"""
+
+
+def _write_videos_expert_xlsx(inventory: list[dict], path: Path) -> None:
+    from openpyxl import Workbook
+    from openpyxl.styles import Alignment, Font, PatternFill
+
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Videos expert"
+    headers = [
+        "Code",
+        "Titre / objectif",
+        "Capsule temoin",
+        "Titre temoin",
+        "Module",
+        "Experts proposes",
+        "Statut script",
+        "Fichier script",
+        "Page site",
+        "Guide Word (1er expert)",
+    ]
+    ws.append(headers)
+    header_fill = PatternFill("solid", fgColor="0B6E77")
+    header_font = Font(color="FFFFFF", bold=True)
+    for cell in ws[1]:
+        cell.fill = header_fill
+        cell.font = header_font
+        cell.alignment = Alignment(vertical="center", wrap_text=True)
+
+    for item in inventory:
+        first_guide = ""
+        experts = item.get("experts") or []
+        if experts:
+            first_guide = experts[0].get("guide_href", "")
+        ws.append(
+            [
+                item["code"],
+                item.get("titre", ""),
+                item.get("capsule_code", ""),
+                item.get("temoin_label", ""),
+                item.get("module", ""),
+                item.get("experts_label", ""),
+                item.get("script_statut", "EN_ATTENTE"),
+                item.get("script_fichier", ""),
+                item.get("page_href", ""),
+                first_guide,
+            ]
+        )
+
+    widths = [10, 48, 12, 36, 18, 36, 14, 18, 24, 36]
+    from openpyxl.utils import get_column_letter
+
+    for idx, width in enumerate(widths, start=1):
+        ws.column_dimensions[get_column_letter(idx)].width = width
+
+    for row in ws.iter_rows(min_row=2, max_row=ws.max_row, min_col=1, max_col=len(headers)):
+        for cell in row:
+            cell.alignment = Alignment(vertical="top", wrap_text=True)
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    wb.save(path)
+
+
+def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> None:
+    inventory = _inventory_videos_expert(programme_table, experts_profils)
+    _write_videos_expert_xlsx(inventory, SITE / "videos_expert.xlsx")
+
+    json_rows = [
+        {
+            "code": item["code"],
+            "titre": item.get("titre", ""),
+            "capsule_code": item.get("capsule_code", ""),
+            "temoin_label": item.get("temoin_label", ""),
+            "module": item.get("module", ""),
+            "experts": item.get("experts_label", ""),
+            "script_statut": item.get("script_statut", "EN_ATTENTE"),
+            "script_fichier": item.get("script_fichier", ""),
+            "page": item.get("page_href", ""),
+        }
+        for item in inventory
+    ]
+    write_text(
+        SITE / "videos_expert.json",
+        json.dumps({"videos_expert": json_rows}, ensure_ascii=False, indent=2),
+    )
+
+    recus = sum(1 for item in inventory if item.get("script_statut") == "RECU")
+    table_rows = []
+    for item in inventory:
+        statut_label = "Reçu" if item["script_statut"] == "RECU" else "En attente"
+        badge = status_badge("VALIDEE" if item["script_statut"] == "RECU" else "EN_CONSTRUCTION")
+        table_rows.append(
+            "<tr>"
+            f"<td><a href='{escape(item['page_href'])}'><strong>{escape(item['code'])}</strong></a></td>"
+            f"<td>{escape(item.get('titre', ''))}</td>"
+            f"<td><a href='{escape(item['tb_edito_href'])}'>{escape(item['capsule_code'])}</a></td>"
+            f"<td>{escape(item.get('temoin_label', ''))}</td>"
+            f"<td>{escape(item.get('experts_label', ''))}</td>"
+            f"<td>{badge} {escape(statut_label)}</td>"
+            f"<td><a class='btn' href='{escape(item['page_href'])}'>Ouvrir</a></td>"
+            "</tr>"
+        )
+
+    body = (
+        "<p class='meta'>Inventaire des videos expertise du programme de conception. "
+        "Chaque fiche reprend les consignes envoyees dans le guide Word et accueille le script "
+        "quand l'expert le renvoie (<code>data/videos_expert/scripts_recus/</code>).</p>"
+        f"<p class='meta'><strong>{len(inventory)}</strong> videos — "
+        f"<strong>{recus}</strong> script(s) recu(s), "
+        f"<strong>{len(inventory) - recus}</strong> en attente.</p>"
+        "<p>"
+        "<a class='btn' href='videos_expert.xlsx' download>Télécharger le tableau (XLSX)</a> "
+        "<a class='btn btn-secondary' href='videos_expert.json' download>JSON</a>"
+        "</p>"
+        "<div class='table-wrap'><table><thead><tr>"
+        "<th>Code</th><th>Titre / objectif</th><th>Capsule</th><th>Titre temoin</th>"
+        "<th>Experts proposes</th><th>Script</th><th></th>"
+        "</tr></thead><tbody>"
+        + (
+            "".join(table_rows)
+            if table_rows
+            else "<tr><td colspan='7'>Aucune video expert dans le programme_table.</td></tr>"
+        )
+        + "</tbody></table></div>"
+    )
+    write_text(
+        SITE / "videos_expert.html",
+        html_page(
+            "Vidéos expert",
+            body,
+            nav_current="videos_expert.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Vidéos expert", None)),
+            page_header=(
+                '<div class="page-head"><h1>Vidéos expert</h1>'
+                '<p class="lead">Tableau des videos expertise, consignes transmises et scripts recus.</p></div>'
+            ),
+        ),
+    )
+
+    expected = {"videos_expert.html", "videos_expert.xlsx", "videos_expert.json"}
+    for item in inventory:
+        page_name = item["page_href"]
+        expected.add(page_name)
+        detail_body = (
+            f"<p class='meta'>Module : {escape(item.get('module') or '—')} — "
+            f"Capsule : <a href='{escape(item['tb_edito_href'])}'>{escape(item['capsule_code'])}</a> — "
+            f"Experts : {escape(item.get('experts_label', ''))}</p>"
+            f"{_consignes_envoyees_expert_html(item)}"
+            f"{_script_expert_recu_html(item)}"
+            "<p><a class='btn btn-secondary' href='videos_expert.html'>← Retour au tableau</a> "
+            f"<a class='btn btn-secondary' href='videos_expert.xlsx' download>Export XLSX</a></p>"
+        )
+        write_text(
+            SITE / page_name,
+            html_page(
+                f"{item['code']} — Vidéo expert",
+                detail_body,
+                nav_current="videos_expert.html",
+                breadcrumb=html_breadcrumb(
+                    ("Accueil", "index.html"),
+                    ("Vidéos expert", "videos_expert.html"),
+                    (item["code"], None),
+                ),
+                page_header=(
+                    f'<div class="page-head"><h1>{escape(_label_video_expert(item["code"]))}</h1>'
+                    f'<p class="lead">{escape(item.get("titre") or "")}</p></div>'
+                ),
+            ),
+        )
+
+    for path in SITE.glob("video_expert_*.html"):
+        if path.name not in expected:
+            path.unlink()
 
 
 def build_mails_experts_pages(programme_table: dict, experts_profils: dict) -> None:
@@ -5393,6 +5757,7 @@ if __name__ == "__main__":
     build_proposition_titres_temoin_page(programme_table)
     build_proposition_edito_pages(programme_table)
     build_fonctions_temoins_page()
+    build_videos_expert_pages(programme_table, experts_profils)
     build_mails_experts_pages(programme_table, experts_profils)
     build_correspondances_edito_page(programme_table)
     build_tableau_corr_page()
