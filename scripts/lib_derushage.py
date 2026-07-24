@@ -15,18 +15,9 @@ MATCH_DATA = DATA / "match"
 NAV_ITEMS = (
     ("index.html", "Accueil"),
     ("tableau_de_bord.html", "Tableau de bord"),
-    ("tb_edito.html", "Capsules témoins"),
-    ("proposition_edito.html", "Proposition édito"),
-    ("proposition_titres_temoin.html", "Titres témoins"),
-    ("fonctions_temoins.html", "Fonctions témoins"),
-    ("videos_expert.html", "Vidéos expert"),
-    ("mails_experts.html", "Mails experts"),
-    ("profils_experts.html", "Profils experts"),
-    ("derushage_edito.html", "Dérushage édito"),
-    ("tableau_correspondances_edito.html", "Correspondances édito"),
-    ("bab_encodes.html", "BAB encodé"),
-    ("conflits.html", "Conflits"),
-    ("registre.html", "Registre"),
+    ("suivi_intervenants.html", "Suivi Intervenants"),
+    ("edito.html", "Edito"),
+    ("fichiers_travail.html", "Fichiers de travail"),
 )
 
 SITE_BRAND = "Dérushage chorale"

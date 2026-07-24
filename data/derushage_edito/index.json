@@ -5,7 +5,7 @@
     "source": "00_Mooc_Transcript_Yann Monier.docx",
     "intervenant": "Yann Meunier",
     "statut_derushage": "AUTO_GENERE_DEPUIS_SURLIGNAGE",
-    "date_maj": "2026-07-17",
+    "date_maj": "2026-07-24",
     "nb_sequences_retenues": 49,
     "nb_paragraphes_analyse": 285
   },
@@ -15,7 +15,7 @@
     "source": "00_Mooc_Transcript_JJ Greffet.docx",
     "intervenant": "Jean-Jacques Greffet",
     "statut_derushage": "AUTO_GENERE_DEPUIS_SURLIGNAGE",
-    "date_maj": "2026-07-17",
+    "date_maj": "2026-07-24",
     "nb_sequences_retenues": 71,
     "nb_paragraphes_analyse": 243
   },
@@ -25,7 +25,7 @@
     "source": "00-Mooc_Transcript_Muriel Thomas.docx",
     "intervenant": "Muriel Thomas",
     "statut_derushage": "AUTO_GENERE_DEPUIS_SURLIGNAGE",
-    "date_maj": "2026-07-17",
+    "date_maj": "2026-07-24",
     "nb_sequences_retenues": 74,
     "nb_paragraphes_analyse": 211
   },
@@ -35,8 +35,18 @@
     "source": "00_Mooc_Transcript_Loic Rajjou.docx",
     "intervenant": "Loïc Rajjou",
     "statut_derushage": "AUTO_GENERE_DEPUIS_SURLIGNAGE",
-    "date_maj": "2026-07-17",
+    "date_maj": "2026-07-24",
     "nb_sequences_retenues": 80,
     "nb_paragraphes_analyse": 201
+  },
+  {
+    "id": "syl_edito",
+    "fichier": "syl_edito.json",
+    "source": "00_Mooc_Transcript_Sylvia Cohen.docx",
+    "intervenant": "Sylvia Cohen-Kaminski",
+    "statut_derushage": "AUTO_GENERE_DEPUIS_SURLIGNAGE",
+    "date_maj": "2026-07-24",
+    "nb_sequences_retenues": 61,
+    "nb_paragraphes_analyse": 241
   }
 ]

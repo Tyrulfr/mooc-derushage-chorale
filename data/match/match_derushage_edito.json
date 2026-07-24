@@ -1,17 +1,17 @@
 {
-  "date_maj": "2026-07-17",
+  "date_maj": "2026-07-24",
   "objectif": "Comparer le derushage actuel aux sequences retenues par l'edito pour optimiser l'adequation pedagogique.",
   "seuil_match_similarite": "inclusion_sequence (>= 6 mots consecutifs), meme video et meme module",
   "resume": {
     "nb_temoins": 6,
-    "nb_temoins_avec_doc_edito": 4,
-    "nb_temoins_avec_edito": 4,
-    "nb_sequences_edito": 274,
-    "nb_sequences_match": 35,
+    "nb_temoins_avec_doc_edito": 5,
+    "nb_temoins_avec_edito": 5,
+    "nb_sequences_edito": 335,
+    "nb_sequences_match": 53,
     "nb_segments_derushage": 59,
-    "nb_segments_derushage_matches": 14,
-    "couverture_edito_globale": 0.128,
-    "recouvrement_derushage_global": 0.237
+    "nb_segments_derushage_matches": 19,
+    "couverture_edito_globale": 0.158,
+    "recouvrement_derushage_global": 0.322
   },
   "temoins": [
     {
@@ -2089,15 +2089,15 @@
     },
     {
       "temoin": "Sylvia Cohen-Kaminski",
-      "source_edito": "",
-      "id_edito": "",
-      "nb_edito": 0,
-      "nb_matchs": 0,
-      "nb_non_match_edito": 0,
+      "source_edito": "00_Mooc_Transcript_Sylvia Cohen.docx",
+      "id_edito": "syl_edito",
+      "nb_edito": 61,
+      "nb_matchs": 18,
+      "nb_non_match_edito": 43,
       "nb_segments_derushage": 14,
-      "nb_non_match_derushage": 14,
-      "couverture_edito": 0.0,
-      "recouvrement_derushage": 0.0,
+      "nb_non_match_derushage": 9,
+      "couverture_edito": 0.295,
+      "recouvrement_derushage": 0.357,
       "metrics_derushage": {
         "nb_segments": 14,
         "score_autonomie_moyen": 0.982,
@@ -2105,16 +2105,546 @@
         "score_composite_moyen": 0.732,
         "fluidite_score": 0.857
       },
-      "matchs": [],
-      "non_match_edito": [],
-      "non_match_derushage": [
+      "matchs": [
         {
+          "edito_id": "SYLE-0002",
+          "video": "Vidéo 1 : pourquoi oser",
+          "question": "",
+          "edito_paragraphe": 74,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "cette innovation est nee d un pas de cote",
           "segment_id": "SYL-0001",
-          "theme": "T1",
-          "debut": "01:00:05.150",
-          "fin": "01:02:40.570",
-          "commentaire": "Presentation acte 1 ; genese detaillee hors montage."
+          "segment_theme": "T1",
+          "segment_debut": "01:00:05.150",
+          "segment_fin": "01:02:40.570"
         },
+        {
+          "edito_id": "SYLE-0034",
+          "video": "Vidéo 7 : protection intellectuelle",
+          "question": "",
+          "edito_paragraphe": 152,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "c est pourquoi nous avons des le depart brevete y compris le mecanisme d action avant meme de developper les molecules pendant que la recherche etait encore au sein du laboratoire",
+          "segment_id": "SYL-0007",
+          "segment_theme": "T5",
+          "segment_debut": "01:16:01.150",
+          "segment_fin": "01:16:53.820"
+        },
+        {
+          "edito_id": "SYLE-0035",
+          "video": "Vidéo 7 : protection intellectuelle",
+          "question": "",
+          "edito_paragraphe": 154,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "par la suite on a pu breveter effectivement deux series chimiques donc notre innovation est liee a trois brevets qui sont maintenant delivres mondialement",
+          "segment_id": "SYL-0007",
+          "segment_theme": "T5",
+          "segment_debut": "01:16:01.150",
+          "segment_fin": "01:16:53.820"
+        },
+        {
+          "edito_id": "SYLE-0036",
+          "video": "Vidéo 7 : protection intellectuelle",
+          "question": "",
+          "edito_paragraphe": 156,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "donc notre laboratoire etait dependant de deux entites l inserm et l universite paris saclay",
+          "segment_id": "SYL-0007",
+          "segment_theme": "T5",
+          "segment_debut": "01:16:01.150",
+          "segment_fin": "01:16:53.820"
+        },
+        {
+          "edito_id": "SYLE-0041",
+          "video": "Vidéo 9 : ne pas avancer seul/ ecosysteme",
+          "question": "",
+          "edito_paragraphe": 177,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "le premier c est de m entourer d etudiants formidables qui ont pu travailler sur la preuve de concept et les mecanismes",
+          "segment_id": "SYL-0009",
+          "segment_theme": "T7",
+          "segment_debut": "01:20:38.460",
+          "segment_fin": "01:24:27.580"
+        },
+        {
+          "edito_id": "SYLE-0042",
+          "video": "Vidéo 9 : ne pas avancer seul/ ecosysteme",
+          "question": "",
+          "edito_paragraphe": 178,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "le deuxieme element ca a ete le dispositif d innovation dont on peut disposer a l universite paris saclay qui represente un certain continuum depuis la preuve de concept avec le poc in lab jusqu a la maturation technologique avec la satt paris saclay",
+          "segment_id": "SYL-0009",
+          "segment_theme": "T7",
+          "segment_debut": "01:20:38.460",
+          "segment_fin": "01:24:27.580"
+        },
+        {
+          "edito_id": "SYLE-0048",
+          "video": "Vidéo 11 : partenariat et posture/ l’équipe autour du chercheur",
+          "question": "",
+          "edito_paragraphe": 202,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "il n y a pas de place pour l ego chacun a sa place importante a jouer dans ce processus de collaboration pour conduire a l innovation",
+          "segment_id": "SYL-0011",
+          "segment_theme": "T9",
+          "segment_debut": "01:24:33.580",
+          "segment_fin": "01:26:12.040"
+        },
+        {
+          "edito_id": "SYLE-0052",
+          "video": "Vidéo 12 : changer de langage",
+          "question": "",
+          "edito_paragraphe": 210,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "un apport formidable par rapport a la posture mais aussi par rapport aux connaissances",
+          "segment_id": "SYL-0012",
+          "segment_theme": "T10",
+          "segment_debut": "01:27:02.160",
+          "segment_fin": "01:28:17.810"
+        },
+        {
+          "edito_id": "SYLE-0053",
+          "video": "Vidéo 12 : changer de langage",
+          "question": "",
+          "edito_paragraphe": 212,
+          "similarite": 1.0,
+          "match_phrase": true,
+          "sequence_contenue": "la connaissance de la negociation la connaissance de l ecosysteme des investisseurs",
+          "segment_id": "SYL-0012",
+          "segment_theme": "T10",
+          "segment_debut": "01:27:02.160",
+          "segment_fin": "01:28:17.810"
+        },
+        {
+          "edito_id": "SYLE-0001",
+          "video": "Vidéo 1 : pourquoi oser",
+          "question": "",
+          "edito_paragraphe": 72,
+          "similarite": 0.667,
+          "match_phrase": true,
+          "sequence_contenue": "directrice de recherche au cnrs et je travaille sur une maladie rare qui est l hypertension arterielle pulmonaire",
+          "segment_id": "SYL-0001",
+          "segment_theme": "T1",
+          "segment_debut": "01:00:05.150",
+          "segment_fin": "01:02:40.570"
+        },
+        {
+          "edito_id": "SYLE-0044",
+          "video": "Vidéo 9 : ne pas avancer seul/ ecosysteme",
+          "question": "",
+          "edito_paragraphe": 183,
+          "similarite": 0.667,
+          "match_phrase": true,
+          "sequence_contenue": "et nous avons ete un des tout premiers",
+          "segment_id": "SYL-0009",
+          "segment_theme": "T7",
+          "segment_debut": "01:20:38.460",
+          "segment_fin": "01:24:27.580"
+        },
+        {
+          "edito_id": "SYLE-0004",
+          "video": "Vidéo 1 : pourquoi oser",
+          "question": "",
+          "edito_paragraphe": 74,
+          "similarite": 0.643,
+          "match_phrase": true,
+          "sequence_contenue": "ce recepteur venait du systeme nerveux central et finalement il se revele etre un acteur de la communication",
+          "segment_id": "SYL-0001",
+          "segment_theme": "T1",
+          "segment_debut": "01:00:05.150",
+          "segment_fin": "01:02:40.570"
+        },
+        {
+          "edito_id": "SYLE-0049",
+          "video": "Vidéo 11 : partenariat et posture/ l’équipe autour du chercheur",
+          "question": "",
+          "edito_paragraphe": 204,
+          "similarite": 0.6,
+          "match_phrase": true,
+          "sequence_contenue": "qui s est fait avec l accompagnement de la",
+          "segment_id": "SYL-0011",
+          "segment_theme": "T9",
+          "segment_debut": "01:24:33.580",
+          "segment_fin": "01:26:12.040"
+        },
+        {
+          "edito_id": "SYLE-0054",
+          "video": "Vidéo 12 : changer de langage",
+          "question": "",
+          "edito_paragraphe": 212,
+          "similarite": 0.6,
+          "match_phrase": true,
+          "sequence_contenue": "apprendre a pitcher apprendre a se a presenter son",
+          "segment_id": "SYL-0012",
+          "segment_theme": "T10",
+          "segment_debut": "01:27:02.160",
+          "segment_fin": "01:28:17.810"
+        },
+        {
+          "edito_id": "SYLE-0045",
+          "video": "Vidéo 9 : ne pas avancer seul/ ecosysteme",
+          "question": "",
+          "edito_paragraphe": 189,
+          "similarite": 0.545,
+          "match_phrase": true,
+          "sequence_contenue": "paris saclay et ca a permis de decupler la valeur du projet avant meme qu il ne commence",
+          "segment_id": "SYL-0009",
+          "segment_theme": "T7",
+          "segment_debut": "01:20:38.460",
+          "segment_fin": "01:24:27.580"
+        },
+        {
+          "edito_id": "SYLE-0003",
+          "video": "Vidéo 1 : pourquoi oser",
+          "question": "",
+          "edito_paragraphe": 74,
+          "similarite": 0.5,
+          "match_phrase": true,
+          "sequence_contenue": "d un pas de cote que j ai fait il y a quelque temps deja du temps ou",
+          "segment_id": "SYL-0001",
+          "segment_theme": "T1",
+          "segment_debut": "01:00:05.150",
+          "segment_fin": "01:02:40.570"
+        },
+        {
+          "edito_id": "SYLE-0051",
+          "video": "Vidéo 12 : changer de langage",
+          "question": "",
+          "edito_paragraphe": 210,
+          "similarite": 0.5,
+          "match_phrase": true,
+          "sequence_contenue": "faire une formation qui s appelle",
+          "segment_id": "SYL-0012",
+          "segment_theme": "T10",
+          "segment_debut": "01:27:02.160",
+          "segment_fin": "01:28:17.810"
+        },
+        {
+          "edito_id": "SYLE-0043",
+          "video": "Vidéo 9 : ne pas avancer seul/ ecosysteme",
+          "question": "",
+          "edito_paragraphe": 180,
+          "similarite": 0.269,
+          "match_phrase": true,
+          "sequence_contenue": "du plan d investissement d avenir de l etat qui a permis d avoir un financement exceptionnel d",
+          "segment_id": "SYL-0009",
+          "segment_theme": "T7",
+          "segment_debut": "01:20:38.460",
+          "segment_fin": "01:24:27.580"
+        }
+      ],
+      "non_match_edito": [
+        {
+          "edito_id": "SYLE-0005",
+          "video": "Vidéo 1 : pourquoi oser",
+          "question": "",
+          "edito_paragraphe": 85,
+          "texte": "Moi, j'avais envie d'aller jusqu'au bout, d'aller au lit du patient. C'était un peu comme une urgence pour moi."
+        },
+        {
+          "edito_id": "SYLE-0006",
+          "video": "Vidéo 1 : pourquoi oser",
+          "question": "",
+          "edito_paragraphe": 89,
+          "texte": "Chercher, c'est créer, mais innover, ça va plus loin, dans le sens où il y a un impact sociétal derrière."
+        },
+        {
+          "edito_id": "SYLE-0007",
+          "video": "Vidéo 1 : pourquoi oser",
+          "question": "",
+          "edito_paragraphe": 91,
+          "texte": "C'est important d'oser parce que c'est important d'aller jusqu'au bout de ses idées."
+        },
+        {
+          "edito_id": "SYLE-0008",
+          "video": "Vidéo 1 : pourquoi oser",
+          "question": "",
+          "edito_paragraphe": 91,
+          "texte": "Et pour moi, c'était devenu une urgence de pouvoir innover et de pouvoir aller jusqu'au bout pour traiter cette maladie."
+        },
+        {
+          "edito_id": "SYLE-0009",
+          "video": "Vidéo 2 : de la recherche fondamentale à l’innovation",
+          "question": "",
+          "edito_paragraphe": 97,
+          "texte": "il y a pas eu de déclic en cours du projet de recherche, c'était dès le départ."
+        },
+        {
+          "edito_id": "SYLE-0010",
+          "video": "Vidéo 2 : de la recherche fondamentale à l’innovation",
+          "question": "",
+          "edito_paragraphe": 97,
+          "texte": "cette innovation intervient à un moment où l'hypertension artérielle pulmonaire est très grave."
+        },
+        {
+          "edito_id": "SYLE-0011",
+          "video": "Vidéo 2 : de la recherche fondamentale à l’innovation",
+          "question": "",
+          "edito_paragraphe": 98,
+          "texte": "Il y a quinze actifs vasodilatateurs qui ne font qu'améliorer la survie des patients et ne traitent absolument pas les causes de la maladie, c'est-à-dire le remodelage vasculaire pulmonaire. Or, la cible que j'ai identifiée intervient justement sur ce remodelage vasculaire pulmonaire."
+        },
+        {
+          "edito_id": "SYLE-0012",
+          "video": "Vidéo 3 : identifier un besoin réel",
+          "question": "",
+          "edito_paragraphe": 103,
+          "texte": "je travaillais déjà avec les cliniciens impliqués dans le suivi de ces patients"
+        },
+        {
+          "edito_id": "SYLE-0013",
+          "video": "Vidéo 3 : identifier un besoin réel",
+          "question": "",
+          "edito_paragraphe": 103,
+          "texte": "J'ai aussi discuté avec les patients et donc le besoin était urgent et évident."
+        },
+        {
+          "edito_id": "SYLE-0014",
+          "video": "Vidéo 3 : identifier un besoin réel",
+          "question": "",
+          "edito_paragraphe": 105,
+          "texte": "en fait, on a bien identifié une cible"
+        },
+        {
+          "edito_id": "SYLE-0015",
+          "video": "Vidéo 3 : identifier un besoin réel",
+          "question": "",
+          "edito_paragraphe": 105,
+          "texte": "était dans le système nerveux central, mais j'avais un challenge. Un challenge de développer des molécules thérapeutiques qui ne passent pas dans le cerveau pour éviter les effets cognitifs et centraux."
+        },
+        {
+          "edito_id": "SYLE-0016",
+          "video": "Vidéo 3 : identifier un besoin réel",
+          "question": "",
+          "edito_paragraphe": 106,
+          "texte": "Ce challenge, j'ai pu le résoudre en collaborant avec des chimistes de l'Université Paris-Saclay,"
+        },
+        {
+          "edito_id": "SYLE-0017",
+          "video": "Vidéo 3 : identifier un besoin réel",
+          "question": "",
+          "edito_paragraphe": 108,
+          "texte": "Pour vérifier l'intérêt d'une innovation, surtout dans le domaine médical, je pense que il est important d'aller discuter très très tôt avec les cliniciens. on ne sait pas à quel point parfois leurs remarques, leurs réflexions peuvent aussi orienter notre démarche de recherche."
+        },
+        {
+          "edito_id": "SYLE-0018",
+          "video": "Vidéo 4 : sortir du labo",
+          "question": "",
+          "edito_paragraphe": 113,
+          "texte": "le moment d'accélération a été la rencontre avec la Sat Paris-Saclay."
+        },
+        {
+          "edito_id": "SYLE-0019",
+          "video": "Vidéo 4 : sortir du labo",
+          "question": "",
+          "edito_paragraphe": 113,
+          "texte": "Cette rencontre a permis de changer notre posture de chercheur en entrepreneur,"
+        },
+        {
+          "edito_id": "SYLE-0020",
+          "video": "Vidéo 4 : sortir du labo",
+          "question": "",
+          "edito_paragraphe": 113,
+          "texte": "Et ensuite on a pu construire une feuille de route réaliste à partir de nos séries chimiques pour les optimiser pour les explorer in vivo dans les modèles expérimentaux et pour exploiter les propriétés de ces molécules pour désigner le candidat médicament."
+        },
+        {
+          "edito_id": "SYLE-0021",
+          "video": "Vidéo 4 : sortir du labo",
+          "question": "",
+          "edito_paragraphe": 114,
+          "texte": "c'est un, une expérience incroyable, un accomplissement personnel au-delà de la recherche. C'est enthousiasmant, c'est exaltant et il faut vraiment oser y aller."
+        },
+        {
+          "edito_id": "SYLE-0022",
+          "video": "Vidéo 4 : sortir du labo",
+          "question": "",
+          "edito_paragraphe": 116,
+          "texte": "Si on n'ose pas, on ne peut pas comprendre si notre idée a du potentiel ou pas."
+        },
+        {
+          "edito_id": "SYLE-0023",
+          "video": "Vidéo 5 : une idée ne suffit pas",
+          "question": "",
+          "edito_paragraphe": 122,
+          "texte": "pour passer d'un résultat scientifique à une validation concrète avant la maturation, il y a l'étape de prématuration."
+        },
+        {
+          "edito_id": "SYLE-0024",
+          "video": "Vidéo 5 : une idée ne suffit pas",
+          "question": "",
+          "edito_paragraphe": 123,
+          "texte": "cette prématuration est importante pour connaître le marché, pour connaître ses concurrents."
+        },
+        {
+          "edito_id": "SYLE-0025",
+          "video": "Vidéo 5 : une idée ne suffit pas",
+          "question": "",
+          "edito_paragraphe": 127,
+          "texte": "nous avons considéré que notre solution était techniquement viable assez tard dans le projet"
+        },
+        {
+          "edito_id": "SYLE-0026",
+          "video": "Vidéo 5 : une idée ne suffit pas",
+          "question": "",
+          "edito_paragraphe": 127,
+          "texte": "On devait faire des molécules qui ne vont pas dans le cerveau et des molécules qui restent actives in vivo avec un mécanisme direct qui ne passe pas par un relais du système nerveux central. et donc en fait le véritable la véritable pierre angulaire qui a permis de, de montrer que la technologie était viable, c'était pendant la maturation à la SATT Paris-Saclay,"
+        },
+        {
+          "edito_id": "SYLE-0027",
+          "video": "Vidéo 5 : une idée ne suffit pas",
+          "question": "",
+          "edito_paragraphe": 127,
+          "texte": "quand on a fait la preuve de concept que notre candidat médicament marchait dans les modèles expérimentaux d'HTAP"
+        },
+        {
+          "edito_id": "SYLE-0028",
+          "video": "Vidéo 6 : freins, doutes et légitimité",
+          "question": "",
+          "edito_paragraphe": 137,
+          "texte": "le premier, c'était de se poser la question : faut-il, euh, créer une start-up ou faut-il aller voir l'industrie pharmaceutique quand il s'agit d'une innovation médicale ?"
+        },
+        {
+          "edito_id": "SYLE-0029",
+          "video": "Vidéo 6 : freins, doutes et légitimité",
+          "question": "",
+          "edito_paragraphe": 137,
+          "texte": "dans notre domaine nous avons considéré qu'il était important de créer au moment où nous avions en main le candidat médicament prêt pour les phases réglementaires et cliniques."
+        },
+        {
+          "edito_id": "SYLE-0030",
+          "video": "Vidéo 6 : freins, doutes et légitimité",
+          "question": "",
+          "edito_paragraphe": 142,
+          "texte": "un autre obstacle difficile à surmonter était la levée de fonds."
+        },
+        {
+          "edito_id": "SYLE-0031",
+          "video": "Vidéo 6 : freins, doutes et légitimité",
+          "question": "",
+          "edito_paragraphe": 143,
+          "texte": "le concours i-Lab, nous l'avons eu en 2021 et l'entreprise a été créée en 2022, mais la difficulté est venue après, au moment de finalement lever des fonds auprès des investisseurs. la conjoncture économique n'a pas aidé."
+        },
+        {
+          "edito_id": "SYLE-0032",
+          "video": "Vidéo 7 : protection intellectuelle",
+          "question": "",
+          "edito_paragraphe": 149,
+          "texte": "il faut à tout prix protéger son innovation avant d'en parler publiquement."
+        },
+        {
+          "edito_id": "SYLE-0033",
+          "video": "Vidéo 7 : protection intellectuelle",
+          "question": "",
+          "edito_paragraphe": 151,
+          "texte": "Sans protection intellectuelle, personne ne s'intéresse à notre innovation et personne ne veut développer derrière."
+        },
+        {
+          "edito_id": "SYLE-0037",
+          "video": "Vidéo 7 : protection intellectuelle",
+          "question": "",
+          "edito_paragraphe": 161,
+          "texte": "Enfin, si je devais donner un conseil par rapport à la valorisation du projet, c'est de s'y prendre le plus tôt possible."
+        },
+        {
+          "edito_id": "SYLE-0038",
+          "video": "Vidéo 7 : protection intellectuelle",
+          "question": "",
+          "edito_paragraphe": 161,
+          "texte": "afin de choisir le bon moment pour breveter"
+        },
+        {
+          "edito_id": "SYLE-0039",
+          "video": "Vidéo 7 : protection intellectuelle",
+          "question": "",
+          "edito_paragraphe": 161,
+          "texte": "et afin de choisir le bon moment pour entrer en maturation, éventuellement avec la SATT Paris-Saclay."
+        },
+        {
+          "edito_id": "SYLE-0040",
+          "video": "Vidéo 8 : transfert et licensing",
+          "question": "",
+          "edito_paragraphe": 171,
+          "texte": "C'est important de se poser la question dès le début du projet, la façon dont on va transférer la technologie. Est-ce que ça va être du licensing ? Est-ce que ça va être de la création d'entreprise ? Euh, ça va conditionner grandement les étapes de recherche que l'on réalise et également les étapes de maturation."
+        },
+        {
+          "edito_id": "SYLE-0046",
+          "video": "Vidéo 10 : financements, concours et temps pour entreprendre",
+          "question": "",
+          "edito_paragraphe": 194,
+          "texte": "c'était important pour moi de m'entourer d'un CEO et que ma vraie place"
+        },
+        {
+          "edito_id": "SYLE-0047",
+          "video": "Vidéo 10 : financements, concours et temps pour entreprendre",
+          "question": "",
+          "edito_paragraphe": 196,
+          "texte": "la loi PACTE sur l'innovation nous permet de pouvoir disposer de ce dispositif concours scientifique qui nous permet de consacrer un certain pourcentage de temps, en général vingt pour cent, au développement de notre start-up, tout en continuant à être payé à cent pour cent par notre organisme de recherche."
+        },
+        {
+          "edito_id": "SYLE-0050",
+          "video": "Vidéo 11 : partenariat et posture/ l’équipe autour du chercheur",
+          "question": "",
+          "edito_paragraphe": 204,
+          "texte": "a été un élément important pour nous accompagner, nous donner confiance face aux investisseurs, nous donner confiance aussi par rapport au développement réglementaire et clinique du projet puisqu'il avait lui-même monté cinq ou six essais cliniques."
+        },
+        {
+          "edito_id": "SYLE-0055",
+          "video": "Vidéo 12 : changer de langage",
+          "question": "",
+          "edito_paragraphe": 216,
+          "texte": "même s'il y a des difficultés chercher à les contourner avec beaucoup de résilience et aussi créer son chemin. Je crois que c'est Banksy qui a dit: If there is no way, create it. S'il n'y a pas de chemin, il faut le créer. Et puis la meilleure façon de prédire le futur, c'est de l'inventer. C'est pas de moi, c'est de Alan Kay. Donc ça, c'est deux devises qui ont vraiment tiré en avant ma démarche d'innovation, dans l'idée d'aller jusqu'au bout et de créer le chemin."
+        },
+        {
+          "edito_id": "SYLE-0056",
+          "video": "Vidéo 13 : ce que cela change dans le métier de chercheur",
+          "question": "",
+          "edito_paragraphe": 232,
+          "texte": "Il faut pas évidemment manquer, euh, le coche pour, euh, valoriser ces innovations par des dépôts de brevets"
+        },
+        {
+          "edito_id": "SYLE-0057",
+          "video": "Vidéo 13 : ce que cela change dans le métier de chercheur",
+          "question": "",
+          "edito_paragraphe": 232,
+          "texte": "les brevets sont les pierres angulaires qui vont permettre le développement de cette innovation."
+        },
+        {
+          "edito_id": "SYLE-0058",
+          "video": "Vidéo 13 : ce que cela change dans le métier de chercheur",
+          "question": "",
+          "edito_paragraphe": 232,
+          "texte": "Sans brevet, personne ne s'intéressera à nos découvertes."
+        },
+        {
+          "edito_id": "SYLE-0059",
+          "video": "Vidéo 13 : ce que cela change dans le métier de chercheur",
+          "question": "",
+          "edito_paragraphe": 234,
+          "texte": "Et une innovation, c'est une découverte qui a trouvé son marché. Donc, ne pas hésiter à définir le besoin marché dès le départ."
+        },
+        {
+          "edito_id": "SYLE-0060",
+          "video": "Vidéo 15 : Passer à l’action",
+          "question": "",
+          "edito_paragraphe": 240,
+          "texte": "En fait, me, me lancer dans ce processus d'innovation a été ma révolution. À la fois un rêve et une évolution pour moi."
+        },
+        {
+          "edito_id": "SYLE-0061",
+          "video": "Vidéo 15 : Passer à l’action",
+          "question": "",
+          "edito_paragraphe": 241,
+          "texte": "c'est très gratifiant pour un chercheur de voir ses découvertes aller jusqu'au bout, avoir un impact sociétal, faire quelque chose qui compte et qui a du sens."
+        }
+      ],
+      "non_match_derushage": [
         {
           "segment_id": "SYL-0002",
           "theme": "T1",
@@ -2158,13 +2688,6 @@
           "commentaire": "Eye Lab avant creation ; difficulte de levee dans un contexte defavorable."
         },
         {
-          "segment_id": "SYL-0007",
-          "theme": "T5",
-          "debut": "01:16:01.150",
-          "fin": "01:16:53.820",
-          "commentaire": "Breveter le mecanisme puis les series chimiques ; multi-tutelles."
-        },
-        {
           "segment_id": "SYL-0006",
           "theme": "T4",
           "debut": "01:16:55.340",
@@ -2172,32 +2695,11 @@
           "commentaire": "Arbitrage publication/brevet ; renoncer a publier la these avant depot."
         },
         {
-          "segment_id": "SYL-0009",
-          "theme": "T7",
-          "debut": "01:20:38.460",
-          "fin": "01:24:27.580",
-          "commentaire": "POC in Lab a SATT ; pre-maturation et evolution de posture chercheur-entrepreneur."
-        },
-        {
-          "segment_id": "SYL-0011",
-          "theme": "T9",
-          "debut": "01:24:33.580",
-          "fin": "01:26:12.040",
-          "commentaire": "Refus CEO ; conseil scientifique ; recrutement CIO avec casting SATT."
-        },
-        {
           "segment_id": "SYL-0014",
           "theme": "T12",
           "debut": "01:25:21.540",
           "fin": "01:26:12.040",
           "commentaire": "Complementarite biologistes, chimistes, pharmacologues ; respect, pas d'ego."
-        },
-        {
-          "segment_id": "SYL-0012",
-          "theme": "T10",
-          "debut": "01:27:02.160",
-          "fin": "01:28:17.810",
-          "commentaire": "Formation Slide Life Science ; ecosysteme pharma, pitch, negociation, market access."
         },
         {
           "segment_id": "SYL-0013",
@@ -2606,12 +3108,12 @@
     {
       "module_id": "M1",
       "module_label": "Module 1",
-      "nb_edito": 152,
-      "nb_edito_matches": 8,
+      "nb_edito": 183,
+      "nb_edito_matches": 12,
       "nb_derushage": 26,
-      "nb_derushage_matches": 6,
-      "couverture_edito": 0.053,
-      "recouvrement_derushage": 0.231,
+      "nb_derushage_matches": 7,
+      "couverture_edito": 0.066,
+      "recouvrement_derushage": 0.269,
       "metrics_derushage": {
         "nb_segments": 26,
         "score_autonomie_moyen": 0.875,
@@ -2623,12 +3125,12 @@
     {
       "module_id": "M2",
       "module_label": "Module 2",
-      "nb_edito": 39,
-      "nb_edito_matches": 11,
+      "nb_edito": 48,
+      "nb_edito_matches": 14,
       "nb_derushage": 8,
-      "nb_derushage_matches": 3,
-      "couverture_edito": 0.282,
-      "recouvrement_derushage": 0.375,
+      "nb_derushage_matches": 4,
+      "couverture_edito": 0.292,
+      "recouvrement_derushage": 0.5,
       "metrics_derushage": {
         "nb_segments": 8,
         "score_autonomie_moyen": 0.906,
@@ -2640,12 +3142,12 @@
     {
       "module_id": "M3",
       "module_label": "Module 3",
-      "nb_edito": 28,
-      "nb_edito_matches": 9,
+      "nb_edito": 35,
+      "nb_edito_matches": 14,
       "nb_derushage": 8,
-      "nb_derushage_matches": 2,
-      "couverture_edito": 0.321,
-      "recouvrement_derushage": 0.25,
+      "nb_derushage_matches": 3,
+      "couverture_edito": 0.4,
+      "recouvrement_derushage": 0.375,
       "metrics_derushage": {
         "nb_segments": 8,
         "score_autonomie_moyen": 0.875,
@@ -2657,12 +3159,12 @@
     {
       "module_id": "M4",
       "module_label": "Module 4",
-      "nb_edito": 18,
-      "nb_edito_matches": 7,
+      "nb_edito": 26,
+      "nb_edito_matches": 13,
       "nb_derushage": 8,
-      "nb_derushage_matches": 3,
-      "couverture_edito": 0.389,
-      "recouvrement_derushage": 0.375,
+      "nb_derushage_matches": 5,
+      "couverture_edito": 0.5,
+      "recouvrement_derushage": 0.625,
       "metrics_derushage": {
         "nb_segments": 8,
         "score_autonomie_moyen": 0.844,
@@ -2691,7 +3193,7 @@
     {
       "module_id": "M6",
       "module_label": "Module 6",
-      "nb_edito": 37,
+      "nb_edito": 43,
       "nb_edito_matches": 0,
       "nb_derushage": 0,
       "nb_derushage_matches": 0,

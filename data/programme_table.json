@@ -1,8 +1,8 @@
 {
-  "source_document": "20260710_Prev_Vid.xlsx",
-  "source_path": "data/raw/20260710_Prev_Vid.xlsx",
-  "date_mise_a_jour": "2026-07-10",
-  "note": "Les noms de la colonne « Nom propose » du tableau de conception sont des propositions ; l'intervenant de chaque video expert reste a definir.",
+  "source_document": "20260723_Prev_Vid.xlsx",
+  "source_path": "data/20260723_Prev_Vid.xlsx",
+  "date_mise_a_jour": "2026-07-23",
+  "note": "Plan a 13 videos temoin (T1–T13). T13 = conclusion Passer a l'action (sans video expert). Les noms de la colonne « Nom propose » restent des propositions ; l'intervenant de chaque video expert reste a definir. Fichier source historique conserve : data/raw/20260710_Prev_Vid.xlsx (12 videos).",
   "headers": {
     "module": "Module",
     "code": "N°",

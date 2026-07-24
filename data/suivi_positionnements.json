@@ -1,0 +1,338 @@
+{
+  "date_mise_a_jour": "2026-07-24",
+  "note": "Suivi des positionnements intervenants. Proposition de notre part derivee du programme. Reponse, besoin exprime, preferences et proposition finale saisis au fil des retours.",
+  "intervenants": [
+    {
+      "nom": "Antoine Latreille",
+      "slug": "antoine-latreille",
+      "organisme": "Université Paris-Saclay",
+      "proposition_notre_part": "T4 (E6, E7) ; T5 (E8, E9)",
+      "capsules": [
+        "T4",
+        "T5"
+      ],
+      "videos_expert": [
+        "E6",
+        "E7",
+        "E8",
+        "E9"
+      ],
+      "reponse": "",
+      "besoin_exprime": "",
+      "positionnement_preferences": "",
+      "proposition_finale": ""
+    },
+    {
+      "nom": "Arielle Santé",
+      "slug": "arielle-santé",
+      "organisme": "IncubAlliance",
+      "proposition_notre_part": "T7 (E12, E13, E13bis) ; T8 (E14, E15) ; T9 (E16, E17) ; T10 (E18, E19) ; T11 (E20, E21)",
+      "capsules": [
+        "T7",
+        "T8",
+        "T9",
+        "T10",
+        "T11"
+      ],
+      "videos_expert": [
+        "E12",
+        "E13",
+        "E13bis",
+        "E14",
+        "E15",
+        "E16",
+        "E17",
+        "E18",
+        "E19",
+        "E20",
+        "E21"
+      ],
+      "reponse": "",
+      "besoin_exprime": "",
+      "positionnement_preferences": "",
+      "proposition_finale": ""
+    },
+    {
+      "nom": "Bernard Yannou",
+      "slug": "bernard-yannou",
+      "organisme": "CentraleSupélec",
+      "proposition_notre_part": "T1 (E1) ; T2 (E2, E3) ; T11 (E20, E21)",
+      "capsules": [
+        "T1",
+        "T2",
+        "T11"
+      ],
+      "videos_expert": [
+        "E1",
+        "E2",
+        "E3",
+        "E20",
+        "E21"
+      ],
+      "reponse": "",
+      "besoin_exprime": "",
+      "positionnement_preferences": "",
+      "proposition_finale": ""
+    },
+    {
+      "nom": "Eneli Vino",
+      "slug": "eneli-vino",
+      "organisme": "CNRS",
+      "proposition_notre_part": "T1 (E1) ; T4 (E6, E7) ; T5 (E8, E9) ; T12 (E22, E23)",
+      "capsules": [
+        "T1",
+        "T4",
+        "T5",
+        "T12"
+      ],
+      "videos_expert": [
+        "E1",
+        "E6",
+        "E7",
+        "E8",
+        "E9",
+        "E22",
+        "E23"
+      ],
+      "reponse": "Bonjour Madame,\n\nJe voudrais me positionner soit pour la vidéo 22, soit pour la vidéo 23, car l'activité contractuelle /partenariale constitue le cœur de mon métier. \nLa vidéo 8 me conviendrait également, étant donné ma spécialisation en droit de la PI.\n\nJe vous remercie par avance et reste à votre disposition en cas de besoin.\n\nRespectueusement",
+      "besoin_exprime": "Priorité à l'activité contractuelle / partenariale (cœur de métier) ; spécialisation droit de la PI pour E8.",
+      "positionnement_preferences": "E22 ou E23 (prioritaire) ; E8 egalement possible",
+      "proposition_finale": ""
+    },
+    {
+      "nom": "Fatoumata Aonon",
+      "slug": "fatoumata-aonon",
+      "organisme": "CNRS",
+      "proposition_notre_part": "T3 (E4, E5) ; T6 (E10, E11) ; T7 (E12, E13, E13bis) ; T8 (E14, E15) ; T12 (E22, E23)",
+      "capsules": [
+        "T3",
+        "T6",
+        "T7",
+        "T8",
+        "T12"
+      ],
+      "videos_expert": [
+        "E4",
+        "E5",
+        "E10",
+        "E11",
+        "E12",
+        "E13",
+        "E13bis",
+        "E14",
+        "E15",
+        "E22",
+        "E23"
+      ],
+      "reponse": "",
+      "besoin_exprime": "",
+      "positionnement_preferences": "",
+      "proposition_finale": ""
+    },
+    {
+      "nom": "Gregoire Burgé",
+      "slug": "gregoire-burgé",
+      "organisme": "AgroParisTech",
+      "proposition_notre_part": "T2 (E2, E3)",
+      "capsules": [
+        "T2"
+      ],
+      "videos_expert": [
+        "E2",
+        "E3"
+      ],
+      "reponse": "Bonjour Christophe,\n\nMerci Rita pour ton mail et pour toutes ces précisions !\nJe peux faire la vidéo expert 3, par contre les phrases du script ne sont pas très claires et j'ai du mal à voir le lien/la connexion entre elles et les sujets des vidéos experts.\nSerait ce possible de prévoir un point ensemble à la rentrée pour en discuter et préparer les contours de mon intervention ?\nPas forcément utile d'écrire un script en amont de mon côté, je suis plus à l'aise à parler d'un sujet sans me raccrocher à un texte pré-écrit.\n\nTrès bonne fin de journée\n\nGrégoire",
+      "besoin_exprime": "Point à la rentrée pour clarifier le lien script / sujets expert et cadrer l'intervention. Préfère parler sans script pré-écrit.",
+      "positionnement_preferences": "E3",
+      "proposition_finale": ""
+    },
+    {
+      "nom": "Joël Nguen",
+      "slug": "joël-nguen",
+      "organisme": "Organisme de rattachement à confirmer",
+      "proposition_notre_part": "T10 (E18, E19) ; T11 (E20, E21)",
+      "capsules": [
+        "T10",
+        "T11"
+      ],
+      "videos_expert": [
+        "E18",
+        "E19",
+        "E20",
+        "E21"
+      ],
+      "reponse": "",
+      "besoin_exprime": "",
+      "positionnement_preferences": "",
+      "proposition_finale": ""
+    },
+    {
+      "nom": "Pascal Corbel",
+      "slug": "pascal-corbel",
+      "organisme": "Université Paris-Saclay",
+      "proposition_notre_part": "T9 (E16, E17) ; T10 (E18, E19) ; T11 (E20, E21)",
+      "capsules": [
+        "T9",
+        "T10",
+        "T11"
+      ],
+      "videos_expert": [
+        "E16",
+        "E17",
+        "E18",
+        "E19",
+        "E20",
+        "E21"
+      ],
+      "reponse": "",
+      "besoin_exprime": "",
+      "positionnement_preferences": "",
+      "proposition_finale": ""
+    },
+    {
+      "nom": "Rémi Waché",
+      "slug": "rémi-waché",
+      "organisme": "Université Paris-Saclay",
+      "proposition_notre_part": "T12 (E22, E23)",
+      "capsules": [
+        "T12"
+      ],
+      "videos_expert": [
+        "E22",
+        "E23"
+      ],
+      "reponse": "",
+      "besoin_exprime": "",
+      "positionnement_preferences": "",
+      "proposition_finale": ""
+    },
+    {
+      "nom": "Soizic Lefeuvre",
+      "slug": "soizic-lefeuvre",
+      "organisme": "Université Paris-Saclay",
+      "proposition_notre_part": "T4 (E6, E7) ; T5 (E8, E9) ; T6 (E10, E11) ; T12 (E22, E23)",
+      "capsules": [
+        "T4",
+        "T5",
+        "T6",
+        "T12"
+      ],
+      "videos_expert": [
+        "E6",
+        "E7",
+        "E8",
+        "E9",
+        "E10",
+        "E11",
+        "E22",
+        "E23"
+      ],
+      "reponse": "",
+      "besoin_exprime": "",
+      "positionnement_preferences": "",
+      "proposition_finale": ""
+    },
+    {
+      "nom": "Stanislas De Lapasse",
+      "slug": "stanislas-de-lapasse",
+      "organisme": "INPI",
+      "proposition_notre_part": "T5 (E8, E9)",
+      "capsules": [
+        "T5"
+      ],
+      "videos_expert": [
+        "E8",
+        "E9"
+      ],
+      "reponse": "Positionnement confirme sur les deux videos proposees (E8 et E9 / T5).",
+      "besoin_exprime": "",
+      "positionnement_preferences": "E8 ; E9 (acceptation des deux videos proposees)",
+      "proposition_finale": "E8 ; E9"
+    },
+    {
+      "nom": "Stephanie Oger-Roussel",
+      "slug": "stephanie-oger-roussel",
+      "organisme": "SATT Paris-Saclay",
+      "proposition_notre_part": "T3 (E4, E5) ; T6 (E10, E11) ; T7 (E12, E13, E13bis) ; T8 (E14, E15)",
+      "capsules": [
+        "T3",
+        "T6",
+        "T7",
+        "T8"
+      ],
+      "videos_expert": [
+        "E4",
+        "E5",
+        "E10",
+        "E11",
+        "E12",
+        "E13",
+        "E13bis",
+        "E14",
+        "E15"
+      ],
+      "reponse": "",
+      "besoin_exprime": "",
+      "positionnement_preferences": "",
+      "proposition_finale": ""
+    },
+    {
+      "nom": "Stephanie Sano",
+      "slug": "stephanie-sano",
+      "organisme": "Organisme de rattachement à confirmer",
+      "proposition_notre_part": "T4 (E6, E7)",
+      "capsules": [
+        "T4"
+      ],
+      "videos_expert": [
+        "E6",
+        "E7"
+      ],
+      "reponse": "2026-07-23 — Positionnement confirme sur les deux videos proposees (E6 et E7 / T4).",
+      "besoin_exprime": "",
+      "positionnement_preferences": "E6 ; E7 (acceptation des deux videos proposees)",
+      "proposition_finale": "E6 ; E7"
+    },
+    {
+      "nom": "Virginia Branco",
+      "slug": "virginia-branco",
+      "organisme": "ENS Paris-Saclay",
+      "proposition_notre_part": "T3 (E4, E5) ; T6 (E10, E11) ; T12 (E22, E23)",
+      "capsules": [
+        "T3",
+        "T6",
+        "T12"
+      ],
+      "videos_expert": [
+        "E4",
+        "E5",
+        "E10",
+        "E11",
+        "E22",
+        "E23"
+      ],
+      "reponse": "2026-07-22 — Bonjour Rita,\n\nJe suis en congés du 24/07 au 25/08, le timing est très serré.\n\nQuoi qu'il en soit, je suis partante par ordre de préférence : pour 10,11,  5, 22.\n\nQuelle est la prochaine étape pour moi?\n\nMerci\n\nVirginia\n\n(Note saisie : « 240/07 » corrige en 24/07 dans le suivi.)",
+      "besoin_exprime": "Congés du 24/07 au 25/08 — timing très serré. Demande la prochaine étape.",
+      "positionnement_preferences": "E10 ; E11 ; E5 ; E22 (ordre de preference)",
+      "proposition_finale": ""
+    },
+    {
+      "nom": "Yoann Montenot",
+      "slug": "yoann-montenot",
+      "organisme": "Université Paris-Saclay",
+      "proposition_notre_part": "T7 (E12, E13, E13bis)",
+      "capsules": [
+        "T7"
+      ],
+      "videos_expert": [
+        "E12",
+        "E13",
+        "E13bis"
+      ],
+      "reponse": "",
+      "besoin_exprime": "",
+      "positionnement_preferences": "",
+      "proposition_finale": ""
+    }
+  ]
+}

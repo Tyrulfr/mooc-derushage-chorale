@@ -1815,76 +1815,22 @@ def build_home(capsules: list[dict], segments: list[dict]) -> None:
             "Vue d'ensemble des capsules, durees, chercheurs et acces aux montages.",
         ),
         (
-            "tb_edito.html",
-            "🗂",
-            "Capsules témoins",
-            "Tableau de bord des selections surlignees de l'edito (documents source .docx).",
+            "suivi_intervenants.html",
+            "◎",
+            "Suivi Intervenants",
+            "Structure principale : modules, intervenants, capsules temoin et videos expert.",
         ),
         (
-            "proposition_edito.html",
-            "➕",
-            "Proposition édito",
-            "Validation des selections Clarisse et propositions d'ajouts BAB non retenus quand utiles.",
-        ),
-        (
-            "proposition_titres_temoin.html",
-            "🏷",
-            "Titres témoins",
-            "Propositions de titres par video temoin a partir du sujet et des selections edito.",
-        ),
-        (
-            "fonctions_temoins.html",
-            "🪪",
-            "Fonctions témoins",
-            "Formulations professionnelles et officielles des temoins (exportables).",
-        ),
-        (
-            "videos_expert.html",
-            "▶",
-            "Vidéos expert",
-            "Tableau des videos expertise, consignes envoyees (guides Word) et scripts recus.",
-        ),
-        (
-            "mails_experts.html",
-            "✉",
-            "Mails experts",
-            "Brouillons personnalises pour solliciter les intervenants experts par video.",
-        ),
-        (
-            "profils_experts.html",
-            "👤",
-            "Profils experts",
-            "Informations collectées (LinkedIn/institutions) et sources par profil.",
-        ),
-        (
-            "derushage_edito.html",
+            "edito.html",
             "✎",
-            "Dérushage édito",
-            "Sequences surlignees par l'edito dans les transcripts corriges.",
+            "Edito",
+            "Proposition edito, correspondances et derushage des selections Clarisse.",
         ),
         (
-            "tableau_correspondances_edito.html",
-            "⌗",
-            "Correspondances édito",
-            "Tableau de conception complet avec liens vers les titres video proposes par l'edito.",
-        ),
-        (
-            "bab_encodes.html",
-            "▣",
-            "BAB encodé",
-            "Parcours des BAB timecodes par chercheur, segment par segment.",
-        ),
-        (
-            "conflits.html",
-            "⚠",
-            "Conflits",
-            "Chevauchements entre extraits et reutilisations a arbitrer.",
-        ),
-        (
-            "registre.html",
-            "☰",
-            "Registre",
-            "Liste complete des extraits, statuts et affectations.",
+            "fichiers_travail.html",
+            "📁",
+            "Fichiers de travail",
+            "Informations, Prev Vid, videos expert, mails et BAB encodes.",
         ),
     ]
     cards = "".join(
@@ -1951,6 +1897,12 @@ EXPERT_NAME_ALIASES = {
     "soizic lefeuvre": "Soizic Lefeuvre",
     "yoan montenot": "Yoann Montenot",
     "yoann montenot": "Yoann Montenot",
+    "stephanie oger roussel": "Stephanie Oger-Roussel",
+    "stephanie oger-roussel": "Stephanie Oger-Roussel",
+    "arielle sante": "Arielle Santé",
+    "joel nguen": "Joël Nguen",
+    "remi wache": "Rémi Waché",
+    "gregoire burge": "Gregoire Burgé",
 }
 
 
@@ -2190,8 +2142,8 @@ def build_experts_profiles_page(profiles_data: dict) -> None:
         html_page(
             "Profils experts",
             body,
-            nav_current="profils_experts.html",
-            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Profils experts", None)),
+            nav_current="fichiers_travail.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Fichiers de travail", "fichiers_travail.html"), ("Informations", "informations.html"), ("Profils experts", None)),
         ),
     )
 
@@ -2609,7 +2561,7 @@ def build_tb_edito_capsule_pages(programme_table: dict) -> None:
                 f"Capsule témoin — {code}",
                 "\n".join(part for part in sections if part),
                 scripts=["assets/export-word.js"],
-                nav_current="tb_edito.html",
+                nav_current="suivi_intervenants.html",
                 breadcrumb=html_breadcrumb(
                     ("Accueil", "index.html"),
                     ("Capsules témoins", "tb_edito.html"),
@@ -2763,7 +2715,7 @@ def build_tb_edito_page() -> None:
         html_page(
             "Capsules témoins",
             body,
-            nav_current="tb_edito.html",
+            nav_current="suivi_intervenants.html",
             breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Capsules témoins", None)),
             page_header='<div class="page-head"><h1>Capsules témoins</h1><p class="lead">Suivi des selections surlignees de l\'edito, avec couverture des videos temoins fixees.</p></div>',
         ),
@@ -3045,8 +2997,8 @@ def build_derushage_edito_index() -> None:
         html_page(
             "Dérushage édito",
             body,
-            nav_current="derushage_edito.html",
-            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Dérushage édito", None)),
+            nav_current="edito.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Edito", "edito.html"), ("Dérushage édito", None)),
             page_header="<div class=\"page-head\"><h1>Dérushage édito</h1><p class=\"lead\">Sequences surlignees dans les transcripts corriges, structurees pour l'edition des videos.</p></div>",
         ),
     )
@@ -3092,10 +3044,11 @@ def build_derushage_edito_pages() -> None:
                 page_title,
                 "\n".join(sections),
                 scripts=["assets/export-word.js"],
-                nav_current="derushage_edito.html",
+                nav_current="edito.html",
                 page_header=header,
                 breadcrumb=html_breadcrumb(
                     ("Accueil", "index.html"),
+                    ("Edito", "edito.html"),
                     ("Dérushage édito", "derushage_edito.html"),
                     (doc.get("intervenant", derushage_id), None),
                 ),
@@ -3858,8 +3811,8 @@ def build_proposition_titres_temoin_page(programme_table: dict) -> None:
         html_page(
             "Titres témoins",
             body,
-            nav_current="proposition_titres_temoin.html",
-            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Titres témoins", None)),
+            nav_current="fichiers_travail.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Fichiers de travail", "fichiers_travail.html"), ("Informations", "informations.html"), ("Titres témoins", None)),
             page_header='<div class="page-head"><h1>Titres témoins — Propositions</h1><p class="lead">Un titre proposé par capsule témoin, selon le sujet et le texte effectivement sélectionné.</p></div>',
         ),
     )
@@ -4017,8 +3970,8 @@ def build_fonctions_temoins_page() -> None:
         html_page(
             "Fonctions témoins",
             body,
-            nav_current="fonctions_temoins.html",
-            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Fonctions témoins", None)),
+            nav_current="fichiers_travail.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Fichiers de travail", "fichiers_travail.html"), ("Informations", "informations.html"), ("Fonctions témoins", None)),
             page_header='<div class="page-head"><h1>Fonctions témoins</h1><p class="lead">Version academique et professionnelle des fonctions des temoins, avec export.</p></div>',
         ),
     )
@@ -4377,9 +4330,10 @@ def build_proposition_edito_pages(programme_table: dict) -> None:
             html_page(
                 f"Proposition édito — {code}",
                 detail_body,
-                nav_current="proposition_edito.html",
+                nav_current="edito.html",
                 breadcrumb=html_breadcrumb(
                     ("Accueil", "index.html"),
+                    ("Edito", "edito.html"),
                     ("Proposition édito", "proposition_edito.html"),
                     (code, None),
                 ),
@@ -4415,8 +4369,8 @@ def build_proposition_edito_pages(programme_table: dict) -> None:
         html_page(
             "Proposition édito",
             index_body,
-            nav_current="proposition_edito.html",
-            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Proposition édito", None)),
+            nav_current="edito.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Edito", "edito.html"), ("Proposition édito", None)),
             page_header='<div class="page-head"><h1>Proposition édito</h1><p class="lead">Validation des choix Clarisse + compléments BAB potentiels quand ils apportent une vraie dynamique.</p></div>',
         ),
     )
@@ -4538,8 +4492,8 @@ def _compose_expert_mail(expert: dict) -> tuple[str, str]:
         "complètent les capsules témoins chorales.\n\n"
         "Nous partageons dans le guide de travail les informations utiles sur les experts et leurs organismes de rattachement ; "
         f"vous y apparaissez comme expert pressenti ({organisme}).\n\n"
-        "À ce stade, les documents explicitent les transcripts de quatre chercheurs ; "
-        "dans la semaine, le transcript d'un cinquième chercheur sera intégré.\n\n"
+        "À ce stade, les documents explicitent les transcripts des cinq chercheurs "
+        "(Jean-Jacques Greffet, Muriel Thomas, Loïc Rajjou, Yann Meunier et Sylvia Cohen-Kaminski).\n\n"
         f"Selon l'état actuel de la conception, vous êtes pressenti sur : {video_codes_label}.\n\n"
         "Afin d'éviter de produire des scripts inutiles, pourriez-vous nous confirmer les vidéos expertise "
         "sur lesquelles vous souhaitez intervenir selon ce calendrier :\n"
@@ -4931,6 +4885,962 @@ def _write_videos_expert_xlsx(inventory: list[dict], path: Path) -> None:
     wb.save(path)
 
 
+def _sommaire_cards(sections: list[tuple[str, str, str, str]]) -> str:
+    cards = "".join(
+        f"<a class='sommaire-card' href='{escape(href)}'>"
+        f"<span class='sommaire-card__icon' aria-hidden='true'>{escape(icon)}</span>"
+        f"<h2>{escape(title)}</h2>"
+        f"<p>{escape(description)}</p>"
+        f"<span class='sommaire-card__cta'>Ouvrir →</span>"
+        f"</a>"
+        for href, icon, title, description in sections
+    )
+    return f'<nav class="sommaire-grid" aria-label="Sommaire">{cards}</nav>'
+
+
+def _module_sort_key(module: str) -> tuple[int, str]:
+    match = re.fullmatch(r"M(\d+)", module or "", re.IGNORECASE)
+    if match:
+        return (int(match.group(1)), module.upper())
+    return (999, module or "")
+
+
+def _module_label(module: str) -> str:
+    labels = {
+        "M1": "Module 1 — Origines, besoin et preuve",
+        "M2": "Module 2 — Protection et transfert",
+        "M3": "Module 3 — Accompagnement et financements",
+        "M4": "Module 4 — Équipe et langage",
+        "M5": "Module 5 — Métier et collaborations",
+        "M6": "Module 6 — Conclusion",
+    }
+    return labels.get((module or "").upper(), f"Module {module}")
+
+
+def _suivi_rows_by_module(programme_table: dict) -> dict[str, list[dict]]:
+    grouped: dict[str, list[dict]] = defaultdict(list)
+    for row in programme_table.get("rows", []):
+        module = (row.get("module") or "").strip() or "M?"
+        grouped[module].append(row)
+    for module in grouped:
+        grouped[module].sort(
+            key=lambda item: int(item["code"][1:]) if str(item.get("code", ""))[1:].isdigit() else 999
+        )
+    return dict(sorted(grouped.items(), key=lambda item: _module_sort_key(item[0])))
+
+
+def _suivi_canonical_intervenants(
+    programme_table: dict, experts_profils: dict
+) -> list[dict]:
+    """Intervenants dedoublonnes, avec capsules et videos expert rattachees."""
+    profils = experts_profils.get("profils", [])
+    profile_by_key = {_canonical_name_key(item.get("nom", "")): item for item in profils}
+    buckets: dict[str, dict] = {}
+
+    for row in programme_table.get("rows", []):
+        capsule = row.get("code", "")
+        if not capsule:
+            continue
+        temoin_label = (
+            FIXED_TEMOIN_PLAN.get(capsule, {}).get("label")
+            or row.get("video_temoin", "")
+        )
+        expert_videos = _tb_edito_parse_videos_expert(row.get("videos_referent", ""))
+        for raw_name in _extract_intervenants(row.get("noms_proposes", "")):
+            key = _canonical_name_key(raw_name)
+            if not key:
+                continue
+            profile = profile_by_key.get(key)
+            canonical = EXPERT_NAME_ALIASES.get(key) or (profile.get("nom") if profile else raw_name)
+            canonical_key = _canonical_name_key(canonical)
+            profile = profile_by_key.get(canonical_key) or profile
+            bucket = buckets.setdefault(
+                canonical_key,
+                {
+                    "nom": canonical,
+                    "slug": slug(canonical),
+                    "organisme": _expert_org_from_profile(profile),
+                    "capsules": [],
+                    "videos_expert": [],
+                },
+            )
+            if not any(item["code"] == capsule for item in bucket["capsules"]):
+                bucket["capsules"].append(
+                    {
+                        "code": capsule,
+                        "label": temoin_label,
+                        "module": row.get("module", ""),
+                    }
+                )
+            for video in expert_videos:
+                code = video.get("code", "")
+                if not code:
+                    continue
+                if not any(item["code"] == code for item in bucket["videos_expert"]):
+                    bucket["videos_expert"].append(
+                        {
+                            "code": code,
+                            "titre": video.get("titre", ""),
+                            "capsule_code": capsule,
+                        }
+                    )
+
+    prepared = list(buckets.values())
+    for item in prepared:
+        item["capsules"].sort(
+            key=lambda entry: int(entry["code"][1:]) if entry["code"][1:].isdigit() else 999
+        )
+        item["videos_expert"].sort(key=lambda entry: _expert_video_sort_key(entry["code"]))
+    return sorted(prepared, key=lambda entry: _normalize_for_match(entry["nom"]))
+
+
+def _load_suivi_positionnements() -> dict:
+    path = ROOT / "data" / "suivi_positionnements.json"
+    if not path.exists():
+        return {"date_mise_a_jour": "", "note": "", "intervenants": []}
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _save_suivi_positionnements(payload: dict) -> None:
+    path = ROOT / "data" / "suivi_positionnements.json"
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def _format_proposition_notre_part(intervenant: dict) -> str:
+    parts = []
+    videos_by_capsule: dict[str, list[str]] = defaultdict(list)
+    for video in intervenant.get("videos_expert", []):
+        videos_by_capsule[video.get("capsule_code", "")].append(video.get("code", ""))
+    for capsule in intervenant.get("capsules", []):
+        code = capsule.get("code", "")
+        e_codes = [item for item in videos_by_capsule.get(code, []) if item]
+        if e_codes:
+            parts.append(f"{code} ({', '.join(e_codes)})")
+        else:
+            parts.append(code)
+    return " ; ".join(parts)
+
+
+def _sync_suivi_positionnements(intervenants: list[dict]) -> list[dict]:
+    """Aligne le fichier de suivi sur les intervenants actuels ; conserve les reponses saisies."""
+    stored = _load_suivi_positionnements()
+    by_slug = {
+        item.get("slug") or slug(item.get("nom", "")): item
+        for item in stored.get("intervenants", [])
+    }
+    synced = []
+    for intervenant in intervenants:
+        key = intervenant["slug"]
+        previous = by_slug.get(key, {})
+        proposition = _format_proposition_notre_part(intervenant)
+        synced.append(
+            {
+                "nom": intervenant["nom"],
+                "slug": key,
+                "organisme": intervenant.get("organisme", ""),
+                "proposition_notre_part": proposition,
+                "capsules": [item.get("code", "") for item in intervenant.get("capsules", [])],
+                "videos_expert": [item.get("code", "") for item in intervenant.get("videos_expert", [])],
+                "reponse": previous.get("reponse", "") or "",
+                "besoin_exprime": previous.get("besoin_exprime", "") or "",
+                "positionnement_preferences": previous.get("positionnement_preferences", "") or "",
+                "proposition_finale": previous.get("proposition_finale", "") or "",
+            }
+        )
+    payload = {
+        "date_mise_a_jour": "2026-07-24",
+        "note": stored.get("note")
+        or (
+            "Suivi des positionnements intervenants. La proposition de notre part est derivee "
+            "du programme de conception. Reponse, besoin exprime, preferences et proposition "
+            "finale se remplissent au fil des retours."
+        ),
+        "intervenants": synced,
+    }
+    _save_suivi_positionnements(payload)
+    return synced
+
+
+def _cell_or_attente(value: str) -> str:
+    text = (value or "").strip()
+    if text:
+        return escape(text).replace("\n", "<br>")
+    return '<span class="meta">—</span>'
+
+
+def build_suivi_positionnements_page(rows: list[dict]) -> None:
+    table_rows = []
+    for item in rows:
+        table_rows.append(
+            "<tr>"
+            f"<td><a href='suivi_intervenant_{escape(item['slug'])}.html'><strong>{escape(item['nom'])}</strong></a>"
+            f"<br><span class='meta'>{escape(item.get('organisme', ''))}</span></td>"
+            f"<td>{_cell_or_attente(item.get('proposition_notre_part', ''))}</td>"
+            f"<td>{_cell_or_attente(item.get('reponse', ''))}</td>"
+            f"<td>{_cell_or_attente(item.get('besoin_exprime', ''))}</td>"
+            f"<td>{_cell_or_attente(item.get('positionnement_preferences', ''))}</td>"
+            f"<td>{_cell_or_attente(item.get('proposition_finale', ''))}</td>"
+            "</tr>"
+        )
+
+    # Export XLSX
+    from openpyxl import Workbook
+    from openpyxl.styles import Alignment, Font, PatternFill
+    from openpyxl.utils import get_column_letter
+
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Suivi positionnements"
+    headers = [
+        "Intervenant",
+        "Organisme",
+        "Proposition de positionnement (notre part)",
+        "Réponse fournie",
+        "Besoin exprimé",
+        "Positionnement par préférences",
+        "Proposition finale",
+    ]
+    ws.append(headers)
+    header_fill = PatternFill("solid", fgColor="0B6E77")
+    header_font = Font(color="FFFFFF", bold=True)
+    for cell in ws[1]:
+        cell.fill = header_fill
+        cell.font = header_font
+        cell.alignment = Alignment(vertical="center", wrap_text=True)
+    for item in rows:
+        ws.append(
+            [
+                item.get("nom", ""),
+                item.get("organisme", ""),
+                item.get("proposition_notre_part", ""),
+                item.get("reponse", ""),
+                item.get("besoin_exprime", ""),
+                item.get("positionnement_preferences", ""),
+                item.get("proposition_finale", ""),
+            ]
+        )
+    widths = [28, 28, 42, 36, 36, 36, 28]
+    for idx, width in enumerate(widths, start=1):
+        ws.column_dimensions[get_column_letter(idx)].width = width
+    for row in ws.iter_rows(min_row=2, max_row=ws.max_row, min_col=1, max_col=len(headers)):
+        for cell in row:
+            cell.alignment = Alignment(vertical="top", wrap_text=True)
+    xlsx_name = "suivi_positionnements.xlsx"
+    wb.save(SITE / xlsx_name)
+
+    body = (
+        "<p class='meta'>Suivi du dialogue de positionnement avec chaque intervenant. "
+        "La <strong>proposition de notre part</strong> reprend le pool actuel du programme de conception. "
+        "La <strong>réponse</strong>, le <strong>besoin exprimé</strong> et le "
+        "<strong>positionnement par préférences</strong> se remplissent au fil des retours ; "
+        "la <strong>proposition finale</strong> sera arbitrée ensuite.</p>"
+        f"<p><a class='btn' href='{escape(xlsx_name)}' download>Télécharger le suivi (XLSX)</a></p>"
+        "<div class='table-wrap'><table><thead><tr>"
+        "<th>Intervenant</th>"
+        "<th>Proposition de positionnement<br><span class='meta'>notre part</span></th>"
+        "<th>Réponse fournie</th>"
+        "<th>Besoin exprimé</th>"
+        "<th>Positionnement par préférences</th>"
+        "<th>Proposition finale</th>"
+        "</tr></thead><tbody>"
+        + (
+            "".join(table_rows)
+            if table_rows
+            else "<tr><td colspan='6'>Aucun intervenant dans le programme.</td></tr>"
+        )
+        + "</tbody></table></div>"
+        "<p class='meta'>Source editable : <code>data/suivi_positionnements.json</code> "
+        "(champs <code>reponse</code>, <code>besoin_exprime</code>, "
+        "<code>positionnement_preferences</code>, <code>proposition_finale</code>).</p>"
+    )
+    write_text(
+        SITE / "suivi_positionnements.html",
+        html_page(
+            "Suivi positionnements",
+            body,
+            nav_current="suivi_intervenants.html",
+            breadcrumb=html_breadcrumb(
+                ("Accueil", "index.html"),
+                ("Suivi Intervenants", "suivi_intervenants.html"),
+                ("Suivi positionnements", None),
+            ),
+            page_header=(
+                '<div class="page-head"><h1>Suivi positionnements</h1>'
+                '<p class="lead">Proposition, réponse, préférences et arbitrage final par intervenant.</p></div>'
+            ),
+        ),
+    )
+
+
+def build_suivi_intervenants_pages(programme_table: dict, experts_profils: dict) -> None:
+    """Ensemble Suivi Intervenants : sommaires Modules / Intervenants jusqu'aux videos expert."""
+    expected: set[str] = set()
+    by_module = _suivi_rows_by_module(programme_table)
+    intervenants = _suivi_canonical_intervenants(programme_table, experts_profils)
+    positionnements = _sync_suivi_positionnements(intervenants)
+    build_suivi_positionnements_page(positionnements)
+    expected.add("suivi_positionnements.html")
+    expected.add("suivi_positionnements.xlsx")
+    rows_by_code = {row.get("code", ""): row for row in programme_table.get("rows", [])}
+
+    def write_sommaire(
+        filename: str,
+        title: str,
+        lead: str,
+        sections: list[tuple[str, str, str, str]],
+        crumbs: list[tuple[str, str | None]],
+        meta: str = "",
+    ) -> None:
+        expected.add(filename)
+        body = (f"<p class='meta'>{meta}</p>" if meta else "") + _sommaire_cards(sections)
+        write_text(
+            SITE / filename,
+            html_page(
+                title,
+                body,
+                nav_current="suivi_intervenants.html",
+                breadcrumb=html_breadcrumb(*crumbs),
+                page_header=(
+                    f'<div class="page-head"><h1>{escape(title)}</h1>'
+                    f'<p class="lead">{escape(lead)}</p></div>'
+                ),
+                main_class="page-home",
+            ),
+        )
+
+    # 1) Racine
+    write_sommaire(
+        "suivi_intervenants.html",
+        "Suivi Intervenants",
+        "Parcourir le plan par modules ou par intervenants.",
+        [
+            (
+                "suivi_modules.html",
+                "▦",
+                "Modules",
+                f"{len(by_module)} modules — videos temoin puis videos expert.",
+            ),
+            (
+                "suivi_intervenants_liste.html",
+                "◎",
+                "Intervenants",
+                f"{len(intervenants)} intervenants proposes — capsules et videos rattachees.",
+            ),
+            (
+                "suivi_positionnements.html",
+                "📋",
+                "Suivi positionnements",
+                "Proposition de notre part, réponse, préférences et proposition finale.",
+            ),
+        ],
+        [("Accueil", "index.html"), ("Suivi Intervenants", None)],
+        meta="Sommaire de suivi operationnel du plan de conception.",
+    )
+
+    # 2) Modules
+    module_sections = []
+    for module, rows in by_module.items():
+        codes = ", ".join(row.get("code", "") for row in rows)
+        module_sections.append(
+            (
+                f"suivi_module_{module}.html",
+                module,
+                _module_label(module),
+                f"{len(rows)} video(s) temoin : {codes}.",
+            )
+        )
+    write_sommaire(
+        "suivi_modules.html",
+        "Modules",
+        "Choisir un module pour ouvrir ses videos temoin.",
+        module_sections,
+        [
+            ("Accueil", "index.html"),
+            ("Suivi Intervenants", "suivi_intervenants.html"),
+            ("Modules", None),
+        ],
+    )
+
+    # 3) Pages module → videos temoin
+    for module, rows in by_module.items():
+        temoin_sections = []
+        for row in rows:
+            code = row.get("code", "")
+            label = FIXED_TEMOIN_PLAN.get(code, {}).get("label") or row.get("video_temoin", code)
+            experts = _tb_edito_parse_videos_expert(row.get("videos_referent", ""))
+            expert_codes = ", ".join(item.get("code", "") for item in experts) or "aucune video expert"
+            temoin_sections.append(
+                (
+                    f"suivi_temoin_{code}.html",
+                    code,
+                    label,
+                    f"Capsule temoin {code} — videos expert : {expert_codes}.",
+                )
+            )
+        write_sommaire(
+            f"suivi_module_{module}.html",
+            _module_label(module),
+            f"Videos temoin du {module}.",
+            temoin_sections,
+            [
+                ("Accueil", "index.html"),
+                ("Suivi Intervenants", "suivi_intervenants.html"),
+                ("Modules", "suivi_modules.html"),
+                (module, None),
+            ],
+        )
+
+    # 4) Pages temoin → capsule + videos expert
+    for code, row in rows_by_code.items():
+        label = FIXED_TEMOIN_PLAN.get(code, {}).get("label") or row.get("video_temoin", code)
+        module = row.get("module", "")
+        experts = _tb_edito_parse_videos_expert(row.get("videos_referent", ""))
+        proposes = ", ".join(_extract_intervenants(row.get("noms_proposes", ""))) or "à confirmer"
+        sections: list[tuple[str, str, str, str]] = [
+            (
+                f"tb_edito_{code}.html",
+                "🎙",
+                f"Capsule témoin {code}",
+                label,
+            )
+        ]
+        for video in experts:
+            e_code = video.get("code", "")
+            sections.append(
+                (
+                    f"video_expert_{e_code}.html",
+                    e_code,
+                    _label_video_expert(e_code),
+                    video.get("titre", "") or "Objectif à préciser",
+                )
+            )
+        meta = (
+            f"Module {escape(module)} — Intervenants proposes : {escape(proposes)}. "
+            "La capsule temoin ouvre le montage edito ; chaque bloc expert ouvre la fiche video expert."
+        )
+        expected.add(f"suivi_temoin_{code}.html")
+        body = f"<p class='meta'>{meta}</p>" + _sommaire_cards(sections)
+        write_text(
+            SITE / f"suivi_temoin_{code}.html",
+            html_page(
+                f"{code} — Suivi",
+                body,
+                nav_current="suivi_intervenants.html",
+                breadcrumb=html_breadcrumb(
+                    ("Accueil", "index.html"),
+                    ("Suivi Intervenants", "suivi_intervenants.html"),
+                    ("Modules", "suivi_modules.html"),
+                    (module, f"suivi_module_{module}.html"),
+                    (code, None),
+                ),
+                page_header=(
+                    f'<div class="page-head"><h1>{escape(label)}</h1>'
+                    f'<p class="lead">Capsule temoin et videos expert rattachees.</p></div>'
+                ),
+                main_class="page-home",
+            ),
+        )
+
+    # 5) Liste intervenants
+    intervenant_sections = [
+        (
+            f"suivi_intervenant_{item['slug']}.html",
+            "◎",
+            item["nom"],
+            f"{item['organisme']} — {len(item['capsules'])} capsule(s), "
+            f"{len(item['videos_expert'])} video(s) expert.",
+        )
+        for item in intervenants
+    ]
+    write_sommaire(
+        "suivi_intervenants_liste.html",
+        "Intervenants",
+        "Choisir un intervenant pour voir ses capsules et videos expert.",
+        intervenant_sections,
+        [
+            ("Accueil", "index.html"),
+            ("Suivi Intervenants", "suivi_intervenants.html"),
+            ("Intervenants", None),
+        ],
+    )
+
+    # 6) Pages intervenant → capsules temoin + videos expert
+    for item in intervenants:
+        filename = f"suivi_intervenant_{item['slug']}.html"
+        sections = []
+        for capsule in item["capsules"]:
+            sections.append(
+                (
+                    f"suivi_temoin_{capsule['code']}.html",
+                    capsule["code"],
+                    capsule["label"] or capsule["code"],
+                    f"Capsule temoin {capsule['code']} ({capsule.get('module') or '—'}).",
+                )
+            )
+        for video in item["videos_expert"]:
+            sections.append(
+                (
+                    f"video_expert_{video['code']}.html",
+                    video["code"],
+                    _label_video_expert(video["code"]),
+                    video.get("titre", "") or f"Rattachee a {video.get('capsule_code', '')}",
+                )
+            )
+        write_sommaire(
+            filename,
+            item["nom"],
+            f"{item['organisme']} — capsules temoin puis videos expert rattachees.",
+            sections,
+            [
+                ("Accueil", "index.html"),
+                ("Suivi Intervenants", "suivi_intervenants.html"),
+                ("Intervenants", "suivi_intervenants_liste.html"),
+                (item["nom"], None),
+            ],
+            meta=(
+                f"{len(item['capsules'])} capsule(s) temoin · "
+                f"{len(item['videos_expert'])} video(s) expert (pool du programme de conception)."
+            ),
+        )
+
+    for path in SITE.glob("suivi_*.html"):
+        if path.name not in expected:
+            path.unlink()
+
+
+def build_edito_hub_page() -> None:
+    sections = [
+        (
+            "script_propose.html",
+            "🎬",
+            "Script proposé",
+            "Montages realistes et comprehensibles (grain tournage), distincts de la banque Clarisse.",
+        ),
+        (
+            "proposition_edito.html",
+            "➕",
+            "Proposition édito",
+            "Validation des selections Clarisse et propositions d'ajouts BAB.",
+        ),
+        (
+            "tableau_correspondances_edito.html",
+            "⌗",
+            "Correspondances édito",
+            "Tableau de conception avec liens vers les titres video proposes.",
+        ),
+        (
+            "derushage_edito.html",
+            "✎",
+            "Dérushage édito",
+            "Sequences surlignees par l'edito dans les transcripts corriges.",
+        ),
+        (
+            "tb_edito.html",
+            "🗂",
+            "Capsules témoins (Clarisse)",
+            "Banque de surlignages Clarisse — grain fin, pas le script de tournage.",
+        ),
+    ]
+    body = (
+        "<p class='meta'>Espace edito : script propose (lisible), selections Clarisse et derushage.</p>"
+        + _sommaire_cards(sections)
+    )
+    write_text(
+        SITE / "edito.html",
+        html_page(
+            "Edito",
+            body,
+            nav_current="edito.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Edito", None)),
+            page_header='<div class="page-head"><h1>Edito</h1><p class="lead">Travaux et livrables de l’éditorialisation.</p></div>',
+            main_class="page-home",
+        ),
+    )
+
+
+def _merge_consecutive_clarisse_blocks(sequences: list[dict]) -> list[dict]:
+    """Regroupe les fragments Clarisse consecutifs d'une meme voix en unites lisibles."""
+    merged: list[dict] = []
+    for seq in sequences:
+        voice = (seq.get("intervenant") or "").strip()
+        text = (seq.get("texte") or "").strip()
+        sid = seq.get("id", "")
+        if not text:
+            continue
+        if merged and merged[-1]["intervenant"] == voice:
+            merged[-1]["texte"] = f"{merged[-1]['texte']} {text}".strip()
+            merged[-1]["ids"].append(sid)
+            continue
+        merged.append(
+            {
+                "intervenant": voice,
+                "texte": text,
+                "ids": [sid] if sid else [],
+                "video": seq.get("video", ""),
+                "source_doc": seq.get("source_doc", ""),
+            }
+        )
+    return merged
+
+
+def _script_propose_from_clarisse(code: str, sequences: list[dict], max_blocks: int = 10) -> tuple[str, list[dict]]:
+    """Proposition provisoire T13 : Clarisse consolidee, chorale, plafond de blocs."""
+    ordered = _tb_edito_order_for_code(code, sequences)
+    merged = _merge_consecutive_clarisse_blocks(ordered)
+    # Garde un enchainement choral sans exploser la densite
+    selected: list[dict] = []
+    voice_counts: dict[str, int] = defaultdict(int)
+    for block in merged:
+        voice = block["intervenant"] or "?"
+        if voice_counts[voice] >= 3:
+            continue
+        selected.append(block)
+        voice_counts[voice] += 1
+        if len(selected) >= max_blocks:
+            break
+
+    label = FIXED_TEMOIN_PLAN.get(code, {}).get("label", _label_video_temoin(code))
+    parts = [
+        f"[CADRAGE — INTRO] Animateur | NON PRONONCE | Avant {selected[0]['ids'][0] if selected and selected[0]['ids'] else code}",
+        f"Proposition de montage provisoire pour {label} — unites consolidees depuis les surlignages Clarisse "
+        "(a arbitrer avec l'edito et le monteur).",
+        "",
+    ]
+    for block in selected:
+        ids_label = " + ".join(block["ids"]) if block["ids"] else "SANS-ID"
+        parts.append(
+            f"[{ids_label}] {block['intervenant']} | {block.get('source_doc') or 'derushage_edito'} | Clarisse consolide"
+        )
+        parts.append(block["texte"])
+        parts.append("")
+    return "\n".join(parts).strip(), selected
+
+
+def _script_propose_stats_for_code(
+    code: str,
+    affectations: dict,
+    segments_by_id: dict[str, dict],
+    clarisse_count: int,
+) -> dict:
+    capsule = affectations.get("capsules", {}).get(code, {})
+    script = (capsule.get("script_final") or "").strip()
+    ordre = capsule.get("ordre_montage") or capsule.get("extraits_utilises") or []
+    duree = capsule_duration(code, segments_by_id, affectations) if ordre else 0.0
+    return {
+        "has_bab_script": bool(script),
+        "nb_blocs": len(ordre) if ordre else 0,
+        "duree": duree,
+        "clarisse_count": clarisse_count,
+        "script": script,
+    }
+
+
+def build_script_propose_pages(programme_table: dict, affectations: dict, segments: list[dict]) -> None:
+    """Ensemble Edito > Script propose : montages realistes (BAB) vs banque Clarisse."""
+    segments_by_id = index_by_id(segments)
+    grouped_clarisse = _tb_edito_sequences_by_code()
+    rows_by_code = {row.get("code", ""): row for row in programme_table.get("rows", [])}
+    expected = {"script_propose.html"}
+    cards = []
+
+    for code, spec in sorted(FIXED_TEMOIN_PLAN.items(), key=lambda item: int(item[0][1:])):
+        page_name = f"script_propose_{code}.html"
+        expected.add(page_name)
+        clarisse_seqs = grouped_clarisse.get(code, [])
+        clarisse_ordered = _tb_edito_order_for_code(code, clarisse_seqs)
+        stats = _script_propose_stats_for_code(code, affectations, segments_by_id, len(clarisse_ordered))
+        label = spec.get("label", _label_video_temoin(code))
+        row = rows_by_code.get(code, {})
+        objective = row.get("objectif_pedagogique", "")
+
+        source_note = ""
+        script_text = stats["script"]
+        blocks_meta = stats["nb_blocs"]
+        duree_label = format_seconds(stats["duree"]) if stats["duree"] else "—"
+
+        if not script_text:
+            # T13 (ou capsule sans montage BAB) : proposition consolidee Clarisse
+            script_text, selected = _script_propose_from_clarisse(code, clarisse_seqs)
+            blocks_meta = len(selected)
+            duree_label = "a estimer"
+            source_note = (
+                "Source : proposition provisoire construite par consolidation des surlignages Clarisse "
+                "(fragments de la meme voix regroupes). Pas encore de montage BAB valide."
+            )
+        else:
+            source_note = (
+                "Source : montage BAB valide (<code>affectations.json</code> / script_final) — "
+                "grain realiste pour tournage et preparation experts."
+            )
+
+        cards.append(
+            (
+                page_name,
+                code,
+                label,
+                f"{blocks_meta} blocs · {duree_label} · Clarisse banque : {stats['clarisse_count']} fragments",
+            )
+        )
+
+        voice_preview = []
+        for sid in (affectations.get("capsules", {}).get(code, {}).get("ordre_montage")
+                    or affectations.get("capsules", {}).get(code, {}).get("extraits_utilises")
+                    or []):
+            seg = segments_by_id.get(sid)
+            if seg:
+                voice_preview.append(
+                    f"<li><strong>{escape(sid)}</strong> — {escape(seg.get('chercheur', ''))} "
+                    f"<span class='meta'>{escape(seg.get('debut', ''))} → {escape(seg.get('fin', ''))}</span></li>"
+                )
+
+        if not voice_preview and script_text:
+            # T13 consolidated ids
+            for match in re.finditer(r"\[([^\]]+)\]\s+([^|]+)\|", script_text):
+                voice_preview.append(
+                    f"<li><strong>{escape(match.group(1))}</strong> — {escape(match.group(2).strip())}</li>"
+                )
+
+        body = (
+            f"<p class='meta'><strong>Objectif :</strong> {escape(objective or '—')}</p>"
+            f"<p class='meta'>{source_note}</p>"
+            "<div class='methodology-panel'>"
+            "<p><strong>Lecture :</strong> ce script est propose comme base <em>comprehensible</em> "
+            "pour le monteur / la preparation expert. "
+            f"La banque Clarisse (<a href='tb_edito_{escape(code)}.html'>tb_edito_{escape(code)}</a>) "
+            f"reste disponible ({stats['clarisse_count']} fragments) mais n'est pas le decoupage de tournage.</p>"
+            f"<p class='meta'>Blocs : <strong>{blocks_meta}</strong> · Duree estimee : <strong>{escape(duree_label)}</strong></p>"
+            "</div>"
+            "<h2>Script proposé</h2>"
+            f"<div class='script' id='script-final'>{escape(script_text) if script_text else 'A construire.'}</div>"
+            "<h2>Ordre des voix / extraits</h2>"
+            + (
+                "<ul>" + "".join(voice_preview) + "</ul>"
+                if voice_preview
+                else "<p class='meta'>Aucun extrait structure pour cette capsule.</p>"
+            )
+            + "<p>"
+            f"<a class='btn btn-secondary' href='tb_edito_{escape(code)}.html'>Voir banque Clarisse</a> "
+            f"<a class='btn btn-secondary' href='capsule_{escape(code)}.html'>Fiche capsule</a> "
+            "<a class='btn btn-secondary' href='script_propose.html'>← Tous les scripts</a>"
+            "</p>"
+        )
+        write_text(
+            SITE / page_name,
+            html_page(
+                f"Script proposé — {code}",
+                body,
+                nav_current="edito.html",
+                breadcrumb=html_breadcrumb(
+                    ("Accueil", "index.html"),
+                    ("Edito", "edito.html"),
+                    ("Script proposé", "script_propose.html"),
+                    (code, None),
+                ),
+                page_header=(
+                    f'<div class="page-head"><h1>{escape(label)}</h1>'
+                    f'<p class="lead">Script proposé — montage réaliste et compréhensible.</p></div>'
+                ),
+            ),
+        )
+
+    hub_body = (
+        "<p class='meta'>Scripts proposes pour un montage <strong>realiste et comprehensible</strong> "
+        "(unites de sens / montage BAB). Distinct de la banque Clarisse fragmentee "
+        "(<a href='tb_edito.html'>Capsules temoins</a>), destinee a l'edito et au monteur.</p>"
+        + _sommaire_cards(cards)
+    )
+    write_text(
+        SITE / "script_propose.html",
+        html_page(
+            "Script proposé",
+            hub_body,
+            nav_current="edito.html",
+            breadcrumb=html_breadcrumb(
+                ("Accueil", "index.html"),
+                ("Edito", "edito.html"),
+                ("Script proposé", None),
+            ),
+            page_header=(
+                '<div class="page-head"><h1>Script proposé</h1>'
+                '<p class="lead">Montages lisibles pour tournage et préparation des experts.</p></div>'
+            ),
+            main_class="page-home",
+        ),
+    )
+
+    for path in SITE.glob("script_propose*.html"):
+        if path.name not in expected:
+            path.unlink()
+
+
+def build_fichiers_travail_pages() -> None:
+    # Sous-ensemble Informations
+    info_sections = [
+        (
+            "profils_experts.html",
+            "👤",
+            "Profils experts",
+            "Informations collectees (LinkedIn/institutions) et sources par profil.",
+        ),
+        (
+            "fonctions_temoins.html",
+            "🪪",
+            "Fonctions témoins",
+            "Formulations academiques et professionnelles des temoins.",
+        ),
+        (
+            "proposition_titres_temoin.html",
+            "🏷",
+            "Titres témoins",
+            "Propositions de titres par video temoin.",
+        ),
+    ]
+    write_text(
+        SITE / "informations.html",
+        html_page(
+            "Informations",
+            "<p class='meta'>Fiches de reference sur les intervenants et les temoins.</p>"
+            + _sommaire_cards(info_sections),
+            nav_current="fichiers_travail.html",
+            breadcrumb=html_breadcrumb(
+                ("Accueil", "index.html"),
+                ("Fichiers de travail", "fichiers_travail.html"),
+                ("Informations", None),
+            ),
+            page_header='<div class="page-head"><h1>Informations</h1><p class="lead">Profils, fonctions et titres.</p></div>',
+            main_class="page-home",
+        ),
+    )
+
+    # Ensemble Fichiers de travail
+    sections = [
+        (
+            "informations.html",
+            "ℹ",
+            "Informations",
+            "Profils experts, fonctions temoins et titres temoins.",
+        ),
+        (
+            "prev_vid.html",
+            "▦",
+            "Prev Vid",
+            "Tableau de conception (13 videos temoin) au format Excel.",
+        ),
+        (
+            "videos_expert.html",
+            "▶",
+            "Vidéos expert",
+            "Tableau des videos expertise, consignes et scripts recus.",
+        ),
+        (
+            "mails_experts.html",
+            "✉",
+            "Mails experts",
+            "Brouillons de sollicitation par intervenant.",
+        ),
+        (
+            "bab_encodes.html",
+            "▣",
+            "BAB encodé",
+            "Parcours des BAB timecodes par chercheur.",
+        ),
+    ]
+    write_text(
+        SITE / "fichiers_travail.html",
+        html_page(
+            "Fichiers de travail",
+            "<p class='meta'>Documents et exports de travail pour le suivi du MOOC.</p>"
+            + _sommaire_cards(sections),
+            nav_current="fichiers_travail.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Fichiers de travail", None)),
+            page_header='<div class="page-head"><h1>Fichiers de travail</h1><p class="lead">Informations et livrables operationnels.</p></div>',
+            main_class="page-home",
+        ),
+    )
+
+
+def build_prev_vid_page(programme_table: dict) -> None:
+    """Ensemble Prev Vid : tableau HTML + export Excel (format 20260710, 13 videos)."""
+    from export_prev_vid_xlsx import export_prev_vid_xlsx
+
+    data_xlsx = export_prev_vid_xlsx(programme_table, ROOT / "data" / "20260723_Prev_Vid.xlsx")
+    site_xlsx_name = "20260723_Prev_Vid.xlsx"
+    site_xlsx = SITE / site_xlsx_name
+    site_xlsx.write_bytes(data_xlsx.read_bytes())
+
+    headers = programme_table.get("headers", {})
+    col_keys = [
+        "module",
+        "code",
+        "video_temoin",
+        "resume_chercheurs",
+        "videos_referent",
+        "objectif_pedagogique",
+        "noms_proposes",
+    ]
+    thead = "".join(f"<th>{escape(headers.get(key, key))}</th>" for key in col_keys)
+
+    rows_html = []
+    for row in programme_table.get("rows", []):
+        cells = []
+        for key in col_keys:
+            raw = row.get(key) or ""
+            if key == "code":
+                code = row.get("code", "")
+                cells.append(
+                    f"<td><a href='tb_edito_{escape(code)}.html'><strong>{escape(code)}</strong></a></td>"
+                )
+                continue
+            cells.append(f"<td>{escape(raw).replace(chr(10), '<br>')}</td>")
+        rows_html.append("<tr>" + "".join(cells) + "</tr>")
+
+    n_temoin = len(programme_table.get("rows", []))
+    n_expert = sum(
+        1
+        for row in programme_table.get("rows", [])
+        for _ in _tb_edito_parse_videos_expert(row.get("videos_referent", ""))
+    )
+    source = programme_table.get("source_document", site_xlsx_name)
+    date_maj = programme_table.get("date_mise_a_jour", "")
+    note = programme_table.get("note", "")
+
+    body = (
+        f"<p class='meta'>Tableau de conception au format Excel historique "
+        f"(<code>20260710_Prev_Vid.xlsx</code>), mis a jour pour le plan a "
+        f"<strong>{n_temoin} videos temoin</strong> (T1–T13) et "
+        f"<strong>{n_expert} videos expert</strong> associees.</p>"
+        f"<p class='meta'>Fichier : <code>{escape(source)}</code>"
+        f"{f' — mis a jour le {escape(date_maj)}' if date_maj else ''}.</p>"
+        f"<p class='meta'>{escape(note)}</p>"
+        f"<p><a class='btn' href='{escape(site_xlsx_name)}' download>"
+        f"Télécharger Prev_Vid (XLSX)</a></p>"
+        "<div class='table-wrap'><table><thead><tr>"
+        + thead
+        + "</tr></thead><tbody>"
+        + (
+            "".join(rows_html)
+            if rows_html
+            else "<tr><td colspan='7'>Aucune ligne dans programme_table.</td></tr>"
+        )
+        + "</tbody></table></div>"
+        "<p class='meta'>L'original a 12 videos reste intact dans "
+        "<code>data/raw/20260710_Prev_Vid.xlsx</code>.</p>"
+    )
+    write_text(
+        SITE / "prev_vid.html",
+        html_page(
+            "Prev Vid",
+            body,
+            nav_current="fichiers_travail.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Fichiers de travail", "fichiers_travail.html"), ("Prev Vid", None)),
+            page_header=(
+                '<div class="page-head"><h1>Prev Vid</h1>'
+                '<p class="lead">Tableau de conception — 13 vidéos témoin, export Excel.</p></div>'
+            ),
+        ),
+    )
+
+
 def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> None:
     inventory = _inventory_videos_expert(programme_table, experts_profils)
     _write_videos_expert_xlsx(inventory, SITE / "videos_expert.xlsx")
@@ -4998,8 +5908,8 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
         html_page(
             "Vidéos expert",
             body,
-            nav_current="videos_expert.html",
-            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Vidéos expert", None)),
+            nav_current="fichiers_travail.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Fichiers de travail", "fichiers_travail.html"), ("Vidéos expert", None)),
             page_header=(
                 '<div class="page-head"><h1>Vidéos expert</h1>'
                 '<p class="lead">Tableau des videos expertise, consignes transmises et scripts recus.</p></div>'
@@ -5025,9 +5935,10 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
             html_page(
                 f"{item['code']} — Vidéo expert",
                 detail_body,
-                nav_current="videos_expert.html",
+                nav_current="fichiers_travail.html",
                 breadcrumb=html_breadcrumb(
                     ("Accueil", "index.html"),
+                    ("Fichiers de travail", "fichiers_travail.html"),
                     ("Vidéos expert", "videos_expert.html"),
                     (item["code"], None),
                 ),
@@ -5063,7 +5974,7 @@ def build_mails_experts_pages(programme_table: dict, experts_profils: dict) -> N
     body = (
         "<p class='meta'>Brouillons de mails individualisés pour solliciter les experts. "
         "Chaque mail reprend les sujets de capsules témoins concernés, les vidéos expertise proposées, l'information sur les "
-        "transcripts disponibles (4 actuellement, 5e en cours d'intégration) et les jalons : "
+        "transcripts des cinq chercheurs disponibles et les jalons : "
         "<strong>23 juillet</strong> (positionnement), <strong>27 juillet</strong> (retour d'arbitrage), "
         "<strong>1er septembre</strong> (script prompteur, a minima 15 jours avant tournage).</p>"
         f"<section class='cards'>{''.join(cards) if cards else '<p>Aucun expert proposé dans le programme_table.</p>'}</section>"
@@ -5073,8 +5984,8 @@ def build_mails_experts_pages(programme_table: dict, experts_profils: dict) -> N
         html_page(
             "Mails experts",
             body,
-            nav_current="mails_experts.html",
-            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Mails experts", None)),
+            nav_current="fichiers_travail.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Fichiers de travail", "fichiers_travail.html"), ("Mails experts", None)),
             page_header='<div class="page-head"><h1>Mails experts</h1><p class="lead">Préparation des messages de sollicitation par expert.</p></div>',
         ),
     )
@@ -5128,9 +6039,10 @@ def build_mails_experts_pages(programme_table: dict, experts_profils: dict) -> N
             html_page(
                 f"Mail expert — {expert['nom']}",
                 detail_body,
-                nav_current="mails_experts.html",
+                nav_current="fichiers_travail.html",
                 breadcrumb=html_breadcrumb(
                     ("Accueil", "index.html"),
+                    ("Fichiers de travail", "fichiers_travail.html"),
                     ("Mails experts", "mails_experts.html"),
                     (expert["nom"], None),
                 ),
@@ -5256,8 +6168,8 @@ def build_correspondances_edito_page(programme_table: dict) -> None:
         html_page(
             "Correspondances édito",
             body,
-            nav_current="tableau_correspondances_edito.html",
-            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Correspondances édito", None)),
+            nav_current="edito.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Edito", "edito.html"), ("Correspondances édito", None)),
             page_header="<div class=\"page-head\"><h1>Correspondances édito</h1><p class=\"lead\">Tableau de conception relu via les capsules témoins : videos chorales, contenus temoins, videos expertise et alignement pedagogique.</p></div>",
         ),
     )
@@ -5338,7 +6250,7 @@ def build_tableau_corr_page() -> None:
             html_page(
                 "Tableau corrige",
                 body,
-                nav_current="tableau_correspondances_edito.html",
+                nav_current="edito.html",
                 breadcrumb=html_breadcrumb(
                     ("Accueil", "index.html"),
                     ("Correspondances édito", "tableau_correspondances_edito.html"),
@@ -5377,7 +6289,7 @@ def build_tableau_corr_page() -> None:
         html_page(
             "Tableau corrigé",
             body,
-            nav_current="tableau_correspondances_edito.html",
+            nav_current="edito.html",
             breadcrumb=html_breadcrumb(
                 ("Accueil", "index.html"),
                 ("Correspondances édito", "tableau_correspondances_edito.html"),
@@ -5663,8 +6575,8 @@ def build_bab_encodes_index() -> None:
         html_page(
             "BAB encodé",
             body,
-            nav_current="bab_encodes.html",
-            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("BAB encodé", None)),
+            nav_current="fichiers_travail.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Fichiers de travail", "fichiers_travail.html"), ("BAB encodé", None)),
             page_header='<div class="page-head"><h1>BAB encodé</h1><p class="lead">Lecture segment par segment des BAB bruts, avec statuts et capsules associees.</p></div>',
         ),
     )
@@ -5713,7 +6625,7 @@ def build_bab_encode_pages() -> None:
                 page_title,
                 "\n".join(sections),
                 scripts=["assets/export-word.js"],
-                nav_current="bab_encodes.html",
+                nav_current="fichiers_travail.html",
                 page_header=header,
                 breadcrumb=html_breadcrumb(
                     ("Accueil", "index.html"),
@@ -5758,14 +6670,21 @@ if __name__ == "__main__":
     build_proposition_edito_pages(programme_table)
     build_fonctions_temoins_page()
     build_videos_expert_pages(programme_table, experts_profils)
+    build_prev_vid_page(programme_table)
+    build_suivi_intervenants_pages(programme_table, experts_profils)
+    build_edito_hub_page()
+    build_script_propose_pages(programme_table, all_affectations, all_segments)
+    build_fichiers_travail_pages()
     build_mails_experts_pages(programme_table, experts_profils)
     build_correspondances_edito_page(programme_table)
     build_tableau_corr_page()
     build_dashboard(all_capsules, all_segments, all_affectations)
     build_researcher_pages(all_segments)
     build_capsule_pages(all_capsules, all_segments, all_affectations, programme_table)
-    build_conflicts_page(all_segments)
-    build_registry(all_segments)
+    for obsolete in ("conflits.html", "registre.html"):
+        path = SITE / obsolete
+        if path.exists():
+            path.unlink()
     build_derushage_edito_index()
     build_derushage_edito_pages()
     build_bab_encodes_index()

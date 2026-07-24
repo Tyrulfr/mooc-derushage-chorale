@@ -39,6 +39,12 @@ DOCS = [
         "intervenant": "Loïc Rajjou",
         "prefix": "LOIE",
     },
+    {
+        "id": "syl_edito",
+        "source": "00_Mooc_Transcript_Sylvia Cohen.docx",
+        "intervenant": "Sylvia Cohen-Kaminski",
+        "prefix": "SYLE",
+    },
 ]
 
 IGNORED_FRAGMENT_PATTERNS = [
