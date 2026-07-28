@@ -9293,25 +9293,25 @@ def _guide_videos_attendues_doc_html(
         cadrage = _tb_edito_build_cadrage(
             code, ordre, by_seq_id, capsule_data.get("videos_expert") or videos_expert_all
         )
-        script_final = _humanize_capsule_labels(
-            _tb_expertise_label(
+        script_final = _tb_expertise_label(
+            _humanize_capsule_labels(
                 _normalize_script_final_editorial(
                     _tb_edito_script_with_cadrage(ordre, by_seq_id, cadrage)
                 )
             )
         )
-        synthese_text = _humanize_capsule_labels(
-            _tb_expertise_label(
+        synthese_text = _tb_expertise_label(
+            _humanize_capsule_labels(
                 export_synthese_temoignages_plaintext(code, capsule_data, by_id)
             )
         )
-        brief_text = _humanize_capsule_labels(
-            _tb_expertise_label(
+        brief_text = _tb_expertise_label(
+            _humanize_capsule_labels(
                 export_brief_intervenant_plaintext(code, capsule_data, by_id)
             )
         )
-        scripts_text = _humanize_capsule_labels(
-            _tb_expertise_label(export_scripts_expertise_plaintext(capsule_data))
+        scripts_text = _tb_expertise_label(
+            _humanize_capsule_labels(export_scripts_expertise_plaintext(capsule_data))
         )
 
         chapter_title = item.get("chapter_heading") or _temoin_with_expertise_heading(item)
