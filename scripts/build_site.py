@@ -8965,11 +8965,13 @@ def _compose_videos_attendues_mail(expert: dict, page_href: str) -> tuple[str, s
         f"{attendues_block}\n\n"
         "Un guide éditorial vous est préparé pour chaque capsule témoin concernée. "
         "Il reprend :\n"
-        "- une vue d'ensemble de la sélection finale (qui intervient sur quelle vidéo expertise),\n"
+        "- les coordonnées de contact pour vos questions,\n"
         "- la synthèse des témoignages,\n"
         "- la proposition de cadrage,\n"
         "- une proposition de script pour les vidéos expertise,\n"
-        "- le script final de la chorale témoin.\n\n"
+        "- le script final de la chorale témoin,\n"
+        "- en fin de document, une vue d'ensemble de la sélection finale "
+        "(qui intervient sur quelle vidéo expertise).\n\n"
         "Vous pouvez consulter ce guide en ligne (lecture éventuelle sur le site de travail) :\n"
         f"- Page dédiée : {page_href}\n\n"
         f"Capsules témoins concernées : {capsules}.\n\n"
@@ -9039,7 +9041,51 @@ def export_scripts_expertise_plaintext(capsule_data: dict) -> str:
     return _normalize_editorial_french("\n".join(lines).strip())
 
 
-def _guide_doc_shell(title: str, toc_rows: list[str], sections: list[str], toc_intro: str) -> str:
+def _videos_attendues_contact_preface_html(*, for_doc: bool = True) -> str:
+    """Coordonnées de contact, à placer en introduction avant le sommaire."""
+    mail = TEST_MAIL_RECIPIENT
+    cc = REVIEW_MAIL_RECIPIENT
+    if for_doc:
+        return (
+            "<div class='doc-block brief-block' style='margin:12px 0 18px;'>"
+            "<p><strong>Pour toute question, mise en forme ou échange</strong>, "
+            "je reste disponible :</p>"
+            "<ul>"
+            "<li>sur <strong>Teams jusqu’au 31 juillet</strong> ;</li>"
+            "<li>puis, <strong>à partir du 24 août</strong>, pour un entretien sur Teams ;</li>"
+            "<li>vous pouvez également laisser un message par mail "
+            "<strong>à partir du 15 août</strong>, avec en copie "
+            f"<a href='mailto:{escape(cc)}'>{escape(cc)}</a>.</li>"
+            "</ul>"
+            f"<p>Mon adresse : <a href='mailto:{escape(mail)}'>{escape(mail)}</a>. "
+            "Je répondrai à vos questions.</p>"
+            "</div>"
+        )
+    return (
+        "<section class='methodology-panel'>"
+        "<h2>Contact</h2>"
+        "<p><strong>Pour toute question, mise en forme ou échange</strong>, "
+        "je reste disponible :</p>"
+        "<ul>"
+        "<li>sur <strong>Teams jusqu’au 31 juillet</strong> ;</li>"
+        "<li>puis, <strong>à partir du 24 août</strong>, pour un entretien sur Teams ;</li>"
+        "<li>vous pouvez également laisser un message par mail "
+        "<strong>à partir du 15 août</strong>, avec en copie "
+        f"<a href='mailto:{escape(cc)}'>{escape(cc)}</a>.</li>"
+        "</ul>"
+        f"<p>Mon adresse : <a href='mailto:{escape(mail)}'>{escape(mail)}</a>. "
+        "Je répondrai à vos questions.</p>"
+        "</section>"
+    )
+
+
+def _guide_doc_shell(
+    title: str,
+    toc_rows: list[str],
+    sections: list[str],
+    toc_intro: str,
+    preface_html: str = "",
+) -> str:
     return (
         "<html><head><meta charset='utf-8'>"
         "<style>"
@@ -9064,6 +9110,7 @@ def _guide_doc_shell(title: str, toc_rows: list[str], sections: list[str], toc_i
         "</style>"
         "</head><body>"
         f"<h1>{escape(title)}</h1>"
+        f"{preface_html}"
         "<h2>Sommaire du guide éditorial</h2>"
         f"{toc_intro}"
         f"<table class='toc'><tbody>{''.join(toc_rows) if toc_rows else '<tr><td>Aucune capsule témoin associée à ce stade.</td></tr>'}</tbody></table>"
@@ -9136,9 +9183,7 @@ def _guide_videos_attendues_doc_html(
         return f"<pre class='plain'>{escape(text)}</pre>"
 
     sections: list[str] = []
-    toc_rows: list[str] = [
-        "<tr><td><a href='#vue_ensemble'>Vue d'ensemble — sélection finale</a></td></tr>"
-    ]
+    toc_rows: list[str] = []
     for item in expert.get("videos", []):
         code = item.get("code", "")
         chapter_anchor = f"chap_{code}"
@@ -9196,18 +9241,25 @@ def _guide_videos_attendues_doc_html(
             "</section>"
         )
 
+    toc_rows.append(
+        "<tr><td><a href='#vue_ensemble'>Vue d'ensemble — sélection finale</a></td></tr>"
+    )
     toc_intro = (
-        "<p class='meta'>Liens actifs vers la vue d'ensemble puis chaque capsule témoin concernée.</p>"
+        "<p class='meta'>Liens actifs vers chaque capsule témoin concernée, "
+        "puis la vue d'ensemble en fin de document.</p>"
     )
     overview = (
+        "<section style='margin-top:28px;padding-top:10px;border-top:1px solid #cbd5e1;'>"
         "<a name='vue_ensemble'></a>"
         + _selection_finale_overview_doc_html(expert.get("slug", ""))
+        + "</section>"
     )
     return _guide_doc_shell(
         f"Guide éditorial — vidéos attendues — {expert.get('nom', 'Expert')}",
         toc_rows,
-        [overview] + sections,
+        sections + [overview],
         toc_intro,
+        preface_html=_videos_attendues_contact_preface_html(for_doc=True),
     )
 
 
@@ -9219,7 +9271,7 @@ def _videos_attendues_editorial_web_html(
     by_id: dict[str, dict],
 ) -> str:
     """Version HTML consultable du guide (même contenu que le Word)."""
-    parts: list[str] = [_selection_finale_overview_html(expert.get("slug", ""))]
+    parts: list[str] = [_videos_attendues_contact_preface_html(for_doc=False)]
     for item in expert.get("videos", []):
         code = item.get("code", "")
         row = rows_by_code.get(code, {})
@@ -9257,6 +9309,7 @@ def _videos_attendues_editorial_web_html(
         parts.append("<h2>Script final</h2>")
         parts.append(f"<div class='script'>{escape(script_final)}</div>")
         parts.append("</section>")
+    parts.append(_selection_finale_overview_html(expert.get("slug", "")))
     return "\n".join(part for part in parts if part)
 
 
@@ -9603,10 +9656,11 @@ def build_mails_experts_pages(
             "<h2>Document éditorial</h2>"
             f"<p><a class='btn' href='{escape(doc_name)}' download>Exporter le guide éditorial (Word)</a> "
             f"<a class='btn' href='{escape(doc_name)}' target='_blank' rel='noopener'>Ouvrir le guide (Word)</a></p>"
-            f"<p class='meta'>Le document conserve le modèle du guide (sommaire par capsule) et ajoute, "
-            f"en tête, la vue d'ensemble de la sélection finale, puis pour chaque capsule : "
+            f"<p class='meta'>Le document ouvre sur les coordonnées de contact, "
+            f"puis le sommaire et, pour chaque capsule : "
             f"synthèse des témoignages, proposition de cadrage, "
-            f"proposition de script pour les vidéos expertise, script final.</p>"
+            f"proposition de script pour les vidéos expertise, script final. "
+            f"La vue d'ensemble de la sélection finale figure en fin de document.</p>"
             "<div class='editorial-preview'>"
             f"{editorial_html}"
             "</div>"
