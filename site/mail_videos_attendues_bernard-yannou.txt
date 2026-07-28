@@ -2,21 +2,23 @@ Objet : MOOC L'Esprit d'innover — vidéos expertise attendues (Bernard Yannou)
 
 Bonjour Bernard,
 
-Dans le cadre de la conception du MOOC "L'Esprit d'innover", nous revenons vers vous pour vous indiquer les vidéos expertise sur lesquelles vous êtes attendu(e).
+Dans le cadre de la conception du MOOC "L'Esprit d'innover", nous revenons vers vous pour vous confirmer les vidéos expertise sur lesquelles vous êtes attendu(e).
 
-Vous êtes pressenti(e) comme expert (CentraleSupélec) sur le périmètre suivant :
-- Vidéo Expert 1 — Reconnaître les différentes origines d’une innovation. Tech-push, market-pull, observation d’usage, rencontre, sérendipité, maturation progressive. (capsule témoin T1 — VIDÉO 1 : POURQUOI OSER ?)
-- Vidéo Expert 2 — Passer d’une technologie à un problème à résoudre. Utilisateur, client, bénéficiaire, usage et proposition de valeur. (capsule témoin T2 — VIDÉO 2 : DE LA RECHERCHE À L’INNOVATION)
-- Vidéo Expert 3 — Poser ou identifier le bon problème avant de chercher la solution. Validation, hypothèses, expérimentation, pivot et apprentissage. (capsule témoin T2 — VIDÉO 2 : DE LA RECHERCHE À L’INNOVATION)
-- Vidéo Expert 20 — Gérer les freins. Temps, légitimité, entourage, droit à l’apprentissage et sécurisation du parcours. (capsule témoin T11 — VIDÉO 11 : EVOLUTION DANS LE MÉTIER DU CHERCHEUR.EUSE)
-- Vidéo Expert 21 — Innover comme processus d’apprentissage. Incertitude, essais, erreurs, pivot et progression plutôt que réussite linéaire. (focaliser le discours sur les leviers existant pour vaincre les freins) (capsule témoin T11 — VIDÉO 11 : EVOLUTION DANS LE MÉTIER DU CHERCHEUR.EUSE)
+Vous êtes attendu(e) comme expert (CentraleSupélec) sur le périmètre suivant :
+- Vidéo Expert 1 — Reconnaître les différentes origines d'une innovation (capsule témoin T1 — VIDÉO 1 : POURQUOI OSER ?)
+- Vidéo Expert 20 — Gerer les freins (capsule témoin T11 — VIDÉO 11 : EVOLUTION DANS LE MÉTIER DU CHERCHEUR.EUSE)
 
-Un guide éditorial vous est préparé pour chaque capsule témoin concernée. Il reprend la synthèse des témoignages, la proposition de cadrage, une proposition de script pour les vidéos expertise, et le script final de la chorale témoin.
+Un guide éditorial vous est préparé pour chaque capsule témoin concernée. Il reprend :
+- une vue d'ensemble de la sélection finale (qui intervient sur quelle vidéo expertise),
+- la synthèse des témoignages,
+- la proposition de cadrage,
+- une proposition de script pour les vidéos expertise,
+- le script final de la chorale témoin.
 
 Vous pouvez consulter ce guide en ligne (lecture éventuelle sur le site de travail) :
 - Page dédiée : mail_videos_attendues_bernard-yannou.html
 
-Capsules témoins concernées : T1, T2, T11.
+Capsules témoins concernées : T1, T11.
 
 Le travail d'ingénierie pédagogique vise à refléter au mieux votre expertise sans s'y substituer ; vous êtes bien entendu libre d'aller plus loin, d'ajuster, ou de recadrer selon votre jugement.
 

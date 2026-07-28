@@ -2,22 +2,23 @@ Objet : MOOC L'Esprit d'innover — vidéos expertise attendues (Virginia Branco
 
 Bonjour Virginia,
 
-Dans le cadre de la conception du MOOC "L'Esprit d'innover", nous revenons vers vous pour vous indiquer les vidéos expertise sur lesquelles vous êtes attendu(e).
+Dans le cadre de la conception du MOOC "L'Esprit d'innover", nous revenons vers vous pour vous confirmer les vidéos expertise sur lesquelles vous êtes attendu(e).
 
-Vous êtes pressenti(e) comme expert (ENS Paris-Saclay) sur le périmètre suivant :
-- Vidéo Expert 4 — Résultat scientifique, POC, prototype, MVP et TRL. Clarifier les niveaux de preuve. (capsule témoin T3 — VIDÉO 3 : IDENTIFIER UN BESOIN RÉEL + SORTIR DU LABORATOIRE (fusion))
-- Vidéo Expert 5 — Dérisquer un projet par étapes. Prématuration, maturation, jalons techniques et commerciaux, critères de décision. (capsule témoin T3 — VIDÉO 3 : IDENTIFIER UN BESOIN RÉEL + SORTIR DU LABORATOIRE (fusion))
-- Vidéo Expert 10 — Quelle voie de valorisation pour quel projet ? Licence, création, co-développement, partenariat et critères de choix. (capsule témoin T6 — VIDÉO 6 : TRANSFERT ET LICENSING)
-- Vidéo Expert 11 — Les mécanismes juridiques du transfert. Licence exclusive ou non, cession, contrat de collaboration, copropriété et principes de négociation. (capsule témoin T6 — VIDÉO 6 : TRANSFERT ET LICENSING)
-- Vidéo Expert 22 — Pascal Corbel : Concevoir une collaboration équilibrée. Objectifs partagés, complémentarité, gouvernance, engagement, création et partage de valeur. (capsule témoin T12 — VIDÉO 12 : DISPOSITIFS D’ACCOMPAGNEMENT & COLLAB)
-- Vidéo Expert 23 — Antoine Latreille : Sécuriser juridiquement la collaboration. Confidentialité, contrats, connaissances antérieures, résultats nouveaux, PI, publication et sortie du partenariat. (capsule témoin T12 — VIDÉO 12 : DISPOSITIFS D’ACCOMPAGNEMENT & COLLAB)
+Vous êtes attendu(e) comme expert (ENS Paris-Saclay) sur le périmètre suivant :
+- Vidéo Expert 5 — Derisquer un projet par étapes (capsule témoin T3 — VIDÉO 3 : IDENTIFIER UN BESOIN RÉEL + SORTIR DU LABORATOIRE (fusion))
+- Vidéo Expert 10 — Quelle voie de valorisation pour quel projet ? (capsule témoin T6 — VIDÉO 6 : TRANSFERT ET LICENSING)
 
-Un guide éditorial vous est préparé pour chaque capsule témoin concernée. Il reprend la synthèse des témoignages, la proposition de cadrage, une proposition de script pour les vidéos expertise, et le script final de la chorale témoin.
+Un guide éditorial vous est préparé pour chaque capsule témoin concernée. Il reprend :
+- une vue d'ensemble de la sélection finale (qui intervient sur quelle vidéo expertise),
+- la synthèse des témoignages,
+- la proposition de cadrage,
+- une proposition de script pour les vidéos expertise,
+- le script final de la chorale témoin.
 
 Vous pouvez consulter ce guide en ligne (lecture éventuelle sur le site de travail) :
 - Page dédiée : mail_videos_attendues_virginia-branco.html
 
-Capsules témoins concernées : T3, T6, T12.
+Capsules témoins concernées : T3, T6.
 
 Le travail d'ingénierie pédagogique vise à refléter au mieux votre expertise sans s'y substituer ; vous êtes bien entendu libre d'aller plus loin, d'ajuster, ou de recadrer selon votre jugement.
 

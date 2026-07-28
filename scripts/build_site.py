@@ -8604,6 +8604,305 @@ def _filter_capsule_data_for_expert(
     return data
 
 
+def _e_code_to_temoin_map(programme_table: dict) -> dict[str, dict]:
+    """Mappe chaque code E* vers la capsule témoin du programme (préfère T* à GEN)."""
+    mapping: dict[str, dict] = {}
+    for row in programme_table.get("rows", []):
+        capsule = row.get("code", "")
+        if not capsule:
+            continue
+        fixed = FIXED_TEMOIN_PLAN.get(capsule, {})
+        video_temoin_label = fixed.get("label") or row.get("video_temoin", "")
+        objective = row.get("objectif_pedagogique", "")
+        for video in _tb_edito_parse_videos_expert(row.get("videos_referent", "")):
+            code = (video.get("code") or "").upper().replace(" ", "")
+            if not code:
+                continue
+            current = mapping.get(code)
+            prefer_new = current is None or (
+                str(current.get("capsule", "")).startswith("GEN")
+                and str(capsule).startswith("T")
+            )
+            if prefer_new:
+                mapping[code] = {
+                    "capsule": capsule,
+                    "video_temoin_label": video_temoin_label,
+                    "objectif_temoin": objective,
+                    "titre": "",
+                    "descriptif": "",
+                }
+    # Titres / descriptifs propres depuis programme_videos (évite les anciens noms collés au titre).
+    catalogue = {item["code"]: item for item in _load_expert_videos_catalogue()}
+    prog_path = ROOT / "data" / "programme_videos.json"
+    if prog_path.exists():
+        payload = json.loads(prog_path.read_text(encoding="utf-8"))
+        for capsule, block in (payload.get("capsules") or {}).items():
+            if not isinstance(block, dict):
+                continue
+            for video in block.get("videos_expert") or []:
+                code = (video.get("code") or "").upper().replace(" ", "")
+                if not code:
+                    continue
+                current = mapping.get(code)
+                prefer_new = current is None or (
+                    str(current.get("capsule", "")).startswith("GEN")
+                    and str(capsule).startswith("T")
+                )
+                if prefer_new or current is not None:
+                    fixed = FIXED_TEMOIN_PLAN.get(capsule, {})
+                    base = current or {}
+                    mapping[code] = {
+                        "capsule": capsule if prefer_new else base.get("capsule", capsule),
+                        "video_temoin_label": (
+                            fixed.get("label")
+                            or base.get("video_temoin_label")
+                            or capsule
+                        )
+                        if prefer_new
+                        else base.get("video_temoin_label", capsule),
+                        "objectif_temoin": base.get("objectif_temoin", ""),
+                        "titre": video.get("titre")
+                        or catalogue.get(code, {}).get("titre")
+                        or base.get("titre", ""),
+                        "descriptif": video.get("descriptif")
+                        or catalogue.get(code, {}).get("descriptif")
+                        or base.get("descriptif", ""),
+                    }
+    for code, video in catalogue.items():
+        if code not in mapping:
+            mapping[code] = {
+                "capsule": video.get("capsule", ""),
+                "video_temoin_label": video.get("capsule", ""),
+                "objectif_temoin": "",
+                "titre": video.get("titre", ""),
+                "descriptif": video.get("descriptif", ""),
+            }
+        else:
+            if not mapping[code].get("titre"):
+                mapping[code]["titre"] = video.get("titre", "")
+            if not mapping[code].get("descriptif"):
+                mapping[code]["descriptif"] = video.get("descriptif", "")
+    return mapping
+
+
+def _selection_finale_overview() -> list[dict]:
+    """Vue d'ensemble de la sélection finale (une ligne par vidéo expertise)."""
+    stored = _load_suivi_positionnements()
+    e_map = _e_code_to_temoin_map(
+        json.loads((ROOT / "data" / "programme_table.json").read_text(encoding="utf-8"))
+        if (ROOT / "data" / "programme_table.json").exists()
+        else {"rows": []}
+    )
+    catalogue = {item["code"]: item for item in _load_expert_videos_catalogue()}
+    rows: list[dict] = []
+    for item in _positionnements_finaux_par_video(stored.get("intervenants", [])):
+        code = item["code"]
+        meta = e_map.get(code, {})
+        video = catalogue.get(code, {})
+        objectif = (
+            video.get("descriptif")
+            or video.get("titre")
+            or meta.get("descriptif")
+            or meta.get("titre")
+            or ""
+        )
+        for entry in item.get("intervenants") or []:
+            rows.append(
+                {
+                    "code": code,
+                    "label": _label_video_expert(code),
+                    "titre": _normalize_editorial_french(
+                        video.get("titre") or meta.get("titre") or ""
+                    ),
+                    "objectif": _normalize_editorial_french(objectif),
+                    "capsule": meta.get("capsule", ""),
+                    "nom": entry.get("nom", ""),
+                    "organisme": entry.get("organisme", ""),
+                    "slug": entry.get("slug", ""),
+                    "fonction": _intervenant_function_label(
+                        entry.get("nom", ""), entry.get("organisme", "")
+                    ),
+                }
+            )
+    return rows
+
+
+def _experts_for_videos_attendues(
+    programme_table: dict,
+    experts_profils: dict,
+) -> list[dict]:
+    """Experts du lot « vidéos attendues » filtrés sur la sélection finale."""
+    base = {
+        _canonical_name_key(item["nom"]): item
+        for item in _mail_experts_rows(programme_table, experts_profils)
+    }
+    stored = _load_suivi_positionnements()
+    e_map = _e_code_to_temoin_map(programme_table)
+    prepared: list[dict] = []
+
+    for item in stored.get("intervenants", []):
+        final = (item.get("proposition_finale") or "").strip()
+        if not final:
+            continue
+        codes = [
+            raw.upper().replace(" ", "")
+            for raw in re.findall(r"\bE\d+(?:bis)?\b", final, flags=re.IGNORECASE)
+        ]
+        if not codes:
+            continue
+        key = _canonical_name_key(item.get("nom", ""))
+        base_expert = base.get(key, {})
+        by_capsule: dict[str, dict] = {}
+        for code in codes:
+            meta = e_map.get(code)
+            if not meta:
+                continue
+            capsule = meta["capsule"]
+            bucket = by_capsule.setdefault(
+                capsule,
+                {
+                    "code": capsule,
+                    "video_temoin_label": meta.get("video_temoin_label", ""),
+                    "tb_edito_href": f"tb_edito_{capsule}.html",
+                    "expert_video_codes": [],
+                    "expert_video_labels": [],
+                    "objectif": meta.get("objectif_temoin", ""),
+                },
+            )
+            if code not in bucket["expert_video_codes"]:
+                bucket["expert_video_codes"].append(code)
+                titre = meta.get("titre") or ""
+                label = f"{_label_video_expert(code)}" + (f" — {titre}" if titre else "")
+                bucket["expert_video_labels"].append(_normalize_editorial_french(label))
+
+        if not by_capsule:
+            continue
+
+        def _capsule_sort(code: str) -> tuple[int, int]:
+            if code == "GEN":
+                return (0, 0)
+            match = re.fullmatch(r"T(\d+)", code or "")
+            return (1, int(match.group(1))) if match else (9, 999)
+
+        videos = sorted(by_capsule.values(), key=lambda entry: _capsule_sort(entry["code"]))
+        for video in videos:
+            ordered = sorted(video["expert_video_codes"], key=_expert_video_sort_key)
+            rebuilt_labels = []
+            for code in ordered:
+                meta = e_map.get(code, {})
+                titre = meta.get("titre") or ""
+                rebuilt_labels.append(
+                    _normalize_editorial_french(
+                        f"{_label_video_expert(code)}" + (f" — {titre}" if titre else "")
+                    )
+                )
+            video["expert_video_codes"] = ordered
+            video["expert_video_labels"] = rebuilt_labels
+
+        prepared.append(
+            {
+                "nom": item.get("nom") or base_expert.get("nom", ""),
+                "organisme": item.get("organisme")
+                or base_expert.get("organisme")
+                or "Organisme de rattachement à confirmer",
+                "slug": item.get("slug") or slug(item.get("nom", "")),
+                "profile": base_expert.get("profile"),
+                "videos": videos,
+                "proposition_finale": final,
+            }
+        )
+
+    return sorted(prepared, key=lambda entry: _normalize_for_match(entry["nom"]))
+
+
+def _selection_finale_overview_html(current_slug: str = "") -> str:
+    rows = _selection_finale_overview()
+    if not rows:
+        return (
+            "<h2>Vue d'ensemble — sélection finale</h2>"
+            "<p class='meta'>Aucune sélection finale renseignée pour le moment.</p>"
+        )
+    body = []
+    for row in rows:
+        highlight = (
+            " style='background:#ecfeff;'"
+            if current_slug and row.get("slug") == current_slug
+            else ""
+        )
+        titre = row.get("titre") or ""
+        objectif = row.get("objectif") or ""
+        body.append(
+            "<tr"
+            + highlight
+            + ">"
+            f"<td><strong>{escape(row['code'])}</strong><br>"
+            f"<span class='meta'>{escape(row['label'])}</span></td>"
+            f"<td>{escape(titre)}"
+            + (f"<br><span class='meta'>{escape(objectif)}</span>" if objectif else "")
+            + "</td>"
+            f"<td><strong>{escape(row['nom'])}</strong><br>"
+            f"<span class='meta'>{escape(row.get('organisme', ''))}</span></td>"
+            "</tr>"
+        )
+    return (
+        "<h2>Vue d'ensemble — sélection finale par vidéo expertise</h2>"
+        "<p class='meta'>Lecture partagée de l'arbitrage actuel : qui est attendu sur quelle vidéo expertise. "
+        "Votre ligne est mise en évidence lorsque cela est possible.</p>"
+        "<div class='table-wrap'><table>"
+        "<thead><tr>"
+        "<th>Vidéo</th><th>Objectif</th><th>Intervenant retenu</th>"
+        "</tr></thead><tbody>"
+        + "".join(body)
+        + "</tbody></table></div>"
+    )
+
+
+def _selection_finale_overview_doc_html(current_slug: str = "") -> str:
+    rows = _selection_finale_overview()
+    if not rows:
+        return (
+            "<h2>Vue d'ensemble — sélection finale</h2>"
+            "<p>Aucune sélection finale renseignée pour le moment.</p>"
+        )
+    body = []
+    for row in rows:
+        highlight = (
+            " background:#ecfeff;"
+            if current_slug and row.get("slug") == current_slug
+            else ""
+        )
+        titre = row.get("titre") or ""
+        objectif = row.get("objectif") or ""
+        body.append(
+            f"<tr style='vertical-align:top;{highlight}'>"
+            f"<td style='padding:6px;border:1px solid #cbd5e1;'><strong>{escape(row['code'])}</strong><br>"
+            f"<span style='color:#64748b;font-size:10pt;'>{escape(row['label'])}</span></td>"
+            f"<td style='padding:6px;border:1px solid #cbd5e1;'>{escape(titre)}"
+            + (
+                f"<br><span style='color:#64748b;font-size:10pt;'>{escape(objectif)}</span>"
+                if objectif
+                else ""
+            )
+            + "</td>"
+            f"<td style='padding:6px;border:1px solid #cbd5e1;'><strong>{escape(row['nom'])}</strong><br>"
+            f"<span style='color:#64748b;font-size:10pt;'>{escape(row.get('organisme', ''))}</span></td>"
+            "</tr>"
+        )
+    return (
+        "<h2>Vue d'ensemble — sélection finale par vidéo expertise</h2>"
+        "<p>Pour situer votre intervention dans l'ensemble du parcours, voici l'arbitrage actuel "
+        "des intervenants retenus pour chaque vidéo expertise. Votre ligne est surlignée.</p>"
+        "<table style='width:100%;border-collapse:collapse;font-size:10.5pt;margin:10px 0 18px;'>"
+        "<thead><tr>"
+        "<th style='text-align:left;padding:6px;border:1px solid #cbd5e1;background:#f8fafc;'>Vidéo</th>"
+        "<th style='text-align:left;padding:6px;border:1px solid #cbd5e1;background:#f8fafc;'>Objectif</th>"
+        "<th style='text-align:left;padding:6px;border:1px solid #cbd5e1;background:#f8fafc;'>Intervenant retenu</th>"
+        "</tr></thead><tbody>"
+        + "".join(body)
+        + "</tbody></table>"
+    )
+
+
 def _expert_videos_attendues_lines(expert: dict) -> list[str]:
     lines: list[str] = []
     for item in expert.get("videos", []):
@@ -8635,12 +8934,16 @@ def _compose_videos_attendues_mail(expert: dict, page_href: str) -> tuple[str, s
         f"Objet : {subject}\n\n"
         f"Bonjour {prenom},\n\n"
         "Dans le cadre de la conception du MOOC \"L'Esprit d'innover\", nous revenons vers vous "
-        "pour vous indiquer les vidéos expertise sur lesquelles vous êtes attendu(e).\n\n"
-        f"Vous êtes pressenti(e) comme expert ({organisme}) sur le périmètre suivant :\n"
+        "pour vous confirmer les vidéos expertise sur lesquelles vous êtes attendu(e).\n\n"
+        f"Vous êtes attendu(e) comme expert ({organisme}) sur le périmètre suivant :\n"
         f"{attendues_block}\n\n"
         "Un guide éditorial vous est préparé pour chaque capsule témoin concernée. "
-        "Il reprend la synthèse des témoignages, la proposition de cadrage, "
-        "une proposition de script pour les vidéos expertise, et le script final de la chorale témoin.\n\n"
+        "Il reprend :\n"
+        "- une vue d'ensemble de la sélection finale (qui intervient sur quelle vidéo expertise),\n"
+        "- la synthèse des témoignages,\n"
+        "- la proposition de cadrage,\n"
+        "- une proposition de script pour les vidéos expertise,\n"
+        "- le script final de la chorale témoin.\n\n"
         "Vous pouvez consulter ce guide en ligne (lecture éventuelle sur le site de travail) :\n"
         f"- Page dédiée : {page_href}\n\n"
         f"Capsules témoins concernées : {capsules}.\n\n"
@@ -8807,7 +9110,9 @@ def _guide_videos_attendues_doc_html(
         return f"<pre class='plain'>{escape(text)}</pre>"
 
     sections: list[str] = []
-    toc_rows: list[str] = []
+    toc_rows: list[str] = [
+        "<tr><td><a href='#vue_ensemble'>Vue d'ensemble — sélection finale</a></td></tr>"
+    ]
     for item in expert.get("videos", []):
         code = item.get("code", "")
         chapter_anchor = f"chap_{code}"
@@ -8866,14 +9171,16 @@ def _guide_videos_attendues_doc_html(
         )
 
     toc_intro = (
-        "<p class='meta'>Liens actifs vers chaque capsule témoin concernée.</p>"
-        if len(toc_rows) > 1
-        else "<p class='meta'>Lien actif vers la capsule témoin concernée.</p>"
+        "<p class='meta'>Liens actifs vers la vue d'ensemble puis chaque capsule témoin concernée.</p>"
+    )
+    overview = (
+        "<a name='vue_ensemble'></a>"
+        + _selection_finale_overview_doc_html(expert.get("slug", ""))
     )
     return _guide_doc_shell(
         f"Guide éditorial — vidéos attendues — {expert.get('nom', 'Expert')}",
         toc_rows,
-        sections,
+        [overview] + sections,
         toc_intro,
     )
 
@@ -8886,7 +9193,7 @@ def _videos_attendues_editorial_web_html(
     by_id: dict[str, dict],
 ) -> str:
     """Version HTML consultable du guide (même contenu que le Word)."""
-    parts: list[str] = []
+    parts: list[str] = [_selection_finale_overview_html(expert.get("slug", ""))]
     for item in expert.get("videos", []):
         code = item.get("code", "")
         row = rows_by_code.get(code, {})
@@ -8935,6 +9242,7 @@ def build_mails_experts_pages(
 ) -> None:
     """Mails experts : index par date d'envoi, puis type (positionnement, vidéos attendues)."""
     experts = _mail_experts_rows(programme_table, experts_profils)
+    experts_attendues = _experts_for_videos_attendues(programme_table, experts_profils)
     affectations = affectations or {}
     by_id = index_by_id(segments or [])
     grouped_tb = _tb_edito_sequences_by_code()
@@ -9172,7 +9480,7 @@ def build_mails_experts_pages(
     )
 
     attendues_cards = []
-    for expert in experts:
+    for expert in experts_attendues:
         mail_file = f"mail_videos_attendues_{expert['slug']}.html"
         video_refs = ", ".join(
             code
@@ -9194,11 +9502,12 @@ def build_mails_experts_pages(
             attendues_title,
             (
                 f"<p class='meta'><strong>Envoi :</strong> {escape(date_attendues_label)}. "
-                "Mails indiquant à chaque intervenant les vidéos expertise sur lesquelles il est attendu, "
-                "avec un guide éditorial consultable en ligne (synthèse des témoignages, proposition de cadrage, "
+                "Mails indiquant à chaque intervenant les vidéos expertise retenues dans la sélection finale, "
+                "avec un guide éditorial consultable en ligne (vue d'ensemble des positionnements, "
+                "synthèse des témoignages, proposition de cadrage, "
                 "proposition de script pour les vidéos expertise, script final).</p>"
                 f"<section class='cards'>"
-                f"{''.join(attendues_cards) if attendues_cards else '<p>Aucun expert proposé.</p>'}"
+                f"{''.join(attendues_cards) if attendues_cards else '<p>Aucun expert avec sélection finale.</p>'}"
                 f"</section>"
             ),
             nav_current="fichiers_travail.html",
@@ -9216,7 +9525,7 @@ def build_mails_experts_pages(
         ),
     )
 
-    for expert in experts:
+    for expert in experts_attendues:
         page_name = f"mail_videos_attendues_{expert['slug']}.html"
         doc_name = f"guide_videos_attendues_{expert['slug']}.doc"
         mail_txt_name = f"mail_videos_attendues_{expert['slug']}.txt"
@@ -9269,7 +9578,8 @@ def build_mails_experts_pages(
             f"<p><a class='btn' href='{escape(doc_name)}' download>Exporter le guide éditorial (Word)</a> "
             f"<a class='btn' href='{escape(doc_name)}' target='_blank' rel='noopener'>Ouvrir le guide (Word)</a></p>"
             f"<p class='meta'>Le document conserve le modèle du guide (sommaire par capsule) et ajoute, "
-            f"pour chaque capsule : synthèse des témoignages, proposition de cadrage, "
+            f"en tête, la vue d'ensemble de la sélection finale, puis pour chaque capsule : "
+            f"synthèse des témoignages, proposition de cadrage, "
             f"proposition de script pour les vidéos expertise, script final.</p>"
             "<div class='editorial-preview'>"
             f"{editorial_html}"
