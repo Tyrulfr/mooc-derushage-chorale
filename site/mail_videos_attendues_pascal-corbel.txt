@@ -4,23 +4,30 @@ Bonjour Pascal,
 
 Dans le cadre de la conception du MOOC "L'Esprit d'innover", nous revenons vers vous pour vous confirmer les vidéos expertise sur lesquelles vous êtes attendu(e).
 
-Vous êtes attendu(e) comme expert (Université Paris-Saclay) sur le périmètre suivant :
-- Vidéo Expert 16 — Cartographier les competences nécessaires (capsule témoin T9 — VIDÉO 9 : PARTENARIATS ET POSTURE : CONSTRUIRE UNE ÉQUIPE)
-- Vidéo Expert 19 — La posture entrepreneuriale s'apprend (capsule témoin T10 — VIDÉO 10 : ENRICHIR SON LANGAGE)
-- Vidéo Expert 21 — Innover comme processus d'apprentissage (capsule témoin T11 — VIDÉO 11 : EVOLUTION DANS LE MÉTIER DU CHERCHEUR.EUSE)
+Petit rappel utile (vous n'avez pas participé à la conception éditoriale) :
+- une vidéo témoin est la parole croisée des chercheurs (chorale) ;
+- une vidéo expertise est votre intervention, liée à cette vidéo témoin.
 
-Un guide éditorial vous est préparé pour chaque capsule témoin concernée. Il reprend :
+Vous êtes attendu(e) comme expert (Université Paris-Saclay) sur le périmètre suivant :
+- Vidéo expertise — Cartographier les competences nécessaires
+  (liée à la Vidéo témoin 9 — PARTENARIATS ET POSTURE : CONSTRUIRE UNE ÉQUIPE)
+- Vidéo expertise — La posture entrepreneuriale s'apprend
+  (liée à la Vidéo témoin 10 — ENRICHIR SON LANGAGE)
+- Vidéo expertise — Innover comme processus d'apprentissage
+  (liée à la Vidéo témoin 11 — EVOLUTION DANS LE MÉTIER DU CHERCHEUR.EUSE)
+
+Vidéos témoin concernées (avec les vidéos expertise associées) :
+- Vidéo témoin 9 — PARTENARIATS ET POSTURE : CONSTRUIRE UNE ÉQUIPE → Vidéo expertise — Cartographier les competences nécessaires
+- Vidéo témoin 10 — ENRICHIR SON LANGAGE → Vidéo expertise — La posture entrepreneuriale s'apprend
+- Vidéo témoin 11 — EVOLUTION DANS LE MÉTIER DU CHERCHEUR.EUSE → Vidéo expertise — Innover comme processus d'apprentissage
+
+Un guide éditorial vous est préparé. Il reprend :
 - les coordonnées de contact pour vos questions,
-- la synthèse des témoignages,
-- la proposition de cadrage,
-- une proposition de script pour les vidéos expertise,
-- le script final de la chorale témoin,
-- en fin de document, une vue d'ensemble de la sélection finale (qui intervient sur quelle vidéo expertise).
+- pour chaque vidéo témoin : synthèse des témoignages, proposition de cadrage, proposition de script pour vos vidéos expertise, script final de la chorale,
+- en fin de document, une vue d'ensemble de la sélection finale.
 
 Vous pouvez consulter ce guide en ligne (lecture éventuelle sur le site de travail) :
 - Page dédiée : mail_videos_attendues_pascal-corbel.html
-
-Capsules témoins concernées : T9, T10, T11.
 
 Le travail d'ingénierie pédagogique vise à refléter au mieux votre expertise sans s'y substituer ; vous êtes bien entendu libre d'aller plus loin, d'ajuster, ou de recadrer selon votre jugement.
 

@@ -4,22 +4,26 @@ Bonjour Gregoire,
 
 Dans le cadre de la conception du MOOC "L'Esprit d'innover", nous revenons vers vous pour vous confirmer les vidéos expertise sur lesquelles vous êtes attendu(e).
 
-Vous êtes attendu(e) comme expert (AgroParisTech) sur le périmètre suivant :
-- Vidéo Expert 2 — Passer d'une technologie a un problème a resoudre (capsule témoin T2 — VIDÉO 2 : DE LA RECHERCHE À L’INNOVATION)
-- Vidéo Expert 3 — Poser ou identifier le bon problème avant de chercher la solution (capsule témoin T2 — VIDÉO 2 : DE LA RECHERCHE À L’INNOVATION)
+Petit rappel utile (vous n'avez pas participé à la conception éditoriale) :
+- une vidéo témoin est la parole croisée des chercheurs (chorale) ;
+- une vidéo expertise est votre intervention, liée à cette vidéo témoin.
 
-Un guide éditorial vous est préparé pour chaque capsule témoin concernée. Il reprend :
+Vous êtes attendu(e) comme expert (AgroParisTech) sur le périmètre suivant :
+- Vidéo expertise — Passer d'une technologie a un problème a resoudre
+  (liée à la Vidéo témoin 2 — DE LA RECHERCHE À L’INNOVATION)
+- Vidéo expertise — Poser ou identifier le bon problème avant de chercher la solution
+  (liée à la Vidéo témoin 2 — DE LA RECHERCHE À L’INNOVATION)
+
+Vidéos témoin concernées (avec les vidéos expertise associées) :
+- Vidéo témoin 2 — DE LA RECHERCHE À L’INNOVATION → Vidéo expertise — Passer d'une technologie a un problème a resoudre · Vidéo expertise — Poser ou identifier le bon problème avant de chercher la solution
+
+Un guide éditorial vous est préparé. Il reprend :
 - les coordonnées de contact pour vos questions,
-- la synthèse des témoignages,
-- la proposition de cadrage,
-- une proposition de script pour les vidéos expertise,
-- le script final de la chorale témoin,
-- en fin de document, une vue d'ensemble de la sélection finale (qui intervient sur quelle vidéo expertise).
+- pour chaque vidéo témoin : synthèse des témoignages, proposition de cadrage, proposition de script pour vos vidéos expertise, script final de la chorale,
+- en fin de document, une vue d'ensemble de la sélection finale.
 
 Vous pouvez consulter ce guide en ligne (lecture éventuelle sur le site de travail) :
 - Page dédiée : mail_videos_attendues_gregoire-burgé.html
-
-Capsules témoins concernées : T2.
 
 Le travail d'ingénierie pédagogique vise à refléter au mieux votre expertise sans s'y substituer ; vous êtes bien entendu libre d'aller plus loin, d'ajuster, ou de recadrer selon votre jugement.
 

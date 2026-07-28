@@ -6559,6 +6559,67 @@ def _tb_expertise_label(text: str) -> str:
     return value
 
 
+def _display_temoin_title(raw_label: str, capsule_code: str = "") -> str:
+    """Libellé compréhensible pour un intervenant externe (sans code T…)."""
+    text = _normalize_editorial_french((raw_label or "").strip())
+    match = re.match(r"^VID[ÉE]O\s*(\d+)\s*[:\-–]\s*(.+)$", text, flags=re.IGNORECASE)
+    if match:
+        return f"Vidéo témoin {match.group(1)} — {match.group(2).strip()}"
+    base = _label_video_temoin(capsule_code) if capsule_code else "Vidéo témoin"
+    if text and text not in {base, capsule_code}:
+        # Évite de coller un code brut type T9 derrière le libellé.
+        if re.fullmatch(r"T\d+|GEN", text, flags=re.IGNORECASE):
+            return base
+        return f"{base} — {text}"
+    return base
+
+
+def _display_expertise_title(code: str = "", titre: str = "") -> str:
+    """Libellé compréhensible pour un intervenant externe (sans code E…)."""
+    title = _normalize_editorial_french((titre or "").strip())
+    if title:
+        # Si le titre arrive déjà préfixé, ne pas doubler.
+        if title.lower().startswith("vidéo expertise"):
+            return title
+        # Retire un éventuel préfixe interne "Vidéo Expert 17 — …"
+        stripped = re.sub(
+            r"^Vidéo\s+Expert(?:ise)?\s+\d+(?:\s*bis)?\s*[—\-–:]\s*",
+            "",
+            title,
+            flags=re.IGNORECASE,
+        ).strip()
+        return f"Vidéo expertise — {stripped or title}"
+    labeled = _tb_expertise_label(_label_video_expert(code or ""))
+    return labeled if labeled else "Vidéo expertise"
+
+
+def _expertise_titles_from_item(item: dict) -> list[str]:
+    titles: list[str] = []
+    codes = item.get("expert_video_codes") or []
+    labels = item.get("expert_video_labels") or []
+    if codes:
+        for idx, code in enumerate(codes):
+            raw = labels[idx] if idx < len(labels) else ""
+            titre = ""
+            if raw:
+                parts = re.split(r"\s*[—\-–]\s*", raw, maxsplit=1)
+                titre = parts[1].strip() if len(parts) > 1 else raw
+            titles.append(_display_expertise_title(code, titre))
+        return titles
+    for raw in labels:
+        titles.append(_display_expertise_title("", raw))
+    return titles
+
+
+def _temoin_with_expertise_heading(item: dict) -> str:
+    """Titre de chapitre : vidéo témoin + vidéos expertise associées."""
+    temoin = _display_temoin_title(item.get("video_temoin_label", ""), item.get("code", ""))
+    expertises = _expertise_titles_from_item(item)
+    if not expertises:
+        return temoin
+    return f"{temoin} → {' · '.join(expertises)}"
+
+
 def _highlight_tb_edito_syntagmes(text: str, code: str) -> str:
     html = escape(text or "")
     keywords = sorted(TOPIC_KEYWORDS_BY_CODE.get(code, []), key=len, reverse=True)
@@ -8714,11 +8775,17 @@ def _e_code_to_temoin_map(programme_table: dict) -> dict[str, dict]:
 def _selection_finale_overview() -> list[dict]:
     """Vue d'ensemble de la sélection finale (une ligne par vidéo expertise)."""
     stored = _load_suivi_positionnements()
-    e_map = _e_code_to_temoin_map(
+    programme = (
         json.loads((ROOT / "data" / "programme_table.json").read_text(encoding="utf-8"))
         if (ROOT / "data" / "programme_table.json").exists()
         else {"rows": []}
     )
+    e_map = _e_code_to_temoin_map(programme)
+    temoin_by_capsule = {
+        row.get("code", ""): row.get("video_temoin", "")
+        for row in programme.get("rows", [])
+        if row.get("code")
+    }
     catalogue = {item["code"]: item for item in _load_expert_videos_catalogue()}
     rows: list[dict] = []
     for item in _positionnements_finaux_par_video(stored.get("intervenants", [])):
@@ -8732,16 +8799,23 @@ def _selection_finale_overview() -> list[dict]:
             or meta.get("titre")
             or ""
         )
+        capsule = meta.get("capsule", "")
+        titre = _normalize_editorial_french(
+            video.get("titre") or meta.get("titre") or ""
+        )
         for entry in item.get("intervenants") or []:
             rows.append(
                 {
                     "code": code,
-                    "label": _label_video_expert(code),
-                    "titre": _normalize_editorial_french(
-                        video.get("titre") or meta.get("titre") or ""
-                    ),
+                    "label": _display_expertise_title(code, titre),
+                    "titre": titre,
                     "objectif": _normalize_editorial_french(objectif),
-                    "capsule": meta.get("capsule", ""),
+                    "capsule": capsule,
+                    "temoin_label": _display_temoin_title(
+                        temoin_by_capsule.get(capsule, "")
+                        or meta.get("video_temoin_label", ""),
+                        capsule,
+                    ),
                     "nom": entry.get("nom", ""),
                     "organisme": entry.get("organisme", ""),
                     "slug": entry.get("slug", ""),
@@ -8798,8 +8872,9 @@ def _experts_for_videos_attendues(
             if code not in bucket["expert_video_codes"]:
                 bucket["expert_video_codes"].append(code)
                 titre = meta.get("titre") or ""
-                label = f"{_label_video_expert(code)}" + (f" — {titre}" if titre else "")
-                bucket["expert_video_labels"].append(_normalize_editorial_french(label))
+                bucket["expert_video_labels"].append(
+                    _display_expertise_title(code, titre)
+                )
 
         if not by_capsule:
             continue
@@ -8817,13 +8892,13 @@ def _experts_for_videos_attendues(
             for code in ordered:
                 meta = e_map.get(code, {})
                 titre = meta.get("titre") or ""
-                rebuilt_labels.append(
-                    _normalize_editorial_french(
-                        f"{_label_video_expert(code)}" + (f" — {titre}" if titre else "")
-                    )
-                )
+                rebuilt_labels.append(_display_expertise_title(code, titre))
             video["expert_video_codes"] = ordered
             video["expert_video_labels"] = rebuilt_labels
+            video["video_temoin_display"] = _display_temoin_title(
+                video.get("video_temoin_label", ""), video.get("code", "")
+            )
+            video["chapter_heading"] = _temoin_with_expertise_heading(video)
 
         prepared.append(
             {
@@ -8857,12 +8932,15 @@ def _selection_finale_overview_html(current_slug: str = "") -> str:
         )
         titre = row.get("titre") or ""
         objectif = row.get("objectif") or ""
+        expertise = row.get("label") or _display_expertise_title(row.get("code", ""), titre)
+        temoin = row.get("temoin_label") or ""
         body.append(
             "<tr"
             + highlight
             + ">"
-            f"<td><strong>{escape(row['code'])}</strong><br>"
-            f"<span class='meta'>{escape(row['label'])}</span></td>"
+            f"<td><strong>{escape(expertise)}</strong>"
+            + (f"<br><span class='meta'>{escape(temoin)}</span>" if temoin else "")
+            + "</td>"
             f"<td>{escape(titre)}"
             + (f"<br><span class='meta'>{escape(objectif)}</span>" if objectif else "")
             + "</td>"
@@ -8872,11 +8950,12 @@ def _selection_finale_overview_html(current_slug: str = "") -> str:
         )
     return (
         "<h2>Vue d'ensemble — sélection finale par vidéo expertise</h2>"
-        "<p class='meta'>Lecture partagée de l'arbitrage actuel : qui est attendu sur quelle vidéo expertise. "
+        "<p class='meta'>Lecture partagée : qui est attendu sur quelle <strong>vidéo expertise</strong>, "
+        "et à quelle <strong>vidéo témoin</strong> elle se rattache. "
         "Votre ligne est mise en évidence lorsque cela est possible.</p>"
         "<div class='table-wrap'><table>"
         "<thead><tr>"
-        "<th>Vidéo</th><th>Objectif</th><th>Intervenant retenu</th>"
+        "<th>Vidéo expertise</th><th>Objectif</th><th>Intervenant retenu</th>"
         "</tr></thead><tbody>"
         + "".join(body)
         + "</tbody></table></div>"
@@ -8899,10 +8978,12 @@ def _selection_finale_overview_doc_html(current_slug: str = "") -> str:
         )
         titre = row.get("titre") or ""
         objectif = row.get("objectif") or ""
+        expertise = row.get("label") or _display_expertise_title(row.get("code", ""), titre)
+        temoin = row.get("temoin_label") or ""
         body.append(
             f"<tr style='vertical-align:top;{highlight}'>"
-            f"<td style='padding:6px;border:1px solid #cbd5e1;'><strong>{escape(row['code'])}</strong><br>"
-            f"<span style='color:#64748b;font-size:10pt;'>{escape(row['label'])}</span></td>"
+            f"<td style='padding:6px;border:1px solid #cbd5e1;'><strong>{escape(expertise)}</strong><br>"
+            f"<span style='color:#64748b;font-size:10pt;'>{escape(temoin)}</span></td>"
             f"<td style='padding:6px;border:1px solid #cbd5e1;'>{escape(titre)}"
             + (
                 f"<br><span style='color:#64748b;font-size:10pt;'>{escape(objectif)}</span>"
@@ -8916,11 +8997,12 @@ def _selection_finale_overview_doc_html(current_slug: str = "") -> str:
         )
     return (
         "<h2>Vue d'ensemble — sélection finale par vidéo expertise</h2>"
-        "<p>Pour situer votre intervention dans l'ensemble du parcours, voici l'arbitrage actuel "
-        "des intervenants retenus pour chaque vidéo expertise. Votre ligne est surlignée.</p>"
+        "<p>Pour situer votre intervention dans l'ensemble du parcours : chaque ligne nomme "
+        "une <strong>vidéo expertise</strong> et la <strong>vidéo témoin</strong> à laquelle "
+        "elle se rattache. Votre ligne est surlignée.</p>"
         "<table style='width:100%;border-collapse:collapse;font-size:10.5pt;margin:10px 0 18px;'>"
         "<thead><tr>"
-        "<th style='text-align:left;padding:6px;border:1px solid #cbd5e1;background:#f8fafc;'>Vidéo</th>"
+        "<th style='text-align:left;padding:6px;border:1px solid #cbd5e1;background:#f8fafc;'>Vidéo expertise</th>"
         "<th style='text-align:left;padding:6px;border:1px solid #cbd5e1;background:#f8fafc;'>Objectif</th>"
         "<th style='text-align:left;padding:6px;border:1px solid #cbd5e1;background:#f8fafc;'>Intervenant retenu</th>"
         "</tr></thead><tbody>"
@@ -8932,18 +9014,15 @@ def _selection_finale_overview_doc_html(current_slug: str = "") -> str:
 def _expert_videos_attendues_lines(expert: dict) -> list[str]:
     lines: list[str] = []
     for item in expert.get("videos", []):
-        capsule = item.get("code", "")
-        temoin = item.get("video_temoin_label", "")
-        labels = item.get("expert_video_labels") or []
+        temoin = item.get("video_temoin_display") or _display_temoin_title(
+            item.get("video_temoin_label", ""), item.get("code", "")
+        )
+        labels = _expertise_titles_from_item(item)
         if labels:
             for label in labels:
-                lines.append(f"- {label} (capsule témoin {capsule}" + (f" — {temoin}" if temoin else "") + ")")
+                lines.append(f"- {label}\n  (liée à la {temoin})")
         else:
-            lines.append(
-                f"- Vidéos expertise à préciser (capsule témoin {capsule}"
-                + (f" — {temoin}" if temoin else "")
-                + ")"
-            )
+            lines.append(f"- Vidéos expertise à préciser\n  (liée à la {temoin})")
     return lines
 
 
@@ -8953,7 +9032,12 @@ def _compose_videos_attendues_mail(expert: dict, page_href: str) -> tuple[str, s
     organisme = expert["organisme"]
     attendues = _expert_videos_attendues_lines(expert)
     attendues_block = "\n".join(attendues) if attendues else "- À confirmer"
-    capsules = ", ".join(item["code"] for item in expert.get("videos", [])) or "à définir"
+    temoins = []
+    for item in expert.get("videos", []):
+        heading = item.get("chapter_heading") or _temoin_with_expertise_heading(item)
+        if heading:
+            temoins.append(f"- {heading}")
+    temoins_block = "\n".join(temoins) if temoins else "- à préciser"
 
     subject = f"MOOC L'Esprit d'innover — vidéos expertise attendues ({nom})"
     mail_text = (
@@ -8961,20 +9045,20 @@ def _compose_videos_attendues_mail(expert: dict, page_href: str) -> tuple[str, s
         f"Bonjour {prenom},\n\n"
         "Dans le cadre de la conception du MOOC \"L'Esprit d'innover\", nous revenons vers vous "
         "pour vous confirmer les vidéos expertise sur lesquelles vous êtes attendu(e).\n\n"
+        "Petit rappel utile (vous n'avez pas participé à la conception éditoriale) :\n"
+        "- une vidéo témoin est la parole croisée des chercheurs (chorale) ;\n"
+        "- une vidéo expertise est votre intervention, liée à cette vidéo témoin.\n\n"
         f"Vous êtes attendu(e) comme expert ({organisme}) sur le périmètre suivant :\n"
         f"{attendues_block}\n\n"
-        "Un guide éditorial vous est préparé pour chaque capsule témoin concernée. "
-        "Il reprend :\n"
+        "Vidéos témoin concernées (avec les vidéos expertise associées) :\n"
+        f"{temoins_block}\n\n"
+        "Un guide éditorial vous est préparé. Il reprend :\n"
         "- les coordonnées de contact pour vos questions,\n"
-        "- la synthèse des témoignages,\n"
-        "- la proposition de cadrage,\n"
-        "- une proposition de script pour les vidéos expertise,\n"
-        "- le script final de la chorale témoin,\n"
-        "- en fin de document, une vue d'ensemble de la sélection finale "
-        "(qui intervient sur quelle vidéo expertise).\n\n"
+        "- pour chaque vidéo témoin : synthèse des témoignages, proposition de cadrage, "
+        "proposition de script pour vos vidéos expertise, script final de la chorale,\n"
+        "- en fin de document, une vue d'ensemble de la sélection finale.\n\n"
         "Vous pouvez consulter ce guide en ligne (lecture éventuelle sur le site de travail) :\n"
         f"- Page dédiée : {page_href}\n\n"
-        f"Capsules témoins concernées : {capsules}.\n\n"
         "Le travail d'ingénierie pédagogique vise à refléter au mieux votre expertise sans s'y substituer ; "
         "vous êtes bien entendu libre d'aller plus loin, d'ajuster, ou de recadrer selon votre jugement.\n\n"
         "Prochaine étape utile : disposer d'un script pour le prompteur "
@@ -9029,7 +9113,7 @@ def export_scripts_expertise_plaintext(capsule_data: dict) -> str:
         titre = orientation.get("titre") or (video or {}).get("titre", "")
         script, word_count = _build_script_expertise_projete(orientation, video)
         plan = _build_script_expertise_plan(orientation, video)
-        lines.append(f"{_label_video_expert(code)} — {titre or 'Script projeté'}")
+        lines.append(f"{_display_expertise_title(code, titre)} — script projeté")
         lines.append(f"Volume : {word_count} mots")
         if plan:
             lines.append("Plan :")
@@ -9042,28 +9126,21 @@ def export_scripts_expertise_plaintext(capsule_data: dict) -> str:
 
 
 def _videos_attendues_contact_preface_html(*, for_doc: bool = True) -> str:
-    """Coordonnées de contact, à placer en introduction avant le sommaire."""
+    """Coordonnées de contact + mode d'emploi, avant le sommaire."""
     mail = TEST_MAIL_RECIPIENT
     cc = REVIEW_MAIL_RECIPIENT
-    if for_doc:
-        return (
-            "<div class='doc-block brief-block' style='margin:12px 0 18px;'>"
-            "<p><strong>Pour toute question, mise en forme ou échange</strong>, "
-            "je reste disponible :</p>"
-            "<ul>"
-            "<li>sur <strong>Teams jusqu’au 31 juillet</strong> ;</li>"
-            "<li>puis, <strong>à partir du 24 août</strong>, pour un entretien sur Teams ;</li>"
-            "<li>vous pouvez également laisser un message par mail "
-            "<strong>à partir du 15 août</strong>, avec en copie "
-            f"<a href='mailto:{escape(cc)}'>{escape(cc)}</a>.</li>"
-            "</ul>"
-            f"<p>Mon adresse : <a href='mailto:{escape(mail)}'>{escape(mail)}</a>. "
-            "Je répondrai à vos questions.</p>"
-            "</div>"
-        )
-    return (
-        "<section class='methodology-panel'>"
-        "<h2>Contact</h2>"
+    reading = (
+        "<p><strong>Comment lire ce guide</strong> — le MOOC articule deux types de vidéos :</p>"
+        "<ul>"
+        "<li><strong>Vidéo témoin</strong> : parole croisée de chercheurs (chorale), "
+        "déjà montée éditorialement ; elle donne le contexte de votre intervention.</li>"
+        "<li><strong>Vidéo expertise</strong> : votre intervention, pour éclairer ou prolonger "
+        "la vidéo témoin. C’est le contenu pour lequel vous êtes attendu(e).</li>"
+        "</ul>"
+        "<p>Chaque chapitre nomme d’abord la <strong>vidéo témoin</strong>, puis les "
+        "<strong>vidéos expertise</strong> qui s’y rattachent.</p>"
+    )
+    contact = (
         "<p><strong>Pour toute question, mise en forme ou échange</strong>, "
         "je reste disponible :</p>"
         "<ul>"
@@ -9075,6 +9152,17 @@ def _videos_attendues_contact_preface_html(*, for_doc: bool = True) -> str:
         "</ul>"
         f"<p>Mon adresse : <a href='mailto:{escape(mail)}'>{escape(mail)}</a>. "
         "Je répondrai à vos questions.</p>"
+    )
+    if for_doc:
+        return (
+            "<div class='doc-block brief-block' style='margin:12px 0 18px;'>"
+            f"{reading}{contact}"
+            "</div>"
+        )
+    return (
+        "<section class='methodology-panel'>"
+        "<h2>Introduction</h2>"
+        f"{reading}{contact}"
         "</section>"
     )
 
@@ -9205,38 +9293,57 @@ def _guide_videos_attendues_doc_html(
         cadrage = _tb_edito_build_cadrage(
             code, ordre, by_seq_id, capsule_data.get("videos_expert") or videos_expert_all
         )
-        script_final = _tb_expertise_label(
-            _normalize_script_final_editorial(
-                _tb_edito_script_with_cadrage(ordre, by_seq_id, cadrage)
+        script_final = _humanize_capsule_labels(
+            _tb_expertise_label(
+                _normalize_script_final_editorial(
+                    _tb_edito_script_with_cadrage(ordre, by_seq_id, cadrage)
+                )
             )
         )
-        synthese_text = _tb_expertise_label(
-            export_synthese_temoignages_plaintext(code, capsule_data, by_id)
+        synthese_text = _humanize_capsule_labels(
+            _tb_expertise_label(
+                export_synthese_temoignages_plaintext(code, capsule_data, by_id)
+            )
         )
-        brief_text = _tb_expertise_label(
-            export_brief_intervenant_plaintext(code, capsule_data, by_id)
+        brief_text = _humanize_capsule_labels(
+            _tb_expertise_label(
+                export_brief_intervenant_plaintext(code, capsule_data, by_id)
+            )
         )
-        scripts_text = _tb_expertise_label(export_scripts_expertise_plaintext(capsule_data))
+        scripts_text = _humanize_capsule_labels(
+            _tb_expertise_label(export_scripts_expertise_plaintext(capsule_data))
+        )
 
+        chapter_title = item.get("chapter_heading") or _temoin_with_expertise_heading(item)
+        temoin_title = item.get("video_temoin_display") or _display_temoin_title(
+            item.get("video_temoin_label", ""), code
+        )
+        expertise_titles = _expertise_titles_from_item(item)
         toc_rows.append(
             "<tr>"
-            f"<td><a href='#{escape(chapter_anchor)}'>{escape(code)} — "
-            f"{escape(item.get('video_temoin_label', ''))}</a></td>"
+            f"<td><a href='#{escape(chapter_anchor)}'>{escape(chapter_title)}</a></td>"
             "</tr>"
         )
-        attendues = ", ".join(item.get("expert_video_labels") or expert_codes) or "À définir"
+        attendues_html = (
+            "<ul>"
+            + "".join(f"<li>{escape(label)}</li>" for label in expertise_titles)
+            + "</ul>"
+            if expertise_titles
+            else "<p>À définir</p>"
+        )
         sections.append(
             "<section style='margin-top:28px;padding-top:10px;border-top:1px solid #cbd5e1;'>"
             f"<a name='{escape(chapter_anchor)}'></a>"
-            f"<h2>{escape(code)} — {escape(item.get('video_temoin_label', ''))}</h2>"
-            f"<p class='meta'><strong>Vidéos expertise attendues :</strong> {escape(attendues)}</p>"
+            f"<h2>{escape(temoin_title)}</h2>"
+            "<p><strong>Vidéos expertise associées (votre intervention) :</strong></p>"
+            f"{attendues_html}"
             f"<h3>{escape(export_synthese_section_title(code))}</h3>"
             f"<div class='doc-block brief-block'>{_plain_block(synthese_text)}</div>"
-            f"<h3>{escape(EXPORT_BRIEF_SECTION_TITLE)}</h3>"
+            f"<h3>{escape(_tb_expertise_label(EXPORT_BRIEF_SECTION_TITLE))}</h3>"
             f"<div class='doc-block brief-block'>{_ergo_brief_html(brief_text)}</div>"
             "<h3>Proposition de script pour les vidéos expertise</h3>"
             f"<div class='doc-block script-block'>{_plain_block(scripts_text)}</div>"
-            "<h3>Script final</h3>"
+            "<h3>Script final de la vidéo témoin</h3>"
             f"<div class='doc-block script-block'>{_ergo_script_html(script_final)}</div>"
             "</section>"
         )
@@ -9245,8 +9352,8 @@ def _guide_videos_attendues_doc_html(
         "<tr><td><a href='#vue_ensemble'>Vue d'ensemble — sélection finale</a></td></tr>"
     )
     toc_intro = (
-        "<p class='meta'>Liens actifs vers chaque capsule témoin concernée, "
-        "puis la vue d'ensemble en fin de document.</p>"
+        "<p class='meta'>Liens actifs vers chaque vidéo témoin concernée "
+        "(avec les vidéos expertise associées), puis la vue d'ensemble en fin de document.</p>"
     )
     overview = (
         "<section style='margin-top:28px;padding-top:10px;border-top:1px solid #cbd5e1;'>"
@@ -9295,18 +9402,21 @@ def _videos_attendues_editorial_web_html(
         script_final = _normalize_script_final_editorial(
             _tb_edito_script_with_cadrage(ordre, by_seq_id, cadrage)
         )
-        attendues = ", ".join(item.get("expert_video_labels") or expert_codes) or "À définir"
+        attendues = _expertise_titles_from_item(item)
+        temoin_title = item.get("video_temoin_display") or _display_temoin_title(
+            item.get("video_temoin_label", ""), code
+        )
         parts.append(f"<section class='methodology-panel'>")
-        parts.append(
-            f"<h2>{escape(code)} — {escape(item.get('video_temoin_label', ''))}</h2>"
-        )
-        parts.append(
-            f"<p class='meta'><strong>Vidéos expertise attendues :</strong> {escape(attendues)}</p>"
-        )
+        parts.append(f"<h2>{escape(temoin_title)}</h2>")
+        parts.append("<p><strong>Vidéos expertise associées (votre intervention) :</strong></p>")
+        if attendues:
+            parts.append("<ul>" + "".join(f"<li>{escape(label)}</li>" for label in attendues) + "</ul>")
+        else:
+            parts.append("<p class='meta'>À définir</p>")
         parts.append(synthese_temoignages_section(code, capsule_data, by_id) or "")
         parts.append(brief_intervenant_section(code, capsule_data, by_id) or "")
         parts.append(scripts_expertise_projetes_section(capsule_data) or "")
-        parts.append("<h2>Script final</h2>")
+        parts.append("<h2>Script final de la vidéo témoin</h2>")
         parts.append(f"<div class='script'>{escape(script_final)}</div>")
         parts.append("</section>")
     parts.append(_selection_finale_overview_html(expert.get("slug", "")))
@@ -9561,10 +9671,10 @@ def build_mails_experts_pages(
     attendues_cards = []
     for expert in experts_attendues:
         mail_file = f"mail_videos_attendues_{expert['slug']}.html"
-        video_refs = ", ".join(
-            code
+        video_refs = " · ".join(
+            label
             for item in expert["videos"]
-            for code in item.get("expert_video_codes", [])
+            for label in _expertise_titles_from_item(item)
         ) or "Aucune vidéo expertise"
         attendues_cards.append(
             "<article class='card'>"
@@ -9625,13 +9735,15 @@ def build_mails_experts_pages(
             expert, grouped_tb, rows_by_code, affectations, by_id
         )
         attendues_lines = _expert_videos_attendues_lines(expert)
-        attendues_list = (
-            "<ul>"
-            + "".join(f"<li>{escape(line[2:])}</li>" for line in attendues_lines)
-            + "</ul>"
-            if attendues_lines
-            else "<p>Aucune vidéo expertise associée.</p>"
-        )
+        if attendues_lines:
+            list_items = []
+            for line in attendues_lines:
+                text = line[2:] if line.startswith("- ") else line
+                parts = [part.strip() for part in text.split("\n") if part.strip()]
+                list_items.append("<li>" + "<br>".join(escape(part) for part in parts) + "</li>")
+            attendues_list = "<ul>" + "".join(list_items) + "</ul>"
+        else:
+            attendues_list = "<p>Aucune vidéo expertise associée.</p>"
         detail_body = (
             f"<p class='meta'><strong>Expert :</strong> {escape(expert['nom'])} · "
             f"<strong>Organisme :</strong> {escape(expert['organisme'])}</p>"
@@ -9656,10 +9768,10 @@ def build_mails_experts_pages(
             "<h2>Document éditorial</h2>"
             f"<p><a class='btn' href='{escape(doc_name)}' download>Exporter le guide éditorial (Word)</a> "
             f"<a class='btn' href='{escape(doc_name)}' target='_blank' rel='noopener'>Ouvrir le guide (Word)</a></p>"
-            f"<p class='meta'>Le document ouvre sur les coordonnées de contact, "
-            f"puis le sommaire et, pour chaque capsule : "
-            f"synthèse des témoignages, proposition de cadrage, "
-            f"proposition de script pour les vidéos expertise, script final. "
+            f"<p class='meta'>Le document ouvre sur le mode d'emploi (vidéo témoin / vidéo expertise) "
+            f"et les coordonnées de contact, puis le sommaire. Pour chaque vidéo témoin : "
+            f"vidéos expertise associées, synthèse des témoignages, proposition de cadrage, "
+            f"proposition de script, script final. "
             f"La vue d'ensemble de la sélection finale figure en fin de document.</p>"
             "<div class='editorial-preview'>"
             f"{editorial_html}"
