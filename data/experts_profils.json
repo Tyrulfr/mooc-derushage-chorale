@@ -334,12 +334,10 @@
     },
     {
       "nom": "Stephanie Sano",
-      "profil_cible": "A verifier",
-      "statut": "a_verifier",
+      "profil_cible": "Experte UVSQ (Université de Versailles Saint-Quentin-en-Yvelines)",
+      "statut": "valide",
       "infos": [
-        "Le profil LinkedIn trouve correspond a une directrice finance aux Etats-Unis (hors contexte).",
-        "Aucune correspondance solide avec l'ecosysteme innovation/valorisation vise.",
-        "Validation manuelle necessaire avant usage."
+        "Rattachement confirme : UVSQ (Université de Versailles Saint-Quentin-en-Yvelines)."
       ],
       "sources": [
         {

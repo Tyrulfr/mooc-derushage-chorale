@@ -26,7 +26,7 @@ ENCODE_META = {
     "mur": ("BAB_Muriel_Thomas video.txt", "Muriel Thomas"),
     "syl": ("BAB_SYLVIA_COHEN_BABbrut.txt", "Sylvia Cohen-Kaminski"),
     "loi": ("BAB_LOIC_RAJJOU_BABbrut.txt", "Loic Rajjou"),
-    "yan": ("BAB_Yan_Monier.txt", "Yann Meunier"),
+    "yan": ("BAB_Yan_Monier.txt", "Yann Monier"),
 }
 
 

@@ -293,12 +293,12 @@ def orientation_e2_e3(by_id: dict[str, dict]) -> list[dict]:
             "concepts": ["Validation du besoin", "Probleme de marche"],
             "verbatim_cle": "essentiel de sortir du laboratoire… repondre a un vrai probleme de marche",
             "dans_le_temoin": (
-                "Yann Meunier oppose laboratoire protege et terrain : l'innovation exige "
+                "Yann Monier oppose laboratoire protege et terrain : l'innovation exige "
                 "des interlocuteurs qui ont de vrais problemes economiques."
             ),
             "travail_expert": "E2/E3 : poser la question Pour qui ? Quel probleme concret ?",
             "phrase_amorce": (
-                "« Yann Meunier resume le geste de cette capsule : sortir du laboratoire "
+                "« Yann Monier resume le geste de cette capsule : sortir du laboratoire "
                 "pour verifier si le besoin est reel — pas seulement technique. »"
             ),
             "question_apprenant": "Avez-vous deja confronte votre idee a un utilisateur hors de votre labo ?",

@@ -114,7 +114,7 @@ Idees prometteuses ≠ innovation
 - **Timecodes** : `01:00:43.390` → `01:00:55.030`
 - **Duree BAB** : 11.64 s
 
-> je voudrais greffer. Je travaille dans le domaine de la nano photonique, c'est à dire l'étude de la lumière à l'échelle du nanomètre. Concrètement, c'est par exemple étudier détecter des toutes petites particules avec de la lumière.
+> Jean-Jacques Greffet. Je travaille dans le domaine de la nano photonique, c'est à dire l'étude de la lumière à l'échelle du nanomètre. Concrètement, c'est par exemple étudier détecter des toutes petites particules avec de la lumière.
 
 #### 2. MUR-0001 — Muriel Thomas *(presentation seule, ~22 s)*
 - **Source** : `BAB_Muriel_Thomas video.txt`

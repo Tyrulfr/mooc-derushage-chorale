@@ -3,7 +3,7 @@
   "source": "BAB_JJ_GREFFET.txt",
   "chercheur": "Jean-Jacques Greffet",
   "statut_encodage": "NON_ENCODE",
-  "date_maj": "2026-07-13",
+  "date_maj": "2026-07-27",
   "segments": [
     {
       "id": "JJG-0001",
@@ -284,7 +284,7 @@
         "T12": {
           "statut": "UTILISE",
           "role": "reseau_introductions",
-          "duree_montage_secondes": 20,
+          "duree_montage_secondes": 23,
           "coupe": "Ecosysteme local pour introductions investisseurs au tour de table."
         }
       },

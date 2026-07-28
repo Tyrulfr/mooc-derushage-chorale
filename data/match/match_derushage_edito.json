@@ -1,5 +1,5 @@
 {
-  "date_maj": "2026-07-24",
+  "date_maj": "2026-07-27",
   "objectif": "Comparer le derushage actuel aux sequences retenues par l'edito pour optimiser l'adequation pedagogique.",
   "seuil_match_similarite": "inclusion_sequence (>= 6 mots consecutifs), meme video et meme module",
   "resume": {
@@ -235,7 +235,7 @@
           "video": "Vidéo 1 : pourquoi oser",
           "question": "",
           "edito_paragraphe": 37,
-          "texte": "Jean-Jacques Greffé Je suis professeur à l'Institut d'optique."
+          "texte": "Jean-Jacques Greffet Je suis professeur à l'Institut d'optique."
         },
         {
           "edito_id": "JJGE-0005",
@@ -2711,7 +2711,7 @@
       ]
     },
     {
-      "temoin": "Yann Meunier",
+      "temoin": "Yann Monier",
       "source_edito": "00_Mooc_Transcript_Yann Monier.docx",
       "id_edito": "yan_edito",
       "nb_edito": 49,
@@ -3090,7 +3090,7 @@
           "video": "Vidéo 15 : Passer à l’action",
           "question": "",
           "edito_paragraphe": 284,
-          "texte": "Yann Meunier Je travaille dans le domaine de l'automatique, de la construction de jumeaux numériques automatisés de chaîne de production industrielle à partir des données provenant des capteurs et des actionneurs."
+          "texte": "Yann Monier Je travaille dans le domaine de l'automatique, de la construction de jumeaux numériques automatisés de chaîne de production industrielle à partir des données provenant des capteurs et des actionneurs."
         }
       ],
       "non_match_derushage": [

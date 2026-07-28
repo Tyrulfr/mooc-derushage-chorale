@@ -1,7 +1,7 @@
 {
   "id": "yan_edito",
   "source": "00_Mooc_Transcript_Yann Monier.docx",
-  "intervenant": "Yann Meunier",
+  "intervenant": "Yann Monier",
   "statut_derushage": "AUTO_GENERE_DEPUIS_SURLIGNAGE",
   "date_maj": "2026-07-24",
   "nb_paragraphes_analyse": 285,
@@ -542,7 +542,7 @@
       "module": "",
       "video": "Vidéo 15 : Passer à l’action",
       "question": "",
-      "texte": "Yann Meunier Je travaille dans le domaine de l'automatique, de la construction de jumeaux numériques automatisés de chaîne de production industrielle à partir des données provenant des capteurs et des actionneurs.",
+      "texte": "Yann Monier Je travaille dans le domaine de l'automatique, de la construction de jumeaux numériques automatisés de chaîne de production industrielle à partir des données provenant des capteurs et des actionneurs.",
       "source_paragraphe": 284
     }
   ]

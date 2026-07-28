@@ -3,7 +3,7 @@
   "source": "BAB_SYLVIA_COHEN_BABbrut.txt",
   "chercheur": "Sylvia Cohen-Kaminski",
   "statut_encodage": "NON_ENCODE",
-  "date_maj": "2026-07-13",
+  "date_maj": "2026-07-27",
   "segments": [
     {
       "id": "SYL-0001",
@@ -256,7 +256,7 @@
         "T12": {
           "statut": "UTILISE",
           "role": "complementarite_disciplines",
-          "duree_montage_secondes": 51,
+          "duree_montage_secondes": 55,
           "coupe": "Biologiste entoure de chimistes et pharmacologues ; relations humaines, respect, pas d'ego — chacun sa place."
         }
       },

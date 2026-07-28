@@ -349,7 +349,7 @@ def orientation_e18_e19(by_id: dict[str, dict]) -> list[dict]:
                 }
                 for item in e18_items
             ],
-            "experts_proposes": ["Arielle Sante", "Joel Nguen", "Pascal Corbel"],
+            "experts_proposes": ["Arielle Sante", "Pascal Corbel"],
         },
         {
             "code": "E19",
@@ -384,7 +384,7 @@ def orientation_e18_e19(by_id: dict[str, dict]) -> list[dict]:
                 }
                 for item in e19_items
             ],
-            "experts_proposes": ["Arielle Sante", "Joel Nguen", "Pascal Corbel"],
+            "experts_proposes": ["Arielle Sante", "Pascal Corbel"],
         },
     ]
 

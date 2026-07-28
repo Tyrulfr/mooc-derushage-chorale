@@ -43,6 +43,30 @@ ALLOWED_CAPSULE_STATUSES = {
     "VERROUILLEE",
 }
 
+
+def correct_asr_greffet(text: str) -> str:
+    """Corrige l'ASR du nom Greffet dans les couches editoriales (jamais dans data/raw/)."""
+    if not text:
+        return text
+    corrected = text.replace("Jean-Jacques Greffé", "Jean-Jacques Greffet")
+    corrected = corrected.replace("Jean-André Greffé", "Jean-Jacques Greffet")
+    corrected = re.sub(
+        r"\b[Jj]e voudrais greffer\b",
+        "Jean-Jacques Greffet",
+        corrected,
+    )
+    return corrected
+
+
+def correct_asr_yann_monier(text: str) -> str:
+    """Corrige l'ASR du nom Yann Meunier dans les couches editoriales (jamais dans data/raw/)."""
+    if not text:
+        return text
+    corrected = text
+    corrected = re.sub(r"\bYann\s+Meunier\b", "Yann Monier", corrected, flags=re.I)
+    corrected = re.sub(r"\bYann[- ]?Meunier\b", "Yann Monier", corrected, flags=re.I)
+    return corrected
+
 SCORE_FIELDS = {
     "pertinence",
     "concret",
@@ -159,6 +183,7 @@ def parse_bab_raw(source: str | Path) -> list[dict]:
     if not path.is_absolute():
         path = DATA / "raw" / path
     lines = path.read_text(encoding="utf-8").splitlines()
+    apply_yann_asr = path.name == "BAB_Yan_Monier.txt"
     blocks: list[dict] = []
     current: dict | None = None
     for line in lines:
@@ -166,6 +191,8 @@ def parse_bab_raw(source: str | Path) -> list[dict]:
         if match:
             if current:
                 current["verbatim"] = "\n".join(current["_lines"]).strip()
+                if apply_yann_asr:
+                    current["verbatim"] = correct_asr_yann_monier(current["verbatim"])
                 del current["_lines"]
                 current["duree_secondes"] = segment_duration(current)
                 blocks.append(current)
@@ -179,6 +206,8 @@ def parse_bab_raw(source: str | Path) -> list[dict]:
             current["_lines"].append(line)
     if current:
         current["verbatim"] = "\n".join(current["_lines"]).strip()
+        if apply_yann_asr:
+            current["verbatim"] = correct_asr_yann_monier(current["verbatim"])
         del current["_lines"]
         current["duree_secondes"] = segment_duration(current)
         blocks.append(current)
@@ -210,10 +239,28 @@ def merge_bab_encode_blocs(doc: dict) -> list[dict]:
                     best_span = span
         return best
 
+    apply_greffet_asr = doc.get("chercheur") == "Jean-Jacques Greffet"
+    apply_yann_asr = doc.get("chercheur") in {"Yann Monier", "Yann Meunier"}
     merged: list[dict] = []
     for index, bloc in enumerate(bab_blocs, start=1):
         encoded = match_segment(bloc)
+        verbatim = bloc["verbatim"]
+        if apply_greffet_asr:
+            verbatim = correct_asr_greffet(verbatim)
+        if apply_yann_asr:
+            verbatim = correct_asr_yann_monier(verbatim)
         if encoded:
+            # Preferer le verbatim encode s'il porte une correction editoriale.
+            if encoded.get("correction_transcription") or encoded.get("verbatim"):
+                encoded_verbatim = encoded.get("verbatim") or verbatim
+                if apply_greffet_asr:
+                    encoded_verbatim = correct_asr_greffet(encoded_verbatim)
+                if apply_yann_asr:
+                    encoded_verbatim = correct_asr_yann_monier(encoded_verbatim)
+                # Ne remplacer que si le bloc raw est contenu dans le segment encode
+                # et que les timecodes coincident exactement (evite de dupliquer un long segment).
+                if (bloc["debut"], bloc["fin"]) == (encoded.get("debut"), encoded.get("fin")):
+                    verbatim = encoded_verbatim
             merged.append(
                 {
                     "numero": index,
@@ -221,7 +268,7 @@ def merge_bab_encode_blocs(doc: dict) -> list[dict]:
                     "debut": bloc["debut"],
                     "fin": bloc["fin"],
                     "duree_secondes": bloc["duree_secondes"],
-                    "verbatim": bloc["verbatim"],
+                    "verbatim": verbatim,
                     "id": encoded.get("id"),
                     "theme_principal": encoded.get("theme_principal"),
                     "statut": encoded.get("statut"),
@@ -240,7 +287,7 @@ def merge_bab_encode_blocs(doc: dict) -> list[dict]:
                     "debut": bloc["debut"],
                     "fin": bloc["fin"],
                     "duree_secondes": bloc["duree_secondes"],
-                    "verbatim": bloc["verbatim"],
+                    "verbatim": verbatim,
                 }
             )
     return merged

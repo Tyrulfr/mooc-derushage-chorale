@@ -1,16 +1,16 @@
 {
   "id": "yan",
   "source": "BAB_Yan_Monier.txt",
-  "chercheur": "Yann Meunier",
+  "chercheur": "Yann Monier",
   "statut_encodage": "NON_ENCODE",
-  "date_maj": "2026-07-13",
+  "date_maj": "2026-07-27",
   "segments": [
     {
       "id": "YAN-0001",
       "debut": "01:00:04.510",
       "fin": "01:00:21.230",
       "duree_secondes": 16.72,
-      "verbatim": "Alors je m'appelle Yann Meunier, je suis jeune chercheur et je travaille donc au Lure, pas le N s Paris-Saclay et je travaille dans le domaine de l'automatique, de la construction automatisée de jumeau numérique, de chaîne de production industrielle à partir de l'analyse des données.",
+      "verbatim": "Alors je m'appelle Yann Monier, je suis jeune chercheur et je travaille donc au Lure, pas le N s Paris-Saclay et je travaille dans le domaine de l'automatique, de la construction automatisée de jumeau numérique, de chaîne de production industrielle à partir de l'analyse des données.",
       "theme_principal": "T1",
       "statut": "UTILISE",
       "qualification": "PRIORITAIRE",

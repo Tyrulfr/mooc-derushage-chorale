@@ -14,8 +14,9 @@
       "module": "",
       "video": "Vidéo 1 : pourquoi oser",
       "question": "",
-      "texte": "Jean-Jacques Greffé Je suis professeur à l'Institut d'optique.",
-      "source_paragraphe": 37
+      "texte": "Jean-Jacques Greffet Je suis professeur à l'Institut d'optique.",
+      "source_paragraphe": 37,
+      "correction_transcription": "ASR: « Greffé / je voudrais greffer » → Jean-Jacques Greffet (non applique au fichier raw)."
     },
     {
       "id": "JJGE-0002",

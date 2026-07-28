@@ -14,6 +14,7 @@ from lib_derushage import (
     SITE,
     capsule_bab_duration,
     capsule_duration,
+    correct_asr_greffet,
     escape,
     find_overlaps,
     format_seconds,
@@ -510,6 +511,80 @@ tbody tr:last-child td { border-bottom: none; }
   line-height: 1.45;
 }
 .synthese-chorale-list strong { display: inline-block; min-width: 9rem; }
+.synthese-objectifs-expert {
+  margin: 16px 0 20px;
+  padding: 14px 16px;
+  background: #f8fafc;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.synthese-objectifs-expert h3 { margin: 0 0 10px; font-size: 15px; }
+.synthese-objectifs-expert ul { margin: 0; padding-left: 1.2rem; }
+.synthese-objectifs-expert li { margin-bottom: 8px; line-height: 1.4; }
+.synthese-chercheur {
+  margin: 16px 0 0;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+}
+.synthese-chercheur h3 { margin: 0 0 8px; font-size: 16px; }
+.synthese-chercheur h4 { margin: 14px 0 8px; font-size: 14px; color: var(--muted); }
+.synthese-chercheur p { margin: 0 0 8px; line-height: 1.45; }
+.synthese-appui-list { margin: 0; padding: 0; list-style: none; }
+.synthese-appui-list li {
+  margin-bottom: 10px;
+  padding: 10px 12px;
+  background: #f8fafc;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  line-height: 1.45;
+}
+.synthese-appui-list li:last-child { margin-bottom: 0; }
+.script-expertise-projete-panel {
+  margin-top: 28px;
+  border-left: 4px solid #b45309;
+}
+.script-expertise-disclaimer {
+  margin: 0 0 16px;
+  padding: 12px 14px;
+  background: #fff7ed;
+  border: 1px solid #fdba74;
+  border-radius: var(--radius);
+  line-height: 1.45;
+}
+.script-expertise-block {
+  margin: 18px 0 0;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.script-expertise-block h3 { margin: 0 0 8px; font-size: 16px; }
+.script-expertise-plan {
+  margin: 12px 0 16px;
+  padding: 12px 14px;
+  background: #f8fafc;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.script-expertise-plan h4 {
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+.script-expertise-plan ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+.script-expertise-plan li {
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.script-expertise-plan li:last-child { margin-bottom: 0; }
+.script-expertise-block .script {
+  margin-top: 12px;
+  white-space: pre-wrap;
+}
 .cadrage-block { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line); }
 .cadrage-block h3 { margin: 18px 0 8px; font-size: 16px; }
 .cadrage-position { font-size: 13px; color: var(--muted); margin: 0 0 8px; }
@@ -697,6 +772,27 @@ tbody tr:last-child td { border-bottom: none; }
   font-weight: 700;
   min-width: 52px;
 }
+.heatmap-table--coherence {
+  min-width: 1400px;
+}
+.heatmap-table--coherence thead th {
+  min-width: 110px;
+  max-width: 140px;
+  white-space: normal;
+  line-height: 1.25;
+  vertical-align: bottom;
+}
+.heatmap-table--coherence .heatmap-row-label {
+  min-width: 260px;
+  max-width: 320px;
+  font-weight: 650;
+  line-height: 1.3;
+}
+.heatmap-table--coherence td.heatmap-cell--selected {
+  outline: 2px solid #0b3d42;
+  outline-offset: -2px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.55);
+}
 .heatmap-legend {
   display: flex;
   align-items: center;
@@ -724,7 +820,7 @@ EXPORT_WORD_MODAL = """
 <div class="modal" id="export-word-modal" hidden role="dialog" aria-modal="true" aria-labelledby="export-word-title">
   <div class="modal-card">
     <h2 id="export-word-title">Exporter le dossier capsule</h2>
-    <p class="meta">Script final chorale, unites de sens et videos expert a produire.</p>
+    <p class="meta">Script final chorale, unités de sens et vidéos expert à produire.</p>
     <div class="export-field">
       <label for="export-word-filename">Nom du fichier</label>
       <input type="text" id="export-word-filename" value="{default_filename}" autocomplete="off">
@@ -732,11 +828,11 @@ EXPORT_WORD_MODAL = """
     <div class="export-field" id="export-word-folder-field">
       <label>Dossier de destination</label>
       <div class="export-folder">
-        <span id="export-word-folder">Aucun dossier selectionne</span>
+        <span id="export-word-folder">Aucun dossier sélectionné</span>
         <button type="button" class="btn btn-secondary" id="export-word-pick-dir">Choisir un dossier</button>
       </div>
     </div>
-    <p class="meta" id="export-word-browser-hint">Chrome et Edge permettent de choisir un dossier. Firefox et Safari utilisent le telechargement du navigateur.</p>
+    <p class="meta" id="export-word-browser-hint">Chrome et Edge permettent de choisir un dossier. Firefox et Safari utilisent le téléchargement du navigateur.</p>
     <div class="modal-actions">
       <button type="button" class="btn btn-secondary" id="export-word-cancel">Annuler</button>
       <button type="button" class="btn" id="export-word-run">Exporter</button>
@@ -757,41 +853,41 @@ def selection_methodology_section(capsule: dict, capsule_data: dict) -> str:
     statut = meth.get("statut_montage", "")
     statut_note = ""
     if statut == "VALIDE_LABORATOIRE":
-        statut_note = "<p class='meta'>Montage valide en laboratoire editorial.</p>"
+        statut_note = "<p class='meta'>Montage validé en laboratoire éditorial.</p>"
     elif statut == "A_CARTOGRAPHIER":
-        statut_note = "<p class='meta'>Montage a cartographier — methodologie de reference pour le derushage a venir.</p>"
+        statut_note = "<p class='meta'>Montage à cartographier — méthodologie de référence pour le dérushage à venir.</p>"
     return f"""
 <section class="methodology-panel">
-  <h2>Methode de selection des sequences</h2>
+  <h2>Méthode de sélection des séquences</h2>
   {statut_note}
   <p>
-    Cette capsule chorale est constituee a partir des transcripts BAB d'interviews
-    (Jean-Jacques Greffet, Muriel Thomas, Sylvia Cohen-Kaminski, Loic Rajjou). La selection
-    repose sur une analyse par <strong>unites de sens</strong> (sciences sociales et linguistique),
-    pas sur une decoupe mecanique du temps de parole.
+    Cette capsule chorale est constituée à partir des transcripts BAB d'interviews
+    (Jean-Jacques Greffet, Muriel Thomas, Sylvia Cohen-Kaminski, Loïc Rajjou). La sélection
+    repose sur une analyse par <strong>unités de sens</strong> (sciences sociales et linguistique),
+    pas sur une découpe mécanique du temps de parole.
   </p>
   <p class="meta">Pipeline : analyze_discourse → proposition chorale → montage → sync_unites_de_sens. Voir docs/METHODOLOGIE_ANALYSE.md</p>
-  <p><strong>Fil pedagogique de la capsule :</strong> {escape(fil)}</p>
+  <p><strong>Fil pédagogique de la capsule :</strong> {escape(_normalize_editorial_french(fil))}</p>
   <ul>
-    <li><strong>Unites de sens</strong> — identification des passages qui forment une idee complete,
-    comprehensible hors du reste de l'entretien.</li>
-    <li><strong>Regroupement thematique</strong> — rapprochement des extraits selon le fil pedagogique
+    <li><strong>Unités de sens</strong> — identification des passages qui forment une idée complète,
+    compréhensible hors du reste de l'entretien.</li>
+    <li><strong>Regroupement thématique</strong> — rapprochement des extraits selon le fil pédagogique
     de la capsule.</li>
-    <li><strong>Themes et sous-themes</strong> — chaque extrait est qualifie selon sa contribution
+    <li><strong>Thèmes et sous-thèmes</strong> — chaque extrait est qualifié selon sa contribution
     au message central.</li>
-    <li><strong>Redondances</strong> — lorsque plusieurs formulations disent la meme chose,
-    une seule formulation est retenue pour respecter la duree cible.</li>
-    <li><strong>Transitions</strong> — verification que l'enchainement entre voix reste lisible.</li>
-    <li><strong>Complementarite entre intervenants</strong> — equilibre des quatre parcours
-    sans repetition inutile d'un meme angle.</li>
-    <li><strong>Autonomie des extraits</strong> — chaque sequence doit pouvoir etre entendue
-    sans renvoi implicite a un passage non monte.</li>
-    <li><strong>Faisabilite du montage</strong> — prise en compte des coupes NON PRONONCE,
-    de la duree cible et des reservations d'extraits pour d'autres capsules.</li>
+    <li><strong>Redondances</strong> — lorsque plusieurs formulations disent la même chose,
+    une seule formulation est retenue pour respecter la durée cible.</li>
+    <li><strong>Transitions</strong> — vérification que l'enchaînement entre voix reste lisible.</li>
+    <li><strong>Complémentarité entre intervenants</strong> — équilibre des quatre parcours
+    sans répétition inutile d'un même angle.</li>
+    <li><strong>Autonomie des extraits</strong> — chaque séquence doit pouvoir être entendue
+    sans renvoi implicite à un passage non monté.</li>
+    <li><strong>Faisabilité du montage</strong> — prise en compte des coupes NON PRONONCE,
+    de la durée cible et des réservations d'extraits pour d'autres capsules.</li>
   </ul>
   <p>
-    Les extraits retenus, leur ordre et les coupes prevues sont documentes ci-dessus lorsque le montage est etabli.
-    Les passages ecartes ou reserves restent traces dans les BAB encodes et le registre des extraits.
+    Les extraits retenus, leur ordre et les coupes prévues sont documentés ci-dessus lorsque le montage est établi.
+    Les passages écartés ou réservés restent tracés dans les BAB encodés et le registre des extraits.
   </p>
 </section>
 """
@@ -799,14 +895,14 @@ def selection_methodology_section(capsule: dict, capsule_data: dict) -> str:
 
 def _render_orientation_block(orientation: dict, plural: bool = False) -> str:
     concepts = " · ".join(orientation.get("concepts", []))
-    consignes = "".join(f"<li>{escape(item)}</li>" for item in orientation.get("consignes", []))
+    consignes = "".join(f"<li>{escape(_normalize_editorial_french(item))}</li>" for item in orientation.get("consignes", []))
     passerelles = []
     for item in orientation.get("passerelles", []):
         passerelles.append(
             "<tr>"
             f"<td>{escape(item.get('extrait', ''))}</td>"
-            f"<td>{escape(item.get('concept', ''))}</td>"
-            f"<td>{escape(item.get('orientation', ''))}</td>"
+            f"<td>{escape(_normalize_editorial_french(item.get('concept', '')))}</td>"
+            f"<td>{escape(_normalize_editorial_french(item.get('orientation', '')))}</td>"
             "</tr>"
         )
     util = orientation.get("utilisation_script_temoin", {})
@@ -817,34 +913,34 @@ def _render_orientation_block(orientation: dict, plural: bool = False) -> str:
             "sequence_recommandee_e1",
         )
         seq_items = util.get(seq_key, [])
-        seq = "".join(f"<li>{escape(s)}</li>" for s in seq_items)
+        seq = "".join(f"<li>{escape(_normalize_editorial_french(s))}</li>" for s in seq_items)
         guide_items = util.get("par_origine") or util.get("par_voix") or []
         guide_label = "origine" if util.get("par_origine") else "voix"
         guide_title = (
             "guide par origine"
             if util.get("par_origine")
-            else "guide par extrait temoin"
+            else "guide par extrait témoin"
         )
         guides_html = []
         for item in guide_items:
             titre = item.get("origine") or item.get("angle") or ""
             guides_html.append(
                 "<div class='orientation-origine'>"
-                f"<h4>{escape(titre)} "
+                f"<h4>{_e_fr(titre)} "
                 f"<span class='meta'>— {escape(item.get('extrait_id', ''))} · "
                 f"{escape(item.get('timecodes', ''))}</span></h4>"
-                f"<p><strong>Verbatim cle :</strong> « {escape(item.get('verbatim_cle', ''))} »</p>"
-                f"<p><strong>Dans le temoin :</strong> {escape(item.get('dans_le_temoin', ''))}</p>"
-                f"<p><strong>Travail expert :</strong> {escape(item.get('travail_expert', ''))}</p>"
-                f"<p class='phrase-amorce'><strong>Phrase d'amorce suggeree :</strong> {escape(item.get('phrase_amorce', ''))}</p>"
-                f"<p><strong>Question apprenant :</strong> {escape(item.get('question_apprenant', ''))}</p>"
-                f"<p class='meta'><strong>A eviter :</strong> {escape(item.get('erreur_a_eviter', ''))}</p>"
+                f"<p><strong>Verbatim clé :</strong> « {escape(_normalize_editorial_french(item.get('verbatim_cle', '')))} »</p>"
+                f"<p><strong>Dans le témoin :</strong> {escape(_normalize_editorial_french(item.get('dans_le_temoin', '')))}</p>"
+                f"<p><strong>Travail expert :</strong> {escape(_normalize_editorial_french(item.get('travail_expert', '')))}</p>"
+                f"<p class='phrase-amorce'><strong>Phrase d'amorce suggérée :</strong> {escape(_normalize_editorial_french(item.get('phrase_amorce', '')))}</p>"
+                f"<p><strong>Question apprenant :</strong> {escape(_normalize_editorial_french(item.get('question_apprenant', '')))}</p>"
+                f"<p class='meta'><strong>À éviter :</strong> {escape(_normalize_editorial_french(item.get('erreur_a_eviter', '')))}</p>"
                 "</div>"
             )
         util_html = f"""
-    <h3>Utilisation du script temoin — {guide_title}</h3>
-    <p>{escape(util.get('principe', ''))}</p>
-    <h4>Sequence recommandee ({escape(orientation.get('code', 'E1'))})</h4>
+    <h3>Utilisation du script témoin — {guide_title}</h3>
+    <p>{escape(_normalize_editorial_french(util.get('principe', '')))}</p>
+    <h4>Séquence recommandée ({escape(orientation.get('code', 'E1'))})</h4>
     <ol>{seq}</ol>
     <div class="orientation-{guide_label}s">
       {''.join(guides_html)}
@@ -855,25 +951,25 @@ def _render_orientation_block(orientation: dict, plural: bool = False) -> str:
     if expert:
         expert_line = escape(expert)
     elif proposes:
-        expert_line = f"Intervenant a definir <span class='meta'>(proposes : {escape(', '.join(proposes))})</span>"
+        expert_line = f"Intervenant à définir <span class='meta'>(proposés : {escape(', '.join(proposes))})</span>"
     else:
-        expert_line = "Intervenant a definir"
+        expert_line = "Intervenant à définir"
     code = orientation.get("code", "expert")
-    heading = "Orientation pour les videos expert suivantes" if plural else "Orientation pour la video expert suivante"
+    heading = "Orientation pour les vidéos expert suivantes" if plural else "Orientation pour la vidéo expert suivante"
     return f"""
   <div class="orientation-expert">
     <h2>{heading}</h2>
     <p>
       <strong>{escape(code)} — {expert_line}</strong><br>
-      {escape(orientation.get('titre', ''))}
+      {escape(_normalize_editorial_french(orientation.get('titre', '')))}
     </p>
-    <p class="meta">{escape(concepts)}</p>
-    <p>{escape(orientation.get('introduction', ''))}</p>
+    <p class="meta">{escape(_normalize_editorial_french(concepts))}</p>
+    <p>{escape(_normalize_editorial_french(orientation.get('introduction', '')))}</p>
     {util_html}
     <h3>Consignes de prise de parole</h3>
     <ul>{consignes}</ul>
-    <h3>Passerelles temoin → expert (synthese)</h3>
-    <p class="meta">Tableau recapitulatif extrait / concept / amorce.</p>
+    <h3>Passerelles témoin → expert (synthèse)</h3>
+    <p class="meta">Tableau récapitulatif extrait / concept / amorce.</p>
     <table>
       <thead><tr><th>Extrait</th><th>Concept {escape(code)}</th><th>Amorce</th></tr></thead>
       <tbody>
@@ -885,14 +981,14 @@ def _render_orientation_block(orientation: dict, plural: bool = False) -> str:
 
 
 BRIEF_PRECAUTION_ORATOIRE = (
-    "Les objectifs et unites de sens que nous proposons (ingenierie pedagogique) refletent "
-    "notre niveau de comprehension du sujet a ce stade. C'est sur votre experience et la "
-    "maitrise de votre discipline que nous nous appuyons : n'hesitez pas a modifier ou "
-    "completer ce travail, en restant aligne avec les objectifs exposes dans le tableau "
+    "Les objectifs et unités de sens que nous proposons (ingénierie pédagogique) reflètent "
+    "notre niveau de compréhension du sujet à ce stade. C'est sur votre expérience et la "
+    "maîtrise de votre discipline que nous nous appuyons : n'hésitez pas à modifier ou "
+    "compléter ce travail, en restant aligné avec les objectifs exposés dans le tableau "
     "de conception."
 )
 
-EXPORT_BRIEF_SECTION_TITLE = "Proposition de cadrage pour la video expert"
+EXPORT_BRIEF_SECTION_TITLE = "Proposition de cadrage pour la vidéo expert"
 EXPORT_VIDEOS_TABLE_TITLE = "Tableau du programme de conception"
 PROGRAMME_TABLE_FIELDS = (
     "module",
@@ -905,11 +1001,11 @@ PROGRAMME_TABLE_FIELDS = (
 )
 
 BRIEF_CONSIGNES_COMMUNES = [
-    "Partir des temoignages vus dans la chorale — pas d'un script a lire mot pour mot.",
+    "Partir des témoignages vus dans la chorale — pas d'un script à lire mot pour mot.",
     "Nommer les concepts du MOOC en langage clair, avec des exemples concrets entendus.",
-    "Inviter l'apprenant a faire le lien avec son propre projet.",
-    "Ne pas citer les chercheurs phrase pour phrase : resumer dans vos propres mots.",
-    "Completer librement cette trame : ajouter tout element (exemple, rappel, precision, mise en perspective) que vous jugez complementaire et necessaire a ce stade du parcours.",
+    "Inviter l'apprenant à faire le lien avec son propre projet.",
+    "Ne pas citer les chercheurs phrase pour phrase : résumer dans vos propres mots.",
+    "Compléter librement cette trame : ajouter tout élément (exemple, rappel, précision, mise en perspective) que vous jugez complémentaire et nécessaire à ce stade du parcours.",
 ]
 
 _CONSIGNE_TECHNIQUE_MARKERS = (
@@ -957,7 +1053,14 @@ def _unite_matches_expert(unite: dict, expert_code: str, expert_codes: list[str]
 
 def _orientation_guides(orientation: dict) -> list[dict]:
     util = orientation.get("utilisation_script_temoin", {})
-    return util.get("par_origine") or util.get("par_voix") or []
+    guides = util.get("par_origine") or util.get("par_voix") or []
+    cleaned: list[dict] = []
+    for guide in guides:
+        item = dict(guide)
+        if item.get("dans_le_temoin"):
+            item["dans_le_temoin"] = _normalize_editorial_french(item["dans_le_temoin"])
+        cleaned.append(item)
+    return cleaned
 
 
 def _orientation_sequence(orientation: dict) -> list[str]:
@@ -1004,7 +1107,7 @@ CHERCHEUR_LABELS = {
     "Jean-Jacques": "Jean-Jacques Greffet",
     "Muriel": "Muriel Thomas",
     "Sylvia": "Sylvia Cohen-Kaminski",
-    "Yann": "Yann Meunier",
+    "Yann": "Yann Monier",
     "Loic": "Loic Rajjou",
 }
 
@@ -1013,8 +1116,15 @@ def _parse_resume_temoignages(text: str) -> list[tuple[str, str]]:
     text = text.strip()
     if not text:
         return []
+    lines = [line.strip() for line in text.splitlines() if line.strip()]
+    if len(lines) > 1 and all(":" in line for line in lines):
+        items: list[tuple[str, str]] = []
+        for line in lines:
+            name, _, content = line.partition(":")
+            items.append((name.strip(), content.strip().rstrip(".")))
+        return items
     parts = re.split(r"(?<=\.)\s+(?=[^:]+:)", text)
-    items: list[tuple[str, str]] = []
+    items = []
     for part in parts:
         part = part.strip().rstrip(".")
         if not part:
@@ -1057,7 +1167,7 @@ def _render_brief_point(guide: dict) -> str:
         )
     if guide.get("erreur_a_eviter"):
         parts.append(
-            f"<p class='meta'><strong>A eviter :</strong> {escape(guide['erreur_a_eviter'])}</p>"
+            f"<p class='meta'><strong>À éviter :</strong> {escape(guide['erreur_a_eviter'])}</p>"
         )
     parts.append("</div>")
     return "".join(parts)
@@ -1103,6 +1213,554 @@ def _strip_chercheur_prefix(text: str, chercheur: str) -> str:
             cleaned = cleaned[len(alias) :].lstrip(" :—-\u2014")
             break
     return cleaned.strip()
+
+
+def _restore_french_accents(text: str) -> str:
+    """Retablit les accents sur le francais editorial / genere (hors verbatim BAB)."""
+    if not text:
+        return text
+
+    # Paires (forme sans accent → forme accentuee). Ordre : plus longues d'abord.
+    pairs = [
+        ("temoignages", "témoignages"),
+        ("temoignage", "témoignage"),
+        ("precisement", "précisément"),
+        ("declenchee", "déclenchée"),
+        ("declenche", "déclenché"),
+        ("resultats", "résultats"),
+        ("resultat", "résultat"),
+        ("matiere", "matière"),
+        ("premiere", "première"),
+        ("societale", "sociétale"),
+        ("societal", "sociétal"),
+        ("serendipite", "sérendipité"),
+        ("different", "différent"),
+        ("differentes", "différentes"),
+        ("differents", "différents"),
+        ("reconnaitre", "reconnaître"),
+        ("connaitre", "connaître"),
+        ("apparaitre", "apparaître"),
+        ("paraitre", "paraître"),
+        ("theorie", "théorie"),
+        ("theorique", "théorique"),
+        ("pedagogique", "pédagogique"),
+        ("pedagogiques", "pédagogiques"),
+        ("generale", "générale"),
+        ("general", "général"),
+        ("generer", "générer"),
+        ("geneses", "genèses"),
+        ("genese", "genèse"),
+        ("interet", "intérêt"),
+        ("experience", "expérience"),
+        ("experiences", "expériences"),
+        ("experimental", "expérimental"),
+        ("experimentale", "expérimentale"),
+        ("experimentaux", "expérimentaux"),
+        ("accumulation", "accumulation"),
+        ("accumulee", "accumulée"),
+        ("posee", "posée"),
+        ("exterieur", "extérieur"),
+        ("exterieure", "extérieure"),
+        ("orientee", "orientée"),
+
+        ("revele", "révèle"),
+        ("revelateur", "révélateur"),
+        ("revelatrice", "révélatrice"),
+        ("detection", "détection"),
+        ("defini", "défini"),
+        ("definie", "définie"),
+        ("definir", "définir"),
+        ("definit", "définit"),
+        ("definition", "définition"),
+        ("element", "élément"),
+        ("elements", "éléments"),
+        ("etape", "étape"),
+        ("etapes", "étapes"),
+        ("etre", "être"),
+        ("ete", "été"),
+        ("deja", "déjà"),
+        ("meme", "même"),
+        ("memes", "mêmes"),
+        ("idees", "idées"),
+        ("idee", "idée"),
+        ("apres", "après"),
+        ("tres", "très"),
+        ("role", "rôle"),
+        ("roles", "rôles"),
+        ("controle", "contrôle"),
+        ("echanges", "échanges"),
+        ("echange", "échange"),
+        ("ecoutez", "écoutez"),
+        ("ecoutons", "écoutons"),
+        ("ecoute", "écoute"),
+        ("echelle", "échelle"),
+        ("evenement", "événement"),
+        ("evenements", "événements"),
+        ("economique", "économique"),
+        ("economiques", "économiques"),
+        ("equipe", "équipe"),
+        ("equipes", "équipes"),
+        ("etudier", "étudier"),
+        ("etude", "étude"),
+        ("etudes", "études"),
+        ("evidemment", "évidemment"),
+        ("evidemment", "évidemment"),
+        ("eveiller", "éveiller"),
+        ("eval", "éval"),  # noop-ish safety — skip short
+        ("evaluation", "évaluation"),
+        ("evaluer", "évaluer"),
+        ("echouer", "échouer"),
+        ("echec", "échec"),
+        ("echecs", "échecs"),
+        ("ecart", "écart"),
+        ("ecarts", "écarts"),
+        ("ecole", "école"),
+        ("ecrire", "écrire"),
+        ("ecrit", "écrit"),
+        ("ecrite", "écrite"),
+        ("numero", "numéro"),
+        ("numerique", "numérique"),
+        ("numeriques", "numériques"),
+        ("strategie", "stratégie"),
+        ("strategique", "stratégique"),
+        ("creativite", "créativité"),
+        ("creer", "créer"),
+        ("creation", "création"),
+        ("decision", "décision"),
+        ("decisions", "décisions"),
+        ("decider", "décider"),
+        ("decide", "décide"),
+        ("declaration", "déclaration"),
+        ("declarer", "déclarer"),
+        ("depot", "dépôt"),
+        ("depots", "dépôts"),
+        ("deposer", "déposer"),
+        ("developpement", "développement"),
+        ("developper", "développer"),
+        ("deroulement", "déroulement"),
+        ("derouler", "dérouler"),
+        ("desormais", "désormais"),
+        ("desir", "désir"),
+        ("desire", "désire"),
+        ("necessaire", "nécessaire"),
+        ("necessaires", "nécessaires"),
+        ("necessite", "nécessite"),
+        ("reponse", "réponse"),
+        ("reponses", "réponses"),
+        ("repondre", "répondre"),
+        ("repond", "répond"),
+        ("reseau", "réseau"),
+        ("reseaux", "réseaux"),
+        ("realite", "réalité"),
+        ("realiser", "réaliser"),
+        ("referent", "référent"),
+        ("referents", "référents"),
+        ("reference", "référence"),
+        ("references", "références"),
+        ("reflexe", "réflexe"),
+        ("reflexes", "réflexes"),
+        ("reflexion", "réflexion"),
+        ("reduire", "réduire"),
+        ("resumer", "résumer"),
+        ("reutiliser", "réutiliser"),
+        ("reutilisation", "réutilisation"),
+        ("pretexte", "prétexte"),
+        ("pretextes", "prétextes"),
+        ("preparer", "préparer"),
+        ("preparation", "préparation"),
+        ("prematuration", "prématuration"),
+        ("precis", "précis"),
+        ("precise", "précise"),
+        ("precision", "précision"),
+        ("precisions", "précisions"),
+        ("proteger", "protéger"),
+        ("protege", "protège"),
+        ("preparer", "préparer"),
+        ("prepare", "prépare"),
+        ("declarer", "déclarer"),
+        ("declare", "déclare"),
+        ("resumer", "résumer"),
+        ("resume", "résume"),
+        ("orienter", "orienter"),
+        ("oriente", "oriente"),
+        ("creer", "créer"),
+        ("cree", "crée"),
+        ("developper", "développer"),
+        ("developpe", "développe"),
+        ("deposer", "déposer"),
+        ("depose", "dépose"),
+        ("realiser", "réaliser"),
+        ("realise", "réalise"),
+        ("generer", "générer"),
+        ("genere", "génère"),
+        ("maniere", "manière"),
+        ("manieres", "manières"),
+        ("tete", "tête"),
+        ("tetes", "têtes"),
+        ("derriere", "derrière"),
+        ("verifiee", "vérifiée"),
+        ("verifie", "vérifié"),
+        ("etablie", "établie"),
+        ("etabli", "établi"),
+        ("editoriale", "éditoriale"),
+        ("editorial", "éditorial"),
+        ("preciser", "préciser"),
+        ("reveler", "révéler"),
+        ("verifier", "vérifier"),
+        ("reel", "réel"),
+        ("reelle", "réelle"),
+        ("reels", "réels"),
+        ("observee", "observée"),
+        ("agees", "âgées"),
+        ("agee", "âgée"),
+        ("ages", "âgés"),
+        ("malgre", "malgré"),
+        ("deplacement", "déplacement"),
+        ("modifiee", "modifiée"),
+        ("presentent", "présentent"),
+        ("selectionnees", "sélectionnées"),
+        ("selectionnee", "sélectionnée"),
+        ("documentee", "documentée"),
+        ("documente", "documenté"),
+        ("documentes", "documentés"),
+        ("basees", "basées"),
+        ("basee", "basée"),
+        ("interpretation", "interprétation"),
+        ("ecran", "écran"),
+        ("detnutrition", "dénutrition"),
+        ("appauvri", "appauvri"),
+        ("detaillee", "détaillée"),
+        ("detaille", "détaillé"),
+        ("these", "thèse"),
+        ("industriel", "industriel"),
+        ("syntheses", "synthèses"),
+        ("synthese", "synthèse"),
+        ("presentations", "présentations"),
+        ("presentation", "présentation"),
+        ("thematiques", "thématiques"),
+        ("thematique", "thématique"),
+        ("selections", "sélections"),
+        ("selection", "sélection"),
+        ("sequences", "séquences"),
+        ("sequence", "séquence"),
+        ("constituee", "constituée"),
+        ("constitue", "constitué"),
+        ("mecanique", "mécanique"),
+        ("decoupe", "découpe"),
+        ("unites", "unités"),
+        ("unite", "unité"),
+        ("comprehensible", "compréhensible"),
+        ("durees", "durées"),
+        ("duree", "durée"),
+        ("enchainement", "enchaînement"),
+        ("complementarite", "complémentarité"),
+        ("equilibre", "équilibre"),
+        ("repetition", "répétition"),
+        ("prevues", "prévues"),
+        ("prevue", "prévue"),
+        ("ecartes", "écartés"),
+        ("ecarte", "écarté"),
+        ("suggerée", "suggérée"),
+        ("suggeree", "suggérée"),
+        ("suggerer", "suggérer"),
+        ("suggestee", "suggérée"),
+        ("iteratives", "itératives"),
+        ("iterative", "itérative"),
+        ("iteratif", "itératif"),
+        ("concretes", "concrètes"),
+        ("concrete", "concrète"),
+        ("maitrise", "maîtrise"),
+        ("maitriser", "maîtriser"),
+        ("hesitez", "hésitez"),
+        ("ingenierie", "ingénierie"),
+        ("refletent", "reflètent"),
+        ("comprehension", "compréhension"),
+        ("aligne", "aligné"),
+        ("exposes", "exposés"),
+        ("expose", "exposé"),
+        ("recapitulatif", "récapitulatif"),
+        ("recapitulative", "récapitulative"),
+        ("integrees", "intégrées"),
+        ("integree", "intégrée"),
+        ("integre", "intégré"),
+        ("marquees", "marquées"),
+        ("marquee", "marquée"),
+        ("methode", "méthode"),
+        ("methodes", "méthodes"),
+        ("derushage", "dérushage"),
+        ("reference", "référence"),
+        ("references", "références"),
+        ("generales", "générales"),
+        ("proposés", "proposés"),
+        ("proposes", "proposés"),
+        ("proposee", "proposée"),
+        ("proposees", "proposées"),
+        ("defini", "défini"),
+        ("eviter", "éviter"),
+        ("evenement", "événement"),
+        ("recherche", "recherche"),
+        ("recherches", "recherches"),
+        ("maturation", "maturation"),
+        ("progressive", "progressive"),
+        ("origine", "origine"),
+        ("origines", "origines"),
+        ("credible", "crédible"),
+        ("protection", "protection"),
+        ("propriete", "propriété"),
+        ("proprietes", "propriétés"),
+        ("probleme", "problème"),
+        ("problemes", "problèmes"),
+        ("problematique", "problématique"),
+        ("problematiques", "problématiques"),
+        ("methode", "méthode"),
+        ("methodes", "méthodes"),
+        ("media", "média"),
+        ("cloture", "clôture"),
+        ("cote", "côté"),
+        ("cotes", "côtés"),
+        ("controle", "contrôle"),
+        ("facon", "façon"),
+        ("facons", "façons"),
+        ("lecon", "leçon"),
+        ("lecons", "leçons"),
+        ("anecdote", "anecdote"),
+        ("interessant", "intéressant"),
+        ("interessante", "intéressante"),
+        ("particulierement", "particulièrement"),
+        ("regulierement", "régulièrement"),
+        ("veritable", "véritable"),
+        ("verite", "vérité"),
+        ("securite", "sécurité"),
+        ("securiser", "sécuriser"),
+        ("legitime", "légitime"),
+        ("legitimite", "légitimité"),
+        ("qualite", "qualité"),
+        ("qualites", "qualités"),
+        ("activite", "activité"),
+        ("activites", "activités"),
+        ("universite", "université"),
+        ("priorite", "priorité"),
+        ("opportunite", "opportunité"),
+        ("opportunites", "opportunités"),
+        ("possibilite", "possibilité"),
+        ("possibilites", "possibilités"),
+        ("capacite", "capacité"),
+        ("capacites", "capacités"),
+        ("difficultes", "difficultés"),
+        ("difficulte", "difficulté"),
+        ("hesitation", "hésitation"),
+        ("hesiter", "hésiter"),
+        ("hesite", "hésite"),
+        ("arreter", "arrêter"),
+        ("arrete", "arrête"),
+        ("complet", "complet"),
+        ("complete", "complète"),
+        ("completer", "compléter"),
+        ("complementaire", "complémentaire"),
+        ("complementaires", "complémentaires"),
+        ("entete", "en-tête"),
+        ("entetes", "en-têtes"),
+        ("reperes", "repères"),
+        ("repere", "repère"),
+        ("reperer", "repérer"),
+        ("demarche", "démarche"),
+        ("demarches", "démarches"),
+        ("emerger", "émerger"),
+        ("emerge", "émerge"),
+        ("videos", "vidéos"),
+        ("video", "vidéo"),
+        ("numero", "numéro"),
+        ("annees", "années"),
+        ("annee", "année"),
+        ("evenuel", "éventuel"),
+        ("eventuel", "éventuel"),
+        ("eventuelle", "éventuelle"),
+        ("evenutuellement", "éventuellement"),
+        ("eventuellement", "éventuellement"),
+        ("evidemment", "évidemment"),
+        ("la", "là"),  # DANGEROUS - skip
+    ]
+    # Retirer les paires dangereuses / inutiles
+    pairs = [(a, b) for a, b in pairs if a != "la" and a != "eval" and a != b]
+
+    # Appliquer en respectant la casse du mot source.
+    def _replace_word(match: re.Match[str], accented: str) -> str:
+        src = match.group(0)
+        if src.isupper():
+            return accented.upper()
+        if src[0].isupper():
+            return accented[0].upper() + accented[1:]
+        return accented
+
+    # Trier par longueur decroissante pour eviter les collisions partielles.
+    pairs.sort(key=lambda item: len(item[0]), reverse=True)
+    for plain, accented in pairs:
+        text = re.sub(
+            rf"\b{re.escape(plain)}\b",
+            lambda m, acc=accented: _replace_word(m, acc),
+            text,
+            flags=re.IGNORECASE,
+        )
+
+    # Locutions frequentes avec « a » → « à »
+    a_patterns = [
+        (r"\ba la\b", "à la"),
+        (r"\ba l'", "à l'"),
+        (r"\ba l’", "à l’"),
+        (r"\ba vous\b", "à vous"),
+        (r"\ba votre\b", "à votre"),
+        (r"\ba vos\b", "à vos"),
+        (r"\ba qui\b", "à qui"),
+        (r"\ba quoi\b", "à quoi"),
+        (r"\ba partir\b", "à partir"),
+        (r"\ba travers\b", "à travers"),
+        (r"\ba condition\b", "à condition"),
+        (r"\ba condition que\b", "à condition que"),
+        (r"\ba savoir\b", "à savoir"),
+        (r"\ba propos\b", "à propos"),
+        (r"\ba garder\b", "à garder"),
+        (r"\ba lire\b", "à lire"),
+        (r"\ba produire\b", "à produire"),
+        (r"\ba atteindre\b", "à atteindre"),
+        (r"\ba definir\b", "à définir"),
+        (r"\ba confirmer\b", "à confirmer"),
+        (r"\ba completer\b", "à compléter"),
+        (r"\ba modifier\b", "à modifier"),
+        (r"\ba cartographier\b", "à cartographier"),
+        (r"\ba venir\b", "à venir"),
+        (r"\ba ce stade\b", "à ce stade"),
+        (r"\ba faire\b", "à faire"),
+        (r"\ba quel\b", "à quel"),
+        (r"\ba quelle\b", "à quelle"),
+        (r"\ba qui,\b", "à qui,"),
+        (r"\bne sont pas la\b", "ne sont pas là"),
+        (r"\bpas la pour\b", "pas là pour"),
+        (r"\bdeja la\b", "déjà là"),
+        (r"\bdéjà la\b", "déjà là"),
+        (r"\bOn touche ici a\b", "On touche ici à"),
+        (r"\ben tete\b", "en tête"),
+        (r"\bou il faut\b", "où il faut"),
+        (r"\bou se\b", "où se"),
+        (r"\ble maturation\b", "la maturation"),
+        (r"\bbesoin exprime\b", "besoin exprimé"),
+        (r"\binnovation credible lie\b", "innovation crédible lie"),
+        (r"\ben restant aligne\b", "en restant aligné"),
+        (r"\bpas de cote\b", "pas de côté"),
+        (r"\ble gout\b", "le goût"),
+        (r"\bprofessionnel cle\b", "professionnel clé"),
+        (r"\bVerbatim cle\b", "Verbatim clé"),
+        (r"\bgeste professionnel cle\b", "geste professionnel clé"),
+        (r"\bIdee vs\b", "Idée vs"),
+        (r"\bidee vs\b", "idée vs"),
+        (r"\btire par le marché\b", "tiré par le marché"),
+        (r"\b« tire par\b", "« tiré par"),
+        (r"«\s*marche\s*»", "« marché »"),
+        (r"\bsur le marche\b", "sur le marché"),
+        (r"\bdu marche\b", "du marché"),
+        (r"\bau marche\b", "au marché"),
+        (r"\ble marche\b", "le marché"),
+        (r"\bd'un marche\b", "d'un marché"),
+        (r"\bun marche\b", "un marché"),
+        (r"\bpar le marche\b", "par le marché"),
+        (r"\btire par le marche\b", "tiré par le marché"),
+        (r"\btire par\b", "tiré par"),
+        (r"\bc'est tire\b", "c'est tiré"),
+        (r"\bdemande du marche\b", "demande du marché"),
+        (r"\bavez rencontres\b", "avez rencontrés"),
+        (r"\best nee\b", "est née"),
+        (r"\best ne\b", "est né"),
+        (r"\bcomment est nee\b", "comment est née"),
+        (r"\bmanque observe\b", "manque observé"),
+        (r"\bbesoin observe\b", "besoin observé"),
+        (r"\bdeja observe\b", "déjà observé"),
+        (r"\bdéjà observe\b", "déjà observé"),
+        (r"\bCouper apres\b", "Couper après"),
+        (r"\bcouper apres\b", "couper après"),
+        (r"\bemerger\b", "émerger"),
+        (r"\bsocietale\b", "sociétale"),
+        (r"\breperer\b", "repérer"),
+        (r"\bcoherents\b", "cohérents"),
+        (r"\bDuree montage\b", "Durée montage"),
+        (r"\bpour reveler\b", "pour révéler"),
+        (r"\bou preciser\b", "ou préciser"),
+        (r"\ba preciser\b", "à préciser"),
+        (r"\bverifier si\b", "vérifier si"),
+        (r"\best reel\b", "est réel"),
+        (r"\ba l'ecran\b", "à l'écran"),
+        (r"\bAnimateur a\b", "Animateur à"),
+        (r"\bA l'", "À l'"),
+        (r"\bA l’", "À l’"),
+        (r"\bA confirmer\b", "À confirmer"),
+        (r"\bA eviter\b", "À éviter"),
+        (r"\bA definir\b", "À définir"),
+        (r"\bA l'issue\b", "À l'issue"),
+        (r"\bA l’issue\b", "À l’issue"),
+    ]
+    for pattern, repl in a_patterns:
+        text = re.sub(pattern, repl, text, flags=re.IGNORECASE)
+
+    # Corriger les doubles accidents apres remplacement (déjà déjà, etc.)
+    text = text.replace("déjà déjà", "déjà")
+    text = text.replace("même même", "même")
+    return text
+
+
+def _normalize_editorial_french(text: str) -> str:
+    """Corrige des raccourcis editoriaux fautifs et retablit les accents (hors verbatim BAB)."""
+    if not text:
+        return text
+    # « besoin marche » → « besoin du marche » puis accents
+    text = re.sub(
+        r"\bbesoin marche\b",
+        "besoin du marche",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(
+        r"\bbesoin marché\b",
+        "besoin du marché",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(
+        r"\ble besoin marche\b",
+        "le besoin du marche",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(
+        r"\ble besoin marché\b",
+        "le besoin du marché",
+        text,
+        flags=re.IGNORECASE,
+    )
+    return _restore_french_accents(text)
+
+
+
+def _e_fr(text: str) -> str:
+    """Escape HTML apres normalisation editoriale (accents, formulations)."""
+    return escape(_normalize_editorial_french(text or ""))
+
+
+def _normalize_script_final_editorial(script: str) -> str:
+    """Accentue uniquement les blocs cadrage/pancarte du script final (pas les verbatims BAB)."""
+    if not script:
+        return script
+    parts = re.split(r"(\n{2,})", script)
+    out: list[str] = []
+    for part in parts:
+        stripped = part.lstrip()
+        if (
+            stripped.startswith("[CADRAGE")
+            or stripped.startswith("[PAN")
+            or stripped.startswith("=== PARTIE")
+            or stripped.startswith("[EXPERT]")
+        ):
+            out.append(_normalize_editorial_french(part))
+        else:
+            out.append(part)
+    return "".join(out)
 
 
 def _chercheur_prenom(chercheur: str) -> str:
@@ -1212,8 +1870,8 @@ def _collect_temoignages_lisibles(
 
 def _render_temoin_phrases(phrases: list[str]) -> str:
     if len(phrases) == 1:
-        return f"<p>{escape(phrases[0])}</p>"
-    items = "".join(f"<li>{escape(phrase)}</li>" for phrase in phrases)
+        return f"<p>{_e_fr(phrases[0])}</p>"
+    items = "".join(f"<li>{_e_fr(phrase)}</li>" for phrase in phrases)
     return f'<ul class="brief-temoin-phrases">{items}</ul>'
 
 
@@ -1240,7 +1898,7 @@ def _render_brief_temoin(
     return f"""
   <article class="brief-video brief-video--temoin">
     <h3>{escape(temoin_label)} — Ce que disent les chercheurs</h3>
-    <p class="meta">Rappel factuel pour lecteurs qui ne connaissent pas les trajectoires des chercheurs — sans interpretation editoriale.</p>
+    <p class="meta">Rappel factuel pour lecteurs qui ne connaissent pas les trajectoires des chercheurs — sans interprétation éditoriale.</p>
     <ul class="brief-unites">
       {''.join(rows)}
     </ul>
@@ -1254,15 +1912,15 @@ def _render_brief_video(video: dict, proposes: list[str]) -> str:
     if intervenant:
         who = escape(intervenant)
     elif proposes:
-        who = f"<em>A confirmer</em> <span class='meta'>(proposes : {escape(', '.join(proposes))})</span>"
+        who = f"<em>À confirmer</em> <span class='meta'>(proposés : {escape(', '.join(proposes))})</span>"
     else:
-        who = "<em>A confirmer</em>"
+        who = "<em>À confirmer</em>"
 
     titre = video.get("titre", "")
     descriptif = video.get("descriptif", "")
-    objectif_html = f"<p><strong>Objectif :</strong> {escape(titre)}</p>"
+    objectif_html = f"<p><strong>Objectif :</strong> {_e_fr(titre)}</p>"
     if descriptif:
-        objectif_html += f"<p>{escape(descriptif)}</p>"
+        objectif_html += f"<p>{_e_fr(descriptif)}</p>"
 
     return f"""
   <article class="brief-video">
@@ -1273,56 +1931,434 @@ def _render_brief_video(video: dict, proposes: list[str]) -> str:
 """
 
 
-def synthese_temoignages_section(capsule_code: str, capsule_data: dict) -> str:
-    resume = capsule_data.get("resume_temoignages", "").strip()
-    if not resume:
-        return ""
+def _videos_expert_by_code(capsule_data: dict) -> dict[str, dict]:
+    return {
+        item.get("code", ""): item
+        for item in capsule_data.get("videos_expert", [])
+        if item.get("code")
+    }
 
-    items = _parse_resume_temoignages(resume)
-    if not items:
-        return ""
 
-    rows = []
-    for name, content in items:
+def _names_match_chercheur(left: str, right: str) -> bool:
+    if not left or not right:
+        return False
+    if left == right:
+        return True
+    left_key = _canonical_name_key(left)
+    right_key = _canonical_name_key(right)
+    if left_key == right_key:
+        return True
+    if left_key.split()[0] == right_key.split()[0] and (
+        len(left_key.split()) == 1 or len(right_key.split()) == 1
+    ):
+        return True
+    return False
+
+
+def _is_known_chercheur_name(
+    name: str,
+    guides_by_chercheur: dict[str, list[tuple[str, dict]]] | None = None,
+) -> bool:
+    if not name:
+        return False
+    if name in CHERCHEUR_LABELS or name in CHERCHEUR_LABELS.values():
+        return True
+    if name in TEMOIN_VOICE_ORDER:
+        return True
+    key = _canonical_name_key(name)
+    if any(_canonical_name_key(item) == key for item in TEMOIN_VOICE_ORDER):
+        return True
+    if guides_by_chercheur and any(
+        _names_match_chercheur(name, chercheur) for chercheur in guides_by_chercheur
+    ):
+        return True
+    return False
+
+
+def _resolve_chercheur_label(
+    name: str,
+    guides_by_chercheur: dict[str, list[tuple[str, dict]]],
+) -> str:
+    if not name:
+        return ""
+    if name in CHERCHEUR_LABELS:
+        full = CHERCHEUR_LABELS[name]
+        for key in guides_by_chercheur:
+            if _names_match_chercheur(full, key):
+                return key
+        for voice in TEMOIN_VOICE_ORDER:
+            if _names_match_chercheur(full, voice):
+                return voice
+        return full
+    for key in guides_by_chercheur:
+        if _names_match_chercheur(name, key):
+            return key
+    for voice in TEMOIN_VOICE_ORDER:
+        if _names_match_chercheur(name, voice):
+            return voice
+    return name
+
+
+def _synthese_guides_by_chercheur(
+    capsule_data: dict,
+) -> dict[str, list[tuple[str, dict]]]:
+    """chercheur -> [(code_expert, guide), ...] dans l'ordre des orientations."""
+    grouped: dict[str, list[tuple[str, dict]]] = defaultdict(list)
+    seen: set[tuple[str, str, str, str]] = set()
+    for orientation in capsule_data.get("orientations_expert", []):
+        expert_code = orientation.get("code", "")
+        for guide in _orientation_guides(orientation):
+            chercheur = (guide.get("chercheur") or "").strip()
+            if not chercheur:
+                continue
+            key = (
+                chercheur,
+                expert_code,
+                guide.get("extrait_id", ""),
+                guide.get("origine") or guide.get("angle") or "",
+            )
+            if key in seen:
+                continue
+            seen.add(key)
+            grouped[chercheur].append((expert_code, guide))
+    return grouped
+
+
+def _synthese_chercheur_order(
+    capsule_data: dict,
+    by_id: dict[str, dict] | None,
+    resume_items: list[tuple[str, str]],
+    guides_by_chercheur: dict[str, list[tuple[str, dict]]],
+) -> list[str]:
+    order: list[str] = []
+
+    def _push(name: str) -> None:
+        label = _resolve_chercheur_label(name, guides_by_chercheur) if name else ""
+        if not label or label in order:
+            return
+        if not _is_known_chercheur_name(label, guides_by_chercheur):
+            return
+        order.append(label)
+
+    if by_id:
+        for extrait_id in capsule_data.get("ordre_montage", []):
+            segment = by_id.get(extrait_id)
+            if segment and segment.get("chercheur"):
+                _push(segment["chercheur"])
+
+    for name, _content in resume_items:
+        if name and _is_known_chercheur_name(name, guides_by_chercheur):
+            _push(name)
+
+    for chercheur in guides_by_chercheur:
+        _push(chercheur)
+
+    return order
+
+
+def _synthese_resume_for_chercheur(
+    chercheur: str,
+    resume_items: list[tuple[str, str]],
+    guides: list[tuple[str, dict]],
+) -> str:
+    for name, content in resume_items:
+        if not name or not content:
+            continue
+        if _names_match_chercheur(name, chercheur) or _names_match_chercheur(
+            _label_chercheur(name), chercheur
+        ):
+            return content
+    for _code, guide in guides:
+        detail = (guide.get("dans_le_temoin") or "").strip()
+        if detail:
+            return _strip_chercheur_prefix(detail, chercheur)
+    return ""
+
+
+def _synthese_intro_globale(
+    resume_items: list[tuple[str, str]],
+    guides_by_chercheur: dict[str, list[tuple[str, dict]]],
+) -> str:
+    """Resume d'ensemble (ex. GEN) non rattache a une voix."""
+    parts = []
+    for name, content in resume_items:
+        if not content:
+            continue
+        if name and _is_known_chercheur_name(name, guides_by_chercheur):
+            continue
         if name:
-            label = _label_chercheur(name)
-            rows.append(
-                f"<li><strong>{escape(label)}</strong> {escape(content)}</li>"
+            parts.append(f"{name} : {content}")
+        else:
+            parts.append(content)
+    return " ".join(parts).strip()
+
+
+def _render_synthese_objectifs_expert(capsule_data: dict) -> str:
+    videos = capsule_data.get("videos_expert", [])
+    if not videos:
+        return ""
+    rows = []
+    for video in videos:
+        code = video.get("code", "")
+        titre = video.get("titre", "")
+        descriptif = video.get("descriptif", "")
+        label = _label_video_expert(code)
+        line = f"<li><strong>{escape(label)}</strong> — {_e_fr(titre)}"
+        if descriptif:
+            line += f"<br><span class='meta'>{_e_fr(descriptif)}</span>"
+        line += "</li>"
+        rows.append(line)
+    return f"""
+  <div class="synthese-objectifs-expert">
+    <h3>Objectifs des vidéos expert à atteindre</h3>
+    <ul>
+      {''.join(rows)}
+    </ul>
+  </div>
+"""
+
+
+def _render_synthese_appui_items(
+    guides: list[tuple[str, dict]],
+    videos_by_code: dict[str, dict],
+) -> str:
+    if not guides:
+        return "<p class='meta'>Pas encore d'orientation expert documentée pour cette voix.</p>"
+    rows = []
+    for expert_code, guide in guides:
+        video = videos_by_code.get(expert_code, {})
+        expert_label = _label_video_expert(expert_code)
+        angle = guide.get("origine") or guide.get("angle") or ""
+        extrait_id = guide.get("extrait_id", "")
+        timecodes = guide.get("timecodes", "")
+        travail = guide.get("travail_expert", "")
+        concepts = guide.get("concepts") or guide.get("concepts_e1") or []
+        objectif = video.get("titre", "")
+        meta_parts = [p for p in (extrait_id, timecodes) if p]
+        meta = " · ".join(meta_parts)
+        header = f"<strong>{escape(expert_label)}</strong>"
+        if objectif:
+            header += f" — {_e_fr(objectif)}"
+        if angle:
+            header += f" <span class='meta'>({_e_fr(angle)})</span>"
+        body = []
+        if meta:
+            body.append(f"<p class='meta'>Appui : {escape(meta)}</p>")
+            if travail:
+                body.append(
+                    f"<p><strong>Sur quoi on s'appuie :</strong> "
+                    f"{escape(_normalize_editorial_french(travail))}</p>"
+                )
+        if concepts:
+            body.append(
+                f"<p class='meta'><strong>Concepts :</strong> "
+                f"{_e_fr(' · '.join(concepts))}</p>"
+            )
+        rows.append(
+            "<li>"
+            f"<p>{header}</p>"
+            f"{''.join(body)}"
+            "</li>"
+        )
+    return f'<ul class="synthese-appui-list">{"".join(rows)}</ul>'
+
+
+def _guides_for_chercheur(
+    chercheur: str,
+    guides_by_chercheur: dict[str, list[tuple[str, dict]]],
+) -> list[tuple[str, dict]]:
+    if chercheur in guides_by_chercheur:
+        return guides_by_chercheur[chercheur]
+    for key, value in guides_by_chercheur.items():
+        if _names_match_chercheur(chercheur, key):
+            return value
+    return []
+
+
+def _build_synthese_chercheur_blocks(
+    capsule_data: dict,
+    by_id: dict[str, dict] | None = None,
+) -> tuple[str, list[dict]]:
+    resume_items = _parse_resume_temoignages(
+        capsule_data.get("resume_temoignages", "")
+    )
+    guides_by_chercheur = _synthese_guides_by_chercheur(capsule_data)
+    order = _synthese_chercheur_order(
+        capsule_data, by_id, resume_items, guides_by_chercheur
+    )
+    videos_by_code = _videos_expert_by_code(capsule_data)
+    intro = _synthese_intro_globale(resume_items, guides_by_chercheur)
+    blocks: list[dict] = []
+    for chercheur in order:
+        guides = _guides_for_chercheur(chercheur, guides_by_chercheur)
+        dit = _synthese_resume_for_chercheur(chercheur, resume_items, guides)
+        if not dit and not guides:
+            continue
+        blocks.append(
+            {
+                "chercheur": chercheur,
+                "dit": dit,
+                "guides": guides,
+                "videos_by_code": videos_by_code,
+            }
+        )
+    if not blocks and resume_items:
+        for name, content in resume_items:
+            if not content:
+                continue
+            if name and not _is_known_chercheur_name(name, guides_by_chercheur):
+                continue
+            blocks.append(
+                {
+                    "chercheur": _resolve_chercheur_label(name, guides_by_chercheur)
+                    if name
+                    else "",
+                    "dit": content,
+                    "guides": [],
+                    "videos_by_code": videos_by_code,
+                }
+            )
+    return intro, blocks
+
+
+def synthese_temoignages_section(
+    capsule_code: str,
+    capsule_data: dict,
+    by_id: dict[str, dict] | None = None,
+) -> str:
+    intro, blocks = _build_synthese_chercheur_blocks(capsule_data, by_id)
+    if not blocks and not capsule_data.get("videos_expert") and not intro:
+        return ""
+
+    articles = []
+    for block in blocks:
+        chercheur = block["chercheur"]
+        dit = block["dit"]
+        heading = escape(chercheur) if chercheur else "Synthèse"
+        contexte = ""
+        # Contexte factuel tiré de l'orientation "dans le témoin" pour éviter
+        # que le lecteur ne doive connaître tout le projet en amont.
+        if block.get("guides"):
+            for _expert_code, guide in block["guides"]:
+                detail = (guide.get("dans_le_temoin") or "").strip()
+                if detail:
+                    contexte = _strip_chercheur_prefix(detail, chercheur).strip()
+                    break
+
+        dit_html = ""
+        if contexte:
+            dit_html += f"<p class='meta'><strong>Contexte :</strong> {escape(_normalize_editorial_french(contexte))}</p>"
+        if dit:
+            dit_html += (
+                f"<p><strong>Ce que dit le chercheur dans la vidéo témoin :</strong> "
+                f"<strong>{escape(_normalize_editorial_french(dit))}</strong></p>"
             )
         else:
-            rows.append(f"<li>{escape(content)}</li>")
+            dit_html = "<p class='meta'>Résumé du dit à compléter.</p>"
+        appui_html = _render_synthese_appui_items(
+            block["guides"], block["videos_by_code"]
+        )
+        articles.append(
+            f"""
+  <article class="synthese-chercheur">
+    <h3>{heading}</h3>
+    {dit_html}
+    <h4>Appui vers les objectifs des vidéos expert</h4>
+    {appui_html}
+  </article>
+"""
+        )
+
+    if not articles and not capsule_data.get("videos_expert") and not intro:
+        return ""
 
     temoin_label = _label_video_temoin(capsule_code)
+    objectifs_html = _render_synthese_objectifs_expert(capsule_data)
+    intro_html = f"<p>{escape(intro)}</p>" if intro else ""
     return f"""
 <section class="methodology-panel synthese-chorale-panel">
-  <h2>{escape(temoin_label)} — Synthese des temoignages</h2>
-  <p class="meta">En quelques mots — ce que chaque chercheur a dit dans la chorale, sans interpretation.</p>
-  <ul class="synthese-chorale-list">
-    {''.join(rows)}
-  </ul>
+  <h2>{escape(temoin_label)} — Synthèse des témoignages</h2>
+  <p class="meta">Ce que chaque chercheur a dit dans le script, et sur quels éléments on s'appuie pour préparer les objectifs des vidéos expert.</p>
+  {intro_html}
+  {objectifs_html}
+  {''.join(articles)}
 </section>
 """
 
 
 def export_synthese_section_title(capsule_code: str) -> str:
-    return f"{_label_video_temoin(capsule_code)} — Synthese des temoignages"
+    return f"{_label_video_temoin(capsule_code)} — Synthèse des témoignages"
 
 
-def export_synthese_temoignages_plaintext(capsule_code: str, capsule_data: dict) -> str:
-    resume = capsule_data.get("resume_temoignages", "").strip()
-    if not resume:
+def export_synthese_temoignages_plaintext(
+    capsule_code: str,
+    capsule_data: dict,
+    by_id: dict[str, dict] | None = None,
+) -> str:
+    intro, blocks = _build_synthese_chercheur_blocks(capsule_data, by_id)
+    videos = capsule_data.get("videos_expert", [])
+    if not blocks and not videos and not intro:
         return ""
 
     lines = [
-        "En quelques mots — ce que chaque chercheur a dit dans la chorale, sans interpretation.",
+        "Ce que chaque chercheur a dit dans le script, et sur quels éléments "
+        "on s'appuie pour préparer les objectifs des vidéos expert.",
         "",
     ]
-    for name, content in _parse_resume_temoignages(resume):
-        if name:
-            lines.append(f"{_label_chercheur(name)} : {content}")
+    if intro:
+        lines.append(intro)
+        lines.append("")
+    if videos:
+        lines.append("Objectifs des vidéos expert à atteindre")
+        for video in videos:
+            code = video.get("code", "")
+            titre = video.get("titre", "")
+            descriptif = video.get("descriptif", "")
+            line = f"- {_label_video_expert(code)} — {titre}"
+            if descriptif:
+                line += f" ({descriptif})"
+            lines.append(line)
+        lines.append("")
+
+    for block in blocks:
+        chercheur = block["chercheur"] or "Synthèse"
+        contexte = ""
+        if block.get("guides"):
+            for _expert_code, guide in block["guides"]:
+                detail = (guide.get("dans_le_temoin") or "").strip()
+                if detail:
+                    contexte = _strip_chercheur_prefix(detail, chercheur).strip()
+                    break
+        lines.append(chercheur)
+        if contexte:
+            lines.append(f"Contexte : {contexte}")
+        if block["dit"]:
+            lines.append(f"Ce que dit le chercheur dans la vidéo témoin : **{block['dit']}**")
+        lines.append("Appui vers les objectifs des vidéos expert :")
+        if not block["guides"]:
+            lines.append("- Pas encore d'orientation expert documentée pour cette voix.")
         else:
-            lines.append(content)
-    return "\n".join(lines).strip()
+            for expert_code, guide in block["guides"]:
+                video = block["videos_by_code"].get(expert_code, {})
+                angle = guide.get("origine") or guide.get("angle") or ""
+                extrait_id = guide.get("extrait_id", "")
+                travail = guide.get("travail_expert", "")
+                concepts = guide.get("concepts") or guide.get("concepts_e1") or []
+                objectif = video.get("titre", "")
+                head = f"- {_label_video_expert(expert_code)}"
+                if objectif:
+                    head += f" — {objectif}"
+                if angle:
+                    head += f" ({angle})"
+                if extrait_id:
+                    head += f" [{extrait_id}]"
+                lines.append(head)
+                if travail:
+                    lines.append(f"  Sur quoi on s'appuie : {travail}")
+                if concepts:
+                    lines.append(f"  Concepts : {' · '.join(concepts)}")
+        lines.append("")
+    return _normalize_editorial_french("\n".join(lines).strip())
 
 
 def brief_intervenant_section(
@@ -1340,25 +2376,25 @@ def brief_intervenant_section(
     )
     consignes = [_humanize_capsule_labels(item) for item in BRIEF_CONSIGNES_COMMUNES]
     consignes_html = (
-        "<h3>Consignes generales</h3>"
+        "<h3>Consignes générales</h3>"
         "<ul>"
         + "".join(f"<li>{escape(item)}</li>" for item in consignes)
         + "</ul>"
     )
     precaution_html = (
-        f'<p class="brief-precaution"><strong>Precaution :</strong> '
+        f'<p class="brief-precaution"><strong>Précaution :</strong> '
         f"{escape(BRIEF_PRECAUTION_ORATOIRE)}</p>"
     )
 
     return f"""
 <section class="methodology-panel brief-intervenant-panel">
   <h2>{escape(EXPORT_BRIEF_SECTION_TITLE)}</h2>
-  <p class="meta">A l'issue de la {escape(_label_video_temoin(capsule_code))} — quelques reperes proposes pour preparer la ou les videos expert, en s'appuyant sur les temoignages et les objectifs du programme de conception.</p>
+  <p class="meta">À l'issue de la {escape(_label_video_temoin(capsule_code))} — quelques repères proposés pour préparer la ou les vidéos expert, en s'appuyant sur les témoignages et les objectifs du programme de conception.</p>
   {precaution_html}
   {temoin_html}
   {videos_html}
   {consignes_html}
-  <p class="meta">Version detaillee (extraits, timecodes, passerelles) disponible plus bas sur cette page.</p>
+  <p class="meta">Version détaillée (extraits, timecodes, passerelles) disponible plus bas sur cette page.</p>
 </section>
 """
 
@@ -1373,13 +2409,13 @@ def export_brief_intervenant_plaintext(
     proposes = capsule_data.get("experts_proposes", [])
     lines = [
         _humanize_capsule_labels(
-            f"A l'issue de la {_label_video_temoin(capsule_code)}, quelques reperes proposes "
-            "pour preparer la ou les videos expert, en s'appuyant sur les temoignages et "
+            f"À l'issue de la {_label_video_temoin(capsule_code)}, quelques repères proposés "
+            "pour préparer la ou les vidéos expert, en s'appuyant sur les témoignages et "
             "les objectifs du programme de conception."
         ),
         "",
     ]
-    lines.append(f"Precaution : {BRIEF_PRECAUTION_ORATOIRE}")
+    lines.append(f"Précaution : {BRIEF_PRECAUTION_ORATOIRE}")
     lines.append("")
 
     temoins = _collect_temoignages_lisibles(capsule_data, by_id)
@@ -1398,20 +2434,20 @@ def export_brief_intervenant_plaintext(
 
     for video in videos:
         label = _label_video_expert(video.get("code", ""))
-        intervenant = video.get("intervenant") or "Intervenant a confirmer"
+        intervenant = video.get("intervenant") or "Intervenant à confirmer"
         lines.append(f"{label} — {intervenant}")
         lines.append(f"   Objectif : {video.get('titre', '')}")
         if video.get("descriptif"):
             lines.append(f"   {video['descriptif']}")
         lines.append("")
 
-    lines.append("Consignes generales :")
+    lines.append("Consignes générales :")
     for item in BRIEF_CONSIGNES_COMMUNES:
         lines.append(f"  - {_humanize_capsule_labels(item)}")
     if proposes:
         lines.append("")
-        lines.append(f"Intervenants proposes (a confirmer) : {', '.join(proposes)}")
-    return "\n".join(lines).strip()
+        lines.append(f"Intervenants proposés (à confirmer) : {', '.join(proposes)}")
+    return _normalize_editorial_french("\n".join(lines).strip())
 
 
 def selection_unites_section(capsule_data: dict) -> str:
@@ -1429,9 +2465,9 @@ def selection_unites_section(capsule_data: dict) -> str:
             grille_label = f"Grille {codes[0]}"
 
     provisoire = any(u.get("statut") == "PROVISOIRE" for u in unites)
-    meta_intro = "Synthese editoriale des sequences retenues dans le script temoin."
+    meta_intro = "Synthèse éditoriale des séquences retenues dans le script témoin."
     if provisoire:
-        meta_intro += " Unites provisoires basees sur le programme de conception — a preciser apres cartographie BAB."
+        meta_intro += " Unités provisoires basées sur le programme de conception — à préciser après cartographie BAB."
 
     rows = []
     for unite in unites:
@@ -1441,21 +2477,21 @@ def selection_unites_section(capsule_data: dict) -> str:
             "<tr>"
             f"<td>{unite.get('ordre', '')}</td>"
             f"<td>{escape(extraits)}</td>"
-            f"<td>{escape(unite.get('acte', ''))}</td>"
-            f"<td>{escape(unite.get('libelle', ''))}</td>"
-            f"<td>{escape(grille)}</td>"
+            f"<td>{_e_fr(unite.get('acte', ''))}</td>"
+            f"<td>{_e_fr(unite.get('libelle', ''))}</td>"
+            f"<td>{_e_fr(grille)}</td>"
             "</tr>"
         )
 
     html = f"""
 <section class="methodology-panel">
-  <h2>Unites de sens selectionnees</h2>
-  <p class="meta">{escape(meta_intro)}</p>
+  <h2>Unités de sens sélectionnées</h2>
+  <p class="meta">{_e_fr(meta_intro)}</p>
   <table class="unites-table">
-    <thead><tr><th>#</th><th>Extraits</th><th>Acte</th><th>Unite de sens</th><th>{escape(grille_label)}</th></tr></thead>
+    <thead><tr><th>#</th><th>Extraits</th><th>Acte</th><th>Unité de sens</th><th>{escape(grille_label)}</th></tr></thead>
     <tbody>
 """
-    html += "\n".join(rows) or "<tr><td colspan='5'>Aucune unite documentee.</td></tr>"
+    html += "\n".join(rows) or "<tr><td colspan='5'>Aucune unité documentée.</td></tr>"
     html += """
     </tbody>
   </table>
@@ -1470,7 +2506,7 @@ def selection_unites_section(capsule_data: dict) -> str:
                 o["experts_proposes"] = cap_proposes
             if plural and i > 0:
                 html += _render_orientation_block(o, plural=False).replace(
-                    "<h2>Orientation pour la video expert suivante</h2>",
+                    "<h2>Orientation pour la vidéo expert suivante</h2>",
                     f"<h2>Orientation — {escape(o.get('code', ''))}</h2>",
                 )
             else:
@@ -1489,38 +2525,38 @@ def cadrage_animateur_section(capsule_data: dict) -> str:
         parts = [
             f'<div class="cadrage-block">',
             f"<h3>{escape(title)}</h3>",
-            f'<p class="cadrage-position"><strong>Quand :</strong> {escape(bloc.get("position", ""))}</p>',
+            f'<p class="cadrage-position"><strong>Quand :</strong> {_e_fr(bloc.get("position", ""))}</p>',
         ]
         if bloc.get("duree_cible_secondes"):
             parts.append(
-                f'<p class="meta">Duree cible : ~{bloc["duree_cible_secondes"]} s · '
-                f'{escape(bloc.get("fonction", ""))}</p>'
+                f'<p class="meta">Durée cible : ~{bloc["duree_cible_secondes"]} s · '
+                f'{_e_fr(bloc.get("fonction", ""))}</p>'
             )
         elif bloc.get("fonction"):
-            parts.append(f'<p class="meta">{escape(bloc["fonction"])}</p>')
+            parts.append(f'<p class="meta">{_e_fr(bloc["fonction"])}</p>')
         if kind == "transition":
             parts.append(
-                f'<p class="meta">Apres <strong>{escape(bloc.get("apres_extrait", ""))}</strong> · '
+                f'<p class="meta">Après <strong>{escape(bloc.get("apres_extrait", ""))}</strong> · '
                 f'Avant <strong>{escape(bloc.get("avant_extrait", ""))}</strong></p>'
             )
         if bloc.get("texte_intervenant"):
             parts.append(
                 f'<p><strong>Version animateur</strong></p>'
-                f'<blockquote class="cadrage-quote">{escape(bloc["texte_intervenant"])}</blockquote>'
+                f'<blockquote class="cadrage-quote">{_e_fr(bloc["texte_intervenant"])}</blockquote>'
             )
         if bloc.get("texte_pancarte"):
             parts.append(
                 f'<p><strong>Version pancarte</strong></p>'
-                f'<pre class="cadrage-pancarte">{escape(bloc["texte_pancarte"])}</pre>'
+                f'<pre class="cadrage-pancarte">{_e_fr(bloc["texte_pancarte"])}</pre>'
             )
         if bloc.get("voix_off_optionnelle"):
             parts.append(
                 f'<p class="meta"><strong>Voix off optionnelle :</strong> '
-                f'« {escape(bloc["voix_off_optionnelle"])} »</p>'
+                f'« {_e_fr(bloc["voix_off_optionnelle"])} »</p>'
             )
         if bloc.get("enchainement_expert"):
             parts.append(
-                f'<p class="meta"><strong>Enchainement :</strong> video(s) expert '
+                f'<p class="meta"><strong>Enchaînement :</strong> vidéo(s) expert '
                 f'{escape(bloc["enchainement_expert"])}</p>'
             )
         parts.append("</div>")
@@ -1538,15 +2574,15 @@ def cadrage_animateur_section(capsule_data: dict) -> str:
     return f"""
 <section class="methodology-panel cadrage-panel">
   <h2>Cadrage animateur — intro, transitions, outro</h2>
-  <p class="meta"><strong>Statut :</strong> {escape(cadrage.get("statut", "NON_PRONONCE"))} — ces propositions sont integrees au script final ci-dessous (marquees CADRAGE — NON PRONONCE).</p>
-  <p>{escape(cadrage.get("dispositif", ""))}</p>
-  <p class="meta">{escape(cadrage.get("note", ""))}</p>
+  <p class="meta"><strong>Statut :</strong> {escape(cadrage.get("statut", "NON_PRONONCE"))} — ces propositions sont intégrées au script final ci-dessous (marquées CADRAGE — NON PRONONCE).</p>
+  <p>{_e_fr(cadrage.get("dispositif", ""))}</p>
+  <p class="meta">{_e_fr(cadrage.get("note", ""))}</p>
   <table>
-    <thead><tr><th>Etape</th><th>Position dans le montage</th><th>Fonction</th></tr></thead>
+    <thead><tr><th>Étape</th><th>Position dans le montage</th><th>Fonction</th></tr></thead>
     <tbody>
-      <tr><td>Intro</td><td>{escape(cadrage.get("intro", {}).get("position", ""))}</td><td>{escape(cadrage.get("intro", {}).get("fonction", ""))}</td></tr>
-      {''.join(f"<tr><td>Transition {escape(item.get('id', ''))}</td><td>{escape(item.get('position', ''))}</td><td>{escape(item.get('fonction', ''))}</td></tr>" for item in cadrage.get("transitions", []))}
-      <tr><td>Outro</td><td>{escape(cadrage.get("outro", {}).get("position", ""))}</td><td>{escape(cadrage.get("outro", {}).get("fonction", ""))}</td></tr>
+      <tr><td>Intro</td><td>{_e_fr(cadrage.get("intro", {}).get("position", ""))}</td><td>{_e_fr(cadrage.get("intro", {}).get("fonction", ""))}</td></tr>
+      {''.join(f"<tr><td>Transition {escape(item.get('id', ''))}</td><td>{_e_fr(item.get('position', ''))}</td><td>{_e_fr(item.get('fonction', ''))}</td></tr>" for item in cadrage.get("transitions", []))}
+      <tr><td>Outro</td><td>{_e_fr(cadrage.get("outro", {}).get("position", ""))}</td><td>{_e_fr(cadrage.get("outro", {}).get("fonction", ""))}</td></tr>
     </tbody>
   </table>
   {render_bloc("Intro", cadrage.get("intro", {}), "intro")}
@@ -1568,29 +2604,826 @@ def referents_section(capsule_data: dict) -> str:
         if intervenant:
             who = escape(intervenant)
         else:
-            who = "<em>Intervenant a definir</em>"
+            who = "<em>Intervenant à définir</em>"
         desc = video.get("descriptif", "")
-        desc_html = f" {escape(desc)}" if desc else ""
+        desc_html = f" {escape(_normalize_editorial_french(desc))}" if desc else ""
         items.append(
             f"<li><strong>{escape(_label_video_expert(video.get('code', '')))}</strong> — {who} : "
-            f"{escape(video.get('titre', ''))}.{desc_html}</li>"
+            f"{escape(_normalize_editorial_french(video.get('titre', '')))}.{desc_html}</li>"
         )
 
     proposes_html = ""
     if proposes:
         proposes_html = (
-            f"<p class='meta'><strong>Intervenants proposes (a confirmer) :</strong> "
+            f"<p class='meta'><strong>Intervenants proposés (à confirmer) :</strong> "
             f"{escape(', '.join(proposes))}</p>"
         )
 
     return f"""
 <section class="methodology-panel referents-panel">
-  <h2>Videos expert a produire</h2>
-  <p class="meta">Programme de conception mis a jour le 2026-07-10 (source : 20260710_Prev_Vid.xlsx).</p>
+  <h2>Vidéos expert à produire</h2>
+  <p class="meta">Programme de conception mis à jour le 2026-07-10 (source : 20260710_Prev_Vid.xlsx).</p>
   <ul>
     {''.join(items)}
   </ul>
   {proposes_html}
+</section>
+"""
+
+
+SCRIPT_EXPERTISE_DISCLAIMER = (
+    "Ce script est une projection construite avec l'IA pour vous orienter, "
+    "à partir des consignes et du cadrage éditorial. "
+    "La justesse des informations n'est pas vérifiée : elle n'a pas été établie "
+    "par une personne qui a l'expertise du sujet. "
+    "À reprendre, corriger et valider par l'intervenant expert."
+)
+
+SCRIPT_EXPERTISE_WORD_MIN = 450
+SCRIPT_EXPERTISE_WORD_MAX = 800
+
+
+def _strip_guillemets(text: str) -> str:
+    cleaned = (text or "").strip()
+    for mark in ("«", "»", '"', "'"):
+        cleaned = cleaned.strip(mark).strip()
+    return cleaned
+
+
+def _count_words_fr(text: str) -> int:
+    return len(re.findall(r"[A-Za-zÀ-ÖØ-öø-ÿ0-9']+", text or ""))
+
+
+def _sentence_case(text: str) -> str:
+    cleaned = (text or "").strip()
+    if not cleaned:
+        return ""
+    if cleaned[0].islower():
+        return cleaned[0].upper() + cleaned[1:]
+    return cleaned
+
+
+def _ensure_period(text: str) -> str:
+    cleaned = (text or "").strip().rstrip(";")
+    if not cleaned:
+        return ""
+    if cleaned[-1] not in ".!?…":
+        return cleaned + "."
+    return cleaned
+
+
+def _chercheur_pronoun(chercheur: str) -> str:
+    prenom = _chercheur_prenom(chercheur).lower()
+    if prenom in {
+        "muriel",
+        "sylvia",
+        "stephanie",
+        "soizic",
+        "arielle",
+        "eneli",
+        "virginia",
+        "fatoumata",
+    }:
+        return "elle"
+    return "il"
+
+
+def _normalize_concept_casing(label: str) -> str:
+    raw = (label or "").strip()
+    if not raw:
+        return raw
+    if raw.isupper() and len(raw) <= 4:
+        return raw
+    return raw[0].lower() + raw[1:] if raw[:1].isupper() else raw
+
+
+def _fr_label_with_article(label: str) -> str:
+    """Ajoute un determinant francais a un concept / angle."""
+    raw = _normalize_concept_casing(label)
+    if not raw:
+        return ""
+    lower = raw.lower()
+    if lower.startswith(
+        (
+            "le ",
+            "la ",
+            "les ",
+            "l'",
+            "l’",
+            "un ",
+            "une ",
+            "des ",
+            "du ",
+            "de la ",
+            "de l'",
+            "de l’",
+        )
+    ):
+        return raw
+    feminine_exact = {
+        "serendipite",
+        "serendipité",
+        "rencontre",
+        "observation d'usage",
+        "observation d usage",
+        "maturation progressive",
+        "publication",
+        "confidentialite",
+        "confidentialité",
+        "nouveaute",
+        "nouveauté",
+        "divulgation",
+        "prematuration",
+        "prématuration",
+        "maturation",
+        "licence",
+        "creation",
+        "création",
+        "gouvernance",
+        "dilution",
+        "collaboration",
+        "pi",
+        "di",
+    }
+    key = lower.replace("é", "e").replace("è", "e").replace("ê", "e")
+    vowel = "aeiouyhàâäéèêëîïôöùûüœ"
+    if key in feminine_exact or key.startswith("observation") or key.startswith("idee"):
+        if lower[0] in vowel:
+            return f"l'{raw}"
+        return f"la {raw}"
+    if lower[0] in vowel:
+        return f"l'{raw}"
+    return f"le {raw}"
+
+
+def _starts_with_verbish(text: str) -> bool:
+    first = (text or "").strip().split(" ", 1)[0].lower().rstrip(",;:")
+    verbs = {
+        "raconte",
+        "racontent",
+        "part",
+        "partent",
+        "definit",
+        "définit",
+        "illustre",
+        "illustrent",
+        "montre",
+        "montrent",
+        "precise",
+        "précise",
+        "explique",
+        "expliquent",
+        "oppose",
+        "ajoute",
+        "ajoutent",
+        "decrit",
+        "décrit",
+        "parle",
+        "parlent",
+        "incarne",
+        "croise",
+        "croisent",
+        "nommer",
+        "definir",
+        "définir",
+        "montrer",
+        "expliquer",
+        "insister",
+        "distinguer",
+        "preparer",
+        "préparer",
+        "installer",
+        "lier",
+        "traiter",
+        "reduire",
+        "réduire",
+        "confondre",
+        "resumer",
+        "résumer",
+        "poser",
+        "rappeler",
+        "structurer",
+        "clarifier",
+        "cartographier",
+        "securiser",
+        "sécuriser",
+        "organiser",
+        "concevoir",
+        "gerer",
+        "gérer",
+        "passer",
+        "comprendre",
+        "adapter",
+        "annoncer",
+        "suivre",
+        "partir",
+        "completer",
+        "compléter",
+        "inviter",
+    }
+    return first in verbs
+
+
+_INFINITIVES = {
+    "nommer",
+    "definir",
+    "définir",
+    "montrer",
+    "expliquer",
+    "insister",
+    "distinguer",
+    "preparer",
+    "préparer",
+    "installer",
+    "lier",
+    "traiter",
+    "reduire",
+    "réduire",
+    "confondre",
+    "resumer",
+    "résumer",
+    "poser",
+    "rappeler",
+    "structurer",
+    "clarifier",
+    "cartographier",
+    "securiser",
+    "sécuriser",
+    "organiser",
+    "concevoir",
+    "gerer",
+    "gérer",
+    "passer",
+    "comprendre",
+    "adapter",
+    "annoncer",
+    "suivre",
+    "partir",
+    "completer",
+    "compléter",
+    "inviter",
+}
+
+
+def _ensure_oral_subject(text: str, chercheur: str) -> str:
+    """Evite « En effet, raconte… » → « En effet, il raconte… »."""
+    cleaned = (text or "").strip()
+    if not cleaned:
+        return ""
+    prenom = _chercheur_prenom(chercheur)
+    pronoun = _chercheur_pronoun(chercheur)
+    lower = cleaned.lower()
+    prefixes = (
+        prenom.lower() + " ",
+        (chercheur or "").lower(),
+        f"{pronoun} ",
+        "on ",
+        "ce ",
+        "cet ",
+        "cette ",
+        "ces ",
+        "son ",
+        "sa ",
+        "ses ",
+        "le ",
+        "la ",
+        "les ",
+        "l'",
+        "l’",
+        "un ",
+        "une ",
+        "dans ",
+        "avec ",
+        "pour ",
+        "quand ",
+        "si ",
+        "mais ",
+        "et ",
+        "ou ",
+        "car ",
+        "donc ",
+        "alors ",
+        "ici ",
+        "là ",
+        "au ",
+        "aux ",
+    )
+    if any(lower.startswith(p) for p in prefixes):
+        return _ensure_period(cleaned)
+    if _starts_with_verbish(cleaned):
+        first = cleaned.split(" ", 1)[0].lower().rstrip(",;:")
+        if first in _INFINITIVES:
+            return _ensure_period(f"Il s'agit de {cleaned[0].lower() + cleaned[1:]}")
+        return _ensure_period(f"{pronoun} {cleaned[0].lower() + cleaned[1:]}")
+    return _ensure_period(cleaned)
+
+
+def _oralize_instruction(text: str) -> str:
+    """Transforme une consigne type fiche en tour oral."""
+    cleaned = (text or "").strip()
+    if not cleaned:
+        return ""
+    chunks = re.split(r"(?<=[.!?])\s+", cleaned)
+    out: list[str] = []
+    for chunk in chunks:
+        chunk = chunk.strip()
+        if not chunk:
+            continue
+        first = chunk.split(" ", 1)[0].lower().rstrip(",;:")
+        if first in _INFINITIVES and not chunk.lower().startswith(("il ", "elle ", "on ")):
+            if first == "insister":
+                rest = chunk.split(" ", 1)[1] if " " in chunk else ""
+                rest = rest.lstrip(" :")
+                out.append(_ensure_period(f"J'insiste : {rest}" if rest else "J'insiste."))
+            else:
+                out.append(_ensure_period(f"Il s'agit de {chunk[0].lower() + chunk[1:]}"))
+        else:
+            out.append(_ensure_period(chunk))
+    return " ".join(out)
+
+
+def _form_angle_oral(angle: str) -> str:
+    return _fr_label_with_article(angle) if angle else ""
+
+
+def _a_plus_article(phrase: str) -> str:
+    """Contracte « a le / a les » → « au / aux »."""
+    p = (phrase or "").strip()
+    if p.startswith("le "):
+        return "au " + p[3:]
+    if p.startswith("les "):
+        return "aux " + p[4:]
+    if p.startswith("la "):
+        return "a la " + p[3:]
+    if p.startswith("l'"):
+        return "a l'" + p[2:]
+    if p.startswith("l’"):
+        return "a l’" + p[2:]
+    return "a " + p
+
+
+def _list_concepts_oral(concepts: list[str]) -> str:
+    labeled = [_fr_label_with_article(c) for c in concepts if c]
+    if not labeled:
+        return ""
+    if len(labeled) == 1:
+        return labeled[0]
+    if len(labeled) == 2:
+        return f"{labeled[0]} et {labeled[1]}"
+    return f"{', '.join(labeled[:-1])} et {labeled[-1]}"
+
+
+def _build_script_expertise_projete(
+    orientation: dict,
+    video: dict | None = None,
+) -> tuple[str, int]:
+    """
+    Script oral d'expertise (450–800 mots) : l'expert s'adresse aux apprenants.
+    Ton naturel, francais correct (sujets, determinants, accords).
+    """
+    code = orientation.get("code") or (video or {}).get("code", "")
+    titre = orientation.get("titre") or (video or {}).get("titre", "")
+    concepts = [c for c in orientation.get("concepts", []) if c]
+    introduction = (orientation.get("introduction") or "").strip()
+    guides = _orientation_guides(orientation)
+    consignes = _simplify_consignes(orientation.get("consignes", []))
+    descriptif = ((video or {}).get("descriptif") or "").strip()
+    label = _label_video_expert(code)
+
+    prenoms = []
+    for guide in guides:
+        name = (guide.get("chercheur") or "").strip()
+        if name:
+            p = _chercheur_prenom(name)
+            if p and p not in prenoms:
+                prenoms.append(p)
+    if len(prenoms) >= 2:
+        voix_phrase = f"{', '.join(prenoms[:-1])} et {prenoms[-1]}"
+    elif prenoms:
+        voix_phrase = prenoms[0]
+    else:
+        voix_phrase = ""
+
+    paragraphs: list[str] = []
+
+    open_bits = ["Bonjour."]
+    if voix_phrase:
+        open_bits.append(
+            f"Ces témoignages — ceux de {voix_phrase} — ne sont pas là pour illustrer "
+            f"une théorie abstraite."
+        )
+    else:
+        open_bits.append(
+            "Ces témoignages ne sont pas là pour illustrer une théorie abstraite."
+        )
+    open_bits.append(
+        "En effet, ils mettent le doigt sur un moment critique du parcours d'innovation."
+    )
+    if titre:
+        titre_oral = titre[0].lower() + titre[1:] if titre[:1].isupper() else titre
+        open_bits.append(
+            f"Et c'est précisément de cela que je voudrais vous parler : {titre_oral}."
+        )
+    if introduction:
+        intro = introduction
+        intro = re.sub(r"\bLa chorale T\d+\b", "Ces temoignages", intro, flags=re.I)
+        intro = re.sub(r"\bCes temoignages vient\b", "Ces temoignages viennent", intro, flags=re.I)
+        intro = re.sub(r"\bCes temoignages montre\b", "Ces temoignages montrent", intro, flags=re.I)
+        intro = re.sub(r"\bE(\d+)(bis)?\b", "cette video", intro, flags=re.I)
+        intro = re.sub(
+            r"(^|[.!?]\s+)cette video\b",
+            lambda m: f"{m.group(1)}Cette video",
+            intro,
+        )
+        intro = re.sub(r"\b\(JJG,\s*MUR,\s*SYL,\s*YAN\)", "", intro)
+        intro = re.sub(r"\s{2,}", " ", intro).strip()
+        open_bits.append(_ensure_period(intro))
+    open_bits.append(
+        "Avant d'aller plus loin, des questions doivent se poser. "
+        "Pas des questions savantes : des questions de terrain."
+    )
+    if guides and guides[0].get("question_apprenant"):
+        q0 = guides[0]["question_apprenant"].strip().rstrip("?").rstrip()
+        open_bits.append(f"Par exemple : {q0} ?")
+    else:
+        open_bits.append(
+            "Par exemple : à quel moment allez-vous parler de votre résultat, "
+            "à qui, et avec quelles conséquences ?"
+        )
+    paragraphs.append(" ".join(open_bits))
+
+    teach = ["Restons un instant sur l'enjeu."]
+    if titre:
+        teach.append(
+            f"Quand on dit « {titre} », on ne parle pas d'un formalisme lointain."
+        )
+    if descriptif:
+        parts = [p.strip() for p in re.split(r"[,·;]", descriptif) if p.strip()]
+        if len(parts) >= 2 and all(len(p.split()) <= 4 for p in parts):
+            teach.append(
+                f"On parle de situations concrètes : {_list_concepts_oral(parts)}."
+            )
+        else:
+            teach.append(f"On parle de situations concrètes : {descriptif.rstrip('.')}.")
+    if concepts:
+        teach.append(
+            f"Les mots à garder en tête sont simples : {_list_concepts_oral(concepts)}. "
+            f"Mais derrière ces mots, il y a un geste : anticiper avant d'agir, "
+            f"protéger avant de communiquer, préparer avant de rencontrer."
+        )
+    teach.append(
+        "Les chercheurs que vous avez entendus ne vous livrent pas une checklist. "
+        "Ils vous montrent, chacun a sa manière, le moment où il faut s'arrêter "
+        "et se demander : est-ce le bon moment pour parler ?"
+    )
+    paragraphs.append(" ".join(teach))
+
+    if guides:
+        connectors = [
+            "Prenons d'abord",
+            "Regardons ensuite",
+            "Enfin, écoutons encore",
+            "Autre situation :",
+            "Et puis",
+        ]
+        for index, guide in enumerate(guides):
+            chercheur = (guide.get("chercheur") or "un chercheur").strip()
+            prenom = _chercheur_prenom(chercheur)
+            angle = (guide.get("origine") or guide.get("angle") or "").strip()
+            brut_temoin = (guide.get("dans_le_temoin") or "").strip()
+            dans_temoin = _strip_chercheur_prefix(brut_temoin, chercheur).strip()
+            travail = (guide.get("travail_expert") or "").strip()
+            travail = re.sub(r"^E\d+(bis)?\s*/\s*E\d+(bis)?\s*:\s*", "", travail)
+            travail = re.sub(r"^E\d+(bis)?\s*:\s*", "", travail)
+            question = (guide.get("question_apprenant") or "").strip()
+            erreur = (guide.get("erreur_a_eviter") or "").strip()
+            concepts_g = [
+                c
+                for c in (guide.get("concepts") or guide.get("concepts_e1") or [])
+                if c
+            ]
+
+            conn = connectors[index] if index < len(connectors) else "Prenons encore"
+            block = [f"{conn} {prenom}."]
+            if angle:
+                block.append(
+                    f"Son témoignage, sur {_form_angle_oral(angle)}, est révélateur."
+                )
+            else:
+                block.append("Son témoignage est révélateur.")
+
+            if dans_temoin:
+                block.append("En effet, " + _ensure_oral_subject(dans_temoin, chercheur))
+            elif brut_temoin:
+                block.append(_ensure_period(brut_temoin))
+
+            if travail:
+                block.append(
+                    "Ce que cela nous enseigne, ce n'est pas l'anecdote : c'est le geste. "
+                    + _oralize_instruction(travail)
+                )
+            else:
+                block.append(
+                    "Ce témoignage sert de prétexte pour installer "
+                    f"« {titre or 'le bon reflexe'} »."
+                )
+
+            if concepts_g:
+                labeled = [_a_plus_article(_fr_label_with_article(c)) for c in concepts_g if c]
+                if len(labeled) == 1:
+                    touch = labeled[0]
+                elif len(labeled) == 2:
+                    touch = f"{labeled[0]} et {labeled[1]}"
+                else:
+                    touch = f"{', '.join(labeled[:-1])} et {labeled[-1]}"
+                block.append(f"On touche ici {touch}.")
+
+            if erreur:
+                err = erreur.strip()
+                low = err.lower()
+                if low.startswith("ne pas "):
+                    err = "Il ne faudrait pas " + err[7:]
+                # Oraliser d'eventuels infinitifs residuels apres point-virgule.
+                err = err.replace(" ; partir ", " ; il faut partir ")
+                err = err.replace("; partir ", "; il faut partir ")
+                err = err.replace(" ; la relier ", " ; il faut la relier ")
+                err = err.replace("; la relier ", "; il faut la relier ")
+                block.append(_ensure_period(err))
+
+            if question:
+                q = question.strip().rstrip("?").rstrip()
+                block.append(
+                    "Alors, avant d'aller plus loin dans votre propre projet, "
+                    f"posez-vous la question : {q} ?"
+                )
+            paragraphs.append(" ".join(block))
+    else:
+        paragraphs.append(
+            "Meme sans revenir detail par detail sur chaque voix, retenez l'essentiel : "
+            f"ces témoignages ouvrent la porte à {titre or 'un geste professionnel clé'}. "
+            "A vous, maintenant, d'identifier le moment equivalent dans votre parcours."
+        )
+
+    practice = ["Venons-en a vous."]
+    if titre:
+        practice.append(
+            f"Si demain vous devez appliquer « {titre} », par quoi commencer ?"
+        )
+    practice.append(
+        "Commencez par nommer la situation a risque. "
+        "Puis demandez-vous a qui parler, avec quoi arriver, "
+        "et surtout : qu'est-ce qui ne doit pas sortir trop tot."
+    )
+    if concepts:
+        practice.append(
+            f"Gardez sous les yeux ces reperes : {_list_concepts_oral(concepts)}."
+        )
+    if consignes:
+        practice.append("Quelques points d'appui pour la suite :")
+        paragraphs.append(" ".join(practice))
+        for item in consignes:
+            paragraphs.append(f"— {_oralize_instruction(_humanize_capsule_labels(item))}")
+    else:
+        practice.append(
+            "L'idee n'est pas de recopier les chercheurs : "
+            "c'est de reconnaitre, chez vous, le meme type de moment critique."
+        )
+        paragraphs.append(" ".join(practice))
+
+    close = ["Pour conclure, je voudrais que vous repartiez avec une chose simple."]
+    if titre:
+        titre_oral = titre[0].lower() + titre[1:] if titre[:1].isupper() else titre
+        close.append(
+            "Avant toute decision irreversible — publication, communication, "
+            f"depot, rencontre — le reflexe a installer, c'est bien : {titre_oral}."
+        )
+    close.append(
+        "Ces témoignages vous en ont donné le goût. À vous d'en faire une pratique."
+    )
+    if guides and any(g.get("question_apprenant") for g in guides):
+        last_q = next(g["question_apprenant"] for g in guides if g.get("question_apprenant"))
+        last_q = last_q.strip().rstrip("?").rstrip()
+        close.append(f"Une derniere question, pour la route : {last_q} ?")
+    close.append("Je vous remercie.")
+    paragraphs.append(" ".join(close))
+
+    body = "\n\n".join(p for p in paragraphs if p and p.strip())
+    word_count = _count_words_fr(body)
+
+    if word_count < SCRIPT_EXPERTISE_WORD_MIN:
+        body += (
+            "\n\n"
+            "Ajoutons un mot de posture. Mon role ici n'est pas de remplacer "
+            "votre tutelle, votre service de valorisation ou votre accompagnateur. "
+            "Mon role, c'est de vous aider a reconnaitre le moment ou une question "
+            "doit se poser — avant qu'il ne soit trop tard. "
+            "En effet, beaucoup de difficultes naissent moins d'un manque de genie "
+            "technique que d'un manque d'anticipation : on communique trop tot, "
+            "on arrive sous-prepare, on confond partage scientifique et divulgation. "
+            "Les temoins que vous avez entendus rendent ce moment visible. "
+            "A vous de le retrouver dans votre laboratoire, votre these, "
+            "votre partenariat ou votre prochaine prise de parole. "
+            "Travaillez avec une question simple : qu'est-ce qui, demain, "
+            "pourrait affaiblir la nouveaute, la confidentialite ou la valeur "
+            "de mon résultat si je parle trop vite ? "
+            "Et a l'inverse : qu'est-ce qui m'empechera d'avancer si je reste "
+            "trop longtemps seul avec mon idee ? "
+            "Tenir ces deux exigences ensemble — proteger et avancer — "
+            "c'est souvent le vrai geste d'expertise."
+        )
+        word_count = _count_words_fr(body)
+
+    if word_count < SCRIPT_EXPERTISE_WORD_MIN:
+        body += (
+            "\n\n"
+            f"Pour ancrer durablement « {titre or label} », essayez ceci. "
+            "Sur une feuille, trois colonnes : situation a risque, "
+            "interlocuteur à contacter, information à préparer. "
+            "Remplissez-les a partir de votre projet — pas d'un cas ideal. "
+            "Puis comparez avec ce que vous avez entendu. "
+            "Ou se situe la difference ? "
+            "Souvent, elle revele une hesitation, un manque d'anticipation, "
+            "ou une confusion entre communiquer et divulguer. "
+            "Ces ecarts sont precieux : ils indiquent ou porter l'effort. "
+            "Enfin, formulez a voix haute, en une phrase, le reflexe que vous retenez. "
+            "Si vous ne pouvez pas le dire simplement, le transfert n'est pas encore fait."
+        )
+        word_count = _count_words_fr(body)
+
+    if word_count > SCRIPT_EXPERTISE_WORD_MAX:
+        target = SCRIPT_EXPERTISE_WORD_MAX - 20
+        tokens = re.findall(
+            r"[A-Za-zÀ-ÖØ-öø-ÿ0-9']+|[^\w\s]+|\s+",
+            body,
+            flags=re.UNICODE,
+        )
+        kept = []
+        count = 0
+        for tok in tokens:
+            if re.match(r"[A-Za-zÀ-ÖØ-öø-ÿ0-9']+", tok):
+                if count >= target:
+                    break
+                count += 1
+            kept.append(tok)
+        body = "".join(kept).rstrip(" ,;:\n")
+        if not body.endswith((".", "!", "?", "…")):
+            body += "."
+        body += "\n\nJe vous remercie."
+        word_count = _count_words_fr(body)
+        if word_count > SCRIPT_EXPERTISE_WORD_MAX:
+            pattern = re.compile(r"[A-Za-zÀ-ÖØ-öø-ÿ0-9']+")
+            out = []
+            n = 0
+            last = 0
+            for match in pattern.finditer(body):
+                if n >= SCRIPT_EXPERTISE_WORD_MAX:
+                    break
+                out.append(body[last:match.end()])
+                last = match.end()
+                n += 1
+            body = "".join(out).rstrip(" ,;:") + "."
+            word_count = _count_words_fr(body)
+
+    body = _normalize_editorial_french(body)
+    word_count = _count_words_fr(body)
+    header = (
+        f"[PROJECTION — {label} — script oral expert → apprenants]\n"
+        f"Objectif pédagogique : {_normalize_editorial_french(titre) or '—'}\n"
+        f"Cible : {SCRIPT_EXPERTISE_WORD_MIN}–{SCRIPT_EXPERTISE_WORD_MAX} mots "
+        f"(projection actuelle : {word_count} mots)\n"
+    )
+    return f"{header}\n{body}".strip(), word_count
+
+
+
+def _build_script_expertise_plan(
+    orientation: dict,
+    video: dict | None = None,
+) -> list[str]:
+    """Plan en puces du script expertise : etapes + notions traitees."""
+    titre = orientation.get("titre") or (video or {}).get("titre", "")
+    concepts = [c for c in orientation.get("concepts", []) if c]
+    guides = _orientation_guides(orientation)
+    descriptif = ((video or {}).get("descriptif") or "").strip()
+
+    plan: list[str] = []
+    if titre:
+        plan.append(f"Ouverture — objectif : {titre}")
+    else:
+        plan.append("Ouverture — ancrage dans les témoignages")
+
+    if concepts:
+        plan.append(f"Notions cadres : {_list_concepts_oral(concepts)}")
+    elif descriptif:
+        parts = [p.strip() for p in re.split(r"[,·;]", descriptif) if p.strip()]
+        if parts:
+            plan.append(f"Notions cadres : {_list_concepts_oral(parts)}")
+
+    if guides:
+        for guide in guides:
+            chercheur = (guide.get("chercheur") or "Temoin").strip()
+            prenom = _chercheur_prenom(chercheur) or chercheur
+            angle = (guide.get("origine") or guide.get("angle") or "").strip()
+            notions = [
+                c
+                for c in (guide.get("concepts") or guide.get("concepts_e1") or [])
+                if c
+            ]
+            if angle and notions:
+                plan.append(
+                    f"Temoignage de {prenom} ({angle}) — notions : "
+                    f"{_list_concepts_oral(notions)}"
+                )
+            elif angle:
+                plan.append(
+                    f"Temoignage de {prenom} — angle : {_form_angle_oral(angle)}"
+                )
+            elif notions:
+                plan.append(
+                    f"Temoignage de {prenom} — notions : {_list_concepts_oral(notions)}"
+                )
+            else:
+                plan.append(f"Temoignage de {prenom} — illustration du geste")
+    else:
+        plan.append("Developpement — illustration a partir de la video temoin")
+
+    plan.append("Mise en pratique — transfert vers le projet de l'apprenant")
+    if titre:
+        titre_oral = titre[0].lower() + titre[1:] if titre[:1].isupper() else titre
+        plan.append(f"Cloture — installer le reflexe : {titre_oral}")
+    else:
+        plan.append("Clôture — retenir le geste à installer")
+    return [_normalize_editorial_french(item) for item in plan]
+
+
+def scripts_expertise_projetes_section(capsule_data: dict) -> str:
+    videos = capsule_data.get("videos_expert", [])
+    orientations = capsule_data.get("orientations_expert") or []
+    if capsule_data.get("orientation_expert") and not orientations:
+        orientations = [capsule_data["orientation_expert"]]
+    if not videos and not orientations:
+        return ""
+
+    by_code = {item.get("code", ""): item for item in videos if item.get("code")}
+    blocks: list[tuple[dict, dict | None]] = []
+    seen: set[str] = set()
+    for orientation in orientations:
+        code = orientation.get("code", "")
+        blocks.append((orientation, by_code.get(code)))
+        if code:
+            seen.add(code)
+    for video in videos:
+        code = video.get("code", "")
+        if code and code not in seen:
+            blocks.append(
+                (
+                    {
+                        "code": code,
+                        "titre": video.get("titre", ""),
+                        "concepts": [],
+                        "introduction": video.get("descriptif", ""),
+                        "consignes": list(BRIEF_CONSIGNES_COMMUNES),
+                        "utilisation_script_temoin": {},
+                    },
+                    video,
+                )
+            )
+
+    if not blocks:
+        return ""
+
+    articles = []
+    for orientation, video in blocks:
+        code = orientation.get("code") or (video or {}).get("code", "")
+        titre = orientation.get("titre") or (video or {}).get("titre", "")
+        script, word_count = _build_script_expertise_projete(orientation, video)
+        plan = _build_script_expertise_plan(orientation, video)
+        plan_html = "".join(f"<li>{escape(item)}</li>" for item in plan)
+        in_range = SCRIPT_EXPERTISE_WORD_MIN <= word_count <= SCRIPT_EXPERTISE_WORD_MAX
+        count_class = "meta" if in_range else "warn"
+        articles.append(
+            f"""
+  <article class="script-expertise-block">
+    <h3>{escape(_label_video_expert(code))} — {escape(_normalize_editorial_french(titre or 'Script projeté'))}</h3>
+    <p class="meta">Script oral d'expertise adressé aux apprenants. La vidéo témoin sert de <strong>prétexte pédagogique</strong> pour enseigner l'objectif (ex. réflexe de déclaration avant divulgation).</p>
+    <p class="{count_class}"><strong>Volume :</strong> {word_count} mots (cible {SCRIPT_EXPERTISE_WORD_MIN}–{SCRIPT_EXPERTISE_WORD_MAX}).</p>
+    <div class="script-expertise-plan">
+      <h4>Plan du script (notions traitées)</h4>
+      <ul>
+        {plan_html}
+      </ul>
+    </div>
+    <div class="script">{escape(script)}</div>
+  </article>
+"""
+        )
+
+    return f"""
+<section class="methodology-panel script-expertise-projete-panel">
+  <h2>Proposition de script pour les vidéos expertise</h2>
+  <p class="script-expertise-disclaimer"><strong>Attention :</strong> {escape(SCRIPT_EXPERTISE_DISCLAIMER)}</p>
+  <p class="meta">Chaque texte est une prise de parole d'expert (environ 450 à 800 mots) qui s'appuie sur la chorale témoin pour enseigner l'objectif pédagogique de la vidéo expertise — sans se limiter à un résumé des témoignages.</p>
+  {''.join(articles)}
 </section>
 """
 
@@ -1643,8 +3476,8 @@ def export_videos_expert_plaintext(capsule_data: dict) -> str:
                     lines.append(f"     - {item}")
         lines.append("")
     if proposes:
-        lines.append(f"Intervenants proposes (a confirmer) : {', '.join(proposes)}")
-    return "\n".join(lines).strip()
+        lines.append(f"Intervenants proposés (à confirmer) : {', '.join(proposes)}")
+    return _normalize_editorial_french("\n".join(lines).strip())
 
 
 def _multiline_cell_html(text: str) -> str:
@@ -1750,7 +3583,7 @@ def export_word_section(
     programme_table: dict,
 ) -> str:
     brief_text = export_brief_intervenant_plaintext(code, capsule_data, by_id)
-    synthese_text = export_synthese_temoignages_plaintext(code, capsule_data)
+    synthese_text = export_synthese_temoignages_plaintext(code, capsule_data, by_id)
     videos_table_html = export_programme_complet_table_html(code, programme_table)
     hidden_blocks = ""
     if synthese_text:
@@ -1775,7 +3608,7 @@ def export_word_section(
         f"""
 <section class="export-panel" id="export-word-panel" data-capsule-code="{escape(code)}" data-capsule-title="{escape(titre)}">
   <h2>Export Word</h2>
-  <p class="meta">Exporter le script final, la synthese des temoignages, la proposition de cadrage pour la video expert et le tableau de conception (source Excel).</p>
+  <p class="meta">Exporter le script final, la synthèse des témoignages, la proposition de cadrage pour la vidéo expert et le tableau de conception (source Excel).</p>
   <button type="button" class="btn" id="export-word-open" aria-expanded="false" aria-controls="export-word-modal">
     Exporter le dossier capsule
   </button>
@@ -2280,95 +4113,150 @@ def _tb_edito_sequences_by_code() -> dict[str, list[dict]]:
                 continue
             targets = _target_codes_from_edito_title(video_title)
             for code in targets:
-                grouped[code].append(
-                    {
-                        **sequence,
-                        "intervenant": doc.get("intervenant", item.get("intervenant", "")),
-                        "source_doc": doc.get("source", item.get("source", "")),
-                        "video": video_title,
-                    }
-                )
+                seq = {
+                    **sequence,
+                    "intervenant": doc.get("intervenant", item.get("intervenant", "")),
+                    "source_doc": doc.get("source", item.get("source", "")),
+                    "video": video_title,
+                }
+                # Correction ASR Greffet dans les couches edito / guides (pas dans data/raw/).
+                seq["texte"] = correct_asr_greffet(seq.get("texte", ""))
+                grouped[code].append(seq)
     return grouped
 
 
-def _tb_edito_chorale_order(sequences: list[dict]) -> list[dict]:
+TEMOIN_VOICE_ORDER = (
+    "Jean-Jacques Greffet",
+    "Muriel Thomas",
+    "Sylvia Cohen-Kaminski",
+    "Loïc Rajjou",
+    "Yann Monier",
+)
+
+
+def _tb_edito_voice_sort_key(name: str) -> tuple[int, str]:
+    canonical = _canonical_name_key(name)
+    for index, preferred in enumerate(TEMOIN_VOICE_ORDER):
+        if _canonical_name_key(preferred) == canonical:
+            return (index, canonical)
+    return (100, canonical)
+
+
+def _tb_edito_by_chercheur_order(sequences: list[dict]) -> list[dict]:
+    """Regroupe les sequences chercheur apres chercheur (ordre documentaire dans chaque voix)."""
     if not sequences:
         return []
 
-    def _bucket_key(item: dict) -> str:
-        question = (item.get("question") or "").strip()
-        if question:
-            return f"q::{_edito_title_core(question)}"
-        video = (item.get("video") or "").strip()
-        return f"v::{_edito_title_core(video)}"
-
-    # Regroupe d'abord par unite de sujet/question, puis alterne les voix.
-    buckets: dict[str, list[dict]] = defaultdict(list)
+    by_voice: dict[str, list[dict]] = defaultdict(list)
+    display_name: dict[str, str] = {}
     for sequence in sequences:
-        buckets[_bucket_key(sequence)].append(sequence)
+        voice = (sequence.get("intervenant") or "Temoin").strip()
+        key = _canonical_name_key(voice) or "temoin"
+        by_voice[key].append(sequence)
+        display_name[key] = voice
 
-    ordered_bucket_keys = sorted(
-        buckets.keys(),
-        key=lambda key: (
-            0 if key.startswith("q::") else 1,
-            key,
-        ),
-    )
-
-    chorale: list[dict] = []
-    for key in ordered_bucket_keys:
-        bucket_sequences = sorted(
-            buckets[key],
+    ordered: list[dict] = []
+    for key in sorted(by_voice.keys(), key=lambda item: _tb_edito_voice_sort_key(display_name[item])):
+        voice_sequences = sorted(
+            by_voice[key],
             key=lambda item: (
-                _canonical_name_key(item.get("intervenant", "")),
                 int(item.get("ordre", 0) or 0),
+                int(item.get("source_paragraphe", 0) or 0),
+                item.get("id", ""),
             ),
         )
-        by_voice: dict[str, list[dict]] = defaultdict(list)
-        for sequence in bucket_sequences:
-            voice = (sequence.get("intervenant") or "temoin").strip().lower()
-            by_voice[voice].append(sequence)
-
-        voices = sorted(by_voice.keys())
-        while True:
-            progressed = False
-            for voice in voices:
-                if by_voice[voice]:
-                    chorale.append(by_voice[voice].pop(0))
-                    progressed = True
-            if not progressed:
-                break
-
-    return chorale
+        ordered.extend(voice_sequences)
+    return ordered
 
 
-def _tb_edito_is_presentation_sequence(sequence: dict) -> bool:
+def _tb_edito_is_genesis_sequence(sequence: dict) -> bool:
+    """Genese explicite (ex. JJGE-0004 : « Comment est née votre innovation ? »)."""
     text = _normalize_for_match(sequence.get("texte", ""))
     question = _normalize_for_match(sequence.get("question", ""))
-    video = _normalize_for_match(sequence.get("video", ""))
-    indicators = (
-        "je suis",
-        "je m appelle",
-        "je travaille",
-        "mon domaine de recherche",
-        "quel est votre domaine de recherche",
-        "qui etes vous",
+    genesis_in_question = (
+        "comment est nee",
+        "comment nait",
+        "genese de",
+        "d ou vient votre innovation",
+        "d ou vient mon innovation",
+        "innovation resulte d un declic",
     )
-    if any(token in question for token in indicators):
+    if any(token in question for token in genesis_in_question):
         return True
-    if "pourquoi oser" in video and any(token in text for token in indicators):
-        return True
-    return False
+    genesis_in_text = (
+        "mon innovation est nee",
+        "cette innovation est nee",
+        "mon innovation decoule",
+        "comment est nee mon innovation",
+        "au tout debut de la genese",
+    )
+    return any(token in text[:160] for token in genesis_in_text)
+
+
+def _tb_edito_t1_split_presentations_geneses(sequences: list[dict]) -> tuple[list[dict], list[dict]]:
+    """
+    T1 : par voix, tout ce qui precede le premier marqueur de genese reste en presentation.
+    Ainsi JJGE-0003 (exemple nano-photonique) reste avec JJGE-0001/0002 ;
+    JJGE-0004 (question genese) ouvre la partie geneses.
+    """
+
+    def _doc_order(item: dict) -> tuple:
+        return (
+            int(item.get("ordre", 0) or 0),
+            int(item.get("source_paragraphe", 0) or 0),
+            item.get("id", ""),
+        )
+
+    by_voice: dict[str, list[dict]] = {}
+    for seq in sequences:
+        voice = (seq.get("intervenant") or "Temoin").strip()
+        by_voice.setdefault(voice, []).append(seq)
+
+    presentations: list[dict] = []
+    geneses: list[dict] = []
+    for voice, items in by_voice.items():
+        ordered = sorted(items, key=_doc_order)
+        split_at = next(
+            (idx for idx, item in enumerate(ordered) if _tb_edito_is_genesis_sequence(item)),
+            len(ordered),
+        )
+        presentations.extend(ordered[:split_at])
+        geneses.extend(ordered[split_at:])
+    return presentations, geneses
+
+
+def _tb_edito_t1_presentation_ids(sequences: list[dict]) -> set[str]:
+    presentations, _ = _tb_edito_t1_split_presentations_geneses(sequences)
+    return {item.get("id", "") for item in presentations if item.get("id")}
+
+
+def _tb_edito_is_presentation_sequence(sequence: dict, presentation_ids: set[str] | None = None) -> bool:
+    """Pour T1, passer presentation_ids issu du split par voix ; sinon heuristique genese."""
+    sid = sequence.get("id", "")
+    if presentation_ids is not None:
+        return sid in presentation_ids
+    return not _tb_edito_is_genesis_sequence(sequence)
 
 
 def _tb_edito_order_for_code(code: str, sequences: list[dict]) -> list[dict]:
+    # Priorite au sens : sections chercheur apres chercheur (pas d'alternance chorale).
     if code != "T1":
-        return _tb_edito_chorale_order(sequences)
+        return _tb_edito_by_chercheur_order(sequences)
 
-    # Regle editoriale T1: ne jamais omettre la presentation des temoins.
-    intro_sequences = [seq for seq in sequences if _tb_edito_is_presentation_sequence(seq)]
-    remaining_sequences = [seq for seq in sequences if seq not in intro_sequences]
-    return _tb_edito_chorale_order(intro_sequences) + _tb_edito_chorale_order(remaining_sequences)
+    # T1 : deux ensembles globaux — (1) toutes les presentations, (2) toutes les geneses.
+    def _doc_order(item: dict) -> tuple:
+        return (
+            int(item.get("ordre", 0) or 0),
+            int(item.get("source_paragraphe", 0) or 0),
+            item.get("id", ""),
+        )
+
+    def _voice_then_doc(item: dict) -> tuple:
+        voice = (item.get("intervenant") or "Temoin").strip()
+        return (*_tb_edito_voice_sort_key(voice), *_doc_order(item))
+
+    presentations, geneses = _tb_edito_t1_split_presentations_geneses(sequences)
+    return sorted(presentations, key=_voice_then_doc) + sorted(geneses, key=_voice_then_doc)
 
 
 def _tb_edito_build_cadrage(code: str, ordered_ids: list[str], by_seq_id: dict[str, dict], videos_expert: list[dict]) -> dict:
@@ -2395,17 +4283,63 @@ def _tb_edito_build_cadrage(code: str, ordered_ids: list[str], by_seq_id: dict[s
                 "enchainement_expert": expert_chain,
             }
         )
+
+    intro = {
+        "position": "Avant le premier extrait",
+        "fonction": "Ouvrir la video temoin et annoncer l'objectif pedagogique",
+        "texte_intervenant": f"Dans cette {video_label}, nous allons partager des experiences concretes pour eclairer les points cles du sujet.",
+        "texte_pancarte": video_label,
+        "enchainement_expert": expert_chain,
+    }
+    note = "Transitions insérées uniquement lors d'un changement de sujet explicite."
+
+    if code == "T1" and ordered_ids:
+        presentation_ids = _tb_edito_t1_presentation_ids(list(by_seq_id.values()))
+        presentations = [sid for sid in ordered_ids if sid in presentation_ids]
+        geneses = [sid for sid in ordered_ids if sid not in presentation_ids]
+        intro = {
+            "position": "Avant le premier extrait",
+            "fonction": "Annoncer la structure en deux temps : presentations puis geneses.",
+            "texte_intervenant": (
+                "Comment une innovation commence-t-elle vraiment ? "
+                "Quatre chercheurs vont d'abord se presenter — leur domaine, leur laboratoire — "
+                "puis chacun racontera comment est nee son innovation."
+            ),
+            "texte_pancarte": (
+                "Comment nait une innovation ?\n"
+                "1. Qui sont-ils ?  →  2. Comment est nee leur innovation ?"
+            ),
+            "enchainement_expert": expert_chain,
+        }
+        note = (
+            "T1 structure en deux ensembles : presentations puis geneses. "
+            "JJGE-0004 (et equivalents) sont places en genese, pas en presentation."
+        )
+        if presentations and geneses:
+            transitions.insert(
+                0,
+                {
+                    "id": "TR_PRESENTATIONS_GENESES",
+                    "position": "Apres les presentations — avant les geneses",
+                    "fonction": "Passer de qui sont-ils a comment est nee leur innovation.",
+                    "apres_extrait": presentations[-1],
+                    "avant_extrait": geneses[0],
+                    "autorise_changement_voix": True,
+                    "texte_intervenant": (
+                        "Vous les avez rencontres. "
+                        "Maintenant, ecoutez comment leur innovation est nee — "
+                        "rencontre et besoin de marche, resultat de labo, pas de cote, maturation longue…"
+                    ),
+                    "texte_pancarte": "Partie 2 — Geneses\nComment est nee leur innovation ?",
+                    "enchainement_expert": expert_chain,
+                },
+            )
+
     return {
         "statut": "PROPOSITION_AUTO",
         "dispositif": "Proposition de conduite narrative pour la capsule temoin.",
-        "note": "Transitions insérées uniquement lors d'un changement de sujet explicite.",
-        "intro": {
-            "position": "Avant le premier extrait",
-            "fonction": "Ouvrir la video temoin et annoncer l'objectif pedagogique",
-            "texte_intervenant": f"Dans cette {video_label}, nous allons partager des experiences concretes pour eclairer les points cles du sujet.",
-            "texte_pancarte": video_label,
-            "enchainement_expert": expert_chain,
-        },
+        "note": note,
+        "intro": intro,
         "transitions": transitions,
         "outro": {
             "position": "Apres le dernier extrait",
@@ -2433,13 +4367,15 @@ def _tb_edito_script_with_cadrage(ordre: list[str], by_seq_id: dict[str, dict], 
         kind_label = kind.upper()
         if label:
             kind_label = f"{kind_label} ({label})"
-        position = bloc.get("position", "")
+        position = _normalize_editorial_french(bloc.get("position", ""))
         header = f"[CADRAGE — NON PRONONCE — {kind_label}] Animateur | {position}"
         lines = [header]
         if bloc.get("texte_intervenant"):
-            lines.append(bloc["texte_intervenant"])
+            lines.append(_normalize_editorial_french(bloc["texte_intervenant"]))
         if bloc.get("texte_pancarte"):
-            lines.append(f"[PANCARTE]\n{bloc['texte_pancarte']}")
+            lines.append(
+                f"[PANCARTE]\n{_normalize_editorial_french(bloc['texte_pancarte'])}"
+            )
         if bloc.get("enchainement_expert"):
             lines.append(f"[EXPERT] {bloc['enchainement_expert']}")
         return "\n".join(lines)
@@ -2449,10 +4385,35 @@ def _tb_edito_script_with_cadrage(ordre: list[str], by_seq_id: dict[str, dict], 
     if intro:
         parts.append(_cadrage_line("intro", intro))
 
+    current_voice = None
+    current_part = None
+    presentation_ids: set[str] | None = None
+    if any(t.get("id") == "TR_PRESENTATIONS_GENESES" for t in cadrage.get("transitions", [])):
+        presentation_ids = _tb_edito_t1_presentation_ids(list(by_seq_id.values()))
     for idx, seq_id in enumerate(ordre):
         sequence = by_seq_id.get(seq_id)
         if not sequence:
             continue
+        # Marqueurs d'ensemble pour T1 (presentations / geneses).
+        if presentation_ids is not None:
+            part = (
+                "presentations"
+                if _tb_edito_is_presentation_sequence(sequence, presentation_ids)
+                else "geneses"
+            )
+            if part != current_part:
+                label = (
+                    "=== PARTIE 1 — PRÉSENTATIONS ==="
+                    if part == "presentations"
+                    else "=== PARTIE 2 — GENÈSES ==="
+                )
+                parts.append(label)
+                current_part = part
+                current_voice = None
+        voice = (sequence.get("intervenant") or "Temoin").strip()
+        if voice != current_voice:
+            parts.append(f"=== {voice} ===")
+            current_voice = voice
         parts.append(_seq_line(sequence))
         next_id = ordre[idx + 1] if idx + 1 < len(ordre) else None
         for transition in cadrage.get("transitions", []):
@@ -2461,7 +4422,18 @@ def _tb_edito_script_with_cadrage(ordre: list[str], by_seq_id: dict[str, dict], 
             before = transition.get("avant_extrait")
             if before is not None and before != next_id:
                 continue
+            next_seq = by_seq_id.get(next_id or "", {})
+            next_voice = (next_seq.get("intervenant") or "").strip()
+            # Par defaut, une transition reste dans la meme voix ;
+            # sauf si elle marque un changement d'ensemble (presentations → geneses).
+            if (
+                not transition.get("autorise_changement_voix")
+                and next_voice
+                and next_voice != voice
+            ):
+                continue
             parts.append(_cadrage_line("transition", transition, transition.get("id", "")))
+            current_voice = None  # forcer un nouveau bandeau voix apres la transition d'ensemble
 
     outro = cadrage.get("outro", {})
     if outro:
@@ -2516,15 +4488,51 @@ def build_tb_edito_capsule_pages(programme_table: dict) -> None:
         ]
         if code == "T1":
             sections.append(
-                "<p class='meta'><strong>Regle T1 :</strong> les presentations des temoins sont conservees en ouverture du montage choral.</p>"
+                "<p class='meta'>Organisation en <strong>deux ensembles</strong> : "
+                "(1) presentations de tous les temoins, puis (2) geneses de leurs innovations "
+                "(chercheur apres chercheur dans chaque ensemble).</p>"
+            )
+            sections.append(
+                "<p class='meta'><strong>Regle T1 :</strong> un passage comme "
+                "<code>JJGE-0004</code> (question « Comment est née votre innovation ? ») "
+                "est place en genese, jamais en presentation.</p>"
+            )
+        else:
+            sections.append(
+                "<p class='meta'>Organisation <strong>chercheur apres chercheur</strong> "
+                "(priorite au sens, pas d'alternance chorale).</p>"
             )
         if sequences_sorted:
+            current_voice = None
+            current_part = None
+            presentation_ids = (
+                _tb_edito_t1_presentation_ids(sequences_sorted) if code == "T1" else None
+            )
             for sequence in sequences_sorted:
+                if code == "T1" and presentation_ids is not None:
+                    part = (
+                        "presentations"
+                        if _tb_edito_is_presentation_sequence(sequence, presentation_ids)
+                        else "geneses"
+                    )
+                    if part != current_part:
+                        title = (
+                            "Partie 1 — Présentations"
+                            if part == "presentations"
+                            else "Partie 2 — Genèses"
+                        )
+                        sections.append(f"<h3>{title}</h3>")
+                        current_part = part
+                        current_voice = None
+                voice = (sequence.get("intervenant") or "Temoin").strip()
+                if voice != current_voice:
+                    sections.append(f"<h4>{escape(voice)}</h4>")
+                    current_voice = voice
                 verbatim = sequence.get("texte", "")
                 sections.append(
                     "<div class='card'>"
                     f"<strong>{escape(sequence.get('id', '-'))}</strong> "
-                    f"<span class='meta'>{escape(sequence.get('intervenant', ''))} · {escape(sequence.get('source_doc', ''))}</span>"
+                    f"<span class='meta'>{escape(sequence.get('source_doc', ''))}</span>"
                     f"<p class='meta'><strong>{escape(sequence.get('video', 'Video non renseignee'))}</strong></p>"
                     f"<p>{escape(verbatim)}</p>"
                     "</div>"
@@ -2549,10 +4557,15 @@ def build_tb_edito_capsule_pages(programme_table: dict) -> None:
             )
         sections.append(cadrage_animateur_section(capsule_data))
         sections.append("<h2>Script final</h2>")
-        sections.append(f"<div class='script' id='script-final'>{escape(script_final)}</div>")
+        sections.append(
+            f"<div class='script' id='script-final'>"
+            f"{escape(_normalize_script_final_editorial(script_final))}"
+            f"</div>"
+        )
         sections.append(synthese_temoignages_section(code, capsule_data))
         sections.append(brief_intervenant_section(code, capsule_data, empty_by_id))
         sections.append(referents_section(capsule_data))
+        sections.append(scripts_expertise_projetes_section(capsule_data))
         sections.append(export_word_section(code, spec.get("label", code), capsule_data, empty_by_id, programme_table))
 
         write_text(
@@ -2727,6 +4740,16 @@ def build_researcher_pages(segments: list[dict]) -> None:
     for segment in segments:
         grouped[segment["chercheur"]].append(segment)
 
+    # Nettoie les pages obsoletes (slug change apres correction d'identite).
+    expected_slugs = {slug(researcher) for researcher in grouped.keys()}
+    for path in SITE.glob("chercheur_*.html"):
+        name = path.name
+        if not name.startswith("chercheur_") or not name.endswith(".html"):
+            continue
+        slug_part = name[len("chercheur_") : -len(".html")]
+        if slug_part not in expected_slugs:
+            path.unlink()
+
     for researcher, items in grouped.items():
         rows = []
         for segment in sorted(items, key=lambda item: (item["source"], item["debut"])):
@@ -2780,22 +4803,22 @@ def build_capsule_pages(
         code = capsule["code"]
         capsule_data = affectations["capsules"].get(code, {})
         sections = [
-            f"<p><strong>Objectif:</strong> {escape(capsule['objectif_pedagogique'])}</p>",
-            f"<p><strong>Message central:</strong> {escape(capsule['message_central'])}</p>",
+            f"<p><strong>Objectif:</strong> {_e_fr(capsule['objectif_pedagogique'])}</p>",
+            f"<p><strong>Message central:</strong> {_e_fr(capsule['message_central'])}</p>",
         ]
         if capsule.get("role") == "LABORATOIRE" and capsule.get("equivalent_production"):
             prod = capsule["equivalent_production"]
             sections.append(
-                f"<p class='meta'><strong>Laboratoire editorial :</strong> cette capsule sert a preparer "
+                f"<p class='meta'><strong>Laboratoire éditorial :</strong> cette capsule sert à préparer "
                 f"<a href='capsule_{escape(prod)}.html'>{escape(prod)}</a> "
-                f"(meme contenu temoin, montage et cadrage valides ici avant production).</p>"
+                f"(même contenu témoin, montage et cadrage validés ici avant production).</p>"
             )
         else:
             lab = next((c for c in capsules if c.get("equivalent_production") == code), None)
             if lab:
                 sections.append(
-                    f"<p class='meta'><strong>Production derivee du laboratoire :</strong> montage et cadrage "
-                    f"initialises depuis <a href='capsule_{escape(lab['code'])}.html'>{escape(lab['code'])}</a>.</p>"
+                    f"<p class='meta'><strong>Production dérivée du laboratoire :</strong> montage et cadrage "
+                    f"initialisés depuis <a href='capsule_{escape(lab['code'])}.html'>{escape(lab['code'])}</a>.</p>"
                 )
         sections.append("<h2>Extraits candidats</h2>")
         for segment_id in capsule_data.get("extraits_candidats", []):
@@ -2803,12 +4826,12 @@ def build_capsule_pages(
             if segment:
                 warning = " <span class='warn'>Chevauchement</span>" if segment_id in overlap_ids else ""
                 sections.append(f"<div class='card'>{link_segment(segment)}{warning}</div>")
-        sections.append("<h2>Montage propose</h2>")
+        sections.append("<h2>Montage proposé</h2>")
         plan = capsule_data.get("plan_montage", [])
         if plan:
             montage_total = sum(float(item.get("duree_montage_secondes", 0)) for item in plan)
             sections.append(
-                f"<p class='meta'><strong>Duree montage estimee :</strong> {format_seconds(montage_total)} "
+                f"<p class='meta'><strong>Durée montage estimée :</strong> {format_seconds(montage_total)} "
                 f"(cible 5-7 min). Les timecodes BAB sont des bornes ; les coupes fines sont NON PRONONCE.</p>"
             )
         for index, segment_id in enumerate(capsule_data.get("ordre_montage", []), start=1):
@@ -2822,25 +4845,29 @@ def build_capsule_pages(
                     coupe = plan_item.get("coupe")
                     meta_parts = [f"#{index}"]
                     if role:
-                        meta_parts.append(role)
+                        meta_parts.append(_normalize_editorial_french(role))
                     if duration is not None:
                         meta_parts.append(f"~{format_seconds(float(duration))}")
                     if coupe:
-                        meta_parts.append(f"coupe : {coupe}")
+                        meta_parts.append(
+                            f"coupe : {_normalize_editorial_french(coupe)}"
+                        )
                     meta = f"<p class='meta'>{escape(' · '.join(meta_parts))}</p>"
                 sections.append(f"<div class='card'>{link_segment(segment)}{meta}</div>")
         if capsule_data.get("cadrage_animateur"):
             sections.append(cadrage_animateur_section(capsule_data))
         sections.append("<h2>Script final</h2>")
         sections.append(
-            f"<div class='script' id='script-final'>{escape(capsule_data.get('script_final') or 'A construire.')}</div>"
+            f"<div class='script' id='script-final'>"
+            f"{escape(_normalize_script_final_editorial(capsule_data.get('script_final') or 'À construire.'))}"
+            f"</div>"
         )
-        sections.append(synthese_temoignages_section(code, capsule_data))
-        sections.append("<h2>Manques et decisions</h2>")
+        sections.append(synthese_temoignages_section(code, capsule_data, by_id))
+        sections.append("<h2>Manques et décisions</h2>")
         for item in capsule_data.get("manques", []):
-            sections.append(f"<p class='warn'>{escape(item)}</p>")
+            sections.append(f"<p class='warn'>{_e_fr(item)}</p>")
         for item in capsule_data.get("decisions_editoriales", []):
-            sections.append(f"<p>{escape(item)}</p>")
+            sections.append(f"<p>{_e_fr(item)}</p>")
         if capsule_data.get("methodologie") or capsule_data.get("unites_de_sens"):
             sections.append(selection_methodology_section(capsule, capsule_data))
         if capsule_data.get("videos_expert"):
@@ -2848,6 +4875,7 @@ def build_capsule_pages(
         if capsule_data.get("methodologie") or capsule_data.get("unites_de_sens"):
             sections.append(selection_unites_section(capsule_data))
         sections.append(referents_section(capsule_data))
+        sections.append(scripts_expertise_projetes_section(capsule_data))
         sections.append(
             export_word_section(code, capsule["titre"], capsule_data, by_id, programme_table)
         )
@@ -4493,7 +6521,7 @@ def _compose_expert_mail(expert: dict) -> tuple[str, str]:
         "Nous partageons dans le guide de travail les informations utiles sur les experts et leurs organismes de rattachement ; "
         f"vous y apparaissez comme expert pressenti ({organisme}).\n\n"
         "À ce stade, les documents explicitent les transcripts des cinq chercheurs "
-        "(Jean-Jacques Greffet, Muriel Thomas, Loïc Rajjou, Yann Meunier et Sylvia Cohen-Kaminski).\n\n"
+        "(Jean-Jacques Greffet, Muriel Thomas, Loïc Rajjou, Yann Monier et Sylvia Cohen-Kaminski).\n\n"
         f"Selon l'état actuel de la conception, vous êtes pressenti sur : {video_codes_label}.\n\n"
         "Afin d'éviter de produire des scripts inutiles, pourriez-vous nous confirmer les vidéos expertise "
         "sur lesquelles vous souhaitez intervenir selon ce calendrier :\n"
@@ -5037,7 +7065,7 @@ def _sync_suivi_positionnements(intervenants: list[dict]) -> list[dict]:
             {
                 "nom": intervenant["nom"],
                 "slug": key,
-                "organisme": intervenant.get("organisme", ""),
+                "organisme": previous.get("organisme", "") or intervenant.get("organisme", ""),
                 "proposition_notre_part": proposition,
                 "capsules": [item.get("code", "") for item in intervenant.get("capsules", [])],
                 "videos_expert": [item.get("code", "") for item in intervenant.get("videos_expert", [])],
@@ -5068,6 +7096,432 @@ def _cell_or_attente(value: str) -> str:
     return '<span class="meta">—</span>'
 
 
+def _positionnements_finaux_par_video(rows: list[dict]) -> list[dict]:
+    grouped: dict[str, list[dict]] = defaultdict(list)
+    seen: set[tuple[str, str]] = set()
+    for item in rows:
+        final = (item.get("proposition_finale") or "").strip()
+        if not final:
+            continue
+        codes = re.findall(r"\bE\d+(?:bis)?\b", final, flags=re.IGNORECASE)
+        for raw_code in codes:
+            code = raw_code.upper()
+            key = (code, item.get("slug", ""))
+            if key in seen:
+                continue
+            seen.add(key)
+            grouped[code].append(
+                {
+                    "nom": item.get("nom", ""),
+                    "slug": item.get("slug", ""),
+                    "organisme": item.get("organisme", ""),
+                }
+            )
+
+    def _video_key(code: str) -> tuple[int, int]:
+        match = re.fullmatch(r"E(\d+)(bis)?", code or "", re.IGNORECASE)
+        if not match:
+            return (9999, 1)
+        return (int(match.group(1)), 1 if match.group(2) else 0)
+
+    return [
+        {"code": code, "intervenants": grouped[code]}
+        for code in sorted(grouped.keys(), key=_video_key)
+    ]
+
+
+# Objectifs pédagogiques des vidéos expertise → tags de cohérence.
+VIDEO_OBJECTIVE_TAGS: dict[str, set[str]] = {
+    "E1": {"origines", "innovation", "usage", "design", "tech_push"},
+    "E2": {"probleme", "proposition_valeur", "usage", "design", "innovation"},
+    "E3": {"probleme", "validation", "experimentation", "pivot", "apprentissage"},
+    "E4": {"trl", "poc", "prototype", "maturation", "preuve"},
+    "E5": {"derisking", "prematuration", "maturation", "jalons", "decision"},
+    "E6": {"pi", "confidentialite", "declaration", "brevet", "publication"},
+    "E7": {"valorisation", "transfert", "premier_contact", "examen_resultat"},
+    "E8": {"pi", "protection", "brevet", "secret", "savoir_faire"},
+    "E9": {"pi", "strategie", "valorisation", "negociation", "actif"},
+    "E10": {"valorisation", "licence", "creation", "partenariat", "criteres"},
+    "E11": {"juridique", "contrats", "licence", "pi", "transfert", "negociation"},
+    "E12": {"prematuration", "maturation", "accompagnement", "investissement", "jalons"},
+    "E13": {"incubateur", "accompagnement", "creation", "equipe", "coaching"},
+    "E13BIS": {"accompagnement", "ecosysteme", "design", "structures", "ott"},
+    "E14": {"financement", "aides", "investissement", "prematuration", "maturation"},
+    "E15": {"investisseurs", "gouvernance", "dilution", "croissance", "compatibilite"},
+    "E16": {"competences", "equipe", "recrutement", "complementarite", "entrepreneuriat"},
+    "E17": {"juridique", "gouvernance", "pacte", "fondateurs", "parts", "conflits"},
+    "E18": {"pitch", "communication", "proposition_valeur", "interlocuteurs", "valorisation"},
+    "E19": {"posture", "entrepreneuriat", "mentorat", "apprentissage", "identite"},
+    "E20": {"freins", "parcours", "legitimite", "apprentissage", "accompagnement"},
+    "E21": {"apprentissage", "incertitude", "pivot", "innovation", "progression"},
+    "E22": {"collaboration", "partenariat", "gouvernance", "complementarite", "valeur"},
+    "E23": {"juridique", "contrats", "pi", "collaboration", "confidentialite", "partenariat"},
+}
+
+# Fonctions des intervenants → tags de cohérence (profil métier).
+INTERVENANT_FUNCTION_TAGS: dict[str, set[str]] = {
+    "antoine latreille": {"juridique", "pi", "droit", "valorisation", "transfert", "pacte", "contrats"},
+    "arielle sante": {
+        "incubateur",
+        "accompagnement",
+        "entrepreneuriat",
+        "creation",
+        "equipe",
+        "pitch",
+        "mentorat",
+        "posture",
+        "communication",
+        "freins",
+        "competences",
+        "interlocuteurs",
+        "proposition_valeur",
+        "ecosysteme",
+        "structures",
+        "parcours",
+        "investisseurs",
+        "gouvernance",
+        "dilution",
+        "croissance",
+        "financement",
+        "investissement",
+    },
+    "bernard yannou": {
+        "innovation",
+        "design",
+        "deeptech",
+        "origines",
+        "valorisation",
+        "freins",
+        "apprentissage",
+        "probleme",
+        "proposition_valeur",
+        "usage",
+    },
+    "eneli vino": {
+        "juridique",
+        "pi",
+        "contrats",
+        "partenariat",
+        "collaboration",
+        "valorisation",
+        "confidentialite",
+        "negociation",
+    },
+    "fatoumata aonon": {
+        "valorisation",
+        "prematuration",
+        "maturation",
+        "financement",
+        "partenariat",
+        "trl",
+        "investissement",
+        "jalons",
+        "derisking",
+    },
+    "gregoire burge": {
+        "innovation",
+        "transfert",
+        "probleme",
+        "validation",
+        "incubateur",
+        "accompagnement",
+        "experimentation",
+    },
+    "pascal corbel": {
+        "management",
+        "entrepreneuriat",
+        "competences",
+        "complementarite",
+        "posture",
+        "innovation",
+        "apprentissage",
+        "equipe",
+        "proposition_valeur",
+    },
+    "remi wache": {
+        "partenariat",
+        "collaboration",
+        "transfert",
+        "business_dev",
+        "complementarite",
+        "valeur",
+        "gouvernance",
+    },
+    "soizic lefeuvre": {
+        "partenariat",
+        "valorisation",
+        "juridique",
+        "contrats",
+        "pi",
+        "collaboration",
+        "confidentialite",
+        "transfert",
+    },
+    "stanislas de lapasse": {"pi", "protection", "brevet", "confidentialite", "actif", "strategie"},
+    "stephanie oger roussel": {
+        "valorisation",
+        "strategie",
+        "deeptech",
+        "trl",
+        "poc",
+        "maturation",
+        "communication",
+        "transfert",
+        "preuve",
+    },
+    "stephanie sano": {"valorisation", "pi", "declaration", "premier_contact", "transfert"},
+    "virginia branco": {
+        "transfert",
+        "valorisation",
+        "pi",
+        "contrats",
+        "appui",
+        "partenariat",
+        "juridique",
+    },
+    "yoann montenot": {
+        "design",
+        "accompagnement",
+        "structures",
+        "ecosysteme",
+        "coaching",
+        "usage",
+        "innovation",
+    },
+}
+
+TAG_AFFINITY: dict[str, set[str]] = {
+    "juridique": {"contrats", "pi", "pacte", "gouvernance", "confidentialite"},
+    "pi": {"juridique", "protection", "brevet", "valorisation", "actif"},
+    "incubateur": {"accompagnement", "creation", "equipe", "mentorat", "coaching"},
+    "accompagnement": {"incubateur", "mentorat", "structures", "ecosysteme", "parcours"},
+    "entrepreneuriat": {"posture", "creation", "competences", "equipe", "apprentissage"},
+    "partenariat": {"collaboration", "contrats", "transfert", "valorisation", "negociation"},
+    "collaboration": {"partenariat", "gouvernance", "complementarite", "valeur"},
+    "valorisation": {"transfert", "licence", "strategie", "pi", "preuve"},
+    "financement": {"investissement", "investisseurs", "maturation", "prematuration"},
+    "design": {"usage", "probleme", "proposition_valeur", "innovation"},
+    "apprentissage": {"pivot", "incertitude", "posture", "freins", "progression"},
+}
+
+
+def _video_sort_key_code(code: str) -> tuple[int, int]:
+    match = re.fullmatch(r"E(\d+)(bis)?", code or "", re.IGNORECASE)
+    if not match:
+        return (9999, 1)
+    return (int(match.group(1)), 1 if match.group(2) else 0)
+
+
+def _load_expert_videos_catalogue() -> list[dict]:
+    path = ROOT / "data" / "programme_videos.json"
+    if not path.exists():
+        return []
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    videos: dict[str, dict] = {}
+    for capsule_code, block in (payload.get("capsules") or {}).items():
+        if not isinstance(block, dict):
+            continue
+        for video in block.get("videos_expert") or []:
+            code = (video.get("code") or "").upper().replace(" ", "")
+            if not code or code in videos:
+                continue
+            videos[code] = {
+                "code": code,
+                "titre": _normalize_editorial_french(video.get("titre") or ""),
+                "descriptif": _normalize_editorial_french(video.get("descriptif") or ""),
+                "capsule": capsule_code,
+            }
+    return sorted(videos.values(), key=lambda item: _video_sort_key_code(item["code"]))
+
+
+def _intervenant_function_label(nom: str, organisme: str = "") -> str:
+    path = ROOT / "data" / "experts_profils.json"
+    profils = []
+    if path.exists():
+        profils = json.loads(path.read_text(encoding="utf-8")).get("profils", [])
+    by_key = {_canonical_name_key(item.get("nom", "")): item for item in profils}
+    key = _canonical_name_key(nom)
+    profile = by_key.get(key)
+    if profile and (profile.get("profil_cible") or "").strip():
+        return _normalize_editorial_french(profile.get("profil_cible", "").strip())
+    if organisme:
+        return organisme
+    return "Fonction à préciser"
+
+
+def _coherence_score_for_pair(video_code: str, intervenant_nom: str) -> int:
+    """Score 1 (peu cohérent) → 5 (très cohérent) selon objectif vidéo × fonction intervenant."""
+    code = (video_code or "").upper().replace(" ", "")
+    video_tags = VIDEO_OBJECTIVE_TAGS.get(code, set())
+    expert_key = _canonical_name_key(intervenant_nom)
+    expert_tags = INTERVENANT_FUNCTION_TAGS.get(expert_key, set())
+    if not video_tags or not expert_tags:
+        return 1
+
+    direct = len(video_tags & expert_tags)
+    related = 0
+    for tag in video_tags:
+        related_set = TAG_AFFINITY.get(tag, set())
+        related += len(related_set & expert_tags)
+    for tag in expert_tags:
+        related_set = TAG_AFFINITY.get(tag, set())
+        related += len(related_set & video_tags)
+    related = related // 2  # chaque affinité est comptée deux fois
+
+    raw = direct * 2 + related
+    if raw >= 7:
+        return 5
+    if raw >= 5:
+        return 4
+    if raw >= 3:
+        return 3
+    if raw >= 1:
+        return 2
+    return 1
+
+
+def _render_coherence_heatmap(rows: list[dict]) -> str:
+    videos = _load_expert_videos_catalogue()
+    intervenants = [
+        item
+        for item in rows
+        if item.get("nom") and _canonical_name_key(item.get("nom", "")) != "joel nguen"
+    ]
+    if not videos or not intervenants:
+        return (
+            "<h2>Matrice de cohérence vidéo × intervenant</h2>"
+            "<p class='meta'>Aucune donnée disponible pour construire la matrice.</p>"
+        )
+
+    selected: set[tuple[str, str]] = set()
+    for item in rows:
+        final = (item.get("proposition_finale") or "").strip()
+        slug = item.get("slug", "")
+        for raw in re.findall(r"\bE\d+(?:bis)?\b", final, flags=re.IGNORECASE):
+            selected.add((raw.upper().replace(" ", ""), slug))
+
+    header_cells = []
+    for item in intervenants:
+        fonction = _intervenant_function_label(item.get("nom", ""), item.get("organisme", ""))
+        header_cells.append(
+            "<th>"
+            f"<strong>{escape(item.get('nom', ''))}</strong>"
+            f"<br><span class='meta'>{escape(fonction)}</span>"
+            "</th>"
+        )
+
+    body_rows = []
+    matrix_for_xlsx: list[list] = []
+    for video in videos:
+        code = video["code"]
+        objectif = video.get("descriptif") or video.get("titre") or ""
+        row_label = (
+            f"<strong>{escape(_label_video_expert(code))}</strong>"
+            f"<br><span class='meta'>{escape(objectif)}</span>"
+        )
+        value_cells = []
+        xlsx_row = [_label_video_expert(code), objectif]
+        for item in intervenants:
+            score = _coherence_score_for_pair(code, item.get("nom", ""))
+            is_selected = (code, item.get("slug", "")) in selected
+            style = _heat_cell_style(score, 5)
+            selected_class = " heatmap-cell--selected" if is_selected else ""
+            title = f"Cohérence {score}/5"
+            if is_selected:
+                title += " — sélection finale"
+            value_cells.append(
+                f"<td class='heatmap-cell{selected_class}' style='{style}' "
+                f"title='{escape(title)}'>{score}</td>"
+            )
+            xlsx_row.append(score)
+        body_rows.append(f"<tr><th class='heatmap-row-label'>{row_label}</th>{''.join(value_cells)}</tr>")
+        matrix_for_xlsx.append(xlsx_row)
+
+    # Stash for optional Excel export by caller via attribute on function.
+    _render_coherence_heatmap._last_matrix = {  # type: ignore[attr-defined]
+        "intervenants": [item.get("nom", "") for item in intervenants],
+        "fonctions": [
+            _intervenant_function_label(item.get("nom", ""), item.get("organisme", ""))
+            for item in intervenants
+        ],
+        "rows": matrix_for_xlsx,
+    }
+
+    return (
+        "<h2>Matrice de cohérence vidéo × intervenant</h2>"
+        "<p class='meta'>Carte de chaleur de 1 (peu cohérent) à 5 (très cohérent), "
+        "croisant l'<strong>objectif pédagogique</strong> de chaque vidéo expertise "
+        "avec la <strong>fonction</strong> de chaque intervenant. "
+        "Les cellules bordées marquent la sélection finale actuelle.</p>"
+        "<article class='heatmap-card'>"
+        "<div class='heatmap-wrap'>"
+        "<table class='heatmap-table heatmap-table--coherence'>"
+        "<thead><tr><th>Vidéo / objectif</th>"
+        f"{''.join(header_cells)}</tr></thead>"
+        f"<tbody>{''.join(body_rows)}</tbody>"
+        "</table></div>"
+        "<p class='heatmap-legend'>"
+        "<span>1 — peu cohérent</span>"
+        "<span class='heatmap-scale' aria-hidden='true'></span>"
+        "<span>5 — très cohérent</span>"
+        "</p>"
+        "</article>"
+    )
+
+
+def _export_selection_finale_xlsx(rows: list[dict]) -> str:
+    """Exporte un XLSX dédié à la sélection finale par vidéo expertise."""
+    from openpyxl import Workbook
+    from openpyxl.styles import Alignment, Font, PatternFill
+    from openpyxl.utils import get_column_letter
+
+    videos_by_code = {item["code"]: item for item in _load_expert_videos_catalogue()}
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Selection finale"
+    headers = [
+        "Code",
+        "Vidéo expertise",
+        "Objectif",
+        "Intervenant",
+        "Organisme",
+        "Fonction",
+    ]
+    ws.append(headers)
+    header_fill = PatternFill("solid", fgColor="0B6E77")
+    header_font = Font(color="FFFFFF", bold=True)
+    for cell in ws[1]:
+        cell.fill = header_fill
+        cell.font = header_font
+        cell.alignment = Alignment(vertical="center", wrap_text=True)
+
+    for item in _positionnements_finaux_par_video(rows):
+        code = item["code"]
+        video = videos_by_code.get(code, {})
+        objectif = video.get("descriptif") or video.get("titre") or ""
+        label = _label_video_expert(code)
+        intervenants = item.get("intervenants") or []
+        if not intervenants:
+            ws.append([code, label, objectif, "", "", ""])
+            continue
+        for entry in intervenants:
+            nom = entry.get("nom", "")
+            organisme = entry.get("organisme", "")
+            fonction = _intervenant_function_label(nom, organisme)
+            ws.append([code, label, objectif, nom, organisme, fonction])
+
+    widths = [10, 22, 52, 28, 36, 42]
+    for idx, width in enumerate(widths, start=1):
+        ws.column_dimensions[get_column_letter(idx)].width = width
+    for row in ws.iter_rows(min_row=2, max_row=ws.max_row, min_col=1, max_col=len(headers)):
+        for cell in row:
+            cell.alignment = Alignment(vertical="top", wrap_text=True)
+
+    filename = "selection_finale_videos_expertise.xlsx"
+    wb.save(SITE / filename)
+    return filename
+
+
 def build_suivi_positionnements_page(rows: list[dict]) -> None:
     table_rows = []
     for item in rows:
@@ -5080,6 +7534,33 @@ def build_suivi_positionnements_page(rows: list[dict]) -> None:
             f"<td>{_cell_or_attente(item.get('besoin_exprime', ''))}</td>"
             f"<td>{_cell_or_attente(item.get('positionnement_preferences', ''))}</td>"
             f"<td>{_cell_or_attente(item.get('proposition_finale', ''))}</td>"
+            "</tr>"
+        )
+
+    final_rows = []
+    for item in _positionnements_finaux_par_video(rows):
+        intervenants = item["intervenants"]
+        intervenants_html = (
+            "<ul>"
+            + "".join(
+                "<li>"
+                f"<a href='suivi_intervenant_{escape(entry['slug'])}.html'><strong>{escape(entry['nom'])}</strong></a>"
+                + (
+                    f" <span class='meta'>({escape(entry.get('organisme', ''))})</span>"
+                    if entry.get("organisme")
+                    else ""
+                )
+                + "</li>"
+                for entry in intervenants
+            )
+            + "</ul>"
+            if intervenants
+            else '<span class="meta">—</span>'
+        )
+        final_rows.append(
+            "<tr>"
+            f"<td><strong>{escape(_label_video_expert(item['code']))}</strong></td>"
+            f"<td>{intervenants_html}</td>"
             "</tr>"
         )
 
@@ -5125,8 +7606,77 @@ def build_suivi_positionnements_page(rows: list[dict]) -> None:
     for row in ws.iter_rows(min_row=2, max_row=ws.max_row, min_col=1, max_col=len(headers)):
         for cell in row:
             cell.alignment = Alignment(vertical="top", wrap_text=True)
+
+    ws_final = wb.create_sheet("Selection finale")
+    final_headers = [
+        "Code",
+        "Vidéo expertise",
+        "Objectif",
+        "Intervenant",
+        "Organisme",
+        "Fonction",
+    ]
+    ws_final.append(final_headers)
+    for cell in ws_final[1]:
+        cell.fill = header_fill
+        cell.font = header_font
+        cell.alignment = Alignment(vertical="center", wrap_text=True)
+    videos_by_code = {item["code"]: item for item in _load_expert_videos_catalogue()}
+    for item in _positionnements_finaux_par_video(rows):
+        code = item["code"]
+        video = videos_by_code.get(code, {})
+        objectif = video.get("descriptif") or video.get("titre") or ""
+        label = _label_video_expert(code)
+        intervenants = item.get("intervenants") or []
+        if not intervenants:
+            ws_final.append([code, label, objectif, "", "", ""])
+            continue
+        for entry in intervenants:
+            nom = entry.get("nom", "")
+            organisme = entry.get("organisme", "")
+            ws_final.append(
+                [
+                    code,
+                    label,
+                    objectif,
+                    nom,
+                    organisme,
+                    _intervenant_function_label(nom, organisme),
+                ]
+            )
+    for idx, width in enumerate((10, 22, 52, 28, 36, 42), start=1):
+        ws_final.column_dimensions[get_column_letter(idx)].width = width
+    for row in ws_final.iter_rows(
+        min_row=2, max_row=ws_final.max_row, min_col=1, max_col=len(final_headers)
+    ):
+        for cell in row:
+            cell.alignment = Alignment(vertical="top", wrap_text=True)
+
+    coherence_html = _render_coherence_heatmap(rows)
+    coherence_payload = getattr(_render_coherence_heatmap, "_last_matrix", None)
+    if coherence_payload:
+        ws_heat = wb.create_sheet("Matrice coherence")
+        heat_headers = ["Vidéo expertise", "Objectif"] + list(coherence_payload["intervenants"])
+        ws_heat.append(heat_headers)
+        for cell in ws_heat[1]:
+            cell.fill = header_fill
+            cell.font = header_font
+            cell.alignment = Alignment(vertical="center", wrap_text=True)
+        for heat_row in coherence_payload["rows"]:
+            ws_heat.append(heat_row)
+        ws_heat.column_dimensions["A"].width = 22
+        ws_heat.column_dimensions["B"].width = 48
+        for idx in range(3, len(heat_headers) + 1):
+            ws_heat.column_dimensions[get_column_letter(idx)].width = 14
+        for row in ws_heat.iter_rows(
+            min_row=2, max_row=ws_heat.max_row, min_col=1, max_col=len(heat_headers)
+        ):
+            for cell in row:
+                cell.alignment = Alignment(vertical="top", wrap_text=True)
+
     xlsx_name = "suivi_positionnements.xlsx"
     wb.save(SITE / xlsx_name)
+    selection_finale_xlsx = _export_selection_finale_xlsx(rows)
 
     body = (
         "<p class='meta'>Suivi du dialogue de positionnement avec chaque intervenant. "
@@ -5152,6 +7702,25 @@ def build_suivi_positionnements_page(rows: list[dict]) -> None:
         "<p class='meta'>Source editable : <code>data/suivi_positionnements.json</code> "
         "(champs <code>reponse</code>, <code>besoin_exprime</code>, "
         "<code>positionnement_preferences</code>, <code>proposition_finale</code>).</p>"
+        "<h2>Sélection finale par vidéo expertise</h2>"
+        "<p class='meta'>Lecture simplifiée des arbitrages finaux, classés par vidéo expertise à partir du champ "
+        "<code>proposition_finale</code>.</p>"
+        f"<p><a class='btn' href='{escape(selection_finale_xlsx)}' download>"
+        "Télécharger la sélection finale (XLSX)</a></p>"
+        "<div class='table-wrap'><table><thead><tr>"
+        "<th>Vidéo expertise</th>"
+        "<th>Intervenant(s) retenu(s)</th>"
+        "</tr></thead><tbody>"
+        + (
+            "".join(final_rows)
+            if final_rows
+            else "<tr><td colspan='2'>Aucune sélection finale renseignée pour le moment.</td></tr>"
+        )
+        + "</tbody></table></div>"
+        "<p class='meta'>Ce second tableau est alimenté automatiquement à partir des codes "
+        "<code>E…</code> présents dans <code>proposition_finale</code>. "
+        f"Export dédié : <code>{escape(selection_finale_xlsx)}</code>.</p>"
+        + coherence_html
     )
     write_text(
         SITE / "suivi_positionnements.html",
@@ -5181,6 +7750,7 @@ def build_suivi_intervenants_pages(programme_table: dict, experts_profils: dict)
     build_suivi_positionnements_page(positionnements)
     expected.add("suivi_positionnements.html")
     expected.add("suivi_positionnements.xlsx")
+    expected.add("selection_finale_videos_expertise.xlsx")
     rows_by_code = {row.get("code", ""): row for row in programme_table.get("rows", [])}
 
     def write_sommaire(
@@ -5224,7 +7794,7 @@ def build_suivi_intervenants_pages(programme_table: dict, experts_profils: dict)
                 "suivi_intervenants_liste.html",
                 "◎",
                 "Intervenants",
-                f"{len(intervenants)} intervenants proposes — capsules et videos rattachees.",
+                f"{len(intervenants)} intervenants — capsules, videos, mails et guides edito.",
             ),
             (
                 "suivi_positionnements.html",
@@ -5341,33 +7911,71 @@ def build_suivi_intervenants_pages(programme_table: dict, experts_profils: dict)
             ),
         )
 
-    # 5) Liste intervenants
+    # 5) Liste intervenants (+ acces rapide mails / guides)
     intervenant_sections = [
+        (
+            "mails_experts.html",
+            "✉",
+            "Mails et guides éditoriaux",
+            "Index des mails experts (par date d'envoi) et exports Word des guides éditoriaux.",
+        )
+    ]
+    intervenant_sections.extend(
         (
             f"suivi_intervenant_{item['slug']}.html",
             "◎",
             item["nom"],
             f"{item['organisme']} — {len(item['capsules'])} capsule(s), "
-            f"{len(item['videos_expert'])} video(s) expert.",
+            f"{len(item['videos_expert'])} video(s) · mail + guide.",
         )
         for item in intervenants
-    ]
+    )
     write_sommaire(
         "suivi_intervenants_liste.html",
         "Intervenants",
-        "Choisir un intervenant pour voir ses capsules et videos expert.",
+        "Fiche par intervenant : capsules, videos expertise, mail et guide editorial.",
         intervenant_sections,
         [
             ("Accueil", "index.html"),
             ("Suivi Intervenants", "suivi_intervenants.html"),
             ("Intervenants", None),
         ],
+        meta="Chaque fiche intervenant donne aussi acces au mail et a l'export Word du guide.",
     )
 
-    # 6) Pages intervenant → capsules temoin + videos expert
+    # 6) Pages intervenant → mail/guide + capsules temoin + videos expert
     for item in intervenants:
         filename = f"suivi_intervenant_{item['slug']}.html"
-        sections = []
+        mail_href = f"mail_expert_{item['slug']}.html"
+        mail_attendues_href = f"mail_videos_attendues_{item['slug']}.html"
+        guide_href = f"guide_editorial_{item['slug']}.doc"
+        guide_attendues_href = f"guide_videos_attendues_{item['slug']}.doc"
+        sections = [
+            (
+                mail_href,
+                "✉",
+                "Mail de positionnement",
+                "Mail envoyé le 20/07/2026 — sollicitation de positionnement sur les vidéos expertise.",
+            ),
+            (
+                mail_attendues_href,
+                "✉",
+                "Mail vidéos attendues",
+                "Mail envoyé le 27/07/2026 — vidéos expertise attendues + guide éditorial enrichi.",
+            ),
+            (
+                guide_href,
+                "📄",
+                "Guide éditorial positionnement (Word)",
+                "Export Word du guide associé au mail de positionnement.",
+            ),
+            (
+                guide_attendues_href,
+                "📄",
+                "Guide éditorial vidéos attendues (Word)",
+                "Synthèse, cadrage, scripts expertise et script final.",
+            ),
+        ]
         for capsule in item["capsules"]:
             sections.append(
                 (
@@ -5386,20 +7994,35 @@ def build_suivi_intervenants_pages(programme_table: dict, experts_profils: dict)
                     video.get("titre", "") or f"Rattachee a {video.get('capsule_code', '')}",
                 )
             )
-        write_sommaire(
-            filename,
-            item["nom"],
-            f"{item['organisme']} — capsules temoin puis videos expert rattachees.",
-            sections,
-            [
-                ("Accueil", "index.html"),
-                ("Suivi Intervenants", "suivi_intervenants.html"),
-                ("Intervenants", "suivi_intervenants_liste.html"),
-                (item["nom"], None),
-            ],
-            meta=(
-                f"{len(item['capsules'])} capsule(s) temoin · "
-                f"{len(item['videos_expert'])} video(s) expert (pool du programme de conception)."
+        expected.add(filename)
+        body = (
+            f"<p class='meta'>{escape(item['organisme'])} — "
+            f"{len(item['capsules'])} capsule(s) temoin · "
+            f"{len(item['videos_expert'])} video(s) expert.</p>"
+            "<p>"
+            f"<a class='btn' href='{escape(mail_href)}'>Ouvrir le mail expert</a> "
+            f"<a class='btn' href='{escape(guide_href)}' download>Exporter le guide (Word)</a> "
+            f"<a class='btn' href='{escape(guide_href)}' target='_blank' rel='noopener'>Ouvrir le guide</a>"
+            "</p>"
+            + _sommaire_cards(sections)
+        )
+        write_text(
+            SITE / filename,
+            html_page(
+                item["nom"],
+                body,
+                nav_current="suivi_intervenants.html",
+                breadcrumb=html_breadcrumb(
+                    ("Accueil", "index.html"),
+                    ("Suivi Intervenants", "suivi_intervenants.html"),
+                    ("Intervenants", "suivi_intervenants_liste.html"),
+                    (item["nom"], None),
+                ),
+                page_header=(
+                    f'<div class="page-head"><h1>{escape(item["nom"])}</h1>'
+                    f'<p class="lead">Mail, guide editorial, capsules temoin et videos expertise.</p></div>'
+                ),
+                main_class="page-home",
             ),
         )
 
@@ -5736,7 +8359,7 @@ def build_fichiers_travail_pages() -> None:
             "mails_experts.html",
             "✉",
             "Mails experts",
-            "Brouillons de sollicitation par intervenant.",
+            "Mails envoyés aux experts, classés par date (mail de positionnement, etc.).",
         ),
         (
             "bab_encodes.html",
@@ -5954,10 +8577,376 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
             path.unlink()
 
 
-def build_mails_experts_pages(programme_table: dict, experts_profils: dict) -> None:
+
+def _filter_capsule_data_for_expert(
+    capsule_data: dict,
+    expert_video_codes: list[str],
+    programme_row: dict | None = None,
+) -> dict:
+    """Restreint videos_expert / orientations aux codes attendus pour cet intervenant."""
+    data = dict(capsule_data or {})
+    wanted = {code for code in expert_video_codes if code}
+    videos = list(data.get("videos_expert") or [])
+    if not videos and programme_row:
+        videos = _tb_edito_parse_videos_expert(programme_row.get("videos_referent", ""))
+    if wanted:
+        videos = [item for item in videos if item.get("code") in wanted]
+    data["videos_expert"] = videos
+
+    orientations = list(data.get("orientations_expert") or [])
+    if data.get("orientation_expert") and not orientations:
+        orientations = [data["orientation_expert"]]
+    if wanted:
+        orientations = [item for item in orientations if item.get("code") in wanted]
+    data["orientations_expert"] = orientations
+    if "orientation_expert" in data:
+        data.pop("orientation_expert", None)
+    return data
+
+
+def _expert_videos_attendues_lines(expert: dict) -> list[str]:
+    lines: list[str] = []
+    for item in expert.get("videos", []):
+        capsule = item.get("code", "")
+        temoin = item.get("video_temoin_label", "")
+        labels = item.get("expert_video_labels") or []
+        if labels:
+            for label in labels:
+                lines.append(f"- {label} (capsule témoin {capsule}" + (f" — {temoin}" if temoin else "") + ")")
+        else:
+            lines.append(
+                f"- Vidéos expertise à préciser (capsule témoin {capsule}"
+                + (f" — {temoin}" if temoin else "")
+                + ")"
+            )
+    return lines
+
+
+def _compose_videos_attendues_mail(expert: dict, page_href: str) -> tuple[str, str]:
+    nom = expert["nom"]
+    prenom = " ".join((nom or "").split()).split(" ")[0] if nom else "Madame, Monsieur"
+    organisme = expert["organisme"]
+    attendues = _expert_videos_attendues_lines(expert)
+    attendues_block = "\n".join(attendues) if attendues else "- À confirmer"
+    capsules = ", ".join(item["code"] for item in expert.get("videos", [])) or "à définir"
+
+    subject = f"MOOC L'Esprit d'innover — vidéos expertise attendues ({nom})"
+    mail_text = (
+        f"Objet : {subject}\n\n"
+        f"Bonjour {prenom},\n\n"
+        "Dans le cadre de la conception du MOOC \"L'Esprit d'innover\", nous revenons vers vous "
+        "pour vous indiquer les vidéos expertise sur lesquelles vous êtes attendu(e).\n\n"
+        f"Vous êtes pressenti(e) comme expert ({organisme}) sur le périmètre suivant :\n"
+        f"{attendues_block}\n\n"
+        "Un guide éditorial vous est préparé pour chaque capsule témoin concernée. "
+        "Il reprend la synthèse des témoignages, la proposition de cadrage, "
+        "une proposition de script pour les vidéos expertise, et le script final de la chorale témoin.\n\n"
+        "Vous pouvez consulter ce guide en ligne (lecture éventuelle sur le site de travail) :\n"
+        f"- Page dédiée : {page_href}\n\n"
+        f"Capsules témoins concernées : {capsules}.\n\n"
+        "Le travail d'ingénierie pédagogique vise à refléter au mieux votre expertise sans s'y substituer ; "
+        "vous êtes bien entendu libre d'aller plus loin, d'ajuster, ou de recadrer selon votre jugement.\n\n"
+        "Prochaine étape utile : disposer d'un script pour le prompteur "
+        "a minima 15 jours avant la date de tournage (cible 1er septembre).\n\n"
+        "Bien cordialement,\n"
+        "Equipe Action 2 pilier 1 PUI alliance Paris Saclay."
+    )
+    return subject, mail_text
+
+
+def export_scripts_expertise_plaintext(capsule_data: dict) -> str:
+    videos = capsule_data.get("videos_expert", [])
+    orientations = capsule_data.get("orientations_expert") or []
+    if capsule_data.get("orientation_expert") and not orientations:
+        orientations = [capsule_data["orientation_expert"]]
+    if not videos and not orientations:
+        return ""
+
+    by_code = {item.get("code", ""): item for item in videos if item.get("code")}
+    blocks: list[tuple[dict, dict | None]] = []
+    seen: set[str] = set()
+    for orientation in orientations:
+        code = orientation.get("code", "")
+        blocks.append((orientation, by_code.get(code)))
+        if code:
+            seen.add(code)
+    for video in videos:
+        code = video.get("code", "")
+        if code and code not in seen:
+            blocks.append(
+                (
+                    {
+                        "code": code,
+                        "titre": video.get("titre", ""),
+                        "concepts": [],
+                        "introduction": video.get("descriptif", ""),
+                        "consignes": list(BRIEF_CONSIGNES_COMMUNES),
+                        "utilisation_script_temoin": {},
+                    },
+                    video,
+                )
+            )
+
+    lines = [
+        "PROPOSITION DE SCRIPT POUR LES VIDÉOS EXPERTISE",
+        "",
+        SCRIPT_EXPERTISE_DISCLAIMER,
+        "",
+    ]
+    for orientation, video in blocks:
+        code = orientation.get("code") or (video or {}).get("code", "")
+        titre = orientation.get("titre") or (video or {}).get("titre", "")
+        script, word_count = _build_script_expertise_projete(orientation, video)
+        plan = _build_script_expertise_plan(orientation, video)
+        lines.append(f"{_label_video_expert(code)} — {titre or 'Script projeté'}")
+        lines.append(f"Volume : {word_count} mots")
+        if plan:
+            lines.append("Plan :")
+            for item in plan:
+                lines.append(f"  - {item}")
+        lines.append("")
+        lines.append(script)
+        lines.append("")
+    return _normalize_editorial_french("\n".join(lines).strip())
+
+
+def _guide_doc_shell(title: str, toc_rows: list[str], sections: list[str], toc_intro: str) -> str:
+    return (
+        "<html><head><meta charset='utf-8'>"
+        "<style>"
+        "body{font-family:Aptos,Segoe UI,Arial,sans-serif;font-size:12pt;line-height:1.5;}"
+        "h1{font-size:18pt;margin-bottom:6px;}"
+        "h2{font-size:14pt;margin-bottom:6px;}"
+        "h3{font-size:12.5pt;margin-bottom:6px;}"
+        ".doc-block{border:1px solid #dbe2ea;border-radius:8px;padding:12px 14px;margin-bottom:14px;}"
+        ".brief-block{background:#f8fafc;line-height:1.65;}"
+        ".script-block{background:#ffffff;line-height:1.6;}"
+        ".doc-block p{margin:0 0 8px 0;}"
+        ".doc-block ul{margin:4px 0 10px 24px;padding:0;}"
+        ".doc-block li{margin:0 0 6px 0;}"
+        ".brief-label{margin-top:10px;}"
+        ".brief-video{background:#eef2ff;padding:6px 8px;border-radius:6px;}"
+        ".brief-precaution{background:#fff7ed;padding:8px;border-left:3px solid #fdba74;border-radius:4px;}"
+        ".script-body{font-size:11pt;line-height:1.62;word-break:break-word;}"
+        ".script-ref{font-size:9pt;color:#94a3b8;}"
+        ".toc{width:100%;border-collapse:collapse;margin:10px 0 16px;}"
+        ".toc td{padding:6px 2px;border-bottom:1px dotted #94a3b8;}"
+        "pre.plain{white-space:pre-wrap;font-family:Aptos,Segoe UI,Arial,sans-serif;font-size:11pt;margin:0;}"
+        "</style>"
+        "</head><body>"
+        f"<h1>{escape(title)}</h1>"
+        "<h2>Sommaire du guide éditorial</h2>"
+        f"{toc_intro}"
+        f"<table class='toc'><tbody>{''.join(toc_rows) if toc_rows else '<tr><td>Aucune capsule témoin associée à ce stade.</td></tr>'}</tbody></table>"
+        f"{''.join(sections) if sections else '<p>Aucune capsule témoin associée à ce stade.</p>'}"
+        "</body></html>"
+    )
+
+
+def _guide_videos_attendues_doc_html(
+    expert: dict,
+    grouped_tb: dict[str, list[dict]],
+    rows_by_code: dict[str, dict],
+    affectations: dict,
+    by_id: dict[str, dict],
+) -> str:
+    """Guide enrichi : synthèse, cadrage, scripts expertise, script final."""
+
+    def _ergo_brief_html(text: str) -> str:
+        lines = (text or "").splitlines()
+        chunks: list[str] = []
+        list_items: list[str] = []
+
+        def flush_list() -> None:
+            nonlocal list_items
+            if list_items:
+                chunks.append("<ul>" + "".join(list_items) + "</ul>")
+                list_items = []
+
+        for raw in lines:
+            stripped = raw.strip()
+            if not stripped:
+                flush_list()
+                continue
+            if stripped.startswith("- "):
+                list_items.append(f"<li>{escape(stripped[2:].strip())}</li>")
+                continue
+            flush_list()
+            if stripped.startswith("Précaution :") or stripped.startswith("Precaution :"):
+                chunks.append(
+                    f"<p class='brief-precaution'><strong>Précaution :</strong> "
+                    f"{escape(stripped.split(':', 1)[1].strip())}</p>"
+                )
+            elif stripped.startswith("Vidéo expertise ") and " — " in stripped:
+                left, right = stripped.split(" — ", 1)
+                chunks.append(
+                    f"<p class='brief-video'><strong>{escape(left)}</strong> — {escape(right)}</p>"
+                )
+            elif stripped.endswith(":"):
+                chunks.append(f"<p class='brief-label'><strong>{escape(stripped)}</strong></p>")
+            else:
+                chunks.append(f"<p>{escape(stripped)}</p>")
+        flush_list()
+        return "".join(chunks) if chunks else "<p>Aucun contenu.</p>"
+
+    def _ergo_script_html(text: str) -> str:
+        lines = (text or "").splitlines()
+        rendered: list[str] = []
+        ref_pattern = re.compile(r"^\[[A-Z0-9-]+\]\s.+\|\s.+\|\s.+$")
+        for line in lines:
+            safe_line = escape(line)
+            if ref_pattern.match(line.strip()):
+                rendered.append(f"<span class='script-ref'>{safe_line}</span>")
+            else:
+                rendered.append(safe_line)
+        return f"<div class='script-body'>{'<br>'.join(rendered)}</div>"
+
+    def _plain_block(text: str) -> str:
+        if not (text or "").strip():
+            return "<p class='meta'>Contenu à compléter.</p>"
+        return f"<pre class='plain'>{escape(text)}</pre>"
+
+    sections: list[str] = []
+    toc_rows: list[str] = []
+    for item in expert.get("videos", []):
+        code = item.get("code", "")
+        chapter_anchor = f"chap_{code}"
+        row = rows_by_code.get(code, {})
+        sequences = grouped_tb.get(code, [])
+        ordered = _tb_edito_order_for_code(code, sequences)
+        by_seq_id = {seq.get("id", f"{code}-NOID"): seq for seq in ordered}
+        ordre = [seq.get("id", f"{code}-NOID") for seq in ordered]
+        videos_expert_all = _tb_edito_parse_videos_expert(row.get("videos_referent", ""))
+        expert_codes = item.get("expert_video_codes") or [
+            video.get("code", "") for video in videos_expert_all if video.get("code")
+        ]
+        aff_capsule = (affectations.get("capsules") or {}).get(code, {})
+        capsule_data = _filter_capsule_data_for_expert(aff_capsule, expert_codes, row)
+        if not capsule_data.get("videos_expert"):
+            capsule_data["videos_expert"] = [
+                video for video in videos_expert_all if video.get("code") in set(expert_codes)
+            ] or videos_expert_all
+        cadrage = _tb_edito_build_cadrage(
+            code, ordre, by_seq_id, capsule_data.get("videos_expert") or videos_expert_all
+        )
+        script_final = _tb_expertise_label(
+            _normalize_script_final_editorial(
+                _tb_edito_script_with_cadrage(ordre, by_seq_id, cadrage)
+            )
+        )
+        synthese_text = _tb_expertise_label(
+            export_synthese_temoignages_plaintext(code, capsule_data, by_id)
+        )
+        brief_text = _tb_expertise_label(
+            export_brief_intervenant_plaintext(code, capsule_data, by_id)
+        )
+        scripts_text = _tb_expertise_label(export_scripts_expertise_plaintext(capsule_data))
+
+        toc_rows.append(
+            "<tr>"
+            f"<td><a href='#{escape(chapter_anchor)}'>{escape(code)} — "
+            f"{escape(item.get('video_temoin_label', ''))}</a></td>"
+            "</tr>"
+        )
+        attendues = ", ".join(item.get("expert_video_labels") or expert_codes) or "À définir"
+        sections.append(
+            "<section style='margin-top:28px;padding-top:10px;border-top:1px solid #cbd5e1;'>"
+            f"<a name='{escape(chapter_anchor)}'></a>"
+            f"<h2>{escape(code)} — {escape(item.get('video_temoin_label', ''))}</h2>"
+            f"<p class='meta'><strong>Vidéos expertise attendues :</strong> {escape(attendues)}</p>"
+            f"<h3>{escape(export_synthese_section_title(code))}</h3>"
+            f"<div class='doc-block brief-block'>{_plain_block(synthese_text)}</div>"
+            f"<h3>{escape(EXPORT_BRIEF_SECTION_TITLE)}</h3>"
+            f"<div class='doc-block brief-block'>{_ergo_brief_html(brief_text)}</div>"
+            "<h3>Proposition de script pour les vidéos expertise</h3>"
+            f"<div class='doc-block script-block'>{_plain_block(scripts_text)}</div>"
+            "<h3>Script final</h3>"
+            f"<div class='doc-block script-block'>{_ergo_script_html(script_final)}</div>"
+            "</section>"
+        )
+
+    toc_intro = (
+        "<p class='meta'>Liens actifs vers chaque capsule témoin concernée.</p>"
+        if len(toc_rows) > 1
+        else "<p class='meta'>Lien actif vers la capsule témoin concernée.</p>"
+    )
+    return _guide_doc_shell(
+        f"Guide éditorial — vidéos attendues — {expert.get('nom', 'Expert')}",
+        toc_rows,
+        sections,
+        toc_intro,
+    )
+
+
+def _videos_attendues_editorial_web_html(
+    expert: dict,
+    grouped_tb: dict[str, list[dict]],
+    rows_by_code: dict[str, dict],
+    affectations: dict,
+    by_id: dict[str, dict],
+) -> str:
+    """Version HTML consultable du guide (même contenu que le Word)."""
+    parts: list[str] = []
+    for item in expert.get("videos", []):
+        code = item.get("code", "")
+        row = rows_by_code.get(code, {})
+        sequences = grouped_tb.get(code, [])
+        ordered = _tb_edito_order_for_code(code, sequences)
+        by_seq_id = {seq.get("id", f"{code}-NOID"): seq for seq in ordered}
+        ordre = [seq.get("id", f"{code}-NOID") for seq in ordered]
+        videos_expert_all = _tb_edito_parse_videos_expert(row.get("videos_referent", ""))
+        expert_codes = item.get("expert_video_codes") or [
+            video.get("code", "") for video in videos_expert_all if video.get("code")
+        ]
+        aff_capsule = (affectations.get("capsules") or {}).get(code, {})
+        capsule_data = _filter_capsule_data_for_expert(aff_capsule, expert_codes, row)
+        if not capsule_data.get("videos_expert"):
+            capsule_data["videos_expert"] = [
+                video for video in videos_expert_all if video.get("code") in set(expert_codes)
+            ] or videos_expert_all
+        cadrage = _tb_edito_build_cadrage(
+            code, ordre, by_seq_id, capsule_data.get("videos_expert") or videos_expert_all
+        )
+        script_final = _normalize_script_final_editorial(
+            _tb_edito_script_with_cadrage(ordre, by_seq_id, cadrage)
+        )
+        attendues = ", ".join(item.get("expert_video_labels") or expert_codes) or "À définir"
+        parts.append(f"<section class='methodology-panel'>")
+        parts.append(
+            f"<h2>{escape(code)} — {escape(item.get('video_temoin_label', ''))}</h2>"
+        )
+        parts.append(
+            f"<p class='meta'><strong>Vidéos expertise attendues :</strong> {escape(attendues)}</p>"
+        )
+        parts.append(synthese_temoignages_section(code, capsule_data, by_id) or "")
+        parts.append(brief_intervenant_section(code, capsule_data, by_id) or "")
+        parts.append(scripts_expertise_projetes_section(capsule_data) or "")
+        parts.append("<h2>Script final</h2>")
+        parts.append(f"<div class='script'>{escape(script_final)}</div>")
+        parts.append("</section>")
+    return "\n".join(part for part in parts if part)
+
+
+def build_mails_experts_pages(
+    programme_table: dict,
+    experts_profils: dict,
+    affectations: dict | None = None,
+    segments: list[dict] | None = None,
+) -> None:
+    """Mails experts : index par date d'envoi, puis type (positionnement, vidéos attendues)."""
     experts = _mail_experts_rows(programme_table, experts_profils)
+    affectations = affectations or {}
+    by_id = index_by_id(segments or [])
     grouped_tb = _tb_edito_sequences_by_code()
     rows_by_code = {row.get("code", ""): row for row in programme_table.get("rows", [])}
+
+    # Sous-ensemble daté : mails envoyés le 20/07/2026 = mail de positionnement.
+    date_slug = "20260720"
+    date_label = "20/07/2026"
+    date_href = f"mails_experts_{date_slug}.html"
+    positionnement_href = f"mails_positionnement_{date_slug}.html"
+    positionnement_title = "Mail de positionnement"
+
     cards = []
     for expert in experts:
         mail_file = f"mail_expert_{expert['slug']}.html"
@@ -5971,27 +8960,118 @@ def build_mails_experts_pages(programme_table: dict, experts_profils: dict) -> N
             "</article>"
         )
 
-    body = (
-        "<p class='meta'>Brouillons de mails individualisés pour solliciter les experts. "
-        "Chaque mail reprend les sujets de capsules témoins concernés, les vidéos expertise proposées, l'information sur les "
-        "transcripts des cinq chercheurs disponibles et les jalons : "
+    # 1) Index Mails experts → dates d'envoi
+    date_attendues_slug = "20260727"
+    date_attendues_label = "27/07/2026"
+    date_attendues_href = f"mails_experts_{date_attendues_slug}.html"
+    attendues_href = f"mails_videos_attendues_{date_attendues_slug}.html"
+    attendues_title = "Mail vidéos attendues"
+
+    write_text(
+        SITE / "mails_experts.html",
+        html_page(
+            "Mails experts",
+            "<p class='meta'>Archives des mails envoyés aux experts, classées par date d'envoi.</p>"
+            + _sommaire_cards(
+                [
+                    (
+                        date_href,
+                        "📅",
+                        date_label,
+                        f"Mails envoyés le {date_label} — {positionnement_title.lower()}.",
+                    ),
+                    (
+                        date_attendues_href,
+                        "📅",
+                        date_attendues_label,
+                        f"Mails envoyés le {date_attendues_label} — {attendues_title.lower()}.",
+                    ),
+                ]
+            ),
+            nav_current="fichiers_travail.html",
+            breadcrumb=html_breadcrumb(
+                ("Accueil", "index.html"),
+                ("Fichiers de travail", "fichiers_travail.html"),
+                ("Mails experts", None),
+            ),
+            page_header=(
+                '<div class="page-head"><h1>Mails experts</h1>'
+                '<p class="lead">Messages envoyés aux experts, par date.</p></div>'
+            ),
+            main_class="page-home",
+        ),
+    )
+
+    # 2) Sous-ensemble daté 20/07/2026 → types de mail
+    write_text(
+        SITE / date_href,
+        html_page(
+            f"Mails experts — {date_label}",
+            f"<p class='meta'>Mails envoyés le <strong>{escape(date_label)}</strong>.</p>"
+            + _sommaire_cards(
+                [
+                    (
+                        positionnement_href,
+                        "✉",
+                        positionnement_title,
+                        "Sollicitation de positionnement sur les vidéos expertise proposées.",
+                    )
+                ]
+            ),
+            nav_current="fichiers_travail.html",
+            breadcrumb=html_breadcrumb(
+                ("Accueil", "index.html"),
+                ("Fichiers de travail", "fichiers_travail.html"),
+                ("Mails experts", "mails_experts.html"),
+                (date_label, None),
+            ),
+            page_header=(
+                f'<div class="page-head"><h1>Mails experts — {escape(date_label)}</h1>'
+                f'<p class="lead">Sous-ensemble des envois du {escape(date_label)}.</p></div>'
+            ),
+            main_class="page-home",
+        ),
+    )
+
+    # 3) Mail de positionnement = contenu actuel (liste des mails individuels)
+    positionnement_body = (
+        f"<p class='meta'><strong>Envoi :</strong> {escape(date_label)}. "
+        "Mails individualisés pour solliciter le positionnement des experts sur les vidéos expertise. "
+        "Chaque mail reprend les sujets de capsules témoins concernés, les vidéos expertise proposées, "
+        "l'information sur les transcripts des cinq chercheurs disponibles et les jalons : "
         "<strong>23 juillet</strong> (positionnement), <strong>27 juillet</strong> (retour d'arbitrage), "
         "<strong>1er septembre</strong> (script prompteur, a minima 15 jours avant tournage).</p>"
         f"<section class='cards'>{''.join(cards) if cards else '<p>Aucun expert proposé dans le programme_table.</p>'}</section>"
     )
     write_text(
-        SITE / "mails_experts.html",
+        SITE / positionnement_href,
         html_page(
-            "Mails experts",
-            body,
+            positionnement_title,
+            positionnement_body,
             nav_current="fichiers_travail.html",
-            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Fichiers de travail", "fichiers_travail.html"), ("Mails experts", None)),
-            page_header='<div class="page-head"><h1>Mails experts</h1><p class="lead">Préparation des messages de sollicitation par expert.</p></div>',
+            breadcrumb=html_breadcrumb(
+                ("Accueil", "index.html"),
+                ("Fichiers de travail", "fichiers_travail.html"),
+                ("Mails experts", "mails_experts.html"),
+                (date_label, date_href),
+                (positionnement_title, None),
+            ),
+            page_header=(
+                f'<div class="page-head"><h1>{escape(positionnement_title)}</h1>'
+                f'<p class="lead">Mails de sollicitation de positionnement — envoi du {escape(date_label)}.</p></div>'
+            ),
         ),
     )
 
-    expected = set()
+    expected = {
+        positionnement_href,
+        date_href,
+        "mails_experts.html",
+        date_attendues_href,
+        attendues_href,
+    }
     expected_docs = set()
+    expected_mail_txt = set()
     for expert in experts:
         subject, mail_text = _compose_expert_mail(expert)
         send_href = _mailto_href(TEST_MAIL_RECIPIENT, subject, mail_text)
@@ -6013,10 +9093,15 @@ def build_mails_experts_pages(programme_table: dict, experts_profils: dict) -> N
                 "</tr>"
             )
         detail_body = (
-            f"<p class='meta'><strong>Expert :</strong> {escape(expert['nom'])} · <strong>Organisme :</strong> {escape(expert['organisme'])}</p>"
+            f"<p class='meta'><strong>Expert :</strong> {escape(expert['nom'])} · "
+            f"<strong>Organisme :</strong> {escape(expert['organisme'])}</p>"
+            f"<p class='meta'><strong>Type :</strong> {escape(positionnement_title)} · "
+            f"<strong>Envoi :</strong> {escape(date_label)}</p>"
             f"<p class='meta'><strong>Objet proposé :</strong> {escape(subject)}</p>"
             f"<p class='meta'><strong>Destinataire test actuel :</strong> {escape(TEST_MAIL_RECIPIENT)} "
             f"(validation éditoriale ensuite via {escape(REVIEW_MAIL_RECIPIENT)}).</p>"
+            f"<p class='meta'>Fiche suivi : "
+            f"<a href='suivi_intervenant_{escape(expert['slug'])}.html'>ouvrir dans Suivi Intervenants</a></p>"
             f"<p><a class='btn' href='{escape(send_href)}'>Mail à envoyer</a></p>"
             f"<p><a class='btn' href='{escape(doc_name)}' download>Exporter le guide éditorial (Word)</a></p>"
             f"<p><a class='btn' href='{escape(doc_name)}' target='_blank' rel='noopener'>Ouvrir le guide éditorial (Word)</a></p>"
@@ -6044,22 +9129,202 @@ def build_mails_experts_pages(programme_table: dict, experts_profils: dict) -> N
                     ("Accueil", "index.html"),
                     ("Fichiers de travail", "fichiers_travail.html"),
                     ("Mails experts", "mails_experts.html"),
+                    (date_label, date_href),
+                    (positionnement_title, positionnement_href),
                     (expert["nom"], None),
                 ),
-                page_header=f'<div class="page-head"><h1>Mail expert — {escape(expert["nom"])}</h1><p class="lead">Brouillon de message et périmètre des vidéos expertise proposées.</p></div>',
+                page_header=(
+                    f'<div class="page-head"><h1>Mail expert — {escape(expert["nom"])}</h1>'
+                    f'<p class="lead">{escape(positionnement_title)} — envoi du {escape(date_label)}.</p></div>'
+                ),
+            ),
+        )
+
+    # --- Sous-ensemble 27/07/2026 : mail vidéos attendues ---
+    write_text(
+        SITE / date_attendues_href,
+        html_page(
+            f"Mails experts — {date_attendues_label}",
+            f"<p class='meta'>Mails envoyés le <strong>{escape(date_attendues_label)}</strong>.</p>"
+            + _sommaire_cards(
+                [
+                    (
+                        attendues_href,
+                        "✉",
+                        attendues_title,
+                        "Confirmation des vidéos expertise attendues, avec guide éditorial enrichi.",
+                    )
+                ]
+            ),
+            nav_current="fichiers_travail.html",
+            breadcrumb=html_breadcrumb(
+                ("Accueil", "index.html"),
+                ("Fichiers de travail", "fichiers_travail.html"),
+                ("Mails experts", "mails_experts.html"),
+                (date_attendues_label, None),
+            ),
+            page_header=(
+                f'<div class="page-head"><h1>Mails experts — {escape(date_attendues_label)}</h1>'
+                f'<p class="lead">Sous-ensemble des envois du {escape(date_attendues_label)}.</p></div>'
+            ),
+            main_class="page-home",
+        ),
+    )
+
+    attendues_cards = []
+    for expert in experts:
+        mail_file = f"mail_videos_attendues_{expert['slug']}.html"
+        video_refs = ", ".join(
+            code
+            for item in expert["videos"]
+            for code in item.get("expert_video_codes", [])
+        ) or "Aucune vidéo expertise"
+        attendues_cards.append(
+            "<article class='card'>"
+            f"<h2><a href='{escape(mail_file)}'>{escape(expert['nom'])}</a></h2>"
+            f"<p class='meta'>{escape(expert['organisme'])}</p>"
+            f"<p>Vidéos expertise attendues : <strong>{escape(video_refs)}</strong></p>"
+            f"<p><a class='btn' href='{escape(mail_file)}'>Ouvrir le mail et le guide</a></p>"
+            "</article>"
+        )
+
+    write_text(
+        SITE / attendues_href,
+        html_page(
+            attendues_title,
+            (
+                f"<p class='meta'><strong>Envoi :</strong> {escape(date_attendues_label)}. "
+                "Mails indiquant à chaque intervenant les vidéos expertise sur lesquelles il est attendu, "
+                "avec un guide éditorial consultable en ligne (synthèse des témoignages, proposition de cadrage, "
+                "proposition de script pour les vidéos expertise, script final).</p>"
+                f"<section class='cards'>"
+                f"{''.join(attendues_cards) if attendues_cards else '<p>Aucun expert proposé.</p>'}"
+                f"</section>"
+            ),
+            nav_current="fichiers_travail.html",
+            breadcrumb=html_breadcrumb(
+                ("Accueil", "index.html"),
+                ("Fichiers de travail", "fichiers_travail.html"),
+                ("Mails experts", "mails_experts.html"),
+                (date_attendues_label, date_attendues_href),
+                (attendues_title, None),
+            ),
+            page_header=(
+                f'<div class="page-head"><h1>{escape(attendues_title)}</h1>'
+                f'<p class="lead">Confirmation du périmètre — envoi du {escape(date_attendues_label)}.</p></div>'
+            ),
+        ),
+    )
+
+    for expert in experts:
+        page_name = f"mail_videos_attendues_{expert['slug']}.html"
+        doc_name = f"guide_videos_attendues_{expert['slug']}.doc"
+        mail_txt_name = f"mail_videos_attendues_{expert['slug']}.txt"
+        expected.add(page_name)
+        expected_docs.add(doc_name)
+        expected_mail_txt.add(mail_txt_name)
+
+        subject, mail_text = _compose_videos_attendues_mail(expert, page_name)
+        write_text(SITE / mail_txt_name, mail_text)
+        write_text(
+            SITE / doc_name,
+            _guide_videos_attendues_doc_html(
+                expert, grouped_tb, rows_by_code, affectations, by_id
+            ),
+        )
+        send_href = _mailto_href(TEST_MAIL_RECIPIENT, subject, mail_text)
+        editorial_html = _videos_attendues_editorial_web_html(
+            expert, grouped_tb, rows_by_code, affectations, by_id
+        )
+        attendues_lines = _expert_videos_attendues_lines(expert)
+        attendues_list = (
+            "<ul>"
+            + "".join(f"<li>{escape(line[2:])}</li>" for line in attendues_lines)
+            + "</ul>"
+            if attendues_lines
+            else "<p>Aucune vidéo expertise associée.</p>"
+        )
+        detail_body = (
+            f"<p class='meta'><strong>Expert :</strong> {escape(expert['nom'])} · "
+            f"<strong>Organisme :</strong> {escape(expert['organisme'])}</p>"
+            f"<p class='meta'><strong>Type :</strong> {escape(attendues_title)} · "
+            f"<strong>Envoi :</strong> {escape(date_attendues_label)}</p>"
+            f"<p class='meta'><strong>Objet proposé :</strong> {escape(subject)}</p>"
+            f"<p class='meta'><strong>Destinataire test actuel :</strong> {escape(TEST_MAIL_RECIPIENT)} "
+            f"(validation éditoriale ensuite via {escape(REVIEW_MAIL_RECIPIENT)}).</p>"
+            f"<p class='meta'>Fiche suivi : "
+            f"<a href='suivi_intervenant_{escape(expert['slug'])}.html'>ouvrir dans Suivi Intervenants</a></p>"
+            "<h2>Vidéos expertise attendues</h2>"
+            f"{attendues_list}"
+            "<h2>Lien à transmettre à l'intervenant</h2>"
+            "<p class='meta'>Lien de consultation du guide sur le site de travail "
+            "(à ouvrir depuis le dossier <code>site/</code> ou l'URL de publication) :</p>"
+            f"<p><code>{escape(page_name)}</code></p>"
+            f"<p><a class='btn' href='{escape(page_name)}'>Ouvrir la page destinée à l'intervenant</a></p>"
+            "<h2>Mail</h2>"
+            f"<p><a class='btn' href='{escape(send_href)}'>Mail à envoyer</a> "
+            f"<a class='btn' href='{escape(mail_txt_name)}' download>Exporter le mail (.txt)</a></p>"
+            f"<pre class='script mail-ready'>{escape(mail_text)}</pre>"
+            "<h2>Document éditorial</h2>"
+            f"<p><a class='btn' href='{escape(doc_name)}' download>Exporter le guide éditorial (Word)</a> "
+            f"<a class='btn' href='{escape(doc_name)}' target='_blank' rel='noopener'>Ouvrir le guide (Word)</a></p>"
+            f"<p class='meta'>Le document conserve le modèle du guide (sommaire par capsule) et ajoute, "
+            f"pour chaque capsule : synthèse des témoignages, proposition de cadrage, "
+            f"proposition de script pour les vidéos expertise, script final.</p>"
+            "<div class='editorial-preview'>"
+            f"{editorial_html}"
+            "</div>"
+        )
+        write_text(
+            SITE / page_name,
+            html_page(
+                f"{attendues_title} — {expert['nom']}",
+                detail_body,
+                nav_current="fichiers_travail.html",
+                breadcrumb=html_breadcrumb(
+                    ("Accueil", "index.html"),
+                    ("Fichiers de travail", "fichiers_travail.html"),
+                    ("Mails experts", "mails_experts.html"),
+                    (date_attendues_label, date_attendues_href),
+                    (attendues_title, attendues_href),
+                    (expert["nom"], None),
+                ),
+                page_header=(
+                    f'<div class="page-head"><h1>{escape(attendues_title)} — {escape(expert["nom"])}</h1>'
+                    f'<p class="lead">Périmètre confirmé et guide éditorial — envoi du {escape(date_attendues_label)}.</p></div>'
+                ),
             ),
         )
 
     for path in SITE.glob("mail_expert_*.html"):
         if path.name not in expected:
             path.unlink()
+    for path in SITE.glob("mail_videos_attendues_*.html"):
+        if path.name not in expected:
+            path.unlink()
+    for path in SITE.glob("mail_videos_attendues_*.txt"):
+        if path.name not in expected_mail_txt:
+            path.unlink()
     for path in SITE.glob("mail_expert_*.doc"):
         path.unlink()
     for path in SITE.glob("guide_editorial_*.doc"):
         if path.name not in expected_docs:
             path.unlink()
+    for path in SITE.glob("guide_videos_attendues_*.doc"):
+        if path.name not in expected_docs:
+            path.unlink()
     for path in SITE.glob("package_mail_expert_*.zip"):
         path.unlink()
+    # Nettoie d'anciennes pages de lots hors des sous-ensembles courants.
+    for path in SITE.glob("mails_positionnement_*.html"):
+        if path.name not in expected:
+            path.unlink()
+    for path in SITE.glob("mails_videos_attendues_*.html"):
+        if path.name not in expected and path.name.startswith("mails_videos_attendues_20"):
+            path.unlink()
+    for path in SITE.glob("mails_experts_*.html"):
+        if path.name not in expected:
+            path.unlink()
     for path in SITE.glob("tb_edito_T*_*.doc"):
         path.unlink()
 
@@ -6675,7 +9940,7 @@ if __name__ == "__main__":
     build_edito_hub_page()
     build_script_propose_pages(programme_table, all_affectations, all_segments)
     build_fichiers_travail_pages()
-    build_mails_experts_pages(programme_table, experts_profils)
+    build_mails_experts_pages(programme_table, experts_profils, all_affectations, all_segments)
     build_correspondances_edito_page(programme_table)
     build_tableau_corr_page()
     build_dashboard(all_capsules, all_segments, all_affectations)

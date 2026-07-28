@@ -3,7 +3,7 @@
   "source": "BAB_LOIC_RAJJOU_BABbrut.txt",
   "chercheur": "Loic Rajjou",
   "statut_encodage": "NON_ENCODE",
-  "date_maj": "2026-07-13",
+  "date_maj": "2026-07-27",
   "segments": [
     {
       "id": "LOI-0001",
@@ -220,7 +220,7 @@
         "T12": {
           "statut": "UTILISE",
           "role": "partenaires_clients_actionnaires",
-          "duree_montage_secondes": 109,
+          "duree_montage_secondes": 112,
           "coupe": "Associés-clients ; demonstrations puis clients ; construction incrementale ; entree d'un partenaire au capital."
         }
       },

@@ -287,7 +287,12 @@ def build_t1_from_gen(affectations: dict) -> None:
     t1["extraits_utilises"] = []
     t1["methodologie"] = copy.deepcopy(gen.get("methodologie", {}))
     t1["methodologie"]["statut_montage"] = "HERITE_DE_GEN"
-    t1["cadrage_animateur"] = copy.deepcopy(gen["cadrage_animateur"])
+    gen_cadrage = gen.get("cadrage_animateur")
+    if gen_cadrage is not None:
+        t1["cadrage_animateur"] = copy.deepcopy(gen_cadrage)
+    # Robustesse : GEN peut etre une archive sans cadrage complet.
+    if t1.get("cadrage_animateur") is None:
+        t1["cadrage_animateur"] = {}
     t1["cadrage_animateur"]["note"] = (
         "Reprise du cadrage valide en laboratoire GEN. A ajuster si le montage T1 diverge."
     )

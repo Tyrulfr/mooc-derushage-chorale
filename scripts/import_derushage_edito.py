@@ -8,7 +8,7 @@ from pathlib import Path
 from zipfile import ZipFile
 import xml.etree.ElementTree as ET
 
-from lib_derushage import DATA
+from lib_derushage import DATA, correct_asr_greffet, correct_asr_yann_monier
 
 NS = {"w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}
 DERUSHAGE_EDITO_DIR = DATA / "derushage_edito"
@@ -18,7 +18,7 @@ DOCS = [
     {
         "id": "yan_edito",
         "source": "00_Mooc_Transcript_Yann Monier.docx",
-        "intervenant": "Yann Meunier",
+        "intervenant": "Yann Monier",
         "prefix": "YANE",
     },
     {
@@ -195,6 +195,26 @@ def import_derushage_edito() -> None:
             raise SystemExit(f"Fichier introuvable: {source_path}")
 
         sequences, nb_paragraphes = build_sequences(source_path, config["prefix"])
+        if config["id"] == "jjg_edito":
+            for sequence in sequences:
+                original = sequence.get("texte", "")
+                corrected = correct_asr_greffet(original)
+                if corrected != original:
+                    sequence["texte"] = corrected
+                    sequence["correction_transcription"] = (
+                        "ASR: « Greffé / je voudrais greffer » → Jean-Jacques Greffet "
+                        "(couche editoriale ; fichier raw inchange)."
+                    )
+        elif config["id"] == "yan_edito":
+            for sequence in sequences:
+                original = sequence.get("texte", "")
+                corrected = correct_asr_yann_monier(original)
+                if corrected != original:
+                    sequence["texte"] = corrected
+                    sequence["correction_transcription"] = (
+                        "ASR: « Yann Meunier » → Yann Monier "
+                        "(couche editoriale ; fichier raw inchange)."
+                    )
         doc = {
             "id": config["id"],
             "source": config["source"],

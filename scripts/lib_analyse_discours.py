@@ -20,7 +20,7 @@ CHERCHEUR_BY_SOURCE = {
     "BAB_Muriel_Thomas video.txt": "Muriel Thomas",
     "BAB_SYLVIA_COHEN_BABbrut.txt": "Sylvia Cohen-Kaminski",
     "BAB_LOIC_RAJJOU_BABbrut.txt": "Loic Rajjou",
-    "BAB_Yan_Monier.txt": "Yann Meunier",
+    "BAB_Yan_Monier.txt": "Yann Monier",
 }
 
 PREFIX_BY_CHERCHEUR = {
@@ -28,7 +28,7 @@ PREFIX_BY_CHERCHEUR = {
     "Muriel Thomas": "MUR",
     "Sylvia Cohen-Kaminski": "SYL",
     "Loic Rajjou": "LOI",
-    "Yann Meunier": "YAN",
+    "Yann Monier": "YAN",
 }
 
 LIAISON_ENDINGS = re.compile(

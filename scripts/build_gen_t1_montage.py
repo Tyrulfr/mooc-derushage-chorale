@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Construit GEN / T1 avec le corpus a 5 BAB (Yann Meunier) et orientations E1 premachees."""
+"""Construit GEN / T1 avec le corpus a 5 BAB (Yann Monier) et orientations E1 premachees."""
 from __future__ import annotations
 
 import copy
@@ -134,7 +134,7 @@ SEGMENT_SPECS = [
         "id": "YAN-0001",
         "file": "yan.json",
         "source": "BAB_Yan_Monier.txt",
-        "chercheur": "Yann Meunier",
+        "chercheur": "Yann Monier",
         "debut": "01:00:04.510",
         "fin": "01:00:21.230",
         "theme_principal": "T1",
@@ -145,7 +145,7 @@ SEGMENT_SPECS = [
         "id": "YAN-0002",
         "file": "yan.json",
         "source": "BAB_Yan_Monier.txt",
-        "chercheur": "Yann Meunier",
+        "chercheur": "Yann Monier",
         "debut": "01:01:00.910",
         "fin": "01:02:19.560",
         "theme_principal": "T1",
@@ -156,7 +156,7 @@ SEGMENT_SPECS = [
         "id": "YAN-0003",
         "file": "yan.json",
         "source": "BAB_Yan_Monier.txt",
-        "chercheur": "Yann Meunier",
+        "chercheur": "Yann Monier",
         "debut": "01:12:21.830",
         "fin": "01:13:02.690",
         "theme_principal": "T2",
@@ -233,44 +233,26 @@ UNITES_GEN = [
     {
         "ordre": 1,
         "extraits": ["JJG-0001", "MUR-0001", "SYL-0001", "YAN-0001"],
-        "libelle": "Quatre chercheurs se presentent : domaine et objet de recherche.",
+        "libelle": (
+            "Partie 1 — Presentations : quatre chercheurs se presentent "
+            "(domaine, labo, objet de recherche)."
+        ),
         "acte": "Presentations",
         "grille_e1": None,
     },
     {
         "ordre": 2,
-        "extraits": ["JJG-0002"],
-        "libelle": "Market-pull : une demande du marche rencontre l'expertise de recherche.",
-        "acte": "Genese",
-        "grille_e1": "Market-pull · Rencontre",
-    },
-    {
-        "ordre": 3,
-        "extraits": ["MUR-0001"],
-        "libelle": "Tech-push + observation : resultat de labo et manque sociétal.",
-        "acte": "Genese",
-        "grille_e1": "Tech-push · Observation d'usage",
-    },
-    {
-        "ordre": 4,
-        "extraits": ["SYL-0002"],
-        "libelle": "Serendipite : un pas de cote ouvre une nouvelle piste.",
-        "acte": "Genese",
-        "grille_e1": "Serendipite",
-    },
-    {
-        "ordre": 5,
-        "extraits": ["YAN-0002"],
-        "libelle": "Maturation progressive : du laboratoire a l'industrie sur le long terme.",
-        "acte": "Genese",
-        "grille_e1": "Maturation progressive",
-    },
-    {
-        "ordre": 6,
-        "extraits": ["JJG-0003"],
-        "libelle": "Pivot : une idee peut preceder un resultat scientifique acquis.",
-        "acte": "Pivot",
-        "grille_e1": "Idee vs resultat",
+        "extraits": ["JJG-0002", "MUR-0001", "SYL-0002", "YAN-0002", "JJG-0003"],
+        "libelle": (
+            "Partie 2 — Geneses : chacun raconte comment est nee son innovation "
+            "(market-pull, tech-push + observation, pas de cote, maturation), "
+            "puis synthese idee/besoin/preuve."
+        ),
+        "acte": "Geneses",
+        "grille_e1": (
+            "Market-pull · Tech-push · Observation d'usage · Serendipite · "
+            "Maturation progressive · Idee vs resultat"
+        ),
     },
 ]
 
@@ -354,7 +336,7 @@ def orientation_e1(by_id: dict[str, dict]) -> dict:
             "concepts_e1": ["Market-pull", "Rencontre"],
             "verbatim_cle": "c'est tire par le marche… une rencontre… besoin du marche de voir des virus plus petits",
             "dans_le_temoin": (
-                "Jean-Jacques Greffet raconte une innovation declenchee par un besoin marche "
+                "Jean-Jacques Greffet raconte une innovation declenchee par un besoin du marche "
                 "(detection de virus plus petits) et une rencontre avec un entrepreneur, "
                 "avant meme d'etre un resultat de labo « fini »."
             ),
@@ -435,7 +417,7 @@ def orientation_e1(by_id: dict[str, dict]) -> dict:
             "concepts_e1": ["Maturation progressive"],
             "verbatim_cle": "quinze annees de recherche… these… techno puis problematiques du marche industriel",
             "dans_le_temoin": (
-                "Yann Meunier raconte une maturation sur 15 ans (these, labo), puis un affinage "
+                "Yann Monier raconte une maturation sur 15 ans (these, labo), puis un affinage "
                 "par echanges avec des industriels : la techno seule ne suffit pas."
             ),
             "travail_expert": (
@@ -443,7 +425,7 @@ def orientation_e1(by_id: dict[str, dict]) -> dict:
                 "Montrer que l'origine peut etre lente et iterative — pas un « Eurêka » unique."
             ),
             "phrase_amorce": (
-                "« Yann Meunier incarne la maturation progressive : des annees de recherche, "
+                "« Yann Monier incarne la maturation progressive : des annees de recherche, "
                 "puis une orientation vers des besoins industriels concrets. »"
             ),
             "question_apprenant": "Vos travaux suivent-ils une trajectoire longue avant de trouver un usage ?",
@@ -529,29 +511,47 @@ def cadrage_gen() -> dict:
     return {
         "statut": "NON_PRONONCE",
         "dispositif": "Animateur a l'ecran ; pancarte si indisponible.",
-        "note": "GEN = laboratoire T1. Corpus 5 BAB ; montage T1 = 4 voix (JJG, MUR, SYL, YAN).",
+        "note": (
+            "GEN = laboratoire T1. Corpus 5 BAB ; montage T1 = 4 voix (JJG, MUR, SYL, YAN). "
+            "Script en deux ensembles : (1) presentations, (2) geneses de l'innovation."
+        ),
         "intro": {
             "position": "Avant JJG-0001",
-            "duree_cible_secondes": 25,
-            "fonction": "Annoncer la diversite des origines.",
+            "duree_cible_secondes": 28,
+            "fonction": "Annoncer la structure en deux temps : qui sont-ils, puis comment nait leur innovation.",
             "texte_intervenant": (
-                "Comment une innovation commence-t-elle vraiment ? Quatre chercheurs — "
-                "et un cinquieme corpus disponible pour d'autres capsules — temoignent de parcours tres differents. "
-                "Ecoutez : market-pull, laboratoire, pas de cote, maturation longue… "
-                "Qu'est-ce qui, dans vos travaux, pourrait devenir un depart d'innovation ?"
+                "Comment une innovation commence-t-elle vraiment ? "
+                "Quatre chercheurs vont d'abord se presenter — leur domaine, leur laboratoire — "
+                "puis chacun racontera comment est nee son innovation : "
+                "demande du marche, resultat de labo, pas de cote, maturation longue… "
+                "Ecoutez d'abord qui ils sont."
             ),
-            "texte_pancarte": "Comment nait une innovation ?\n4 temoignages · origines diverses",
+            "texte_pancarte": (
+                "Comment nait une innovation ?\n"
+                "1. Qui sont-ils ?  →  2. Comment est nee leur innovation ?"
+            ),
         },
         "transitions": [
             {
                 "id": "relance_1",
-                "position": "Apres YAN-0001 (fin acte 1)",
+                "position": "Apres YAN-0001 (fin presentations)",
                 "apres_extrait": "YAN-0001",
                 "avant_extrait": "JJG-0002",
-                "duree_cible_secondes": 15,
-                "fonction": "Passer des presentations aux geneses.",
-                "texte_intervenant": "Quatre domaines, quatre facons de partir. Dans chaque cas, une idee rencontre un besoin ou un usage — pas toujours un resultat deja la.",
-                "texte_pancarte": "Presentation → Genese\nIdee + besoin / usage",
+                "duree_cible_secondes": 18,
+                "fonction": (
+                    "Clore l'ensemble presentations et ouvrir l'ensemble geneses : "
+                    "meme voix, autre question — comment est nee l'innovation."
+                ),
+                "texte_intervenant": (
+                    "Vous les avez rencontres. Quatre domaines, quatre facons d'etre chercheur. "
+                    "Maintenant, ecoutez comment leur innovation est nee — "
+                    "pas toujours d'un resultat deja la, parfois d'une rencontre, "
+                    "d'un manque observe, d'un pas de cote ou d'une maturation longue."
+                ),
+                "texte_pancarte": (
+                    "Partie 2 — Geneses\n"
+                    "Comment est nee leur innovation ?"
+                ),
             },
             {
                 "id": "relance_2",
@@ -570,13 +570,15 @@ def cadrage_gen() -> dict:
         "outro": {
             "position": "Apres JJG-0003",
             "duree_cible_secondes": 30,
-            "fonction": "Synthese + E1.",
+            "fonction": "Synthese des deux parties + E1.",
             "enchainement_expert": "E1",
             "texte_intervenant": (
-                "Retenez : marche, laboratoire, pas de cote, maturation longue — "
-                "quatre origines possibles. E1 vous donne maintenant les mots pour les reconnaitre dans vos projets."
+                "Vous avez d'abord rencontre quatre chercheurs, "
+                "puis entendu quatre origines d'innovation : "
+                "marche, laboratoire, pas de cote, maturation longue. "
+                "E1 vous donne maintenant les mots pour reconnaitre ces trajectoires dans vos projets."
             ),
-            "texte_pancarte": "4 origines → E1 : nommer vos trajectoires",
+            "texte_pancarte": "Presentations → Geneses\n4 origines → E1",
         },
     }
 
@@ -627,17 +629,24 @@ def main() -> None:
         "reutilisations_arbitrees": [],
         "cadrage_animateur": cadrage,
         "methodologie": {
-            "fil_pedagogique": "quatre origines (JJG, MUR, SYL, YAN) + pivot synthese",
+            "fil_pedagogique": (
+                "Deux ensembles : (1) presentations JJG/MUR/SYL/YAN ; "
+                "(2) geneses des innovations + pivot synthese ; transition explicite entre les deux."
+            ),
             "statut_montage": "PROVISOIRE",
         },
         "contenus_referents": ["E1 — Reconnaitre les differentes origines d'une innovation"],
         "decisions_editoriales": [
-            "Montage T1 v2 : Yann Meunier remplace Loic Rajjou pour la maturation progressive.",
+            "Montage T1 v2 : Yann Monier remplace Loic Rajjou pour la maturation progressive.",
             "YAN-0003 retire du montage T1 : theme T2 (sortir du labo), reserve pour capsule T2.",
             "Loic Rajjou reserve (LOI-0001) pour autres capsules.",
             f"Duree montage ~{total_duree:.0f} s hors cadrage.",
             "Orientations E1 premachees : utilisation_script_temoin.par_origine.",
             "GEN archive : montage de production porte par T1.",
+            (
+                "Script structure en deux ensembles coherents : presentations puis geneses, "
+                "avec transition animateur apres YAN-0001."
+            ),
         ],
         "manques": ["Valider coupes NON PRONONCE au montage video."],
         "videos_expert": prog_t1["videos_expert"],

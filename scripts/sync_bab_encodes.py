@@ -16,7 +16,7 @@ ENCODE_ID_BY_CHERCHEUR = {
     "Muriel Thomas": "mur",
     "Sylvia Cohen-Kaminski": "syl",
     "Loic Rajjou": "loi",
-    "Yann Meunier": "yan",
+    "Yann Monier": "yan",
 }
 
 SOURCE_BY_ENCODE_ID = {

@@ -349,7 +349,6 @@ def orientation_e20_e21(by_id: dict[str, dict]) -> list[dict]:
             ],
             "experts_proposes": [
                 "Arielle Sante",
-                "Joel Nguen",
                 "Pascal Corbel",
                 "Bernard Yannou",
             ],
@@ -390,7 +389,6 @@ def orientation_e20_e21(by_id: dict[str, dict]) -> list[dict]:
             ],
             "experts_proposes": [
                 "Arielle Sante",
-                "Joel Nguen",
                 "Pascal Corbel",
                 "Bernard Yannou",
             ],
