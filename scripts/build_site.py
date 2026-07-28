@@ -8454,6 +8454,12 @@ def build_fichiers_travail_pages() -> None:
             "BAB encodé",
             "Parcours des BAB timecodes par chercheur.",
         ),
+        (
+            "fascicules_oser_innover.html",
+            "📘",
+            "Oser pour innover (fascicules)",
+            "Document PUI en deux fascicules + corrélation grains MOOC ↔ chapitres.",
+        ),
     ]
     write_text(
         SITE / "fichiers_travail.html",
@@ -8465,6 +8471,230 @@ def build_fichiers_travail_pages() -> None:
             breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Fichiers de travail", None)),
             page_header='<div class="page-head"><h1>Fichiers de travail</h1><p class="lead">Informations et livrables operationnels.</p></div>',
             main_class="page-home",
+        ),
+    )
+
+
+def _load_fascicules_oser_innover() -> dict:
+    path = ROOT / "data" / "fascicules_oser_innover" / "fascicules.json"
+    if not path.exists():
+        return {}
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _fascicule_chapitre_index(data: dict) -> dict[str, dict]:
+    index: dict[str, dict] = {}
+    for fasc in data.get("fascicules", []):
+        for chap in fasc.get("chapitres", []):
+            index[chap["id"]] = {
+                **chap,
+                "fascicule_id": fasc["id"],
+                "fascicule_numero": fasc["numero"],
+                "fascicule_titre": fasc["titre"],
+                "fichier": fasc["fichier"],
+            }
+    return index
+
+
+def build_fascicules_oser_innover_pages() -> None:
+    """Ensemble Oser pour innover : document (2 fascicules) + corrélation grains."""
+    data = _load_fascicules_oser_innover()
+    if not data:
+        return
+
+    src_dir = ROOT / "data" / "fascicules_oser_innover"
+    for fasc in data.get("fascicules", []):
+        src = src_dir / fasc["fichier"]
+        if src.exists():
+            (SITE / fasc["fichier"]).write_bytes(src.read_bytes())
+
+    chap_index = _fascicule_chapitre_index(data)
+
+    # --- Ensemble ---
+    write_text(
+        SITE / "fascicules_oser_innover.html",
+        html_page(
+            "Oser pour innover (fascicules)",
+            "<p class='meta'>"
+            + escape(data.get("note", ""))
+            + "</p>"
+            + _sommaire_cards(
+                [
+                    (
+                        "fascicules_document.html",
+                        "📄",
+                        "Le document",
+                        "Les deux fascicules imprimés (chapitres) et leurs sommaires.",
+                    ),
+                    (
+                        "fascicules_grains.html",
+                        "🔗",
+                        "Corrélation grains ↔ fascicules",
+                        "Chaque grain MOOC (vidéo témoin / vidéo expertise) relié aux chapitres.",
+                    ),
+                ]
+            ),
+            nav_current="fichiers_travail.html",
+            breadcrumb=html_breadcrumb(
+                ("Accueil", "index.html"),
+                ("Fichiers de travail", "fichiers_travail.html"),
+                ("Oser pour innover (fascicules)", None),
+            ),
+            page_header=(
+                f'<div class="page-head"><h1>{escape(data.get("titre", "Oser pour innover"))}</h1>'
+                f'<p class="lead">{escape(data.get("sous_titre", ""))}</p></div>'
+            ),
+            main_class="page-home",
+        ),
+    )
+
+    # --- Sous-ensemble 1 : le document ---
+    fasc_cards = []
+    for fasc in data.get("fascicules", []):
+        chap_rows = []
+        for chap in fasc.get("chapitres", []):
+            sous = chap.get("sous_sections") or []
+            sous_html = (
+                "<ul>" + "".join(f"<li>{escape(item)}</li>" for item in sous) + "</ul>"
+                if sous
+                else "—"
+            )
+            chap_rows.append(
+                "<tr>"
+                f"<td><code>{escape(chap['id'])}</code></td>"
+                f"<td>{escape(chap['titre'])}</td>"
+                f"<td>{escape(chap.get('pages', ''))}</td>"
+                f"<td>{sous_html}</td>"
+                "</tr>"
+            )
+        fasc_cards.append(
+            "<article class='card'>"
+            f"<h2>Fascicule n°{escape(str(fasc['numero']))} — {escape(fasc['titre'])}</h2>"
+            f"<p class='meta'>Version {escape(fasc.get('version', ''))} · "
+            f"{escape(str(fasc.get('pages', '')))} pages · "
+            f"fichier source : <code>{escape(fasc.get('fichier_source', ''))}</code></p>"
+            f"<p><a class='btn' href='{escape(fasc['fichier'])}' target='_blank' rel='noopener'>"
+            f"Ouvrir le PDF</a> "
+            f"<a class='btn' href='{escape(fasc['fichier'])}' download>Télécharger</a></p>"
+            "<div class='table-wrap'><table><thead><tr>"
+            "<th>Id</th><th>Chapitre</th><th>Pages</th><th>Sous-sections</th>"
+            "</tr></thead><tbody>"
+            + "".join(chap_rows)
+            + "</tbody></table></div>"
+            "</article>"
+        )
+
+    write_text(
+        SITE / "fascicules_document.html",
+        html_page(
+            "Le document — fascicules Oser pour innover",
+            (
+                f"<p class='meta'>{escape(data.get('action', ''))}</p>"
+                "<p>Document imprimé en <strong>deux fascicules</strong>, "
+                "correspondant aux grands chapitres de référence conceptuelle du PUI.</p>"
+                + "".join(fasc_cards)
+            ),
+            nav_current="fichiers_travail.html",
+            breadcrumb=html_breadcrumb(
+                ("Accueil", "index.html"),
+                ("Fichiers de travail", "fichiers_travail.html"),
+                ("Oser pour innover (fascicules)", "fascicules_oser_innover.html"),
+                ("Le document", None),
+            ),
+            page_header=(
+                '<div class="page-head"><h1>Le document</h1>'
+                '<p class="lead">Fascicule 1 (concepts &amp; écosystème) et fascicule 2 (méthode &amp; dispositifs).</p></div>'
+            ),
+        ),
+    )
+
+    # --- Sous-ensemble 2 : corrélation grains ---
+    rows_html = []
+    for item in data.get("correlations", []):
+        grain = item.get("grain", "")
+        typ = item.get("type", "")
+        type_label = "Vidéo témoin" if typ == "temoin" else "Vidéo expertise"
+        fasc_id = item.get("fascicule", "")
+        fasc_meta = next(
+            (f for f in data.get("fascicules", []) if f["id"] == fasc_id),
+            {},
+        )
+        chap_bits = []
+        for cid in item.get("chapitres", []):
+            chap = chap_index.get(cid, {})
+            label = chap.get("titre") or cid
+            pages = chap.get("pages") or ""
+            chap_bits.append(
+                f"<li><code>{escape(cid)}</code> — {escape(label)}"
+                + (f" <span class='meta'>(p. {escape(pages)})</span>" if pages else "")
+                + "</li>"
+            )
+        pdf_href = fasc_meta.get("fichier", "")
+        rows_html.append(
+            "<tr>"
+            f"<td><strong>{escape(grain)}</strong><br>"
+            f"<span class='meta'>{escape(type_label)}</span></td>"
+            f"<td>{escape(item.get('titre', ''))}</td>"
+            f"<td><strong>Fascicule {escape(str(fasc_meta.get('numero', fasc_id)))}</strong><br>"
+            f"<span class='meta'>{escape(fasc_meta.get('titre', ''))}</span>"
+            + (
+                f"<br><a href='{escape(pdf_href)}' target='_blank' rel='noopener'>PDF</a>"
+                if pdf_href
+                else ""
+            )
+            + "</td>"
+            f"<td><ul>{''.join(chap_bits)}</ul></td>"
+            f"<td>{escape(item.get('justification', ''))}</td>"
+            "</tr>"
+        )
+
+    # Vue par fascicule
+    by_fasc: dict[str, list[dict]] = {"F1": [], "F2": []}
+    for item in data.get("correlations", []):
+        by_fasc.setdefault(item.get("fascicule", ""), []).append(item)
+
+    fasc_blocks = []
+    for fasc in data.get("fascicules", []):
+        items = by_fasc.get(fasc["id"], [])
+        grains = ", ".join(escape(i["grain"]) for i in items) or "—"
+        fasc_blocks.append(
+            "<article class='card'>"
+            f"<h2>Fascicule n°{escape(str(fasc['numero']))}</h2>"
+            f"<p class='meta'>{escape(fasc['titre'])}</p>"
+            f"<p><strong>Grains corrélés :</strong> {grains}</p>"
+            f"<p><a class='btn' href='{escape(fasc['fichier'])}' target='_blank' rel='noopener'>"
+            f"Ouvrir le PDF</a></p>"
+            "</article>"
+        )
+
+    write_text(
+        SITE / "fascicules_grains.html",
+        html_page(
+            "Corrélation grains ↔ fascicules",
+            (
+                "<p class='meta'>Lecture utile pour cadrer chaque grain du MOOC "
+                "(vidéo témoin / vidéo expertise) sur les chapitres des fascicules imprimés. "
+                "Corrélation éditoriale indicative — à affiner si besoin.</p>"
+                "<h2>Vue par fascicule</h2>"
+                + "".join(fasc_blocks)
+                + "<h2>Tableau grain par grain</h2>"
+                "<div class='table-wrap'><table><thead><tr>"
+                "<th>Grain</th><th>Titre</th><th>Fascicule</th><th>Chapitres</th><th>Justification</th>"
+                "</tr></thead><tbody>"
+                + "".join(rows_html)
+                + "</tbody></table></div>"
+            ),
+            nav_current="fichiers_travail.html",
+            breadcrumb=html_breadcrumb(
+                ("Accueil", "index.html"),
+                ("Fichiers de travail", "fichiers_travail.html"),
+                ("Oser pour innover (fascicules)", "fascicules_oser_innover.html"),
+                ("Corrélation grains", None),
+            ),
+            page_header=(
+                '<div class="page-head"><h1>Corrélation grains ↔ fascicules</h1>'
+                '<p class="lead">Chaque grain du parcours relié aux chapitres des deux fascicules.</p></div>'
+            ),
         ),
     )
 
@@ -10442,6 +10672,7 @@ if __name__ == "__main__":
     build_edito_hub_page()
     build_script_propose_pages(programme_table, all_affectations, all_segments)
     build_fichiers_travail_pages()
+    build_fascicules_oser_innover_pages()
     build_mails_experts_pages(programme_table, experts_profils, all_affectations, all_segments)
     build_correspondances_edito_page(programme_table)
     build_tableau_corr_page()

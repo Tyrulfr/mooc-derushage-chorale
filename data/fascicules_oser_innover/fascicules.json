@@ -1,0 +1,495 @@
+{
+  "titre": "Oser pour innover — fascicules PUI",
+  "sous_titre": "Décrypter les fondamentaux et libérer son potentiel",
+  "action": "Action coportée par l’Université Paris-Saclay, AgroParisTech et l’Institut d’Optique Graduate School",
+  "note": "Document imprimé en deux fascicules correspondant aux grands chapitres. Source de référence conceptuelle pour corréler les grains du MOOC (vidéos témoin et vidéos expertise).",
+  "date_integration": "2026-07-28",
+  "fascicules": [
+    {
+      "id": "F1",
+      "numero": 1,
+      "titre": "Comprendre l’écosystème et les concepts-clés de l’innovation",
+      "fichier": "fascicule_1.pdf",
+      "fichier_source": "Oser pour innover (PUI)_fascicule 1_V3_corrCA.pdf",
+      "version": "V3 corrCA",
+      "pages": 24,
+      "chapitres": [
+        {
+          "id": "F1-INTRO",
+          "titre": "Introduction — La recherche, un enjeu majeur pour le progrès collectif",
+          "pages": "1-2"
+        },
+        {
+          "id": "F1-1",
+          "titre": "1. La mission de la recherche académique vise à aller au-delà de l’existant",
+          "pages": "3"
+        },
+        {
+          "id": "F1-2",
+          "titre": "2. La connaissance comme facteur de transfert pour une société vertueuse",
+          "pages": "3"
+        },
+        {
+          "id": "F1-3",
+          "titre": "3. L’innovation comme pilier fondamental pour compléter la recherche et la formation",
+          "pages": "4"
+        },
+        {
+          "id": "F1-4",
+          "titre": "4. Qu’est-ce que l’innovation ?",
+          "pages": "4-10",
+          "sous_sections": [
+            "4.1. Les grandes familles d’innovation",
+            "4.2. Quelques distinctions",
+            "4.3. Les types de protection de propriété intellectuelle en France",
+            "4.4. Qu’est-ce que la déclaration d’invention ?"
+          ]
+        },
+        {
+          "id": "F1-4.3",
+          "titre": "4.3. Les types de protection de propriété intellectuelle en France",
+          "pages": "8-10"
+        },
+        {
+          "id": "F1-4.4",
+          "titre": "4.4. Qu’est-ce que la déclaration d’invention ?",
+          "pages": "10"
+        },
+        {
+          "id": "F1-5",
+          "titre": "5. Quel écosystème de l’innovation en France ?",
+          "pages": "11-16",
+          "sous_sections": [
+            "5.1. MESR",
+            "5.2. Les SATT",
+            "5.3. Les incubateurs",
+            "5.4. Les accélérateurs",
+            "5.5. Les pôles de compétitivité",
+            "5.6. Autres acteur·rices"
+          ]
+        },
+        {
+          "id": "F1-5.2",
+          "titre": "5.2. Les SATT",
+          "pages": "12"
+        },
+        {
+          "id": "F1-5.3",
+          "titre": "5.3. Les incubateurs",
+          "pages": "12"
+        },
+        {
+          "id": "F1-5.5",
+          "titre": "5.5. Les pôles de compétitivité",
+          "pages": "13"
+        }
+      ]
+    },
+    {
+      "id": "F2",
+      "numero": 2,
+      "titre": "Méthode et dispositifs de soutien à l’innovation",
+      "fichier": "fascicule_2.pdf",
+      "fichier_source": "Oser pour innover (PUI)_fascicule 2_V1_corrCA.pdf",
+      "version": "V1 corrCA",
+      "pages": 32,
+      "chapitres": [
+        {
+          "id": "F2-0",
+          "titre": "L’innovation comme une méthode : de l’idée à l’impact",
+          "pages": "1"
+        },
+        {
+          "id": "F2-1",
+          "titre": "1. Les facteurs favorisant l’innovation",
+          "pages": "1-2"
+        },
+        {
+          "id": "F2-2",
+          "titre": "2. Pourquoi innover ?",
+          "pages": "2"
+        },
+        {
+          "id": "F2-3",
+          "titre": "3. Le cycle de l’innovation",
+          "pages": "3-5",
+          "sous_sections": [
+            "3.1. Phase amont : de la recherche à l’expérimentation",
+            "3.2. Phase de propulsion des résultats de la recherche",
+            "3.3. Phase de mise en service au collectif : du transfert à l’adoption"
+          ]
+        },
+        {
+          "id": "F2-3.1",
+          "titre": "3.1. Phase amont : de la recherche à l’expérimentation",
+          "pages": "3"
+        },
+        {
+          "id": "F2-3.2",
+          "titre": "3.2. Phase de propulsion des résultats de la recherche",
+          "pages": "4"
+        },
+        {
+          "id": "F2-3.3",
+          "titre": "3.3. Phase de mise en service au collectif : du transfert à l’adoption",
+          "pages": "4-5"
+        },
+        {
+          "id": "F2-4",
+          "titre": "4. Des leviers pour atteindre l’impact de la recherche académique",
+          "pages": "5-14",
+          "sous_sections": [
+            "4.1. Des dispositifs de transfert et de valorisation solides",
+            "4.2. Qu’est-ce que la valorisation ?",
+            "4.3. Qu’est-ce que le TRL et DRL ?"
+          ]
+        },
+        {
+          "id": "F2-4.2",
+          "titre": "4.2. Qu’est-ce que la valorisation ?",
+          "pages": "6-11"
+        },
+        {
+          "id": "F2-4.3",
+          "titre": "4.3. Qu’est-ce que le TRL et DRL ?",
+          "pages": "11-14"
+        },
+        {
+          "id": "F2-FIN",
+          "titre": "Les dispositifs de soutien à l’innovation en France — types de financements",
+          "pages": "15-16"
+        },
+        {
+          "id": "F2-SENS",
+          "titre": "Sensibiliser à l’innovation dans l’enseignement supérieur",
+          "pages": "16-22",
+          "sous_sections": [
+            "3.1. Stratégies nationales d’accélération (SNA)",
+            "3.2. Des freins encore à déverrouiller",
+            "3.3. À propos des PUI",
+            "3.4. Formation et sensibilisation",
+            "3.5. Des compétences nouvelles à développer"
+          ]
+        },
+        {
+          "id": "F2-FREINS",
+          "titre": "3.2. Des freins encore à déverrouiller",
+          "pages": "17-18"
+        },
+        {
+          "id": "F2-PUI",
+          "titre": "3.3. À propos des pôles universitaires d’innovation (PUI)",
+          "pages": "18-20"
+        },
+        {
+          "id": "F2-COMP",
+          "titre": "3.5. Des compétences nouvelles à développer",
+          "pages": "20-22"
+        },
+        {
+          "id": "F2-CONCL",
+          "titre": "Conclusion",
+          "pages": "23"
+        }
+      ]
+    }
+  ],
+  "correlations": [
+    {
+      "grain": "T1",
+      "type": "temoin",
+      "titre": "Pourquoi oser ?",
+      "fascicule": "F1",
+      "chapitres": ["F1-INTRO", "F1-1", "F1-3", "F1-4"],
+      "justification": "Ouverture du parcours : enjeu de la recherche, mission académique et familles d’innovation (tech-push, market-pull, etc.)."
+    },
+    {
+      "grain": "E1",
+      "type": "expertise",
+      "titre": "Reconnaître les différentes origines d’une innovation",
+      "fascicule": "F1",
+      "chapitres": ["F1-4"],
+      "justification": "Section « Qu’est-ce que l’innovation ? » et distinctions d’origines (techno push / market pull, familles)."
+    },
+    {
+      "grain": "T2",
+      "type": "temoin",
+      "titre": "De la recherche à l’innovation",
+      "fascicule": "F2",
+      "chapitres": ["F2-0", "F2-3", "F2-3.1"],
+      "justification": "Passage recherche → problème / besoin ; phase amont du cycle (expérimentation, validation du problème)."
+    },
+    {
+      "grain": "E2",
+      "type": "expertise",
+      "titre": "Passer d’une technologie à un problème à résoudre",
+      "fascicule": "F2",
+      "chapitres": ["F2-0", "F2-3.1"],
+      "justification": "Techno push vs market pull et formulation du pain point / proposition de valeur."
+    },
+    {
+      "grain": "E3",
+      "type": "expertise",
+      "titre": "Poser ou identifier le bon problème avant de chercher la solution",
+      "fascicule": "F2",
+      "chapitres": ["F2-1", "F2-3.1"],
+      "justification": "Facteurs favorisant l’innovation et discipline de questionnement en phase amont."
+    },
+    {
+      "grain": "T3",
+      "type": "temoin",
+      "titre": "Identifier un besoin réel + sortir du laboratoire",
+      "fascicule": "F2",
+      "chapitres": ["F2-3.1", "F2-3.2", "F2-4.3"],
+      "justification": "POC, maturité, sortie labo : cycle amont/propulsion et échelle TRL/DRL."
+    },
+    {
+      "grain": "E4",
+      "type": "expertise",
+      "titre": "Résultat scientifique, POC, prototype, MVP et TRL",
+      "fascicule": "F2",
+      "chapitres": ["F2-4.3"],
+      "justification": "Chapitre TRL et DRL du fascicule 2."
+    },
+    {
+      "grain": "E5",
+      "type": "expertise",
+      "titre": "Dérisquer un projet par étapes",
+      "fascicule": "F2",
+      "chapitres": ["F2-3.2", "F2-4.3"],
+      "justification": "Phase de propulsion et jalons de maturité (TRL) pour dérisquer."
+    },
+    {
+      "grain": "T4",
+      "type": "temoin",
+      "titre": "Une idée ne suffit pas + freins et leviers",
+      "fascicule": "F1",
+      "chapitres": ["F1-4.3", "F1-4.4"],
+      "justification": "Protection avant divulgation : types de PI et déclaration d’invention."
+    },
+    {
+      "grain": "E6",
+      "type": "expertise",
+      "titre": "Le réflexe de déclaration avant toute divulgation",
+      "fascicule": "F1",
+      "chapitres": ["F1-4.4"],
+      "justification": "Section dédiée à la déclaration d’invention."
+    },
+    {
+      "grain": "E7",
+      "type": "expertise",
+      "titre": "À qui parler et avec quoi arriver ?",
+      "fascicule": "F1",
+      "chapitres": ["F1-4.4", "F1-5"],
+      "justification": "Premier contact valorisation / DI dans l’écosystème (structures de transfert)."
+    },
+    {
+      "grain": "T5",
+      "type": "temoin",
+      "titre": "Protection et valorisation",
+      "fascicule": "F1",
+      "chapitres": ["F1-4.3"],
+      "justification": "Types de protection PI ; complément F2 sur la valorisation."
+    },
+    {
+      "grain": "E8",
+      "type": "expertise",
+      "titre": "Choisir un mode de protection adapté",
+      "fascicule": "F1",
+      "chapitres": ["F1-4.3"],
+      "justification": "Panorama des modes de protection en France."
+    },
+    {
+      "grain": "E9",
+      "type": "expertise",
+      "titre": "La PI comme actif stratégique",
+      "fascicule": "F1",
+      "chapitres": ["F1-4.3"],
+      "justification": "PI comme actif ; articule aussi avec valorisation (F2-4.2)."
+    },
+    {
+      "grain": "T6",
+      "type": "temoin",
+      "titre": "Transfert et licensing",
+      "fascicule": "F2",
+      "chapitres": ["F2-3.3", "F2-4.2"],
+      "justification": "Transfert / adoption et mécanismes de valorisation (licence, création…)."
+    },
+    {
+      "grain": "E10",
+      "type": "expertise",
+      "titre": "Quelle voie de valorisation pour quel projet ?",
+      "fascicule": "F2",
+      "chapitres": ["F2-4.2"],
+      "justification": "Section « Qu’est-ce que la valorisation ? »."
+    },
+    {
+      "grain": "E11",
+      "type": "expertise",
+      "titre": "Les mécanismes juridiques du transfert",
+      "fascicule": "F2",
+      "chapitres": ["F2-4.2"],
+      "justification": "Contrats de valorisation / transfert détaillés dans le fascicule 2."
+    },
+    {
+      "grain": "T7",
+      "type": "temoin",
+      "titre": "Vous n’êtes pas seul(e)",
+      "fascicule": "F1",
+      "chapitres": ["F1-5", "F1-5.2", "F1-5.3"],
+      "justification": "Écosystème : SATT, incubateurs et accompagnement."
+    },
+    {
+      "grain": "E12",
+      "type": "expertise",
+      "titre": "De la prématuration à la maturation",
+      "fascicule": "F1",
+      "chapitres": ["F1-5.2"],
+      "justification": "Rôle des SATT / maturation dans l’écosystème."
+    },
+    {
+      "grain": "E13",
+      "type": "expertise",
+      "titre": "Ce que fait réellement un incubateur",
+      "fascicule": "F1",
+      "chapitres": ["F1-5.3"],
+      "justification": "Section incubateurs du fascicule 1."
+    },
+    {
+      "grain": "E13bis",
+      "type": "expertise",
+      "titre": "Autres structures (design spot, fablab, pôles, OTT…)",
+      "fascicule": "F1",
+      "chapitres": ["F1-5.5", "F1-5"],
+      "justification": "Pôles de compétitivité et autres acteur·rices de l’écosystème."
+    },
+    {
+      "grain": "T8",
+      "type": "temoin",
+      "titre": "Financements, concours et temps pour entreprendre",
+      "fascicule": "F2",
+      "chapitres": ["F2-FIN"],
+      "justification": "Types de financements et panorama des dispositifs de soutien."
+    },
+    {
+      "grain": "E14",
+      "type": "expertise",
+      "titre": "La chaîne des financements de l’innovation",
+      "fascicule": "F2",
+      "chapitres": ["F2-FIN"],
+      "justification": "Chapitre financements du fascicule 2."
+    },
+    {
+      "grain": "E15",
+      "type": "expertise",
+      "titre": "Comprendre la logique des investisseurs",
+      "fascicule": "F2",
+      "chapitres": ["F2-FIN"],
+      "justification": "Dispositifs de soutien et logique d’investissement."
+    },
+    {
+      "grain": "T9",
+      "type": "temoin",
+      "titre": "Partenariats et posture : construire une équipe",
+      "fascicule": "F2",
+      "chapitres": ["F2-COMP"],
+      "justification": "Compétences nouvelles, complémentarité et posture entrepreneuriale."
+    },
+    {
+      "grain": "E16",
+      "type": "expertise",
+      "titre": "Cartographier les compétences nécessaires",
+      "fascicule": "F2",
+      "chapitres": ["F2-COMP"],
+      "justification": "Section compétences nouvelles à développer."
+    },
+    {
+      "grain": "E17",
+      "type": "expertise",
+      "titre": "Organiser la relation entre fondateurs",
+      "fascicule": "F2",
+      "chapitres": ["F2-4.2", "F2-COMP"],
+      "justification": "Gouvernance / pacte côté valorisation juridique + compétences d’équipe."
+    },
+    {
+      "grain": "T10",
+      "type": "temoin",
+      "titre": "Enrichir son langage",
+      "fascicule": "F2",
+      "chapitres": ["F2-COMP", "F2-SENS"],
+      "justification": "Sensibilisation / formation et compétences de communication de valeur."
+    },
+    {
+      "grain": "E18",
+      "type": "expertise",
+      "titre": "Passer de la preuve scientifique à la valeur pour l’interlocuteur",
+      "fascicule": "F2",
+      "chapitres": ["F2-0", "F2-COMP"],
+      "justification": "Passage idée → impact et formulation de valeur."
+    },
+    {
+      "grain": "E19",
+      "type": "expertise",
+      "titre": "La posture entrepreneuriale s’apprend",
+      "fascicule": "F2",
+      "chapitres": ["F2-COMP", "F2-SENS"],
+      "justification": "Formation / sensibilisation et développement de compétences."
+    },
+    {
+      "grain": "T11",
+      "type": "temoin",
+      "titre": "Évolution dans le métier du chercheur·euse",
+      "fascicule": "F2",
+      "chapitres": ["F2-FREINS", "F2-2", "F2-SENS"],
+      "justification": "Freins à déverrouiller, pourquoi innover, évolution du métier académique."
+    },
+    {
+      "grain": "E20",
+      "type": "expertise",
+      "titre": "Freins et leviers du parcours chercheur-entrepreneur",
+      "fascicule": "F2",
+      "chapitres": ["F2-FREINS"],
+      "justification": "Section freins encore à déverrouiller."
+    },
+    {
+      "grain": "E21",
+      "type": "expertise",
+      "titre": "Apprendre dans l’incertitude",
+      "fascicule": "F2",
+      "chapitres": ["F2-1", "F2-3"],
+      "justification": "Facteurs d’innovation et cycle itératif (apprentissage / adaptation)."
+    },
+    {
+      "grain": "T12",
+      "type": "temoin",
+      "titre": "Dispositifs d’accompagnement & collab",
+      "fascicule": "F1",
+      "chapitres": ["F1-5", "F1-5.5"],
+      "justification": "Écosystème et acteurs de collaboration ; complément F2 sur valorisation partenariale."
+    },
+    {
+      "grain": "E22",
+      "type": "expertise",
+      "titre": "Concevoir une collaboration équilibrée",
+      "fascicule": "F2",
+      "chapitres": ["F2-4.2"],
+      "justification": "Accords de collaboration / consortium dans la valorisation."
+    },
+    {
+      "grain": "E23",
+      "type": "expertise",
+      "titre": "Sécuriser juridiquement la collaboration",
+      "fascicule": "F2",
+      "chapitres": ["F2-4.2"],
+      "justification": "Contrats (NDA, MTA, collaboration, PI) du fascicule 2."
+    },
+    {
+      "grain": "T13",
+      "type": "temoin",
+      "titre": "Conclusion : passer à l’action",
+      "fascicule": "F2",
+      "chapitres": ["F2-CONCL", "F2-PUI"],
+      "justification": "Conclusion du fascicule 2 et cadre PUI pour passer à l’action."
+    }
+  ]
+}
