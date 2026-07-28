@@ -7944,12 +7944,17 @@ def build_suivi_intervenants_pages(programme_table: dict, experts_profils: dict)
     )
 
     # 6) Pages intervenant → mail/guide + capsules temoin + videos expert
+    finale_by_slug = {
+        item.get("slug") or slug(item.get("nom", "")): (item.get("proposition_finale") or "").strip()
+        for item in _load_suivi_positionnements().get("intervenants", [])
+    }
     for item in intervenants:
         filename = f"suivi_intervenant_{item['slug']}.html"
         mail_href = f"mail_expert_{item['slug']}.html"
         mail_attendues_href = f"mail_videos_attendues_{item['slug']}.html"
         guide_href = f"guide_editorial_{item['slug']}.doc"
         guide_attendues_href = f"guide_videos_attendues_{item['slug']}.doc"
+        has_finale = bool(finale_by_slug.get(item["slug"]))
         sections = [
             (
                 mail_href,
@@ -7957,25 +7962,32 @@ def build_suivi_intervenants_pages(programme_table: dict, experts_profils: dict)
                 "Mail de positionnement",
                 "Mail envoyé le 20/07/2026 — sollicitation de positionnement sur les vidéos expertise.",
             ),
-            (
-                mail_attendues_href,
-                "✉",
-                "Mail vidéos attendues",
-                "Mail envoyé le 27/07/2026 — vidéos expertise attendues + guide éditorial enrichi.",
-            ),
+        ]
+        if has_finale:
+            sections.extend(
+                [
+                    (
+                        mail_attendues_href,
+                        "✉",
+                        "Mail vidéos attendues",
+                        "Mail du 27/07/2026 — sélection finale + guide éditorial enrichi (vue d'ensemble).",
+                    ),
+                    (
+                        guide_attendues_href,
+                        "📄",
+                        "Guide éditorial vidéos attendues (Word)",
+                        "Document à envoyer : vue d'ensemble des positionnements, synthèse, cadrage, scripts.",
+                    ),
+                ]
+            )
+        sections.append(
             (
                 guide_href,
                 "📄",
                 "Guide éditorial positionnement (Word)",
-                "Export Word du guide associé au mail de positionnement.",
-            ),
-            (
-                guide_attendues_href,
-                "📄",
-                "Guide éditorial vidéos attendues (Word)",
-                "Synthèse, cadrage, scripts expertise et script final.",
-            ),
-        ]
+                "Export Word historique associé au mail de positionnement (20/07/2026).",
+            )
+        )
         for capsule in item["capsules"]:
             sections.append(
                 (
@@ -7995,15 +8007,29 @@ def build_suivi_intervenants_pages(programme_table: dict, experts_profils: dict)
                 )
             )
         expected.add(filename)
+        if has_finale:
+            primary_btns = (
+                f"<a class='btn' href='{escape(mail_attendues_href)}'>Ouvrir le mail vidéos attendues (27/07)</a> "
+                f"<a class='btn' href='{escape(guide_attendues_href)}' download>Exporter le guide à envoyer (Word)</a> "
+                f"<a class='btn' href='{escape(guide_attendues_href)}' target='_blank' rel='noopener'>Ouvrir le guide à envoyer</a>"
+            )
+        else:
+            primary_btns = (
+                f"<a class='btn' href='{escape(mail_href)}'>Ouvrir le mail de positionnement</a> "
+                f"<a class='btn' href='{escape(guide_href)}' download>Exporter le guide positionnement (Word)</a> "
+                f"<a class='btn' href='{escape(guide_href)}' target='_blank' rel='noopener'>Ouvrir le guide positionnement</a>"
+            )
         body = (
             f"<p class='meta'>{escape(item['organisme'])} — "
             f"{len(item['capsules'])} capsule(s) temoin · "
-            f"{len(item['videos_expert'])} video(s) expert.</p>"
-            "<p>"
-            f"<a class='btn' href='{escape(mail_href)}'>Ouvrir le mail expert</a> "
-            f"<a class='btn' href='{escape(guide_href)}' download>Exporter le guide (Word)</a> "
-            f"<a class='btn' href='{escape(guide_href)}' target='_blank' rel='noopener'>Ouvrir le guide</a>"
-            "</p>"
+            f"{len(item['videos_expert'])} video(s) expert."
+            + (
+                f" · Sélection finale : <strong>{escape(finale_by_slug.get(item['slug'], ''))}</strong>"
+                if has_finale
+                else ""
+            )
+            + "</p>"
+            f"<p>{primary_btns}</p>"
             + _sommaire_cards(sections)
         )
         write_text(
