@@ -1877,6 +1877,38 @@ def _load_cadrage_temoins_narratifs() -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _load_transcripts_videos_finaux() -> dict:
+    path = ROOT / "data" / "transcripts_videos_finaux.json"
+    if not path.exists():
+        return {}
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _mounted_transcript_script(capsule_code: str) -> str:
+    """Script final = transcript de la vidéo montée, s'il est disponible."""
+    data = _load_transcripts_videos_finaux()
+    item = (data.get("capsules") or {}).get(capsule_code) or {}
+    text = (item.get("text") or "").strip()
+    if not text:
+        return ""
+    source = (item.get("source") or "").strip()
+    header = ""
+    if source:
+        header = (
+            f"[TRANSCRIPT MONTÉ — {source}]\n"
+            "(Script final = montage vidéo tel que fourni ; non reconstruit depuis Clarisse/BAB.)\n\n"
+        )
+    return header + text
+
+
+def _script_final_prefer_mounted_transcript(
+    capsule_code: str,
+    fallback: str,
+) -> str:
+    mounted = _mounted_transcript_script(capsule_code)
+    return mounted if mounted else fallback
+
+
 def _narrative_temoin_block(capsule_code: str) -> dict | None:
     data = _load_cadrage_temoins_narratifs()
     block = (data.get("capsules") or {}).get(capsule_code)
@@ -4558,7 +4590,10 @@ def build_tb_edito_capsule_pages(programme_table: dict) -> None:
         resume = ""
         cadrage = _tb_edito_build_cadrage(code, ordre, by_seq_id, videos_expert)
 
-        script_final = _tb_edito_script_with_cadrage(ordre, by_seq_id, cadrage)
+        script_final = _script_final_prefer_mounted_transcript(
+            code,
+            _tb_edito_script_with_cadrage(ordre, by_seq_id, cadrage),
+        )
 
         capsule_data = {
             "ordre_montage": ordre,
@@ -6780,7 +6815,12 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
         ordre = [seq.get("id", f"{code}-NOID") for seq in ordered]
         videos_expert = _tb_edito_parse_videos_expert(row.get("videos_referent", ""))
         cadrage = _tb_edito_build_cadrage(code, ordre, by_seq_id, videos_expert)
-        script_final = _tb_expertise_label(_tb_edito_script_with_cadrage(ordre, by_seq_id, cadrage))
+        script_final = _tb_expertise_label(
+            _script_final_prefer_mounted_transcript(
+                code,
+                _tb_edito_script_with_cadrage(ordre, by_seq_id, cadrage),
+            )
+        )
         capsule_data = {
             "videos_expert": videos_expert,
         }
@@ -9643,7 +9683,10 @@ def _guide_videos_attendues_doc_html(
         script_final = _tb_expertise_label(
             _humanize_capsule_labels(
                 _normalize_script_final_editorial(
-                    _tb_edito_script_with_cadrage(ordre, by_seq_id, cadrage)
+                    _script_final_prefer_mounted_transcript(
+                        code,
+                        _tb_edito_script_with_cadrage(ordre, by_seq_id, cadrage),
+                    )
                 )
             )
         )
@@ -9741,7 +9784,10 @@ def _videos_attendues_editorial_web_html(
             code, ordre, by_seq_id, capsule_data.get("videos_expert") or videos_expert_all
         )
         script_final = _normalize_script_final_editorial(
-            _tb_edito_script_with_cadrage(ordre, by_seq_id, cadrage)
+            _script_final_prefer_mounted_transcript(
+                code,
+                _tb_edito_script_with_cadrage(ordre, by_seq_id, cadrage),
+            )
         )
         attendues = _expertise_titles_from_item(item)
         temoin_title = item.get("video_temoin_display") or _display_temoin_title(

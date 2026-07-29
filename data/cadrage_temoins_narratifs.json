@@ -1,393 +1,419 @@
 {
-  "note": "Versions narratives de « Ce que disent les chercheurs » pour la proposition de cadrage. Alignées sur les sélections Clarisse / montages retenus et les résumés programme. Ne remplacent pas les verbatims BAB.",
+  "note": "Versions narratives « Ce que disent les chercheurs » alignées sur les transcripts montés (data/raw/Trancript_Video*.docx) et cadrées sur les objectifs expert. Ne remplacent pas les verbatims ; synthétisent ce qui sert l'objectif.",
   "date_mise_a_jour": "2026-07-29",
   "capsules": {
     "T1": {
       "titre_section": "Ce que disent les chercheurs",
-      "intro": "Cette vidéo ouvre le parcours en montrant que l’innovation peut naître de trajectoires très différentes. Les témoignages rappellent qu’il n’existe pas un seul « moment Eurêka » : une demande de marché, une observation de société, un pas de côté scientifique ou une maturation progressive peuvent tous ouvrir une démarche.",
+      "intro": "Cette vidéo ouvre le parcours (objectif : reconnaître les différentes origines d’une innovation). Les témoignages montrent qu’oser n’attend pas un seul « moment Eurêka » : pas de côté scientifique, maturation longue, manque sociétal ou besoin industriel peuvent tous ouvrir une démarche.",
       "voix": [
-        {
-          "chercheur": "Jean-Jacques Greffet",
-          "paragraphes": [
-            "Une demande issue du marché rencontre trente ans d’expertise scientifique. Ce n’est pas seulement une idée qui émerge dans le laboratoire : c’est la rencontre entre un besoin exprimé et un savoir déjà construit.",
-            "Cette rencontre devient le point de départ d’une trajectoire d’innovation, où l’expérience scientifique trouve une prise concrète hors du seul cadre académique."
-          ]
-        },
-        {
-          "chercheur": "Muriel Thomas",
-          "paragraphes": [
-            "Un résultat de laboratoire rencontre une observation sociétale. Le point de départ n’est pas seulement technique : c’est aussi le constat d’un problème concret dans la société.",
-            "Cette articulation entre preuve scientifique et réalité d’usage ouvre la possibilité d’une innovation utile, au-delà du seul intérêt disciplinaire."
-          ]
-        },
         {
           "chercheur": "Sylvia Cohen-Kaminski",
           "paragraphes": [
-            "Un « pas de côté » scientifique est appliqué à une maladie rare. L’innovation naît ici d’un déplacement : reprendre un savoir, le réorienter, et le mettre au service d’un besoin médical précis."
+            "L’innovation naît d’un « pas de côté » : un récepteur étudié dans le système nerveux central se révèle acteur de la communication cellulaire vasculaire, dans une maladie rare (hypertension artérielle pulmonaire).",
+            "Oser, pour elle, ce n’est pas abandonner la recherche : c’est accepter qu’innover ajoute un impact sociétal — « pourquoi pas oser ? » — tout en maintenant un haut niveau académique."
           ]
         },
         {
           "chercheur": "Loïc Rajjou",
           "paragraphes": [
-            "Le chemin est progressif : de la recherche fondamentale vers les problématiques agricoles. L’innovation n’apparaît pas d’un coup ; elle se construit à mesure que les questions du terrain viennent enrichir le travail scientifique."
+            "Le chemin est progressif : des années de recherche fondamentale sur la germination et la croissance des plantes mènent à la question « que faire de ces connaissances au-delà ? ».",
+            "La motivation d’oser tient à deux besoins : se sentir utile, et donner une inflexion différente à sa carrière."
+          ]
+        },
+        {
+          "chercheur": "Muriel Thomas",
+          "paragraphes": [
+            "Le point de départ est un manque identifié : personnes très âgées ou en convalescence, microbiote appauvri, sans recommandation claire de probiotiques/prébiotiques.",
+            "Oser innover est aussi présenté comme levier d’apprentissage et de rencontres — une origine « observation de société » autant que technique."
+          ]
+        },
+        {
+          "chercheur": "Yann Monier",
+          "paragraphes": [
+            "L’innovation vise des jumeaux numériques automatisés de chaînes de production : une origine ancrée dans l’automatique et les besoins industriels de monitoring."
+          ]
+        },
+        {
+          "chercheur": "Jean-Jacques Greffet",
+          "paragraphes": [
+            "Plusieurs voix insistent sur le temps long : acquisition de connaissances sur 15–20 ans, puis mise en œuvre progressive avec des acteurs pour trouver un marché.",
+            "Une conviction traverse aussi le récit : l’argent public qui finance la recherche doit pouvoir être valorisé vers des filières économiques, plutôt que de laisser des technologies « sur étagère »."
           ]
         }
       ],
-      "a_retenir": "Ces témoignages montrent qu’oser innover, c’est d’abord reconnaître dans ses travaux un résultat, une observation ou une rencontre susceptibles d’ouvrir une démarche — sans attendre un modèle unique d’invention."
+      "a_retenir": "Repérer dans ses travaux une origine possible (rencontre, observation, pas de côté, maturation) : c’est le premier pas pour ouvrir une démarche d’innovation — sans attendre un modèle unique."
     },
     "T2": {
       "titre_section": "Ce que disent les chercheurs",
-      "intro": "Cette vidéo porte sur le passage de la recherche à l’innovation : comment une technologie ou une hypothèse se traduit en problème concret à traiter pour des usages réels. Les témoignages montrent comment se formulent les défis (mesure, contraintes réglementaires/techniques) et comment ils orientent la transformation du savoir en solution.",
+      "intro": "Cette vidéo sert les objectifs « passer d’une technologie à un problème à résoudre » et « identifier le bon problème ». Les chercheurs formulent des usages, des manques et des contraintes qui transforment un résultat en problème concret pour des utilisateurs.",
       "voix": [
         {
-          "chercheur": "Jean-Jacques Greffet",
+          "chercheur": "Sylvia Cohen-Kaminski",
           "paragraphes": [
-            "Dans la médecine, la technologie n’a de sens que si elle fonctionne pour l’usage : avec les nanoparticules, la question devient celle de la fiabilité. Il faut protéger l’ARN et s’assurer que les particules délivrent réellement le contenu attendu.",
-            "Le passage par la mesure (compter/protéger les particules, vérifier qu’elles sont « remplies ») transforme la performance technique en preuve utile : sans cette quantification, on ne sait pas si la solution produira l’effet attendu."
-          ]
-        },
-        {
-          "chercheur": "Muriel Thomas",
-          "paragraphes": [
-            "Dès le laboratoire, l’application commence par la rédaction des « contextes » dans les demandes de financement : c’est en décrivant précisément l’environnement visé que l’équipe perçoit la direction possible de l’innovation.",
-            "Les défis se structurent ensuite en niveaux : formulation (goût/couleur/odeurs) et stabilité du probiotique dans la matrice alimentaire, respect des recommandations réglementaires (HAS) pour les compléments oraux, puis alignement avec la chaîne des acteurs impliqués dans le soin au sein d’un établissement."
+            "Dès le début, la question d’usage et d’utilité est posée : l’hypertension artérielle pulmonaire est grave ; les vasodilatateurs améliorent la survie sans traiter la cause (remodelage vasculaire).",
+            "La cible scientifique vise précisément cette cause : le « bon problème » n’est pas seulement prolonger la survie, c’est traiter le mécanisme manquant."
           ]
         },
         {
           "chercheur": "Loïc Rajjou",
           "paragraphes": [
-            "Le point de départ est un besoin opérationnel : obtenir une graine efficace pour un plant efficace, avec une germination performante. Pour y répondre, il faut comprendre les mécanismes moléculaires qui expliquent l’efficacité.",
-            "En échangeant avec les acteurs, les idées « préconçues » se déplacent vers un problème plus large : la solution, biosourcée (amorçage de germination, sans produits chimiques artificiels), répond à un manque de solutions sur le marché."
+            "Le besoin opérationnel est clair côté filière : une graine efficace pour un plant efficace, un taux de germination élevé, alors que la biologie est complexe.",
+            "En discutant avec les acteurs, les idées préconçues s’élargissent : on cherche à valoriser les connaissances et à se positionner sur un marché (France puis Europe)."
           ]
         },
         {
-          "chercheur": "Sylvia Cohen-Kaminski",
+          "chercheur": "Yann Monier",
           "paragraphes": [
-            "L’innovation se construit dès le début du projet sur un besoin médical très concret : traiter la cause, pas seulement améliorer la survie. Dans l’hypertension artérielle pulmonaire, les vasodilatateurs améliorent la survie, mais ne corrigent pas le remodelage vasculaire ; la cible identifiée agit précisément sur ce remodelage."
+            "La technologie (jumeau numérique) est immédiatement traduite en problème industriel : arrêts de production coûteux, besoin de monitoring sans équipes d’ingénieurs dédiées pendant des mois.",
+            "La proposition de valeur se formule ainsi : se brancher aux données et obtenir rapidement des résultats de maintenance prédictive."
+          ]
+        },
+        {
+          "chercheur": "Muriel Thomas",
+          "paragraphes": [
+            "L’écriture des « contextes » dans les demandes de financement fait émerger l’application possible.",
+            "Les défis (formulation/goût, réglementation HAS, adoption par médecins/diététiciens/cuisiniers dans un établissement) montrent que le problème à résoudre dépasse la seule preuve scientifique."
+          ]
+        },
+        {
+          "chercheur": "Jean-Jacques Greffet",
+          "paragraphes": [
+            "Le problème concret est celui de la mesure : protéger l’ARN, compter les nanoparticules et savoir si elles sont « remplies » — bien plus difficile qu’un comprimé d’aspirine.",
+            "Sans cette preuve d’usage/contrôle, la technologie médicale reste incomplète."
           ]
         }
       ],
-      "a_retenir": "Une idée intéressante devient une innovation quand elle se traduit en problème concret pour l’usage, et quand elle apporte une preuve actionnable sous des contraintes réelles (mesure en médecine, formulation + réglementation + adoption, mécanismes d’efficacité et gap marché, traitement de la cause)."
+      "a_retenir": "Pour servir E2/E3 : formuler pour qui, dans quelle situation, quel problème concret, et quelle preuve (mesure, adoption, filière, cause médicale) — pas seulement « mon résultat est intéressant »."
     },
     "T3": {
       "titre_section": "Ce que disent les chercheurs",
-      "intro": "Cette vidéo traite de la sortie du laboratoire et de la construction de preuves : POC, montée en échelle, contraintes industrielles ou de saison. Les témoignages montrent que la preuve scientifique n’est qu’une étape dans un parcours de dérisking.",
+      "intro": "Cette vidéo nourrit les objectifs de preuve et de dérisking (POC, étapes, confrontation terrain). Les témoignages insistent sur l’étude de marché, le pivot, la co-construction avec le terrain et l’écart entre labo et industrialisation.",
       "voix": [
         {
           "chercheur": "Jean-Jacques Greffet",
           "paragraphes": [
-            "Simulations, montage expérimental et dix-huit mois de preuve de concept : la démarche exige du temps et des moyens pour passer d’une idée à une démonstration crédible."
-          ]
-        },
-        {
-          "chercheur": "Loïc Rajjou",
-          "paragraphes": [
-            "Passer de quelques grammes à des dizaines de kilos, avec des essais en serre ou au champ, confronte le projet à la contrainte des saisons. La preuve d’usage ne se joue plus seulement au banc de laboratoire."
+            "Une étude de marché (ASAP Paris-Saclay) et des échanges avec utilisateurs conduisent à un pivot : adapter la technologie à un autre besoin que celui initialement imaginé.",
+            "Conférences et approche quantitative du marché servent à valider l’intérêt avant d’aller plus loin."
           ]
         },
         {
           "chercheur": "Muriel Thomas",
           "paragraphes": [
-            "La formulation alimentaire impose des contraintes sanitaires. L’abandon de la chaîne du froid et le passage à une poudre prête à préparer illustrent un pivot technique guidé par la réalité industrielle."
+            "L’étude de marché liée à la SATT révèle qu’une part importante des compléments nutritionnels oraux prescrits ne sont pas consommés : place pour diversifier l’offre auprès de patients fatigués/fragiles."
           ]
         },
         {
           "chercheur": "Sylvia Cohen-Kaminski",
           "paragraphes": [
-            "La sélection d’un candidat médicament actif dans les modèles expérimentaux marque une étape de maturité : choisir ce qui mérite d’être poussé plus loin, et ce qui ne le mérite pas encore."
+            "Dans le domaine médical, discuter très tôt avec les cliniciens oriente la démarche : leurs remarques peuvent reconfigurer la recherche."
+          ]
+        },
+        {
+          "chercheur": "Loïc Rajjou et Yann Monier",
+          "paragraphes": [
+            "Sortir du laboratoire confronte à l’industrialisation et au mode de fonctionnement des acteurs : le scale-up et le « vrai problème de marché » ne s’obtiennent pas au banc.",
+            "La leçon transversale : la solution technique n’est pas la chose la plus importante ; il faut confronter ses idées au terrain pour construire business plan et modèle."
           ]
         }
       ],
-      "a_retenir": "Il faut savoir situer le niveau de preuve dont on dispose et identifier la prochaine incertitude à lever : usage, industrialisation, marché — au-delà de la seule preuve scientifique."
+      "a_retenir": "Une preuve utile combine validation de besoin, éventuel pivot, et capacité à monter en échelle avec les contraintes des acteurs — au-delà du seul résultat académique."
     },
     "T4": {
       "titre_section": "Ce que disent les chercheurs",
-      "intro": "Cette vidéo rappelle qu’une idée ne suffit pas : avant toute communication publique, la protection et le premier contact avec la valorisation conditionnent la suite. Les témoignages insistent sur le réflexe de déclaration et l’articulation brevet / publication.",
+      "intro": "Cette vidéo sert le réflexe de protection/démonstration avant divulgation et le passage par étapes (prématuration, POC). Les chercheurs montrent brevet et preuve menés en parallèle, puis les freins personnels qui freinent le lancement.",
       "voix": [
-        {
-          "chercheur": "Sylvia Cohen-Kaminski",
-          "paragraphes": [
-            "Il faut protéger avant toute communication publique. L’articulation entre rédaction du brevet et publication devient un arbitrage concret : trop tôt, on divulgue ; trop tard, on bloque la science."
-          ]
-        },
-        {
-          "chercheur": "Muriel Thomas",
-          "paragraphes": [
-            "La protection de l’application d’un probiotique intervient avant publication et soutenance. Le calendrier académique et le calendrier de protection doivent être pensés ensemble."
-          ]
-        },
         {
           "chercheur": "Jean-Jacques Greffet",
           "paragraphes": [
-            "Brevet et preuve expérimentale avancent en parallèle. Protéger n’empêche pas de démontrer : les deux chantiers se mènent de concert."
+            "Brevet et preuve expérimentale avancent en parallèle : environ six mois pour déposer, deux ans pour délivrance, dix-huit mois d’expérimentation — avec le soutien des établissements."
+          ]
+        },
+        {
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "paragraphes": [
+            "Avant maturation, la prématuration sert à connaître marché et concurrents ; la pierre angulaire reste la preuve de concept en maturation (candidat médicament dans les modèles HTAP)."
+          ]
+        },
+        {
+          "chercheur": "Yann Monier",
+          "paragraphes": [
+            "En prématuration (financement type POC in Lab), l’objectif est une première preuve de concept, puis tests sur chaînes plus industrielles, puis maturation SATT et partenariats."
           ]
         },
         {
           "chercheur": "Loïc Rajjou",
           "paragraphes": [
-            "La réflexion démarre tôt avec les tutelles et les structures de valorisation. Savoir ce qui est brevetable et ce qui est déjà divulgué évite des impasses ultérieures."
+            "Passer du labo aux utilisateurs agricoles impose de redimensionner essais, volumes et traitements, et de tenir compte de la saisonnalité : convaincre scientifiquement ≠ convaincre les utilisateurs."
+          ]
+        },
+        {
+          "chercheur": "Muriel Thomas",
+          "paragraphes": [
+            "Quand on se projette hors du seul académique, apparaissent la peur du manque de temps, de la perte de légitimité et de l’échec — freins à nommer avant de se lancer.",
+            "Le message d’appui : on n’a pas besoin d’une idée révolutionnaire, mais d’un problème industriel ; il est impossible de tout maîtriser, il faut se jeter à l’eau et pivoter si besoin."
           ]
         }
       ],
-      "a_retenir": "Face à un résultat potentiellement valorisable, le premier réflexe est de contacter sa structure de valorisation avant de publier ou de communiquer — et de préparer cet échange."
+      "a_retenir": "Avant de communiquer : protéger et démontrer par étapes. Et pour oser : nommer ses freins sans attendre d’avoir tout maîtrisé."
     },
     "T5": {
       "titre_section": "Ce que disent les chercheurs",
-      "intro": "Cette vidéo porte sur la protection et la valorisation : comment choisir un mode de protection adapté, et comment la propriété intellectuelle devient un actif stratégique pour le projet.",
+      "intro": "Cette vidéo porte sur le choix d’un mode de protection et la PI comme actif stratégique. (Transcript monté Video5 non fourni dans data/raw au 2026-07-29 : synthèse provisoire à realigner dès réception.)",
       "voix": [
         {
           "chercheur": "Loïc Rajjou",
           "paragraphes": [
-            "La combinaison d’un brevet et d’un secret industriel s’impose lorsque certaines copies seraient impossibles à démontrer. Le choix du mode de protection dépend de ce que l’on peut réellement contrôler."
+            "La combinaison brevet et secret peut s’imposer lorsque certaines copies sont difficiles à démontrer : le mode de protection suit ce que l’on peut réellement contrôler."
           ]
         },
         {
           "chercheur": "Sylvia Cohen-Kaminski",
           "paragraphes": [
-            "La protection porte d’abord sur le mécanisme, puis sur plusieurs séries chimiques, dans un contexte multi-tutelles. La stratégie de PI se construit dans la durée, pas en un seul dépôt."
+            "Protéger un mécanisme puis des séries chimiques, dans un contexte multi-tutelles, montre que la stratégie de PI se construit dans la durée."
           ]
         },
         {
           "chercheur": "Muriel Thomas",
           "paragraphes": [
-            "Il s’agit de protéger une application du vivant, et non l’organisme lui-même. Le périmètre de protection doit coller à ce qui crée réellement la valeur."
+            "Protéger une application du vivant (plutôt que l’organisme lui-même) aligne le périmètre de protection sur ce qui crée la valeur."
           ]
         },
         {
           "chercheur": "Jean-Jacques Greffet",
           "paragraphes": [
-            "Le brevet sécurise le projet et contribue à convaincre les investisseurs. La PI n’est pas seulement défensive : elle soutient aussi la crédibilité du projet."
+            "Le brevet sécurise le projet et contribue à convaincre les investisseurs : la PI est aussi un signal de crédibilité."
           ]
         }
       ],
-      "a_retenir": "« Breveter » n’est pas une réponse automatique. Il faut identifier les questions qui orientent le choix entre brevet, secret et savoir-faire."
+      "a_retenir": "« Breveter » n’est pas automatique : choisir entre brevet, secret et savoir-faire selon preuve, copiabilité et stratégie."
     },
     "T6": {
       "titre_section": "Ce que disent les chercheurs",
-      "intro": "Cette vidéo compare les voies de valorisation : licence, création d’entreprise, transfert de propriété. Les témoignages montrent que la start-up n’est qu’une option parmi d’autres, selon le risque et le secteur.",
+      "intro": "Cette vidéo sert les objectifs de choix de voie de valorisation et de mécanismes de transfert (licence, création, cession). Les témoignages comparent licensing et création, et montrent des schémas concrets (licence exclusive, transfert de propriété).",
       "voix": [
         {
-          "chercheur": "Sylvia Cohen-Kaminski",
+          "chercheur": "Loïc Rajjou",
           "paragraphes": [
-            "Créer une société permet de porter le risque jusqu’aux phases susceptibles d’intéresser l’industrie pharmaceutique. Sans ce véhicule, le projet peinerait à franchir certaines étapes."
-          ]
-        },
-        {
-          "chercheur": "Muriel Thomas",
-          "paragraphes": [
-            "Une licence exclusive accordée par l’INRAE à Carembouche illustre une voie de transfert sans que la création d’entreprise soit le seul chemin."
+            "Dès le début, il faut se demander : licensing ou création d’entreprise ? Ce choix conditionne les étapes de recherche et de maturation, et dépend de l’écosystème et de la typologie du projet.",
+            "Hésitation plus forte côté entrepreneuriat que côté transfert/partage de connaissances — mission académique de diffusion."
           ]
         },
         {
           "chercheur": "Jean-Jacques Greffet",
           "paragraphes": [
-            "Le choix de la start-up s’accompagne d’un transfert de propriété du brevet, plutôt que d’une simple licence. La forme juridique du transfert conditionne le contrôle et l’attractivité du projet."
+            "Deux schémas : licence exclusive délivrée par les établissements copropriétaires, ou transfert de propriété contre participation au capital.",
+            "Le transfert de propriété, demandé ici par les établissements, est favorable face aux investisseurs (propriété pleine du brevet)."
           ]
         },
         {
-          "chercheur": "Loïc Rajjou",
+          "chercheur": "Muriel Thomas",
           "paragraphes": [
-            "La création d’entreprise est préférée à une valorisation limitée à une licence. Le critère n’est pas idéologique : c’est celui qui permet de porter le projet jusqu’où il doit aller."
+            "Après dépôt, options : sous-licence à un industriel déjà sur le marché, ou licence exclusive d’exploitation (ex. souche INRAE / Carembouche).",
+            "La stratégie peut rester orientée brevet tout en maintenant un savoir-faire secret sur une partie du process."
           ]
         }
       ],
-      "a_retenir": "La création d’entreprise n’est qu’une voie possible. Il faut comparer les options et identifier les questions à traiter avec les professionnels de la valorisation."
+      "a_retenir": "Comparer licence, création et cession selon risque, secteur et attractivité investisseurs — puis sécuriser le montage juridique avec les tutelles."
     },
     "T7": {
       "titre_section": "Ce que disent les chercheurs",
-      "intro": "Cette vidéo montre que l’on n’est pas seul·e : SATT, incubateurs et programmes d’accompagnement structurent le parcours. Les témoignages distinguent maturation et incubation, et ce que chacune apporte concrètement.",
+      "intro": "Cette vidéo sert prématuration/maturation, incubateurs et autres structures. Les chercheurs montrent qu’on n’avance pas seul : SATT, incubateurs, financeurs et continuum de programmes structurent le parcours.",
       "voix": [
-        {
-          "chercheur": "Sylvia Cohen-Kaminski",
-          "paragraphes": [
-            "La SATT transforme le projet en feuille de route et fait évoluer la posture. L’accompagnement n’est pas seulement financier : il change la manière de prioriser et de décider."
-          ]
-        },
         {
           "chercheur": "Muriel Thomas",
           "paragraphes": [
-            "La formation chez IncubAlliance permet d’apprendre les entretiens, le marché et l’entrepreneuriat. On y acquiert des réflexes qui manquent souvent en milieu académique."
-          ]
-        },
-        {
-          "chercheur": "Jean-Jacques Greffet",
-          "paragraphes": [
-            "Une succession de dispositifs — POC in Lab, Rise, IncubAlliance, Wilco et programmes de l’Institut d’Optique — jalonne le parcours. Chaque structure répond à un moment et à un besoin précis."
+            "Plus le projet est ambitieux, plus il faut l’écosystème : instituts, incubateurs (IncubAlliance, FoodinLab), financeurs (SATT, Réseau Entreprendre, BPI)."
           ]
         },
         {
           "chercheur": "Loïc Rajjou",
           "paragraphes": [
-            "La maturation SATT ouvre l’accès au réseau, aux compétences juridiques et aux interlocuteurs économiques. Sans ce passage, le projet resterait trop isolé du monde de la valorisation."
+            "Dans le monde agricole, on ne peut pas avancer seul : marché, juridique, PI, financement — maturation SATT puis décision de créer."
+          ]
+        },
+        {
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "paragraphes": [
+            "La liste des compétences manquantes est trop longue pour attendre : on s’entoure et on se forme. i-Lab et investisseurs « raisonnables » (accompagnement) aident au passage création."
+          ]
+        },
+        {
+          "chercheur": "Jean-Jacques Greffet / Yann Monier",
+          "paragraphes": [
+            "Un continuum apparaît : POC in Lab → maturation SATT → formations IncubAlliance → coaching CNRS RISE → incubation, avec des programmes type Luminage / X-Campus.",
+            "Les rencontres et introductions (Labex, concours de pitch) sont aussi déterminantes que le seul financement."
           ]
         }
       ],
-      "a_retenir": "Il faut distinguer maturation et incubation, et savoir à quel moment, pour quel besoin, solliciter chacune de ces structures."
+      "a_retenir": "Distinguer maturation et incubation, et savoir à quel moment solliciter quelle structure pour quel besoin (preuve, réseau, formation, financement)."
     },
     "T8": {
       "titre_section": "Ce que disent les chercheurs",
-      "intro": "Cette vidéo traite des financements, des concours et du temps pour entreprendre. Les témoignages rappellent que l’argent arrive à des moments différents du parcours, et que le choix des investisseurs n’est pas neutre.",
+      "intro": "Cette vidéo sert la chaîne des financements et la logique des investisseurs. Les témoignages distinguent aides avant/après création, timing (ne pas créer trop tôt), concours et BPI.",
       "voix": [
         {
           "chercheur": "Jean-Jacques Greffet",
           "paragraphes": [
-            "Des financements existent avant et après la création. Créer trop tôt comporte un risque ; une levée de fonds peut ensuite accélérer fortement le rythme du projet."
+            "Beaucoup de financements sont anti-création : créer trop tôt fait perdre l’éligibilité. Deep tech : valorisation université/CNRS, aides locales, etc."
           ]
         },
         {
-          "chercheur": "Sylvia Cohen-Kaminski",
+          "chercheur": "Yann Monier",
           "paragraphes": [
-            "Un concours i-Lab avant création aide à démarrer, puis la levée de fonds se heurte à un contexte défavorable. Le calendrier financier n’épouse pas toujours celui de la science."
+            "Un financement de prématuration (POC in Lab) paie le temps de preuve de concept, maintient le lien au labo, et libère l’attention pour le projet."
           ]
         },
         {
           "chercheur": "Muriel Thomas",
           "paragraphes": [
-            "Les financements permettent un pivot technologique et le recrutement. L’argent n’est pas seulement un moyen de survivre : il rend possibles des choix stratégiques."
+            "i-Lab permet une « marche » technique (passage à la poudre ambient-stable) et le recrutement du premier ingénieur — le financement change ce qu’on peut décider."
           ]
         },
         {
-          "chercheur": "Loïc Rajjou",
+          "chercheur": "Sylvia Cohen-Kaminski",
           "paragraphes": [
-            "Il faut choisir des investisseurs compatibles avec le rythme et les marges du secteur agricole. Un investisseur inadapté peut imposer une logique étrangère au projet."
+            "Le concours scientifique (loi Pacte) permet de garder salaire académique tout en consacrant une part du temps à l’entreprise — levier pour se lancer sans tout quitter.",
+            "Avant création : aides BPI (avocats, test CEO, PI). Après création : émergence, i-Lab, puis investisseurs ou clients."
           ]
         }
       ],
-      "a_retenir": "Le financement structure le temps du projet. Il faut comprendre la chaîne des aides et la logique des investisseurs, sans confondre accélération et précipitation."
+      "a_retenir": "Un financement correspond à un stade et à une dépense : chronologiser anti-création / post-création, et choisir des investisseurs compatibles avec le rythme du projet."
     },
     "T9": {
       "titre_section": "Ce que disent les chercheurs",
-      "intro": "Cette vidéo présente plusieurs retours d’expérience sur la constitution d’une équipe autour d’un projet issu de la recherche. Les témoignages montrent qu’une technologie prometteuse ne suffit pas : la complémentarité de l’équipe, la répartition des rôles et la connaissance du secteur sont déterminantes.",
+      "intro": "Cette vidéo sert la cartographie des compétences et l’organisation entre fondateurs. Les témoignages montrent les limites d’une équipe 100 % scientifique et le poids de l’équipe aux yeux des investisseurs.",
       "voix": [
         {
-          "chercheur": "Jean-Jacques Greffet",
+          "chercheur": "Loïc Rajjou",
           "paragraphes": [
-            "Au début du projet, l’équipe est principalement composée de chercheurs concentrés sur la mise au point d’une preuve de concept — ou POC. Pour transformer cette avancée scientifique en projet d’entreprise, elle doit ensuite intégrer des compétences complémentaires.",
-            "Un troisième profil, davantage orienté vers le développement commercial et la stratégie d’entreprise, rejoint donc l’équipe. Cette évolution est essentielle, car les investisseurs n’évaluent pas uniquement la qualité de la technologie : ils accordent également une grande importance à la solidité et à la complémentarité de l’équipe."
-          ]
-        },
-        {
-          "chercheur": "Sylvia Cohen-Kaminski",
-          "paragraphes": [
-            "Sylvia Cohen-Kaminski ne souhaite pas occuper elle-même le poste de CEO, c’est-à-dire diriger l’entreprise au quotidien. Elle choisit plutôt de rester impliquée dans le projet à travers le conseil scientifique, où elle peut apporter son expertise de chercheuse.",
-            "Pour compléter l’équipe dirigeante, un processus de recrutement est organisé avec l’accompagnement de la SATT. Plusieurs candidats sont évalués afin d’identifier le profil le plus adapté aux besoins de l’entreprise."
+            "Scientifiques seuls : étude de marché, brevetabilité, financeurs, vente — compétences à chercher ailleurs ; la SATT apporte réseau et compréhension des problématiques de valorisation.",
+            "Le recrutement d’un profil « école de commerce » générique échoue souvent faute de vision sectorielle agricole : il faut un profil qui connaisse vraiment le secteur."
           ]
         },
         {
           "chercheur": "Muriel Thomas",
           "paragraphes": [
-            "Le projet est porté par plusieurs cofondatrices aux compétences complémentaires. L’équipe comprend notamment une CEO, chargée de la direction de l’entreprise, ainsi qu’un ingénieur responsable des aspects techniques.",
-            "La gouvernance repose également sur deux instances distinctes : un comité stratégique, qui accompagne les décisions liées au développement de l’entreprise, et un comité scientifique, qui veille à la qualité et à la pertinence des orientations de recherche."
+            "Équipe noyau (cofondatrices, CEO, ingénieur) + comité stratégique (conseil/réseau) + comité scientifique (orientation recherche) : gouvernance en couches."
           ]
         },
         {
-          "chercheur": "Loïc Rajjou",
+          "chercheur": "Jean-Jacques Greffet",
           "paragraphes": [
-            "Une première tentative de recrutement d’un profil commercial généraliste se solde par un échec. La personne recrutée possède des compétences en développement d’entreprise, mais ne connaît pas suffisamment les enjeux et les acteurs du secteur agricole.",
-            "L’équipe recherche alors un profil disposant d’une véritable expertise sectorielle. Cette personne est intégrée dans une logique de co-création : elle ne se contente pas de commercialiser une solution déjà définie, mais participe à sa construction en tenant compte des besoins concrets du marché agricole."
+            "L’équipe parfaite pour la POC peut être bancale pour l’entreprise : marketing, ventes, RH, production manquent.",
+            "Les investisseurs regardent surtout la capacité de l’équipe à pivoter — car la majorité des projets pivotent."
           ]
         }
       ],
-      "a_retenir": "Ces témoignages montrent qu’il n’existe pas une seule manière de constituer une équipe entrepreneuriale. En revanche, plusieurs principes reviennent régulièrement : clarifier le rôle des chercheurs, recruter des compétences complémentaires, choisir des profils qui connaissent le secteur visé et mettre en place une gouvernance adaptée au projet."
+      "a_retenir": "Clarifier son rôle, recruter la complémentarité (dont connaissance sectorielle), et organiser gouvernance/relation entre fondateurs avant que les tensions n’arrivent."
     },
     "T10": {
       "titre_section": "Ce que disent les chercheurs",
-      "intro": "Cette vidéo porte sur le langage : comment passer de la preuve scientifique à une formulation compréhensible pour des interlocuteurs différents. Les témoignages montrent que le pitch et le vocabulaire s’apprennent, par répétition et confrontation au terrain.",
+      "intro": "Cette vidéo sert le passage de la preuve scientifique à la valeur pour l’interlocuteur, et l’apprentissage de la posture. Les chercheurs racontent le changement de langage, le pitch et les formations.",
       "voix": [
+        {
+          "chercheur": "Loïc Rajjou",
+          "paragraphes": [
+            "Passer aux acteurs industriels impose de changer vocabulaire et manière de présenter les résultats ; la maturation acculture aussi les jeunes scientifiques aux démonstrations attendues en industrie."
+          ]
+        },
+        {
+          "chercheur": "Yann Monier",
+          "paragraphes": [
+            "Adapter le discours : moins les termes techniques (IA, etc.), plus bénéfices et retour sur investissement pour le décideur industriel."
+          ]
+        },
         {
           "chercheur": "Muriel Thomas",
           "paragraphes": [
-            "Il faut apprendre progressivement à parler aux EHPAD, aux médecins, aux investisseurs et aux incubateurs. Le pitch se construit par répétitions : chaque échange affine le message."
+            "Du labo aux EHPAD/établissements de santé : changer posture et vocabulaire. L’adaptation s’apprend en discutant — quand le message ne passe pas, on le modifie la fois suivante."
           ]
         },
         {
           "chercheur": "Jean-Jacques Greffet",
           "paragraphes": [
-            "L’entrepreneuriat, la finance et le droit forment une nouvelle langue. La difficulté n’est pas seulement technique : c’est celle de traduire un savoir scientifique pour d’autres registres."
-          ]
-        },
-        {
-          "chercheur": "Sylvia Cohen-Kaminski",
-          "paragraphes": [
-            "La formation à l’écosystème pharmaceutique, au pitch, à la négociation et au market access montre qu’il faut maîtriser plusieurs codes selon l’interlocuteur."
-          ]
-        },
-        {
-          "chercheur": "Loïc Rajjou",
-          "paragraphes": [
-            "Le discours scientifique doit rejoindre les attentes économiques, réglementaires et industrielles, ainsi que la désirabilité de la solution. La preuve seule ne suffit pas à convaincre."
+            "Apprendre la « langue » de l’entrepreneuriat (formation type Genesis Light), puis finance/droit/PI ; être accompagné par quelqu’un déjà « bilingue » est précieux.",
+            "Une formation HEC financée par la SATT peut transformer l’équipe — même si les premières semaines démoralisent."
           ]
         }
       ],
-      "a_retenir": "Adapter le message selon l’utilisateur, le décideur, le partenaire ou l’investisseur est une compétence à travailler — elle ne vient pas automatiquement avec l’expertise scientifique."
+      "a_retenir": "Partir du problème, de l’usage et de la valeur pour l’interlocuteur ; entraîner le message par feedback — la posture s’apprend."
     },
     "T11": {
       "titre_section": "Ce que disent les chercheurs",
-      "intro": "Cette vidéo traite de l’évolution du métier de chercheur·euse lorsqu’on s’engage dans l’innovation. Les témoignages abordent les freins (temps, légitimité, incertitude) et les leviers (réorganisation, équipe, accompagnement).",
+      "intro": "Cette vidéo sert la gestion des freins et l’innovation comme apprentissage. Le transcript monté est plus court : il insiste sur l’enthousiasme, la double casquette académique/entreprise et le sens social du transfert.",
       "voix": [
         {
           "chercheur": "Muriel Thomas",
           "paragraphes": [
-            "La peur du manque de temps, de l’échec et de la perte de légitimité est réelle. Il faut réorganiser ses responsabilités pour tenir ensemble recherche et projet."
-          ]
-        },
-        {
-          "chercheur": "Jean-Jacques Greffet",
-          "paragraphes": [
-            "Il est impossible de tout maîtriser. Accepter l’incertitude devient une condition pour avancer, plutôt qu’un aveu de faiblesse."
+            "L’expérience est enrichissante : ne pas hésiter à y aller. L’innovation devient « intégrateur social » — rendre visible à quoi servait la recherche (ex. complément nutritionnel concret)."
           ]
         },
         {
           "chercheur": "Loïc Rajjou",
           "paragraphes": [
-            "L’entrepreneuriat reste clivant en milieu académique. Il faut ajuster son discours et s’appuyer sur une équipe pour ne pas porter seul cette tension."
+            "On peut participer au comité scientifique tout en gardant ses fonctions d’enseignant-chercheur, avec attention à l’impartialité — double posture possible sans pénaliser l’activité académique."
           ]
         },
         {
-          "chercheur": "Sylvia Cohen-Kaminski",
+          "chercheur": "Jean-Jacques Greffet",
           "paragraphes": [
-            "Oser innover, c’est aussi un accomplissement — à condition d’être accompagné·e, surtout face aux difficultés de financement et à l’urgence d’aller jusqu’au patient."
+            "Depuis la création, participation au conseil de surveillance : l’engagement se poursuit sous une autre forme de responsabilité."
           ]
         }
       ],
-      "a_retenir": "Le parcours chercheur-entrepreneur transforme le métier. Les freins sont légitimes ; les leviers passent souvent par l’équipe, l’accompagnement et l’acceptation de l’incertitude."
+      "a_retenir": "Les freins existent, mais le parcours peut rester compatible avec le métier académique ; l’apprentissage et le sens sociétal sont des leviers pour oser le premier pas."
     },
     "T12": {
       "titre_section": "Ce que disent les chercheurs",
-      "intro": "Cette vidéo porte sur les collaborations et les dispositifs d’accompagnement. Les témoignages montrent que les partenariats se construisent dans la durée, et qu’ils doivent être contractualisés pour tenir.",
+      "intro": "Cette vidéo sert collaboration et accompagnement (objectifs E22/E23 côté programme). Le transcript monté insiste surtout sur les dispositifs qui apportent introductions, formations et entraide — le terreau des collaborations.",
       "voix": [
         {
-          "chercheur": "Muriel Thomas",
+          "chercheur": "Jean-Jacques Greffet",
           "paragraphes": [
-            "Cinq années de co-construction avec un EHPAD, avec l’implication des cuisiniers, illustrent un partenariat ancré dans le réel. La contractualisation devient nécessaire pour sécuriser cette collaboration."
+            "Programmes CNRS (prématuration, coaching RISE) et IncubAlliance (formations + introductions) débloquent des besoins concrets (trouver un électronicien à temps, etc.)."
           ]
         },
         {
-          "chercheur": "Loïc Rajjou",
+          "chercheur": "Yann Monier",
           "paragraphes": [
-            "Des partenaires deviennent clients après des démonstrations, puis l’un d’eux entre au capital. La relation évolue : de la preuve partagée à l’engagement économique."
-          ]
-        },
-        {
-          "chercheur": "Sylvia Cohen-Kaminski",
-          "paragraphes": [
-            "La complémentarité entre biologistes, chimistes, pharmacologues, cliniciens et patients structure le projet. Aucune discipline seule ne porte l’ensemble du chemin."
+            "Pitch : Star Thèse, Paris-Saclay Summit, BIG, Genesis Light — s’entraîner et s’exposer fait partie de l’accompagnement."
           ]
         },
         {
           "chercheur": "Jean-Jacques Greffet",
           "paragraphes": [
-            "Les cofondateurs, les réseaux et les introductions jouent un rôle décisif. Collaborer, c’est aussi savoir s’ouvrir à des relais hors de son cercle immédiat."
+            "Luminage (Institut d’Optique / X-Campus) pour introductions investisseurs ; Wilco (prêts d’honneur + formation) ; et la cohorte d’entrepreneurs comme entraide — autre mode d’accompagnement.",
+            "Il faut toujours remettre l’ouvrage sur l’établi : ajuster selon collaborations et conseils."
           ]
         }
       ],
-      "a_retenir": "Une collaboration équilibrée se prépare : objectifs partagés, complémentarité, gouvernance, et sécurisation juridique lorsque la relation engage des résultats et de la PI."
+      "a_retenir": "Une collaboration utile s’appuie sur des introductions, du temps d’itération et des règles d’entraide ; contractualiser vient ensuite sécuriser la relation."
     },
     "T13": {
       "titre_section": "Ce que disent les chercheurs",
-      "intro": "Cette vidéo de conclusion invite à passer à l’action. Le contenu témoin reste à finaliser à partir des sélections Clarisse (conseils, idées reçues à déconstruire, message final).",
-      "voix": [],
-      "a_retenir": "Le message final devra relier les acquis du parcours à un premier pas concret pour l’apprenant·e."
+      "intro": "Vidéo de conclusion : passer à l’action. Les chercheurs déconstruisent l’attente d’être « prêt » et encouragent à se lancer, se former et s’appuyer sur la communauté.",
+      "voix": [
+        {
+          "chercheur": "Jean-Jacques Greffet",
+          "paragraphes": [
+            "Il ne faut pas attendre d’être sûr : on ne saute jamais. Entreprendre, c’est décider de se lancer sur un chemin d’obstacles qu’on se sait capable de résoudre."
+          ]
+        },
+        {
+          "chercheur": "Muriel Thomas",
+          "paragraphes": [
+            "Innover n’exige pas d’être un « surhomme » : ce sont travail, réflexion, collaboration et petits pas. On a besoin d’un problème terrain plus que d’une idée révolutionnaire."
+          ]
+        },
+        {
+          "chercheur": "Loïc Rajjou et Sylvia Cohen-Kaminski",
+          "paragraphes": [
+            "On n’est pas seul : structures d’accompagnement, famille d’entrepreneurs, et ceux qui ont réussi avant restent prêts à aider — aller discuter.",
+            "Même en cas de doute : se former reste utile pour toute carrière. Message final : oser, foncer, se faire son propre avis."
+          ]
+        }
+      ],
+      "a_retenir": "Premier pas concret : entrer dans l’écosystème, parler à des entrepreneurs, se former — sans attendre la certitude."
     }
   }
 }
