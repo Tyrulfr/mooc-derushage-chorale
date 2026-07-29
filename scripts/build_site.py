@@ -1868,6 +1868,21 @@ def _collect_temoignages_lisibles(
     return fallback
 
 
+def _load_cadrage_temoins_narratifs() -> dict:
+    path = ROOT / "data" / "cadrage_temoins_narratifs.json"
+    if not path.exists():
+        return {}
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _narrative_temoin_block(capsule_code: str) -> dict | None:
+    data = _load_cadrage_temoins_narratifs()
+    block = (data.get("capsules") or {}).get(capsule_code)
+    if not block:
+        return None
+    return block
+
+
 def _render_temoin_phrases(phrases: list[str]) -> str:
     if len(phrases) == 1:
         return f"<p>{_e_fr(phrases[0])}</p>"
@@ -1875,9 +1890,67 @@ def _render_temoin_phrases(phrases: list[str]) -> str:
     return f'<ul class="brief-temoin-phrases">{items}</ul>'
 
 
+def _render_brief_temoin_narrative(block: dict) -> str:
+    """Rendu fluide « Ce que disent les chercheurs » (version narrative)."""
+    title = block.get("titre_section") or "Ce que disent les chercheurs"
+    parts = [
+        '<article class="brief-video brief-video--temoin">',
+        f"<h3>{escape(title)}</h3>",
+    ]
+    intro = (block.get("intro") or "").strip()
+    if intro:
+        parts.append(f"<p>{_e_fr(intro)}</p>")
+    for voice in block.get("voix") or []:
+        chercheur = (voice.get("chercheur") or "").strip()
+        if chercheur:
+            parts.append(f"<h4>{escape(chercheur)}</h4>")
+        for para in voice.get("paragraphes") or []:
+            text = (para or "").strip()
+            if text:
+                parts.append(f"<p>{_e_fr(text)}</p>")
+    a_retenir = (block.get("a_retenir") or "").strip()
+    if a_retenir:
+        parts.append("<h4>À retenir</h4>")
+        parts.append(f"<p>{_e_fr(a_retenir)}</p>")
+    parts.append("</article>")
+    return "\n".join(parts)
+
+
+def _export_brief_temoin_narrative_plaintext(block: dict) -> list[str]:
+    lines: list[str] = []
+    title = block.get("titre_section") or "Ce que disent les chercheurs"
+    lines.append(f"{title} :")
+    lines.append("")
+    intro = (block.get("intro") or "").strip()
+    if intro:
+        lines.append(intro)
+        lines.append("")
+    for voice in block.get("voix") or []:
+        chercheur = (voice.get("chercheur") or "").strip()
+        if chercheur:
+            lines.append(f"{chercheur} :")
+            lines.append("")
+        for para in voice.get("paragraphes") or []:
+            text = (para or "").strip()
+            if text:
+                lines.append(text)
+                lines.append("")
+    a_retenir = (block.get("a_retenir") or "").strip()
+    if a_retenir:
+        lines.append("À retenir :")
+        lines.append("")
+        lines.append(a_retenir)
+        lines.append("")
+    return lines
+
+
 def _render_brief_temoin(
     capsule_code: str, capsule_data: dict, by_id: dict[str, dict]
 ) -> str:
+    narrative = _narrative_temoin_block(capsule_code)
+    if narrative and (narrative.get("voix") or narrative.get("intro")):
+        return _render_brief_temoin_narrative(narrative)
+
     temoins = _collect_temoignages_lisibles(capsule_data, by_id)
     if not temoins:
         return ""
@@ -1894,11 +1967,9 @@ def _render_brief_temoin(
         else:
             rows.append(f"<li>{_render_temoin_phrases(phrases)}</li>")
 
-    temoin_label = _label_video_temoin(capsule_code)
     return f"""
   <article class="brief-video brief-video--temoin">
-    <h3>{escape(temoin_label)} — Ce que disent les chercheurs</h3>
-    <p class="meta">Rappel factuel pour lecteurs qui ne connaissent pas les trajectoires des chercheurs — sans interprétation éditoriale.</p>
+    <h3>Ce que disent les chercheurs</h3>
     <ul class="brief-unites">
       {''.join(rows)}
     </ul>
@@ -2272,12 +2343,11 @@ def synthese_temoignages_section(
     if not articles and not capsule_data.get("videos_expert") and not intro:
         return ""
 
-    temoin_label = _label_video_temoin(capsule_code)
     objectifs_html = _render_synthese_objectifs_expert(capsule_data)
     intro_html = f"<p>{escape(intro)}</p>" if intro else ""
     return f"""
 <section class="methodology-panel synthese-chorale-panel">
-  <h2>{escape(temoin_label)} — Synthèse des témoignages</h2>
+  <h2>Synthèse des témoignages</h2>
   <p class="meta">Ce que chaque chercheur a dit dans le script, et sur quels éléments on s'appuie pour préparer les objectifs des vidéos expert.</p>
   {intro_html}
   {objectifs_html}
@@ -2287,7 +2357,8 @@ def synthese_temoignages_section(
 
 
 def export_synthese_section_title(capsule_code: str) -> str:
-    return f"{_label_video_temoin(capsule_code)} — Synthèse des témoignages"
+    # Le nom de la vidéo témoin est déjà porté par le chapitre / la page.
+    return "Synthèse des témoignages"
 
 
 def export_synthese_temoignages_plaintext(
@@ -2389,7 +2460,7 @@ def brief_intervenant_section(
     return f"""
 <section class="methodology-panel brief-intervenant-panel">
   <h2>{escape(EXPORT_BRIEF_SECTION_TITLE)}</h2>
-  <p class="meta">À l'issue de la {escape(_label_video_temoin(capsule_code))} — quelques repères proposés pour préparer la ou les vidéos expert, en s'appuyant sur les témoignages et les objectifs du programme de conception.</p>
+  <p class="meta">Quelques repères proposés pour préparer la ou les vidéos expertise, en s'appuyant sur les témoignages et les objectifs du programme de conception.</p>
   {precaution_html}
   {temoin_html}
   {videos_html}
@@ -2408,42 +2479,41 @@ def export_brief_intervenant_plaintext(
 
     proposes = capsule_data.get("experts_proposes", [])
     lines = [
-        _humanize_capsule_labels(
-            f"À l'issue de la {_label_video_temoin(capsule_code)}, quelques repères proposés "
-            "pour préparer la ou les vidéos expert, en s'appuyant sur les témoignages et "
-            "les objectifs du programme de conception."
-        ),
+        "Quelques repères proposés pour préparer la ou les vidéos expertise, "
+        "en s'appuyant sur les témoignages et les objectifs du programme de conception.",
         "",
     ]
     lines.append(f"Précaution : {BRIEF_PRECAUTION_ORATOIRE}")
     lines.append("")
 
-    temoins = _collect_temoignages_lisibles(capsule_data, by_id)
-    if temoins:
-        lines.append(f"{_label_video_temoin(capsule_code)} — Ce que disent les chercheurs")
-        lines.append(
-            "Rappel factuel pour lecteurs qui ne connaissent pas les trajectoires des chercheurs."
-        )
-        for chercheur, phrases in temoins:
-            if chercheur:
-                lines.append(f"  - {chercheur}")
-            for phrase in phrases:
-                prefix = "      " if chercheur else "  - "
-                lines.append(f"{prefix}{phrase}")
-        lines.append("")
+    narrative = _narrative_temoin_block(capsule_code)
+    if narrative and (narrative.get("voix") or narrative.get("intro")):
+        lines.extend(_export_brief_temoin_narrative_plaintext(narrative))
+    else:
+        temoins = _collect_temoignages_lisibles(capsule_data, by_id)
+        if temoins:
+            lines.append("Ce que disent les chercheurs")
+            lines.append("")
+            for chercheur, phrases in temoins:
+                if chercheur:
+                    lines.append(chercheur)
+                    lines.append("")
+                for phrase in phrases:
+                    lines.append(phrase)
+                    lines.append("")
 
     for video in videos:
-        label = _label_video_expert(video.get("code", ""))
+        label = _tb_expertise_label(_label_video_expert(video.get("code", "")))
         intervenant = video.get("intervenant") or "Intervenant à confirmer"
         lines.append(f"{label} — {intervenant}")
-        lines.append(f"   Objectif : {video.get('titre', '')}")
+        lines.append(f"Objectif : {video.get('titre', '')}")
         if video.get("descriptif"):
-            lines.append(f"   {video['descriptif']}")
+            lines.append(video["descriptif"])
         lines.append("")
 
     lines.append("Consignes générales :")
     for item in BRIEF_CONSIGNES_COMMUNES:
-        lines.append(f"  - {_humanize_capsule_labels(item)}")
+        lines.append(f"- {_humanize_capsule_labels(item)}")
     if proposes:
         lines.append("")
         lines.append(f"Intervenants proposés (à confirmer) : {', '.join(proposes)}")
