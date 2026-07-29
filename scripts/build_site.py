@@ -424,6 +424,10 @@ tbody tr:last-child td { border-bottom: none; }
   font-size: 14px;
   line-height: 1.55;
 }
+.script-ref {
+  font-size: 0.92em;
+  color: #94a3b8;
+}
 .mail-ready {
   font-family: Aptos, "Segoe UI", Arial, sans-serif;
 }
@@ -947,13 +951,10 @@ def _render_orientation_block(orientation: dict, plural: bool = False) -> str:
     </div>
 """
     expert = orientation.get("expert")
-    proposes = orientation.get("experts_proposes", [])
     if expert:
         expert_line = escape(expert)
-    elif proposes:
-        expert_line = f"Intervenant à définir <span class='meta'>(proposés : {escape(', '.join(proposes))})</span>"
     else:
-        expert_line = "Intervenant à définir"
+        expert_line = "Intervenant désigné"
     code = orientation.get("code", "expert")
     heading = "Orientation pour les vidéos expert suivantes" if plural else "Orientation pour la vidéo expert suivante"
     return f"""
@@ -1002,7 +1003,8 @@ PROGRAMME_TABLE_FIELDS = (
 
 BRIEF_CONSIGNES_COMMUNES = [
     "Partir des témoignages vus dans la chorale — pas d'un script à lire mot pour mot.",
-    "Nommer les concepts du MOOC en langage clair, avec des exemples concrets entendus.",
+    "Nommer les notions ou concepts de votre vidéo en langage clair, avec des exemples concrets entendus.",
+    "Tout schéma, liste ou support à incruster dans votre intervention est le bienvenu.",
     "Inviter l'apprenant à faire le lien avec son propre projet.",
     "Ne pas citer les chercheurs phrase pour phrase : résumer dans vos propres mots.",
     "Compléter librement cette trame : ajouter tout élément (exemple, rappel, précision, mise en perspective) que vous jugez complémentaire et nécessaire à ce stade du parcours.",
@@ -1977,15 +1979,13 @@ def _render_brief_temoin(
 """
 
 
-def _render_brief_video(video: dict, proposes: list[str]) -> str:
+def _render_brief_video(video: dict, proposes: list[str] | None = None) -> str:
     label = _label_video_expert(video.get("code", ""))
     intervenant = video.get("intervenant")
     if intervenant:
         who = escape(intervenant)
-    elif proposes:
-        who = f"<em>À confirmer</em> <span class='meta'>(proposés : {escape(', '.join(proposes))})</span>"
     else:
-        who = "<em>À confirmer</em>"
+        who = "<em>Intervenant désigné</em>"
 
     titre = video.get("titre", "")
     descriptif = video.get("descriptif", "")
@@ -2439,10 +2439,9 @@ def brief_intervenant_section(
     if not videos:
         return ""
 
-    proposes = capsule_data.get("experts_proposes", [])
     temoin_html = _render_brief_temoin(capsule_code, capsule_data, by_id)
     videos_html = "".join(
-        _render_brief_video(video, proposes)
+        _render_brief_video(video)
         for video in videos
     )
     consignes = [_humanize_capsule_labels(item) for item in BRIEF_CONSIGNES_COMMUNES]
@@ -2477,7 +2476,6 @@ def export_brief_intervenant_plaintext(
     if not videos:
         return ""
 
-    proposes = capsule_data.get("experts_proposes", [])
     lines = [
         "Quelques repères proposés pour préparer la ou les vidéos expertise, "
         "en s'appuyant sur les témoignages et les objectifs du programme de conception.",
@@ -2504,8 +2502,11 @@ def export_brief_intervenant_plaintext(
 
     for video in videos:
         label = _tb_expertise_label(_label_video_expert(video.get("code", "")))
-        intervenant = video.get("intervenant") or "Intervenant à confirmer"
-        lines.append(f"{label} — {intervenant}")
+        intervenant = video.get("intervenant")
+        if intervenant:
+            lines.append(f"{label} — {intervenant}")
+        else:
+            lines.append(label)
         lines.append(f"Objectif : {video.get('titre', '')}")
         if video.get("descriptif"):
             lines.append(video["descriptif"])
@@ -2514,9 +2515,6 @@ def export_brief_intervenant_plaintext(
     lines.append("Consignes générales :")
     for item in BRIEF_CONSIGNES_COMMUNES:
         lines.append(f"- {_humanize_capsule_labels(item)}")
-    if proposes:
-        lines.append("")
-        lines.append(f"Intervenants proposés (à confirmer) : {', '.join(proposes)}")
     return _normalize_editorial_french("\n".join(lines).strip())
 
 
@@ -2569,11 +2567,8 @@ def selection_unites_section(capsule_data: dict) -> str:
 
     if orientations:
         plural = len(orientations) > 1
-        cap_proposes = capsule_data.get("experts_proposes", [])
         for i, orientation in enumerate(orientations):
             o = dict(orientation)
-            if not o.get("experts_proposes") and cap_proposes:
-                o["experts_proposes"] = cap_proposes
             if plural and i > 0:
                 html += _render_orientation_block(o, plural=False).replace(
                     "<h2>Orientation pour la vidéo expert suivante</h2>",
@@ -2664,7 +2659,6 @@ def cadrage_animateur_section(capsule_data: dict) -> str:
 
 def referents_section(capsule_data: dict) -> str:
     videos = capsule_data.get("videos_expert", [])
-    proposes = capsule_data.get("experts_proposes", [])
     if not videos:
         return ""
 
@@ -2674,19 +2668,12 @@ def referents_section(capsule_data: dict) -> str:
         if intervenant:
             who = escape(intervenant)
         else:
-            who = "<em>Intervenant à définir</em>"
+            who = "<em>Intervenant désigné</em>"
         desc = video.get("descriptif", "")
         desc_html = f" {escape(_normalize_editorial_french(desc))}" if desc else ""
         items.append(
             f"<li><strong>{escape(_label_video_expert(video.get('code', '')))}</strong> — {who} : "
             f"{escape(_normalize_editorial_french(video.get('titre', '')))}.{desc_html}</li>"
-        )
-
-    proposes_html = ""
-    if proposes:
-        proposes_html = (
-            f"<p class='meta'><strong>Intervenants proposés (à confirmer) :</strong> "
-            f"{escape(', '.join(proposes))}</p>"
         )
 
     return f"""
@@ -2696,9 +2683,39 @@ def referents_section(capsule_data: dict) -> str:
   <ul>
     {''.join(items)}
   </ul>
-  {proposes_html}
 </section>
 """
+
+
+def _is_script_meta_line(line: str) -> bool:
+    """Lignes techniques à griser (refs BAB, projection, volume, etc.)."""
+    stripped = (line or "").strip()
+    if not stripped:
+        return False
+    if re.match(r"^\[[A-Z0-9-]+\]\s.+\|\s.+\|\s.+$", stripped):
+        return True
+    if stripped.startswith("[PROJECTION"):
+        return True
+    if stripped.startswith("Objectif pédagogique :") or stripped.startswith("Objectif pedagogique :"):
+        return True
+    if stripped.startswith("Cible :"):
+        return True
+    if re.match(r"^Volume\s*:\s*\d+\s*mots\b", stripped, flags=re.IGNORECASE):
+        return True
+    return False
+
+
+def _script_lines_html(text: str) -> str:
+    """Rend un script avec les mentions techniques grisées (style script-ref)."""
+    lines = (text or "").splitlines()
+    rendered: list[str] = []
+    for line in lines:
+        safe_line = escape(line)
+        if _is_script_meta_line(line):
+            rendered.append(f"<span class='script-ref'>{safe_line}</span>")
+        else:
+            rendered.append(safe_line)
+    return f"<div class='script-body'>{'<br>'.join(rendered)}</div>"
 
 
 SCRIPT_EXPERTISE_DISCLAIMER = (
@@ -3483,7 +3500,7 @@ def scripts_expertise_projetes_section(capsule_data: dict) -> str:
         {plan_html}
       </ul>
     </div>
-    <div class="script">{escape(script)}</div>
+    {_script_lines_html(script)}
   </article>
 """
         )
@@ -3526,12 +3543,14 @@ def export_videos_expert_plaintext(capsule_data: dict) -> str:
         for item in (capsule_data.get("orientations_expert") or [])
         if item.get("code")
     }
-    proposes = capsule_data.get("experts_proposes", [])
     lines = ["VIDEOS EXPERT A PRODUIRE", ""]
     for video in videos:
         code = video.get("code", "")
-        intervenant = video.get("intervenant") or "Intervenant a definir"
-        lines.append(f"{_label_video_expert(code)} — {intervenant}")
+        intervenant = video.get("intervenant")
+        if intervenant:
+            lines.append(f"{_label_video_expert(code)} — {intervenant}")
+        else:
+            lines.append(f"{_label_video_expert(code)}")
         lines.append(f"   Objectif : {video.get('titre', '')}")
         if video.get("descriptif"):
             lines.append(f"   Descriptif : {video['descriptif']}")
@@ -3545,8 +3564,6 @@ def export_videos_expert_plaintext(capsule_data: dict) -> str:
                 for item in consignes:
                     lines.append(f"     - {item}")
         lines.append("")
-    if proposes:
-        lines.append(f"Intervenants proposés (à confirmer) : {', '.join(proposes)}")
     return _normalize_editorial_french("\n".join(lines).strip())
 
 
@@ -6616,16 +6633,26 @@ def _mailto_href(recipient: str, subject: str, body: str) -> str:
 
 def _tb_expertise_label(text: str) -> str:
     value = text or ""
+    # Remplacements du plus long au plus court, et garde-fous pour éviter
+    # « expertise » → « expertiseise » (préfixe « expert » dans « expertise »).
     replacements = [
         ("Vidéo Expert", "Vidéo expertise"),
         ("Video Expert", "Vidéo expertise"),
+        ("videos expertise", "videos expertise"),
+        ("vidéos expertise", "vidéos expertise"),
+        ("video expertise", "video expertise"),
+        ("vidéo expertise", "vidéo expertise"),
         ("videos expert", "videos expertise"),
         ("vidéos expert", "vidéos expertise"),
         ("video expert", "video expertise"),
         ("vidéo expert", "vidéo expertise"),
     ]
     for src, dst in replacements:
-        value = value.replace(src, dst)
+        if src == dst:
+            continue
+        # Ne remplace « … expert » que s'il n'est pas déjà suivi de «ise».
+        pattern = re.compile(re.escape(src) + r"(?!ise\b)", flags=re.IGNORECASE)
+        value = pattern.sub(dst, value)
     return value
 
 
@@ -6739,16 +6766,7 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
         return "".join(chunks) if chunks else "<p>Aucun contenu.</p>"
 
     def _ergo_script_html(text: str) -> str:
-        lines = (text or "").splitlines()
-        rendered: list[str] = []
-        ref_pattern = re.compile(r"^\[[A-Z0-9-]+\]\s.+\|\s.+\|\s.+$")
-        for line in lines:
-            safe_line = escape(line)
-            if ref_pattern.match(line.strip()):
-                rendered.append(f"<span class='script-ref'>{safe_line}</span>")
-            else:
-                rendered.append(safe_line)
-        return f"<div class='script-body'>{'<br>'.join(rendered)}</div>"
+        return _script_lines_html(text)
 
     for item in expert.get("videos", []):
         code = item.get("code", "")
@@ -6763,7 +6781,6 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
         script_final = _tb_expertise_label(_tb_edito_script_with_cadrage(ordre, by_seq_id, cadrage))
         capsule_data = {
             "videos_expert": videos_expert,
-            "experts_proposes": _extract_intervenants(row.get("noms_proposes", "")),
         }
         brief_text = _tb_expertise_label(export_brief_intervenant_plaintext(code, capsule_data, {}))
         toc_rows.append(
@@ -9591,16 +9608,7 @@ def _guide_videos_attendues_doc_html(
         return "".join(chunks) if chunks else "<p>Aucun contenu.</p>"
 
     def _ergo_script_html(text: str) -> str:
-        lines = (text or "").splitlines()
-        rendered: list[str] = []
-        ref_pattern = re.compile(r"^\[[A-Z0-9-]+\]\s.+\|\s.+\|\s.+$")
-        for line in lines:
-            safe_line = escape(line)
-            if ref_pattern.match(line.strip()):
-                rendered.append(f"<span class='script-ref'>{safe_line}</span>")
-            else:
-                rendered.append(safe_line)
-        return f"<div class='script-body'>{'<br>'.join(rendered)}</div>"
+        return _script_lines_html(text)
 
     def _plain_block(text: str) -> str:
         if not (text or "").strip():
@@ -9679,7 +9687,7 @@ def _guide_videos_attendues_doc_html(
             f"<h3>{escape(_tb_expertise_label(EXPORT_BRIEF_SECTION_TITLE))}</h3>"
             f"<div class='doc-block brief-block'>{_ergo_brief_html(brief_text)}</div>"
             "<h3>Proposition de script pour les vidéos expertise</h3>"
-            f"<div class='doc-block script-block'>{_plain_block(scripts_text)}</div>"
+            f"<div class='doc-block script-block'>{_script_lines_html(scripts_text)}</div>"
             "<h3>Script final de la vidéo témoin</h3>"
             f"<div class='doc-block script-block'>{_ergo_script_html(script_final)}</div>"
             "</section>"
