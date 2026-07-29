@@ -9694,10 +9694,7 @@ def _guide_videos_attendues_doc_html(
     toc_rows.append(
         "<tr><td><a href='#vue_ensemble'>Vue d'ensemble — sélection finale</a></td></tr>"
     )
-    toc_intro = (
-        "<p class='meta'>Liens actifs vers chaque vidéo témoin concernée "
-        "(avec les vidéos expertise associées), puis la vue d'ensemble en fin de document.</p>"
-    )
+    toc_intro = ""
     overview = (
         "<section style='margin-top:28px;padding-top:10px;border-top:1px solid #cbd5e1;'>"
         "<p style='page-break-before:always;margin:0;height:0;'>&nbsp;</p>"

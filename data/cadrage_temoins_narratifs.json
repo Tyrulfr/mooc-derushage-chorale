@@ -37,35 +37,37 @@
     },
     "T2": {
       "titre_section": "Ce que disent les chercheurs",
-      "intro": "Cette vidéo porte sur le passage de la recherche à l’innovation : comment une technologie ou une hypothèse devient un problème à résoudre pour des utilisateurs réels. Les témoignages insistent sur la validation du besoin, le pivot et l’écoute du terrain.",
+      "intro": "Cette vidéo porte sur le passage de la recherche à l’innovation : comment une technologie ou une hypothèse se traduit en problème concret à traiter pour des usages réels. Les témoignages montrent comment se formulent les défis (mesure, contraintes réglementaires/techniques) et comment ils orientent la transformation du savoir en solution.",
       "voix": [
         {
           "chercheur": "Jean-Jacques Greffet",
           "paragraphes": [
-            "L’étude de marché conduit à distinguer ce qui est seulement « nice to have » de ce qui est vraiment « must have ». Cette distinction change la trajectoire du projet.",
-            "Le pivot n’est pas un échec : c’est un ajustement nécessaire dès lors que le besoin réel n’est pas celui qu’on croyait."
+            "Dans la médecine, la technologie n’a de sens que si elle fonctionne pour l’usage : avec les nanoparticules, la question devient celle de la fiabilité. Il faut protéger l’ARN et s’assurer que les particules délivrent réellement le contenu attendu.",
+            "Le passage par la mesure (compter/protéger les particules, vérifier qu’elles sont « remplies ») transforme la performance technique en preuve utile : sans cette quantification, on ne sait pas si la solution produira l’effet attendu."
           ]
         },
         {
           "chercheur": "Muriel Thomas",
           "paragraphes": [
-            "Des produits prescrits mais non consommés révèlent un écart entre l’intention et l’usage. Les tests et la co-construction avec un EHPAD permettent de reformuler le problème avec les personnes concernées."
+            "Dès le laboratoire, l’application commence par la rédaction des « contextes » dans les demandes de financement : c’est en décrivant précisément l’environnement visé que l’équipe perçoit la direction possible de l’innovation.",
+            "Les défis se structurent ensuite en niveaux : formulation (goût/couleur/odeurs) et stabilité du probiotique dans la matrice alimentaire, respect des recommandations réglementaires (HAS) pour les compléments oraux, puis alignement avec la chaîne des acteurs impliqués dans le soin au sein d’un établissement."
           ]
         },
         {
           "chercheur": "Loïc Rajjou",
           "paragraphes": [
-            "Les échanges avec les filières agricoles font apparaître des problèmes différents de ceux initialement imaginés. Sortir du laboratoire, c’est accepter que le terrain redéfinisse la question."
+            "Le point de départ est un besoin opérationnel : obtenir une graine efficace pour un plant efficace, avec une germination performante. Pour y répondre, il faut comprendre les mécanismes moléculaires qui expliquent l’efficacité.",
+            "En échangeant avec les acteurs, les idées « préconçues » se déplacent vers un problème plus large : la solution, biosourcée (amorçage de germination, sans produits chimiques artificiels), répond à un manque de solutions sur le marché."
           ]
         },
         {
           "chercheur": "Sylvia Cohen-Kaminski",
           "paragraphes": [
-            "Les cliniciens et les patients précisent le besoin médical et la place possible de la solution. L’innovation se construit dans le dialogue avec ceux qui vivent le problème au quotidien."
+            "L’innovation se construit dès le début du projet sur un besoin médical très concret : traiter la cause, pas seulement améliorer la survie. Dans l’hypertension artérielle pulmonaire, les vasodilatateurs améliorent la survie, mais ne corrigent pas le remodelage vasculaire ; la cible identifiée agit précisément sur ce remodelage."
           ]
         }
       ],
-      "a_retenir": "Une idée intéressante n’est pas encore un besoin validé. Il faut pouvoir formuler : pour qui, dans quelle situation, quel problème concret, et quelle preuve du besoin."
+      "a_retenir": "Une idée intéressante devient une innovation quand elle se traduit en problème concret pour l’usage, et quand elle apporte une preuve actionnable sous des contraintes réelles (mesure en médecine, formulation + réglementation + adoption, mécanismes d’efficacité et gap marché, traitement de la cause)."
     },
     "T3": {
       "titre_section": "Ce que disent les chercheurs",
