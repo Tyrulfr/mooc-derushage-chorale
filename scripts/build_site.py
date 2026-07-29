@@ -2711,7 +2711,9 @@ def _script_lines_html(text: str) -> str:
     rendered: list[str] = []
     for line in lines:
         safe_line = escape(line)
-        if _is_script_meta_line(line):
+        if line.strip().startswith("Ce script est une projection"):
+            rendered.append(f"<strong>{safe_line}</strong>")
+        elif _is_script_meta_line(line):
             rendered.append(f"<span class='script-ref'>{safe_line}</span>")
         else:
             rendered.append(safe_line)
@@ -3508,7 +3510,7 @@ def scripts_expertise_projetes_section(capsule_data: dict) -> str:
     return f"""
 <section class="methodology-panel script-expertise-projete-panel">
   <h2>Proposition de script pour les vidéos expertise</h2>
-  <p class="script-expertise-disclaimer"><strong>Attention :</strong> {escape(SCRIPT_EXPERTISE_DISCLAIMER)}</p>
+  <p class="script-expertise-disclaimer"><strong>Attention :</strong> <strong>{escape(SCRIPT_EXPERTISE_DISCLAIMER)}</strong></p>
   <p class="meta">Chaque texte est une prise de parole d'expert (environ 450 à 800 mots) qui s'appuie sur la chorale témoin pour enseigner l'objectif pédagogique de la vidéo expertise — sans se limiter à un résumé des témoignages.</p>
   {''.join(articles)}
 </section>
