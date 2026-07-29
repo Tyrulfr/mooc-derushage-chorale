@@ -1018,6 +1018,11 @@ _CONSIGNE_TECHNIQUE_MARKERS = (
     "script_final",
     "id + timecode",
     "cf. par_",
+    "transcript monte",
+    "transcript monté",
+    "ne pas inventer",
+    "exemples absents",
+    "montage final",
 )
 
 
@@ -3097,7 +3102,6 @@ def _build_script_expertise_projete(
     concepts = [c for c in orientation.get("concepts", []) if c]
     introduction = (orientation.get("introduction") or "").strip()
     guides = _orientation_guides(orientation)
-    consignes = _simplify_consignes(orientation.get("consignes", []))
     descriptif = ((video or {}).get("descriptif") or "").strip()
     label = _label_video_expert(code)
 
@@ -3150,15 +3154,15 @@ def _build_script_expertise_projete(
         intro = re.sub(r"\s{2,}", " ", intro).strip()
         open_bits.append(_ensure_period(intro))
     open_bits.append(
-        "Avant d'aller plus loin, des questions doivent se poser. "
-        "Pas des questions savantes : des questions de terrain."
+        "Avant d'aller plus loin, quelques questions de terrain peuvent aider — "
+        "pas des questions savantes."
     )
     if guides and guides[0].get("question_apprenant"):
         q0 = guides[0]["question_apprenant"].strip().rstrip("?").rstrip()
         open_bits.append(f"Par exemple : {q0} ?")
     else:
         open_bits.append(
-            "Par exemple : à quel moment allez-vous parler de votre résultat, "
+            "Par exemple : à quel moment parler de son résultat, "
             "à qui, et avec quelles conséquences ?"
         )
     paragraphs.append(" ".join(open_bits))
@@ -3178,14 +3182,14 @@ def _build_script_expertise_projete(
             teach.append(f"On parle de situations concrètes : {descriptif.rstrip('.')}.")
     if concepts:
         teach.append(
-            f"Les mots à garder en tête sont simples : {_list_concepts_oral(concepts)}. "
-            f"Mais derrière ces mots, il y a un geste : anticiper avant d'agir, "
+            f"Quelques notions utiles ici : {_list_concepts_oral(concepts)}. "
+            f"Derrière ces mots, il y a souvent un geste : anticiper avant d'agir, "
             f"protéger avant de communiquer, préparer avant de rencontrer."
         )
     teach.append(
-        "Les chercheurs que vous avez entendus ne vous livrent pas une checklist. "
-        "Ils vous montrent, chacun a sa manière, le moment où il faut s'arrêter "
-        "et se demander : est-ce le bon moment pour parler ?"
+        "Les chercheurs que vous avez entendus ne livrent pas une checklist. "
+        "Ils montrent, chacun à sa manière, un moment où une question se pose "
+        "— avant qu'il ne soit trop tard."
     )
     paragraphs.append(" ".join(teach))
 
@@ -3206,8 +3210,12 @@ def _build_script_expertise_projete(
             travail = (guide.get("travail_expert") or "").strip()
             travail = re.sub(r"^E\d+(bis)?\s*/\s*E\d+(bis)?\s*:\s*", "", travail)
             travail = re.sub(r"^E\d+(bis)?\s*:\s*", "", travail)
+            if any(m in travail.lower() for m in _CONSIGNE_TECHNIQUE_MARKERS):
+                travail = ""
             question = (guide.get("question_apprenant") or "").strip()
             erreur = (guide.get("erreur_a_eviter") or "").strip()
+            if any(m in erreur.lower() for m in _CONSIGNE_TECHNIQUE_MARKERS):
+                erreur = ""
             concepts_g = [
                 c
                 for c in (guide.get("concepts") or guide.get("concepts_e1") or [])
@@ -3230,13 +3238,14 @@ def _build_script_expertise_projete(
 
             if travail:
                 block.append(
-                    "Ce que cela nous enseigne, ce n'est pas l'anecdote : c'est le geste. "
+                    "Ce que cela ouvre, ce n'est pas seulement l'anecdote : "
+                    "c'est une lecture possible du parcours. "
                     + _oralize_instruction(travail)
                 )
             else:
                 block.append(
-                    "Ce témoignage sert de prétexte pour installer "
-                    f"« {titre or 'le bon reflexe'} »."
+                    "Ce témoignage peut servir de prétexte pour éclairer "
+                    f"« {titre or 'cette notion'} »."
                 )
 
             if concepts_g:
@@ -3253,68 +3262,59 @@ def _build_script_expertise_projete(
                 err = erreur.strip()
                 low = err.lower()
                 if low.startswith("ne pas "):
-                    err = "Il ne faudrait pas " + err[7:]
-                # Oraliser d'eventuels infinitifs residuels apres point-virgule.
-                err = err.replace(" ; partir ", " ; il faut partir ")
-                err = err.replace("; partir ", "; il faut partir ")
-                err = err.replace(" ; la relier ", " ; il faut la relier ")
-                err = err.replace("; la relier ", "; il faut la relier ")
+                    err = "On peut éviter de " + err[7:]
                 block.append(_ensure_period(err))
 
             if question:
                 q = question.strip().rstrip("?").rstrip()
                 block.append(
-                    "Alors, avant d'aller plus loin dans votre propre projet, "
-                    f"posez-vous la question : {q} ?"
+                    "Une question utile, pour faire le lien avec son propre projet : "
+                    f"{q} ?"
                 )
             paragraphs.append(" ".join(block))
     else:
         paragraphs.append(
-            "Meme sans revenir detail par detail sur chaque voix, retenez l'essentiel : "
+            "Même sans revenir détail par détail sur chaque voix, "
             f"ces témoignages ouvrent la porte à {titre or 'un geste professionnel clé'}. "
-            "A vous, maintenant, d'identifier le moment equivalent dans votre parcours."
+            "Chacun pourra y reconnaître, éventuellement, un moment équivalent dans son parcours."
         )
 
-    practice = ["Venons-en a vous."]
+    practice = ["Venons-en à vous."]
     if titre:
         practice.append(
-            f"Si demain vous devez appliquer « {titre} », par quoi commencer ?"
+            f"Si demain « {titre} » entre en jeu dans votre projet, "
+            "par où pourrait-on commencer ?"
         )
     practice.append(
-        "Commencez par nommer la situation a risque. "
-        "Puis demandez-vous a qui parler, avec quoi arriver, "
-        "et surtout : qu'est-ce qui ne doit pas sortir trop tot."
+        "Un point d'entrée possible : nommer la situation à risque, "
+        "puis se demander à qui parler, avec quoi arriver, "
+        "et ce qui ne doit pas sortir trop tôt."
     )
     if concepts:
         practice.append(
-            f"Gardez sous les yeux ces reperes : {_list_concepts_oral(concepts)}."
+            f"Quelques repères à garder sous les yeux : {_list_concepts_oral(concepts)}."
         )
-    if consignes:
-        practice.append("Quelques points d'appui pour la suite :")
-        paragraphs.append(" ".join(practice))
-        for item in consignes:
-            paragraphs.append(f"— {_oralize_instruction(_humanize_capsule_labels(item))}")
-    else:
-        practice.append(
-            "L'idee n'est pas de recopier les chercheurs : "
-            "c'est de reconnaitre, chez vous, le meme type de moment critique."
-        )
-        paragraphs.append(" ".join(practice))
+    # Les consignes d'orientation sont pour l'expert (fiche), pas du texte oral.
+    practice.append(
+        "L'idée n'est pas de recopier les chercheurs : "
+        "c'est de reconnaître, le cas échéant, le même type de moment critique."
+    )
+    paragraphs.append(" ".join(practice))
 
-    close = ["Pour conclure, je voudrais que vous repartiez avec une chose simple."]
+    close = ["Pour conclure, je voudrais laisser une chose simple."]
     if titre:
         titre_oral = titre[0].lower() + titre[1:] if titre[:1].isupper() else titre
         close.append(
-            "Avant toute decision irreversible — publication, communication, "
-            f"depot, rencontre — le reflexe a installer, c'est bien : {titre_oral}."
+            "Avant une décision irréversible — publication, communication, "
+            f"dépôt, rencontre — un réflexe utile reste : {titre_oral}."
         )
     close.append(
-        "Ces témoignages vous en ont donné le goût. À vous d'en faire une pratique."
+        "Ces témoignages en donnent le goût. À chacun d'en faire, ou non, une pratique."
     )
     if guides and any(g.get("question_apprenant") for g in guides):
         last_q = next(g["question_apprenant"] for g in guides if g.get("question_apprenant"))
         last_q = last_q.strip().rstrip("?").rstrip()
-        close.append(f"Une derniere question, pour la route : {last_q} ?")
+        close.append(f"Une dernière question, pour la route : {last_q} ?")
     close.append("Je vous remercie.")
     paragraphs.append(" ".join(close))
 
@@ -3324,40 +3324,40 @@ def _build_script_expertise_projete(
     if word_count < SCRIPT_EXPERTISE_WORD_MIN:
         body += (
             "\n\n"
-            "Ajoutons un mot de posture. Mon role ici n'est pas de remplacer "
+            "Ajoutons un mot de posture. Mon rôle ici n'est pas de remplacer "
             "votre tutelle, votre service de valorisation ou votre accompagnateur. "
-            "Mon role, c'est de vous aider a reconnaitre le moment ou une question "
-            "doit se poser — avant qu'il ne soit trop tard. "
-            "En effet, beaucoup de difficultes naissent moins d'un manque de genie "
-            "technique que d'un manque d'anticipation : on communique trop tot, "
-            "on arrive sous-prepare, on confond partage scientifique et divulgation. "
-            "Les temoins que vous avez entendus rendent ce moment visible. "
-            "A vous de le retrouver dans votre laboratoire, votre these, "
-            "votre partenariat ou votre prochaine prise de parole. "
-            "Travaillez avec une question simple : qu'est-ce qui, demain, "
-            "pourrait affaiblir la nouveaute, la confidentialite ou la valeur "
-            "de mon résultat si je parle trop vite ? "
-            "Et a l'inverse : qu'est-ce qui m'empechera d'avancer si je reste "
-            "trop longtemps seul avec mon idee ? "
-            "Tenir ces deux exigences ensemble — proteger et avancer — "
-            "c'est souvent le vrai geste d'expertise."
+            "Il s'agit plutôt d'aider à reconnaître le moment où une question "
+            "peut se poser — avant qu'il ne soit trop tard. "
+            "Beaucoup de difficultés naissent moins d'un manque de génie "
+            "technique que d'un manque d'anticipation : on communique trop tôt, "
+            "on arrive sous-préparé, on confond partage scientifique et divulgation. "
+            "Les témoins que vous avez entendus rendent ce moment visible. "
+            "Chacun pourra le retrouver, éventuellement, dans son laboratoire, "
+            "sa thèse, son partenariat ou sa prochaine prise de parole. "
+            "Une question simple peut aider : qu'est-ce qui, demain, "
+            "pourrait affaiblir la nouveauté, la confidentialité ou la valeur "
+            "du résultat si l'on parle trop vite ? "
+            "Et à l'inverse : qu'est-ce qui empêcherait d'avancer si l'on reste "
+            "trop longtemps seul avec son idée ? "
+            "Tenir ces deux exigences ensemble — protéger et avancer — "
+            "est souvent le vrai geste d'expertise."
         )
         word_count = _count_words_fr(body)
 
     if word_count < SCRIPT_EXPERTISE_WORD_MIN:
         body += (
             "\n\n"
-            f"Pour ancrer durablement « {titre or label} », essayez ceci. "
-            "Sur une feuille, trois colonnes : situation a risque, "
+            f"Pour ancrer « {titre or label} », une piste possible. "
+            "Sur une feuille, trois colonnes : situation à risque, "
             "interlocuteur à contacter, information à préparer. "
-            "Remplissez-les a partir de votre projet — pas d'un cas ideal. "
-            "Puis comparez avec ce que vous avez entendu. "
-            "Ou se situe la difference ? "
-            "Souvent, elle revele une hesitation, un manque d'anticipation, "
+            "Les remplir à partir de son projet — pas d'un cas idéal — "
+            "puis comparer avec ce qui a été entendu. "
+            "Où se situe la différence ? "
+            "Souvent, elle révèle une hésitation, un manque d'anticipation, "
             "ou une confusion entre communiquer et divulguer. "
-            "Ces ecarts sont precieux : ils indiquent ou porter l'effort. "
-            "Enfin, formulez a voix haute, en une phrase, le reflexe que vous retenez. "
-            "Si vous ne pouvez pas le dire simplement, le transfert n'est pas encore fait."
+            "Ces écarts sont précieux : ils indiquent où porter l'effort. "
+            "Enfin, formuler à voix haute, en une phrase, le réflexe retenu. "
+            "S'il est difficile à dire simplement, le transfert n'est peut-être pas encore fait."
         )
         word_count = _count_words_fr(body)
 
