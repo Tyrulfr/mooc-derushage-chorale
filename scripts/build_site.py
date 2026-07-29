@@ -1888,17 +1888,7 @@ def _mounted_transcript_script(capsule_code: str) -> str:
     """Script final = transcript de la vidéo montée, s'il est disponible."""
     data = _load_transcripts_videos_finaux()
     item = (data.get("capsules") or {}).get(capsule_code) or {}
-    text = (item.get("text") or "").strip()
-    if not text:
-        return ""
-    source = (item.get("source") or "").strip()
-    header = ""
-    if source:
-        header = (
-            f"[TRANSCRIPT MONTÉ — {source}]\n"
-            "(Script final = montage vidéo tel que fourni ; non reconstruit depuis Clarisse/BAB.)\n\n"
-        )
-    return header + text
+    return (item.get("text") or "").strip()
 
 
 def _script_final_prefer_mounted_transcript(

@@ -90,6 +90,13 @@
       "intro": "Cette vidéo nourrit les objectifs de preuve et de dérisking (POC, étapes, confrontation terrain). Les témoignages insistent sur l’étude de marché, le pivot, la co-construction avec le terrain et l’écart entre labo et industrialisation.",
       "voix": [
         {
+          "chercheur": "Loïc Rajjou",
+          "paragraphes": [
+            "Sortir du laboratoire confronte à l’industrialisation et au mode de fonctionnement des acteurs : le scale-up et le « vrai problème de marché » ne s’obtiennent pas au banc.",
+            "La leçon transversale : la solution technique n’est pas la chose la plus importante ; il faut confronter ses idées au terrain pour construire business plan et modèle."
+          ]
+        },
+        {
           "chercheur": "Jean-Jacques Greffet",
           "paragraphes": [
             "Une étude de marché (ASAP Paris-Saclay) et des échanges avec utilisateurs conduisent à un pivot : adapter la technologie à un autre besoin que celui initialement imaginé.",
@@ -106,13 +113,6 @@
           "chercheur": "Sylvia Cohen-Kaminski",
           "paragraphes": [
             "Dans le domaine médical, discuter très tôt avec les cliniciens oriente la démarche : leurs remarques peuvent reconfigurer la recherche."
-          ]
-        },
-        {
-          "chercheur": "Loïc Rajjou et Yann Monier",
-          "paragraphes": [
-            "Sortir du laboratoire confronte à l’industrialisation et au mode de fonctionnement des acteurs : le scale-up et le « vrai problème de marché » ne s’obtiennent pas au banc.",
-            "La leçon transversale : la solution technique n’est pas la chose la plus importante ; il faut confronter ses idées au terrain pour construire business plan et modèle."
           ]
         }
       ],
@@ -238,7 +238,7 @@
           ]
         },
         {
-          "chercheur": "Jean-Jacques Greffet / Yann Monier",
+          "chercheur": "Jean-Jacques Greffet",
           "paragraphes": [
             "Un continuum apparaît : POC in Lab → maturation SATT → formations IncubAlliance → coaching CNRS RISE → incubation, avec des programmes type Luminage / X-Campus.",
             "Les rencontres et introductions (Labex, concours de pitch) sont aussi déterminantes que le seul financement."
@@ -317,12 +317,6 @@
           ]
         },
         {
-          "chercheur": "Yann Monier",
-          "paragraphes": [
-            "Adapter le discours : moins les termes techniques (IA, etc.), plus bénéfices et retour sur investissement pour le décideur industriel."
-          ]
-        },
-        {
           "chercheur": "Muriel Thomas",
           "paragraphes": [
             "Du labo aux EHPAD/établissements de santé : changer posture et vocabulaire. L’adaptation s’apprend en discutant — quand le message ne passe pas, on le modifie la fois suivante."
@@ -333,6 +327,12 @@
           "paragraphes": [
             "Apprendre la « langue » de l’entrepreneuriat (formation type Genesis Light), puis finance/droit/PI ; être accompagné par quelqu’un déjà « bilingue » est précieux.",
             "Une formation HEC financée par la SATT peut transformer l’équipe — même si les premières semaines démoralisent."
+          ]
+        },
+        {
+          "chercheur": "Yann Monier",
+          "paragraphes": [
+            "Adapter le discours : moins les termes techniques (IA, etc.), plus bénéfices et retour sur investissement pour le décideur industriel."
           ]
         }
       ],
@@ -400,16 +400,16 @@
           ]
         },
         {
-          "chercheur": "Muriel Thomas",
-          "paragraphes": [
-            "Innover n’exige pas d’être un « surhomme » : ce sont travail, réflexion, collaboration et petits pas. On a besoin d’un problème terrain plus que d’une idée révolutionnaire."
-          ]
-        },
-        {
-          "chercheur": "Loïc Rajjou et Sylvia Cohen-Kaminski",
+          "chercheur": "Sylvia Cohen-Kaminski",
           "paragraphes": [
             "On n’est pas seul : structures d’accompagnement, famille d’entrepreneurs, et ceux qui ont réussi avant restent prêts à aider — aller discuter.",
             "Même en cas de doute : se former reste utile pour toute carrière. Message final : oser, foncer, se faire son propre avis."
+          ]
+        },
+        {
+          "chercheur": "Muriel Thomas",
+          "paragraphes": [
+            "Innover n’exige pas d’être un « surhomme » : ce sont travail, réflexion, collaboration et petits pas. On a besoin d’un problème terrain plus que d’une idée révolutionnaire."
           ]
         }
       ],
