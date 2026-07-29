@@ -9675,14 +9675,17 @@ def _guide_videos_attendues_doc_html(
         )
         sections.append(
             "<section style='margin-top:28px;padding-top:10px;border-top:1px solid #cbd5e1;'>"
+            f"<p style='page-break-before:always;margin:0;height:0;'>&nbsp;</p>"
             f"<a name='{escape(chapter_anchor)}'></a>"
             f"<h2>{escape(temoin_title)}</h2>"
             "<p><strong>Vidéos expertise associées (votre intervention) :</strong></p>"
             f"{attendues_html}"
             f"<h3>{escape(_tb_expertise_label(EXPORT_BRIEF_SECTION_TITLE))}</h3>"
             f"<div class='doc-block brief-block'>{_ergo_brief_html(brief_text)}</div>"
+            "<p style='page-break-before:always;margin:0;height:0;'>&nbsp;</p>"
             "<h3>Proposition de script pour les vidéos expertise</h3>"
             f"<div class='doc-block script-block'>{_script_lines_html(scripts_text)}</div>"
+            "<p style='page-break-before:always;margin:0;height:0;'>&nbsp;</p>"
             "<h3>Script final de la vidéo témoin</h3>"
             f"<div class='doc-block script-block'>{_ergo_script_html(script_final)}</div>"
             "</section>"
@@ -9697,6 +9700,7 @@ def _guide_videos_attendues_doc_html(
     )
     overview = (
         "<section style='margin-top:28px;padding-top:10px;border-top:1px solid #cbd5e1;'>"
+        "<p style='page-break-before:always;margin:0;height:0;'>&nbsp;</p>"
         "<a name='vue_ensemble'></a>"
         + _selection_finale_overview_doc_html(expert.get("slug", ""))
         + "</section>"
