@@ -9647,11 +9647,6 @@ def _guide_videos_attendues_doc_html(
                 )
             )
         )
-        synthese_text = _tb_expertise_label(
-            _humanize_capsule_labels(
-                export_synthese_temoignages_plaintext(code, capsule_data, by_id)
-            )
-        )
         brief_text = _tb_expertise_label(
             _humanize_capsule_labels(
                 export_brief_intervenant_plaintext(code, capsule_data, by_id)
@@ -9684,8 +9679,6 @@ def _guide_videos_attendues_doc_html(
             f"<h2>{escape(temoin_title)}</h2>"
             "<p><strong>Vidéos expertise associées (votre intervention) :</strong></p>"
             f"{attendues_html}"
-            f"<h3>{escape(export_synthese_section_title(code))}</h3>"
-            f"<div class='doc-block brief-block'>{_plain_block(synthese_text)}</div>"
             f"<h3>{escape(_tb_expertise_label(EXPORT_BRIEF_SECTION_TITLE))}</h3>"
             f"<div class='doc-block brief-block'>{_ergo_brief_html(brief_text)}</div>"
             "<h3>Proposition de script pour les vidéos expertise</h3>"
