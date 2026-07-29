@@ -9105,6 +9105,11 @@ def _experts_for_videos_attendues(
                 bucket["expert_video_labels"].append(
                     _display_expertise_title(code, titre)
                 )
+                bucket.setdefault("expert_video_objectifs", {})[code] = (
+                    _normalize_editorial_french(
+                        meta.get("descriptif") or meta.get("titre") or ""
+                    )
+                )
 
         if not by_capsule:
             continue
@@ -9119,12 +9124,17 @@ def _experts_for_videos_attendues(
         for video in videos:
             ordered = sorted(video["expert_video_codes"], key=_expert_video_sort_key)
             rebuilt_labels = []
+            rebuilt_objectifs: dict[str, str] = {}
             for code in ordered:
                 meta = e_map.get(code, {})
                 titre = meta.get("titre") or ""
                 rebuilt_labels.append(_display_expertise_title(code, titre))
+                rebuilt_objectifs[code] = _normalize_editorial_french(
+                    meta.get("descriptif") or meta.get("titre") or ""
+                )
             video["expert_video_codes"] = ordered
             video["expert_video_labels"] = rebuilt_labels
+            video["expert_video_objectifs"] = rebuilt_objectifs
             video["video_temoin_display"] = _display_temoin_title(
                 video.get("video_temoin_label", ""), video.get("code", "")
             )
@@ -9241,62 +9251,89 @@ def _selection_finale_overview_doc_html(current_slug: str = "") -> str:
     )
 
 
-def _expert_videos_attendues_lines(expert: dict) -> list[str]:
-    lines: list[str] = []
+def _expert_videos_attendues_brief_blocks(expert: dict) -> list[str]:
+    """Blocs succincts : vidéo expertise + objectif + rattachement témoin."""
+    blocks: list[str] = []
     for item in expert.get("videos", []):
         temoin = item.get("video_temoin_display") or _display_temoin_title(
             item.get("video_temoin_label", ""), item.get("code", "")
         )
+        codes = item.get("expert_video_codes") or []
         labels = _expertise_titles_from_item(item)
-        if labels:
-            for label in labels:
-                lines.append(f"- {label}\n  (liée à la {temoin})")
-        else:
-            lines.append(f"- Vidéos expertise à préciser\n  (liée à la {temoin})")
-    return lines
+        objectifs = item.get("expert_video_objectifs") or {}
+        if not labels:
+            blocks.append(
+                f"- Vidéo expertise à préciser\n"
+                f"  Liée à : {temoin}"
+            )
+            continue
+        for idx, label in enumerate(labels):
+            code = codes[idx] if idx < len(codes) else ""
+            objectif = (objectifs.get(code) or "").strip()
+            block = f"- {label}\n  Liée à : {temoin}"
+            if objectif:
+                block += f"\n  Objectif à atteindre : {objectif}"
+            blocks.append(block)
+    return blocks
 
 
 def _compose_videos_attendues_mail(expert: dict, page_href: str) -> tuple[str, str]:
     nom = expert["nom"]
     prenom = " ".join((nom or "").split()).split(" ")[0] if nom else "Madame, Monsieur"
     organisme = expert["organisme"]
-    attendues = _expert_videos_attendues_lines(expert)
-    attendues_block = "\n".join(attendues) if attendues else "- À confirmer"
-    temoins = []
-    for item in expert.get("videos", []):
-        heading = item.get("chapter_heading") or _temoin_with_expertise_heading(item)
-        if heading:
-            temoins.append(f"- {heading}")
-    temoins_block = "\n".join(temoins) if temoins else "- à préciser"
+    brief_blocks = _expert_videos_attendues_brief_blocks(expert)
+    brief = "\n\n".join(brief_blocks) if brief_blocks else "- À confirmer"
+    n_videos = sum(len(item.get("expert_video_codes") or []) for item in expert.get("videos", []))
 
-    subject = f"MOOC L'Esprit d'innover — vidéos expertise attendues ({nom})"
+    subject = f"MOOC L'Esprit d'innover — votre vidéo expertise ({nom})"
+    if n_videos > 1:
+        subject = f"MOOC L'Esprit d'innover — vos vidéos expertise ({nom})"
+
     mail_text = (
         f"Objet : {subject}\n\n"
         f"Bonjour {prenom},\n\n"
-        "Dans le cadre de la conception du MOOC \"L'Esprit d'innover\", nous revenons vers vous "
-        "pour vous confirmer les vidéos expertise sur lesquelles vous êtes attendu(e).\n\n"
-        "Petit rappel utile (vous n'avez pas participé à la conception éditoriale) :\n"
-        "- une vidéo témoin est la parole croisée des chercheurs (chorale) ;\n"
-        "- une vidéo expertise est votre intervention, liée à cette vidéo témoin.\n\n"
-        f"Vous êtes attendu(e) comme expert ({organisme}) sur le périmètre suivant :\n"
-        f"{attendues_block}\n\n"
-        "Vidéos témoin concernées (avec les vidéos expertise associées) :\n"
-        f"{temoins_block}\n\n"
-        "Un guide éditorial vous est préparé. Il reprend :\n"
-        "- les coordonnées de contact pour vos questions,\n"
-        "- pour chaque vidéo témoin : synthèse des témoignages, proposition de cadrage, "
-        "proposition de script pour vos vidéos expertise, script final de la chorale,\n"
-        "- en fin de document, une vue d'ensemble de la sélection finale.\n\n"
-        "Vous pouvez consulter ce guide en ligne (lecture éventuelle sur le site de travail) :\n"
-        f"- Page dédiée : {page_href}\n\n"
-        "Le travail d'ingénierie pédagogique vise à refléter au mieux votre expertise sans s'y substituer ; "
-        "vous êtes bien entendu libre d'aller plus loin, d'ajuster, ou de recadrer selon votre jugement.\n\n"
-        "Prochaine étape utile : disposer d'un script pour le prompteur "
-        "a minima 15 jours avant la date de tournage (cible 1er septembre).\n\n"
+        "Dans le cadre du MOOC « L'Esprit d'innover », je vous confirme le périmètre "
+        f"sur lequel vous êtes attendu(e) ({organisme}).\n\n"
+        "Rappel — comment fonctionne le MOOC\n"
+        "Une vidéo témoin (parole croisée de chercheurs) sert de prétexte pédagogique : "
+        "elle ouvre les notions que vous éclairerez ensuite dans la ou les vidéos expertise. "
+        "Vous êtes le ou la référent·e qui met ces notions en lumière. "
+        "Le registre est celui de la sensibilisation : on montre et on informe, "
+        "plus qu’on ne forme.\n\n"
+        f"Ce qui vous est demandé (pour chaque vidéo expertise)\n"
+        f"{brief}\n\n"
+        "Format attendu\n"
+        "- Durée : environ 5 minutes (± 2 min)\n"
+        "- Volume oral : environ 700 à 900 mots max, pour un débit de parole posé\n"
+        "- Livrable utile : un script pour le prompteur, a minima 15 jours avant le tournage "
+        "(cible 1er septembre)\n\n"
+        "Le guide éditorial joint / en ligne est un guide d’appui "
+        "(contexte des témoignages, proposition de cadrage, piste de script, contacts). "
+        "Il ne se substitue pas à votre expertise : ajustez, complétez ou recadrez "
+        "selon votre jugement.\n"
+        f"- Guide en ligne : {page_href}\n\n"
         "Bien cordialement,\n"
-        "Equipe Action 2 pilier 1 PUI alliance Paris Saclay."
+        "Christophe Dubois\n"
+        "Action 2 — Pilier 1 — PUI Alliance Paris-Saclay\n"
+        f"{TEST_MAIL_RECIPIENT}"
     )
     return subject, mail_text
+
+
+def _expert_videos_attendues_lines(expert: dict) -> list[str]:
+    """Lignes compactes pour listes HTML (pages de suivi)."""
+    lines: list[str] = []
+    for block in _expert_videos_attendues_brief_blocks(expert):
+        # Une entrée de liste = première ligne du bloc + suite en retrait
+        parts = [p.strip() for p in block.split("\n") if p.strip()]
+        if not parts:
+            continue
+        head = parts[0][2:].strip() if parts[0].startswith("- ") else parts[0]
+        if len(parts) == 1:
+            lines.append(f"- {head}")
+        else:
+            lines.append("- " + head + "\n  " + "\n  ".join(parts[1:]))
+    return lines
 
 
 def export_scripts_expertise_plaintext(capsule_data: dict) -> str:

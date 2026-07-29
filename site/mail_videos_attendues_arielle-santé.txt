@@ -1,37 +1,34 @@
-Objet : MOOC L'Esprit d'innover — vidéos expertise attendues (Arielle Santé)
+Objet : MOOC L'Esprit d'innover — vos vidéos expertise (Arielle Santé)
 
 Bonjour Arielle,
 
-Dans le cadre de la conception du MOOC "L'Esprit d'innover", nous revenons vers vous pour vous confirmer les vidéos expertise sur lesquelles vous êtes attendu(e).
+Dans le cadre du MOOC « L'Esprit d'innover », je vous confirme le périmètre sur lequel vous êtes attendu(e) (IncubAlliance).
 
-Petit rappel utile (vous n'avez pas participé à la conception éditoriale) :
-- une vidéo témoin est la parole croisée des chercheurs (chorale) ;
-- une vidéo expertise est votre intervention, liée à cette vidéo témoin.
+Rappel — comment fonctionne le MOOC
+Une vidéo témoin (parole croisée de chercheurs) sert de prétexte pédagogique : elle ouvre les notions que vous éclairerez ensuite dans la ou les vidéos expertise. Vous êtes le ou la référent·e qui met ces notions en lumière. Le registre est celui de la sensibilisation : on montre et on informe, plus qu’on ne forme.
 
-Vous êtes attendu(e) comme expert (IncubAlliance) sur le périmètre suivant :
+Ce qui vous est demandé (pour chaque vidéo expertise)
 - Vidéo expertise — Ce que fait reellement un incubateur
-  (liée à la Vidéo témoin 7 — VOUS N'ÊTES PAS SEUL(E))
+  Liée à : Vidéo témoin 7 — VOUS N'ÊTES PAS SEUL(E)
+  Objectif à atteindre : Coaching, réseau, formation, confrontation, équipe et préparation de la création.
+
 - Vidéo expertise — Comprendre la logique des investisseurs
-  (liée à la Vidéo témoin 8 — FINANCEMENTS, CONCOURS ET TEMPS POUR ENTREPRENDRE)
+  Liée à : Vidéo témoin 8 — FINANCEMENTS, CONCOURS ET TEMPS POUR ENTREPRENDRE
+  Objectif à atteindre : Dilution, retour attendu, rythme de croissance, gouvernance et compatibilite avec le projet.
+
 - Vidéo expertise — Passer de la preuve scientifique à la valeur pour l'interlocuteur
-  (liée à la Vidéo témoin 10 — ENRICHIR SON LANGAGE)
+  Liée à : Vidéo témoin 10 — ENRICHIR SON LANGAGE
+  Objectif à atteindre : Adapter le message selon l'utilisateur, le decideur, le partenaire ou l'investisseur.
 
-Vidéos témoin concernées (avec les vidéos expertise associées) :
-- Vidéo témoin 7 — VOUS N'ÊTES PAS SEUL(E) → Vidéo expertise — Ce que fait reellement un incubateur
-- Vidéo témoin 8 — FINANCEMENTS, CONCOURS ET TEMPS POUR ENTREPRENDRE → Vidéo expertise — Comprendre la logique des investisseurs
-- Vidéo témoin 10 — ENRICHIR SON LANGAGE → Vidéo expertise — Passer de la preuve scientifique à la valeur pour l'interlocuteur
+Format attendu
+- Durée : environ 5 minutes (± 2 min)
+- Volume oral : environ 700 à 900 mots max, pour un débit de parole posé
+- Livrable utile : un script pour le prompteur, a minima 15 jours avant le tournage (cible 1er septembre)
 
-Un guide éditorial vous est préparé. Il reprend :
-- les coordonnées de contact pour vos questions,
-- pour chaque vidéo témoin : synthèse des témoignages, proposition de cadrage, proposition de script pour vos vidéos expertise, script final de la chorale,
-- en fin de document, une vue d'ensemble de la sélection finale.
-
-Vous pouvez consulter ce guide en ligne (lecture éventuelle sur le site de travail) :
-- Page dédiée : mail_videos_attendues_arielle-santé.html
-
-Le travail d'ingénierie pédagogique vise à refléter au mieux votre expertise sans s'y substituer ; vous êtes bien entendu libre d'aller plus loin, d'ajuster, ou de recadrer selon votre jugement.
-
-Prochaine étape utile : disposer d'un script pour le prompteur a minima 15 jours avant la date de tournage (cible 1er septembre).
+Le guide éditorial joint / en ligne est un guide d’appui (contexte des témoignages, proposition de cadrage, piste de script, contacts). Il ne se substitue pas à votre expertise : ajustez, complétez ou recadrez selon votre jugement.
+- Guide en ligne : mail_videos_attendues_arielle-santé.html
 
 Bien cordialement,
-Equipe Action 2 pilier 1 PUI alliance Paris Saclay.
+Christophe Dubois
+Action 2 — Pilier 1 — PUI Alliance Paris-Saclay
+christophe.dubois@universite-paris-saclay.fr

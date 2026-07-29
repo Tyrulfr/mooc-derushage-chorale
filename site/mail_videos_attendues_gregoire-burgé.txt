@@ -1,33 +1,30 @@
-Objet : MOOC L'Esprit d'innover — vidéos expertise attendues (Gregoire Burgé)
+Objet : MOOC L'Esprit d'innover — vos vidéos expertise (Gregoire Burgé)
 
 Bonjour Gregoire,
 
-Dans le cadre de la conception du MOOC "L'Esprit d'innover", nous revenons vers vous pour vous confirmer les vidéos expertise sur lesquelles vous êtes attendu(e).
+Dans le cadre du MOOC « L'Esprit d'innover », je vous confirme le périmètre sur lequel vous êtes attendu(e) (AgroParisTech).
 
-Petit rappel utile (vous n'avez pas participé à la conception éditoriale) :
-- une vidéo témoin est la parole croisée des chercheurs (chorale) ;
-- une vidéo expertise est votre intervention, liée à cette vidéo témoin.
+Rappel — comment fonctionne le MOOC
+Une vidéo témoin (parole croisée de chercheurs) sert de prétexte pédagogique : elle ouvre les notions que vous éclairerez ensuite dans la ou les vidéos expertise. Vous êtes le ou la référent·e qui met ces notions en lumière. Le registre est celui de la sensibilisation : on montre et on informe, plus qu’on ne forme.
 
-Vous êtes attendu(e) comme expert (AgroParisTech) sur le périmètre suivant :
+Ce qui vous est demandé (pour chaque vidéo expertise)
 - Vidéo expertise — Passer d'une technologie a un problème a resoudre
-  (liée à la Vidéo témoin 2 — DE LA RECHERCHE À L’INNOVATION)
+  Liée à : Vidéo témoin 2 — DE LA RECHERCHE À L’INNOVATION
+  Objectif à atteindre : Utilisateur, client, beneficiaire, usage et proposition de valeur.
+
 - Vidéo expertise — Poser ou identifier le bon problème avant de chercher la solution
-  (liée à la Vidéo témoin 2 — DE LA RECHERCHE À L’INNOVATION)
+  Liée à : Vidéo témoin 2 — DE LA RECHERCHE À L’INNOVATION
+  Objectif à atteindre : Validation, hypotheses, experimentation, pivot et apprentissage.
 
-Vidéos témoin concernées (avec les vidéos expertise associées) :
-- Vidéo témoin 2 — DE LA RECHERCHE À L’INNOVATION → Vidéo expertise — Passer d'une technologie a un problème a resoudre · Vidéo expertise — Poser ou identifier le bon problème avant de chercher la solution
+Format attendu
+- Durée : environ 5 minutes (± 2 min)
+- Volume oral : environ 700 à 900 mots max, pour un débit de parole posé
+- Livrable utile : un script pour le prompteur, a minima 15 jours avant le tournage (cible 1er septembre)
 
-Un guide éditorial vous est préparé. Il reprend :
-- les coordonnées de contact pour vos questions,
-- pour chaque vidéo témoin : synthèse des témoignages, proposition de cadrage, proposition de script pour vos vidéos expertise, script final de la chorale,
-- en fin de document, une vue d'ensemble de la sélection finale.
-
-Vous pouvez consulter ce guide en ligne (lecture éventuelle sur le site de travail) :
-- Page dédiée : mail_videos_attendues_gregoire-burgé.html
-
-Le travail d'ingénierie pédagogique vise à refléter au mieux votre expertise sans s'y substituer ; vous êtes bien entendu libre d'aller plus loin, d'ajuster, ou de recadrer selon votre jugement.
-
-Prochaine étape utile : disposer d'un script pour le prompteur a minima 15 jours avant la date de tournage (cible 1er septembre).
+Le guide éditorial joint / en ligne est un guide d’appui (contexte des témoignages, proposition de cadrage, piste de script, contacts). Il ne se substitue pas à votre expertise : ajustez, complétez ou recadrez selon votre jugement.
+- Guide en ligne : mail_videos_attendues_gregoire-burgé.html
 
 Bien cordialement,
-Equipe Action 2 pilier 1 PUI alliance Paris Saclay.
+Christophe Dubois
+Action 2 — Pilier 1 — PUI Alliance Paris-Saclay
+christophe.dubois@universite-paris-saclay.fr
