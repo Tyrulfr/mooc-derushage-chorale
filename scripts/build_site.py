@@ -3106,6 +3106,8 @@ def _build_script_expertise_projete(
     """
     Script oral d'expertise (450–800 mots) : l'expert s'adresse aux apprenants.
     Ton naturel, francais correct (sujets, determinants, accords).
+    Hypothese pedagogique : la video temoin a deja ete vue ; on rappelle,
+    on ne invite pas a reecouter / revoir.
     """
     code = orientation.get("code") or (video or {}).get("code", "")
     titre = orientation.get("titre") or (video or {}).get("titre", "")
@@ -3134,12 +3136,13 @@ def _build_script_expertise_projete(
     open_bits = ["Bonjour."]
     if voix_phrase:
         open_bits.append(
-            f"Ces témoignages — ceux de {voix_phrase} — ne sont pas là pour illustrer "
-            f"une théorie abstraite."
+            f"Vous avez déjà vu la vidéo témoin. Les parcours de {voix_phrase} "
+            f"ne sont pas là pour illustrer une théorie abstraite."
         )
     else:
         open_bits.append(
-            "Ces témoignages ne sont pas là pour illustrer une théorie abstraite."
+            "Vous avez déjà vu la vidéo témoin. Ces parcours "
+            "ne sont pas là pour illustrer une théorie abstraite."
         )
     open_bits.append(
         "En effet, ils mettent le doigt sur un moment critique du parcours d'innovation."
@@ -3197,19 +3200,20 @@ def _build_script_expertise_projete(
             f"protéger avant de communiquer, préparer avant de rencontrer."
         )
     teach.append(
-        "Les chercheurs que vous avez entendus ne livrent pas une checklist. "
+        "Les chercheurs que vous avez déjà entendus ne livrent pas une checklist. "
         "Ils montrent, chacun à sa manière, un moment où une question se pose "
         "— avant qu'il ne soit trop tard."
     )
     paragraphs.append(" ".join(teach))
 
     if guides:
-        connectors = [
-            "Prenons d'abord",
-            "Regardons ensuite",
-            "Enfin, écoutons encore",
-            "Autre situation :",
-            "Et puis",
+        # Rappels (pas invitation à réécouter / revoir la vidéo témoin).
+        connector_templates = [
+            "Partons d'abord de ce que {p} a partagé.",
+            "Appuyons-nous ensuite sur ce que {p} a dit.",
+            "Retenons aussi ce que {p} a mis en lumière.",
+            "Autre situation, celle de {p}.",
+            "Et aussi ce que {p} a souligné.",
         ]
         for index, guide in enumerate(guides):
             chercheur = (guide.get("chercheur") or "un chercheur").strip()
@@ -3232,14 +3236,16 @@ def _build_script_expertise_projete(
                 if c
             ]
 
-            conn = connectors[index] if index < len(connectors) else "Prenons encore"
-            block = [f"{conn} {prenom}."]
+            if index < len(connector_templates):
+                block = [connector_templates[index].format(p=prenom)]
+            else:
+                block = [f"Retenons encore ce que {prenom} a partagé."]
             if angle:
                 block.append(
-                    f"Son témoignage, sur {_form_angle_oral(angle)}, est révélateur."
+                    f"Son propos, sur {_form_angle_oral(angle)}, reste révélateur."
                 )
             else:
-                block.append("Son témoignage est révélateur.")
+                block.append("Son propos reste révélateur.")
 
             if dans_temoin:
                 block.append("En effet, " + _ensure_oral_subject(dans_temoin, chercheur))
@@ -3254,7 +3260,7 @@ def _build_script_expertise_projete(
                 )
             else:
                 block.append(
-                    "Ce témoignage peut servir de prétexte pour éclairer "
+                    "Ce rappel peut servir de prétexte pour éclairer "
                     f"« {titre or 'cette notion'} »."
                 )
 
@@ -3284,8 +3290,9 @@ def _build_script_expertise_projete(
             paragraphs.append(" ".join(block))
     else:
         paragraphs.append(
-            "Même sans revenir détail par détail sur chaque voix, "
-            f"ces témoignages ouvrent la porte à {titre or 'un geste professionnel clé'}. "
+            "Même sans reprendre voix par voix, "
+            f"ce que la vidéo témoin a déjà montré ouvre la porte à "
+            f"{titre or 'un geste professionnel clé'}. "
             "Chacun pourra y reconnaître, éventuellement, un moment équivalent dans son parcours."
         )
 
@@ -3319,7 +3326,7 @@ def _build_script_expertise_projete(
             f"dépôt, rencontre — un réflexe utile reste : {titre_oral}."
         )
     close.append(
-        "Ces témoignages en donnent le goût. À chacun d'en faire, ou non, une pratique."
+        "La vidéo témoin en donne le goût. À chacun d'en faire, ou non, une pratique."
     )
     if guides and any(g.get("question_apprenant") for g in guides):
         last_q = next(g["question_apprenant"] for g in guides if g.get("question_apprenant"))
@@ -3341,7 +3348,7 @@ def _build_script_expertise_projete(
             "Beaucoup de difficultés naissent moins d'un manque de génie "
             "technique que d'un manque d'anticipation : on communique trop tôt, "
             "on arrive sous-préparé, on confond partage scientifique et divulgation. "
-            "Les témoins que vous avez entendus rendent ce moment visible. "
+            "Les témoins que vous avez déjà entendus rendent ce moment visible. "
             "Chacun pourra le retrouver, éventuellement, dans son laboratoire, "
             "sa thèse, son partenariat ou sa prochaine prise de parole. "
             "Une question simple peut aider : qu'est-ce qui, demain, "
@@ -3361,7 +3368,7 @@ def _build_script_expertise_projete(
             "Sur une feuille, trois colonnes : situation à risque, "
             "interlocuteur à contacter, information à préparer. "
             "Les remplir à partir de son projet — pas d'un cas idéal — "
-            "puis comparer avec ce qui a été entendu. "
+            "puis comparer avec ce que la vidéo témoin a déjà mis en lumière. "
             "Où se situe la différence ? "
             "Souvent, elle révèle une hésitation, un manque d'anticipation, "
             "ou une confusion entre communiquer et divulguer. "
@@ -3431,7 +3438,7 @@ def _build_script_expertise_plan(
     if titre:
         plan.append(f"Ouverture — objectif : {titre}")
     else:
-        plan.append("Ouverture — ancrage dans les témoignages")
+        plan.append("Ouverture — ancrage sur la vidéo témoin déjà vue")
 
     if concepts:
         plan.append(f"Notions cadres : {_list_concepts_oral(concepts)}")
@@ -3452,21 +3459,21 @@ def _build_script_expertise_plan(
             ]
             if angle and notions:
                 plan.append(
-                    f"Temoignage de {prenom} ({angle}) — notions : "
+                    f"Rappel — {prenom} ({angle}) — notions : "
                     f"{_list_concepts_oral(notions)}"
                 )
             elif angle:
                 plan.append(
-                    f"Temoignage de {prenom} — angle : {_form_angle_oral(angle)}"
+                    f"Rappel — {prenom} — angle : {_form_angle_oral(angle)}"
                 )
             elif notions:
                 plan.append(
-                    f"Temoignage de {prenom} — notions : {_list_concepts_oral(notions)}"
+                    f"Rappel — {prenom} — notions : {_list_concepts_oral(notions)}"
                 )
             else:
-                plan.append(f"Temoignage de {prenom} — illustration du geste")
+                plan.append(f"Rappel — {prenom} — illustration du geste")
     else:
-        plan.append("Developpement — illustration a partir de la video temoin")
+        plan.append("Développement — rappel de la vidéo témoin déjà vue")
 
     plan.append("Mise en pratique — transfert vers le projet de l'apprenant")
     if titre:
