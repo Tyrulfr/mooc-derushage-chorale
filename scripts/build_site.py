@@ -3,6 +3,7 @@ from __future__ import annotations
 import csv
 import io
 import re
+import zipfile
 from collections import Counter, defaultdict
 from pathlib import Path
 import unicodedata
@@ -8582,19 +8583,19 @@ def build_suivi_intervenants_pages(programme_table: dict, experts_profils: dict)
             ),
         ]
         if has_finale:
-            guide_simple_href = f"guide_videos_attendues_simple_{item['slug']}.doc"
+            guide_simple_href = f"guide_editorial_simplifie_{item['slug']}.doc"
             sections.extend(
                 [
                     (
                         mail_attendues_href,
                         "✉",
                         "Mail vidéos attendues",
-                        "Mail du 27/07/2026 — sélection finale + fiche simple (PJ principale).",
+                        "Mail du 27/07/2026 — sélection finale + guide éditorial simplifié (PJ principale).",
                     ),
                     (
                         guide_simple_href,
                         "📄",
-                        "Fiche simple (PJ principale)",
+                        "Guide éditorial simplifié (PJ principale)",
                         "1–2 pages : objectif, ce que disent les chercheurs, ce qu’on attend.",
                     ),
                     (
@@ -8633,11 +8634,11 @@ def build_suivi_intervenants_pages(programme_table: dict, experts_profils: dict)
             )
         expected.add(filename)
         if has_finale:
-            guide_simple_href = f"guide_videos_attendues_simple_{item['slug']}.doc"
+            guide_simple_href = f"guide_editorial_simplifie_{item['slug']}.doc"
             primary_btns = (
                 f"<a class='btn' href='{escape(mail_attendues_href)}'>Ouvrir le mail vidéos attendues (27/07)</a> "
-                f"<a class='btn' href='{escape(guide_simple_href)}' download>Exporter la fiche simple (Word)</a> "
-                f"<a class='btn' href='{escape(guide_simple_href)}' target='_blank' rel='noopener'>Ouvrir la fiche simple</a> "
+                f"<a class='btn' href='{escape(guide_simple_href)}' download>Exporter le guide éditorial simplifié (Word)</a> "
+                f"<a class='btn' href='{escape(guide_simple_href)}' target='_blank' rel='noopener'>Ouvrir le guide éditorial simplifié</a> "
                 f"<a class='btn' href='{escape(guide_attendues_href)}' download>Guide détaillé (optionnel)</a>"
             )
         else:
@@ -9947,7 +9948,7 @@ def _compose_videos_attendues_mail(
         subject = f"MOOC L'Esprit d'innover — vos vidéos expertise ({nom})"
 
     pj_line = (
-        f"- Fiche simple jointe : {simple_doc_name}\n"
+        f"- Guide éditorial simplifié joint : {simple_doc_name}\n"
         if simple_doc_name
         else ""
     )
@@ -9968,8 +9969,8 @@ def _compose_videos_attendues_mail(
         "- Script prompteur avant le tournage "
         "(on calera le délai avec vous)\n\n"
         "Pièce jointe\n"
-        "Une fiche simple (1 à 2 pages) : objectif, ce que disent les chercheurs, "
-        "et ce que l’on attend de vous. "
+        "Un guide éditorial simplifié (1 à 2 pages) : objectif, ce que disent "
+        "les chercheurs, et ce que l’on attend de vous. "
         "Ce n’est qu’un appui : libre à vous d’ajuster.\n"
         f"{pj_line}"
         f"- Page en ligne (si besoin) : {page_href}\n\n"
@@ -10000,7 +10001,7 @@ def _expert_videos_attendues_lines(expert: dict) -> list[str]:
 
 
 def _simple_guide_temoin_summary(capsule_code: str) -> str:
-    """Résumé court « ce que disent les chercheurs » pour la fiche simple."""
+    """Résumé court « ce que disent les chercheurs » pour le guide éditorial simplifié."""
     narrative = _narrative_temoin_block(capsule_code)
     if not narrative:
         return ""
@@ -10044,7 +10045,7 @@ def _simple_guide_temoin_summary(capsule_code: str) -> str:
 
 def _guide_videos_attendues_simple_doc_html(expert: dict) -> str:
     """
-    Fiche courte (PJ principale) : direct, lisible en quelques minutes.
+    Guide éditorial simplifié (PJ principale) : direct, lisible en quelques minutes.
     Le guide détaillé reste disponible à part.
     """
     nom = expert.get("nom", "Expert")
@@ -10055,7 +10056,7 @@ def _guide_videos_attendues_simple_doc_html(expert: dict) -> str:
         "Sensibilisation, pas formation technique.</p>"
         "<p><strong>Votre livrable :</strong> une prise de parole d’environ 5 minutes "
         "(± 2 min), avec un script prompteur avant tournage. "
-        "Cette fiche est un appui : libre à vous d’ajuster.</p>"
+        "Ce guide est un appui : libre à vous d’ajuster.</p>"
         "</div>"
     ]
 
@@ -10126,7 +10127,7 @@ def _guide_videos_attendues_simple_doc_html(expert: dict) -> str:
         f"(copie possible : {escape(REVIEW_MAIL_RECIPIENT)}).</p>"
         "<p class='meta'>Un guide détaillé existe aussi (scripts, transcript témoin, "
         "vue d’ensemble). Demandez-le si vous en avez besoin — "
-        "cette fiche suffit pour démarrer.</p>"
+        "ce guide simplifié suffit pour démarrer.</p>"
         "</div>"
     )
 
@@ -10145,7 +10146,7 @@ def _guide_videos_attendues_simple_doc_html(expert: dict) -> str:
         ".meta{color:#64748b;font-size:10.5pt;}"
         ".brief-fascicule{background:#f0fdf4;padding:8px;border-left:3px solid #86efac;border-radius:4px;}"
         "</style></head><body>"
-        f"<h1>Fiche simple — {escape(nom)}</h1>"
+        f"<h1>Guide éditorial simplifié — {escape(nom)}</h1>"
         "<p class='meta'>MOOC « L'Esprit d'innover » — ce qu’on vous demande, en direct.</p>"
         + "".join(sections)
         + contact
@@ -10741,7 +10742,7 @@ def build_mails_experts_pages(
                         attendues_href,
                         "✉",
                         attendues_title,
-                        "Confirmation des vidéos expertise attendues, avec guide éditorial enrichi.",
+                        "Confirmation des vidéos expertise attendues + guide éditorial simplifié (PJ).",
                     )
                 ]
             ),
@@ -10760,9 +10761,11 @@ def build_mails_experts_pages(
         ),
     )
 
+    zip_simplifies_name = "guides_editoriaux_simplifies.zip"
     attendues_cards = []
     for expert in experts_attendues:
         mail_file = f"mail_videos_attendues_{expert['slug']}.html"
+        simple_doc = f"guide_editorial_simplifie_{expert['slug']}.doc"
         video_refs = " · ".join(
             label
             for item in expert["videos"]
@@ -10773,7 +10776,8 @@ def build_mails_experts_pages(
             f"<h2><a href='{escape(mail_file)}'>{escape(expert['nom'])}</a></h2>"
             f"<p class='meta'>{escape(expert['organisme'])}</p>"
             f"<p>Vidéos expertise attendues : <strong>{escape(video_refs)}</strong></p>"
-            f"<p><a class='btn' href='{escape(mail_file)}'>Ouvrir le mail et le guide</a></p>"
+            f"<p><a class='btn' href='{escape(mail_file)}'>Mail + page</a> "
+            f"<a class='btn' href='{escape(simple_doc)}' download>Guide éditorial simplifié</a></p>"
             "</article>"
         )
 
@@ -10783,10 +10787,10 @@ def build_mails_experts_pages(
             attendues_title,
             (
                 f"<p class='meta'><strong>Envoi :</strong> {escape(date_attendues_label)}. "
-                "Mails indiquant à chaque intervenant les vidéos expertise retenues dans la sélection finale, "
-                "avec un guide éditorial consultable en ligne (vue d'ensemble des positionnements, "
-                "synthèse des témoignages, proposition de cadrage, "
-                "proposition de script pour les vidéos expertise, script final).</p>"
+                "Pour chaque intervenant : mail court + <strong>guide éditorial simplifié</strong> "
+                "(PJ principale, 1–2 pages). Le guide détaillé reste disponible en option.</p>"
+                f"<p><a class='btn' href='{escape(zip_simplifies_name)}' download>"
+                f"Télécharger tous les guides éditoriaux simplifiés ({len(experts_attendues)}) — ZIP</a></p>"
                 f"<section class='cards'>"
                 f"{''.join(attendues_cards) if attendues_cards else '<p>Aucun expert avec sélection finale.</p>'}"
                 f"</section>"
@@ -10809,7 +10813,7 @@ def build_mails_experts_pages(
     for expert in experts_attendues:
         page_name = f"mail_videos_attendues_{expert['slug']}.html"
         doc_name = f"guide_videos_attendues_{expert['slug']}.doc"
-        simple_doc_name = f"guide_videos_attendues_simple_{expert['slug']}.doc"
+        simple_doc_name = f"guide_editorial_simplifie_{expert['slug']}.doc"
         mail_txt_name = f"mail_videos_attendues_{expert['slug']}.txt"
         expected.add(page_name)
         expected_docs.add(doc_name)
@@ -10865,9 +10869,9 @@ def build_mails_experts_pages(
             f"<p><a class='btn' href='{escape(send_href)}'>Mail à envoyer</a> "
             f"<a class='btn' href='{escape(mail_txt_name)}' download>Exporter le mail (.txt)</a></p>"
             f"<pre class='script mail-ready'>{escape(mail_text)}</pre>"
-            "<h2>Pièce jointe principale — fiche simple</h2>"
-            f"<p><a class='btn' href='{escape(simple_doc_name)}' download>Exporter la fiche simple (Word)</a> "
-            f"<a class='btn' href='{escape(simple_doc_name)}' target='_blank' rel='noopener'>Ouvrir la fiche simple</a></p>"
+            "<h2>Pièce jointe principale — guide éditorial simplifié</h2>"
+            f"<p><a class='btn' href='{escape(simple_doc_name)}' download>Exporter le guide éditorial simplifié (Word)</a> "
+            f"<a class='btn' href='{escape(simple_doc_name)}' target='_blank' rel='noopener'>Ouvrir le guide éditorial simplifié</a></p>"
             "<p class='meta'>1–2 pages : objectif, ce que disent les chercheurs, ce qu’on attend. "
             "À joindre en priorité au mail.</p>"
             "<h2>Guide détaillé (optionnel)</h2>"
@@ -10900,6 +10904,15 @@ def build_mails_experts_pages(
             ),
         )
 
+    # ZIP de tous les guides éditoriaux simplifiés (envoi / archivage)
+    zip_path = SITE / zip_simplifies_name
+    with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+        for expert in experts_attendues:
+            doc = SITE / f"guide_editorial_simplifie_{expert['slug']}.doc"
+            if doc.is_file():
+                zf.write(doc, arcname=doc.name)
+    expected.add(zip_simplifies_name)
+
     for path in SITE.glob("mail_expert_*.html"):
         if path.name not in expected:
             path.unlink()
@@ -10917,8 +10930,14 @@ def build_mails_experts_pages(
     for path in SITE.glob("guide_videos_attendues_*.doc"):
         if path.name not in expected_docs:
             path.unlink()
+    # Ancien nom « fiche simple »
+    for path in SITE.glob("guide_videos_attendues_simple_*.doc"):
+        path.unlink()
     for path in SITE.glob("package_mail_expert_*.zip"):
         path.unlink()
+    for path in SITE.glob("guides_editoriaux_simplifies*.zip"):
+        if path.name not in expected:
+            path.unlink()
     # Nettoie d'anciennes pages de lots hors des sous-ensembles courants.
     for path in SITE.glob("mails_positionnement_*.html"):
         if path.name not in expected:

@@ -21,8 +21,8 @@ Format
 - Script prompteur avant le tournage (on calera le délai avec vous)
 
 Pièce jointe
-Une fiche simple (1 à 2 pages) : objectif, ce que disent les chercheurs, et ce que l’on attend de vous. Ce n’est qu’un appui : libre à vous d’ajuster.
-- Fiche simple jointe : guide_videos_attendues_simple_virginia-branco.doc
+Un guide éditorial simplifié (1 à 2 pages) : objectif, ce que disent les chercheurs, et ce que l’on attend de vous. Ce n’est qu’un appui : libre à vous d’ajuster.
+- Guide éditorial simplifié joint : guide_editorial_simplifie_virginia-branco.doc
 - Page en ligne (si besoin) : mail_videos_attendues_virginia-branco.html
 
 Pour toute question, un entretien Teams est possible (à partir du 24 août).
