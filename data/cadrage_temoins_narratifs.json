@@ -158,7 +158,7 @@
     },
     "T5": {
       "titre_section": "Ce que disent les chercheurs",
-      "intro": "Cette vidéo porte sur le choix d’un mode de protection et la PI comme actif stratégique. (Transcript monté Video5 non fourni dans data/raw au 2026-07-29 : synthèse provisoire à realigner dès réception.)",
+      "intro": "Cette vidéo porte sur le choix d’un mode de protection et la PI comme actif stratégique.",
       "voix": [
         {
           "chercheur": "Loïc Rajjou",
@@ -340,7 +340,7 @@
     },
     "T11": {
       "titre_section": "Ce que disent les chercheurs",
-      "intro": "Cette vidéo sert la gestion des freins et l’innovation comme apprentissage. Le transcript monté est plus court : il insiste sur l’enthousiasme, la double casquette académique/entreprise et le sens social du transfert.",
+      "intro": "Cette vidéo sert la gestion des freins et l’innovation comme apprentissage. Les chercheurs insistent sur l’enthousiasme, la double casquette académique/entreprise et le sens social du transfert.",
       "voix": [
         {
           "chercheur": "Muriel Thomas",
@@ -365,7 +365,7 @@
     },
     "T12": {
       "titre_section": "Ce que disent les chercheurs",
-      "intro": "Cette vidéo sert collaboration et accompagnement (objectifs E22/E23 côté programme). Le transcript monté insiste surtout sur les dispositifs qui apportent introductions, formations et entraide — le terreau des collaborations.",
+      "intro": "Cette vidéo sert collaboration et accompagnement. Les chercheurs insistent surtout sur les dispositifs qui apportent introductions, formations et entraide — le terreau des collaborations.",
       "voix": [
         {
           "chercheur": "Jean-Jacques Greffet",

@@ -2241,7 +2241,18 @@ def _render_synthese_appui_items(
         travail = guide.get("travail_expert", "")
         concepts = guide.get("concepts") or guide.get("concepts_e1") or []
         objectif = video.get("titre", "")
-        meta_parts = [p for p in (extrait_id, timecodes) if p]
+        # Ne pas exposer un id technique « TRANSCRIPT-T* » comme si l'apprenant
+        # ou l'expert devait consulter un transcript : c'est un outil interne.
+        extrait_display = ""
+        if extrait_id:
+            m = re.match(r"^TRANSCRIPT[-_]?T?(\d+)$", str(extrait_id).strip(), flags=re.I)
+            if m:
+                extrait_display = f"vidéo témoin {m.group(1)}"
+            elif re.search(r"transcript", str(extrait_id), flags=re.I):
+                extrait_display = "vidéo témoin"
+            else:
+                extrait_display = str(extrait_id)
+        meta_parts = [p for p in (extrait_display, timecodes) if p]
         meta = " · ".join(meta_parts)
         header = f"<strong>{escape(expert_label)}</strong>"
         if objectif:
@@ -3099,6 +3110,73 @@ def _list_concepts_oral(concepts: list[str]) -> str:
     return f"{', '.join(labeled[:-1])} et {labeled[-1]}"
 
 
+def _oralize_editorial_meta(text: str) -> str:
+    """
+    Retire le jargon de conception d'un texte destiné à l'oral apprenant.
+    Le transcript, les codes E et le « côté programme » sont des outils internes.
+    L'apprenant a vu une vidéo témoin, pas un transcript.
+    """
+    if not (text or "").strip():
+        return ""
+    t = text.strip()
+    # Phrases / parenthèses purement techniques.
+    t = re.sub(
+        r"\([^)]*transcript[^)]*\)",
+        "",
+        t,
+        flags=re.IGNORECASE,
+    )
+    t = re.sub(
+        r"[^.?!]*\btranscripts?\b[^.?!]*[.?!]\s*",
+        "",
+        t,
+        flags=re.IGNORECASE,
+    )
+    t = re.sub(
+        r"\s*\(objectifs?\s+E\d+(?:bis)?(?:\s*/\s*E\d+(?:bis)?)?[^)]*\)",
+        "",
+        t,
+        flags=re.IGNORECASE,
+    )
+    t = re.sub(r"\s*côté programme\b", "", t, flags=re.IGNORECASE)
+    t = re.sub(r"\s*cote programme\b", "", t, flags=re.IGNORECASE)
+    # Codes E restants → formulation orale.
+    t = re.sub(r"\bE(\d+)(bis)?\b", "cette vidéo", t, flags=re.IGNORECASE)
+    t = re.sub(
+        r"(^|[.!?]\s+)cette vidéo\b",
+        lambda m: f"{m.group(1)}Cette vidéo",
+        t,
+    )
+    # Cadrage conception → cadrage oral.
+    t = re.sub(
+        r"\bCette vidéo sert les objectifs?\b",
+        "Cette vidéo témoin éclaire",
+        t,
+        flags=re.IGNORECASE,
+    )
+    t = re.sub(
+        r"\bCette vidéo sert\b",
+        "Dans la vidéo témoin, on voit surtout",
+        t,
+        flags=re.IGNORECASE,
+    )
+    t = re.sub(
+        r"\bCette vidéo nourrit les objectifs?\b",
+        "La vidéo témoin nourrit",
+        t,
+        flags=re.IGNORECASE,
+    )
+    t = re.sub(
+        r"\bCette vidéo ouvre le parcours \(objectif\s*:\s*",
+        "La vidéo témoin ouvre le parcours — ",
+        t,
+        flags=re.IGNORECASE,
+    )
+    t = re.sub(r"\s{2,}", " ", t).strip(" ,;")
+    t = re.sub(r"\s+([.!?])", r"\1", t)
+    return t.strip()
+
+
 def _script_variant_seed(code: str, variant_index: int = 0) -> int:
     """Graine stable pour varier le style d'un script expertise."""
     return (sum(ord(c) for c in (code or "E")) * 31 + int(variant_index) * 17) % 997
@@ -3143,18 +3221,14 @@ def _script_expertise_open_paragraph(
 
     intro_clean = ""
     if introduction:
-        intro = introduction
+        intro = _oralize_editorial_meta(introduction)
         intro = re.sub(r"\bLa chorale T\d+\b", "Ces temoignages", intro, flags=re.I)
         intro = re.sub(r"\bCes temoignages vient\b", "Ces temoignages viennent", intro, flags=re.I)
         intro = re.sub(r"\bCes temoignages montre\b", "Ces temoignages montrent", intro, flags=re.I)
-        intro = re.sub(r"\bE(\d+)(bis)?\b", "cette video", intro, flags=re.I)
-        intro = re.sub(
-            r"(^|[.!?]\s+)cette video\b",
-            lambda m: f"{m.group(1)}Cette video",
-            intro,
-        )
         intro = re.sub(r"\b\(JJG,\s*MUR,\s*SYL,\s*YAN\)", "", intro)
         intro_clean = re.sub(r"\s{2,}", " ", intro).strip()
+        if re.search(r"\btranscript\b", intro_clean, flags=re.I):
+            intro_clean = ""
 
     # Quand plusieurs vidéos expertise pour le même intervenant : forcer des familles distinctes.
     if sibling_count > 1:
