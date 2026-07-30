@@ -8,15 +8,15 @@ Rappel — comment fonctionne le MOOC
 Une vidéo témoin (parole croisée de chercheurs) sert de prétexte pédagogique : elle ouvre les notions que vous éclairerez ensuite dans la ou les vidéos expertise. Vous êtes le ou la référent·e qui met ces notions en lumière. Le registre est celui de la sensibilisation : on montre et on informe, plus qu’on ne forme.
 
 Ce qui vous est demandé (pour chaque vidéo expertise)
-- Vidéo expertise — Cartographier les competences nécessaires
+- Vidéo Expert 16 — Cartographier les competences nécessaires
   Liée à : Vidéo témoin 9 — PARTENARIATS ET POSTURE : CONSTRUIRE UNE ÉQUIPE
   Objectif à atteindre : Complémentarité, recrutement, rôle du CEO, du CSO et du CTO, et criteres humains.
 
-- Vidéo expertise — La posture entrepreneuriale s'apprend
+- Vidéo Expert 19 — La posture entrepreneuriale s'apprend
   Liée à : Vidéo témoin 10 — ENRICHIR SON LANGAGE
   Objectif à atteindre : Feedback, entrainement, mentorat et evolution de l'identite professionnelle.
 
-- Vidéo expertise — Innover comme processus d'apprentissage
+- Vidéo Expert 21 — Innover comme processus d'apprentissage
   Liée à : Vidéo témoin 11 — EVOLUTION DANS LE MÉTIER DU CHERCHEUR.EUSE
   Objectif à atteindre : Incertitude, essais, erreurs, pivot et progression plutot que reussite lineaire. Focaliser le discours sur les leviers existants pour vaincre les freins.
 

@@ -8,11 +8,11 @@ Rappel — comment fonctionne le MOOC
 Une vidéo témoin (parole croisée de chercheurs) sert de prétexte pédagogique : elle ouvre les notions que vous éclairerez ensuite dans la ou les vidéos expertise. Vous êtes le ou la référent·e qui met ces notions en lumière. Le registre est celui de la sensibilisation : on montre et on informe, plus qu’on ne forme.
 
 Ce qui vous est demandé (pour chaque vidéo expertise)
-- Vidéo expertise — Derisquer un projet par étapes
+- Vidéo Expert 5 — Derisquer un projet par étapes
   Liée à : Vidéo témoin 3 — IDENTIFIER UN BESOIN RÉEL + SORTIR DU LABORATOIRE (fusion)
   Objectif à atteindre : Prématuration, maturation, jalons techniques et commerciaux, criteres de décision.
 
-- Vidéo expertise — Quelle voie de valorisation pour quel projet ?
+- Vidéo Expert 10 — Quelle voie de valorisation pour quel projet ?
   Liée à : Vidéo témoin 6 — TRANSFERT ET LICENSING
   Objectif à atteindre : Licence, création, co-développement, partenariat et criteres de choix.
 

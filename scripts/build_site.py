@@ -9863,18 +9863,28 @@ def _expert_videos_attendues_brief_blocks(expert: dict) -> list[str]:
             item.get("video_temoin_label", ""), item.get("code", "")
         )
         codes = item.get("expert_video_codes") or []
-        labels = _expertise_titles_from_item(item)
+        raw_labels = _expertise_titles_from_item(item)
         objectifs = item.get("expert_video_objectifs") or {}
-        if not labels:
+        if not raw_labels:
             blocks.append(
                 f"- Vidéo expertise à préciser\n"
                 f"  Liée à : {temoin}"
             )
             continue
-        for idx, label in enumerate(labels):
+        for idx, label in enumerate(raw_labels):
             code = codes[idx] if idx < len(codes) else ""
+            if code:
+                titre = re.sub(
+                    r"^Vidéo\s+expertise\s*[—\-–:]\s*",
+                    "",
+                    label,
+                    flags=re.IGNORECASE,
+                ).strip()
+                mail_label = f"{_label_video_expert(code)} — {titre}" if titre else _label_video_expert(code)
+            else:
+                mail_label = label
             objectif = (objectifs.get(code) or "").strip()
-            block = f"- {label}\n  Liée à : {temoin}"
+            block = f"- {mail_label}\n  Liée à : {temoin}"
             if objectif:
                 block += f"\n  Objectif à atteindre : {objectif}"
             blocks.append(block)
