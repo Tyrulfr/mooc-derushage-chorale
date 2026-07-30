@@ -462,6 +462,14 @@ tbody tr:last-child td { border-bottom: none; }
   border-radius: var(--radius);
   line-height: 1.5;
 }
+.brief-fascicule {
+  margin: 12px 0;
+  padding: 12px 14px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: var(--radius);
+  line-height: 1.5;
+}
 .script-placeholder {
   margin-top: 16px;
   min-height: 160px;
@@ -2025,6 +2033,7 @@ def _render_brief_video(video: dict, proposes: list[str] | None = None) -> str:
     <h3>{escape(label)}</h3>
     <p class='meta'><strong>Intervenant :</strong> {who}</p>
     {objectif_html}
+    {_fascicule_refs_html(video.get("code", ""))}
   </article>
 """
 
@@ -2538,6 +2547,7 @@ def export_brief_intervenant_plaintext(
         if video.get("descriptif"):
             lines.append(video["descriptif"])
         lines.append("")
+        lines.extend(_fascicule_refs_plaintext_lines(video.get("code", "")))
 
     lines.append("Consignes générales :")
     for item in BRIEF_CONSIGNES_COMMUNES:
@@ -6782,6 +6792,11 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
             flush_list()
             if stripped.startswith("Precaution :"):
                 chunks.append(f"<p class='brief-precaution'><strong>Precaution :</strong> {escape(stripped.split(':', 1)[1].strip())}</p>")
+            elif stripped.startswith("Repère facultatif"):
+                chunks.append(
+                    f"<p class='brief-fascicule'><strong>{escape(stripped.split(':', 1)[0].strip())} :</strong> "
+                    f"{escape(stripped.split(':', 1)[1].strip()) if ':' in stripped else ''}</p>"
+                )
             elif stripped.startswith("Vidéo expertise ") and " — " in stripped:
                 left, right = stripped.split(" — ", 1)
                 chunks.append(f"<p class='brief-video'><strong>{escape(left)}</strong> — {escape(right)}</p>")
@@ -6852,6 +6867,7 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
         ".brief-label{margin-top:10px;}"
         ".brief-video{background:#eef2ff;padding:6px 8px;border-radius:6px;}"
         ".brief-precaution{background:#fff7ed;padding:8px;border-left:3px solid #fdba74;border-radius:4px;}"
+        ".brief-fascicule{background:#f0fdf4;padding:8px;border-left:3px solid #86efac;border-radius:4px;}"
         ".script-body{font-size:11pt;line-height:1.62;word-break:break-word;}"
         ".script-ref{font-size:9pt;color:#94a3b8;}"
         ".toc{width:100%;border-collapse:collapse;margin:10px 0 16px;}"
@@ -8615,6 +8631,82 @@ def _fascicule_chapitre_index(data: dict) -> dict[str, dict]:
     return index
 
 
+def _fascicule_refs_for_grain(grain_code: str) -> list[dict]:
+    """Pages du fascicule « Oser pour innover » corrélées à un grain T/E."""
+    code = (grain_code or "").strip()
+    if not code:
+        return []
+    data = _load_fascicules_oser_innover()
+    if not data:
+        return []
+    chap_index = _fascicule_chapitre_index(data)
+    refs: list[dict] = []
+    seen: set[tuple[str, str]] = set()
+    for corr in data.get("correlations") or []:
+        if corr.get("grain") != code:
+            continue
+        for chap_id in corr.get("chapitres") or []:
+            chap = chap_index.get(chap_id)
+            if not chap:
+                continue
+            key = (str(chap.get("fascicule_numero")), str(chap.get("pages") or ""))
+            if key in seen:
+                continue
+            seen.add(key)
+            refs.append(
+                {
+                    "grain": code,
+                    "fascicule_numero": chap.get("fascicule_numero"),
+                    "fascicule_titre": chap.get("fascicule_titre") or "",
+                    "chapitre_titre": chap.get("titre") or "",
+                    "pages": chap.get("pages") or "",
+                    "fichier": chap.get("fichier") or "",
+                    "justification": corr.get("justification") or "",
+                }
+            )
+    return refs
+
+
+def _format_fascicule_ref_line(ref: dict) -> str:
+    numero = ref.get("fascicule_numero")
+    pages = (ref.get("pages") or "").strip()
+    titre = (ref.get("chapitre_titre") or "").strip()
+    base = f"Fascicule {numero}"
+    if pages:
+        base += f", p. {pages}"
+    if titre:
+        base += f" — {titre}"
+    return base
+
+
+def _fascicule_refs_html(grain_code: str) -> str:
+    refs = _fascicule_refs_for_grain(grain_code)
+    if not refs:
+        return ""
+    items = "".join(
+        f"<li>{escape(_format_fascicule_ref_line(ref))}</li>" for ref in refs
+    )
+    return (
+        "<p class='meta'><strong>Repère facultatif — guide « Oser pour innover » :</strong> "
+        "si vous souhaitez un appui conceptuel, ces pages peuvent éclairer votre vidéo expertise.</p>"
+        f"<ul>{items}</ul>"
+    )
+
+
+def _fascicule_refs_plaintext_lines(grain_code: str) -> list[str]:
+    refs = _fascicule_refs_for_grain(grain_code)
+    if not refs:
+        return []
+    lines = [
+        "Repère facultatif — guide « Oser pour innover » : "
+        "si vous souhaitez un appui conceptuel, ces pages peuvent éclairer votre vidéo expertise.",
+    ]
+    for ref in refs:
+        lines.append(f"- {_format_fascicule_ref_line(ref)}")
+    lines.append("")
+    return lines
+
+
 def build_fascicules_oser_innover_pages() -> None:
     """Ensemble Oser pour innover : document (2 fascicules) + corrélation grains."""
     data = _load_fascicules_oser_innover()
@@ -9525,6 +9617,10 @@ def _videos_attendues_contact_preface_html(*, for_doc: bool = True) -> str:
         "</ul>"
         "<p>Chaque chapitre nomme d’abord la <strong>vidéo témoin</strong>, puis les "
         "<strong>vidéos expertise</strong> qui s’y rattachent.</p>"
+        "<p>Un guide conceptuel imprimé — <strong>« Oser pour innover »</strong> "
+        "(deux fascicules) — peut éventuellement compléter votre lecture. "
+        "Lorsque c’est possible, les pages utiles sont indiquées auprès de chaque "
+        "vidéo expertise, en repère facultatif.</p>"
     )
     contact = (
         "<p><strong>Pour toute question, mise en forme ou échange</strong>, "
@@ -9576,6 +9672,7 @@ def _guide_doc_shell(
         ".brief-label{margin-top:10px;}"
         ".brief-video{background:#eef2ff;padding:6px 8px;border-radius:6px;}"
         ".brief-precaution{background:#fff7ed;padding:8px;border-left:3px solid #fdba74;border-radius:4px;}"
+        ".brief-fascicule{background:#f0fdf4;padding:8px;border-left:3px solid #86efac;border-radius:4px;}"
         ".script-body{font-size:11pt;line-height:1.62;word-break:break-word;}"
         ".script-ref{font-size:9pt;color:#94a3b8;}"
         ".toc{width:100%;border-collapse:collapse;margin:10px 0 16px;}"
@@ -9626,6 +9723,11 @@ def _guide_videos_attendues_doc_html(
                 chunks.append(
                     f"<p class='brief-precaution'><strong>Précaution :</strong> "
                     f"{escape(stripped.split(':', 1)[1].strip())}</p>"
+                )
+            elif stripped.startswith("Repère facultatif"):
+                chunks.append(
+                    f"<p class='brief-fascicule'><strong>{escape(stripped.split(':', 1)[0].strip())} :</strong> "
+                    f"{escape(stripped.split(':', 1)[1].strip()) if ':' in stripped else ''}</p>"
                 )
             elif stripped.startswith("Vidéo expertise ") and " — " in stripped:
                 left, right = stripped.split(" — ", 1)

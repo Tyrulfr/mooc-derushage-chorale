@@ -418,6 +418,14 @@ tbody tr:last-child td { border-bottom: none; }
   border-radius: var(--radius);
   line-height: 1.5;
 }
+.brief-fascicule {
+  margin: 12px 0;
+  padding: 12px 14px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: var(--radius);
+  line-height: 1.5;
+}
 .script-placeholder {
   margin-top: 16px;
   min-height: 160px;
