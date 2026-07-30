@@ -1013,7 +1013,7 @@ BRIEF_CONSIGNES_COMMUNES = [
     "Partir des témoignages vus dans la chorale — pas d'un script à lire mot pour mot.",
     "Nommer les notions ou concepts de votre vidéo en langage clair, avec des exemples concrets entendus.",
     "Tout schéma, liste ou support à incruster dans votre intervention est le bienvenu.",
-    "Inviter l'apprenant à faire le lien avec son propre projet.",
+    "Inviter l'apprenant à faire le lien avec sa pratique de recherche (même sans projet d'innovation).",
     "Ne pas citer les chercheurs phrase pour phrase : résumer dans vos propres mots.",
     "Compléter librement cette trame : ajouter tout élément (exemple, rappel, précision, mise en perspective) que vous jugez complémentaire et nécessaire à ce stade du parcours.",
 ]
@@ -3172,6 +3172,31 @@ def _oralize_editorial_meta(text: str) -> str:
         t,
         flags=re.IGNORECASE,
     )
+    # Ne pas présupposer que l'apprenant a déjà un projet d'innovation.
+    t = re.sub(
+        r"\bdans votre propre projet\b",
+        "dans votre activité de recherche",
+        t,
+        flags=re.IGNORECASE,
+    )
+    t = re.sub(
+        r"\bson propre projet\b",
+        "sa pratique de recherche",
+        t,
+        flags=re.IGNORECASE,
+    )
+    t = re.sub(
+        r"\bdans votre projet\b",
+        "dans votre situation",
+        t,
+        flags=re.IGNORECASE,
+    )
+    t = re.sub(
+        r"\bvers votre projet\b",
+        "vers votre situation",
+        t,
+        flags=re.IGNORECASE,
+    )
     t = re.sub(r"\s{2,}", " ", t).strip(" ,;")
     t = re.sub(r"\s+([.!?])", r"\1", t)
     return t.strip()
@@ -3206,7 +3231,9 @@ def _script_expertise_open_paragraph(
     """Ouverture variée : évite le même modèle pour chaque vidéo expertise."""
     q0 = ""
     if guides and guides[0].get("question_apprenant"):
-        q0 = guides[0]["question_apprenant"].strip().rstrip("?").rstrip()
+        q0 = _oralize_editorial_meta(
+            guides[0]["question_apprenant"].strip().rstrip("?").rstrip()
+        )
     first_prenom = prenoms[0] if prenoms else ""
     first_hook = ""
     if guides:
@@ -3542,7 +3569,9 @@ def _build_script_expertise_projete(
             travail = re.sub(r"^E\d+(bis)?\s*:\s*", "", travail)
             if any(m in travail.lower() for m in _CONSIGNE_TECHNIQUE_MARKERS):
                 travail = ""
-            question = (guide.get("question_apprenant") or "").strip()
+            question = _oralize_editorial_meta(
+                (guide.get("question_apprenant") or "").strip()
+            )
             erreur = (guide.get("erreur_a_eviter") or "").strip()
             if any(m in erreur.lower() for m in _CONSIGNE_TECHNIQUE_MARKERS):
                 erreur = ""
@@ -3605,7 +3634,7 @@ def _build_script_expertise_projete(
                 q = question.strip().rstrip("?").rstrip()
                 if (seed + index) % 2 == 0:
                     block.append(
-                        "Une question utile, pour faire le lien avec son propre projet : "
+                        "Une question utile, pour faire le lien avec sa pratique : "
                         f"{q} ?"
                     )
                 else:
@@ -3638,7 +3667,7 @@ def _build_script_expertise_projete(
     if titre:
         if (seed + variant_index) % 2 == 0:
             practice.append(
-                f"Si demain « {titre} » entre en jeu dans votre projet, "
+                f"Si demain « {titre} » devenait un enjeu dans votre activité, "
                 "par où pourrait-on commencer ?"
             )
         else:
@@ -3670,7 +3699,7 @@ def _build_script_expertise_projete(
         "L'idée n'est pas de recopier les chercheurs : "
         "c'est de reconnaître, le cas échéant, le même type de moment critique.",
         "Inutile de calquer leur parcours : repérer le même type de bascule suffit.",
-        "Ce qui compte, c'est le transfert vers votre projet, pas la citation.",
+        "Ce qui compte, c'est le transfert vers votre situation, pas la citation.",
     ]
     practice.append(practice_closers[(seed + variant_index) % len(practice_closers)])
     paragraphs.append(" ".join(practice))
@@ -3696,7 +3725,7 @@ def _build_script_expertise_projete(
     close.append(close_tails[(seed + variant_index) % len(close_tails)])
     if guides and any(g.get("question_apprenant") for g in guides) and seed % 2 == 0:
         last_q = next(g["question_apprenant"] for g in guides if g.get("question_apprenant"))
-        last_q = last_q.strip().rstrip("?").rstrip()
+        last_q = _oralize_editorial_meta(last_q.strip().rstrip("?").rstrip())
         close.append(f"Une dernière question, pour la route : {last_q} ?")
     close.append("Je vous remercie.")
     paragraphs.append(" ".join(close))
@@ -3853,7 +3882,7 @@ def _build_script_expertise_plan(
     else:
         plan.append("Développement — rappel de la vidéo témoin déjà vue")
 
-    plan.append("Mise en pratique — transfert vers le projet de l'apprenant")
+    plan.append("Mise en pratique — transfert vers la situation de l'apprenant")
     if titre:
         titre_oral = titre[0].lower() + titre[1:] if titre[:1].isupper() else titre
         plan.append(f"Cloture — installer le reflexe : {titre_oral}")
@@ -8553,19 +8582,26 @@ def build_suivi_intervenants_pages(programme_table: dict, experts_profils: dict)
             ),
         ]
         if has_finale:
+            guide_simple_href = f"guide_videos_attendues_simple_{item['slug']}.doc"
             sections.extend(
                 [
                     (
                         mail_attendues_href,
                         "✉",
                         "Mail vidéos attendues",
-                        "Mail du 27/07/2026 — sélection finale + guide éditorial enrichi (vue d'ensemble).",
+                        "Mail du 27/07/2026 — sélection finale + fiche simple (PJ principale).",
+                    ),
+                    (
+                        guide_simple_href,
+                        "📄",
+                        "Fiche simple (PJ principale)",
+                        "1–2 pages : objectif, ce que disent les chercheurs, ce qu’on attend.",
                     ),
                     (
                         guide_attendues_href,
                         "📄",
-                        "Guide éditorial vidéos attendues (Word)",
-                        "Document à envoyer : vue d'ensemble des positionnements, synthèse, cadrage, scripts.",
+                        "Guide détaillé (optionnel)",
+                        "Version complète : scripts, transcript témoin, vue d’ensemble — sur demande.",
                     ),
                 ]
             )
@@ -8597,10 +8633,12 @@ def build_suivi_intervenants_pages(programme_table: dict, experts_profils: dict)
             )
         expected.add(filename)
         if has_finale:
+            guide_simple_href = f"guide_videos_attendues_simple_{item['slug']}.doc"
             primary_btns = (
                 f"<a class='btn' href='{escape(mail_attendues_href)}'>Ouvrir le mail vidéos attendues (27/07)</a> "
-                f"<a class='btn' href='{escape(guide_attendues_href)}' download>Exporter le guide à envoyer (Word)</a> "
-                f"<a class='btn' href='{escape(guide_attendues_href)}' target='_blank' rel='noopener'>Ouvrir le guide à envoyer</a>"
+                f"<a class='btn' href='{escape(guide_simple_href)}' download>Exporter la fiche simple (Word)</a> "
+                f"<a class='btn' href='{escape(guide_simple_href)}' target='_blank' rel='noopener'>Ouvrir la fiche simple</a> "
+                f"<a class='btn' href='{escape(guide_attendues_href)}' download>Guide détaillé (optionnel)</a>"
             )
         else:
             primary_btns = (
@@ -9891,7 +9929,12 @@ def _expert_videos_attendues_brief_blocks(expert: dict) -> list[str]:
     return blocks
 
 
-def _compose_videos_attendues_mail(expert: dict, page_href: str) -> tuple[str, str]:
+def _compose_videos_attendues_mail(
+    expert: dict,
+    page_href: str,
+    *,
+    simple_doc_name: str = "",
+) -> tuple[str, str]:
     nom = expert["nom"]
     prenom = " ".join((nom or "").split()).split(" ")[0] if nom else "Madame, Monsieur"
     organisme = expert["organisme"]
@@ -9903,29 +9946,35 @@ def _compose_videos_attendues_mail(expert: dict, page_href: str) -> tuple[str, s
     if n_videos > 1:
         subject = f"MOOC L'Esprit d'innover — vos vidéos expertise ({nom})"
 
+    pj_line = (
+        f"- Fiche simple jointe : {simple_doc_name}\n"
+        if simple_doc_name
+        else ""
+    )
+
     mail_text = (
         f"Objet : {subject}\n\n"
         f"Bonjour {prenom},\n\n"
-        "Dans le cadre du MOOC « L'Esprit d'innover », je vous confirme le périmètre "
-        f"sur lequel vous êtes attendu(e) ({organisme}).\n\n"
-        "Rappel — comment fonctionne le MOOC\n"
-        "Une vidéo témoin (parole croisée de chercheurs) sert de prétexte pédagogique : "
-        "elle ouvre les notions que vous éclairerez ensuite dans la ou les vidéos expertise. "
-        "Vous êtes le ou la référent·e qui met ces notions en lumière. "
-        "Le registre est celui de la sensibilisation : on montre et on informe, "
-        "plus qu’on ne forme.\n\n"
-        f"Ce qui vous est demandé (pour chaque vidéo expertise)\n"
+        "Dans le cadre du MOOC « L'Esprit d'innover », je vous confirme "
+        f"votre intervention ({organisme}).\n\n"
+        "En deux mots\n"
+        "Les apprenants voient d’abord une vidéo témoin (parole de chercheurs). "
+        "Ensuite, votre vidéo expertise éclaire une notion précise. "
+        "Registre : sensibilisation (montrer / informer), pas une formation technique.\n\n"
+        "Ce que l’on vous demande\n"
         f"{brief}\n\n"
-        "Format attendu\n"
-        "- Durée : environ 5 minutes (± 2 min)\n"
-        "- Volume oral : environ 700 à 900 mots max, pour un débit de parole posé\n"
-        "- Livrable utile : un script pour le prompteur, a minima 15 jours avant le tournage "
-        "(cible 1er septembre)\n\n"
-        "Le guide éditorial joint / en ligne est un guide d’appui "
-        "(contexte des témoignages, proposition de cadrage, piste de script, contacts). "
-        "Il ne se substitue pas à votre expertise : ajustez, complétez ou recadrez "
-        "selon votre jugement.\n"
-        f"- Guide en ligne : {page_href}\n\n"
+        "Format\n"
+        "- Environ 5 minutes (± 2 min)\n"
+        "- Script prompteur avant le tournage "
+        "(on calera le délai avec vous)\n\n"
+        "Pièce jointe\n"
+        "Une fiche simple (1 à 2 pages) : objectif, ce que disent les chercheurs, "
+        "et ce que l’on attend de vous. "
+        "Ce n’est qu’un appui : libre à vous d’ajuster.\n"
+        f"{pj_line}"
+        f"- Page en ligne (si besoin) : {page_href}\n\n"
+        "Pour toute question, un entretien Teams est possible "
+        "(à partir du 24 août).\n\n"
         "Bien cordialement,\n"
         "Christophe Dubois\n"
         "Action 2 — Pilier 1 — PUI Alliance Paris-Saclay\n"
@@ -9948,6 +9997,160 @@ def _expert_videos_attendues_lines(expert: dict) -> list[str]:
         else:
             lines.append("- " + head + "\n  " + "\n  ".join(parts[1:]))
     return lines
+
+
+def _simple_guide_temoin_summary(capsule_code: str) -> str:
+    """Résumé court « ce que disent les chercheurs » pour la fiche simple."""
+    narrative = _narrative_temoin_block(capsule_code)
+    if not narrative:
+        return ""
+
+    def _clip(text: str, max_len: int = 160) -> str:
+        t = " ".join((text or "").split())
+        if not t:
+            return ""
+        if len(t) <= max_len:
+            return t
+        cut = t[: max_len - 1].rsplit(" ", 1)[0]
+        return (cut or t[: max_len - 1]).rstrip(".,;:") + "…"
+
+    chunks: list[str] = []
+    intro = (narrative.get("intro") or "").strip()
+    if intro:
+        chunks.append(f"<p>{escape(_oralize_editorial_meta(_clip(intro, 220)))}</p>")
+    bullets: list[str] = []
+    for voix in narrative.get("voix") or []:
+        chercheur = (voix.get("chercheur") or "").strip()
+        paras = [p.strip() for p in (voix.get("paragraphes") or []) if (p or "").strip()]
+        if not chercheur and not paras:
+            continue
+        gist = _clip(" ".join(paras), 140)
+        if chercheur and gist:
+            bullets.append(
+                f"<li><strong>{escape(chercheur)}</strong> — {escape(gist)}</li>"
+            )
+        elif gist:
+            bullets.append(f"<li>{escape(gist)}</li>")
+    if bullets:
+        chunks.append("<ul>" + "".join(bullets) + "</ul>")
+    reteni = (narrative.get("a_retenir") or "").strip()
+    if reteni:
+        chunks.append(
+            f"<p><strong>À retenir :</strong> "
+            f"{escape(_normalize_editorial_french(_clip(reteni, 220)))}</p>"
+        )
+    return "".join(chunks)
+
+
+def _guide_videos_attendues_simple_doc_html(expert: dict) -> str:
+    """
+    Fiche courte (PJ principale) : direct, lisible en quelques minutes.
+    Le guide détaillé reste disponible à part.
+    """
+    nom = expert.get("nom", "Expert")
+    sections: list[str] = [
+        "<div class='doc-block brief-block'>"
+        "<p><strong>En une phrase :</strong> les apprenants voient une vidéo témoin "
+        "(chercheurs), puis votre vidéo expertise éclaire une notion. "
+        "Sensibilisation, pas formation technique.</p>"
+        "<p><strong>Votre livrable :</strong> une prise de parole d’environ 5 minutes "
+        "(± 2 min), avec un script prompteur avant tournage. "
+        "Cette fiche est un appui : libre à vous d’ajuster.</p>"
+        "</div>"
+    ]
+
+    for item in expert.get("videos", []):
+        temoin = item.get("video_temoin_display") or _display_temoin_title(
+            item.get("video_temoin_label", ""), item.get("code", "")
+        )
+        codes = item.get("expert_video_codes") or []
+        labels = _expertise_titles_from_item(item)
+        objectifs = item.get("expert_video_objectifs") or {}
+        capsule_code = item.get("code", "")
+
+        for idx, label in enumerate(labels or ["Vidéo expertise"]):
+            code = codes[idx] if idx < len(codes) else ""
+            if code:
+                titre = re.sub(
+                    r"^Vidéo\s+expertise\s*[—\-–:]\s*",
+                    "",
+                    label,
+                    flags=re.IGNORECASE,
+                ).strip()
+                head = (
+                    f"{_label_video_expert(code)} — {titre}"
+                    if titre
+                    else _label_video_expert(code)
+                )
+            else:
+                head = label
+            objectif = (objectifs.get(code) or "").strip()
+            fascicule_html = _fascicule_refs_html(code) if code else ""
+            temoin_html = _simple_guide_temoin_summary(capsule_code)
+
+            block = [
+                "<section style='margin-top:22px;padding-top:10px;border-top:1px solid #cbd5e1;'>",
+                f"<h2>{escape(head)}</h2>",
+                f"<p><strong>Liée à :</strong> {escape(temoin)}</p>",
+            ]
+            if objectif:
+                block.append(
+                    f"<p><strong>Objectif de votre vidéo :</strong> "
+                    f"{escape(_normalize_editorial_french(objectif))}</p>"
+                )
+            block.append("<h3>Ce que disent les chercheurs (vidéo témoin)</h3>")
+            block.append(
+                temoin_html
+                or "<p class='meta'>Synthèse à compléter.</p>"
+            )
+            block.append("<h3>Ce que l’on attend de vous</h3>")
+            block.append(
+                "<ul>"
+                "<li>Partir de ces témoignages (sans les citer mot à mot).</li>"
+                "<li>Éclairer l’objectif ci-dessus, en langage clair.</li>"
+                "<li>Montrer / informer : quelques exemples concrets suffisent.</li>"
+                "<li>Inviter l’apprenant à faire le lien avec sa pratique de recherche.</li>"
+                "</ul>"
+            )
+            if fascicule_html:
+                block.append(fascicule_html)
+            block.append("</section>")
+            sections.append("".join(block))
+
+    contact = (
+        "<div class='doc-block' style='margin-top:22px;'>"
+        "<h3>Contact</h3>"
+        "<p>Christophe Dubois — "
+        f"<a href='mailto:{escape(TEST_MAIL_RECIPIENT)}'>{escape(TEST_MAIL_RECIPIENT)}</a><br>"
+        "Teams jusqu’au 31 juillet ; entretiens à partir du 24 août "
+        f"(copie possible : {escape(REVIEW_MAIL_RECIPIENT)}).</p>"
+        "<p class='meta'>Un guide détaillé existe aussi (scripts, transcript témoin, "
+        "vue d’ensemble). Demandez-le si vous en avez besoin — "
+        "cette fiche suffit pour démarrer.</p>"
+        "</div>"
+    )
+
+    return (
+        "<html><head><meta charset='utf-8'>"
+        "<style>"
+        "body{font-family:Aptos,Segoe UI,Arial,sans-serif;font-size:12pt;line-height:1.5;}"
+        "h1{font-size:18pt;margin-bottom:8px;}"
+        "h2{font-size:14pt;margin:0 0 8px;}"
+        "h3{font-size:12.5pt;margin:14px 0 6px;}"
+        ".doc-block{border:1px solid #dbe2ea;border-radius:8px;padding:12px 14px;margin-bottom:14px;}"
+        ".brief-block{background:#f8fafc;}"
+        "ul{margin:6px 0 10px 22px;}"
+        "li{margin:0 0 6px 0;}"
+        "p{margin:0 0 8px 0;}"
+        ".meta{color:#64748b;font-size:10.5pt;}"
+        ".brief-fascicule{background:#f0fdf4;padding:8px;border-left:3px solid #86efac;border-radius:4px;}"
+        "</style></head><body>"
+        f"<h1>Fiche simple — {escape(nom)}</h1>"
+        "<p class='meta'>MOOC « L'Esprit d'innover » — ce qu’on vous demande, en direct.</p>"
+        + "".join(sections)
+        + contact
+        + "</body></html>"
+    )
 
 
 def export_scripts_expertise_plaintext(capsule_data: dict) -> str:
@@ -10606,18 +10809,26 @@ def build_mails_experts_pages(
     for expert in experts_attendues:
         page_name = f"mail_videos_attendues_{expert['slug']}.html"
         doc_name = f"guide_videos_attendues_{expert['slug']}.doc"
+        simple_doc_name = f"guide_videos_attendues_simple_{expert['slug']}.doc"
         mail_txt_name = f"mail_videos_attendues_{expert['slug']}.txt"
         expected.add(page_name)
         expected_docs.add(doc_name)
+        expected_docs.add(simple_doc_name)
         expected_mail_txt.add(mail_txt_name)
 
-        subject, mail_text = _compose_videos_attendues_mail(expert, page_name)
+        subject, mail_text = _compose_videos_attendues_mail(
+            expert, page_name, simple_doc_name=simple_doc_name
+        )
         write_text(SITE / mail_txt_name, mail_text)
         write_text(
             SITE / doc_name,
             _guide_videos_attendues_doc_html(
                 expert, grouped_tb, rows_by_code, affectations, by_id
             ),
+        )
+        write_text(
+            SITE / simple_doc_name,
+            _guide_videos_attendues_simple_doc_html(expert),
         )
         send_href = _mailto_href(TEST_MAIL_RECIPIENT, subject, mail_text)
         editorial_html = _videos_attendues_editorial_web_html(
@@ -10654,14 +10865,16 @@ def build_mails_experts_pages(
             f"<p><a class='btn' href='{escape(send_href)}'>Mail à envoyer</a> "
             f"<a class='btn' href='{escape(mail_txt_name)}' download>Exporter le mail (.txt)</a></p>"
             f"<pre class='script mail-ready'>{escape(mail_text)}</pre>"
-            "<h2>Document éditorial</h2>"
-            f"<p><a class='btn' href='{escape(doc_name)}' download>Exporter le guide éditorial (Word)</a> "
-            f"<a class='btn' href='{escape(doc_name)}' target='_blank' rel='noopener'>Ouvrir le guide (Word)</a></p>"
-            f"<p class='meta'>Le document ouvre sur le mode d'emploi (vidéo témoin / vidéo expertise) "
-            f"et les coordonnées de contact, puis le sommaire. Pour chaque vidéo témoin : "
-            f"vidéos expertise associées, synthèse des témoignages, proposition de cadrage, "
-            f"proposition de script, script final. "
-            f"La vue d'ensemble de la sélection finale figure en fin de document.</p>"
+            "<h2>Pièce jointe principale — fiche simple</h2>"
+            f"<p><a class='btn' href='{escape(simple_doc_name)}' download>Exporter la fiche simple (Word)</a> "
+            f"<a class='btn' href='{escape(simple_doc_name)}' target='_blank' rel='noopener'>Ouvrir la fiche simple</a></p>"
+            "<p class='meta'>1–2 pages : objectif, ce que disent les chercheurs, ce qu’on attend. "
+            "À joindre en priorité au mail.</p>"
+            "<h2>Guide détaillé (optionnel)</h2>"
+            f"<p><a class='btn' href='{escape(doc_name)}' download>Exporter le guide détaillé (Word)</a> "
+            f"<a class='btn' href='{escape(doc_name)}' target='_blank' rel='noopener'>Ouvrir le guide détaillé</a></p>"
+            f"<p class='meta'>Version complète (scripts, transcript témoin, vue d’ensemble) — "
+            f"sur demande ou en second fichier, pas en PJ unique.</p>"
             "<div class='editorial-preview'>"
             f"{editorial_html}"
             "</div>"

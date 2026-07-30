@@ -2,12 +2,12 @@ Objet : MOOC L'Esprit d'innover — vos vidéos expertise (Pascal Corbel)
 
 Bonjour Pascal,
 
-Dans le cadre du MOOC « L'Esprit d'innover », je vous confirme le périmètre sur lequel vous êtes attendu(e) (Université Paris-Saclay).
+Dans le cadre du MOOC « L'Esprit d'innover », je vous confirme votre intervention (Université Paris-Saclay).
 
-Rappel — comment fonctionne le MOOC
-Une vidéo témoin (parole croisée de chercheurs) sert de prétexte pédagogique : elle ouvre les notions que vous éclairerez ensuite dans la ou les vidéos expertise. Vous êtes le ou la référent·e qui met ces notions en lumière. Le registre est celui de la sensibilisation : on montre et on informe, plus qu’on ne forme.
+En deux mots
+Les apprenants voient d’abord une vidéo témoin (parole de chercheurs). Ensuite, votre vidéo expertise éclaire une notion précise. Registre : sensibilisation (montrer / informer), pas une formation technique.
 
-Ce qui vous est demandé (pour chaque vidéo expertise)
+Ce que l’on vous demande
 - Vidéo Expert 16 — Cartographier les competences nécessaires
   Liée à : Vidéo témoin 9 — PARTENARIATS ET POSTURE : CONSTRUIRE UNE ÉQUIPE
   Objectif à atteindre : Complémentarité, recrutement, rôle du CEO, du CSO et du CTO, et criteres humains.
@@ -20,13 +20,16 @@ Ce qui vous est demandé (pour chaque vidéo expertise)
   Liée à : Vidéo témoin 11 — EVOLUTION DANS LE MÉTIER DU CHERCHEUR.EUSE
   Objectif à atteindre : Incertitude, essais, erreurs, pivot et progression plutot que reussite lineaire. Focaliser le discours sur les leviers existants pour vaincre les freins.
 
-Format attendu
-- Durée : environ 5 minutes (± 2 min)
-- Volume oral : environ 700 à 900 mots max, pour un débit de parole posé
-- Livrable utile : un script pour le prompteur, a minima 15 jours avant le tournage (cible 1er septembre)
+Format
+- Environ 5 minutes (± 2 min)
+- Script prompteur avant le tournage (on calera le délai avec vous)
 
-Le guide éditorial joint / en ligne est un guide d’appui (contexte des témoignages, proposition de cadrage, piste de script, contacts). Il ne se substitue pas à votre expertise : ajustez, complétez ou recadrez selon votre jugement.
-- Guide en ligne : mail_videos_attendues_pascal-corbel.html
+Pièce jointe
+Une fiche simple (1 à 2 pages) : objectif, ce que disent les chercheurs, et ce que l’on attend de vous. Ce n’est qu’un appui : libre à vous d’ajuster.
+- Fiche simple jointe : guide_videos_attendues_simple_pascal-corbel.doc
+- Page en ligne (si besoin) : mail_videos_attendues_pascal-corbel.html
+
+Pour toute question, un entretien Teams est possible (à partir du 24 août).
 
 Bien cordialement,
 Christophe Dubois
