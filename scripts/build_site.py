@@ -3099,59 +3099,49 @@ def _list_concepts_oral(concepts: list[str]) -> str:
     return f"{', '.join(labeled[:-1])} et {labeled[-1]}"
 
 
-def _build_script_expertise_projete(
-    orientation: dict,
-    video: dict | None = None,
-) -> tuple[str, int]:
-    """
-    Script oral d'expertise (450–800 mots) : l'expert s'adresse aux apprenants.
-    Ton naturel, francais correct (sujets, determinants, accords).
-    Hypothese pedagogique : la video temoin a deja ete vue ; on rappelle,
-    on ne invite pas a reecouter / revoir.
-    """
-    code = orientation.get("code") or (video or {}).get("code", "")
-    titre = orientation.get("titre") or (video or {}).get("titre", "")
-    concepts = [c for c in orientation.get("concepts", []) if c]
-    introduction = (orientation.get("introduction") or "").strip()
-    guides = _orientation_guides(orientation)
-    descriptif = ((video or {}).get("descriptif") or "").strip()
-    label = _label_video_expert(code)
+def _script_variant_seed(code: str, variant_index: int = 0) -> int:
+    """Graine stable pour varier le style d'un script expertise."""
+    return (sum(ord(c) for c in (code or "E")) * 31 + int(variant_index) * 17) % 997
 
-    prenoms = []
-    for guide in guides:
-        name = (guide.get("chercheur") or "").strip()
-        if name:
-            p = _chercheur_prenom(name)
-            if p and p not in prenoms:
-                prenoms.append(p)
+
+def _voix_phrase_from_prenoms(prenoms: list[str]) -> str:
     if len(prenoms) >= 2:
-        voix_phrase = f"{', '.join(prenoms[:-1])} et {prenoms[-1]}"
-    elif prenoms:
-        voix_phrase = prenoms[0]
-    else:
-        voix_phrase = ""
+        return f"{', '.join(prenoms[:-1])} et {prenoms[-1]}"
+    if prenoms:
+        return prenoms[0]
+    return ""
 
-    paragraphs: list[str] = []
 
-    open_bits = ["Bonjour."]
-    if voix_phrase:
-        open_bits.append(
-            f"Vous avez déjà vu la vidéo témoin. Les parcours de {voix_phrase} "
-            f"ne sont pas là pour illustrer une théorie abstraite."
-        )
-    else:
-        open_bits.append(
-            "Vous avez déjà vu la vidéo témoin. Ces parcours "
-            "ne sont pas là pour illustrer une théorie abstraite."
-        )
-    open_bits.append(
-        "En effet, ils mettent le doigt sur un moment critique du parcours d'innovation."
-    )
-    if titre:
-        titre_oral = titre[0].lower() + titre[1:] if titre[:1].isupper() else titre
-        open_bits.append(
-            f"Et c'est précisément de cela que je voudrais vous parler : {titre_oral}."
-        )
+def _script_expertise_open_paragraph(
+    *,
+    titre: str,
+    titre_oral: str,
+    introduction: str,
+    descriptif: str,
+    guides: list[dict],
+    prenoms: list[str],
+    voix_phrase: str,
+    variant_index: int,
+    sibling_count: int,
+    seed: int,
+) -> str:
+    """Ouverture variée : évite le même modèle pour chaque vidéo expertise."""
+    q0 = ""
+    if guides and guides[0].get("question_apprenant"):
+        q0 = guides[0]["question_apprenant"].strip().rstrip("?").rstrip()
+    first_prenom = prenoms[0] if prenoms else ""
+    first_hook = ""
+    if guides:
+        g0 = guides[0]
+        chercheur = (g0.get("chercheur") or "").strip()
+        brut = _strip_chercheur_prefix((g0.get("dans_le_temoin") or "").strip(), chercheur)
+        if brut:
+            first_hook = brut
+            if len(first_hook) > 160:
+                cut = first_hook[:157].rsplit(" ", 1)[0]
+                first_hook = cut.rstrip(" ,;") + "…"
+
+    intro_clean = ""
     if introduction:
         intro = introduction
         intro = re.sub(r"\bLa chorale T\d+\b", "Ces temoignages", intro, flags=re.I)
@@ -3164,58 +3154,310 @@ def _build_script_expertise_projete(
             intro,
         )
         intro = re.sub(r"\b\(JJG,\s*MUR,\s*SYL,\s*YAN\)", "", intro)
-        intro = re.sub(r"\s{2,}", " ", intro).strip()
-        open_bits.append(_ensure_period(intro))
-    open_bits.append(
-        "Avant d'aller plus loin, quelques questions de terrain peuvent aider — "
-        "pas des questions savantes."
-    )
-    if guides and guides[0].get("question_apprenant"):
-        q0 = guides[0]["question_apprenant"].strip().rstrip("?").rstrip()
-        open_bits.append(f"Par exemple : {q0} ?")
-    else:
-        open_bits.append(
-            "Par exemple : à quel moment parler de son résultat, "
-            "à qui, et avec quelles conséquences ?"
-        )
-    paragraphs.append(" ".join(open_bits))
+        intro_clean = re.sub(r"\s{2,}", " ", intro).strip()
 
-    teach = ["Restons un instant sur l'enjeu."]
-    if titre:
-        teach.append(
-            f"Quand on dit « {titre} », on ne parle pas d'un formalisme lointain."
-        )
-    if descriptif:
-        parts = [p.strip() for p in re.split(r"[,·;]", descriptif) if p.strip()]
-        if len(parts) >= 2 and all(len(p.split()) <= 4 for p in parts):
-            teach.append(
-                f"On parle de situations concrètes : {_list_concepts_oral(parts)}."
+    # Quand plusieurs vidéos expertise pour le même intervenant : forcer des familles distinctes.
+    if sibling_count > 1:
+        family = variant_index % 5
+    else:
+        family = seed % 5
+
+    bits: list[str] = []
+
+    if family == 0:
+        # Accroche directe sur l'objectif.
+        bits.append("Bonjour.")
+        if titre_oral:
+            bits.append(
+                f"Je voudrais m'arrêter sur un geste précis : {titre_oral}."
+            )
+        if first_hook and first_prenom:
+            bits.append(
+                f"Dans la vidéo témoin, {first_prenom} en donne déjà le goût : "
+                f"{first_hook[0].lower() + first_hook[1:] if first_hook[:1].isupper() else first_hook}"
+            )
+            if not first_hook.endswith((".", "!", "?", "…")):
+                bits[-1] = bits[-1].rstrip() + "."
+        elif voix_phrase:
+            bits.append(
+                f"La chorale que vous avez vue — notamment {voix_phrase} — "
+                "en montre la portée concrète."
             )
         else:
-            teach.append(f"On parle de situations concrètes : {descriptif.rstrip('.')}.")
-    if concepts:
-        teach.append(
-            f"Quelques notions utiles ici : {_list_concepts_oral(concepts)}. "
-            f"Derrière ces mots, il y a souvent un geste : anticiper avant d'agir, "
-            f"protéger avant de communiquer, préparer avant de rencontrer."
-        )
-    teach.append(
-        "Les chercheurs que vous avez déjà entendus ne livrent pas une checklist. "
-        "Ils montrent, chacun à sa manière, un moment où une question se pose "
-        "— avant qu'il ne soit trop tard."
-    )
-    paragraphs.append(" ".join(teach))
+            bits.append("La chorale que vous avez vue en montre la portée concrète.")
+        if intro_clean:
+            bits.append(_ensure_period(intro_clean))
+        if q0:
+            bits.append(f"Une question pour démarrer : {q0} ?")
 
-    if guides:
-        # Rappels (pas invitation à réécouter / revoir la vidéo témoin).
-        connector_templates = [
+    elif family == 1:
+        # Ouverture par question.
+        bits.append("Bonjour.")
+        if q0:
+            bits.append(f"{q0} ?")
+        else:
+            bits.append(
+                "À quel moment un résultat de recherche cesse-t-il d'être seulement "
+                "scientifique pour devenir un enjeu de transfert ?"
+            )
+        if titre_oral:
+            bits.append(
+                f"C'est autour de cette question que je voudrais travailler : {titre_oral}."
+            )
+        if descriptif:
+            bits.append(_ensure_period(descriptif))
+        elif intro_clean:
+            bits.append(_ensure_period(intro_clean))
+        if first_prenom:
+            bits.append(
+                f"Je m'appuierai sur ce que {first_prenom} "
+                f"{'et les autres chercheurs ' if len(prenoms) > 1 else ''}"
+                "ont déjà partagé — en rappel, sans revenir à la vidéo."
+            )
+
+    elif family == 2:
+        # Entrée par une voix, puis focale.
+        bits.append("Bonjour.")
+        if first_prenom and first_hook:
+            bits.append(
+                f"Souvenez-vous de {first_prenom} : "
+                f"{_ensure_oral_subject(first_hook, guides[0].get('chercheur') or first_prenom)}"
+            )
+        elif first_prenom:
+            bits.append(
+                f"Souvenez-vous de ce que {first_prenom} a partagé dans la chorale."
+            )
+        else:
+            bits.append("Souvenez-vous de ce que la chorale a déjà mis en lumière.")
+        if titre_oral:
+            bits.append(
+                f"À partir de là, je voudrais éclairer {titre_oral}."
+            )
+        if intro_clean:
+            bits.append(_ensure_period(intro_clean))
+        if q0 and seed % 2 == 0:
+            bits.append(f"Gardez cette question en tête : {q0} ?")
+
+    elif family == 3:
+        # Focale « autre angle » (surtout utile en sibling).
+        bits.append("Bonjour.")
+        if sibling_count > 1 and variant_index > 0:
+            bits.append(
+                "Même séquence témoin, autre focale."
+            )
+            if titre_oral:
+                bits.append(f"Cette fois, le fil est : {titre_oral}.")
+        else:
+            if titre_oral:
+                bits.append(
+                    f"Le fil de cette intervention, c'est {titre_oral}."
+                )
+            bits.append(
+                "Je ne vais pas ressasser la chorale : je m'en sers comme point d'appui."
+            )
+        if descriptif:
+            bits.append(_ensure_period(f"Concrètement : {descriptif}"))
+        elif intro_clean:
+            bits.append(_ensure_period(intro_clean))
+        if voix_phrase and seed % 2:
+            bits.append(
+                f"Les parcours de {voix_phrase} restent en arrière-plan, comme repères."
+            )
+        if q0:
+            bits.append(f"Pour vous situer : {q0} ?")
+
+    else:
+        # Entrée conceptuelle / pragmatique.
+        bits.append("Bonjour.")
+        if titre:
+            bits.append(
+                f"Quand on parle de « {titre} », on parle rarement d'un formalisme. "
+                "On parle d'un moment où un choix change la suite."
+            )
+        if intro_clean:
+            bits.append(_ensure_period(intro_clean))
+        elif descriptif:
+            bits.append(_ensure_period(descriptif))
+        if first_prenom and len(prenoms) >= 2:
+            bits.append(
+                f"La chorale le montre déjà — de {first_prenom} à {prenoms[-1]} — "
+                "chacun à sa manière."
+            )
+        elif voix_phrase:
+            bits.append(
+                f"La chorale le montre déjà, notamment avec {voix_phrase}."
+            )
+        if q0:
+            bits.append(f"Je vous propose de garder ceci en ligne de mire : {q0} ?")
+
+    return " ".join(b for b in bits if b and str(b).strip())
+
+
+def _script_expertise_connector_bank(seed: int) -> list[str]:
+    banks = [
+        [
             "Partons d'abord de ce que {p} a partagé.",
             "Appuyons-nous ensuite sur ce que {p} a dit.",
             "Retenons aussi ce que {p} a mis en lumière.",
             "Autre situation, celle de {p}.",
             "Et aussi ce que {p} a souligné.",
-        ]
-        for index, guide in enumerate(guides):
+        ],
+        [
+            "Premier repère : {p}.",
+            "Deuxième repère : {p}.",
+            "Troisième angle, avec {p}.",
+            "Puis {p}.",
+            "Enfin {p}.",
+        ],
+        [
+            "Ce que {p} a raconté peut servir de point de départ.",
+            "Chez {p}, le même type de moment prend une autre forme.",
+            "{p} ajoute une nuance utile.",
+            "Le cas de {p} pousse un cran plus loin.",
+            "Et {p} ferme la boucle.",
+        ],
+        [
+            "Je m'appuie d'abord sur {p}.",
+            "Je croise ensuite avec {p}.",
+            "Je retiens aussi {p}.",
+            "Je note le cas de {p}.",
+            "Je termine ce tour avec {p}.",
+        ],
+    ]
+    return banks[seed % len(banks)]
+
+
+def _script_expertise_bridge(seed: int, angle: str) -> str:
+    bridges = [
+        (
+            f"Son propos, sur {_form_angle_oral(angle)}, reste éclairant."
+            if angle
+            else "Son propos reste éclairant."
+        ),
+        (
+            f"Là, sur {_form_angle_oral(angle)}, quelque chose d'utile apparaît."
+            if angle
+            else "Là, quelque chose d'utile apparaît."
+        ),
+        (
+            f"Ce passage — {_form_angle_oral(angle)} — mérite qu'on s'y arrête."
+            if angle
+            else "Ce passage mérite qu'on s'y arrête."
+        ),
+        (
+            f"Autrement dit, autour de {_form_angle_oral(angle)} :"
+            if angle
+            else "Autrement dit :"
+        ),
+    ]
+    return bridges[seed % len(bridges)]
+
+
+def _build_script_expertise_projete(
+    orientation: dict,
+    video: dict | None = None,
+    *,
+    variant_index: int = 0,
+    sibling_count: int = 1,
+) -> tuple[str, int]:
+    """
+    Script oral d'expertise (450–800 mots) : l'expert s'adresse aux apprenants.
+    Ton naturel ; video temoin deja vue (rappel, pas reecoute).
+    variant_index / sibling_count diversifient le modele quand plusieurs
+    videos expertise sont proposees au meme intervenant.
+    """
+    code = orientation.get("code") or (video or {}).get("code", "")
+    titre = orientation.get("titre") or (video or {}).get("titre", "")
+    concepts = [c for c in orientation.get("concepts", []) if c]
+    introduction = (orientation.get("introduction") or "").strip()
+    guides = _orientation_guides(orientation)
+    descriptif = ((video or {}).get("descriptif") or "").strip()
+    label = _label_video_expert(code)
+    seed = _script_variant_seed(code, variant_index)
+
+    prenoms = []
+    for guide in guides:
+        name = (guide.get("chercheur") or "").strip()
+        if name:
+            p = _chercheur_prenom(name)
+            if p and p not in prenoms:
+                prenoms.append(p)
+    voix_phrase = _voix_phrase_from_prenoms(prenoms)
+    titre_oral = ""
+    if titre:
+        titre_oral = titre[0].lower() + titre[1:] if titre[:1].isupper() else titre
+
+    paragraphs: list[str] = [
+        _script_expertise_open_paragraph(
+            titre=titre,
+            titre_oral=titre_oral,
+            introduction=introduction,
+            descriptif=descriptif,
+            guides=guides,
+            prenoms=prenoms,
+            voix_phrase=voix_phrase,
+            variant_index=variant_index,
+            sibling_count=sibling_count,
+            seed=seed,
+        )
+    ]
+
+    # Paragraphe « enjeu » : parfois court, parfois plus développé, parfois omis
+    # si l'ouverture a déjà porté l'objectif (surtout siblings).
+    teach_mode = (seed + variant_index) % 3
+    if not (sibling_count > 1 and variant_index > 0 and teach_mode == 2):
+        teach: list[str] = []
+        if teach_mode == 0:
+            teach.append("Restons un instant sur l'enjeu.")
+        elif teach_mode == 1:
+            teach.append("Précisons le terrain.")
+        else:
+            teach.append("Avant d'entrer dans les cas, un mot de cadrage.")
+        if titre and teach_mode != 1:
+            teach.append(
+                f"Quand on dit « {titre} », on ne parle pas d'un formalisme lointain."
+            )
+        if descriptif and teach_mode != 0:
+            parts = [p.strip() for p in re.split(r"[,·;]", descriptif) if p.strip()]
+            if len(parts) >= 2 and all(len(p.split()) <= 4 for p in parts):
+                teach.append(
+                    f"On parle de situations concrètes : {_list_concepts_oral(parts)}."
+                )
+            else:
+                teach.append(
+                    f"On parle de situations concrètes : {descriptif.rstrip('.')}."
+                )
+        if concepts:
+            if teach_mode == 2:
+                teach.append(
+                    f"Les notions qui aident ici : {_list_concepts_oral(concepts)}."
+                )
+            else:
+                teach.append(
+                    f"Quelques notions utiles : {_list_concepts_oral(concepts)}. "
+                    f"Derrière ces mots, il y a souvent un geste : anticiper avant d'agir, "
+                    f"protéger avant de communiquer, préparer avant de rencontrer."
+                )
+        if teach_mode == 0:
+            teach.append(
+                "Les chercheurs déjà entendus ne livrent pas une checklist : "
+                "ils rendent visible un moment où une question se pose."
+            )
+        elif teach_mode == 1:
+            teach.append(
+                "Je m'appuie sur leurs situations, sans les rejouer scène par scène."
+            )
+        paragraphs.append(" ".join(teach))
+
+    if guides:
+        # Ordre des guides : rotation légère pour siblings / seed (stable).
+        ordered_guides = list(guides)
+        if len(ordered_guides) > 1 and (sibling_count > 1 or seed % 2):
+            rot = (seed + variant_index) % len(ordered_guides)
+            ordered_guides = ordered_guides[rot:] + ordered_guides[:rot]
+
+        connector_templates = _script_expertise_connector_bank(seed + variant_index)
+        for index, guide in enumerate(ordered_guides):
             chercheur = (guide.get("chercheur") or "un chercheur").strip()
             prenom = _chercheur_prenom(chercheur)
             angle = (guide.get("origine") or guide.get("angle") or "").strip()
@@ -3239,13 +3481,12 @@ def _build_script_expertise_projete(
             if index < len(connector_templates):
                 block = [connector_templates[index].format(p=prenom)]
             else:
-                block = [f"Retenons encore ce que {prenom} a partagé."]
-            if angle:
-                block.append(
-                    f"Son propos, sur {_form_angle_oral(angle)}, reste révélateur."
-                )
-            else:
-                block.append("Son propos reste révélateur.")
+                block = [f"Autre repère, avec {prenom}."]
+            # Ne pas coller le même pont « Son propos… » à chaque voix.
+            if index == 0 or (seed + index) % 3 != 0:
+                block.append(_script_expertise_bridge(seed + index, angle))
+            elif angle:
+                block.append(f"Angle : {_form_angle_oral(angle)}.")
 
             if dans_temoin:
                 block.append("En effet, " + _ensure_oral_subject(dans_temoin, chercheur))
@@ -3253,18 +3494,23 @@ def _build_script_expertise_projete(
                 block.append(_ensure_period(brut_temoin))
 
             if travail:
+                if (seed + index) % 2 == 0:
+                    block.append(
+                        "Ce que cela ouvre, ce n'est pas seulement l'anecdote : "
+                        "c'est une lecture possible du parcours. "
+                        + _oralize_instruction(travail)
+                    )
+                else:
+                    block.append(
+                        "Pour l'expertise, on peut en tirer ceci. "
+                        + _oralize_instruction(travail)
+                    )
+            elif titre:
                 block.append(
-                    "Ce que cela ouvre, ce n'est pas seulement l'anecdote : "
-                    "c'est une lecture possible du parcours. "
-                    + _oralize_instruction(travail)
-                )
-            else:
-                block.append(
-                    "Ce rappel peut servir de prétexte pour éclairer "
-                    f"« {titre or 'cette notion'} »."
+                    f"Ce rappel aide à éclairer « {titre} »."
                 )
 
-            if concepts_g:
+            if concepts_g and (seed + index) % 3 != 1:
                 labeled = [_a_plus_article(_fr_label_with_article(c)) for c in concepts_g if c]
                 if len(labeled) == 1:
                     touch = labeled[0]
@@ -3281,54 +3527,100 @@ def _build_script_expertise_projete(
                     err = "On peut éviter de " + err[7:]
                 block.append(_ensure_period(err))
 
-            if question:
+            if question and (index == len(ordered_guides) - 1 or (seed + index) % 2 == 0):
                 q = question.strip().rstrip("?").rstrip()
-                block.append(
-                    "Une question utile, pour faire le lien avec son propre projet : "
-                    f"{q} ?"
-                )
+                if (seed + index) % 2 == 0:
+                    block.append(
+                        "Une question utile, pour faire le lien avec son propre projet : "
+                        f"{q} ?"
+                    )
+                else:
+                    block.append(f"À vous : {q} ?")
             paragraphs.append(" ".join(block))
     else:
-        paragraphs.append(
-            "Même sans reprendre voix par voix, "
-            f"ce que la vidéo témoin a déjà montré ouvre la porte à "
-            f"{titre or 'un geste professionnel clé'}. "
-            "Chacun pourra y reconnaître, éventuellement, un moment équivalent dans son parcours."
-        )
+        no_guide = [
+            (
+                "Même sans reprendre voix par voix, "
+                f"ce que la vidéo témoin a déjà montré ouvre la porte à "
+                f"{titre or 'un geste professionnel clé'}."
+            ),
+            (
+                f"Sans dérouler chaque voix, le fil reste {titre_oral or 'ce geste'}. "
+                "Chacun pourra y reconnaître un moment équivalent dans son parcours."
+            ),
+            (
+                f"Je vais donc aller droit au geste : {titre_oral or 'l’essentiel à retenir'}."
+            ),
+        ]
+        paragraphs.append(no_guide[seed % len(no_guide)])
 
-    practice = ["Venons-en à vous."]
+    practice_openers = [
+        "Venons-en à vous.",
+        "Passons à votre situation.",
+        "Et maintenant, côté projet.",
+        "Comment le faire vivre concrètement ?",
+    ]
+    practice = [practice_openers[(seed + variant_index) % len(practice_openers)]]
     if titre:
-        practice.append(
-            f"Si demain « {titre} » entre en jeu dans votre projet, "
-            "par où pourrait-on commencer ?"
-        )
-    practice.append(
-        "Un point d'entrée possible : nommer la situation à risque, "
-        "puis se demander à qui parler, avec quoi arriver, "
-        "et ce qui ne doit pas sortir trop tôt."
-    )
-    if concepts:
+        if (seed + variant_index) % 2 == 0:
+            practice.append(
+                f"Si demain « {titre} » entre en jeu dans votre projet, "
+                "par où pourrait-on commencer ?"
+            )
+        else:
+            practice.append(
+                f"Supposons que « {titre} » devienne demain un enjeu pour vous : "
+                "quelle serait la première décision utile ?"
+            )
+    practice_actions = [
+        (
+            "Un point d'entrée possible : nommer la situation à risque, "
+            "puis se demander à qui parler, avec quoi arriver, "
+            "et ce qui ne doit pas sortir trop tôt."
+        ),
+        (
+            "Essayez ceci : décrire en une phrase le moment critique, "
+            "nommer l'interlocuteur pertinent, puis ce qu'il ne faut pas dire trop tôt."
+        ),
+        (
+            "Trois questions suffisent souvent : où est le risque, qui doit être dans la boucle, "
+            "quelle information garder encore ?"
+        ),
+    ]
+    practice.append(practice_actions[(seed + variant_index) % len(practice_actions)])
+    if concepts and (seed % 2 == 0):
         practice.append(
             f"Quelques repères à garder sous les yeux : {_list_concepts_oral(concepts)}."
         )
-    # Les consignes d'orientation sont pour l'expert (fiche), pas du texte oral.
-    practice.append(
+    practice_closers = [
         "L'idée n'est pas de recopier les chercheurs : "
-        "c'est de reconnaître, le cas échéant, le même type de moment critique."
-    )
+        "c'est de reconnaître, le cas échéant, le même type de moment critique.",
+        "Inutile de calquer leur parcours : repérer le même type de bascule suffit.",
+        "Ce qui compte, c'est le transfert vers votre projet, pas la citation.",
+    ]
+    practice.append(practice_closers[(seed + variant_index) % len(practice_closers)])
     paragraphs.append(" ".join(practice))
 
-    close = ["Pour conclure, je voudrais laisser une chose simple."]
-    if titre:
-        titre_oral = titre[0].lower() + titre[1:] if titre[:1].isupper() else titre
+    close_openers = [
+        "Pour conclure, je voudrais laisser une chose simple.",
+        "Je m'arrête sur un réflexe.",
+        "En résumé, une chose à emporter.",
+        "Avant de terminer, un point d'appui.",
+    ]
+    close = [close_openers[(seed + variant_index) % len(close_openers)]]
+    if titre_oral:
         close.append(
             "Avant une décision irréversible — publication, communication, "
             f"dépôt, rencontre — un réflexe utile reste : {titre_oral}."
         )
-    close.append(
-        "La vidéo témoin en donne le goût. À chacun d'en faire, ou non, une pratique."
-    )
-    if guides and any(g.get("question_apprenant") for g in guides):
+    close_tails = [
+        "La chorale en donne le goût. À chacun d'en faire, ou non, une pratique.",
+        "Vous avez déjà vu ce moment chez d'autres : à vous de le reconnaître chez vous.",
+        "Le reste est affaire de jugement, de timing, et de partenaires.",
+        "Gardez le geste, pas le récit.",
+    ]
+    close.append(close_tails[(seed + variant_index) % len(close_tails)])
+    if guides and any(g.get("question_apprenant") for g in guides) and seed % 2 == 0:
         last_q = next(g["question_apprenant"] for g in guides if g.get("question_apprenant"))
         last_q = last_q.strip().rstrip("?").rstrip()
         close.append(f"Une dernière question, pour la route : {last_q} ?")
@@ -3427,18 +3719,26 @@ def _build_script_expertise_projete(
 def _build_script_expertise_plan(
     orientation: dict,
     video: dict | None = None,
+    *,
+    variant_index: int = 0,
 ) -> list[str]:
     """Plan en puces du script expertise : etapes + notions traitees."""
     titre = orientation.get("titre") or (video or {}).get("titre", "")
     concepts = [c for c in orientation.get("concepts", []) if c]
     guides = _orientation_guides(orientation)
     descriptif = ((video or {}).get("descriptif") or "").strip()
+    code = orientation.get("code") or (video or {}).get("code", "")
+    seed = _script_variant_seed(code, variant_index)
 
     plan: list[str] = []
-    if titre:
-        plan.append(f"Ouverture — objectif : {titre}")
-    else:
-        plan.append("Ouverture — ancrage sur la vidéo témoin déjà vue")
+    open_labels = [
+        f"Ouverture — objectif : {titre}" if titre else "Ouverture — ancrage sur la vidéo témoin déjà vue",
+        f"Ouverture — question de terrain puis {titre}" if titre else "Ouverture — question de terrain",
+        f"Ouverture — rappel d'une voix puis {titre}" if titre else "Ouverture — rappel d'une voix",
+        f"Ouverture — autre focale : {titre}" if titre else "Ouverture — autre focale",
+        f"Ouverture — cadrage de « {titre} »" if titre else "Ouverture — cadrage",
+    ]
+    plan.append(open_labels[seed % len(open_labels)])
 
     if concepts:
         plan.append(f"Notions cadres : {_list_concepts_oral(concepts)}")
@@ -3448,7 +3748,11 @@ def _build_script_expertise_plan(
             plan.append(f"Notions cadres : {_list_concepts_oral(parts)}")
 
     if guides:
-        for guide in guides:
+        ordered = list(guides)
+        if len(ordered) > 1 and seed % 2:
+            rot = seed % len(ordered)
+            ordered = ordered[rot:] + ordered[:rot]
+        for guide in ordered:
             chercheur = (guide.get("chercheur") or "Temoin").strip()
             prenom = _chercheur_prenom(chercheur) or chercheur
             angle = (guide.get("origine") or guide.get("angle") or "").strip()
@@ -3521,11 +3825,19 @@ def scripts_expertise_projetes_section(capsule_data: dict) -> str:
         return ""
 
     articles = []
-    for orientation, video in blocks:
+    sibling_count = len(blocks)
+    for variant_index, (orientation, video) in enumerate(blocks):
         code = orientation.get("code") or (video or {}).get("code", "")
         titre = orientation.get("titre") or (video or {}).get("titre", "")
-        script, word_count = _build_script_expertise_projete(orientation, video)
-        plan = _build_script_expertise_plan(orientation, video)
+        script, word_count = _build_script_expertise_projete(
+            orientation,
+            video,
+            variant_index=variant_index,
+            sibling_count=sibling_count,
+        )
+        plan = _build_script_expertise_plan(
+            orientation, video, variant_index=variant_index
+        )
         plan_html = "".join(f"<li>{escape(item)}</li>" for item in plan)
         in_range = SCRIPT_EXPERTISE_WORD_MIN <= word_count <= SCRIPT_EXPERTISE_WORD_MAX
         count_class = "meta" if in_range else "warn"
@@ -9593,11 +9905,18 @@ def export_scripts_expertise_plaintext(capsule_data: dict) -> str:
         SCRIPT_EXPERTISE_DISCLAIMER,
         "",
     ]
-    for orientation, video in blocks:
+    for variant_index, (orientation, video) in enumerate(blocks):
         code = orientation.get("code") or (video or {}).get("code", "")
         titre = orientation.get("titre") or (video or {}).get("titre", "")
-        script, word_count = _build_script_expertise_projete(orientation, video)
-        plan = _build_script_expertise_plan(orientation, video)
+        script, word_count = _build_script_expertise_projete(
+            orientation,
+            video,
+            variant_index=variant_index,
+            sibling_count=len(blocks),
+        )
+        plan = _build_script_expertise_plan(
+            orientation, video, variant_index=variant_index
+        )
         lines.append(f"{_display_expertise_title(code, titre)} — script projeté")
         lines.append(f"Volume : {word_count} mots")
         if plan:
