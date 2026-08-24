@@ -1,15 +1,31 @@
-Objet : MOOC L'Esprit d'innover — clarification (Arielle Santé)
+Objet : MOOC L'Esprit d'innover — clarification du livrable (Arielle Santé)
 
 Bonjour Arielle,
 
-Merci pour votre retour — et aucune inquiétude.
+Plusieurs d’entre vous nous ont fait le même retour : l’intention pédagogique se comprend, mais ce qu’il faut produire (forme, durée, rôle) restait trop flou. Voici une clarification nette — valable pour tout le monde.
 
-Le document précédemment joint était trop dense. Je vous joins désormais un guide éditorial simplifié (1 à 2 pages) : l’objectif, ce que disent les chercheurs dans la vidéo témoin, et ce que l’on attend de vous. C’est un appui, pas un texte à lire tel quel.
+1) Ce que vous produisez
+Vous avez 3 vidéos expertise distinctes à produire (donc 3 scripts, 3 prises).
+- Durée : environ 5 minutes (± 2 min) PAR vidéo — pas au total.
+- Livrable : un script pour le prompteur, puis une prise de parole filmée.
+- Registre : sensibilisation (montrer / informer), pas un cours technique.
 
-En deux mots
-Les apprenants voient d’abord une vidéo témoin (parole de chercheurs). Ensuite, vos vidéos expertise éclaire une notion précise. Registre : sensibilisation (montrer / informer), pas une formation technique.
+2) Votre rôle (et ce que ce n’est pas)
+Vous intervenez comme référent expert, APRÈS la vidéo témoin.
+Les apprenants ont déjà vu la parole croisée des chercheurs. Votre vidéo vient ensuite, seule, pour éclairer une notion.
+- Ce n’est PAS un montage où l’on découpe vos propos pour les entrelacer avec les chercheurs.
+- La chorale témoin est déjà montée de notre côté.
+- Vous pouvez parler depuis votre posture professionnelle (structure, métier, expérience) : c’est souhaité.
 
-Ce que l’on vous demande
+3) Lien avec la vidéo témoin — sans l’avoir vue ?
+Oui, c’est le point délicat. Concrètement :
+- vous partez du résumé « Ce que disent les chercheurs » (dans le guide simplifié joint) et de l’objectif de votre vidéo ;
+- vous n’avez pas à citer les chercheurs mot à mot ;
+- vous illustrez / cadrez / éclairez la notion avec vos exemples.
+Le témoin est un prétexte pédagogique : il ouvre le sujet ; vous le prolonguez.
+Si vous le souhaitez, on peut aussi vous transmettre le script final de la vidéo témoin associée (Vidéo témoin 7 — VOUS N'ÊTES PAS SEUL(E) ; Vidéo témoin 8 — FINANCEMENTS, CONCOURS ET TEMPS POUR ENTREPRENDRE ; Vidéo témoin 10 — ENRICHIR SON LANGAGE), et un entretien Teams pour le parcourir ensemble avant d’écrire.
+
+4) Votre périmètre
 - Vidéo Expert 13 — Ce que fait reellement un incubateur
   Liée à : Vidéo témoin 7 — VOUS N'ÊTES PAS SEUL(E)
   Objectif à atteindre : Coaching, réseau, formation, confrontation, équipe et préparation de la création.
@@ -22,14 +38,15 @@ Ce que l’on vous demande
   Liée à : Vidéo témoin 10 — ENRICHIR SON LANGAGE
   Objectif à atteindre : Adapter le message selon l'utilisateur, le decideur, le partenaire ou l'investisseur.
 
-Format
-- Environ 5 minutes (± 2 min) par vidéo
-- Script pour le prompteur avant le tournage — on calera un délai réaliste avec vous (le 1er septembre n’est plus une deadline figée)
+5) Pièce jointe
+Guide éditorial simplifié (1–2 pages) : guide_editorial_simplifie_arielle-santé.doc
+(Le guide long n’est pas nécessaire pour démarrer.)
 
-Pièce jointe
-- Guide éditorial simplifié : guide_editorial_simplifie_arielle-santé.doc
+6) Timing
+On cale le délai de script et de tournage avec vous — pas de deadline figée irréaliste.
+Un point Teams est possible dès que vous êtes disponible (y compris avant le 24 août si besoin).
 
-Je vous propose un court entretien Teams pour clarifier le périmètre et caler le timing (dès votre disponibilité ; à partir du 24 août, ou début septembre si vous préférez). Indiquez-moi un créneau qui vous convient.
+Merci encore pour votre engagement — et n’hésitez pas si un point reste flou.
 
 Bien cordialement,
 Christophe Dubois
