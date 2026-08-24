@@ -510,6 +510,50 @@ tbody tr:last-child td { border-bottom: none; }
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 13px;
 }
+.script-revue-legende {
+  margin: 10px 0 0;
+  padding: 10px 12px;
+  background: #f8fafc;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 13px;
+}
+.script-hs {
+  display: inline;
+  background: #fee2e2;
+  border-bottom: 2px solid #ef4444;
+  padding: 1px 2px;
+}
+.script-hs__tag {
+  display: inline-block;
+  margin: 0 4px 0 0;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: #ef4444;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  vertical-align: baseline;
+}
+.script-rc {
+  display: inline;
+  background: #ffedd5;
+  border-bottom: 2px solid #f97316;
+  padding: 1px 2px;
+}
+.script-rc__tag {
+  display: inline-block;
+  margin: 0 4px 0 0;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: #f97316;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  vertical-align: baseline;
+}
 .brief-point {
   margin: 14px 0;
   padding: 14px 16px;
@@ -7381,6 +7425,8 @@ def _load_expert_script_revues(code: str) -> list[dict]:
                 "statut": (data.get("statut") or "PROPOSITION").strip(),
                 "expert": (data.get("expert") or "").strip(),
                 "fichier": path.name,
+                "mode_texte": (data.get("mode_texte") or "texte_propose").strip(),
+                "legende": data.get("legende") or {},
                 "demandes": [str(item).strip() for item in (data.get("demandes") or []) if str(item).strip()],
                 "texte_propose": (data.get("texte_propose") or "").strip(),
                 "mail": (data.get("mail") or "").strip(),
@@ -7522,8 +7568,71 @@ def _script_expert_recu_html(item: dict) -> str:
 """
 
 
+def _render_annotated_script_html(texte: str) -> str:
+    """Rend un script annoté [[HS:...]] / [[RC:...]] avec surlignage HTML."""
+    if not texte:
+        return ""
+
+    def _replace_hs(match: re.Match[str]) -> str:
+        meta = (match.group(1) or "").strip()
+        body = match.group(2) or ""
+        if "|" in meta:
+            codes, note = meta.split("|", 1)
+            label = f"HS · {codes.strip()}"
+            title = note.strip()
+        else:
+            label = f"HS · {meta}" if meta else "HS"
+            title = meta
+        return (
+            f'<mark class="script-hs" title="{escape(title)}">'
+            f'<span class="script-hs__tag">{escape(label)}</span>'
+            f"{escape(body)}"
+            f"</mark>"
+        )
+
+    def _replace_rc(match: re.Match[str]) -> str:
+        meta = (match.group(1) or "").strip()
+        body = match.group(2) or ""
+        label = "RC"
+        title = meta
+        if meta:
+            short = meta.split("—", 1)[0].strip()
+            label = f"RC · {short}" if short else "RC"
+        return (
+            f'<mark class="script-rc" title="{escape(title)}">'
+            f'<span class="script-rc__tag">{escape(label)}</span>'
+            f"{escape(body)}"
+            f"</mark>"
+        )
+
+    # Escape first, then reinject markers from raw via sequential replace on raw
+    # Work on raw text, escape only non-tag parts by processing with regex callbacks that escape.
+    rendered = texte
+    rendered = re.sub(
+        r"\[\[HS:([^\]]*)\]\](.*?)\[\[/HS\]\]",
+        _replace_hs,
+        rendered,
+        flags=re.DOTALL,
+    )
+    rendered = re.sub(
+        r"\[\[RC:([^\]]*)\]\](.*?)\[\[/RC\]\]",
+        _replace_rc,
+        rendered,
+        flags=re.DOTALL,
+    )
+    # Escape remaining plain text while preserving inserted HTML marks.
+    parts: list[str] = []
+    cursor = 0
+    for match in re.finditer(r'<mark class="script-(?:hs|rc)"[^>]*>.*?</mark>', rendered, flags=re.DOTALL):
+        parts.append(escape(rendered[cursor : match.start()]).replace("\n", "<br>"))
+        parts.append(match.group(0).replace("\n", "<br>"))
+        cursor = match.end()
+    parts.append(escape(rendered[cursor:]).replace("\n", "<br>"))
+    return "".join(parts)
+
+
 def _script_expert_revues_html(code: str) -> str:
-    """Blocs Revue N sous le script reçu : demandes, texte repris, mail à l'expert."""
+    """Blocs Revue N sous le script reçu : demandes, texte repris/annoté, mail à l'expert."""
     revues = _load_expert_script_revues(code)
     if not revues:
         return ""
@@ -7539,11 +7648,28 @@ def _script_expert_revues_html(code: str) -> str:
             else "<p class='meta'>Aucune demande listée.</p>"
         )
         texte = revue.get("texte_propose") or ""
-        texte_html = (
-            f"<div class='script-recu-block'>{escape(texte).replace(chr(10), '<br>')}</div>"
-            if texte
-            else "<p class='meta'>Proposition de texte à compléter.</p>"
-        )
+        mode = revue.get("mode_texte") or "texte_propose"
+        if texte and mode == "annote_hors_sujet":
+            texte_html = f"<div class='script-recu-block'>{_render_annotated_script_html(texte)}</div>"
+            texte_title = "Texte de l’expert annoté — passages hors sujet / à recadrer"
+        elif texte:
+            texte_html = (
+                f"<div class='script-recu-block'>{escape(texte).replace(chr(10), '<br>')}</div>"
+            )
+            texte_title = "Proposition de texte repris"
+        else:
+            texte_html = "<p class='meta'>Proposition de texte à compléter.</p>"
+            texte_title = "Proposition de texte repris"
+
+        legende = revue.get("legende") or {}
+        legende_html = ""
+        if legende and mode == "annote_hors_sujet":
+            items = "".join(
+                f"<li><strong>{escape(str(key))}</strong> — {escape(str(value))}</li>"
+                for key, value in legende.items()
+            )
+            legende_html = f"<div class='script-revue-legende'><ul>{items}</ul></div>"
+
         mail = revue.get("mail") or ""
         mail_html = (
             f"<h3>Mail à envoyer (Revue {numero})</h3>"
@@ -7559,7 +7685,7 @@ def _script_expert_revues_html(code: str) -> str:
             meta_bits.append(f"<span class='meta'>Date : {escape(revue['date'])}</span>")
         if revue.get("mots_estimes"):
             meta_bits.append(
-                f"<span class='meta'>~{escape(str(revue['mots_estimes']))} mots</span>"
+                f"<span class='meta'>~{escape(str(revue['mots_estimes']))} mots (script source)</span>"
             )
         parts.append(
             f"""
@@ -7568,7 +7694,8 @@ def _script_expert_revues_html(code: str) -> str:
   <p>{' · '.join(meta_bits)}</p>
   <h3>Demandes de correction / modification</h3>
   {demandes_html}
-  <h3>Proposition de texte repris</h3>
+  <h3>{escape(texte_title)}</h3>
+  {legende_html}
   {texte_html}
   {mail_html}
 </section>

@@ -465,6 +465,50 @@ tbody tr:last-child td { border-bottom: none; }
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 13px;
 }
+.script-revue-legende {
+  margin: 10px 0 0;
+  padding: 10px 12px;
+  background: #f8fafc;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 13px;
+}
+.script-hs {
+  display: inline;
+  background: #fee2e2;
+  border-bottom: 2px solid #ef4444;
+  padding: 1px 2px;
+}
+.script-hs__tag {
+  display: inline-block;
+  margin: 0 4px 0 0;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: #ef4444;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  vertical-align: baseline;
+}
+.script-rc {
+  display: inline;
+  background: #ffedd5;
+  border-bottom: 2px solid #f97316;
+  padding: 1px 2px;
+}
+.script-rc__tag {
+  display: inline-block;
+  margin: 0 4px 0 0;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: #f97316;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  vertical-align: baseline;
+}
 .brief-point {
   margin: 14px 0;
   padding: 14px 16px;
