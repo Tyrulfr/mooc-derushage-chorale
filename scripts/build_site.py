@@ -493,6 +493,23 @@ tbody tr:last-child td { border-bottom: none; }
   white-space: normal;
 }
 .script-attente-panel { border-left: 4px solid var(--warn); }
+.script-revue-panel { border-left: 4px solid #0b6e77; }
+.script-revue-demandes {
+  margin: 12px 0 0;
+  padding-left: 1.25rem;
+}
+.script-revue-demandes li { margin-bottom: 6px; }
+.script-revue-mail {
+  margin-top: 14px;
+  padding: 14px 16px;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+}
 .brief-point {
   margin: 14px 0;
   padding: 14px 16px;
@@ -7308,6 +7325,7 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
 
 VIDEOS_EXPERT_DATA = ROOT / "data" / "videos_expert"
 VIDEOS_EXPERT_SCRIPTS = VIDEOS_EXPERT_DATA / "scripts_recus"
+VIDEOS_EXPERT_REVUES = VIDEOS_EXPERT_DATA / "revues"
 
 
 def _expert_video_sort_key(code: str) -> tuple[int, int, str]:
@@ -7339,6 +7357,39 @@ def _load_expert_script_recu(code: str) -> dict:
         "fichier": "",
         "contenu": "",
     }
+
+
+def _load_expert_script_revues(code: str) -> list[dict]:
+    """Charge les revues éditoriales (reprise + mail) pour une vidéo expertise."""
+    VIDEOS_EXPERT_REVUES.mkdir(parents=True, exist_ok=True)
+    revues: list[dict] = []
+    for path in sorted(VIDEOS_EXPERT_REVUES.glob(f"{code}_revue*.json")):
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            continue
+        if not isinstance(data, dict):
+            continue
+        numero = data.get("revue")
+        if numero is None:
+            match = re.search(r"_revue(\d+)", path.stem, flags=re.IGNORECASE)
+            numero = int(match.group(1)) if match else 1
+        revues.append(
+            {
+                "numero": int(numero),
+                "date": (data.get("date") or "").strip(),
+                "statut": (data.get("statut") or "PROPOSITION").strip(),
+                "expert": (data.get("expert") or "").strip(),
+                "fichier": path.name,
+                "demandes": [str(item).strip() for item in (data.get("demandes") or []) if str(item).strip()],
+                "texte_propose": (data.get("texte_propose") or "").strip(),
+                "mail": (data.get("mail") or "").strip(),
+                "mots_estimes": data.get("mots_estimes")
+                or len(re.findall(r"[A-Za-zÀ-ÖØ-öø-ÿ0-9']+", data.get("texte_propose") or "")),
+            }
+        )
+    revues.sort(key=lambda item: item["numero"])
+    return revues
 
 
 def _inventory_videos_expert(programme_table: dict, experts_profils: dict) -> list[dict]:
@@ -7469,6 +7520,61 @@ def _script_expert_recu_html(item: dict) -> str:
   </div>
 </section>
 """
+
+
+def _script_expert_revues_html(code: str) -> str:
+    """Blocs Revue N sous le script reçu : demandes, texte repris, mail à l'expert."""
+    revues = _load_expert_script_revues(code)
+    if not revues:
+        return ""
+    parts: list[str] = []
+    for revue in revues:
+        numero = revue["numero"]
+        demandes = revue.get("demandes") or []
+        demandes_html = (
+            "<ul class='script-revue-demandes'>"
+            + "".join(f"<li>{escape(item)}</li>" for item in demandes)
+            + "</ul>"
+            if demandes
+            else "<p class='meta'>Aucune demande listée.</p>"
+        )
+        texte = revue.get("texte_propose") or ""
+        texte_html = (
+            f"<div class='script-recu-block'>{escape(texte).replace(chr(10), '<br>')}</div>"
+            if texte
+            else "<p class='meta'>Proposition de texte à compléter.</p>"
+        )
+        mail = revue.get("mail") or ""
+        mail_html = (
+            f"<h3>Mail à envoyer (Revue {numero})</h3>"
+            f"<pre class='script-revue-mail'>{escape(mail)}</pre>"
+            if mail
+            else ""
+        )
+        meta_bits = [
+            status_badge("EN_CONSTRUCTION" if revue.get("statut") == "PROPOSITION" else "VALIDEE"),
+            f"<span class='meta'>Fichier : <code>{escape(revue.get('fichier', ''))}</code></span>",
+        ]
+        if revue.get("date"):
+            meta_bits.append(f"<span class='meta'>Date : {escape(revue['date'])}</span>")
+        if revue.get("mots_estimes"):
+            meta_bits.append(
+                f"<span class='meta'>~{escape(str(revue['mots_estimes']))} mots</span>"
+            )
+        parts.append(
+            f"""
+<section class="methodology-panel script-revue-panel">
+  <h2>Revue {numero} — reprise et propositions</h2>
+  <p>{' · '.join(meta_bits)}</p>
+  <h3>Demandes de correction / modification</h3>
+  {demandes_html}
+  <h3>Proposition de texte repris</h3>
+  {texte_html}
+  {mail_html}
+</section>
+"""
+        )
+    return "\n".join(parts)
 
 
 def _write_videos_expert_xlsx(inventory: list[dict], path: Path) -> None:
@@ -9510,6 +9616,7 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
             f"Experts : {escape(item.get('experts_label', ''))}</p>"
             f"{_consignes_envoyees_expert_html(item)}"
             f"{_script_expert_recu_html(item)}"
+            f"{_script_expert_revues_html(item['code'])}"
             "<p><a class='btn btn-secondary' href='videos_expert.html'>← Retour au tableau</a> "
             f"<a class='btn btn-secondary' href='videos_expert.xlsx' download>Export XLSX</a></p>"
         )

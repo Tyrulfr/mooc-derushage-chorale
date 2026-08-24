@@ -448,6 +448,23 @@ tbody tr:last-child td { border-bottom: none; }
   white-space: normal;
 }
 .script-attente-panel { border-left: 4px solid var(--warn); }
+.script-revue-panel { border-left: 4px solid #0b6e77; }
+.script-revue-demandes {
+  margin: 12px 0 0;
+  padding-left: 1.25rem;
+}
+.script-revue-demandes li { margin-bottom: 6px; }
+.script-revue-mail {
+  margin-top: 14px;
+  padding: 14px 16px;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+}
 .brief-point {
   margin: 14px 0;
   padding: 14px 16px;
