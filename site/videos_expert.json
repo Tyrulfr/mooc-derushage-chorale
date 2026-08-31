@@ -84,8 +84,8 @@
       "temoin_label": "VIDÉO 5 : PROTECTION ET VALORISATION",
       "module": "M2",
       "experts": "Retenu : Arielle Santé, Stanislas De Lapasse",
-      "script_statut": "EN_ATTENTE",
-      "script_fichier": "",
+      "script_statut": "RECU",
+      "script_fichier": "E8.txt",
       "page": "video_expert_E8.html"
     },
     {
@@ -95,8 +95,8 @@
       "temoin_label": "VIDÉO 5 : PROTECTION ET VALORISATION",
       "module": "M2",
       "experts": "Retenu : Antoine Latreille, Stanislas De Lapasse",
-      "script_statut": "EN_ATTENTE",
-      "script_fichier": "",
+      "script_statut": "RECU",
+      "script_fichier": "E9.txt",
       "page": "video_expert_E9.html"
     },
     {
