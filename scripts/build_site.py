@@ -7677,9 +7677,54 @@ def _script_expert_recu_html(item: dict) -> str:
 """
 
 
-def _script_expert_revues_html(code: str) -> str:
+def _revue_expert_doc_name(code: str, numero: int) -> str:
+    return f"revue_{code}_{numero}.doc"
+
+
+def _revue_annotee_doc_html(item: dict, revue: dict) -> str:
+    """Word (HTML .doc) : script expert avec remarques entre parenthèses."""
+    code = item.get("code") or revue.get("code") or ""
+    numero = revue.get("numero") or 1
+    expert = revue.get("expert") or item.get("experts_label") or ""
+    titre_video = _label_video_expert(code)
+    objectif = _normalize_editorial_french(item.get("titre") or "")
+    texte = revue.get("texte_propose") or ""
+    body = escape(texte).replace("\n", "<br>") if texte else "<p>Texte annoté à compléter.</p>"
+    meta_bits = []
+    if expert:
+        meta_bits.append(f"Expert : {escape(expert)}")
+    if revue.get("date"):
+        meta_bits.append(f"Date : {escape(revue['date'])}")
+    if revue.get("mots_estimes"):
+        meta_bits.append(f"~{escape(str(revue['mots_estimes']))} mots")
+    meta = " · ".join(meta_bits)
+    return (
+        "<html><head><meta charset='utf-8'>"
+        "<style>"
+        "body{font-family:Aptos,Segoe UI,Arial,sans-serif;font-size:12pt;line-height:1.5;}"
+        "h1{font-size:18pt;margin-bottom:8px;}"
+        "p{margin:0 0 8px 0;}"
+        ".meta{color:#64748b;font-size:10.5pt;}"
+        ".legende{background:#f8fafc;border:1px solid #dbe2ea;border-radius:8px;"
+        "padding:10px 12px;margin:12px 0 18px;}"
+        ".script{margin-top:12px;}"
+        "</style></head><body>"
+        f"<h1>Revue {escape(str(numero))} — {escape(titre_video)}</h1>"
+        f"<p class='meta'>{escape(objectif)}</p>"
+        + (f"<p class='meta'>{meta}</p>" if meta else "")
+        + "<div class='legende'><p><strong>Légende.</strong> "
+        "Le texte de l’expert n’est pas réécrit. "
+        "Les remarques entre parenthèses portent uniquement sur le cadrage pédagogique "
+        "(grain de la vidéo, place dans le parcours, frontière avec la vidéo suivante).</p></div>"
+        f"<div class='script'>{body}</div>"
+        "</body></html>"
+    )
+
+
+def _script_expert_revues_html(code: str, revues: list[dict] | None = None) -> str:
     """Blocs Revue N sous le script reçu : demandes, texte repris, mail à l'expert."""
-    revues = _load_expert_script_revues(code)
+    if revues is None:
+        revues = _load_expert_script_revues(code)
     if not revues:
         return ""
     parts: list[str] = []
@@ -7706,6 +7751,13 @@ def _script_expert_revues_html(code: str) -> str:
             if mail
             else ""
         )
+        doc_href = revue.get("doc_href") or _revue_expert_doc_name(code, numero)
+        export_html = (
+            f"<p><a class='btn' href='{escape(doc_href)}' download>"
+            "Exporter le texte annoté (Word)</a> "
+            f"<a class='btn btn-secondary' href='{escape(doc_href)}' "
+            "target='_blank' rel='noopener'>Ouvrir le Word</a></p>"
+        )
         meta_bits = [
             status_badge("EN_CONSTRUCTION" if revue.get("statut") == "PROPOSITION" else "VALIDEE"),
             f"<span class='meta'>Fichier : <code>{escape(revue.get('fichier', ''))}</code></span>",
@@ -7721,6 +7773,7 @@ def _script_expert_revues_html(code: str) -> str:
 <section class="methodology-panel script-revue-panel">
   <h2>Revue {numero} — reprise et propositions</h2>
   <p>{' · '.join(meta_bits)}</p>
+  {export_html}
   <h3>Demandes de correction / modification</h3>
   {demandes_html}
   <h3>Proposition de texte repris</h3>
@@ -9981,13 +10034,19 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
     for item in inventory:
         page_name = item["page_href"]
         expected.add(page_name)
+        revues = _load_expert_script_revues(item["code"])
+        for revue in revues:
+            doc_name = _revue_expert_doc_name(item["code"], revue["numero"])
+            write_text(SITE / doc_name, _revue_annotee_doc_html(item, revue))
+            expected.add(doc_name)
+            revue["doc_href"] = doc_name
         detail_body = (
             f"<p class='meta'>Module : {escape(item.get('module') or '—')} — "
             f"Capsule : <a href='{escape(item['tb_edito_href'])}'>{escape(item['capsule_code'])}</a> — "
             f"Experts : {escape(item.get('experts_label', ''))}</p>"
             f"{_consignes_envoyees_expert_html(item)}"
             f"{_script_expert_recu_html(item)}"
-            f"{_script_expert_revues_html(item['code'])}"
+            f"{_script_expert_revues_html(item['code'], revues)}"
             "<p><a class='btn btn-secondary' href='videos_expert.html'>← Retour au tableau</a> "
             f"<a class='btn btn-secondary' href='videos_expert.xlsx' download>Export XLSX</a></p>"
         )
@@ -10011,6 +10070,9 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
         )
 
     for path in SITE.glob("video_expert_*.html"):
+        if path.name not in expected:
+            path.unlink()
+    for path in SITE.glob("revue_*.doc"):
         if path.name not in expected:
             path.unlink()
 
