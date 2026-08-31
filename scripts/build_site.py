@@ -7762,42 +7762,61 @@ def _revue_expert_doc_name(code: str, numero: int) -> str:
     return f"revue_{code}_{numero}.doc"
 
 
+_RE_PAREN_REMARQUE = re.compile(r"\([^()]*\)")
+
+
+def _colorize_parenthetical_remarks(texte: str) -> str:
+    """Colorie les remarques entre parenthèses (orange) pour l'export Word."""
+    escaped = escape(texte)
+
+    def _wrap(match: re.Match) -> str:
+        return (
+            '<span style="color:#C45C26;font-style:italic;">'
+            f"{match.group(0)}"
+            "</span>"
+        )
+
+    return _RE_PAREN_REMARQUE.sub(_wrap, escaped).replace("\n", "<br>")
+
+
+def _numero_video_expert(code: str) -> str:
+    match = re.fullmatch(r"E(\d+)(bis)?", code or "", re.IGNORECASE)
+    if not match:
+        return code or ""
+    suffix = f" {match.group(2)}" if match.group(2) else ""
+    return f"{match.group(1)}{suffix}"
+
+
 def _revue_annotee_doc_html(item: dict, revue: dict) -> str:
-    """Word (HTML .doc) : script expert avec remarques entre parenthèses."""
+    """Word (HTML .doc) : script de l'expert, inchangé, remarques en orange."""
     code = item.get("code") or revue.get("code") or ""
-    numero = revue.get("numero") or 1
-    expert = revue.get("expert") or item.get("experts_label") or ""
-    titre_video = _label_video_expert(code)
+    numero_video = _numero_video_expert(code)
     objectif = _normalize_editorial_french(item.get("titre") or "")
     texte = revue.get("texte_propose") or ""
-    body = escape(texte).replace("\n", "<br>") if texte else "<p>Texte annoté à compléter.</p>"
-    meta_bits = []
-    if expert:
-        meta_bits.append(f"Expert : {escape(expert)}")
-    if revue.get("date"):
-        meta_bits.append(f"Date : {escape(revue['date'])}")
-    if revue.get("mots_estimes"):
-        meta_bits.append(f"~{escape(str(revue['mots_estimes']))} mots")
-    meta = " · ".join(meta_bits)
+    body = (
+        _colorize_parenthetical_remarks(texte)
+        if texte
+        else "<p>Texte annoté à compléter.</p>"
+    )
+    titre = f"Script — Vidéo {escape(numero_video)}" if numero_video else "Script"
+    objectif_html = (
+        f"<p style='color:#64748b;font-size:10.5pt;margin:0 0 12px 0;'>{escape(objectif)}</p>"
+        if objectif
+        else ""
+    )
     return (
         "<html><head><meta charset='utf-8'>"
         "<style>"
-        "body{font-family:Aptos,Segoe UI,Arial,sans-serif;font-size:12pt;line-height:1.5;}"
-        "h1{font-size:18pt;margin-bottom:8px;}"
+        "body{font-family:Aptos,Segoe UI,Arial,sans-serif;font-size:12pt;line-height:1.5;color:#1a1a1a;}"
+        "h1{font-size:16pt;margin:0 0 8px 0;}"
         "p{margin:0 0 8px 0;}"
-        ".meta{color:#64748b;font-size:10.5pt;}"
-        ".legende{background:#f8fafc;border:1px solid #dbe2ea;border-radius:8px;"
-        "padding:10px 12px;margin:12px 0 18px;}"
-        ".script{margin-top:12px;}"
         "</style></head><body>"
-        f"<h1>Revue {escape(str(numero))} — {escape(titre_video)}</h1>"
-        f"<p class='meta'>{escape(objectif)}</p>"
-        + (f"<p class='meta'>{meta}</p>" if meta else "")
-        + "<div class='legende'><p><strong>Légende.</strong> "
-        "Le texte de l’expert n’est pas réécrit. "
-        "Les remarques entre parenthèses portent uniquement sur le cadrage pédagogique "
-        "(grain de la vidéo, place dans le parcours, frontière avec la vidéo suivante).</p></div>"
-        f"<div class='script'>{body}</div>"
+        f"<h1>{titre}</h1>"
+        f"{objectif_html}"
+        "<p style='color:#C45C26;font-size:10.5pt;font-style:italic;margin:0 0 18px 0;'>"
+        "J’ai laissé ton texte tel quel. Mes remarques sont en orange, entre parenthèses."
+        "</p>"
+        f"<div>{body}</div>"
         "</body></html>"
     )
 
