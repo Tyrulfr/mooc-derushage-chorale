@@ -1,7 +1,7 @@
 Vous venez d’entendre cinq chercheurs-entrepreneurs répondre à une question : « Pourquoi et comment oser l’innovation ? »
 
 Leurs histoires sont différentes, mais elles partagent un même point de départ : un potentiel scientifique ou technologique exceptionnel, que ces chercheurs ont décidé de rapprocher d’un besoin sur un marché.
-(Cadrage E1 : la chorale montre plusieurs portes d’entrée. Ce serait l’occasion de les nommer — tech-push, market-pull, observation d’usage, rencontre, sérendipité, maturation progressive.)
+(Cadrage E1 : recentrer sur les origines multiples. La chorale montre plusieurs portes d’entrée — c’est l’occasion de les nommer : tech-push, market-pull, observation d’usage, rencontre, sérendipité, maturation progressive.)
 
 C’est le principe de l’innovation deeptech : partir d’une connaissance, d’une méthode, d’un procédé ou d’une technologie issus de la recherche pour créer une valeur fortement différenciantes.
 
@@ -32,10 +32,10 @@ Cette promesse est ensuite mise à l’épreuve. On formule des hypothèses, on 
 La maturation technologique et l’étude du marché ne sont donc pas deux démarches successives. Elles avancent ensemble : le besoin donne une direction à la technologie ; ses possibilités et ses limites conduisent parfois à reformuler la solution, voire à reconsidérer le marché ciblé.
 
 Ce processus n’est pas une ligne droite. Il se construit progressivement, avec de la méthode et des compétences scientifiques, industrielles, économiques et entrepreneuriales complémentaires.
-(Cadrage programme : de « étudier les utilisateurs » jusqu’ici, on enseigne déjà le processus qui suit — plutôt E2 à E5. Pour E1, une évocation courte suffit ; le détail vient ensuite.)
+(Cadrage : trop développé pour E1. Sur une première vidéo, on peut englober un peu plus — mais attention à ne pas trop en dire, en fait à ne pas tout dire. Si tu évoques ces concepts (besoin, screening, maturation, POC…), reste en pré-nommage, pas en enseignement, et signale-le : « nous le verrons plus tard » / vidéos suivantes.)
 
 La création d’une start-up peut en être l’aboutissement lorsqu’il faut développer un produit nouveau et l’activité économique qui permettra de le mettre sur le marché. Mais ce n’est pas la seule voie : une licence, un transfert de technologie ou un partenariat avec une entreprise existante peuvent aussi être appropriés.
-(Voies de valorisation — plutôt E10.)
+(Même logique : pré-nommer les voies, pas les enseigner — détail plutôt E10. Une phrase + « nous le verrons plus tard » suffit.)
 
 Reste alors la première partie de la question : pourquoi oser ?
 
@@ -44,7 +44,7 @@ Les motivations personnelles convergent : se sentir utile, rechercher un impact 
 Ces témoignages montrent aussi que l’innovation ne s’oppose pas à la recherche. Elle peut lui apporter des partenaires, des terrains d’expérimentation et des questions scientifiques. Elle crée une boucle vertueuse entre recherche, innovation et impact.
 
 Oser l’innovation, ce n’est donc pas décider immédiatement de créer une start-up, ni abandonner son identité de chercheur. C’est commencer à considérer son expertise scientifique comme un potentiel d’utilité. C’est explorer les marchés sur lesquels elle pourrait créer le plus de valeur, puis confronter une hypothèse d’utilité au terrain avec la même curiosité et la même rigueur qu’une hypothèse scientifique.
-(« Pourquoi oser » / identité de chercheur : déjà entendu dans la chorale ; tu pourras le reprendre dans E20.)
+(« Pourquoi oser » / identité : déjà dans la chorale ; tu pourras le reprendre dans E20 — ici, pas besoin de tout dire.)
 
 Et vous ?
 
