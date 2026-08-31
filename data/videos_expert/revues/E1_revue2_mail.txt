@@ -4,17 +4,19 @@ Bonjour Bernard,
 
 Merci pour ton retour — et tu as raison : mon mail précédent était trop télégraphique. Désolé pour ça.
 
-Ci-joint ton texte E1 avec mes remarques **intégrées entre parenthèses**. Elles portent uniquement sur le cadrage pédagogique du MOOC (grain de la vidéo, lien à la chorale, place dans le parcours) — pas sur la justesse de ton expertise.
+Ci-joint ton texte E1 avec mes remarques **intégrées entre parenthèses**. Elles portent uniquement sur le cadrage pédagogique du MOOC (grain de la vidéo, place dans le parcours) — pas sur la justesse de ton expertise.
 
-**Sur E1**  
-Le fond te convient. La question, c’est surtout le recentrage sur « d’où part une innovation » (tech-push, market-pull, observation d’usage, rencontre, sérendipité, maturation) — avec la suite du processus évoquée plutôt qu’enseignée ici.
+**Sur E1**
+Le fond te convient. J’ai signalé les passages qui tiennent bien l’objectif (« d’où ça part », raccrochage chorale).
 
-**Sur T11 / ta vidéo 2 (E20)**  
+La seule réserve de cadrage : le texte enseigne déjà beaucoup le processus qui suit (besoin, screening, maturation, POC, voies de transfert). Pour cette vidéo, l’idée c’est de **nommer les origines** — tech-push, market-pull, observation d’usage, rencontre, sérendipité, maturation — et d’**évoquer** la suite plutôt que de la développer. Le détail vient en E2–E5 et E10.
+
+**Sur T11 / ta vidéo 2 (E20)**
 Tu as raison : la vidéo témoin montée parle de l’**évolution du métier de chercheur** et de ce qu’il faut **concilier** — pas principalement de « freins » tels qu’on les avait formulés dans notre brief initial. C’est un décalage de notre côté entre le montage final et la consigne transmise. Ton choix de structurer ton script à partir de ce que la vidéo montre réellement me paraît cohérent.
 
 Nous recadrons E20 en ce sens pour toi. Les freins / doutes / légitimité seront traités ailleurs dans le parcours (chorale T13 + vidéo expert E21).
 
-**Sur tes retranscriptions T1 et T11**  
+**Sur tes retranscriptions T1 et T11**
 Merci — c’est très utile. On les intègre de notre côté.
 
 Si tu veux en parler : je suis dispo **mardi après-midi** ou **mercredi à partir de 10 h**. Dis-moi ce qui t’arrange.

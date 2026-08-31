@@ -1,0 +1,35 @@
+# Proposition E1 recentrée — usage interne / call (pas encore envoyée à Bernard)
+# Date : 2026-08-31
+# Base : data/videos_expert/scripts_recus/E1.txt + diagnostic revue 2
+# Cible : ~550–700 mots · grain = nommer les origines · évoquer > développer le processus
+# Statut : PROPOSITION_EDITORIALE (voix Bernard préservée autant que possible)
+
+---
+
+Vous venez d’entendre cinq chercheurs-entrepreneurs. Ils répondent à une question : « Pourquoi et comment oser l’innovation ? » Leurs histoires sont différentes. Elles n’ont pas un seul point de départ.
+
+Une innovation issue de la recherche — ce qu’on appelle souvent une innovation deeptech — part d’une connaissance, d’une méthode, d’un procédé ou d’une technologie. Elle crée une valeur fortement différenciante. Dans les témoignages, ce potentiel s’est souvent constitué pendant dix, quinze, parfois trente ans : thèses, publications, expérimentations, savoir-faire, quelquefois des brevets.
+
+Mais une technologie, aussi remarquable soit-elle, n’est pas encore une innovation. Elle le devient lorsqu’elle permet de répondre, mieux que les solutions existantes, à un besoin important. Il s’agit de rapprocher deux mondes : ce que la technologie rend possible, et ce que des utilisateurs, des organisations ou un marché attendent.
+
+Ce qui différencie les cinq parcours, c’est d’où ce rapprochement est parti. On peut nommer plusieurs origines — plusieurs portes d’entrée.
+
+Tech-push. On part d’un potentiel scientifique déjà constitué, et on cherche où il peut servir. Loïc Rajjou décrit des années de recherche fondamentale sur la germination et la croissance des plantes, puis la question : que faire de ces connaissances au-delà du laboratoire ? Yann Monier convertit quinze ans de travaux sur les jumeaux numériques de chaînes de production en quelque chose d’utile pour l’industrie.
+
+Market-pull. On est tiré par un besoin de marché déjà formulé. Yann le dit explicitement : dans son cas, ce n’est pas le résultat d’une recherche fondamentale habituelle, c’est tiré par le marché. Chez Jean-Jacques Greffet, un entrepreneur lui soumet un problème : détecter des virus trop petits. Trente ans de nanophotonique deviennent une réponse.
+
+Observation d’usage. Muriel Thomas part d’un manque identifié : personnes très âgées ou en convalescence, microbiote appauvri, aucune recommandation claire. L’origine n’est pas seulement technique : c’est un constat sociétal, un usage manquant.
+
+Rencontre. Toujours chez Jean-Jacques : ce n’est pas seulement le marché, c’est une personne. Une rencontre avec un jeune start-uppeur ouvre la porte.
+
+Sérendipité, pas de côté. Sylvia Cohen-Kaminski étudiait un récepteur de communication cellule à cellule, issu du système nerveux central. Le pas de côté : ce mécanisme révèle un potentiel ailleurs, y compris vasculaire, dans une maladie rare.
+
+Maturation progressive. Loïc et Muriel insistent sur le rythme : quinze, vingt, trente ans de socle scientifique, puis mise en œuvre. L’origine n’est pas un éclair : c’est un chemin.
+
+Ces six portes ne s’excluent pas. Un même projet peut en combiner plusieurs. Yann est à la fois tiré par le marché et nourri par quinze ans de laboratoire. Jean-Jacques est à la fois rencontre et market-pull.
+
+Les cellules de valorisation — et d’autres interlocuteurs de l’écosystème — peuvent vous aider à identifier et nommer d’où part votre projet. Pas encore à le faire mûrir : cela viendra ensuite.
+
+Une fois l’origine reconnue, d’autres questions s’ouvriront : caractériser le potentiel, explorer des marchés, construire une proposition de valeur, éprouver une preuve de concept, choisir une voie de transfert. Vous les rencontrerez dans les vidéos suivantes. Ici, l’essentiel est plus simple.
+
+Et vous ? D’où part — ou d’où pourrait partir — votre innovation ? D’une technologie déjà là ? D’un besoin de marché ? D’une observation d’usage ? D’une rencontre ? D’un pas de côté ? D’une maturation déjà longue ? Nommer cette origine, c’est déjà commencer.
