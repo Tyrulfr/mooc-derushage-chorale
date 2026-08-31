@@ -5,6 +5,7 @@ import io
 import re
 import zipfile
 from collections import Counter, defaultdict
+from datetime import date
 from pathlib import Path
 import unicodedata
 import json
@@ -303,6 +304,36 @@ code {
   font-weight: 700;
   color: var(--accent);
 }
+.sommaire-card--temoin {
+  background: #f3eef8;
+  border-color: #d4c4e8;
+}
+.sommaire-card--temoin .sommaire-card__icon {
+  background: #e8dcf4;
+  color: #6b4d8a;
+}
+.sommaire-card--temoin:hover {
+  border-color: #b89fd4;
+  box-shadow: 0 14px 34px rgba(107, 77, 138, 0.12);
+}
+.sommaire-card--temoin .sommaire-card__cta {
+  color: #6b4d8a;
+}
+.sommaire-card--expert {
+  background: #eef7f4;
+  border-color: #c5e6dc;
+}
+.sommaire-card--expert .sommaire-card__icon {
+  background: #d8efe8;
+  color: #2d6b5a;
+}
+.sommaire-card--expert:hover {
+  border-color: #9dd4c4;
+  box-shadow: 0 14px 34px rgba(45, 107, 90, 0.12);
+}
+.sommaire-card--expert .sommaire-card__cta {
+  color: #2d6b5a;
+}
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -509,50 +540,6 @@ tbody tr:last-child td { border-bottom: none; }
   white-space: pre-wrap;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 13px;
-}
-.script-revue-legende {
-  margin: 10px 0 0;
-  padding: 10px 12px;
-  background: #f8fafc;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  font-size: 13px;
-}
-.script-hs {
-  display: inline;
-  background: #fee2e2;
-  border-bottom: 2px solid #ef4444;
-  padding: 1px 2px;
-}
-.script-hs__tag {
-  display: inline-block;
-  margin: 0 4px 0 0;
-  padding: 1px 6px;
-  border-radius: 4px;
-  background: #ef4444;
-  color: #fff;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  vertical-align: baseline;
-}
-.script-rc {
-  display: inline;
-  background: #ffedd5;
-  border-bottom: 2px solid #f97316;
-  padding: 1px 2px;
-}
-.script-rc__tag {
-  display: inline-block;
-  margin: 0 4px 0 0;
-  padding: 1px 6px;
-  border-radius: 4px;
-  background: #f97316;
-  color: #fff;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  vertical-align: baseline;
 }
 .brief-point {
   margin: 14px 0;
@@ -5428,48 +5415,68 @@ def build_capsule_pages(
                     f"<p class='meta'><strong>Production dérivée du laboratoire :</strong> montage et cadrage "
                     f"initialisés depuis <a href='capsule_{escape(lab['code'])}.html'>{escape(lab['code'])}</a>.</p>"
                 )
-        sections.append("<h2>Extraits candidats</h2>")
-        for segment_id in capsule_data.get("extraits_candidats", []):
-            segment = by_id.get(segment_id)
-            if segment:
-                warning = " <span class='warn'>Chevauchement</span>" if segment_id in overlap_ids else ""
-                sections.append(f"<div class='card'>{link_segment(segment)}{warning}</div>")
-        sections.append("<h2>Montage proposé</h2>")
-        plan = capsule_data.get("plan_montage", [])
-        if plan:
-            montage_total = sum(float(item.get("duree_montage_secondes", 0)) for item in plan)
-            sections.append(
-                f"<p class='meta'><strong>Durée montage estimée :</strong> {format_seconds(montage_total)} "
-                f"(cible 5-7 min). Les timecodes BAB sont des bornes ; les coupes fines sont NON PRONONCE.</p>"
-            )
-        for index, segment_id in enumerate(capsule_data.get("ordre_montage", []), start=1):
-            segment = by_id.get(segment_id)
-            if segment:
-                plan_item = plan[index - 1] if plan and index - 1 < len(plan) else None
-                meta = ""
-                if plan_item:
-                    role = plan_item.get("role", "")
-                    duration = plan_item.get("duree_montage_secondes")
-                    coupe = plan_item.get("coupe")
-                    meta_parts = [f"#{index}"]
-                    if role:
-                        meta_parts.append(_normalize_editorial_french(role))
-                    if duration is not None:
-                        meta_parts.append(f"~{format_seconds(float(duration))}")
-                    if coupe:
-                        meta_parts.append(
-                            f"coupe : {_normalize_editorial_french(coupe)}"
-                        )
-                    meta = f"<p class='meta'>{escape(' · '.join(meta_parts))}</p>"
-                sections.append(f"<div class='card'>{link_segment(segment)}{meta}</div>")
-        if capsule_data.get("cadrage_animateur"):
-            sections.append(cadrage_animateur_section(capsule_data))
-        sections.append("<h2>Script final</h2>")
-        sections.append(
-            f"<div class='script' id='script-final'>"
-            f"{escape(_normalize_script_final_editorial(capsule_data.get('script_final') or 'À construire.'))}"
-            f"</div>"
+        mounted_script = _script_final_prefer_mounted_transcript(
+            code,
+            (capsule_data.get("script_final") or "").strip(),
         )
+        has_mounted_transcript = bool(_mounted_transcript_script(code))
+        if not has_mounted_transcript:
+            sections.append("<h2>Extraits candidats</h2>")
+            for segment_id in capsule_data.get("extraits_candidats", []):
+                segment = by_id.get(segment_id)
+                if segment:
+                    warning = " <span class='warn'>Chevauchement</span>" if segment_id in overlap_ids else ""
+                    sections.append(f"<div class='card'>{link_segment(segment)}{warning}</div>")
+            sections.append("<h2>Montage proposé</h2>")
+            plan = capsule_data.get("plan_montage", [])
+            if plan:
+                montage_total = sum(float(item.get("duree_montage_secondes", 0)) for item in plan)
+                sections.append(
+                    f"<p class='meta'><strong>Durée montage estimée :</strong> {format_seconds(montage_total)} "
+                    f"(cible 5-7 min). Les timecodes BAB sont des bornes ; les coupes fines sont NON PRONONCE.</p>"
+                )
+            for index, segment_id in enumerate(capsule_data.get("ordre_montage", []), start=1):
+                segment = by_id.get(segment_id)
+                if segment:
+                    plan_item = plan[index - 1] if plan and index - 1 < len(plan) else None
+                    meta = ""
+                    if plan_item:
+                        role = plan_item.get("role", "")
+                        duration = plan_item.get("duree_montage_secondes")
+                        coupe = plan_item.get("coupe")
+                        meta_parts = [f"#{index}"]
+                        if role:
+                            meta_parts.append(_normalize_editorial_french(role))
+                        if duration is not None:
+                            meta_parts.append(f"~{format_seconds(float(duration))}")
+                        if coupe:
+                            meta_parts.append(
+                                f"coupe : {_normalize_editorial_french(coupe)}"
+                            )
+                        meta = f"<p class='meta'>{escape(' · '.join(meta_parts))}</p>"
+                    sections.append(f"<div class='card'>{link_segment(segment)}{meta}</div>")
+            if capsule_data.get("cadrage_animateur"):
+                sections.append(cadrage_animateur_section(capsule_data))
+            sections.append("<h2>Script final</h2>")
+            sections.append(
+                f"<div class='script' id='script-final'>"
+                f"{escape(_normalize_script_final_editorial(mounted_script or 'À construire.'))}"
+                f"</div>"
+            )
+        else:
+            trans_item = (_load_transcripts_videos_finaux().get("capsules") or {}).get(code) or {}
+            docx_name = trans_item.get("source") or ""
+            sections.append("<h2>Script monté</h2>")
+            if docx_name:
+                sections.append(
+                    f"<p class='meta'>Transcript de la vidéo montée — "
+                    f"<code>{escape(docx_name)}</code> · voix identifiées par recoupement BAB.</p>"
+                )
+            sections.append(
+                f"<div class='script' id='script-final'>"
+                f"{escape(_normalize_script_final_editorial(mounted_script))}"
+                f"</div>"
+            )
         sections.append(synthese_temoignages_section(code, capsule_data, by_id))
         sections.append("<h2>Manques et décisions</h2>")
         for item in capsule_data.get("manques", []):
@@ -7425,8 +7432,6 @@ def _load_expert_script_revues(code: str) -> list[dict]:
                 "statut": (data.get("statut") or "PROPOSITION").strip(),
                 "expert": (data.get("expert") or "").strip(),
                 "fichier": path.name,
-                "mode_texte": (data.get("mode_texte") or "texte_propose").strip(),
-                "legende": data.get("legende") or {},
                 "demandes": [str(item).strip() for item in (data.get("demandes") or []) if str(item).strip()],
                 "texte_propose": (data.get("texte_propose") or "").strip(),
                 "mail": (data.get("mail") or "").strip(),
@@ -7452,8 +7457,8 @@ def _inventory_videos_expert(programme_table: dict, experts_profils: dict) -> li
                     "nom": expert.get("nom", ""),
                     "slug": expert.get("slug", ""),
                     "organisme": expert.get("organisme", ""),
-                    "guide_href": f"guide_editorial_{expert.get('slug', '')}.doc",
-                    "mail_href": f"mail_expert_{expert.get('slug', '')}.html",
+                    "guide_href": f"guide_editorial_simplifie_{expert.get('slug', '')}.doc",
+                    "mail_href": f"mail_videos_attendues_{expert.get('slug', '')}.html",
                 }
             )
 
@@ -7520,9 +7525,9 @@ def _consignes_envoyees_expert_html(item: dict) -> str:
     return f"""
 <section class="methodology-panel brief-intervenant-panel">
   <h2>Consignes envoyees a l'expert</h2>
-  <p class="meta">Contenu repris du guide editorial Word transmis avec le mail de sollicitation
+  <p class="meta">Contenu repris du guide editorial transmis avec le mail
   (proposition de cadrage + consignes generales). Document source : guides
-  <code>guide_editorial_*.doc</code>.</p>
+  <code>guide_editorial_simplifie_*.doc</code> / <code>guide_videos_attendues_*.doc</code>.</p>
   <p class="brief-precaution"><strong>Precaution :</strong> {escape(BRIEF_PRECAUTION_ORATOIRE)}</p>
   <h3>{escape(_label_video_expert(item['code']))}</h3>
   <p><strong>Objectif :</strong> {escape(item.get('titre') or 'A preciser')}</p>
@@ -7568,71 +7573,8 @@ def _script_expert_recu_html(item: dict) -> str:
 """
 
 
-def _render_annotated_script_html(texte: str) -> str:
-    """Rend un script annoté [[HS:...]] / [[RC:...]] avec surlignage HTML."""
-    if not texte:
-        return ""
-
-    def _replace_hs(match: re.Match[str]) -> str:
-        meta = (match.group(1) or "").strip()
-        body = match.group(2) or ""
-        if "|" in meta:
-            codes, note = meta.split("|", 1)
-            label = f"HS · {codes.strip()}"
-            title = note.strip()
-        else:
-            label = f"HS · {meta}" if meta else "HS"
-            title = meta
-        return (
-            f'<mark class="script-hs" title="{escape(title)}">'
-            f'<span class="script-hs__tag">{escape(label)}</span>'
-            f"{escape(body)}"
-            f"</mark>"
-        )
-
-    def _replace_rc(match: re.Match[str]) -> str:
-        meta = (match.group(1) or "").strip()
-        body = match.group(2) or ""
-        label = "RC"
-        title = meta
-        if meta:
-            short = meta.split("—", 1)[0].strip()
-            label = f"RC · {short}" if short else "RC"
-        return (
-            f'<mark class="script-rc" title="{escape(title)}">'
-            f'<span class="script-rc__tag">{escape(label)}</span>'
-            f"{escape(body)}"
-            f"</mark>"
-        )
-
-    # Escape first, then reinject markers from raw via sequential replace on raw
-    # Work on raw text, escape only non-tag parts by processing with regex callbacks that escape.
-    rendered = texte
-    rendered = re.sub(
-        r"\[\[HS:([^\]]*)\]\](.*?)\[\[/HS\]\]",
-        _replace_hs,
-        rendered,
-        flags=re.DOTALL,
-    )
-    rendered = re.sub(
-        r"\[\[RC:([^\]]*)\]\](.*?)\[\[/RC\]\]",
-        _replace_rc,
-        rendered,
-        flags=re.DOTALL,
-    )
-    # Escape remaining plain text while preserving inserted HTML marks.
-    parts: list[str] = []
-    cursor = 0
-    for match in re.finditer(r'<mark class="script-(?:hs|rc)"[^>]*>.*?</mark>', rendered, flags=re.DOTALL):
-        parts.append(escape(rendered[cursor : match.start()]).replace("\n", "<br>"))
-        parts.append(match.group(0).replace("\n", "<br>"))
-        cursor = match.end()
-    parts.append(escape(rendered[cursor:]).replace("\n", "<br>"))
-    return "".join(parts)
-
-
 def _script_expert_revues_html(code: str) -> str:
-    """Blocs Revue N sous le script reçu : demandes, texte repris/annoté, mail à l'expert."""
+    """Blocs Revue N sous le script reçu : demandes, texte repris, mail à l'expert."""
     revues = _load_expert_script_revues(code)
     if not revues:
         return ""
@@ -7648,28 +7590,11 @@ def _script_expert_revues_html(code: str) -> str:
             else "<p class='meta'>Aucune demande listée.</p>"
         )
         texte = revue.get("texte_propose") or ""
-        mode = revue.get("mode_texte") or "texte_propose"
-        if texte and mode == "annote_hors_sujet":
-            texte_html = f"<div class='script-recu-block'>{_render_annotated_script_html(texte)}</div>"
-            texte_title = "Texte de l’expert annoté — passages hors sujet / à recadrer"
-        elif texte:
-            texte_html = (
-                f"<div class='script-recu-block'>{escape(texte).replace(chr(10), '<br>')}</div>"
-            )
-            texte_title = "Proposition de texte repris"
-        else:
-            texte_html = "<p class='meta'>Proposition de texte à compléter.</p>"
-            texte_title = "Proposition de texte repris"
-
-        legende = revue.get("legende") or {}
-        legende_html = ""
-        if legende and mode == "annote_hors_sujet":
-            items = "".join(
-                f"<li><strong>{escape(str(key))}</strong> — {escape(str(value))}</li>"
-                for key, value in legende.items()
-            )
-            legende_html = f"<div class='script-revue-legende'><ul>{items}</ul></div>"
-
+        texte_html = (
+            f"<div class='script-recu-block'>{escape(texte).replace(chr(10), '<br>')}</div>"
+            if texte
+            else "<p class='meta'>Proposition de texte à compléter.</p>"
+        )
         mail = revue.get("mail") or ""
         mail_html = (
             f"<h3>Mail à envoyer (Revue {numero})</h3>"
@@ -7685,7 +7610,7 @@ def _script_expert_revues_html(code: str) -> str:
             meta_bits.append(f"<span class='meta'>Date : {escape(revue['date'])}</span>")
         if revue.get("mots_estimes"):
             meta_bits.append(
-                f"<span class='meta'>~{escape(str(revue['mots_estimes']))} mots (script source)</span>"
+                f"<span class='meta'>~{escape(str(revue['mots_estimes']))} mots</span>"
             )
         parts.append(
             f"""
@@ -7694,8 +7619,7 @@ def _script_expert_revues_html(code: str) -> str:
   <p>{' · '.join(meta_bits)}</p>
   <h3>Demandes de correction / modification</h3>
   {demandes_html}
-  <h3>{escape(texte_title)}</h3>
-  {legende_html}
+  <h3>Proposition de texte repris</h3>
   {texte_html}
   {mail_html}
 </section>
@@ -7765,17 +7689,25 @@ def _write_videos_expert_xlsx(inventory: list[dict], path: Path) -> None:
     wb.save(path)
 
 
-def _sommaire_cards(sections: list[tuple[str, str, str, str]]) -> str:
-    cards = "".join(
-        f"<a class='sommaire-card' href='{escape(href)}'>"
-        f"<span class='sommaire-card__icon' aria-hidden='true'>{escape(icon)}</span>"
-        f"<h2>{escape(title)}</h2>"
-        f"<p>{escape(description)}</p>"
-        f"<span class='sommaire-card__cta'>Ouvrir →</span>"
-        f"</a>"
-        for href, icon, title, description in sections
-    )
-    return f'<nav class="sommaire-grid" aria-label="Sommaire">{cards}</nav>'
+def _sommaire_cards(sections: list[tuple[str, ...]]) -> str:
+    cards = []
+    for section in sections:
+        href, icon, title, description = section[:4]
+        kind = section[4] if len(section) > 4 else ""
+        kind_class = ""
+        if kind == "temoin":
+            kind_class = " sommaire-card--temoin"
+        elif kind == "expert":
+            kind_class = " sommaire-card--expert"
+        cards.append(
+            f"<a class='sommaire-card{kind_class}' href='{escape(href)}'>"
+            f"<span class='sommaire-card__icon' aria-hidden='true'>{escape(icon)}</span>"
+            f"<h2>{escape(title)}</h2>"
+            f"<p>{escape(description)}</p>"
+            f"<span class='sommaire-card__cta'>Ouvrir →</span>"
+            f"</a>"
+        )
+    return f'<nav class="sommaire-grid" aria-label="Sommaire">{"".join(cards)}</nav>'
 
 
 def _module_sort_key(module: str) -> tuple[int, str]:
@@ -7908,32 +7840,44 @@ def _sync_suivi_positionnements(intervenants: list[dict]) -> list[dict]:
         item.get("slug") or slug(item.get("nom", "")): item
         for item in stored.get("intervenants", [])
     }
+    programme_table = json.loads((ROOT / "data" / "programme_table.json").read_text(encoding="utf-8"))
     synced = []
     for intervenant in intervenants:
         key = intervenant["slug"]
         previous = by_slug.get(key, {})
         proposition = _format_proposition_notre_part(intervenant)
+        finale = (previous.get("proposition_finale", "") or "").strip()
+        selected = _parse_expert_codes(finale) if finale else None
+        if selected:
+            capsules_resolved, videos_resolved = _resolve_affectation_videos(
+                programme_table, selected
+            )
+            capsule_codes = [item["code"] for item in capsules_resolved]
+            video_codes = [item["code"] for item in videos_resolved]
+        else:
+            capsule_codes = [item.get("code", "") for item in intervenant.get("capsules", [])]
+            video_codes = [item.get("code", "") for item in intervenant.get("videos_expert", [])]
         synced.append(
             {
                 "nom": intervenant["nom"],
                 "slug": key,
                 "organisme": previous.get("organisme", "") or intervenant.get("organisme", ""),
                 "proposition_notre_part": proposition,
-                "capsules": [item.get("code", "") for item in intervenant.get("capsules", [])],
-                "videos_expert": [item.get("code", "") for item in intervenant.get("videos_expert", [])],
+                "capsules": capsule_codes,
+                "videos_expert": video_codes,
                 "reponse": previous.get("reponse", "") or "",
                 "besoin_exprime": previous.get("besoin_exprime", "") or "",
                 "positionnement_preferences": previous.get("positionnement_preferences", "") or "",
-                "proposition_finale": previous.get("proposition_finale", "") or "",
+                "proposition_finale": finale,
             }
         )
     payload = {
-        "date_mise_a_jour": "2026-07-24",
+        "date_mise_a_jour": date.today().isoformat(),
         "note": stored.get("note")
         or (
             "Suivi des positionnements intervenants. La proposition de notre part est derivee "
             "du programme de conception. Reponse, besoin exprime, preferences et proposition "
-            "finale se remplissent au fil des retours."
+            "finale se remplissent au fil des retours. capsules/videos_expert = affectation retenue."
         ),
         "intervenants": synced,
     }
@@ -7946,6 +7890,93 @@ def _cell_or_attente(value: str) -> str:
     if text:
         return escape(text).replace("\n", "<br>")
     return '<span class="meta">—</span>'
+
+
+def _parse_expert_codes(text: str) -> set[str]:
+    if not text:
+        return set()
+    return {code.upper() for code in re.findall(r"\bE\d+(?:bis)?\b", text, flags=re.IGNORECASE)}
+
+
+def _intervenant_positionnement_codes(pos: dict) -> set[str] | None:
+    """Codes E retenus pour filtrer la fiche intervenant. None = pas encore de positionnement.
+
+    Priorite : proposition_finale (affectation retenue) > preferences > codes dans la reponse.
+    """
+    prefs = (pos.get("positionnement_preferences") or "").strip()
+    reponse = (pos.get("reponse") or "").strip()
+    final = (pos.get("proposition_finale") or "").strip()
+    if not prefs and not reponse and not final:
+        return None
+    if final:
+        return _parse_expert_codes(final)
+    if prefs:
+        codes = _parse_expert_codes(prefs)
+        if codes:
+            return codes
+    if reponse:
+        codes = _parse_expert_codes(reponse)
+        if codes:
+            return codes
+    return set()
+
+
+def _programme_expert_index(programme_table: dict) -> dict[str, dict]:
+    """Index E-code → capsule temoin + titre (depuis le programme)."""
+    index: dict[str, dict] = {}
+    for row in programme_table.get("rows", []):
+        capsule = row.get("code", "")
+        if not capsule:
+            continue
+        label = (
+            FIXED_TEMOIN_PLAN.get(capsule, {}).get("label")
+            or row.get("video_temoin", "")
+        )
+        for video in _tb_edito_parse_videos_expert(row.get("videos_referent", "")):
+            code = (video.get("code") or "").upper()
+            if not code:
+                continue
+            index[code] = {
+                "code": video.get("code") or code,
+                "titre": video.get("titre", ""),
+                "capsule_code": capsule,
+                "module": row.get("module", ""),
+                "temoin_label": label,
+            }
+    return index
+
+
+def _resolve_affectation_videos(
+    programme_table: dict,
+    selected_e: set[str],
+) -> tuple[list[dict], list[dict]]:
+    """Construit capsules + videos expert a partir des codes E affectes (meme hors proposition initiale)."""
+    index = _programme_expert_index(programme_table)
+    videos: list[dict] = []
+    capsules_by_code: dict[str, dict] = {}
+    for raw in sorted(selected_e, key=_expert_video_sort_key):
+        entry = index.get(raw.upper())
+        if not entry:
+            continue
+        videos.append(
+            {
+                "code": entry["code"],
+                "titre": entry["titre"],
+                "capsule_code": entry["capsule_code"],
+            }
+        )
+        capsule_code = entry["capsule_code"]
+        if capsule_code and capsule_code not in capsules_by_code:
+            capsules_by_code[capsule_code] = {
+                "code": capsule_code,
+                "label": entry["temoin_label"],
+                "module": entry["module"],
+            }
+    capsules = sorted(
+        capsules_by_code.values(),
+        key=lambda item: int(item["code"][1:]) if item["code"][1:].isdigit() else 999,
+    )
+    return capsules, videos
 
 
 def _positionnements_finaux_par_video(rows: list[dict]) -> list[dict]:
@@ -8004,8 +8035,8 @@ VIDEO_OBJECTIVE_TAGS: dict[str, set[str]] = {
     "E17": {"juridique", "gouvernance", "pacte", "fondateurs", "parts", "conflits"},
     "E18": {"pitch", "communication", "proposition_valeur", "interlocuteurs", "valorisation"},
     "E19": {"posture", "entrepreneuriat", "mentorat", "apprentissage", "identite"},
-    "E20": {"freins", "parcours", "legitimite", "apprentissage", "accompagnement"},
-    "E21": {"apprentissage", "incertitude", "pivot", "innovation", "progression"},
+    "E20": {"metier", "casquette", "conciliation", "gouvernance", "recherche", "engagement"},
+    "E21": {"freins", "apprentissage", "incertitude", "pivot", "legitimite", "doute"},
     "E22": {"collaboration", "partenariat", "gouvernance", "complementarite", "valeur"},
     "E23": {"juridique", "contrats", "pi", "collaboration", "confidentialite", "partenariat"},
 }
@@ -8712,34 +8743,64 @@ def build_suivi_intervenants_pages(programme_table: dict, experts_profils: dict)
             ],
         )
 
-    # 4) Pages temoin → capsule + videos expert
+    # 4) Pages temoin → capsule + videos expert (couleurs + affectations finales)
+    assignees_by_e: dict[str, list[dict]] = defaultdict(list)
+    for pos_item in _load_suivi_positionnements().get("intervenants", []):
+        for e_code in _parse_expert_codes(pos_item.get("proposition_finale") or ""):
+            assignees_by_e[e_code].append(
+                {
+                    "nom": pos_item.get("nom", ""),
+                    "slug": pos_item.get("slug") or slug(pos_item.get("nom", "")),
+                }
+            )
+
     for code, row in rows_by_code.items():
         label = FIXED_TEMOIN_PLAN.get(code, {}).get("label") or row.get("video_temoin", code)
         module = row.get("module", "")
         experts = _tb_edito_parse_videos_expert(row.get("videos_referent", ""))
-        proposes = ", ".join(_extract_intervenants(row.get("noms_proposes", ""))) or "à confirmer"
-        sections: list[tuple[str, str, str, str]] = [
+        sections: list[tuple] = [
             (
-                f"tb_edito_{code}.html",
-                "🎙",
-                f"Capsule témoin {code}",
+                f"capsule_{code}.html",
+                code,
+                f"Script monté — {code}",
                 label,
+                "temoin",
             )
         ]
+        affectation_bits: list[str] = []
         for video in experts:
             e_code = video.get("code", "")
+            assignees = assignees_by_e.get(e_code.upper(), [])
+            if assignees:
+                names = ", ".join(entry["nom"] for entry in assignees)
+                affectation_bits.append(f"{e_code} → {names}")
+                desc = (
+                    f"{video.get('titre', '') or 'Objectif à préciser'} "
+                    f"— Affecté : {names}"
+                )
+            else:
+                desc = (video.get("titre", "") or "Objectif à préciser") + " — Affectation à confirmer"
             sections.append(
                 (
                     f"video_expert_{e_code}.html",
                     e_code,
                     _label_video_expert(e_code),
-                    video.get("titre", "") or "Objectif à préciser",
+                    desc,
+                    "expert",
                 )
             )
-        meta = (
-            f"Module {escape(module)} — Intervenants proposes : {escape(proposes)}. "
-            "La capsule temoin ouvre le montage edito ; chaque bloc expert ouvre la fiche video expert."
-        )
+        if affectation_bits:
+            meta = (
+                f"Module {escape(module)} — Affectations finales : "
+                f"{escape(' · '.join(affectation_bits))}. "
+                "Violet = témoin monté · Vert = vidéo expert."
+            )
+        else:
+            proposes = ", ".join(_extract_intervenants(row.get("noms_proposes", ""))) or "à confirmer"
+            meta = (
+                f"Module {escape(module)} — Intervenants proposes : {escape(proposes)}. "
+                "Affectations finales encore incomplètes pour cette capsule."
+            )
         expected.add(f"suivi_temoin_{code}.html")
         body = f"<p class='meta'>{meta}</p>" + _sommaire_cards(sections)
         write_text(
@@ -8757,13 +8818,21 @@ def build_suivi_intervenants_pages(programme_table: dict, experts_profils: dict)
                 ),
                 page_header=(
                     f'<div class="page-head"><h1>{escape(label)}</h1>'
-                    f'<p class="lead">Capsule temoin et videos expert rattachees.</p></div>'
+                    f'<p class="lead">Script monté et vidéos expert — affectations retenues.</p></div>'
                 ),
                 main_class="page-home",
             ),
         )
 
     # 5) Liste intervenants (+ acces rapide mails / guides)
+    positionnements_by_slug = {
+        item.get("slug") or slug(item.get("nom", "")): item
+        for item in _load_suivi_positionnements().get("intervenants", [])
+    }
+    finale_by_slug = {
+        slug_key: (item.get("proposition_finale") or "").strip()
+        for slug_key, item in positionnements_by_slug.items()
+    }
     intervenant_sections = [
         (
             "mails_experts.html",
@@ -8772,125 +8841,175 @@ def build_suivi_intervenants_pages(programme_table: dict, experts_profils: dict)
             "Index des mails experts (par date d'envoi) et exports Word des guides éditoriaux.",
         )
     ]
-    intervenant_sections.extend(
-        (
-            f"suivi_intervenant_{item['slug']}.html",
-            "◎",
-            item["nom"],
-            f"{item['organisme']} — {len(item['capsules'])} capsule(s), "
-            f"{len(item['videos_expert'])} video(s) · mail + guide.",
+    for item in intervenants:
+        finale = finale_by_slug.get(item["slug"], "")
+        desc = (
+            f"{item['organisme']} — Affectation : {finale}"
+            if finale
+            else f"{item['organisme']} — Positionnement en attente · mail + guide."
         )
-        for item in intervenants
-    )
+        intervenant_sections.append(
+            (
+                f"suivi_intervenant_{item['slug']}.html",
+                "◎",
+                item["nom"],
+                desc,
+            )
+        )
     write_sommaire(
         "suivi_intervenants_liste.html",
         "Intervenants",
-        "Fiche par intervenant : capsules, videos expertise, mail et guide editorial.",
+        "Fiche par intervenant : affectation retenue, capsules témoin, vidéos expertise, mail et guide.",
         intervenant_sections,
         [
             ("Accueil", "index.html"),
             ("Suivi Intervenants", "suivi_intervenants.html"),
             ("Intervenants", None),
         ],
-        meta="Chaque fiche intervenant donne aussi acces au mail et a l'export Word du guide.",
+        meta="Chaque fiche n'affiche que les vidéos de l'affectation retenue (sélection finale).",
     )
 
-    # 6) Pages intervenant → mail/guide + capsules temoin + videos expert
-    finale_by_slug = {
-        item.get("slug") or slug(item.get("nom", "")): (item.get("proposition_finale") or "").strip()
-        for item in _load_suivi_positionnements().get("intervenants", [])
-    }
+    # 6) Pages intervenant → dernier mail/guide + capsules temoin + videos expert
     for item in intervenants:
         filename = f"suivi_intervenant_{item['slug']}.html"
-        mail_href = f"mail_expert_{item['slug']}.html"
         mail_attendues_href = f"mail_videos_attendues_{item['slug']}.html"
-        guide_href = f"guide_editorial_{item['slug']}.doc"
         guide_attendues_href = f"guide_videos_attendues_{item['slug']}.doc"
+        guide_simple_href = f"guide_editorial_simplifie_{item['slug']}.doc"
+        pos = positionnements_by_slug.get(item["slug"], {})
         has_finale = bool(finale_by_slug.get(item["slug"]))
-        sections = [
-            (
-                mail_href,
-                "✉",
-                "Mail de positionnement",
-                "Mail envoyé le 20/07/2026 — sollicitation de positionnement sur les vidéos expertise.",
-            ),
-        ]
+        selected_e = _intervenant_positionnement_codes(pos)
+        if selected_e is not None:
+            visible_capsules, visible_videos = _resolve_affectation_videos(
+                programme_table, selected_e
+            )
+        else:
+            visible_capsules = list(item["capsules"])
+            visible_videos = list(item["videos_expert"])
+
+        sections: list[tuple] = []
         if has_finale:
-            guide_simple_href = f"guide_editorial_simplifie_{item['slug']}.doc"
             sections.extend(
                 [
                     (
                         mail_attendues_href,
                         "✉",
                         "Mail vidéos attendues",
-                        "Mail du 27/07/2026 — sélection finale + guide éditorial simplifié (PJ principale).",
+                        "Dernier mail envoyé (27/07/2026) — sélection finale + guide éditorial.",
                     ),
                     (
                         guide_simple_href,
                         "📄",
-                        "Guide éditorial simplifié (PJ principale)",
-                        "1–2 pages : objectif, ce que disent les chercheurs, ce qu’on attend.",
+                        "Guide éditorial simplifié",
+                        "Document à envoyer (PJ principale) — 1–2 pages.",
                     ),
                     (
                         guide_attendues_href,
                         "📄",
-                        "Guide détaillé (optionnel)",
-                        "Version complète : scripts, transcript témoin, vue d’ensemble — sur demande.",
+                        "Guide éditorial détaillé",
+                        "Dernière version complète (scripts, transcript témoin) — sur demande.",
                     ),
                 ]
             )
-        sections.append(
-            (
-                guide_href,
-                "📄",
-                "Guide éditorial positionnement (Word)",
-                "Export Word historique associé au mail de positionnement (20/07/2026).",
-            )
-        )
-        for capsule in item["capsules"]:
+
+        for capsule in visible_capsules:
             sections.append(
                 (
-                    f"suivi_temoin_{capsule['code']}.html",
+                    f"capsule_{capsule['code']}.html",
                     capsule["code"],
                     capsule["label"] or capsule["code"],
-                    f"Capsule temoin {capsule['code']} ({capsule.get('module') or '—'}).",
+                    f"Script monté — {capsule['code']} ({capsule.get('module') or '—'}).",
+                    "temoin",
                 )
             )
-        for video in item["videos_expert"]:
+        for video in visible_videos:
             sections.append(
                 (
                     f"video_expert_{video['code']}.html",
                     video["code"],
                     _label_video_expert(video["code"]),
                     video.get("titre", "") or f"Rattachee a {video.get('capsule_code', '')}",
+                    "expert",
                 )
             )
         expected.add(filename)
         if has_finale:
-            guide_simple_href = f"guide_editorial_simplifie_{item['slug']}.doc"
             primary_btns = (
-                f"<a class='btn' href='{escape(mail_attendues_href)}'>Ouvrir le mail vidéos attendues (27/07)</a> "
-                f"<a class='btn' href='{escape(guide_simple_href)}' download>Exporter le guide éditorial simplifié (Word)</a> "
-                f"<a class='btn' href='{escape(guide_simple_href)}' target='_blank' rel='noopener'>Ouvrir le guide éditorial simplifié</a> "
-                f"<a class='btn' href='{escape(guide_attendues_href)}' download>Guide détaillé (optionnel)</a>"
+                f"<a class='btn' href='{escape(mail_attendues_href)}'>Ouvrir le mail vidéos attendues</a> "
+                f"<a class='btn' href='{escape(guide_simple_href)}' download>Exporter le guide simplifié</a> "
+                f"<a class='btn' href='{escape(guide_simple_href)}' target='_blank' rel='noopener'>Ouvrir le guide simplifié</a> "
+                f"<a class='btn' href='{escape(guide_attendues_href)}' download>Guide détaillé</a>"
             )
         else:
             primary_btns = (
-                f"<a class='btn' href='{escape(mail_href)}'>Ouvrir le mail de positionnement</a> "
-                f"<a class='btn' href='{escape(guide_href)}' download>Exporter le guide positionnement (Word)</a> "
-                f"<a class='btn' href='{escape(guide_href)}' target='_blank' rel='noopener'>Ouvrir le guide positionnement</a>"
+                "<p class='meta'>Pas encore de mail / guide « vidéos attendues » "
+                "(sélection finale manquante).</p>"
+            )
+
+        reponse = (pos.get("reponse") or "").strip()
+        besoin = (pos.get("besoin_exprime") or "").strip()
+        prefs = (pos.get("positionnement_preferences") or "").strip()
+        if reponse or besoin or prefs:
+            reponse_parts = ["<h2>Réponse de l'intervenant</h2>"]
+            if prefs:
+                reponse_parts.append(
+                    f"<p><strong>Positionnement / préférences :</strong> {escape(prefs)}</p>"
+                )
+            if besoin:
+                reponse_parts.append(
+                    f"<p><strong>Besoin exprimé :</strong> {escape(besoin)}</p>"
+                )
+            if reponse:
+                reponse_parts.append(
+                    "<p><strong>Réponse :</strong></p>"
+                    f"<pre class='script'>{escape(reponse)}</pre>"
+                )
+            reponse_block = "".join(reponse_parts)
+        else:
+            reponse_block = (
+                "<h2>Réponse de l'intervenant</h2>"
+                "<p class='meta'>Aucune réponse enregistrée pour le moment.</p>"
+            )
+
+        affectation_rows = []
+        for video in visible_videos:
+            e_code = video.get("code", "")
+            t_code = video.get("capsule_code", "")
+            titre = video.get("titre", "") or "—"
+            affectation_rows.append(
+                "<tr>"
+                f"<td><a href='video_expert_{escape(e_code)}.html'><strong>{escape(e_code)}</strong></a></td>"
+                f"<td>{escape(_display_expertise_title(e_code, titre) if titre else _label_video_expert(e_code))}</td>"
+                f"<td><a href='capsule_{escape(t_code)}.html'>{escape(t_code)}</a></td>"
+                "</tr>"
+            )
+        if affectation_rows:
+            affectation_block = (
+                "<h2>Affectation retenue</h2>"
+                "<div class='table-wrap'><table><thead><tr>"
+                "<th>Vidéo expert</th><th>Titre / objectif</th><th>Capsule témoin</th>"
+                "</tr></thead><tbody>"
+                + "".join(affectation_rows)
+                + "</tbody></table></div>"
+            )
+        else:
+            affectation_block = (
+                "<h2>Affectation retenue</h2>"
+                "<p class='meta'>Aucune vidéo expertise affectée pour le moment.</p>"
             )
         body = (
             f"<p class='meta'>{escape(item['organisme'])} — "
-            f"{len(item['capsules'])} capsule(s) temoin · "
-            f"{len(item['videos_expert'])} video(s) expert."
+            f"{len(visible_capsules)} capsule(s) temoin · "
+            f"{len(visible_videos)} video(s) expert."
             + (
                 f" · Sélection finale : <strong>{escape(finale_by_slug.get(item['slug'], ''))}</strong>"
                 if has_finale
                 else ""
             )
+            + " · Documents : dernière version uniquement (mail + guides vidéos attendues)."
             + "</p>"
-            f"<p>{primary_btns}</p>"
+            + (f"<p>{primary_btns}</p>" if has_finale else primary_btns)
+            + affectation_block
+            + reponse_block
             + _sommaire_cards(sections)
         )
         write_text(
@@ -8907,7 +9026,7 @@ def build_suivi_intervenants_pages(programme_table: dict, experts_profils: dict)
                 ),
                 page_header=(
                     f'<div class="page-head"><h1>{escape(item["nom"])}</h1>'
-                    f'<p class="lead">Mail, guide editorial, capsules temoin et videos expertise.</p></div>'
+                    f'<p class="lead">Affectation, réponse, dernier mail et guides à envoyer.</p></div>'
                 ),
                 main_class="page-home",
             ),
@@ -9033,15 +9152,22 @@ def _script_propose_stats_for_code(
     clarisse_count: int,
 ) -> dict:
     capsule = affectations.get("capsules", {}).get(code, {})
-    script = (capsule.get("script_final") or "").strip()
+    fallback = (capsule.get("script_final") or "").strip()
+    script = _script_final_prefer_mounted_transcript(code, fallback).strip()
+    source = capsule.get("script_final_source") or ""
+    if script and _mounted_transcript_script(code):
+        source = "transcript_video_monte"
     ordre = capsule.get("ordre_montage") or capsule.get("extraits_utilises") or []
     duree = capsule_duration(code, segments_by_id, affectations) if ordre else 0.0
+    voice_blocks = re.findall(r"^=== (.+) ===$", script, flags=re.M)
+    nb_blocs = len(voice_blocks) if voice_blocks else (len(ordre) if ordre else 0)
     return {
         "has_bab_script": bool(script),
-        "nb_blocs": len(ordre) if ordre else 0,
+        "nb_blocs": nb_blocs,
         "duree": duree,
         "clarisse_count": clarisse_count,
         "script": script,
+        "script_source": source,
     }
 
 
@@ -9077,6 +9203,13 @@ def build_script_propose_pages(programme_table: dict, affectations: dict, segmen
                 "Source : proposition provisoire construite par consolidation des surlignages Clarisse "
                 "(fragments de la meme voix regroupes). Pas encore de montage BAB valide."
             )
+        elif stats.get("script_source") == "transcript_video_monte":
+            trans_item = (_load_transcripts_videos_finaux().get("capsules") or {}).get(code) or {}
+            docx_name = trans_item.get("source") or "Trancript_Video*.docx"
+            source_note = (
+                f"Source : transcript de la vidéo montée (<code>{escape(docx_name)}</code>) — "
+                "texte tel que monté, voix identifiées par recoupement BAB (non inventé)."
+            )
         else:
             source_note = (
                 "Source : montage BAB valide (<code>affectations.json</code> / script_final) — "
@@ -9104,11 +9237,18 @@ def build_script_propose_pages(programme_table: dict, affectations: dict, segmen
                 )
 
         if not voice_preview and script_text:
-            # T13 consolidated ids
-            for match in re.finditer(r"\[([^\]]+)\]\s+([^|]+)\|", script_text):
+            for match in re.finditer(r"^=== (.+) ===$", script_text, flags=re.M):
                 voice_preview.append(
-                    f"<li><strong>{escape(match.group(1))}</strong> — {escape(match.group(2).strip())}</li>"
+                    f"<li><strong>{escape(match.group(1).strip())}</strong> "
+                    f"<span class='meta'>transcript monté</span></li>"
                 )
+            if not voice_preview:
+                # T13 consolidated ids (proposition Clarisse)
+                for match in re.finditer(r"\[([^\]]+)\]\s+([^|]+)\|", script_text):
+                    voice_preview.append(
+                        f"<li><strong>{escape(match.group(1))}</strong> — "
+                        f"{escape(match.group(2).strip())}</li>"
+                    )
 
         body = (
             f"<p class='meta'><strong>Objectif :</strong> {escape(objective or '—')}</p>"
@@ -10756,59 +10896,33 @@ def build_mails_experts_pages(
     affectations: dict | None = None,
     segments: list[dict] | None = None,
 ) -> None:
-    """Mails experts : index par date d'envoi, puis type (positionnement, vidéos attendues)."""
-    experts = _mail_experts_rows(programme_table, experts_profils)
+    """Mails experts : uniquement le dernier lot (vidéos attendues + guides associés)."""
     experts_attendues = _experts_for_videos_attendues(programme_table, experts_profils)
     affectations = affectations or {}
     by_id = index_by_id(segments or [])
     grouped_tb = _tb_edito_sequences_by_code()
     rows_by_code = {row.get("code", ""): row for row in programme_table.get("rows", [])}
 
-    # Sous-ensemble daté : mails envoyés le 20/07/2026 = mail de positionnement.
-    date_slug = "20260720"
-    date_label = "20/07/2026"
-    date_href = f"mails_experts_{date_slug}.html"
-    positionnement_href = f"mails_positionnement_{date_slug}.html"
-    positionnement_title = "Mail de positionnement"
-
-    cards = []
-    for expert in experts:
-        mail_file = f"mail_expert_{expert['slug']}.html"
-        video_refs = ", ".join(item["code"] for item in expert["videos"]) or "Aucune capsule témoin"
-        cards.append(
-            "<article class='card'>"
-            f"<h2><a href='{escape(mail_file)}'>{escape(expert['nom'])}</a></h2>"
-            f"<p class='meta'>{escape(expert['organisme'])}</p>"
-            f"<p>Capsules témoins concernées : <strong>{escape(video_refs)}</strong></p>"
-            f"<p><a class='btn' href='{escape(mail_file)}'>Ouvrir le mail</a></p>"
-            "</article>"
-        )
-
-    # 1) Index Mails experts → dates d'envoi
     date_attendues_slug = "20260727"
     date_attendues_label = "27/07/2026"
     date_attendues_href = f"mails_experts_{date_attendues_slug}.html"
     attendues_href = f"mails_videos_attendues_{date_attendues_slug}.html"
     attendues_title = "Mail vidéos attendues"
+    zip_simplifies_name = "guides_editoriaux_simplifies.zip"
 
     write_text(
         SITE / "mails_experts.html",
         html_page(
             "Mails experts",
-            "<p class='meta'>Archives des mails envoyés aux experts, classées par date d'envoi.</p>"
+            "<p class='meta'>Dernier lot de documents à envoyer aux experts "
+            "(mails et guides de positionnement du 20/07 retirés du site).</p>"
             + _sommaire_cards(
                 [
-                    (
-                        date_href,
-                        "📅",
-                        date_label,
-                        f"Mails envoyés le {date_label} — {positionnement_title.lower()}.",
-                    ),
                     (
                         date_attendues_href,
                         "📅",
                         date_attendues_label,
-                        f"Mails envoyés le {date_attendues_label} — {attendues_title.lower()}.",
+                        f"Mails du {date_attendues_label} — {attendues_title.lower()} + guides.",
                     ),
                 ]
             ),
@@ -10820,151 +10934,20 @@ def build_mails_experts_pages(
             ),
             page_header=(
                 '<div class="page-head"><h1>Mails experts</h1>'
-                '<p class="lead">Messages envoyés aux experts, par date.</p></div>'
+                '<p class="lead">Dernière version des mails et guides à envoyer.</p></div>'
             ),
             main_class="page-home",
-        ),
-    )
-
-    # 2) Sous-ensemble daté 20/07/2026 → types de mail
-    write_text(
-        SITE / date_href,
-        html_page(
-            f"Mails experts — {date_label}",
-            f"<p class='meta'>Mails envoyés le <strong>{escape(date_label)}</strong>.</p>"
-            + _sommaire_cards(
-                [
-                    (
-                        positionnement_href,
-                        "✉",
-                        positionnement_title,
-                        "Sollicitation de positionnement sur les vidéos expertise proposées.",
-                    )
-                ]
-            ),
-            nav_current="fichiers_travail.html",
-            breadcrumb=html_breadcrumb(
-                ("Accueil", "index.html"),
-                ("Fichiers de travail", "fichiers_travail.html"),
-                ("Mails experts", "mails_experts.html"),
-                (date_label, None),
-            ),
-            page_header=(
-                f'<div class="page-head"><h1>Mails experts — {escape(date_label)}</h1>'
-                f'<p class="lead">Sous-ensemble des envois du {escape(date_label)}.</p></div>'
-            ),
-            main_class="page-home",
-        ),
-    )
-
-    # 3) Mail de positionnement = contenu actuel (liste des mails individuels)
-    positionnement_body = (
-        f"<p class='meta'><strong>Envoi :</strong> {escape(date_label)}. "
-        "Mails individualisés pour solliciter le positionnement des experts sur les vidéos expertise. "
-        "Chaque mail reprend les sujets de capsules témoins concernés, les vidéos expertise proposées, "
-        "l'information sur les transcripts des cinq chercheurs disponibles et les jalons : "
-        "<strong>23 juillet</strong> (positionnement), <strong>27 juillet</strong> (retour d'arbitrage), "
-        "<strong>1er septembre</strong> (script prompteur, a minima 15 jours avant tournage).</p>"
-        f"<section class='cards'>{''.join(cards) if cards else '<p>Aucun expert proposé dans le programme_table.</p>'}</section>"
-    )
-    write_text(
-        SITE / positionnement_href,
-        html_page(
-            positionnement_title,
-            positionnement_body,
-            nav_current="fichiers_travail.html",
-            breadcrumb=html_breadcrumb(
-                ("Accueil", "index.html"),
-                ("Fichiers de travail", "fichiers_travail.html"),
-                ("Mails experts", "mails_experts.html"),
-                (date_label, date_href),
-                (positionnement_title, None),
-            ),
-            page_header=(
-                f'<div class="page-head"><h1>{escape(positionnement_title)}</h1>'
-                f'<p class="lead">Mails de sollicitation de positionnement — envoi du {escape(date_label)}.</p></div>'
-            ),
         ),
     )
 
     expected = {
-        positionnement_href,
-        date_href,
         "mails_experts.html",
         date_attendues_href,
         attendues_href,
     }
-    expected_docs = set()
-    expected_mail_txt = set()
-    for expert in experts:
-        subject, mail_text = _compose_expert_mail(expert)
-        send_href = _mailto_href(TEST_MAIL_RECIPIENT, subject, mail_text)
-        mail_name = f"mail_expert_{expert['slug']}.html"
-        doc_name = f"guide_editorial_{expert['slug']}.doc"
-        doc_abs_path = str((SITE / doc_name).resolve())
-        doc_file_uri = (SITE / doc_name).resolve().as_uri()
-        expected.add(mail_name)
-        expected_docs.add(doc_name)
-        write_text(SITE / doc_name, _guide_editorial_expert_doc_html(expert, grouped_tb, rows_by_code))
-        video_rows = []
-        for item in expert["videos"]:
-            video_rows.append(
-                "<tr>"
-                f"<td><a href='{escape(item['tb_edito_href'])}'>{escape(item['code'])}</a></td>"
-                f"<td>{escape(item['video_temoin_label'])}</td>"
-                f"<td>{escape(' | '.join(item['expert_video_labels']) or 'À définir')}</td>"
-                f"<td>{escape(item['objectif'])}</td>"
-                "</tr>"
-            )
-        detail_body = (
-            f"<p class='meta'><strong>Expert :</strong> {escape(expert['nom'])} · "
-            f"<strong>Organisme :</strong> {escape(expert['organisme'])}</p>"
-            f"<p class='meta'><strong>Type :</strong> {escape(positionnement_title)} · "
-            f"<strong>Envoi :</strong> {escape(date_label)}</p>"
-            f"<p class='meta'><strong>Objet proposé :</strong> {escape(subject)}</p>"
-            f"<p class='meta'><strong>Destinataire test actuel :</strong> {escape(TEST_MAIL_RECIPIENT)} "
-            f"(validation éditoriale ensuite via {escape(REVIEW_MAIL_RECIPIENT)}).</p>"
-            f"<p class='meta'>Fiche suivi : "
-            f"<a href='suivi_intervenant_{escape(expert['slug'])}.html'>ouvrir dans Suivi Intervenants</a></p>"
-            f"<p><a class='btn' href='{escape(send_href)}'>Mail à envoyer</a></p>"
-            f"<p><a class='btn' href='{escape(doc_name)}' download>Exporter le guide éditorial (Word)</a></p>"
-            f"<p><a class='btn' href='{escape(doc_name)}' target='_blank' rel='noopener'>Ouvrir le guide éditorial (Word)</a></p>"
-            f"<p><a class='btn' href='{escape(doc_file_uri)}'>Ouvrir le fichier Word (lien local absolu)</a></p>"
-            f"<p class='meta'><strong>Pièce jointe prête :</strong> <code>{escape(doc_name)}</code></p>"
-            f"<p class='meta'><strong>Chemin local :</strong> <code>{escape(doc_abs_path)}</code></p>"
-            "<h2>Mail prêt à envoyer</h2>"
-            f"<pre class='script mail-ready'>{escape(mail_text)}</pre>"
-            "<h2>Capsules et sujets concernés</h2>"
-            "<div class='table-wrap'><table><thead><tr>"
-            "<th>Capsule témoin</th><th>Vidéo témoin</th><th>Vidéos expertise proposées</th><th>Objectif pédagogique</th>"
-            "</tr></thead><tbody>"
-            + ("".join(video_rows) or "<tr><td colspan='4'>Aucune affectation.</td></tr>")
-            + "</tbody></table></div>"
-            "<p class='meta'>Pièces jointes recommandées : <code>tableau_correspondances_edito.html</code> "
-            "et les pages de capsules témoins listées ci-dessus.</p>"
-        )
-        write_text(
-            SITE / mail_name,
-            html_page(
-                f"Mail expert — {expert['nom']}",
-                detail_body,
-                nav_current="fichiers_travail.html",
-                breadcrumb=html_breadcrumb(
-                    ("Accueil", "index.html"),
-                    ("Fichiers de travail", "fichiers_travail.html"),
-                    ("Mails experts", "mails_experts.html"),
-                    (date_label, date_href),
-                    (positionnement_title, positionnement_href),
-                    (expert["nom"], None),
-                ),
-                page_header=(
-                    f'<div class="page-head"><h1>Mail expert — {escape(expert["nom"])}</h1>'
-                    f'<p class="lead">{escape(positionnement_title)} — envoi du {escape(date_label)}.</p></div>'
-                ),
-            ),
-        )
+    expected_docs: set[str] = set()
+    expected_mail_txt: set[str] = set()
 
-    # --- Sous-ensemble 27/07/2026 : mail vidéos attendues ---
     write_text(
         SITE / date_attendues_href,
         html_page(
@@ -10976,7 +10959,7 @@ def build_mails_experts_pages(
                         attendues_href,
                         "✉",
                         attendues_title,
-                        "Confirmation des vidéos expertise attendues + guide éditorial simplifié (PJ).",
+                        "Confirmation du périmètre + guide éditorial simplifié (PJ principale).",
                     )
                 ]
             ),
@@ -10995,7 +10978,6 @@ def build_mails_experts_pages(
         ),
     )
 
-    zip_simplifies_name = "guides_editoriaux_simplifies.zip"
     attendues_cards = []
     for expert in experts_attendues:
         mail_file = f"mail_videos_attendues_{expert['slug']}.html"
@@ -11094,11 +11076,6 @@ def build_mails_experts_pages(
             f"<a href='suivi_intervenant_{escape(expert['slug'])}.html'>ouvrir dans Suivi Intervenants</a></p>"
             "<h2>Vidéos expertise attendues</h2>"
             f"{attendues_list}"
-            "<h2>Lien à transmettre à l'intervenant</h2>"
-            "<p class='meta'>Lien de consultation du guide sur le site de travail "
-            "(à ouvrir depuis le dossier <code>site/</code> ou l'URL de publication) :</p>"
-            f"<p><code>{escape(page_name)}</code></p>"
-            f"<p><a class='btn' href='{escape(page_name)}'>Ouvrir la page destinée à l'intervenant</a></p>"
             "<h2>Mail</h2>"
             f"<p><a class='btn' href='{escape(send_href)}'>Mail à envoyer</a> "
             f"<a class='btn' href='{escape(mail_txt_name)}' download>Exporter le mail (.txt)</a></p>"
@@ -11106,13 +11083,9 @@ def build_mails_experts_pages(
             "<h2>Pièce jointe principale — guide éditorial simplifié</h2>"
             f"<p><a class='btn' href='{escape(simple_doc_name)}' download>Exporter le guide éditorial simplifié (Word)</a> "
             f"<a class='btn' href='{escape(simple_doc_name)}' target='_blank' rel='noopener'>Ouvrir le guide éditorial simplifié</a></p>"
-            "<p class='meta'>1–2 pages : objectif, ce que disent les chercheurs, ce qu’on attend. "
-            "À joindre en priorité au mail.</p>"
             "<h2>Guide détaillé (optionnel)</h2>"
             f"<p><a class='btn' href='{escape(doc_name)}' download>Exporter le guide détaillé (Word)</a> "
             f"<a class='btn' href='{escape(doc_name)}' target='_blank' rel='noopener'>Ouvrir le guide détaillé</a></p>"
-            f"<p class='meta'>Version complète (scripts, transcript témoin, vue d’ensemble) — "
-            f"sur demande ou en second fichier, pas en PJ unique.</p>"
             "<div class='editorial-preview'>"
             f"{editorial_html}"
             "</div>"
@@ -11138,7 +11111,6 @@ def build_mails_experts_pages(
             ),
         )
 
-    # ZIP de tous les guides éditoriaux simplifiés (envoi / archivage)
     zip_path = SITE / zip_simplifies_name
     with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
         for expert in experts_attendues:
@@ -11147,24 +11119,23 @@ def build_mails_experts_pages(
                 zf.write(doc, arcname=doc.name)
     expected.add(zip_simplifies_name)
 
+    # Purge des anciens mails / guides de positionnement et fichiers hors lot courant.
     for path in SITE.glob("mail_expert_*.html"):
-        if path.name not in expected:
-            path.unlink()
+        path.unlink()
+    for path in SITE.glob("mail_expert_*.doc"):
+        path.unlink()
     for path in SITE.glob("mail_videos_attendues_*.html"):
         if path.name not in expected:
             path.unlink()
     for path in SITE.glob("mail_videos_attendues_*.txt"):
         if path.name not in expected_mail_txt:
             path.unlink()
-    for path in SITE.glob("mail_expert_*.doc"):
-        path.unlink()
     for path in SITE.glob("guide_editorial_*.doc"):
         if path.name not in expected_docs:
             path.unlink()
     for path in SITE.glob("guide_videos_attendues_*.doc"):
         if path.name not in expected_docs:
             path.unlink()
-    # Ancien nom « fiche simple »
     for path in SITE.glob("guide_videos_attendues_simple_*.doc"):
         path.unlink()
     for path in SITE.glob("package_mail_expert_*.zip"):
@@ -11172,10 +11143,8 @@ def build_mails_experts_pages(
     for path in SITE.glob("guides_editoriaux_simplifies*.zip"):
         if path.name not in expected:
             path.unlink()
-    # Nettoie d'anciennes pages de lots hors des sous-ensembles courants.
     for path in SITE.glob("mails_positionnement_*.html"):
-        if path.name not in expected:
-            path.unlink()
+        path.unlink()
     for path in SITE.glob("mails_videos_attendues_*.html"):
         if path.name not in expected and path.name.startswith("mails_videos_attendues_20"):
             path.unlink()
@@ -11184,6 +11153,7 @@ def build_mails_experts_pages(
             path.unlink()
     for path in SITE.glob("tb_edito_T*_*.doc"):
         path.unlink()
+
 
 
 def build_correspondances_edito_page(programme_table: dict) -> None:

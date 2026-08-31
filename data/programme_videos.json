@@ -252,8 +252,8 @@
       ]
     },
     "T11": {
-      "module": "M4",
-      "resume_temoignages": "Muriel : peur du temps, de l'echec et de la perte de legitimite ; reorganiser ses responsabilites. Jean-Jacques : impossible de tout maitriser ; accepter l'incertitude. Loic : entrepreneuriat clivant en milieu academique ; constituer une equipe. Sylvia : oser innover, accomplissement et accompagnement.",
+      "module": "M5",
+      "resume_temoignages": "Muriel : experience enrichissante, integrateur social, impact visible. Loic : comite scientifique + enseignant-chercheur, impartialite. Jean-Jacques : conseil de surveillance. Fil monte : evolution du metier et conciliation des casquettes.",
       "experts_proposes": [
         "Arielle Sante",
         "Pascal Corbel",
@@ -262,15 +262,15 @@
       "videos_expert": [
         {
           "code": "E20",
-          "titre": "Gerer les freins",
-          "descriptif": "Temps, legitimite, entourage, droit a l'apprentissage et securisation du parcours.",
-          "intervenant": null
+          "titre": "Concilier recherche et engagement dans l'innovation",
+          "descriptif": "Double casquette, gouvernance, impartialite, evolution du metier de chercheur.",
+          "intervenant": "Bernard Yannou"
         },
         {
           "code": "E21",
-          "titre": "Innover comme processus d'apprentissage",
-          "descriptif": "Incertitude, essais, erreurs, pivot et progression plutot que reussite lineaire. Focaliser le discours sur les leviers existants pour vaincre les freins.",
-          "intervenant": null
+          "titre": "Gerer les freins et innover comme apprentissage",
+          "descriptif": "Temps, legitimite, entourage, doute ; incertitude, essais, pivot ; premiere action reversible.",
+          "intervenant": "Joel Nguen"
         }
       ]
     },

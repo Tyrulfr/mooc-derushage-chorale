@@ -1,0 +1,43 @@
+Objet : Re: MOOC L'Esprit d'innover — ton script « Déclarer avant de divulguer » : c'est exactement ce qu'on attendait
+
+Bonjour Stéphanie,
+
+Réponse directe à ta question : le « script » qui figure dans le guide détaillé n'est pas une trame à compléter. C'est une projection générée par IA, produite à partir de nos consignes pour donner une idée du format et du registre — avec le disclaimer qui l'accompagne : sa justesse n'a pas été vérifiée par quelqu'un qui a l'expertise du sujet. Tu n'as donc rien à modifier là-dedans, et surtout rien à t'y conformer.
+
+Ton texte, lui, est le livrable attendu. Il est nettement meilleur que notre projection : plus juste, mieux écrit, et dans le bon registre — sensibilisation, pas cours de propriété intellectuelle. Ne t'aligne pas sur notre exemple.
+
+Deux précisions rapides
+
+C'est bien la vidéo 6 (« Le réflexe de déclaration avant toute divulgation ») : ton titre et ton contenu correspondent exactement à ce grain.
+
+Et tu ne t'es pas trompée sur les témoins : les rappels de Jean-Jacques, Muriel et Sylvia sont fidèles à ce que dit la vidéo témoin 4 telle qu'elle est montée. Pas de contresens à corriger.
+
+Mes remarques
+
+Elles sont ci-joint, intégrées entre parenthèses dans ton texte. Elles portent uniquement sur le cadrage pédagogique du MOOC — grain de la vidéo, place dans le parcours, articulation avec ta vidéo 7 — jamais sur le fond de ton expertise, qui reste ta main.
+
+Les quatre points principaux :
+
+1. Le rappel des témoignages (trois paragraphes) peut se réduire à trois ou quatre phrases. Les apprenants viennent de voir la vidéo témoin quelques secondes avant la tienne. Tu gagnes environ une minute et demie à réinvestir sur le geste de déclaration lui-même, qui est aujourd'hui la partie la plus courte du script.
+
+2. Il manque un mot au grain E6 : la nouveauté. C'est le seul endroit du parcours où l'on peut dire simplement pourquoi une communication publique ferme une porte. Une phrase suffit. Dans le même esprit, la soutenance de thèse et le poster mériteraient de rejoindre l'article et le congrès dans la liste des situations à risque : ils parlent beaucoup au public visé.
+
+3. La déclaration d'invention est annoncée trois fois avant d'être traitée. En n'en gardant qu'une, l'arrivée de la section gagne en force. Ton image du « lever la main » est la meilleure du script : elle pourrait ouvrir directement la section.
+
+4. Frontière avec ta vidéo 7 — le point le plus utile avant que tu ne l'écrives. Tes sections « Une démarche accessible » et « La confidentialité » commencent à traiter ce qui fait l'objet de E7 (« à qui parler et avec quoi arriver »). Si tout y est dit, E7 arrive après la bataille. Ma suggestion de répartition :
+
+- E6 garde : la nouveauté et la confidentialité comme principe ; les situations à risque ; le geste de déclaration et ce que contient la déclaration ; le fait que déclarer ne bloque pas la publication (ton meilleur argument, et Jean-Jacques le démontre).
+- E7 prend : l'interlocuteur (établissement, tutelles, SATT) ; ce qu'il faut apporter au premier rendez-vous ; le déroulé de l'échange et le cadre pratique de la confidentialité.
+
+Sur la durée : 966 mots, soit environ 7 minutes de prompteur. La cible est de 5 minutes (± 2 min) : ça tient, mais en limite haute. L'allègement des rappels ramène le script autour de 6 minutes.
+
+Tu peux lancer la vidéo 7
+
+Rien ne t'empêche d'attaquer E7 dès maintenant, en gardant en tête la répartition ci-dessus. Et si tu préfères en parler de vive voix avant d'écrire, un point Teams de trente minutes est possible cette semaine — dis-moi ce qui t'arrange. Je peux aussi te transmettre le script final de la vidéo témoin 4 si tu veux voir précisément ce que les apprenants auront entendu juste avant toi.
+
+Merci vraiment pour ce texte — c'est le premier script T4 et il pose une bonne base.
+
+Bien cordialement,
+Christophe Dubois
+Action 2 — Pilier 1 — PUI Alliance Paris-Saclay
+christophe.dubois@universite-paris-saclay.fr

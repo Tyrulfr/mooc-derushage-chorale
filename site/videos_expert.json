@@ -62,8 +62,8 @@
       "temoin_label": "VIDÉO 4 : UNE IDÉE NE SUFFIT PAS + FREINS ET LEVIERS (fusion)",
       "module": "M1",
       "experts": "Antoine Latreille, Eneli Vino, Soizic Lefeuvre, Stephanie Sano",
-      "script_statut": "EN_ATTENTE",
-      "script_fichier": "",
+      "script_statut": "RECU",
+      "script_fichier": "E6.txt",
       "page": "video_expert_E6.html"
     },
     {
@@ -222,7 +222,7 @@
     },
     {
       "code": "E20",
-      "titre": "Gérer les freins. Temps, légitimité, entourage, droit à l’apprentissage et sécurisation du parcours.",
+      "titre": "Concilier recherche et engagement dans l'innovation. Double casquette, gouvernance, impartialité, évolution du métier de chercheur.",
       "capsule_code": "T11",
       "temoin_label": "VIDÉO 11 : EVOLUTION DANS LE MÉTIER DU CHERCHEUR.EUSE",
       "module": "M5",
@@ -233,7 +233,7 @@
     },
     {
       "code": "E21",
-      "titre": "Innover comme processus d’apprentissage. Incertitude, essais, erreurs, pivot et progression plutôt que réussite linéaire. (focaliser le discours sur les leviers existant pour vaincre les freins)",
+      "titre": "Gérer les freins et innover comme apprentissage. Temps, légitimité, entourage, doute ; incertitude, essais, pivot ; première action réversible.",
       "capsule_code": "T11",
       "temoin_label": "VIDÉO 11 : EVOLUTION DANS LE MÉTIER DU CHERCHEUR.EUSE",
       "module": "M5",
@@ -260,8 +260,8 @@
       "temoin_label": "VIDÉO 12 : DISPOSITIFS D’ACCOMPAGNEMENT & COLLAB",
       "module": "M5",
       "experts": "Eneli Vino, Fatoumata Aonon, Rémi Waché, Soizic Lefeuvre, Virginia Branco",
-      "script_statut": "EN_ATTENTE",
-      "script_fichier": "",
+      "script_statut": "RECU",
+      "script_fichier": "E23.txt",
       "page": "video_expert_E23.html"
     }
   ]

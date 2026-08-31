@@ -1,5 +1,5 @@
 {
-  "date_mise_a_jour": "2026-07-24",
+  "date_mise_a_jour": "2026-08-31",
   "note": "Suivi des positionnements intervenants. Proposition de notre part derivee du programme. Reponse, besoin exprime, preferences et proposition finale saisis au fil des retours.",
   "intervenants": [
     {
@@ -8,14 +8,10 @@
       "organisme": "Université Paris-Saclay",
       "proposition_notre_part": "T4 (E6, E7) ; T5 (E8, E9)",
       "capsules": [
-        "T4",
-        "T5"
+        "T9"
       ],
       "videos_expert": [
-        "E6",
-        "E7",
-        "E8",
-        "E9"
+        "E17"
       ],
       "reponse": "",
       "besoin_exprime": "",
@@ -30,22 +26,12 @@
       "capsules": [
         "T7",
         "T8",
-        "T9",
-        "T10",
-        "T11"
+        "T10"
       ],
       "videos_expert": [
-        "E12",
         "E13",
-        "E13bis",
-        "E14",
         "E15",
-        "E16",
-        "E17",
-        "E18",
-        "E19",
-        "E20",
-        "E21"
+        "E18"
       ],
       "reponse": "",
       "besoin_exprime": "",
@@ -59,15 +45,11 @@
       "proposition_notre_part": "T1 (E1) ; T2 (E2, E3) ; T11 (E20, E21)",
       "capsules": [
         "T1",
-        "T2",
         "T11"
       ],
       "videos_expert": [
         "E1",
-        "E2",
-        "E3",
-        "E20",
-        "E21"
+        "E20"
       ],
       "reponse": "",
       "besoin_exprime": "",
@@ -80,18 +62,9 @@
       "organisme": "CNRS",
       "proposition_notre_part": "T1 (E1) ; T4 (E6, E7) ; T5 (E8, E9) ; T12 (E22, E23)",
       "capsules": [
-        "T1",
-        "T4",
-        "T5",
         "T12"
       ],
       "videos_expert": [
-        "E1",
-        "E6",
-        "E7",
-        "E8",
-        "E9",
-        "E22",
         "E23"
       ],
       "reponse": "Bonjour Madame,\n\nJe voudrais me positionner soit pour la vidéo 22, soit pour la vidéo 23, car l'activité contractuelle /partenariale constitue le cœur de mon métier. \nLa vidéo 8 me conviendrait également, étant donné ma spécialisation en droit de la PI.\n\nJe vous remercie par avance et reste à votre disposition en cas de besoin.\n\nRespectueusement",
@@ -105,24 +78,12 @@
       "organisme": "CNRS",
       "proposition_notre_part": "T3 (E4, E5) ; T6 (E10, E11) ; T7 (E12, E13, E13bis) ; T8 (E14, E15) ; T12 (E22, E23)",
       "capsules": [
-        "T3",
-        "T6",
         "T7",
-        "T8",
-        "T12"
+        "T8"
       ],
       "videos_expert": [
-        "E4",
-        "E5",
-        "E10",
-        "E11",
         "E12",
-        "E13",
-        "E13bis",
-        "E14",
-        "E15",
-        "E22",
-        "E23"
+        "E14"
       ],
       "reponse": "Bonjour Rita,\n\nJ'espère que tu vas bien.\n\nJe te remercie pour ton message et te prie de m'excuser du délai de réponse.\n\nAprès relecture du guide de travail, je souhaiterais me positionner sur les vidéos expertises suivantes :\n\nVidéo expertise 5 — Objectif : Dérisquer un projet par étapes. Prématuration, maturation, jalons techniques et commerciaux, critères de décision.\nVidéo expertise 12 — Objectif : De la prématuration à la maturation. Étapes, sélection, investissement, jalons et accompagnement.\nVidéo expertise 14 — Objectif : La chaîne des financements de l'innovation. Prématuration, maturation, aides non dilutives, concours, Bpifrance et financement privé.\nVidéo expertise 15 — Objectif : Comprendre la logique des investisseurs. Dilution, retour attendu, rythme de croissance, gouvernance et compatibilité avec le projet.\n\nPar contre, il n'y avait pas en pièce jointe du mail initial les capsules témoins concernées, en particulier T3, T7 et T8.\n\nPourrais-tu s'il te plaît me les transmettre pour information ?\n\nJe pourrais, selon ton retour sur le positionnement retenu, te faire part de mes commentaires plus précis sur les scripts.\n\nEnfin, pour information, je serai absente à partir de ce soir jusqu'au 14 août inclus.\n\nJe reste à ta disposition pour échanger au besoin à mon retour.\n\nBel été",
       "besoin_exprime": "Demande la transmission des capsules témoins T3, T7 et T8. Souhaite commenter plus précisément les scripts après retour sur le positionnement retenu. Absente jusqu'au 14 août inclus.",
@@ -158,10 +119,7 @@
       ],
       "videos_expert": [
         "E16",
-        "E17",
-        "E18",
         "E19",
-        "E20",
         "E21"
       ],
       "reponse": "Bonjour Rita-Noeëlle,\n\nVoici mon retour :\n\nVidéo 16 : Oui, s'il s'agit bien d'insister sur les effets de complémentarité et la possibilité d'apprentissage et non de lister des compétences-types nécessaires ;\nVidéo 17 : Non, un juriste me paraîtrait plus pertinent ;\nVidéo 18 : Oui, s'il s'agit en particulier de bien distinguer technologie et proposition de valeur ; non, si l'orientation est vraiment très \"communication\".\nVidéo 19 : Oui, en particulier si on peut en profiter pour déconstruire la figure de l'entrepreneur visionnaire.\nVidéo 20 : Non, je ne pense pas être le plus qualifié pour parler de ces parcours de chercheurs-entrepreneurs.\nVidéo 21 : Oui.\n\nBien cordialement,\n\nPascal Corbel,\nProfesseur des Universités en sciences de gestion et du management,\nResponsable du M2 EMPI\nUniversité Paris-Saclay\npascalcorbel.fr",
@@ -178,8 +136,7 @@
         "T12"
       ],
       "videos_expert": [
-        "E22",
-        "E23"
+        "E22"
       ],
       "reponse": "",
       "besoin_exprime": "",
@@ -192,20 +149,10 @@
       "organisme": "Université Paris-Saclay",
       "proposition_notre_part": "T4 (E6, E7) ; T5 (E8, E9) ; T6 (E10, E11) ; T12 (E22, E23)",
       "capsules": [
-        "T4",
-        "T5",
-        "T6",
-        "T12"
+        "T6"
       ],
       "videos_expert": [
-        "E6",
-        "E7",
-        "E8",
-        "E9",
-        "E10",
-        "E11",
-        "E22",
-        "E23"
+        "E11"
       ],
       "reponse": "",
       "besoin_exprime": "",
@@ -235,21 +182,10 @@
       "organisme": "Communication de SATT Paris-Saclay",
       "proposition_notre_part": "T3 (E4, E5) ; T6 (E10, E11) ; T7 (E12, E13, E13bis) ; T8 (E14, E15)",
       "capsules": [
-        "T3",
-        "T6",
-        "T7",
-        "T8"
+        "T3"
       ],
       "videos_expert": [
-        "E4",
-        "E5",
-        "E10",
-        "E11",
-        "E12",
-        "E13",
-        "E13bis",
-        "E14",
-        "E15"
+        "E4"
       ],
       "reponse": "",
       "besoin_exprime": "",
@@ -268,8 +204,8 @@
         "E6",
         "E7"
       ],
-      "reponse": "2026-07-23 — Positionnement confirme sur les deux videos proposees (E6 et E7 / T4).",
-      "besoin_exprime": "",
+      "reponse": "2026-07-23 — Positionnement confirme sur les deux videos proposees (E6 et E7 / T4).\n2026-08-31 — Script E6 « Declarer avant de divulguer » envoye pour avis. Question : le script du guide est-il un exemple ou une trame a completer ? Attend un retour avant d ecrire E7.",
+      "besoin_exprime": "2026-08-31 — Clarifier le statut du script projete du guide detaille (exemple IA vs trame a completer) et valider le cadrage de E6 avant d entamer E7.",
       "positionnement_preferences": "E6 ; E7 (acceptation des deux videos proposees)",
       "proposition_finale": "E6 ; E7"
     },
@@ -280,16 +216,11 @@
       "proposition_notre_part": "T3 (E4, E5) ; T6 (E10, E11) ; T12 (E22, E23)",
       "capsules": [
         "T3",
-        "T6",
-        "T12"
+        "T6"
       ],
       "videos_expert": [
-        "E4",
         "E5",
-        "E10",
-        "E11",
-        "E22",
-        "E23"
+        "E10"
       ],
       "reponse": "2026-07-22 — Bonjour Rita,\n\nJe suis en congés du 24/07 au 25/08, le timing est très serré.\n\nQuoi qu'il en soit, je suis partante par ordre de préférence : pour 10,11,  5, 22.\n\nQuelle est la prochaine étape pour moi?\n\nMerci\n\nVirginia\n\n(Note saisie : « 240/07 » corrige en 24/07 dans le suivi.)",
       "besoin_exprime": "Congés du 24/07 au 25/08 — timing très serré. Demande la prochaine étape.",
@@ -305,8 +236,6 @@
         "T7"
       ],
       "videos_expert": [
-        "E12",
-        "E13",
         "E13bis"
       ],
       "reponse": "",

@@ -1,0 +1,70 @@
+{
+  "date": "2026-08-31",
+  "statut": "ARBITRAGE_EN_COURS",
+  "contexte": "13 videos temoin (T1-T13), documents deja envoyes aux experts. Ecart detecte entre briefs E et montages finaux sur T11 (et titres/resumes obsolete sur plusieurs capsules).",
+  "principe": "Les experts structurent et approfondissent les temoignages montes — pas un plan editorial non monte. Recadrage des briefs E, pas remontage T.",
+  "freins_doutes_legitimite": {
+    "constat": "Le contenu BAB « freins, doutes et legitimite » (interview origine) n'est pas dans les montages T4 ni T11.",
+    "repartition_proposee": {
+      "T13_chorale": "Se lancer malgre les doutes ; ne pas attendre la certitude ; premiers pas ; solidarite entrepreneurs (deja dans le montage T13).",
+      "E21_expert": "Nommer et structurer freins (temps, legitimite, entourage, echec) + apprentissage, incertitude, pivot, premiere action reversible. Expert : Joel Nguen.",
+      "E20_expert": "PAS les freins — evolution du metier / concilier (aligne sur T11 montee). Expert : Bernard Yannou."
+    }
+  },
+  "ecarts_prioritaires": [
+    {
+      "code": "T11",
+      "gravite": "HAUTE",
+      "probleme": "Objectif et briefs E20/E21 disent « freins » ; montage final = evolution metier + concilier casquettes.",
+      "action": "Recadrer objectif T11, E20 (Bernard), E21 (Joel). Valider script Bernard sur T11 reel."
+    },
+    {
+      "code": "T12",
+      "gravite": "MOYENNE",
+      "probleme": "tableau.corr intitule obsolete « DE CONCLUSION » ; programme_table a le bon titre « DISPOSITIFS D'ACCOMPAGNEMENT & COLLAB ».",
+      "action": "Harmoniser tableau.corr et objectifs."
+    },
+    {
+      "code": "T4",
+      "gravite": "MOYENNE",
+      "probleme": "Titre mentionne « FREINS ET LEVIERS » ; montage = brevet, POC, prematuration (E6/E7 OK).",
+      "action": "Simplifier titre T4 dans referentiels."
+    },
+    {
+      "code": "T1",
+      "gravite": "SUIVI",
+      "probleme": "Script Bernard E1 un peu au-dela du grain E1 — retour en cours (revue 2).",
+      "action": "Mail + texte annote envoye a Bernard."
+    }
+  ],
+  "alignements_ok": [
+    "T2-T3 : recherche → besoin → preuve (montages coherents avec E2-E5)",
+    "T5-T6 : protection et valorisation (E8-E11)",
+    "T7-T8 : accompagnement et financements (E12-E15)",
+    "T9-T10 : equipe et langage (E16-E19)",
+    "T12 : dispositifs / collab (E22-E23 Soizic, Remi, Eneli)",
+    "T13 : conclusion sans expert"
+  ],
+  "nouveaux_grains": {
+    "E20": {
+      "titre": "Concilier recherche et engagement dans l'innovation",
+      "descriptif": "Double casquette, gouvernance (comite scientifique, conseil de surveillance), impartialite, evolution du metier sans rupture avec la recherche.",
+      "objectif": "L'apprenant voit comment l'engagement dans l'innovation peut coexister avec le metier de chercheur et identifie ce qu'il aurait a concilier dans son propre contexte.",
+      "temoin": "T11",
+      "expert": "Bernard Yannou"
+    },
+    "E21": {
+      "titre": "Gerer les freins et innover comme apprentissage",
+      "descriptif": "Temps, legitimite, entourage, doute, echec ; incertitude, essais, pivot ; leviers et premiere action reversible.",
+      "objectif": "L'apprenant identifie ses freins, comprend qu'ils ne bloquent pas necessairement le premier pas, et choisit une action realiste et reversible.",
+      "temoin": "T11 (contexte metier) + T13 (chorale motivation/doutes)",
+      "expert": "Joel Nguen"
+    },
+    "T11_objectif": "L'apprenant comprend comment l'innovation transforme le metier de chercheur : casquettes multiples, conciliation, impact visible — sans opposer recherche et engagement."
+  },
+  "experts_a_prevenir": [
+    {"nom": "Bernard Yannou", "videos": ["E1", "E20"], "urgence": "immediate"},
+    {"nom": "Joel Nguen", "videos": ["E16", "E19", "E21"], "urgence": "prochaine vague — preciser E21 = freins"},
+    {"nom": "Tous", "videos": [], "urgence": "note de coherence a envoyer si d'autres ecarts signales"}
+  ]
+}

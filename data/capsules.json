@@ -261,15 +261,15 @@
     "ordre": 11,
     "module": "Module 5 - Collaborer et evoluer dans le metier",
     "titre": "Evolution dans le metier du chercheur",
-    "objectif_pedagogique": "L'apprenant identifie ses propres freins et comprend qu'ils ne doivent pas tous etre resolus avant de faire le premier pas. Il choisit une premiere action realiste et reversible.",
-    "message_central": "Peur, manque de temps et perte de legitimite sont des freins courants mais travaillables.",
+    "objectif_pedagogique": "L'apprenant comprend comment l'innovation transforme le metier de chercheur : casquettes multiples, conciliation des responsabilites, impact visible — sans opposer recherche et engagement.",
+    "message_central": "L'innovation peut enrichir le metier de chercheur (double casquette, gouvernance, impact visible) — il s'agit de concilier, pas de renier.",
     "criteres_inclusion": [
-      "freins personnels",
-      "legitimite",
-      "temps",
-      "echec",
-      "incertitude",
-      "conseils de fin"
+      "evolution du metier",
+      "double casquette",
+      "conciliation",
+      "gouvernance",
+      "impact visible",
+      "integrateur social"
     ],
     "criteres_exclusion": [
       "contrats de collaboration",
