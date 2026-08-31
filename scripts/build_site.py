@@ -7647,6 +7647,45 @@ def _consignes_envoyees_expert_html(item: dict) -> str:
 """
 
 
+def _script_recu_doc_name(code: str) -> str:
+    return f"script_recu_{code}.doc"
+
+
+def _script_recu_doc_html(item: dict) -> str:
+    """Word (HTML .doc) : script renvoyé par l'expert, tel quel."""
+    code = item.get("code") or ""
+    titre_video = _label_video_expert(code)
+    objectif = _normalize_editorial_french(item.get("titre") or "")
+    texte = item.get("script_contenu") or ""
+    body = escape(texte).replace("\n", "<br>") if texte else "<p>Script à compléter.</p>"
+    expert = item.get("experts_label") or ""
+    fichier = item.get("script_fichier") or ""
+    meta_bits = []
+    if expert:
+        meta_bits.append(f"Experts proposés : {escape(expert)}")
+    if fichier:
+        meta_bits.append(f"Source : {escape(fichier)}")
+    mots = len(re.findall(r"[A-Za-zÀ-ÖØ-öø-ÿ0-9']+", texte))
+    if mots:
+        meta_bits.append(f"~{mots} mots")
+    meta = " · ".join(meta_bits)
+    return (
+        "<html><head><meta charset='utf-8'>"
+        "<style>"
+        "body{font-family:Aptos,Segoe UI,Arial,sans-serif;font-size:12pt;line-height:1.5;}"
+        "h1{font-size:18pt;margin-bottom:8px;}"
+        "p{margin:0 0 8px 0;}"
+        ".meta{color:#64748b;font-size:10.5pt;}"
+        ".script{margin-top:12px;}"
+        "</style></head><body>"
+        f"<h1>Script reçu — {escape(titre_video)}</h1>"
+        f"<p class='meta'>{escape(objectif)}</p>"
+        + (f"<p class='meta'>{meta}</p>" if meta else "")
+        + f"<div class='script'>{body}</div>"
+        "</body></html>"
+    )
+
+
 def _script_expert_recu_html(item: dict) -> str:
     """Bloc d'accueil du script renvoye par l'expert."""
     code = item["code"]
@@ -7654,10 +7693,13 @@ def _script_expert_recu_html(item: dict) -> str:
     if statut == "RECU" and item.get("script_contenu"):
         fichier = item.get("script_fichier", "")
         body = escape(item["script_contenu"]).replace("\n", "<br>")
+        doc_href = item.get("script_doc_href") or _script_recu_doc_name(code)
         return f"""
 <section class="methodology-panel">
   <h2>Script renvoye par l'expert</h2>
   <p>{status_badge('VALIDEE')} <span class="meta">Fichier : <code>{escape(fichier)}</code></span></p>
+  <p><a class='btn' href='{escape(doc_href)}' download>Exporter le script reçu (Word)</a>
+  <a class='btn btn-secondary' href='{escape(doc_href)}' target='_blank' rel='noopener'>Ouvrir le Word</a></p>
   <div class="script-recu-block">{body}</div>
 </section>
 """
@@ -10040,6 +10082,11 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
             write_text(SITE / doc_name, _revue_annotee_doc_html(item, revue))
             expected.add(doc_name)
             revue["doc_href"] = doc_name
+        if item.get("script_statut") == "RECU" and item.get("script_contenu"):
+            recu_doc = _script_recu_doc_name(item["code"])
+            write_text(SITE / recu_doc, _script_recu_doc_html(item))
+            expected.add(recu_doc)
+            item["script_doc_href"] = recu_doc
         detail_body = (
             f"<p class='meta'>Module : {escape(item.get('module') or '—')} — "
             f"Capsule : <a href='{escape(item['tb_edito_href'])}'>{escape(item['capsule_code'])}</a> — "
@@ -10073,6 +10120,9 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
         if path.name not in expected:
             path.unlink()
     for path in SITE.glob("revue_*.doc"):
+        if path.name not in expected:
+            path.unlink()
+    for path in SITE.glob("script_recu_*.doc"):
         if path.name not in expected:
             path.unlink()
 
