@@ -4667,10 +4667,15 @@ def _tb_edito_parse_videos_expert(raw: str) -> list[dict]:
             continue
         code = re.sub(r"\s+", "", match.group(1))
         desc = " ".join(match.group(2).split())
+        intervenant = ""
+        named = re.match(r"^([A-ZÉÈÊÀÂÎÏÔÙÛÇ][\w'’.\-]+(?:\s+[A-ZÉÈÊÀÂÎÏÔÙÛÇ][\w'’.\-]+){0,3})\s*:\s*(.+)$", desc)
+        if named:
+            intervenant = named.group(1).strip()
+            desc = named.group(2).strip()
         videos.append(
             {
                 "code": code,
-                "intervenant": "",
+                "intervenant": intervenant,
                 "titre": desc,
                 "descriptif": "",
             }
@@ -7547,8 +7552,28 @@ def _load_expert_script_revues(code: str) -> list[dict]:
     return revues
 
 
+def _retained_experts_by_video_code() -> dict[str, list[dict]]:
+    """Experts retenus (proposition_finale) indexés par code E."""
+    grouped: dict[str, list[dict]] = defaultdict(list)
+    for item in _load_suivi_positionnements().get("intervenants", []):
+        slug_val = item.get("slug") or slug(item.get("nom", ""))
+        finale = item.get("proposition_finale") or ""
+        for code in re.findall(r"\bE\d+(?:bis)?\b", finale, flags=re.IGNORECASE):
+            grouped[code.upper()].append(
+                {
+                    "nom": item.get("nom", ""),
+                    "slug": slug_val,
+                    "organisme": item.get("organisme", ""),
+                    "guide_href": f"guide_editorial_simplifie_{slug_val}.doc",
+                    "mail_href": f"mail_videos_attendues_{slug_val}.html",
+                    "retenu": True,
+                }
+            )
+    return grouped
+
+
 def _inventory_videos_expert(programme_table: dict, experts_profils: dict) -> list[dict]:
-    """Inventaire des videos expertise depuis programme_table + experts proposes."""
+    """Inventaire des videos expertise depuis programme_table + experts retenus (sinon proposes)."""
     mail_rows = _mail_experts_rows(programme_table, experts_profils)
     experts_by_capsule: dict[str, list[dict]] = defaultdict(list)
     for expert in mail_rows:
@@ -7566,6 +7591,7 @@ def _inventory_videos_expert(programme_table: dict, experts_profils: dict) -> li
                 }
             )
 
+    retained_by_e = _retained_experts_by_video_code()
     inventory: list[dict] = []
     for row in programme_table.get("rows", []):
         capsule_code = row.get("code", "")
@@ -7573,23 +7599,30 @@ def _inventory_videos_expert(programme_table: dict, experts_profils: dict) -> li
             continue
         fixed = FIXED_TEMOIN_PLAN.get(capsule_code, {})
         temoin_label = fixed.get("label") or row.get("video_temoin", "")
-        experts = experts_by_capsule.get(capsule_code, [])
+        proposed = experts_by_capsule.get(capsule_code, [])
         for video in _tb_edito_parse_videos_expert(row.get("videos_referent", "")):
             code = video.get("code", "")
             if not code:
                 continue
             script = _load_expert_script_recu(code)
+            retained = retained_by_e.get(code.upper(), [])
+            experts = retained or proposed
+            names = [item["nom"] for item in experts if item.get("nom")]
+            if retained:
+                experts_label = "Retenu : " + ", ".join(names)
+            else:
+                experts_label = ", ".join(names) or "A confirmer"
             inventory.append(
                 {
                     "code": code,
                     "titre": video.get("titre", ""),
+                    "intervenant": (retained[0]["nom"] if retained else video.get("intervenant") or ""),
                     "capsule_code": capsule_code,
                     "temoin_label": temoin_label,
                     "module": row.get("module", ""),
                     "objectif_pedagogique": row.get("objectif_pedagogique", ""),
                     "experts": experts,
-                    "experts_label": ", ".join(item["nom"] for item in experts if item.get("nom"))
-                    or "A confirmer",
+                    "experts_label": experts_label,
                     "script_statut": script["statut"],
                     "script_fichier": script["fichier"],
                     "script_contenu": script["contenu"],
@@ -7626,6 +7659,12 @@ def _consignes_envoyees_expert_html(item: dict) -> str:
         else "<p class='meta'>Aucun expert propose pour cette capsule a ce stade.</p>"
     )
 
+    experts_heading = (
+        "Expert retenu"
+        if any(entry.get("retenu") for entry in (item.get("experts") or []))
+        else "Experts sollicites (guides / mails)"
+    )
+
     return f"""
 <section class="methodology-panel brief-intervenant-panel">
   <h2>Consignes envoyees a l'expert</h2>
@@ -7641,7 +7680,7 @@ def _consignes_envoyees_expert_html(item: dict) -> str:
   <p><strong>Objectif pedagogique de la capsule :</strong> {escape(item.get('objectif_pedagogique') or '—')}</p>
   <h3>Consignes generales</h3>
   <ul>{consignes_html}</ul>
-  <h3>Experts sollicites (guides / mails)</h3>
+  <h3>{escape(experts_heading)}</h3>
   {experts_block}
 </section>
 """

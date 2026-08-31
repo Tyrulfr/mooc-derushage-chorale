@@ -6,7 +6,7 @@
       "capsule_code": "T1",
       "temoin_label": "VIDÉO 1 : POURQUOI OSER ?",
       "module": "M1",
-      "experts": "Bernard Yannou, Eneli Vino",
+      "experts": "Retenu : Bernard Yannou",
       "script_statut": "RECU",
       "script_fichier": "E1.txt",
       "page": "video_expert_E1.html"
@@ -17,7 +17,7 @@
       "capsule_code": "T2",
       "temoin_label": "VIDÉO 2 : DE LA RECHERCHE À L’INNOVATION",
       "module": "M1",
-      "experts": "Bernard Yannou, Gregoire Burgé",
+      "experts": "Retenu : Gregoire Burgé",
       "script_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E2.html"
@@ -28,7 +28,7 @@
       "capsule_code": "T2",
       "temoin_label": "VIDÉO 2 : DE LA RECHERCHE À L’INNOVATION",
       "module": "M1",
-      "experts": "Bernard Yannou, Gregoire Burgé",
+      "experts": "Retenu : Gregoire Burgé",
       "script_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E3.html"
@@ -39,7 +39,7 @@
       "capsule_code": "T3",
       "temoin_label": "VIDÉO 3 : IDENTIFIER UN BESOIN RÉEL + SORTIR DU LABORATOIRE (fusion)",
       "module": "M1",
-      "experts": "Fatoumata Aonon, Stephanie Oger-Roussel, Virginia Branco",
+      "experts": "Retenu : Stephanie Oger-Roussel",
       "script_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E4.html"
@@ -50,7 +50,7 @@
       "capsule_code": "T3",
       "temoin_label": "VIDÉO 3 : IDENTIFIER UN BESOIN RÉEL + SORTIR DU LABORATOIRE (fusion)",
       "module": "M1",
-      "experts": "Fatoumata Aonon, Stephanie Oger-Roussel, Virginia Branco",
+      "experts": "Retenu : Virginia Branco",
       "script_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E5.html"
@@ -61,7 +61,7 @@
       "capsule_code": "T4",
       "temoin_label": "VIDÉO 4 : UNE IDÉE NE SUFFIT PAS + FREINS ET LEVIERS (fusion)",
       "module": "M1",
-      "experts": "Antoine Latreille, Eneli Vino, Soizic Lefeuvre, Stephanie Sano",
+      "experts": "Retenu : Stephanie Sano",
       "script_statut": "RECU",
       "script_fichier": "E6.txt",
       "page": "video_expert_E6.html"
@@ -72,7 +72,7 @@
       "capsule_code": "T4",
       "temoin_label": "VIDÉO 4 : UNE IDÉE NE SUFFIT PAS + FREINS ET LEVIERS (fusion)",
       "module": "M1",
-      "experts": "Antoine Latreille, Eneli Vino, Soizic Lefeuvre, Stephanie Sano",
+      "experts": "Retenu : Arielle Santé, Stephanie Sano",
       "script_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E7.html"
@@ -83,7 +83,7 @@
       "capsule_code": "T5",
       "temoin_label": "VIDÉO 5 : PROTECTION ET VALORISATION",
       "module": "M2",
-      "experts": "Antoine Latreille, Eneli Vino, Soizic Lefeuvre, Stanislas De Lapasse",
+      "experts": "Retenu : Arielle Santé, Stanislas De Lapasse",
       "script_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E8.html"
@@ -94,7 +94,7 @@
       "capsule_code": "T5",
       "temoin_label": "VIDÉO 5 : PROTECTION ET VALORISATION",
       "module": "M2",
-      "experts": "Antoine Latreille, Eneli Vino, Soizic Lefeuvre, Stanislas De Lapasse",
+      "experts": "Retenu : Antoine Latreille, Stanislas De Lapasse",
       "script_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E9.html"
@@ -105,7 +105,7 @@
       "capsule_code": "T6",
       "temoin_label": "VIDÉO 6 : TRANSFERT ET LICENSING",
       "module": "M2",
-      "experts": "Fatoumata Aonon, Soizic Lefeuvre, Stephanie Oger-Roussel, Virginia Branco",
+      "experts": "Retenu : Arielle Santé, Virginia Branco",
       "script_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E10.html"
@@ -116,7 +116,7 @@
       "capsule_code": "T6",
       "temoin_label": "VIDÉO 6 : TRANSFERT ET LICENSING",
       "module": "M2",
-      "experts": "Fatoumata Aonon, Soizic Lefeuvre, Stephanie Oger-Roussel, Virginia Branco",
+      "experts": "Retenu : Soizic Lefeuvre",
       "script_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E11.html"
@@ -127,7 +127,7 @@
       "capsule_code": "T7",
       "temoin_label": "VIDÉO 7 : VOUS N'ÊTES PAS SEUL(E)",
       "module": "M3",
-      "experts": "Arielle Santé, Fatoumata Aonon, Stephanie Oger-Roussel, Yoann Montenot",
+      "experts": "Retenu : Fatoumata Aonon",
       "script_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E12.html"
@@ -149,7 +149,7 @@
       "capsule_code": "T7",
       "temoin_label": "VIDÉO 7 : VOUS N'ÊTES PAS SEUL(E)",
       "module": "M3",
-      "experts": "Arielle Santé, Fatoumata Aonon, Stephanie Oger-Roussel, Yoann Montenot",
+      "experts": "Retenu : Yoann Montenot",
       "script_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E13bis.html"
@@ -160,7 +160,7 @@
       "capsule_code": "T8",
       "temoin_label": "VIDÉO 8 : FINANCEMENTS, CONCOURS ET TEMPS POUR ENTREPRENDRE",
       "module": "M3",
-      "experts": "Arielle Santé, Fatoumata Aonon, Stephanie Oger-Roussel",
+      "experts": "Retenu : Fatoumata Aonon",
       "script_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E14.html"
@@ -182,7 +182,7 @@
       "capsule_code": "T9",
       "temoin_label": "VIDÉO 9 : PARTENARIATS ET POSTURE : CONSTRUIRE UNE ÉQUIPE",
       "module": "M4",
-      "experts": "Arielle Santé, Pascal Corbel",
+      "experts": "Retenu : Pascal Corbel",
       "script_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E16.html"
@@ -215,7 +215,7 @@
       "capsule_code": "T10",
       "temoin_label": "VIDÉO 10 : ENRICHIR SON LANGAGE",
       "module": "M4",
-      "experts": "Arielle Santé, Pascal Corbel",
+      "experts": "Retenu : Pascal Corbel",
       "script_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E19.html"
@@ -226,7 +226,7 @@
       "capsule_code": "T11",
       "temoin_label": "VIDÉO 11 : EVOLUTION DANS LE MÉTIER DU CHERCHEUR.EUSE",
       "module": "M5",
-      "experts": "Arielle Santé, Bernard Yannou, Pascal Corbel",
+      "experts": "Retenu : Bernard Yannou",
       "script_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E20.html"
@@ -237,29 +237,29 @@
       "capsule_code": "T11",
       "temoin_label": "VIDÉO 11 : EVOLUTION DANS LE MÉTIER DU CHERCHEUR.EUSE",
       "module": "M5",
-      "experts": "Arielle Santé, Bernard Yannou, Pascal Corbel",
+      "experts": "Retenu : Pascal Corbel",
       "script_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E21.html"
     },
     {
       "code": "E22",
-      "titre": "Pascal Corbel : Concevoir une collaboration équilibrée. Objectifs partagés, complémentarité, gouvernance, engagement, création et partage de valeur.",
+      "titre": "Concevoir une collaboration équilibrée. Objectifs partagés, complémentarité, gouvernance, engagement, création et partage de valeur.",
       "capsule_code": "T12",
       "temoin_label": "VIDÉO 12 : DISPOSITIFS D’ACCOMPAGNEMENT & COLLAB",
       "module": "M5",
-      "experts": "Eneli Vino, Fatoumata Aonon, Rémi Waché, Soizic Lefeuvre, Virginia Branco",
+      "experts": "Retenu : Rémi Waché",
       "script_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E22.html"
     },
     {
       "code": "E23",
-      "titre": "Antoine Latreille : Sécuriser juridiquement la collaboration. Confidentialité, contrats, connaissances antérieures, résultats nouveaux, PI, publication et sortie du partenariat.",
+      "titre": "Sécuriser juridiquement la collaboration. Confidentialité, contrats, connaissances antérieures, résultats nouveaux, PI, publication et sortie du partenariat.",
       "capsule_code": "T12",
       "temoin_label": "VIDÉO 12 : DISPOSITIFS D’ACCOMPAGNEMENT & COLLAB",
       "module": "M5",
-      "experts": "Eneli Vino, Fatoumata Aonon, Rémi Waché, Soizic Lefeuvre, Virginia Branco",
+      "experts": "Retenu : Eneli Vino",
       "script_statut": "RECU",
       "script_fichier": "E23.txt",
       "page": "video_expert_E23.html"
