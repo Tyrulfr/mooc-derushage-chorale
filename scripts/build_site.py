@@ -5061,10 +5061,13 @@ def build_tb_edito_capsule_pages(programme_table: dict) -> None:
         resume = ""
         cadrage = _tb_edito_build_cadrage(code, ordre, by_seq_id, videos_expert)
 
-        script_final = _script_final_prefer_mounted_transcript(
-            code,
-            _tb_edito_script_with_cadrage(ordre, by_seq_id, cadrage),
+        mounted = _mounted_transcript_script(code)
+        has_mounted = bool(mounted)
+        script_final = mounted if has_mounted else _tb_edito_script_with_cadrage(
+            ordre, by_seq_id, cadrage
         )
+        trans_item = (_load_transcripts_videos_finaux().get("capsules") or {}).get(code) or {}
+        docx_name = trans_item.get("source") or ""
 
         capsule_data = {
             "ordre_montage": ordre,
@@ -5072,96 +5075,119 @@ def build_tb_edito_capsule_pages(programme_table: dict) -> None:
             "resume_temoignages": resume,
             "videos_expert": videos_expert,
             "experts_proposes": experts_proposes,
-            "cadrage_animateur": cadrage,
+            "cadrage_animateur": {} if has_mounted else cadrage,
         }
 
         sections = [
             f"<p><strong>Objectif pedagogique :</strong> {escape(row.get('objectif_pedagogique', 'A renseigner.'))}</p>",
             f"<p><strong>Video temoin :</strong> {escape(spec.get('label', _label_video_temoin(code)))}</p>",
-            f"<p class='meta'><strong>Sequences edito apparies :</strong> {len(sequences_sorted)}</p>",
-            "<h2>Montage édito retenu</h2>",
         ]
-        if code == "T1":
+        if has_mounted:
             sections.append(
-                "<p class='meta'>Organisation en <strong>deux ensembles</strong> : "
-                "(1) presentations de tous les temoins, puis (2) geneses de leurs innovations "
-                "(chercheur apres chercheur dans chaque ensemble).</p>"
+                f"<p class='meta'><strong>Source :</strong> transcript monté "
+                f"(<code>{escape(docx_name)}</code>) — résultat du travail Clarisse / monteur. "
+                f"Banque surlignages historique : {len(sequences_sorted)} sequence(s).</p>"
             )
+            sections.append("<h2>Script monté</h2>")
             sections.append(
-                "<p class='meta'><strong>Regle T1 :</strong> un passage comme "
-                "<code>JJGE-0004</code> (question « Comment est née votre innovation ? ») "
-                "est place en genese, jamais en presentation.</p>"
+                f"<div class='script' id='script-final'>"
+                f"{escape(_normalize_script_final_editorial(script_final))}"
+                f"</div>"
             )
         else:
             sections.append(
-                "<p class='meta'>Organisation <strong>chercheur apres chercheur</strong> "
-                "(priorite au sens, pas d'alternance chorale).</p>"
+                f"<p class='meta'><strong>Sequences edito apparies :</strong> {len(sequences_sorted)} "
+                "(pas encore de transcript monté Trancript_Video*.docx).</p>"
             )
-        if sequences_sorted:
-            current_voice = None
-            current_part = None
-            presentation_ids = (
-                _tb_edito_t1_presentation_ids(sequences_sorted) if code == "T1" else None
-            )
-            for sequence in sequences_sorted:
-                if code == "T1" and presentation_ids is not None:
-                    part = (
-                        "presentations"
-                        if _tb_edito_is_presentation_sequence(sequence, presentation_ids)
-                        else "geneses"
-                    )
-                    if part != current_part:
-                        title = (
-                            "Partie 1 — Présentations"
-                            if part == "presentations"
-                            else "Partie 2 — Genèses"
-                        )
-                        sections.append(f"<h3>{title}</h3>")
-                        current_part = part
-                        current_voice = None
-                voice = (sequence.get("intervenant") or "Temoin").strip()
-                if voice != current_voice:
-                    sections.append(f"<h4>{escape(voice)}</h4>")
-                    current_voice = voice
-                verbatim = sequence.get("texte", "")
+            sections.append("<h2>Montage édito retenu</h2>")
+            if code == "T1":
                 sections.append(
-                    "<div class='card'>"
-                    f"<strong>{escape(sequence.get('id', '-'))}</strong> "
-                    f"<span class='meta'>{escape(sequence.get('source_doc', ''))}</span>"
-                    f"<p class='meta'><strong>{escape(sequence.get('video', 'Video non renseignee'))}</strong></p>"
-                    f"<p>{escape(verbatim)}</p>"
-                    "</div>"
+                    "<p class='meta'>Organisation en <strong>deux ensembles</strong> : "
+                    "(1) presentations de tous les temoins, puis (2) geneses de leurs innovations "
+                    "(chercheur apres chercheur dans chaque ensemble).</p>"
                 )
-        else:
-            sections.append("<p class='meta'>Aucun extrait surligne apparié automatiquement a cette video.</p>")
-        voices_in_code = {
-            item.get("intervenant", "").strip()
-            for item in sequences_sorted
-            if item.get("intervenant", "").strip()
-        }
-        missing_intervenants = [name for name in all_edito_intervenants if name not in voices_in_code]
-        if missing_intervenants:
-            sections.append("<h3>Témoins sans extrait surligné sur cette vidéo</h3>")
+                sections.append(
+                    "<p class='meta'><strong>Regle T1 :</strong> un passage comme "
+                    "<code>JJGE-0004</code> (question « Comment est née votre innovation ? ») "
+                    "est place en genese, jamais en presentation.</p>"
+                )
+            else:
+                sections.append(
+                    "<p class='meta'>Organisation <strong>chercheur apres chercheur</strong> "
+                    "(priorite au sens, pas d'alternance chorale).</p>"
+                )
+            if sequences_sorted:
+                current_voice = None
+                current_part = None
+                presentation_ids = (
+                    _tb_edito_t1_presentation_ids(sequences_sorted) if code == "T1" else None
+                )
+                for sequence in sequences_sorted:
+                    if code == "T1" and presentation_ids is not None:
+                        part = (
+                            "presentations"
+                            if _tb_edito_is_presentation_sequence(sequence, presentation_ids)
+                            else "geneses"
+                        )
+                        if part != current_part:
+                            title = (
+                                "Partie 1 — Présentations"
+                                if part == "presentations"
+                                else "Partie 2 — Genèses"
+                            )
+                            sections.append(f"<h3>{title}</h3>")
+                            current_part = part
+                            current_voice = None
+                    voice = (sequence.get("intervenant") or "Temoin").strip()
+                    if voice != current_voice:
+                        sections.append(f"<h4>{escape(voice)}</h4>")
+                        current_voice = voice
+                    verbatim = sequence.get("texte", "")
+                    sections.append(
+                        "<div class='card'>"
+                        f"<strong>{escape(sequence.get('id', '-'))}</strong> "
+                        f"<span class='meta'>{escape(sequence.get('source_doc', ''))}</span>"
+                        f"<p class='meta'><strong>{escape(sequence.get('video', 'Video non renseignee'))}</strong></p>"
+                        f"<p>{escape(verbatim)}</p>"
+                        "</div>"
+                    )
+            else:
+                sections.append(
+                    "<p class='meta'>Aucun extrait surligne apparié automatiquement a cette video.</p>"
+                )
+            voices_in_code = {
+                item.get("intervenant", "").strip()
+                for item in sequences_sorted
+                if item.get("intervenant", "").strip()
+            }
+            missing_intervenants = [
+                name for name in all_edito_intervenants if name not in voices_in_code
+            ]
+            if missing_intervenants:
+                sections.append("<h3>Témoins sans extrait surligné sur cette vidéo</h3>")
+                sections.append(
+                    "<p class='meta'>Presence documentaire uniquement "
+                    "(pas de sequence verbatim retenue pour cette video dans les surlignages).</p>"
+                )
+                sections.append(
+                    "<ul>"
+                    + "".join(f"<li>{escape(name)}</li>" for name in missing_intervenants)
+                    + "</ul>"
+                )
+            sections.append(cadrage_animateur_section(capsule_data))
+            sections.append("<h2>Script final</h2>")
             sections.append(
-                "<p class='meta'>Presence documentaire uniquement (pas de sequence verbatim retenue pour cette video dans les surlignages).</p>"
+                f"<div class='script' id='script-final'>"
+                f"{escape(_normalize_script_final_editorial(script_final))}"
+                f"</div>"
             )
-            sections.append(
-                "<ul>"
-                + "".join(f"<li>{escape(name)}</li>" for name in missing_intervenants)
-                + "</ul>"
-            )
-        sections.append(cadrage_animateur_section(capsule_data))
-        sections.append("<h2>Script final</h2>")
-        sections.append(
-            f"<div class='script' id='script-final'>"
-            f"{escape(_normalize_script_final_editorial(script_final))}"
-            f"</div>"
-        )
         sections.append(synthese_temoignages_section(code, capsule_data))
         sections.append(brief_intervenant_section(code, capsule_data, empty_by_id))
         sections.append(referents_section(capsule_data))
         sections.append(scripts_expertise_projetes_section(capsule_data))
-        sections.append(export_word_section(code, spec.get("label", code), capsule_data, empty_by_id, programme_table))
+        sections.append(
+            export_word_section(code, spec.get("label", code), capsule_data, empty_by_id, programme_table)
+        )
 
         write_text(
             SITE / page_name,
@@ -5169,9 +5195,10 @@ def build_tb_edito_capsule_pages(programme_table: dict) -> None:
                 f"Capsule témoin — {code}",
                 "\n".join(part for part in sections if part),
                 scripts=["assets/export-word.js"],
-                nav_current="suivi_intervenants.html",
+                nav_current="edito.html",
                 breadcrumb=html_breadcrumb(
                     ("Accueil", "index.html"),
+                    ("Edito", "edito.html"),
                     ("Capsules témoins", "tb_edito.html"),
                     (code, None),
                 ),
@@ -5253,14 +5280,21 @@ def build_tb_edito_page() -> None:
         )
 
     coverage_rows = []
+    transcripts = _load_transcripts_videos_finaux().get("capsules") or {}
     for code, spec in sorted(FIXED_TEMOIN_PLAN.items(), key=lambda item: int(item[0][1:])):
         code_link = f"<a href='tb_edito_{escape(code)}.html'>{escape(code)}</a>"
+        mounted = transcripts.get(code) or {}
+        source = mounted.get("source") or ""
+        if source:
+            statut = f"Script monté — <code>{escape(source)}</code>"
+        else:
+            statut = f"Surlignages Clarisse ({coverage_counter.get(code, 0)} seq.)"
         coverage_rows.append(
             "<tr>"
             f"<td>{escape(spec.get('module', '-'))}</td>"
             f"<td>{code_link}</td>"
             f"<td>{escape(spec.get('label', '-'))}</td>"
-            f"<td>{coverage_counter.get(code, 0)}</td>"
+            f"<td>{statut}</td>"
             "</tr>"
         )
 
@@ -5304,8 +5338,10 @@ def build_tb_edito_page() -> None:
         + ("\n".join(rows) or "<tr><td colspan='8'>Aucun document edito detecte.</td></tr>")
         + "</tbody></table></div>"
         "<h2>Couverture du plan témoin édito</h2>"
+        "<p class='meta'>Quand un <code>Trancript_Video*.docx</code> est disponible, la capsule ouvre le "
+        "<strong>script monté</strong> (travail Clarisse / monteur). Sinon, les surlignages historiques restent affichés.</p>"
         "<div class='table-wrap'><table><thead><tr>"
-        "<th>Module</th><th>Code</th><th>Vidéo témoin fixée</th><th>Seq. édito appariées</th>"
+        "<th>Module</th><th>Code</th><th>Vidéo témoin fixée</th><th>Statut</th>"
         "</tr></thead><tbody>"
         + ("\n".join(coverage_rows) or "<tr><td colspan='4'>Aucune couverture.</td></tr>")
         + "</tbody></table></div>"
@@ -5315,7 +5351,7 @@ def build_tb_edito_page() -> None:
             if unresolved_rows
             else ""
         )
-        + "<h2>Intervenants édito</h2>"
+        + "<h2>Intervenants édito (banque surlignages)</h2>"
         + (f"<div class='chip-grid'>{chips}</div>" if chips else "<p class='meta'>Aucun intervenant edito.</p>")
     )
     write_text(
@@ -5323,9 +5359,17 @@ def build_tb_edito_page() -> None:
         html_page(
             "Capsules témoins",
             body,
-            nav_current="suivi_intervenants.html",
-            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Capsules témoins", None)),
-            page_header='<div class="page-head"><h1>Capsules témoins</h1><p class="lead">Suivi des selections surlignees de l\'edito, avec couverture des videos temoins fixees.</p></div>',
+            nav_current="edito.html",
+            breadcrumb=html_breadcrumb(
+                ("Accueil", "index.html"),
+                ("Edito", "edito.html"),
+                ("Capsules témoins", None),
+            ),
+            page_header=(
+                '<div class="page-head"><h1>Capsules témoins</h1>'
+                '<p class="lead">Scripts montés (Trancript_Video*.docx — Clarisse / monteur) '
+                "et banque de surlignages historique.</p></div>"
+            ),
         ),
     )
 
@@ -5957,10 +6001,29 @@ def _truncate_clean(text: str, limit: int = 220) -> str:
     return compact[: limit - 1].rstrip() + "…"
 
 
-def _tb_edito_researcher_summary(code: str, sequences: list[dict]) -> tuple[str, str]:
-    if not sequences:
-        html = "<span class='meta'>Aucune sequence capsule temoin appariée.</span>"
-        return html, "Aucune sequence capsule temoin appariée."
+def _mounted_transcript_voices(script: str) -> list[str]:
+    voices: list[str] = []
+    for match in re.findall(r"^=== (.+) ===$", script or "", flags=re.M):
+        voice = match.strip()
+        if voice and voice not in voices:
+            voices.append(voice)
+    return voices
+
+
+def _tb_edito_corpus_context(code: str, sequences: list[dict]) -> dict:
+    mounted = _mounted_transcript_script(code)
+    trans_item = (_load_transcripts_videos_finaux().get("capsules") or {}).get(code) or {}
+    if mounted:
+        corpus_text = _edito_title_core(mounted)
+        voices = _mounted_transcript_voices(mounted)
+        return {
+            "corpus_text": corpus_text,
+            "corpus_tokens": set(corpus_text.split()),
+            "voices": voices,
+            "has_mounted": True,
+            "docx_source": trans_item.get("source") or "Trancript_Video*.docx",
+            "clarisse_seq_count": len(sequences),
+        }
 
     by_voice: dict[str, list[str]] = defaultdict(list)
     for sequence in sequences:
@@ -5968,25 +6031,58 @@ def _tb_edito_researcher_summary(code: str, sequences: list[dict]) -> tuple[str,
         text = (sequence.get("texte") or "").strip()
         if text and text not in by_voice[voice]:
             by_voice[voice].append(text)
-
     corpus_text = _edito_title_core(" ".join(sequence.get("texte", "") for sequence in sequences))
-    corpus_tokens = set(corpus_text.split())
-    covered_dims, missing_dims = _tb_edito_dimension_coverage(code, corpus_text, corpus_tokens)
-    voices = sorted(by_voice)
+    return {
+        "corpus_text": corpus_text,
+        "corpus_tokens": set(corpus_text.split()),
+        "voices": sorted(by_voice),
+        "has_mounted": False,
+        "docx_source": "",
+        "clarisse_seq_count": len(sequences),
+    }
+
+
+def _tb_edito_researcher_summary(code: str, sequences: list[dict]) -> tuple[str, str]:
+    ctx = _tb_edito_corpus_context(code, sequences)
+    if not ctx["voices"] and not ctx["corpus_text"].strip():
+        html = "<span class='meta'>Aucun contenu témoin exploitable (ni script monté, ni surlignage Clarisse).</span>"
+        return html, "Aucun contenu témoin exploitable."
+
+    covered_dims, missing_dims = _tb_edito_dimension_coverage(
+        code, ctx["corpus_text"], ctx["corpus_tokens"]
+    )
+    voices = ctx["voices"]
     voice_label = ", ".join(voices)
 
     covered_text = "; ".join(covered_dims[:2]) if covered_dims else "le sujet reste encore peu explicite dans les verbatims"
     missing_text = "; ".join(missing_dims[:2]) if missing_dims else "pas de manque majeur au niveau du cadrage sujet"
 
+    if ctx["has_mounted"]:
+        source_meta = (
+            f"<strong>Script monté</strong> (<code>{escape(ctx['docx_source'])}</code>), "
+            f"<strong>{len(voices)}</strong> témoins · "
+            f"banque Clarisse : {ctx['clarisse_seq_count']} seq."
+        )
+        source_csv = (
+            f"Script monté ({ctx['docx_source']}), {len(voices)} temoins, "
+            f"banque Clarisse {ctx['clarisse_seq_count']} seq."
+        )
+    else:
+        source_meta = (
+            f"<strong>{ctx['clarisse_seq_count']}</strong> séquences Clarisse appariées, "
+            f"<strong>{len(voices)}</strong> témoins mobilisés "
+            "(pas encore de transcript monté)."
+        )
+        source_csv = f"{ctx['clarisse_seq_count']} seq. Clarisse, {len(voices)} temoins."
+
     html = (
-        f"<p class='meta'><strong>{len(sequences)}</strong> sequences capsule temoin appariees, "
-        f"<strong>{len(voices)}</strong> temoins mobilises.</p>"
+        f"<p class='meta'>{source_meta}</p>"
         f"<p><strong>Résumé :</strong> Les chercheurs racontent principalement {escape(covered_text)}.</p>"
         f"<p><strong>Point de vigilance :</strong> {escape(missing_text)}.</p>"
         f"<p class='meta'>Témoins: {escape(voice_label)}.</p>"
     )
     csv_text = (
-        f"{len(sequences)} seq., {len(voices)} temoins. "
+        f"{source_csv} "
         f"Resume: {covered_text}. "
         f"Vigilance: {missing_text}. "
         f"Temoins: {voice_label}."
@@ -6159,11 +6255,16 @@ def _topic_keyword_covered(keyword: str, corpus_text: str, corpus_tokens: set[st
 
 def _tb_edito_subject_alignment_percent(code: str, sequences: list[dict]) -> int:
     keywords = TOPIC_KEYWORDS_BY_CODE.get(code, [])
-    if not keywords or not sequences:
+    if not keywords:
         return 0
-    corpus_text = _edito_title_core(" ".join(sequence.get("texte", "") for sequence in sequences))
-    corpus_tokens = set(corpus_text.split())
-    covered = sum(1 for keyword in keywords if _topic_keyword_covered(keyword, corpus_text, corpus_tokens))
+    ctx = _tb_edito_corpus_context(code, sequences)
+    if not ctx["corpus_text"].strip():
+        return 0
+    covered = sum(
+        1
+        for keyword in keywords
+        if _topic_keyword_covered(keyword, ctx["corpus_text"], ctx["corpus_tokens"])
+    )
     return round((covered / len(keywords)) * 100)
 
 
@@ -6185,11 +6286,12 @@ def _tb_edito_dimension_coverage(code: str, corpus_text: str, corpus_tokens: set
 
 
 def _tb_edito_alignment_comment(code: str, percent: int, seq_count: int, sequences: list[dict]) -> str:
-    if seq_count == 0:
-        return "Aucune sequence capsule temoin exploitable pour estimer l'alignement sujet."
+    ctx = _tb_edito_corpus_context(code, sequences)
+    if not ctx["corpus_text"].strip():
+        return "Aucun contenu témoin exploitable pour estimer l'alignement sujet."
 
-    corpus_text = _edito_title_core(" ".join(sequence.get("texte", "") for sequence in sequences))
-    corpus_tokens = set(corpus_text.split())
+    corpus_text = ctx["corpus_text"]
+    corpus_tokens = ctx["corpus_tokens"]
     covered_dims, missing_dims = _tb_edito_dimension_coverage(code, corpus_text, corpus_tokens)
 
     if percent >= 70:
@@ -6220,8 +6322,9 @@ def _tb_edito_coverage_gap(code: str, sequences: list[dict]) -> tuple[str, str]:
         html = "<span class='meta'>Referentiel sujet non defini.</span>"
         return html, "Referentiel sujet non defini."
 
-    corpus_text = _edito_title_core(" ".join(sequence.get("texte", "") for sequence in sequences))
-    corpus_tokens = set(corpus_text.split())
+    ctx = _tb_edito_corpus_context(code, sequences)
+    corpus_text = ctx["corpus_text"]
+    corpus_tokens = ctx["corpus_tokens"]
     covered = [keyword for keyword in keywords if _topic_keyword_covered(keyword, corpus_text, corpus_tokens)]
     missing = [keyword for keyword in keywords if keyword not in covered]
     covered_label = ", ".join(covered) if covered else "Aucun axe sujet explicite detecte"
@@ -6248,12 +6351,13 @@ def _tb_edito_expertise_preconisation(
         csv_text = "Definir une video expertise dediee avant arbitrage final."
         return html, csv_text
 
-    corpus_text = _edito_title_core(" ".join(sequence.get("texte", "") for sequence in sequences))
-    corpus_tokens = set(corpus_text.split())
+    ctx = _tb_edito_corpus_context(code, sequences)
+    corpus_text = ctx["corpus_text"]
+    corpus_tokens = ctx["corpus_tokens"]
     covered_dims, missing_dims = _tb_edito_dimension_coverage(code, corpus_text, corpus_tokens)
     expert_targets = ", ".join(_label_video_expert(item.get("code", "")) for item in videos_expert[:2])
 
-    if not sequences:
+    if not ctx["corpus_text"].strip():
         action = (
             "Poser les fondamentaux du sujet, definir le vocabulaire de reference et proposer une methode pas-a-pas."
         )
@@ -9067,11 +9171,11 @@ def build_edito_hub_page() -> None:
             "tb_edito.html",
             "🗂",
             "Capsules témoins (Clarisse)",
-            "Banque de surlignages Clarisse — grain fin, pas le script de tournage.",
+            "Scripts montés (Trancript_Video*.docx) issus du travail Clarisse / monteur.",
         ),
     ]
     body = (
-        "<p class='meta'>Espace edito : script propose (lisible), selections Clarisse et derushage.</p>"
+        "<p class='meta'>Espace edito : scripts montés, selections Clarisse et derushage.</p>"
         + _sommaire_cards(sections)
     )
     write_text(
@@ -11156,10 +11260,69 @@ def build_mails_experts_pages(
 
 
 
+def _intervenants_retenus_par_e_code(rows: list[dict]) -> dict[str, list[dict]]:
+    grouped: dict[str, list[dict]] = defaultdict(list)
+    for item in _positionnements_finaux_par_video(rows):
+        grouped[item["code"]] = item.get("intervenants") or []
+    return grouped
+
+
+def _correspondances_edito_expert_block(
+    videos_expert: list[dict],
+    intervenants_by_e: dict[str, list[dict]],
+) -> tuple[str, str]:
+    if not videos_expert:
+        return (
+            "<span class='meta'>Aucune vidéo expert renseignée.</span>",
+            "Aucune video expert renseignee.",
+        )
+
+    html_items = []
+    csv_parts = []
+    for item in videos_expert:
+        e_code = (item.get("code") or "").upper().replace(" ", "")
+        label = _label_video_expert(e_code)
+        titre = item.get("titre", "")
+        retenus = intervenants_by_e.get(e_code, [])
+        if retenus:
+            names = ", ".join(entry.get("nom", "") for entry in retenus if entry.get("nom"))
+            retenu_html = f"<br><span class='meta'>Retenu : {escape(names)}</span>"
+            retenu_csv = f" — Retenu: {names}"
+        else:
+            retenu_html = "<br><span class='meta'>Retenu : à définir</span>"
+            retenu_csv = " — Retenu: a definir"
+        html_items.append(
+            f"<li><strong>{escape(label)}</strong> — {escape(titre)}{retenu_html}</li>"
+        )
+        csv_parts.append(f"{label}: {titre}{retenu_csv}")
+    return "<ul>" + "".join(html_items) + "</ul>", " | ".join(csv_parts)
+
+
+def _correspondances_edito_intervenants_retenus(
+    videos_expert: list[dict],
+    intervenants_by_e: dict[str, list[dict]],
+) -> tuple[str, str]:
+    seen: set[str] = set()
+    names: list[str] = []
+    for item in videos_expert:
+        e_code = (item.get("code") or "").upper().replace(" ", "")
+        for entry in intervenants_by_e.get(e_code, []):
+            nom = (entry.get("nom") or "").strip()
+            if nom and nom not in seen:
+                seen.add(nom)
+                names.append(nom)
+    if names:
+        return escape(", ".join(names)), ", ".join(names)
+    return "<span class='meta'>À définir</span>", "A definir"
+
+
 def build_correspondances_edito_page(programme_table: dict) -> None:
     rows = programme_table.get("rows", [])
     headers = programme_table.get("headers", {})
     grouped_tb = _tb_edito_sequences_by_code()
+    suivi_rows = _load_suivi_positionnements().get("intervenants", [])
+    intervenants_by_e = _intervenants_retenus_par_e_code(suivi_rows)
+    transcripts = _load_transcripts_videos_finaux().get("capsules") or {}
 
     table_rows = []
     csv_rows = []
@@ -11169,6 +11332,7 @@ def build_correspondances_edito_page(programme_table: dict) -> None:
         module_label = fixed.get("module") or row.get("module", "")
         title_programme = fixed.get("label") or row.get("video_temoin", "")
         sequences = grouped_tb.get(code, [])
+        ctx = _tb_edito_corpus_context(code, sequences)
         chercheurs_html, chercheurs_csv = _tb_edito_researcher_summary(code, sequences)
         objective = row.get("objectif_pedagogique", "")
         row_match_percent = _tb_edito_subject_alignment_percent(code, sequences)
@@ -11177,35 +11341,38 @@ def build_correspondances_edito_page(programme_table: dict) -> None:
         coverage_html, coverage_csv = _tb_edito_coverage_gap(code, sequences)
 
         videos_expert = _tb_edito_parse_videos_expert(row.get("videos_referent", ""))
-        if videos_expert:
-            expert_html = (
-                "<ul>"
-                + "".join(
-                    f"<li><strong>{escape(_label_video_expert(item.get('code', '')))}</strong> — {escape(item.get('titre', ''))}</li>"
-                    for item in videos_expert
-                )
-                + "</ul>"
-            )
-            expert_csv = " | ".join(
-                f"{_label_video_expert(item.get('code', ''))}: {item.get('titre', '')}"
-                for item in videos_expert
-            )
-        else:
-            expert_html = "<span class='meta'>Aucune video expert renseignee.</span>"
-            expert_csv = "Aucune video expert renseignee."
+        expert_html, expert_csv = _correspondances_edito_expert_block(videos_expert, intervenants_by_e)
         preconisation_html, preconisation_csv = _tb_edito_expertise_preconisation(
             code, sequences, videos_expert, row_match_percent
         )
+        intervenants_html, intervenants_csv = _correspondances_edito_intervenants_retenus(
+            videos_expert, intervenants_by_e
+        )
 
-        intervenants = _extract_intervenants(row.get("noms_proposes", ""))
-        intervenants_html = escape(", ".join(intervenants)) if intervenants else "<span class='meta'>A definir</span>"
-        intervenants_csv = ", ".join(intervenants) if intervenants else "A definir"
+        if ctx["has_mounted"]:
+            statut_html = (
+                f"<strong>Script monté</strong><br>"
+                f"<span class='meta'><code>{escape(ctx['docx_source'])}</code></span>"
+            )
+            statut_csv = f"Script monte ({ctx['docx_source']})"
+        else:
+            statut_html = (
+                f"<span class='meta'>Surlignages Clarisse</span><br>"
+                f"<span class='meta'>{ctx['clarisse_seq_count']} seq.</span>"
+            )
+            statut_csv = f"Surlignages Clarisse ({ctx['clarisse_seq_count']} seq.)"
+
+        title_links = (
+            f"<a href='tb_edito_{escape(code)}.html'>{escape(title_programme)}</a>"
+            f"<br><span class='meta'><a href='capsule_{escape(code)}.html'>Script monté / capsule</a></span>"
+        )
 
         table_rows.append(
             "<tr>"
             f"<td>{escape(module_label)}</td>"
             f"<td>{escape(code)}</td>"
-            f"<td><a href='tb_edito_{escape(code)}.html'>{escape(title_programme)}</a></td>"
+            f"<td>{title_links}</td>"
+            f"<td>{statut_html}</td>"
             f"<td>{chercheurs_html}</td>"
             f"<td>{expert_html}</td>"
             f"<td>{preconisation_html}</td>"
@@ -11220,39 +11387,48 @@ def build_correspondances_edito_page(programme_table: dict) -> None:
                 "module": module_label,
                 "code": code,
                 "video_chorale_tb_edito": title_programme,
+                "statut_script_temoin": statut_csv,
                 "ce_que_racontent_les_chercheurs_tb_edito": chercheurs_csv,
                 "videos_expert_envisagees": expert_csv,
                 "vue_preconisation_videos_expertise": preconisation_csv,
                 "objectif_pedagogique": objective,
                 "aborde_par_temoins_et_points_a_developper": coverage_csv,
-                "intervenants_experts_proposes": intervenants_csv,
+                "intervenants_experts_retenus": intervenants_csv,
                 "alignement_sujet_temoin_pct": row_match_percent,
                 "niveau_alignement_sujet": expert_badge,
                 "commentaire_alignement_sujet": expert_comment,
             }
         )
 
+    mounted_count = sum(1 for code in FIXED_TEMOIN_PLAN if (transcripts.get(code) or {}).get("text"))
     body = (
-        "<p class='meta'>Tableau base sur le programme de conception "
+        "<p class='meta'>Tableau basé sur le programme de conception "
         f"<code>{escape(programme_table.get('source_document', '20260710_Prev_Vid.xlsx'))}</code> "
-        "avec remplacement de la colonne video chorale par les capsules temoins T1..T12.</p>"
+        f"et les capsules témoins T1..T13. "
+        f"<strong>{mounted_count}/13</strong> scripts montés disponibles "
+        "(<code>Trancript_Video*.docx</code>) ; les métriques d'alignement s'appuient sur le script monté "
+        "quand il existe, sinon sur les surlignages Clarisse.</p>"
         "<p><a class='btn' href='tableau_correspondances_edito.csv' download>Télécharger le tableau (CSV)</a></p>"
         "<p><a class='btn' href='tableau_corr.html'>Voir le tableau corrigé (HTML)</a></p>"
-        "<p class='meta'><strong>Alignement sujet témoin :</strong> estimation du % de presence du sujet de la video "
-        "dans les verbatims des capsules temoins (sans attendre une couverture pedagogique complete, qui est portee par la video expertise).</p>"
+        "<p class='meta'><strong>Alignement sujet témoin :</strong> estimation du % de présence du sujet de la vidéo "
+        "dans le contenu témoin (script monté ou surlignages). La couverture pédagogique complète reste portée "
+        "par les vidéos expertise.</p>"
+        "<p class='meta'><strong>Intervenants retenus :</strong> sélection finale issue de "
+        "<code>data/suivi_positionnements.json</code> (<code>proposition_finale</code>).</p>"
         "<div class='table-wrap'><table><thead><tr>"
         f"<th>{escape(headers.get('module', 'Module'))}</th>"
         f"<th>{escape(headers.get('code', 'N°'))}</th>"
         "<th>Vidéo chorale (capsule témoin)</th>"
-        "<th>Ce que racontent les chercheurs (capsule témoin)</th>"
-        "<th>Vidéo(s) expert envisagée(s)</th>"
+        "<th>Statut script témoin</th>"
+        "<th>Ce que racontent les chercheurs</th>"
+        "<th>Vidéo(s) expert + intervenant retenu</th>"
         "<th>Vue de préconisation pour les vidéos expertise</th>"
         f"<th>{escape(headers.get('objectif_pedagogique', 'Objectif pédagogique atteint'))}</th>"
         "<th>Abordé par les témoins / à développer</th>"
-        f"<th>{escape(headers.get('noms_proposes', 'Intervenants experts proposés'))}</th>"
+        "<th>Intervenants experts retenus</th>"
         "<th>Alignement sujet témoin estimé</th>"
         "</tr></thead><tbody>"
-        + ("\n".join(table_rows) or "<tr><td colspan='9'>Aucune ligne programme.</td></tr>")
+        + ("\n".join(table_rows) or "<tr><td colspan='11'>Aucune ligne programme.</td></tr>")
         + "</tbody></table></div>"
     )
     write_text(
@@ -11262,7 +11438,7 @@ def build_correspondances_edito_page(programme_table: dict) -> None:
             body,
             nav_current="edito.html",
             breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Edito", "edito.html"), ("Correspondances édito", None)),
-            page_header="<div class=\"page-head\"><h1>Correspondances édito</h1><p class=\"lead\">Tableau de conception relu via les capsules témoins : videos chorales, contenus temoins, videos expertise et alignement pedagogique.</p></div>",
+            page_header="<div class=\"page-head\"><h1>Correspondances édito</h1><p class=\"lead\">Tableau de conception relu via les capsules témoins : scripts montés, contenus témoins, vidéos expertise et alignement pédagogique.</p></div>",
         ),
     )
 
@@ -11273,12 +11449,13 @@ def build_correspondances_edito_page(programme_table: dict) -> None:
             "module",
             "code",
             "video_chorale_tb_edito",
+            "statut_script_temoin",
             "ce_que_racontent_les_chercheurs_tb_edito",
             "videos_expert_envisagees",
             "vue_preconisation_videos_expertise",
             "objectif_pedagogique",
             "aborde_par_temoins_et_points_a_developper",
-            "intervenants_experts_proposes",
+            "intervenants_experts_retenus",
             "alignement_sujet_temoin_pct",
             "niveau_alignement_sujet",
             "commentaire_alignement_sujet",
