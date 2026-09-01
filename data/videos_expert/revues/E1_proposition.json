@@ -1,14 +1,13 @@
 {
-  "titre": "Proposition de script E1 — reprise du script Bernard (ordre Stanislas)",
-  "note": "Reprise séquentielle du script reçu (E1.txt). Noir = conservé · Gris = reformulation · Rouge = à retirer · Orange = ajout éditorial (non traité par Bernard). Mots estimés hors passages rouges.",
+  "code": "E1",
+  "titre": "Proposition de script E1 — reprise du script Bernard (version de travail)",
+  "source_script": "E1.txt",
+  "date": "2026-09-01",
+  "note": "Reprise séquentielle du script reçu. Noir = conservé · Gris = reformulation · Rouge = à retirer · Orange = à ajouter. Mots estimés hors rouge.",
   "segments": [
     {
       "couleur": "noir",
       "texte": "Vous venez d’entendre cinq chercheurs-entrepreneurs répondre à une question : « Pourquoi et comment oser l’innovation ? »"
-    },
-    {
-      "couleur": "gris",
-      "texte": "Sur le « pourquoi oser », ils viennent de le dire dans la vidéo témoin : se sentir utile, chercher un impact, donner une autre inflexion à sa carrière, apprendre en se confrontant à de nouvelles expériences, valoriser des années de recherche plutôt que laisser des résultats « sur étagère ». Je ne reprends pas ce catalogue ici. Passons à l’autre versant : d’où part l’innovation — et quel premier pas ces chercheurs ont-ils fait pour l’engager."
     },
     {
       "couleur": "rouge",
@@ -19,12 +18,12 @@
       "texte": "Leurs histoires sont différentes. Elles n’ont pas toutes le même point de départ. Ce qui les rapproche, c’est qu’à un moment un potentiel — souvent issu de la recherche — a rencontré un besoin. Mais la porte d’entrée n’est pas la même pour chacun."
     },
     {
-      "couleur": "rouge",
-      "texte": "C’est le principe de l’innovation deeptech : partir d’une connaissance, d’une méthode, d’un procédé ou d’une technologie issus de la recherche pour créer une valeur fortement différenciantes."
+      "couleur": "noir",
+      "texte": "Dans cette vidéo, mon rôle est de vous aider à reconnaître d’où part une innovation — et quel premier pas peut l’ouvrir — à partir des témoignages que vous venez d’entendre. Le « pourquoi oser », la chorale vient de le dire : utile, impact, carrière, résultats qui ne restent pas sur étagère. Ici, nous nous concentrons sur l’autre versant de la question : les origines possibles, et le geste qui engage la démarche — pas encore tout le processus qui suivra dans le parcours."
     },
     {
       "couleur": "gris",
-      "texte": "Nos témoins viennent surtout du monde universitaire et de la recherche : leurs parcours illustrent souvent l’innovation « deeptech » — partir d’une connaissance, d’une méthode ou d’une technologie pour créer une valeur différenciante. Mais l’innovation n’est pas réservée à la deeptech. On peut aussi innover en repensant un service, un parcours utilisateur ou une organisation — par exemple simplifier un parcours administratif pour les étudiants, ou réorganiser un parcours de soins sans inventer une nouvelle molécule."
+      "texte": "Nos témoins viennent surtout du monde universitaire et de la recherche : leurs parcours illustrent souvent l’innovation « deeptech ». Mais l’innovation n’est pas réservée à la deeptech — on peut aussi innover en repensant un service ou une organisation, sans nouvelle technologie de rupture."
     },
     {
       "couleur": "noir",
@@ -52,7 +51,7 @@
     },
     {
       "couleur": "gris",
-      "texte": "Mais connaître un marché ou un domaine d’application ne signifie pas encore connaître précisément le besoin auquel répondre — ni valider que des utilisateurs adopteraient une solution. Cette étape viendra dans la suite du parcours."
+      "texte": "Mais connaître un marché ou un domaine d’application ne signifie pas encore connaître précisément le besoin auquel répondre. Cette étape viendra dans la suite du parcours ; ici, on reste sur l’origine."
     },
     {
       "couleur": "noir",
@@ -64,11 +63,11 @@
     },
     {
       "couleur": "orange",
-      "texte": "[À ajouter — grain E1] Identifier dans les témoignages, puis compléter / nommer selon votre expertise : tech-push · market-pull · observation d’usage · rencontre · sérendipité · maturation progressive."
+      "texte": "[À ajouter] Identifier dans les témoignages, puis nommer selon votre expertise : tech-push · market-pull · observation d’usage · rencontre · sérendipité · maturation progressive."
     },
     {
       "couleur": "orange",
-      "texte": "[À ajouter — premier pas] Oser, ce n’est pas encore tout le processus : c’est souvent un premier geste — accepter qu’une recherche serve ailleurs qu’en laboratoire ; partir d’un manque observé ; convertir des années de thèse en quelque chose d’utile à l’industrie ; répondre à une question posée par un acteur extérieur ; relier recherche fondamentale et appliquée. Des pas différents, pas encore la maturation complète."
+      "texte": "[À ajouter] Oser, c’est souvent un premier geste — pas encore tout le processus : accepter qu’une recherche serve ailleurs ; partir d’un manque observé ; convertir des années de thèse en quelque chose d’utile ; répondre à une question posée par un acteur extérieur."
     },
     {
       "couleur": "rouge",
@@ -76,15 +75,11 @@
     },
     {
       "couleur": "gris",
-      "texte": "Une fois l’origine reconnue et ce premier pas franchi, d’autres questions s’ouvrent — caractériser le potentiel, explorer des marchés, faire avancer besoin et maturation ensemble, construire une proposition de valeur, l’éprouver par une preuve de concept, puis choisir une voie de transfert. Nous verrons tout cela dans les vidéos suivantes ; ici, nous nous arrêtons à l’origine et au premier engagement."
-    },
-    {
-      "couleur": "orange",
-      "texte": "[À ajouter — pré-nommage] Besoin utilisateurs · exploration de marchés · maturation · proposition de valeur · preuve de concept · voies de transfert."
+      "texte": "Une fois l’origine reconnue et ce premier pas franchi, d’autres questions s’ouvrent — caractériser le potentiel, explorer des marchés, faire avancer besoin et maturation, éprouver une preuve de concept, choisir une voie de transfert. Nous verrons tout cela dans les vidéos suivantes."
     },
     {
       "couleur": "gris",
-      "texte": "Les cellules de valorisation — et d’autres interlocuteurs de l’écosystème — peuvent vous aider à identifier et nommer d’où part votre projet. Pas encore à le faire mûrir : cela viendra ensuite."
+      "texte": "Les cellules de valorisation peuvent vous aider à identifier et nommer d’où part votre projet — pas encore à le faire mûrir."
     },
     {
       "couleur": "rouge",
@@ -116,17 +111,13 @@
     },
     {
       "couleur": "gris",
-      "texte": "Et vous ? D’où part — ou d’où pourrait partir — votre innovation ? D’une technologie déjà là ? D’un besoin ou d’un manque observé ? D’une rencontre ? D’un pas de côté ? D’une maturation déjà longue ? Et quel serait, pour vous, le premier pas — pas encore tout le parcours, mais le geste qui l’ouvrirait ?"
+      "texte": "Et vous ? D’où part — ou d’où pourrait partir — votre innovation ? Et quel serait, pour vous, le premier pas qui l’ouvrirait ?"
     },
     {
       "couleur": "rouge",
       "texte": "Oser, c’est peut-être cela : ne plus attendre qu’une rencontre fortuite révèle l’utilité de votre recherche, mais rechercher, avec méthode et en vous faisant accompagner, les situations dans lesquelles elle pourrait changer les choses."
-    },
-    {
-      "couleur": "gris",
-      "texte": "Nommer cette origine et ce premier pas possibles, c’est déjà commencer."
     }
   ],
-  "mots_estimes": 902,
-  "mots_retires": 699
+  "mots_estimes": 751,
+  "mots_retires": 667
 }

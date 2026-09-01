@@ -7770,6 +7770,22 @@ def _revue_proposition_doc_name(code: str, numero: int) -> str:
     return f"proposition_{code}_{numero}.doc"
 
 
+def _proposition_doc_name(code: str) -> str:
+    return f"proposition_{code}.doc"
+
+
+def _load_expert_standalone_proposition(code: str) -> dict | None:
+    """Proposition éditoriale autonome (sans revue), ex. E1_proposition.json."""
+    path = VIDEOS_EXPERT_REVUES / f"{code}_proposition.json"
+    if not path.is_file():
+        return None
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return None
+    return data if isinstance(data, dict) and data.get("segments") else None
+
+
 _REVUE_PROPOSITION_STYLES = {
     "noir": "color:#1a1a1a;",
     "gris": "color:#64748b;font-style:italic;",
@@ -7864,6 +7880,30 @@ def _revue_proposition_doc_html(item: dict, revue: dict, proposition: dict) -> s
     )
 
 
+def _standalone_proposition_panel_html(code: str, proposition: dict) -> str:
+    body = _render_proposition_segments_html(proposition.get("segments") or [])
+    doc_href = proposition.get("doc_href") or _proposition_doc_name(code)
+    mots = proposition.get("mots_estimes") or _proposition_segments_word_count(proposition)
+    note = (proposition.get("note") or "").strip()
+    note_html = f"<p class='meta'>{escape(note)}</p>" if note else ""
+    return f"""
+<section class="methodology-panel script-revue-panel script-proposition-panel">
+  <h2>Proposition de script</h2>
+  <p>{status_badge("EN_CONSTRUCTION")}
+    <span class="meta">Source : <code>{escape(proposition.get("source_script") or f"{code}.txt")}</code></span>
+    <span class="meta">~{escape(str(mots))} mots (hors passages rouges)</span></p>
+  {note_html}
+  <p class="meta"><span style="color:#1a1a1a;">Noir</span> = conservé ·
+  <span style="color:#64748b;font-style:italic;">Gris</span> = reformulation ·
+  <span style="color:#B91C1C;text-decoration:line-through;">Rouge</span> = à retirer ·
+  <span style="color:#C45C26;font-weight:600;">Orange</span> = à ajouter</p>
+  <p><a class="btn" href="{escape(doc_href)}" download>Exporter la proposition (Word)</a>
+  <a class="btn btn-secondary" href="{escape(doc_href)}" target="_blank" rel="noopener">Ouvrir le Word</a></p>
+  <div class="script-recu-block">{body}</div>
+</section>
+"""
+
+
 def _proposition_panel_html(code: str, revue: dict, proposition: dict) -> str:
     numero = revue.get("numero")
     body = _render_proposition_segments_html(proposition.get("segments") or [])
@@ -7947,6 +7987,14 @@ def _revue_annotee_doc_html(item: dict, revue: dict) -> str:
         f"<div>{body}</div>"
         "</body></html>"
     )
+
+
+def _script_expert_editorial_html(code: str, revues: list[dict] | None = None) -> str:
+    """Proposition autonome si présente, sinon panneaux de revue."""
+    standalone = _load_expert_standalone_proposition(code)
+    if standalone:
+        return _standalone_proposition_panel_html(code, standalone)
+    return _script_expert_revues_html(code, revues)
 
 
 def _script_expert_revues_html(code: str, revues: list[dict] | None = None) -> str:
@@ -10266,6 +10314,15 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
         page_name = item["page_href"]
         expected.add(page_name)
         revues = _load_expert_script_revues(item["code"])
+        standalone_prop = _load_expert_standalone_proposition(item["code"])
+        if standalone_prop:
+            prop_doc = _proposition_doc_name(item["code"])
+            write_text(
+                SITE / prop_doc,
+                _revue_proposition_doc_html(item, {}, standalone_prop),
+            )
+            expected.add(prop_doc)
+            standalone_prop["doc_href"] = prop_doc
         for revue in revues:
             doc_name = _revue_expert_doc_name(item["code"], revue["numero"])
             write_text(SITE / doc_name, _revue_annotee_doc_html(item, revue))
@@ -10291,7 +10348,7 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
             f"Experts : {escape(item.get('experts_label', ''))}</p>"
             f"{_consignes_envoyees_expert_html(item)}"
             f"{_script_expert_recu_html(item)}"
-            f"{_script_expert_revues_html(item['code'], revues)}"
+            f"{_script_expert_editorial_html(item['code'], revues)}"
             "<p><a class='btn btn-secondary' href='videos_expert.html'>← Retour au tableau</a> "
             f"<a class='btn btn-secondary' href='videos_expert.xlsx' download>Export XLSX</a></p>"
         )

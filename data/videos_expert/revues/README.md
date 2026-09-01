@@ -11,6 +11,8 @@ Champs attendus :
 - `mail` : mail a envoyer a l'expert pour expliquer les demandes
 - `proposition` (ou fichier `{code}_revue{N}_proposition.json`) : segments `noir` / `gris` / `orange` + export Word `proposition_{code}_{N}.doc`
 
-Copies facultatives en `.txt` : `E1_revue1_texte.txt`, `E1_revue1_mail.txt`, `E1_revue2_proposition.txt`.
+Copies facultatives en `.txt` : `E1_revue1_texte.txt`, `E1_revue1_mail.txt`, `E1_proposition.txt`.
+
+Proposition autonome (sans revue) : `E1_proposition.json` → export `proposition_E1.doc` sur la page vidéo expert.
 
 Affichage : sous le bloc « Script renvoye par l'expert » sur `site/video_expert_*.html`.
