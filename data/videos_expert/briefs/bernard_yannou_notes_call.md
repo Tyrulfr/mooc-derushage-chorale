@@ -2,7 +2,7 @@
 
 **Créneaux proposés :** mardi après-midi **ou** mercredi à partir de 10 h  
 **Ordre du jour suggéré :** 30–40 min  
-**Pièces déjà prêtes :** revue 2 (`E1_revue2_mail.txt` + `E1_revue2_texte.txt`) — statut envoyée / à confirmer
+**Pièce de référence :** script final Bernard (`data/videos_expert/scripts_recus/E1.txt`)
 
 ---
 
