@@ -38,6 +38,7 @@ from lib_derushage import (
     slug,
     total_score,
     write_text,
+    write_word_doc,
 )
 
 TEST_MAIL_RECIPIENT = "christophe.dubois@universite-paris-saclay.fr"
@@ -6547,7 +6548,7 @@ def build_proposition_titres_temoin_page(programme_table: dict) -> None:
         f"<ul>{''.join(doc_title_items) if doc_title_items else '<li>Aucun titre propose.</li>'}</ul>"
         "</body></html>"
     )
-    write_text(SITE / "proposition_titres_temoin.doc", doc_html)
+    write_word_doc(SITE / "proposition_titres_temoin.doc", doc_html)
 
     body = (
         "<p class='meta'>Propositions de titres pour chaque video temoin, basees sur le sujet capsule, l'objectif pedagogique et les selections edito retenues.</p>"
@@ -7690,43 +7691,44 @@ def _consignes_envoyees_expert_html(item: dict) -> str:
 """
 
 
+def _word_html_document(body: str, *, extra_css: str = "") -> str:
+    """Enveloppe HTML reconnue par Microsoft Word (.doc)."""
+    return (
+        '<!DOCTYPE html>'
+        '<html xmlns:o="urn:schemas-microsoft-com:office:office" '
+        'xmlns:w="urn:schemas-microsoft-com:office:word" '
+        'xmlns="http://www.w3.org/TR/REC-html40">'
+        "<head>"
+        '<meta charset="utf-8">'
+        '<meta name="ProgId" content="Word.Document">'
+        '<meta name="Generator" content="Microsoft Word 15">'
+        "<!--[if gte mso 9]><xml>"
+        "<w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom></w:WordDocument>"
+        "</xml><![endif]-->"
+        "<style>"
+        "body{font-family:Aptos,Calibri,'Segoe UI',Arial,sans-serif;font-size:12pt;"
+        "line-height:1.5;color:#1a1a1a;}"
+        "h1{font-size:16pt;margin:0 0 8px 0;}"
+        "p{margin:0 0 8px 0;}"
+        ".meta{color:#64748b;font-size:10.5pt;}"
+        f"{extra_css}"
+        "</style></head><body>"
+        f"{body}</body></html>"
+    )
+
+
 def _script_recu_doc_name(code: str) -> str:
     return f"script_recu_{code}.doc"
 
 
 def _script_recu_doc_html(item: dict) -> str:
-    """Word (HTML .doc) : script renvoyé par l'expert, tel quel."""
+    """Word (HTML .doc) : script renvoyé par l'expert, tel quel, sans annotation."""
     code = item.get("code") or ""
-    titre_video = _label_video_expert(code)
-    objectif = _normalize_editorial_french(item.get("titre") or "")
+    numero = _numero_video_expert(code)
     texte = item.get("script_contenu") or ""
     body = escape(texte).replace("\n", "<br>") if texte else "<p>Script à compléter.</p>"
-    expert = item.get("experts_label") or ""
-    fichier = item.get("script_fichier") or ""
-    meta_bits = []
-    if expert:
-        meta_bits.append(f"Experts proposés : {escape(expert)}")
-    if fichier:
-        meta_bits.append(f"Source : {escape(fichier)}")
-    mots = len(re.findall(r"[A-Za-zÀ-ÖØ-öø-ÿ0-9']+", texte))
-    if mots:
-        meta_bits.append(f"~{mots} mots")
-    meta = " · ".join(meta_bits)
-    return (
-        "<html><head><meta charset='utf-8'>"
-        "<style>"
-        "body{font-family:Aptos,Segoe UI,Arial,sans-serif;font-size:12pt;line-height:1.5;}"
-        "h1{font-size:18pt;margin-bottom:8px;}"
-        "p{margin:0 0 8px 0;}"
-        ".meta{color:#64748b;font-size:10.5pt;}"
-        ".script{margin-top:12px;}"
-        "</style></head><body>"
-        f"<h1>Script reçu — {escape(titre_video)}</h1>"
-        f"<p class='meta'>{escape(objectif)}</p>"
-        + (f"<p class='meta'>{meta}</p>" if meta else "")
-        + f"<div class='script'>{body}</div>"
-        "</body></html>"
-    )
+    titre = f"Script — Vidéo {escape(numero)}" if numero else "Script"
+    return _word_html_document(f"<h1>{titre}</h1><div>{body}</div>")
 
 
 def _script_expert_recu_html(item: dict) -> str:
@@ -7737,12 +7739,12 @@ def _script_expert_recu_html(item: dict) -> str:
         fichier = item.get("script_fichier", "")
         body = escape(item["script_contenu"]).replace("\n", "<br>")
         doc_href = item.get("script_doc_href") or _script_recu_doc_name(code)
+        download_name = _script_recu_doc_name(code)
         return f"""
 <section class="methodology-panel">
   <h2>Script renvoye par l'expert</h2>
   <p>{status_badge('VALIDEE')} <span class="meta">Fichier : <code>{escape(fichier)}</code></span></p>
-  <p><a class='btn' href='{escape(doc_href)}' download>Exporter le script reçu (Word)</a>
-  <a class='btn btn-secondary' href='{escape(doc_href)}' target='_blank' rel='noopener'>Ouvrir le Word</a></p>
+  <p><a class='btn' href='{escape(doc_href)}' download='{escape(download_name)}'>Télécharger le script (Word)</a></p>
   <div class="script-recu-block">{body}</div>
 </section>
 """
@@ -7864,19 +7866,13 @@ def _revue_proposition_doc_html(item: dict, revue: dict, proposition: dict) -> s
         "<span style='color:#C45C26;font-weight:600;'>■ Orange</span> — à ajouter / concepts à nommer"
         "</p>"
     )
-    return (
-        "<html><head><meta charset='utf-8'>"
-        "<style>"
-        "body{font-family:Aptos,Segoe UI,Arial,sans-serif;font-size:12pt;line-height:1.5;color:#1a1a1a;}"
-        "h1{font-size:16pt;margin:0 0 8px 0;}"
-        "p{margin:0 0 8px 0;}"
-        "</style></head><body>"
+    return _word_html_document(
         f"<h1>{titre}</h1>"
         f"{objectif_html}"
         f"{note_html}"
         f"{legende}"
-        f"<div>{body}</div>"
-        "</body></html>"
+        f"<div>{body}</div>",
+        extra_css="p{margin:0 0 8px 0;}",
     )
 
 
@@ -7972,20 +7968,13 @@ def _revue_annotee_doc_html(item: dict, revue: dict) -> str:
         if objectif
         else ""
     )
-    return (
-        "<html><head><meta charset='utf-8'>"
-        "<style>"
-        "body{font-family:Aptos,Segoe UI,Arial,sans-serif;font-size:12pt;line-height:1.5;color:#1a1a1a;}"
-        "h1{font-size:16pt;margin:0 0 8px 0;}"
-        "p{margin:0 0 8px 0;}"
-        "</style></head><body>"
+    return _word_html_document(
         f"<h1>{titre}</h1>"
         f"{objectif_html}"
         "<p style='color:#C45C26;font-size:10.5pt;font-style:italic;margin:0 0 18px 0;'>"
         "J’ai laissé ton texte tel quel. Mes remarques sont en orange, entre parenthèses."
         "</p>"
         f"<div>{body}</div>"
-        "</body></html>"
     )
 
 
@@ -10320,13 +10309,13 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
         revues = _load_expert_script_revues(item["code"])
         for revue in revues:
             doc_name = _revue_expert_doc_name(item["code"], revue["numero"])
-            write_text(SITE / doc_name, _revue_annotee_doc_html(item, revue))
+            write_word_doc(SITE / doc_name, _revue_annotee_doc_html(item, revue))
             expected.add(doc_name)
             revue["doc_href"] = doc_name
             proposition = revue.get("proposition")
             if proposition:
                 prop_doc = _revue_proposition_doc_name(item["code"], revue["numero"])
-                write_text(
+                write_word_doc(
                     SITE / prop_doc,
                     _revue_proposition_doc_html(item, revue, proposition),
                 )
@@ -10334,7 +10323,7 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
                 revue["proposition_doc_href"] = prop_doc
         if item.get("script_statut") == "RECU" and item.get("script_contenu"):
             recu_doc = _script_recu_doc_name(item["code"])
-            write_text(SITE / recu_doc, _script_recu_doc_html(item))
+            write_word_doc(SITE / recu_doc, _script_recu_doc_html(item))
             expected.add(recu_doc)
             item["script_doc_href"] = recu_doc
         detail_body = (
@@ -11509,13 +11498,13 @@ def build_mails_experts_pages(
             expert, page_name, simple_doc_name=simple_doc_name
         )
         write_text(SITE / mail_txt_name, mail_text)
-        write_text(
+        write_word_doc(
             SITE / doc_name,
             _guide_videos_attendues_doc_html(
                 expert, grouped_tb, rows_by_code, affectations, by_id
             ),
         )
-        write_text(
+        write_word_doc(
             SITE / simple_doc_name,
             _guide_videos_attendues_simple_doc_html(expert),
         )

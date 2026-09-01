@@ -105,6 +105,12 @@ def write_text(path: Path, content: str) -> None:
     path.write_text(content, encoding="utf-8")
 
 
+def write_word_doc(path: Path, content: str) -> None:
+    """Écrit un fichier .doc (HTML) lisible par Microsoft Word (UTF-8 + BOM)."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(b"\xef\xbb\xbf" + content.encode("utf-8"))
+
+
 def load_capsules() -> list[dict]:
     return read_json(DATA / "capsules.json")
 
