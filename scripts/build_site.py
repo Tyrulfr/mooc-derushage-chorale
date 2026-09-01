@@ -7990,11 +7990,15 @@ def _revue_annotee_doc_html(item: dict, revue: dict) -> str:
 
 
 def _script_expert_editorial_html(code: str, revues: list[dict] | None = None) -> str:
-    """Proposition autonome si présente, sinon panneaux de revue."""
+    """Revue annotée en priorité ; proposition colorée autonome en secours."""
+    if revues is None:
+        revues = _load_expert_script_revues(code)
+    if revues:
+        return _script_expert_revues_html(code, [revues[-1]])
     standalone = _load_expert_standalone_proposition(code)
     if standalone:
         return _standalone_proposition_panel_html(code, standalone)
-    return _script_expert_revues_html(code, revues)
+    return ""
 
 
 def _script_expert_revues_html(code: str, revues: list[dict] | None = None) -> str:
@@ -10314,15 +10318,6 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
         page_name = item["page_href"]
         expected.add(page_name)
         revues = _load_expert_script_revues(item["code"])
-        standalone_prop = _load_expert_standalone_proposition(item["code"])
-        if standalone_prop:
-            prop_doc = _proposition_doc_name(item["code"])
-            write_text(
-                SITE / prop_doc,
-                _revue_proposition_doc_html(item, {}, standalone_prop),
-            )
-            expected.add(prop_doc)
-            standalone_prop["doc_href"] = prop_doc
         for revue in revues:
             doc_name = _revue_expert_doc_name(item["code"], revue["numero"])
             write_text(SITE / doc_name, _revue_annotee_doc_html(item, revue))

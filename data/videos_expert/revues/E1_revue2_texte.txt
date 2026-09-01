@@ -1,54 +1,32 @@
-# E1 proposition — ~751 mots (hors rouge)
-
-[NOIR]
 Vous venez d’entendre cinq chercheurs-entrepreneurs répondre à une question : « Pourquoi et comment oser l’innovation ? »
+(Bien — tu reprends la question de la chorale T1. Bonne accroche.)
 
-[ROUGE]
 Leurs histoires sont différentes, mais elles partagent un même point de départ : un potentiel scientifique ou technologique exceptionnel, que ces chercheurs ont décidé de rapprocher d’un besoin sur un marché.
+(La chorale ne montre pas un seul point de départ : besoin/marché, rencontre, pas de côté, manque observé, maturation longue… Si on le disait autrement : « Leurs histoires sont différentes. Elles n’ont pas toutes le même point de départ. Ce qui les rapproche, c’est qu’à un moment un potentiel issu de la recherche a rencontré un besoin — mais la porte d’entrée n’est pas la même pour chacun. »)
 
-[GRIS]
-Leurs histoires sont différentes. Elles n’ont pas toutes le même point de départ. Ce qui les rapproche, c’est qu’à un moment un potentiel — souvent issu de la recherche — a rencontré un besoin. Mais la porte d’entrée n’est pas la même pour chacun.
-
-[NOIR]
 Dans cette vidéo, mon rôle est de vous aider à reconnaître d’où part une innovation — et quel premier pas peut l’ouvrir — à partir des témoignages que vous venez d’entendre. Le « pourquoi oser », la chorale vient de le dire : utile, impact, carrière, résultats qui ne restent pas sur étagère. Ici, nous nous concentrons sur l’autre versant de la question : les origines possibles, et le geste qui engage la démarche — pas encore tout le processus qui suivra dans le parcours.
+(Très bien : tu poses ici l’objectif d’E1. C’est exactement ce qu’on attend de cette vidéo — reconnaître les origines et le premier pas, sans refaire le « pourquoi » que la chorale porte déjà.)
 
-[GRIS]
-Nos témoins viennent surtout du monde universitaire et de la recherche : leurs parcours illustrent souvent l’innovation « deeptech ». Mais l’innovation n’est pas réservée à la deeptech — on peut aussi innover en repensant un service ou une organisation, sans nouvelle technologie de rupture.
-
-[NOIR]
 Dans les cinq témoignages, ce potentiel scientifique s’est constitué pendant dix, quinze, parfois trente ans. Il s’est traduit par des thèses, des publications, des expérimentations, des savoir-faire et quelquefois des brevets.
 
-[NOIR]
 Mais une technologie, aussi remarquable soit-elle, n’est pas encore une innovation. Elle le devient lorsqu’elle permet de répondre, mieux que les solutions existantes, à un besoin important. Toute innovation deeptech suppose donc de rapprocher deux mondes : ce que la technologie rend possible et ce que des utilisateurs, des organisations ou un marché attendent.
+(Piste : nos témoins illustrent surtout la deeptech, mais le public MOOC n’est pas que des chercheurs — une phrase pour rappeler que l’innovation peut aussi passer par un service ou une organisation, sans nouvelle technologie de rupture.)
 
-[ROUGE]
 Ce qui différencie les cinq parcours, c’est la manière dont ce rapprochement s’est opéré.
+(Piste : ajouter « — et surtout d’où il est parti » : c’est le fil d’E1.)
 
-[GRIS]
-Ce qui différencie les cinq parcours, c’est la manière dont ce rapprochement s’est opéré — et surtout d’où il est parti.
-
-[NOIR]
 Pour Loïc Rajjou, Muriel Thomas et Yann Monier, un domaine d’application est déjà pressenti : la germination et la croissance des plantes, le microbiote des seniors ou des personnes malades, et la fiabilité des chaînes de production automatisées.
+(Utile comme regroupement, mais la chorale montre aussi d’autres origines — observation d’un manque, rencontre, pas de côté… À ne pas écraser en une seule lecture.)
 
-[ROUGE]
 Mais connaître un marché ne signifie pas connaître précisément le besoin auquel répondre. Il faut encore étudier les utilisateurs, leurs activités, les situations problématiques qu’ils rencontrent et les solutions qu’ils emploient déjà. Le problème est-il fréquent ou critique ? Est-il mal résolu ? Les acteurs concernés seraient-ils prêts à adopter, voire à payer, une nouvelle solution ?
+(>>> Ici on bascule déjà vers E2/E3 — étude des utilisateurs, validation du besoin. Pour E1, une phrase suffit : « connaître un marché ne dit pas encore tout du besoin — nous verrons cela plus loin ».)
 
-[GRIS]
-Mais connaître un marché ou un domaine d’application ne signifie pas encore connaître précisément le besoin auquel répondre. Cette étape viendra dans la suite du parcours ; ici, on reste sur l’origine.
-
-[NOIR]
 Pour Sylvia Cohen-Kaminski et Jean-Jacques Greffet, le marché d’application n’était pas connu au départ. Chez Sylvia, un mécanisme étudié scientifiquement révèle, de manière apparemment fortuite, un potentiel dans le domaine de la communication de cellule à cellule. Chez Jean-Jacques, c’est un entrepreneur qui lui soumet un problème : comment détecter des virus de très petite taille ? Jean-Jacques comprend alors que son expertise en nanophotonique peut apporter une réponse nouvelle.
+(Bon ancrage chorale — rencontre, pas de côté.)
 
-[NOIR]
 Ces rencontres semblent parfois relever du hasard. Mais aurait-on pu découvrir plus systématiquement ces domaines d’application ? Oui. C’est même une étape classique de l’innovation deeptech car il est fréquent que le marché le plus pertinent n’apparaisse pas immédiatement.
+(Ici tu peux encore rester sur l’origine. C’est aussi le moment de nommer les portes d’entrée — tech-push, market-pull, observation, rencontre, sérendipité, maturation — avec tes mots, à partir de ce que T1 montre.)
 
-[ORANGE]
-[À ajouter] Identifier dans les témoignages, puis nommer selon votre expertise : tech-push · market-pull · observation d’usage · rencontre · sérendipité · maturation progressive.
-
-[ORANGE]
-[À ajouter] Oser, c’est souvent un premier geste — pas encore tout le processus : accepter qu’une recherche serve ailleurs ; partir d’un manque observé ; convertir des années de thèse en quelque chose d’utile ; répondre à une question posée par un acteur extérieur.
-
-[ROUGE]
 On commence par caractériser le potentiel fonctionnel de la technologie : que permet-elle de faire, avec quelles performances et quelles limites ? Un screening à large spectre peut alors identifier cinq ou dix marchés possibles. Pour chacun, on évalue le problème potentiellement résolvable, les solutions existantes, l’utilité différenciante de la technologie, l’attractivité du marché et l’effort de maturation nécessaire.
 
 Les cellules de valorisation peuvent accompagner cette exploration, comparer les profils d’intérêt et aider à sélectionner le marché le plus prometteur. Ce choix est décisif : avant d’améliorer davantage une technologie, mieux vaut savoir dans quelle direction la faire progresser. Toutes les performances n’ont pas la même importance ; il faut développer celles qui répondent aux exigences du marché choisi et aux bénéfices attendus par les futurs utilisateurs.
@@ -60,40 +38,28 @@ Cette promesse est ensuite mise à l’épreuve. On formule des hypothèses, on 
 La maturation technologique et l’étude du marché ne sont donc pas deux démarches successives. Elles avancent ensemble : le besoin donne une direction à la technologie ; ses possibilités et ses limites conduisent parfois à reformuler la solution, voire à reconsidérer le marché ciblé.
 
 Ce processus n’est pas une ligne droite. Il se construit progressivement, avec de la méthode et des compétences scientifiques, industrielles, économiques et entrepreneuriales complémentaires.
+(<<< FIN DU BLOC À RACCOURCIR. De « caractériser le potentiel » jusqu’ici, tu enseignes déjà E2–E5. C’est le levier principal pour tenir E1 en ~5 min. Si on le disait comme ça : « Une fois l’origine reconnue, d’autres questions s’ouvrent — besoin, marchés, maturation, preuve de concept, voies de transfert… Nous verrons tout cela dans les vidéos suivantes. » Tu peux pré-nommer sans décrire. Pour les cellules de valorisation ici : une phrase — elles peuvent aider à identifier d’où part le projet, pas encore à le faire mûrir.)
 
-[GRIS]
-Une fois l’origine reconnue et ce premier pas franchi, d’autres questions s’ouvrent — caractériser le potentiel, explorer des marchés, faire avancer besoin et maturation, éprouver une preuve de concept, choisir une voie de transfert. Nous verrons tout cela dans les vidéos suivantes.
+(Piste à ajouter après les exemples chorale : le « premier pas » — accepter qu’une recherche serve ailleurs, partir d’un manque observé, convertir une thèse en utilité, répondre à une question d’un acteur extérieur… Pas encore tout le processus.)
 
-[GRIS]
-Les cellules de valorisation peuvent vous aider à identifier et nommer d’où part votre projet — pas encore à le faire mûrir.
-
-[ROUGE]
 La création d’une start-up peut en être l’aboutissement lorsqu’il faut développer un produit nouveau et l’activité économique qui permettra de le mettre sur le marché. Mais ce n’est pas la seule voie : une licence, un transfert de technologie ou un partenariat avec une entreprise existante peuvent aussi être appropriés.
+(Plutôt E10 — une phrase d’amorce suffit : « création, licence ou partenariat : nous y reviendrons plus loin ».)
 
-[GRIS]
-La création d’une start-up n’est qu’une des voies possibles ; licence ou partenariat le sont aussi. Nous y reviendrons plus loin.
-
-[ROUGE]
 Reste alors la première partie de la question : pourquoi oser ?
 
 Les motivations personnelles convergent : se sentir utile, rechercher un impact sociétal, apprendre, transformer des résultats scientifiques en réalisations concrètes et éviter que des technologies financées par l’argent public restent inutilisées sur une étagère.
+(Doublon : la chorale vient de le dire, et tu l’as déjà reconnu au début. À retirer ou réduire à une transition d’une ligne. L’évolution du métier / ce qu’il faut concilier : plutôt ta vidéo E20, liée à T11.)
 
-[NOIR]
 Ces témoignages montrent aussi que l’innovation ne s’oppose pas à la recherche. Elle peut lui apporter des partenaires, des terrains d’expérimentation et des questions scientifiques. Elle crée une boucle vertueuse entre recherche, innovation et impact.
+(À garder.)
 
-[ROUGE]
 Oser l’innovation, ce n’est donc pas décider immédiatement de créer une start-up, ni abandonner son identité de chercheur. C’est commencer à considérer son expertise scientifique comme un potentiel d’utilité. C’est explorer les marchés sur lesquels elle pourrait créer le plus de valeur, puis confronter une hypothèse d’utilité au terrain avec la même curiosité et la même rigueur qu’une hypothèse scientifique.
+(Le fond est bon sur l’identité de chercheur ; « explorer les marchés / hypothèse au terrain » = déjà le processus. Piste : terminer sur le premier pas pour engager, pas sur la méthode complète.)
 
-[GRIS]
-Oser l’innovation, ce n’est donc pas décider immédiatement de créer une start-up, ni abandonner son identité de chercheur. C’est commencer à considérer son expertise comme un potentiel d’utilité — et parfois faire un premier pas pour l’engager.
-
-[ROUGE]
 Et vous ?
 
 Quelle connaissance, quelle technologie ou quel savoir-faire singulier votre équipe maîtrise-t-elle ? Que permet-il de faire de véritablement différent ? Connaissez-vous déjà une activité ou un marché qui pourrait en bénéficier ? Ou faudrait-il explorer plusieurs domaines d’application ? Et quelle motivation personnelle vous donnerait envie d’engager cette démarche ?
+(Trop large pour E1 — marché, motivation… Si on le disait comme ça : « Et vous ? D’où part — ou d’où pourrait partir — votre innovation ? Et quel premier pas pourrait l’ouvrir ? »)
 
-[GRIS]
-Et vous ? D’où part — ou d’où pourrait partir — votre innovation ? Et quel serait, pour vous, le premier pas qui l’ouvrirait ?
-
-[ROUGE]
 Oser, c’est peut-être cela : ne plus attendre qu’une rencontre fortuite révèle l’utilité de votre recherche, mais rechercher, avec méthode et en vous faisant accompagner, les situations dans lesquelles elle pourrait changer les choses.
+(Encore le processus / la méthode — plutôt E2–E5. Pour clôturer E1, la question d’origine + premier pas suffit.)
