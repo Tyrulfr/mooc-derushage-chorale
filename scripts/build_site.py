@@ -7776,6 +7776,179 @@ def _proposition_doc_name(code: str) -> str:
     return f"proposition_{code}.doc"
 
 
+def _texte_final_doc_name(code: str) -> str:
+    return f"texte_final_{code}.doc"
+
+
+def _extract_piste_text(texte: str) -> str:
+    """Retire le préfixe « Piste… » et les guillemets français d'une piste de reformulation."""
+    t = (texte or "").strip()
+    lowered = t.lower()
+    for prefix in (
+        "piste de reformulation : ",
+        "piste d'amorce unique : ",
+        "piste d'amorce : ",
+        "piste de question finale : ",
+        "piste : ",
+    ):
+        if lowered.startswith(prefix):
+            t = t[len(prefix) :].strip()
+            break
+    if len(t) >= 2 and t[0] == "«" and t[-1] == "»":
+        return t[1:-1].strip()
+    if len(t) >= 2 and t[0] == '"' and t[-1] == '"':
+        return t[1:-1].strip()
+    return t
+
+
+def _texts_equivalent(a: str, b: str) -> bool:
+    norm = lambda s: re.sub(r"\s+", " ", (s or "").strip().lower())
+    na, nb = norm(a), norm(b)
+    if not na or not nb:
+        return False
+    return na == nb
+
+
+def _synthesize_proposition_final_paragraphs(segments: list[dict]) -> list[str]:
+    """Synthèse : script proposé si reformulations, ajouts et suppressions sont acceptés."""
+    paragraphs: list[str] = []
+    i = 0
+    n = len(segments)
+    while i < n:
+        seg = segments[i]
+        if not isinstance(seg, dict):
+            i += 1
+            continue
+        couleur = str(seg.get("couleur") or seg.get("type") or "noir").lower()
+        texte = (seg.get("texte") or seg.get("text") or "").strip()
+        i += 1
+        if not texte or couleur in {"commentaire", "rouge"}:
+            continue
+        if couleur == "ajout":
+            paragraphs.append(texte)
+            continue
+        if couleur == "gris":
+            paragraphs.append(_extract_piste_text(texte))
+            continue
+        if couleur != "noir":
+            continue
+
+        noirs: list[str] = [texte]
+        while i < n and str(segments[i].get("couleur") or "").lower() == "noir":
+            nt = (segments[i].get("texte") or "").strip()
+            if nt:
+                noirs.append(nt)
+            i += 1
+
+        zone: list[dict] = []
+        while i < n and str(segments[i].get("couleur") or "").lower() != "noir":
+            zone.append(segments[i])
+            i += 1
+
+        rouge_texts = {
+            (z.get("texte") or "").strip()
+            for z in zone
+            if str(z.get("couleur") or "").lower() == "rouge"
+        }
+        gris_items = [
+            _extract_piste_text(z.get("texte") or "")
+            for z in zone
+            if str(z.get("couleur") or "").lower() == "gris"
+        ]
+        ajout_items = [
+            (z.get("texte") or "").strip()
+            for z in zone
+            if str(z.get("couleur") or "").lower() == "ajout"
+        ]
+
+        kept = [nt for nt in noirs if nt not in rouge_texts]
+        suppressed = [nt for nt in noirs if nt in rouge_texts]
+
+        if suppressed and not kept:
+            amorce = [
+                _extract_piste_text(z.get("texte") or "")
+                for z in zone
+                if str(z.get("couleur") or "").lower() == "gris"
+                and "amorce" in str(z.get("texte") or "").lower()
+            ]
+            if amorce:
+                paragraphs.append(amorce[-1])
+            elif gris_items:
+                paragraphs.append(gris_items[-1])
+            paragraphs.extend(ajout_items)
+            continue
+
+        if kept and gris_items and not suppressed:
+            if len(kept) > 1 and len(gris_items) == 1:
+                paragraphs.append(gris_items[0])
+            else:
+                for idx, nt in enumerate(kept):
+                    if idx < len(gris_items):
+                        paragraphs.append(gris_items[idx])
+                    else:
+                        paragraphs.append(nt)
+            paragraphs.extend(ajout_items)
+            continue
+
+        for nt in kept:
+            merged = nt
+            suffix_ajouts: list[str] = []
+            inline_ajouts: list[str] = []
+            for a in ajout_items:
+                if a.startswith("—"):
+                    suffix_ajouts.append(a)
+                else:
+                    inline_ajouts.append(a)
+            if suffix_ajouts:
+                merged = merged.rstrip(" .") + " " + " ".join(suffix_ajouts)
+            paragraphs.append(merged)
+            paragraphs.extend(inline_ajouts)
+        ajout_items = []
+
+    return [p for p in paragraphs if p]
+
+
+def _render_proposition_final_html(paragraphs: list[str]) -> str:
+    if not paragraphs:
+        return "<p class='meta'>Synthèse à compléter.</p>"
+    return "".join(
+        f'<p style="color:#1a1a1a;margin:0 0 10px 0;">{escape(p).replace(chr(10), "<br>")}</p>'
+        for p in paragraphs
+    )
+
+
+def _texte_final_doc_html(item: dict, proposition: dict, paragraphs: list[str]) -> str:
+    code = item.get("code") or ""
+    numero_video = _numero_video_expert(code)
+    body = _render_proposition_final_html(paragraphs)
+    titre = (
+        f"Texte proposé final — Vidéo {escape(numero_video)}"
+        if numero_video
+        else "Texte proposé final"
+    )
+    objectif = escape(str(proposition.get("objectif_pedagogique") or ""))
+    objectif_html = (
+        f"<p style='color:#64748b;font-size:10.5pt;margin:0 0 12px 0;'><strong>Objectif E1 :</strong> {objectif}</p>"
+        if objectif
+        else ""
+    )
+    note_html = (
+        "<p style='color:#64748b;font-size:10.5pt;margin:0 0 14px 0;'>"
+        "Version de travail si les reformulations (gris), suppressions (rouge) et ajouts (orange) "
+        "de la lecture annotée sont acceptés. Ne remplace pas le script reçu."
+        "</p>"
+    )
+    mots = len(re.findall(r"[A-Za-zÀ-ÖØ-öø-ÿ0-9']+", " ".join(paragraphs)))
+    return _word_html_document(
+        f"<h1>{titre}</h1>"
+        f"{objectif_html}"
+        f"{note_html}"
+        f"<p style='color:#64748b;font-size:10.5pt;margin:0 0 14px 0;'>~{mots} mots</p>"
+        f"<div>{body}</div>",
+        extra_css="p{margin:0 0 8px 0;}",
+    )
+
+
 def _load_expert_standalone_proposition(code: str) -> dict | None:
     """Proposition éditoriale autonome (sans revue), ex. E1_proposition.json."""
     path = VIDEOS_EXPERT_REVUES / f"{code}_proposition.json"
@@ -7990,7 +8163,11 @@ def _standalone_proposition_doc_html(item: dict, proposition: dict) -> str:
 
 def _standalone_proposition_panel_html(code: str, proposition: dict) -> str:
     body = _render_proposition_segments_html(proposition.get("segments") or [])
+    final_paragraphs = _synthesize_proposition_final_paragraphs(proposition.get("segments") or [])
+    final_body = _render_proposition_final_html(final_paragraphs)
+    final_mots = len(re.findall(r"[A-Za-zÀ-ÖØ-öø-ÿ0-9']+", " ".join(final_paragraphs)))
     doc_href = proposition.get("doc_href") or _proposition_doc_name(code)
+    final_doc_href = proposition.get("texte_final_doc_href") or _texte_final_doc_name(code)
     mots = proposition.get("mots_estimes") or _proposition_segments_word_count(proposition)
     note = (proposition.get("note") or "").strip()
     note_html = f"<p class='meta'>{escape(note)}</p>" if note else ""
@@ -8039,12 +8216,16 @@ def _standalone_proposition_panel_html(code: str, proposition: dict) -> str:
   <span style="color:#B91C1C;text-decoration:line-through;">Rouge barré</span> = à retirer ·
   <span style="color:#64748b;font-style:italic;">Gris</span> = piste ·
   <span style="color:#C45C26;font-weight:600;">Orange gras</span> = à ajouter</p>
-  <p><a class="btn" href="{escape(doc_href)}" download="{escape(doc_href)}">Télécharger la proposition (Word)</a></p>
+  <p><a class="btn" href="{escape(doc_href)}" download="{escape(doc_href)}">Télécharger la lecture annotée (Word)</a>
+  <a class="btn btn-secondary" href="{escape(final_doc_href)}" download="{escape(final_doc_href)}">Télécharger le texte proposé final (Word)</a></p>
   {integral_panel}
   {justif_html}
   <h3>Lecture annotée</h3>
   <p class="meta">Votre texte intégral en noir, dans l’ordre. Les remarques, barrés, pistes et ajouts s’ajoutent après chaque passage — rien n’est retiré de l’affichage.</p>
   <div class="script-recu-block">{body}</div>
+  <h3>Texte proposé final</h3>
+  <p class="meta">Si les modifications sont acceptées : reformulations et ajouts appliqués, passages barrés retirés. ~{escape(str(final_mots))} mots.</p>
+  <div class="script-recu-block script-proposition-final">{final_body}</div>
 </section>
 """
 
@@ -10483,6 +10664,15 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
                 _standalone_proposition_doc_html(item, standalone_prop),
             )
             expected.add(prop_doc)
+            final_paragraphs = _synthesize_proposition_final_paragraphs(
+                standalone_prop.get("segments") or []
+            )
+            final_doc = _texte_final_doc_name(item["code"])
+            write_word_doc(
+                SITE / final_doc,
+                _texte_final_doc_html(item, standalone_prop, final_paragraphs),
+            )
+            expected.add(final_doc)
         detail_body = (
             f"<p class='meta'>Module : {escape(item.get('module') or '—')} — "
             f"Capsule : <a href='{escape(item['tb_edito_href'])}'>{escape(item['capsule_code'])}</a> — "
@@ -10519,6 +10709,9 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
         if path.name not in expected:
             path.unlink()
     for path in SITE.glob("proposition_*.doc"):
+        if path.name not in expected:
+            path.unlink()
+    for path in SITE.glob("texte_final_*.doc"):
         if path.name not in expected:
             path.unlink()
     for path in SITE.glob("script_recu_*.doc"):

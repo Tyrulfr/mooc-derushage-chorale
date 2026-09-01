@@ -4,7 +4,7 @@
   "date": "2026-09-01",
   "mode": "sur_texte_integral",
   "objectif_pedagogique": "Reconnaître les différentes origines d'une innovation et évoquer le premier pas — sans enseigner le processus (E2–E5), ni refaire le « pourquoi oser » de T1.",
-  "note": "Le texte de Bernard est reproduit intégralement (noir), dans l’ordre de son script. Rien ne disparaît : commentaires (orange italique), passages barrés en rouge, pistes en gris et ajouts en orange viennent s’ajouter après chaque passage concerné.",
+  "note": "Le texte de Bernard est reproduit intégralement (noir), dans l’ordre de son script. Rien ne disparaît : commentaires, barrés, pistes et ajouts s’ajoutent après chaque passage. Un second bloc « Texte proposé final » synthétise le script si toutes les modifications sont acceptées.",
   "justifications": [
     {
       "decision": "GARDER",
@@ -128,7 +128,11 @@
     },
     {
       "couleur": "commentaire",
-      "texte": "(Forme : « deeptech » très tôt peut exclure le public non chercheur. Piste : garder l’idée, élargir le registre ou déplacer après les exemples.)"
+      "texte": "(Forme : « deeptech » très tôt peut exclure le public non chercheur. Piste : garder l’idée, élargir le registre.)"
+    },
+    {
+      "couleur": "gris",
+      "texte": "Piste de reformulation : « Souvent, l’innovation part de ce que la recherche a produit : une connaissance, une méthode, un procédé ou une technologie — pour créer une valeur vraiment différenciante. »"
     },
     {
       "couleur": "noir",
@@ -144,7 +148,7 @@
     },
     {
       "couleur": "gris",
-      "texte": "Piste : « …une innovation issue de la recherche suppose de rapprocher deux mondes… »"
+      "texte": "Piste de reformulation : « Mais une technologie, aussi remarquable soit-elle, n’est pas encore une innovation. Elle le devient lorsqu’elle permet de répondre, mieux que les solutions existantes, à un besoin important. Une innovation issue de la recherche suppose de rapprocher deux mondes : ce que la technologie rend possible et ce que des utilisateurs, des organisations ou un marché attendent. »"
     },
     {
       "couleur": "ajout",
@@ -324,7 +328,7 @@
     },
     {
       "couleur": "gris",
-      "texte": "Piste : « …considérer son expertise scientifique comme un potentiel d’utilité — et identifier d’où pourrait partir une démarche. »"
+      "texte": "Piste de reformulation : « Oser l’innovation, ce n’est donc pas décider immédiatement de créer une start-up, ni abandonner son identité de chercheur. C’est commencer à considérer son expertise scientifique comme un potentiel d’utilité — et identifier d’où pourrait partir une démarche. »"
     },
     {
       "couleur": "noir",
@@ -352,7 +356,7 @@
     },
     {
       "couleur": "gris",
-      "texte": "Piste : « …oser regarder vos travaux sous l’angle de l’origine et du premier pas — avec curiosité, et en vous faisant accompagner si besoin. »"
+      "texte": "Piste de reformulation : « Oser, c’est peut-être cela : ne plus attendre qu’une rencontre fortuite révèle l’utilité de votre recherche, mais oser regarder vos travaux sous l’angle de l’origine et du premier pas — avec curiosité, et en vous faisant accompagner si besoin. »"
     }
   ],
   "mots_estimes": 1000
