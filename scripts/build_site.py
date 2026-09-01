@@ -7792,8 +7792,49 @@ _REVUE_PROPOSITION_STYLES = {
     "noir": "color:#1a1a1a;",
     "gris": "color:#64748b;font-style:italic;",
     "orange": "color:#C45C26;font-weight:600;",
+    "ajout": "color:#C45C26;font-weight:600;",
+    "commentaire": "color:#C45C26;font-style:italic;",
     "rouge": "color:#B91C1C;text-decoration:line-through;",
 }
+
+
+def _load_expert_script_integral(code: str, proposition: dict | None = None) -> str:
+    """Texte intégral du script reçu (source de vérité pour la proposition annotée)."""
+    if proposition:
+        inline = (proposition.get("texte_integral") or "").strip()
+        if inline:
+            return inline
+    for suffix in (".txt", ".md"):
+        path = VIDEOS_EXPERT_SCRIPTS / f"{code}{suffix}"
+        if path.is_file():
+            return path.read_text(encoding="utf-8").strip()
+    return ""
+
+
+def _proposition_legende_html() -> str:
+    return (
+        "<p style='font-size:10.5pt;margin:0 0 6px 0;'>"
+        "<span style='color:#1a1a1a;'>■ Noir</span> — Bernard, mot pour mot · "
+        "<span style='color:#C45C26;font-style:italic;'>■ Orange italique</span> — commentaire IP · "
+        "<span style='color:#B91C1C;text-decoration:line-through;'>■ Rouge barré</span> — à retirer (même texte Bernard) · "
+        "<span style='color:#64748b;font-style:italic;'>■ Gris</span> — piste de reformulation · "
+        "<span style='color:#C45C26;font-weight:600;'>■ Orange gras</span> — à ajouter"
+        "</p>"
+    )
+
+
+def _proposition_texte_integral_html(code: str, proposition: dict) -> str:
+    texte = _load_expert_script_integral(code, proposition)
+    if not texte:
+        return ""
+    body = escape(texte).replace("\n", "<br>")
+    source = escape(proposition.get("source_script") or f"{code}.txt")
+    return (
+        "<h2 style='font-size:13pt;margin:18px 0 8px 0;'>Texte intégral reçu (Bernard — mot pour mot)</h2>"
+        f"<p style='color:#64748b;font-size:10.5pt;margin:0 0 10px 0;'>Source : <code>{source}</code></p>"
+        f"<div style='border:1px solid #dbe2ea;border-radius:6px;padding:12px 14px;background:#f8fafc;'>"
+        f"<p style='color:#1a1a1a;margin:0;'>{body}</p></div>"
+    )
 
 
 def _load_revue_proposition(revue_data: dict, revue_path: Path) -> dict | None:
@@ -7830,6 +7871,8 @@ def _render_proposition_segments_html(segments: list[dict]) -> str:
         if not texte:
             continue
         style = _REVUE_PROPOSITION_STYLES.get(couleur, _REVUE_PROPOSITION_STYLES["noir"])
+        if couleur == "commentaire" and not (texte.startswith("(") and texte.endswith(")")):
+            texte = f"({texte})"
         parts.append(
             f'<p style="{style}margin:0 0 10px 0;">{escape(texte).replace(chr(10), "<br>")}</p>'
         )
@@ -7914,7 +7957,7 @@ def _proposition_justifications_html(proposition: dict) -> str:
 
 
 def _standalone_proposition_doc_html(item: dict, proposition: dict) -> str:
-    """Word (HTML .doc) : proposition autonome + tableau de justifications."""
+    """Word (HTML .doc) : lecture annotée sur texte intégral + justifications."""
     code = item.get("code") or ""
     numero_video = _numero_video_expert(code)
     objectif_item = _normalize_editorial_french(item.get("titre") or "")
@@ -7931,14 +7974,7 @@ def _standalone_proposition_doc_html(item: dict, proposition: dict) -> str:
     )
     note = escape((proposition.get("note") or "").strip())
     note_html = f"<p style='color:#64748b;font-size:10.5pt;margin:0 0 14px 0;'>{note}</p>" if note else ""
-    legende = (
-        "<p style='font-size:10.5pt;margin:0 0 6px 0;'>"
-        "<span style='color:#1a1a1a;'>■ Noir</span> — conservé · "
-        "<span style='color:#64748b;font-style:italic;'>■ Gris</span> — reformulation · "
-        "<span style='color:#B91C1C;text-decoration:line-through;'>■ Rouge</span> — à retirer · "
-        "<span style='color:#C45C26;font-weight:600;'>■ Orange</span> — à ajouter / nommer"
-        "</p>"
-    )
+    legende = _proposition_legende_html()
     justif_html = _proposition_justifications_html(proposition)
     return _word_html_document(
         f"<h1>{titre}</h1>"
@@ -7946,7 +7982,7 @@ def _standalone_proposition_doc_html(item: dict, proposition: dict) -> str:
         f"{note_html}"
         f"{legende}"
         f"{justif_html}"
-        "<h2 style='font-size:13pt;margin:18px 0 8px 0;'>Texte proposé</h2>"
+        "<h2 style='font-size:13pt;margin:18px 0 8px 0;'>Lecture annotée (texte intégral — rien ne disparaît)</h2>"
         f"<div>{body}</div>",
         extra_css="p{margin:0 0 8px 0;}",
     )
@@ -7984,20 +8020,30 @@ def _standalone_proposition_panel_html(code: str, proposition: dict) -> str:
         if justif_rows
         else ""
     )
+    integral_text = _load_expert_script_integral(code, proposition)
+    integral_panel = ""
+    if integral_text:
+        integral_panel = (
+            "<p class='meta'><strong>Script reçu pur</strong> (sans annotations) : bloc « Script renvoyé par l'expert » ci-dessus "
+            f"ou <code>script_recu_{escape(code)}.doc</code>.</p>"
+        )
     return f"""
 <section class="methodology-panel script-revue-panel script-proposition-panel">
   <h2>Proposition de script</h2>
   <p>{status_badge("EN_CONSTRUCTION")}
     <span class="meta">Source : <code>{escape(proposition.get("source_script") or f"{code}.txt")}</code></span>
-    <span class="meta">~{escape(str(mots))} mots (hors passages rouges)</span></p>
+    <span class="meta">~{escape(str(mots))} mots (texte Bernard intégral)</span></p>
   {note_html}
-  <p class="meta"><span style="color:#1a1a1a;">Noir</span> = conservé ·
-  <span style="color:#64748b;font-style:italic;">Gris</span> = reformulation ·
-  <span style="color:#B91C1C;text-decoration:line-through;">Rouge</span> = à retirer ·
-  <span style="color:#C45C26;font-weight:600;">Orange</span> = à ajouter / nommer</p>
+  <p class="meta"><span style="color:#1a1a1a;">Noir</span> = Bernard mot pour mot ·
+  <span style="color:#C45C26;font-style:italic;">Orange italique</span> = commentaire ·
+  <span style="color:#B91C1C;text-decoration:line-through;">Rouge barré</span> = à retirer ·
+  <span style="color:#64748b;font-style:italic;">Gris</span> = piste ·
+  <span style="color:#C45C26;font-weight:600;">Orange gras</span> = à ajouter</p>
   <p><a class="btn" href="{escape(doc_href)}" download="{escape(doc_href)}">Télécharger la proposition (Word)</a></p>
+  {integral_panel}
   {justif_html}
-  <h3>Texte proposé (illustration)</h3>
+  <h3>Lecture annotée</h3>
+  <p class="meta">Votre texte intégral en noir, dans l’ordre. Les remarques, barrés, pistes et ajouts s’ajoutent après chaque passage — rien n’est retiré de l’affichage.</p>
   <div class="script-recu-block">{body}</div>
 </section>
 """
