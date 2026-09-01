@@ -7774,6 +7774,7 @@ _REVUE_PROPOSITION_STYLES = {
     "noir": "color:#1a1a1a;",
     "gris": "color:#64748b;font-style:italic;",
     "orange": "color:#C45C26;font-weight:600;",
+    "rouge": "color:#B91C1C;text-decoration:line-through;",
 }
 
 
@@ -7797,6 +7798,7 @@ def _proposition_segments_word_count(proposition: dict) -> int:
         len(re.findall(r"[A-Za-zÀ-ÖØ-öø-ÿ0-9']+", seg.get("texte") or ""))
         for seg in (proposition.get("segments") or [])
         if isinstance(seg, dict)
+        and str(seg.get("couleur") or seg.get("type") or "noir").lower() != "rouge"
     )
 
 
@@ -7823,26 +7825,27 @@ def _revue_proposition_doc_html(item: dict, revue: dict, proposition: dict) -> s
     objectif = _normalize_editorial_french(item.get("titre") or "")
     body = _render_proposition_segments_html(proposition.get("segments") or [])
     titre = (
-        f"Proposition — Vidéo {escape(numero_video)}"
+        f"Proposition de script — Vidéo {escape(numero_video)}"
         if numero_video
-        else "Proposition script"
+        else "Proposition de script"
     )
     objectif_html = (
         f"<p style='color:#64748b;font-size:10.5pt;margin:0 0 12px 0;'>{escape(objectif)}</p>"
         if objectif
         else ""
     )
-    note = (proposition.get("note") or "").strip()
     note_html = (
-        f"<p style='color:#64748b;font-size:10.5pt;margin:0 0 14px 0;'>{escape(note)}</p>"
-        if note
-        else ""
+        "<p style='color:#64748b;font-size:10.5pt;margin:0 0 14px 0;'>"
+        "Document distinct du texte annoté (revue). Reprise du script Bernard dans l’ordre : "
+        "noir = conservé · gris = reformulation · rouge = à retirer · orange = à ajouter / nommer."
+        "</p>"
     )
     legende = (
         "<p style='font-size:10.5pt;margin:0 0 6px 0;'>"
-        "<span style='color:#1a1a1a;'>■ Noir</span> — texte Bernard conservé · "
-        "<span style='color:#64748b;font-style:italic;'>■ Gris</span> — proposition éditoriale · "
-        "<span style='color:#C45C26;font-weight:600;'>■ Orange</span> — concepts exportables"
+        "<span style='color:#1a1a1a;'>■ Noir</span> — Bernard conservé · "
+        "<span style='color:#64748b;font-style:italic;'>■ Gris</span> — reformulation proposée · "
+        "<span style='color:#B91C1C;text-decoration:line-through;'>■ Rouge</span> — à retirer · "
+        "<span style='color:#C45C26;font-weight:600;'>■ Orange</span> — à ajouter / concepts à nommer"
         "</p>"
     )
     return (
@@ -7869,14 +7872,17 @@ def _proposition_panel_html(code: str, revue: dict, proposition: dict) -> str:
     note = (proposition.get("note") or "").strip()
     note_html = f"<p class='meta'>{escape(note)}</p>" if note else ""
     return f"""
-<section class="methodology-panel script-revue-panel">
-  <h2>Proposition de texte (Revue {numero})</h2>
+<section class="methodology-panel script-revue-panel script-proposition-panel">
+  <h2>Proposition de script — illustration (Revue {numero})</h2>
+  <p class="meta"><strong>Bloc distinct</strong> du texte annoté ci-dessus (<code>revue_{escape(code)}_{numero}.doc</code>).
+  Export séparé : <code>{escape(doc_href)}</code>.</p>
   <p>{status_badge("EN_CONSTRUCTION")}
-    <span class="meta">~{escape(str(mots))} mots (proposition)</span></p>
+    <span class="meta">~{escape(str(mots))} mots (illustration)</span></p>
   {note_html}
-  <p class="meta"><span style="color:#1a1a1a;">Noir</span> Bernard ·
-  <span style="color:#64748b;font-style:italic;">Gris</span> éditorial ·
-  <span style="color:#C45C26;font-weight:600;">Orange</span> concepts exportables</p>
+  <p class="meta"><span style="color:#1a1a1a;">Noir</span> = Bernard conservé ·
+  <span style="color:#64748b;font-style:italic;">Gris</span> = reformulation ·
+  <span style="color:#B91C1C;text-decoration:line-through;">Rouge</span> = à retirer ·
+  <span style="color:#C45C26;font-weight:600;">Orange</span> = à ajouter / nommer</p>
   <p><a class="btn" href="{escape(doc_href)}" download>Exporter la proposition (Word)</a>
   <a class="btn btn-secondary" href="{escape(doc_href)}" target="_blank" rel="noopener">Ouvrir le Word</a></p>
   <div class="script-recu-block">{body}</div>
@@ -7998,7 +8004,7 @@ def _script_expert_revues_html(code: str, revues: list[dict] | None = None) -> s
   {export_html}
   <h3>Demandes de correction / modification</h3>
   {demandes_html}
-  <h3>Proposition de texte repris</h3>
+  <h3>Texte annoté (remarques entre parenthèses)</h3>
   {texte_html}
   {mail_html}
 </section>
