@@ -7876,12 +7876,114 @@ def _revue_proposition_doc_html(item: dict, revue: dict, proposition: dict) -> s
     )
 
 
+def _proposition_justifications_html(proposition: dict) -> str:
+    """Tableau des arbitrages pédagogiques (garder / réécrire / supprimer / ajouter)."""
+    items = proposition.get("justifications") or []
+    if not items:
+        return ""
+    rows: list[str] = []
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        decision = escape(str(item.get("decision") or "—"))
+        passage = escape(str(item.get("passage") or "—"))
+        justification = escape(str(item.get("justification") or item.get("justification_pedagogique") or ""))
+        rows.append(
+            f"<tr><td><strong>{decision}</strong></td><td>{passage}</td><td>{justification}</td></tr>"
+        )
+    if not rows:
+        return ""
+    objectif = escape(str(proposition.get("objectif_pedagogique") or ""))
+    objectif_html = (
+        f"<p style='color:#64748b;font-size:10.5pt;margin:0 0 12px 0;'><strong>Objectif E1 :</strong> {objectif}</p>"
+        if objectif
+        else ""
+    )
+    return (
+        "<h2 style='font-size:13pt;margin:18px 0 8px 0;'>Justifications pédagogiques</h2>"
+        f"{objectif_html}"
+        "<table style='width:100%;border-collapse:collapse;font-size:10.5pt;margin-bottom:18px;'>"
+        "<thead><tr>"
+        "<th style='border:1px solid #cbd5e1;padding:6px 8px;background:#f1f5f9;text-align:left;width:12%;'>Décision</th>"
+        "<th style='border:1px solid #cbd5e1;padding:6px 8px;background:#f1f5f9;text-align:left;width:28%;'>Passage</th>"
+        "<th style='border:1px solid #cbd5e1;padding:6px 8px;background:#f1f5f9;text-align:left;'>Justification (objectif / forme)</th>"
+        "</tr></thead><tbody>"
+        + "".join(rows)
+        + "</tbody></table>"
+    )
+
+
+def _standalone_proposition_doc_html(item: dict, proposition: dict) -> str:
+    """Word (HTML .doc) : proposition autonome + tableau de justifications."""
+    code = item.get("code") or ""
+    numero_video = _numero_video_expert(code)
+    objectif_item = _normalize_editorial_french(item.get("titre") or "")
+    body = _render_proposition_segments_html(proposition.get("segments") or [])
+    titre = (
+        f"Proposition de script — Vidéo {escape(numero_video)}"
+        if numero_video
+        else "Proposition de script"
+    )
+    objectif_html = (
+        f"<p style='color:#64748b;font-size:10.5pt;margin:0 0 12px 0;'>{escape(objectif_item)}</p>"
+        if objectif_item
+        else ""
+    )
+    note = escape((proposition.get("note") or "").strip())
+    note_html = f"<p style='color:#64748b;font-size:10.5pt;margin:0 0 14px 0;'>{note}</p>" if note else ""
+    legende = (
+        "<p style='font-size:10.5pt;margin:0 0 6px 0;'>"
+        "<span style='color:#1a1a1a;'>■ Noir</span> — conservé · "
+        "<span style='color:#64748b;font-style:italic;'>■ Gris</span> — reformulation · "
+        "<span style='color:#B91C1C;text-decoration:line-through;'>■ Rouge</span> — à retirer · "
+        "<span style='color:#C45C26;font-weight:600;'>■ Orange</span> — à ajouter / nommer"
+        "</p>"
+    )
+    justif_html = _proposition_justifications_html(proposition)
+    return _word_html_document(
+        f"<h1>{titre}</h1>"
+        f"{objectif_html}"
+        f"{note_html}"
+        f"{legende}"
+        f"{justif_html}"
+        "<h2 style='font-size:13pt;margin:18px 0 8px 0;'>Texte proposé</h2>"
+        f"<div>{body}</div>",
+        extra_css="p{margin:0 0 8px 0;}",
+    )
+
+
 def _standalone_proposition_panel_html(code: str, proposition: dict) -> str:
     body = _render_proposition_segments_html(proposition.get("segments") or [])
     doc_href = proposition.get("doc_href") or _proposition_doc_name(code)
     mots = proposition.get("mots_estimes") or _proposition_segments_word_count(proposition)
     note = (proposition.get("note") or "").strip()
     note_html = f"<p class='meta'>{escape(note)}</p>" if note else ""
+    objectif = (proposition.get("objectif_pedagogique") or "").strip()
+    objectif_html = (
+        f"<p class='meta'><strong>Objectif E1 :</strong> {escape(objectif)}</p>"
+        if objectif
+        else ""
+    )
+    justif = proposition.get("justifications") or []
+    justif_rows = ""
+    if justif:
+        justif_rows = "<div class='table-wrap'><table><thead><tr>"
+        justif_rows += "<th>Décision</th><th>Passage</th><th>Justification (objectif / forme)</th>"
+        justif_rows += "</tr></thead><tbody>"
+        for row in justif:
+            if not isinstance(row, dict):
+                continue
+            justif_rows += (
+                f"<tr><td><strong>{escape(str(row.get('decision') or '—'))}</strong></td>"
+                f"<td>{escape(str(row.get('passage') or '—'))}</td>"
+                f"<td>{escape(str(row.get('justification') or ''))}</td></tr>"
+            )
+        justif_rows += "</tbody></table></div>"
+    justif_html = (
+        f"<h3>Justifications pédagogiques</h3>{objectif_html}{justif_rows}"
+        if justif_rows
+        else ""
+    )
     return f"""
 <section class="methodology-panel script-revue-panel script-proposition-panel">
   <h2>Proposition de script</h2>
@@ -7892,9 +7994,10 @@ def _standalone_proposition_panel_html(code: str, proposition: dict) -> str:
   <p class="meta"><span style="color:#1a1a1a;">Noir</span> = conservé ·
   <span style="color:#64748b;font-style:italic;">Gris</span> = reformulation ·
   <span style="color:#B91C1C;text-decoration:line-through;">Rouge</span> = à retirer ·
-  <span style="color:#C45C26;font-weight:600;">Orange</span> = à ajouter</p>
-  <p><a class="btn" href="{escape(doc_href)}" download>Exporter la proposition (Word)</a>
-  <a class="btn btn-secondary" href="{escape(doc_href)}" target="_blank" rel="noopener">Ouvrir le Word</a></p>
+  <span style="color:#C45C26;font-weight:600;">Orange</span> = à ajouter / nommer</p>
+  <p><a class="btn" href="{escape(doc_href)}" download="{escape(doc_href)}">Télécharger la proposition (Word)</a></p>
+  {justif_html}
+  <h3>Texte proposé (illustration)</h3>
   <div class="script-recu-block">{body}</div>
 </section>
 """
@@ -10326,6 +10429,14 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
             write_word_doc(SITE / recu_doc, _script_recu_doc_html(item))
             expected.add(recu_doc)
             item["script_doc_href"] = recu_doc
+        standalone_prop = _load_expert_standalone_proposition(item["code"])
+        if standalone_prop:
+            prop_doc = _proposition_doc_name(item["code"])
+            write_word_doc(
+                SITE / prop_doc,
+                _standalone_proposition_doc_html(item, standalone_prop),
+            )
+            expected.add(prop_doc)
         detail_body = (
             f"<p class='meta'>Module : {escape(item.get('module') or '—')} — "
             f"Capsule : <a href='{escape(item['tb_edito_href'])}'>{escape(item['capsule_code'])}</a> — "

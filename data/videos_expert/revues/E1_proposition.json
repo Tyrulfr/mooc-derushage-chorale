@@ -1,0 +1,194 @@
+{
+  "titre": "Proposition de script E1 — origines et premier pas",
+  "source_script": "E1.txt",
+  "date": "2026-09-01",
+  "objectif_pedagogique": "Reconnaître les différentes origines d'une innovation (tech-push, market-pull, observation d'usage, rencontre, sérendipité, maturation progressive) et évoquer le premier pas — sans enseigner le processus (E2–E5), ni refaire le « pourquoi oser » de T1.",
+  "note": "Proposition d'ingénierie pédagogique distincte du script reçu. Les justifications portent sur l'objectif E1 et la forme du parcours MOOC (T1 → E1 → E2…), pas sur le fond scientifique de Bernard.",
+  "justifications": [
+    {
+      "decision": "GARDER",
+      "passage": "Ouverture — question chorale T1",
+      "justification": "Forme : enchaînement direct chorale → expertise. L'apprenant reconnaît la question posée ; E1 prend le relais sur le versant « comment / d'où »."
+    },
+    {
+      "decision": "RÉÉCRIRE",
+      "passage": "« Même point de départ : potentiel scientifique… »",
+      "justification": "Objectif E1 : T1 montre plusieurs portes d'entrée (besoin, rencontre, pas de côté, maturation longue). Forme : éviter un message unique tech-push qui contredit la chorale et réduit la diversité des origines à nommer."
+    },
+    {
+      "decision": "GARDER",
+      "passage": "Paragraphe d'objectif (« mon rôle est de vous aider à reconnaître d'où part… »)",
+      "justification": "Objectif : pose clairement le grain E1 (origines + premier pas) et distingue ce qui relève de T1 (« pourquoi oser »). Forme : cadrage attendu d'une vidéo expertise en ouverture."
+    },
+    {
+      "decision": "GARDER",
+      "passage": "Maturation scientifique 10–30 ans (thèses, publications…)",
+      "justification": "Objectif : ancre le socle recherche avant de nommer les origines. Forme : continuité avec les témoignages T1 sans les reciter."
+    },
+    {
+      "decision": "RÉÉCRIRE",
+      "passage": "Tech ≠ innovation + « innovation deeptech » en tête",
+      "justification": "Objectif : conserver le rapprochement technologie / besoin. Forme : « deeptech » trop tôt peut exclure les non-chercheurs ; élargir à « innovation issue de la recherche » et rappeler que l'innovation n'est pas réservée à une rupture technologique."
+    },
+    {
+      "decision": "GARDER",
+      "passage": "Exemples Loïc / Muriel / Yann (marché pressenti)",
+      "justification": "Objectif : illustre tech-push et market-pull à partir de la chorale. Forme : exemples concrets, voix expert."
+    },
+    {
+      "decision": "SUPPRIMER",
+      "passage": "Étude détaillée des utilisateurs, criticité, willingness to pay",
+      "justification": "Objectif : hors grain E1 — c'est le cœur de E2/E3. Forme : une ligne d'amorce suffit (« nous verrons cela plus loin ») pour signaler la suite sans enseigner ici."
+    },
+    {
+      "decision": "GARDER",
+      "passage": "Sylvia / Jean-Jacques — marché inconnu, rencontre, pas de côté",
+      "justification": "Objectif : illustre sérendipité, rencontre, réponse à un problème posé. Forme : ancrage chorale indispensable pour nommer les origines."
+    },
+    {
+      "decision": "RÉÉCRIRE",
+      "passage": "Hasard → screening systématique des marchés",
+      "justification": "Objectif : rester sur l'origine (hasard / sérendipité) sans basculer vers la méthode d'exploration de marchés (E4). Forme : évocation, pas enseignement."
+    },
+    {
+      "decision": "AJOUTER",
+      "passage": "Grille des six origines (descriptif E1)",
+      "justification": "Objectif : donner des mots pour reconnaître d'où part une innovation — compétence visée du tableau de conception. Forme : nommer sans développer ; Bernard complète avec ses termes."
+    },
+    {
+      "decision": "SUPPRIMER",
+      "passage": "Bloc processus : caractériser le potentiel → screening → maturation → POC → démonstrateur",
+      "justification": "Objectif : enseigne E2–E5 dans une vidéo d'origines. Forme : durée cible ~5 min (±2) ; alléger pour tenir le grain ; pré-nommer la suite du parcours."
+    },
+    {
+      "decision": "AJOUTER",
+      "passage": "Premier pas (geste d'engagement)",
+      "justification": "Objectif : deuxième versant d'E1 avec les origines. Forme : évoquer le geste qui ouvre la démarche, pas tout le processus — évite la redondance avec les vidéos suivantes."
+    },
+    {
+      "decision": "RÉÉCRIRE",
+      "passage": "Cellules de valorisation (exploration / sélection de marché)",
+      "justification": "Objectif : utile de mentionner l'écosystème. Forme : ici, rôle = aider à identifier l'origine, pas à mûrir le projet (E4–E5)."
+    },
+    {
+      "decision": "SUPPRIMER",
+      "passage": "Voies start-up / licence / partenariat (développées)",
+      "justification": "Objectif : relève d'E10. Forme : une amorce suffit pour orienter sans anticiper tout le module transfert."
+    },
+    {
+      "decision": "SUPPRIMER",
+      "passage": "« Pourquoi oser ? » + catalogue des motivations en fin",
+      "justification": "Objectif : doublon avec T1 et déjà reconnu en ouverture. Forme : l'évolution du métier / concilier les casquettes → E20 (T11), pas E1."
+    },
+    {
+      "decision": "GARDER",
+      "passage": "Innovation et recherche — boucle vertueuse",
+      "justification": "Objectif : rassure sur l'identité de chercheur. Forme : conclusion identitaire utile avant la mise en activité de l'apprenant."
+    },
+    {
+      "decision": "RÉÉCRIRE",
+      "passage": "Conclusion — explorer les marchés / hypothèse au terrain",
+      "justification": "Objectif : le fond identité chercheur est bon. Forme : « explorer les marchés / hypothèse au terrain » = déjà le processus E2–E5 ; recentrer sur origine + premier pas."
+    },
+    {
+      "decision": "RÉÉCRIRE",
+      "passage": "Questions finales (marché, motivation, exploration)",
+      "justification": "Objectif : mise en activité E1. Forme : trop large (motivation = T1 ; marché = E2+) ; une question double origine + premier pas suffit."
+    }
+  ],
+  "segments": [
+    {
+      "couleur": "noir",
+      "texte": "Vous venez d’entendre cinq chercheurs-entrepreneurs répondre à une question : « Pourquoi et comment oser l’innovation ? »"
+    },
+    {
+      "couleur": "gris",
+      "texte": "Leurs histoires sont différentes. Elles n’ont pas toutes le même point de départ. Ce qui les rapproche, c’est qu’à un moment un potentiel issu de la recherche a rencontré un besoin — mais la porte d’entrée n’est pas la même pour chacun."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Dans cette vidéo, mon rôle est de vous aider à reconnaître d’où part une innovation — et quel premier pas peut l’ouvrir — à partir des témoignages que vous venez d’entendre. Le « pourquoi oser », la chorale vient de le dire : utile, impact, carrière, résultats qui ne restent pas sur étagère. Ici, nous nous concentrons sur l’autre versant de la question : les origines possibles, et le geste qui engage la démarche — pas encore tout le processus qui suivra dans le parcours."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Dans les cinq témoignages, ce potentiel scientifique s’est constitué pendant dix, quinze, parfois trente ans. Il s’est traduit par des thèses, des publications, des expérimentations, des savoir-faire et quelquefois des brevets."
+    },
+    {
+      "couleur": "gris",
+      "texte": "Mais une technologie, aussi remarquable soit-elle, n’est pas encore une innovation. Elle le devient lorsqu’elle permet de répondre, mieux que les solutions existantes, à un besoin important. Une innovation issue de la recherche — ce qu’on appelle souvent une innovation deeptech — suppose de rapprocher deux mondes : ce que la technologie rend possible et ce que des utilisateurs, des organisations ou un marché attendent. Et l’innovation n’est pas réservée aux seuls chercheurs : elle peut aussi passer par un service, une organisation ou une pratique, sans nouvelle technologie de rupture."
+    },
+    {
+      "couleur": "gris",
+      "texte": "Ce qui différencie les cinq parcours, c’est la manière dont ce rapprochement s’est opéré — et surtout d’où il est parti."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Pour Loïc Rajjou, Muriel Thomas et Yann Monier, un domaine d’application est déjà pressenti : la germination et la croissance des plantes, le microbiote des seniors ou des personnes malades, et la fiabilité des chaînes de production automatisées."
+    },
+    {
+      "couleur": "rouge",
+      "texte": "Mais connaître un marché ne signifie pas connaître précisément le besoin auquel répondre. Il faut encore étudier les utilisateurs, leurs activités, les situations problématiques qu’ils rencontrent et les solutions qu’ils emploient déjà. Le problème est-il fréquent ou critique ? Est-il mal résolu ? Les acteurs concernés seraient-ils prêts à adopter, voire à payer, une nouvelle solution ?"
+    },
+    {
+      "couleur": "gris",
+      "texte": "Connaître un domaine d’application ne dit pas encore tout du besoin précis — nous verrons cela dans les vidéos suivantes."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Pour Sylvia Cohen-Kaminski et Jean-Jacques Greffet, le marché d’application n’était pas connu au départ. Chez Sylvia, un mécanisme étudié scientifiquement révèle, de manière apparemment fortuite, un potentiel dans le domaine de la communication de cellule à cellule. Chez Jean-Jacques, c’est un entrepreneur qui lui soumet un problème : comment détecter des virus de très petite taille ? Jean-Jacques comprend alors que son expertise en nanophotonique peut apporter une réponse nouvelle."
+    },
+    {
+      "couleur": "gris",
+      "texte": "Ces rencontres semblent parfois relever du hasard. La chorale montre aussi des sérendipités, des pas de côté, des rencontres : on peut les reconnaître sans encore décrire toute la méthode pour les explorer."
+    },
+    {
+      "couleur": "orange",
+      "texte": "À partir de ces témoignages, six portes d’entrée reviennent souvent — vous pouvez les nommer à votre manière : tech-push, market-pull, observation d’usage, rencontre, sérendipité, maturation progressive. L’important, pour l’apprenant, est de les reconnaître dans ses propres travaux."
+    },
+    {
+      "couleur": "rouge",
+      "texte": "On commence par caractériser le potentiel fonctionnel de la technologie : que permet-elle de faire, avec quelles performances et quelles limites ? Un screening à large spectre peut alors identifier cinq ou dix marchés possibles. Pour chacun, on évalue le problème potentiellement résolvable, les solutions existantes, l’utilité différenciante de la technologie, l’attractivité du marché et l’effort de maturation nécessaire.\n\nLes cellules de valorisation peuvent accompagner cette exploration, comparer les profils d’intérêt et aider à sélectionner le marché le plus prometteur. Ce choix est décisif : avant d’améliorer davantage une technologie, mieux vaut savoir dans quelle direction la faire progresser. Toutes les performances n’ont pas la même importance ; il faut développer celles qui répondent aux exigences du marché choisi et aux bénéfices attendus par les futurs utilisateurs.\n\nCommence alors le véritable parcours de maturation. La technologie et la connaissance du besoin doivent progresser ensemble. On approfondit les usages, les situations problématiques et les offres concurrentes. On construit une proposition de valeur : la promesse des bénéfices concrets que la future solution apportera, de façon nettement plus utile ou plus performante que les alternatives existantes.\n\nCette promesse est ensuite mise à l’épreuve. On formule des hypothèses, on rencontre des utilisateurs et des acteurs du marché, on réalise une preuve de concept, puis un démonstrateur. On vérifie les performances, le coût, la fiabilité, l’acceptabilité et, si nécessaire, les contraintes industrielles ou réglementaires.\n\nLa maturation technologique et l’étude du marché ne sont donc pas deux démarches successives. Elles avancent ensemble : le besoin donne une direction à la technologie ; ses possibilités et ses limites conduisent parfois à reformuler la solution, voire à reconsidérer le marché ciblé.\n\nCe processus n’est pas une ligne droite. Il se construit progressivement, avec de la méthode et des compétences scientifiques, industrielles, économiques et entrepreneuriales complémentaires."
+    },
+    {
+      "couleur": "gris",
+      "texte": "Une fois l’origine reconnue, d’autres questions s’ouvrent : caractériser le potentiel, explorer des marchés, faire mûrir technologie et besoin, éprouver une preuve de concept, choisir une voie de transfert. Nous verrons tout cela dans les vidéos suivantes. Ici, l’essentiel est de repérer d’où part l’innovation."
+    },
+    {
+      "couleur": "orange",
+      "texte": "Et le premier pas ? Accepter qu’une recherche puisse servir ailleurs ; partir d’un manque observé ; convertir un résultat en utilité ; répondre à une question posée par un acteur extérieur. Ce n’est pas encore tout le processus : c’est le geste qui ouvre la démarche."
+    },
+    {
+      "couleur": "gris",
+      "texte": "Les cellules de valorisation — et d’autres interlocuteurs de l’écosystème — peuvent vous aider à identifier et nommer d’où part un projet. Pas encore à le faire mûrir : cela viendra ensuite."
+    },
+    {
+      "couleur": "rouge",
+      "texte": "La création d’une start-up peut en être l’aboutissement lorsqu’il faut développer un produit nouveau et l’activité économique qui permettra de le mettre sur le marché. Mais ce n’est pas la seule voie : une licence, un transfert de technologie ou un partenariat avec une entreprise existante peuvent aussi être appropriés."
+    },
+    {
+      "couleur": "gris",
+      "texte": "Création, licence ou partenariat : des aboutissements possibles que nous reprendrons plus loin dans le parcours."
+    },
+    {
+      "couleur": "rouge",
+      "texte": "Reste alors la première partie de la question : pourquoi oser ?\n\nLes motivations personnelles convergent : se sentir utile, rechercher un impact sociétal, apprendre, transformer des résultats scientifiques en réalisations concrètes et éviter que des technologies financées par l’argent public restent inutilisées sur une étagère."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Ces témoignages montrent aussi que l’innovation ne s’oppose pas à la recherche. Elle peut lui apporter des partenaires, des terrains d’expérimentation et des questions scientifiques. Elle crée une boucle vertueuse entre recherche, innovation et impact."
+    },
+    {
+      "couleur": "gris",
+      "texte": "Oser l’innovation, ce n’est donc pas décider immédiatement de créer une start-up, ni abandonner son identité de chercheur. C’est commencer à considérer son expertise scientifique comme un potentiel d’utilité — et à identifier d’où pourrait partir une démarche."
+    },
+    {
+      "couleur": "gris",
+      "texte": "Et vous ? D’où part — ou d’où pourrait partir — votre innovation ? Et quel premier pas pourrait l’ouvrir ?"
+    },
+    {
+      "couleur": "gris",
+      "texte": "Oser, c’est peut-être cela : ne plus attendre qu’une rencontre fortuite révèle l’utilité de votre recherche, mais oser regarder vos travaux sous l’angle de l’origine et du premier pas — avec curiosité, et en vous faisant accompagner si besoin."
+    }
+  ],
+  "mots_estimes": 788
+}
