@@ -7524,6 +7524,8 @@ def _load_expert_script_revues(code: str) -> list[dict]:
     VIDEOS_EXPERT_REVUES.mkdir(parents=True, exist_ok=True)
     revues: list[dict] = []
     for path in sorted(VIDEOS_EXPERT_REVUES.glob(f"{code}_revue*.json")):
+        if not re.fullmatch(rf"{re.escape(code)}_revue\d+\.json", path.name, flags=re.IGNORECASE):
+            continue
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
         except (json.JSONDecodeError, OSError):
@@ -7534,6 +7536,7 @@ def _load_expert_script_revues(code: str) -> list[dict]:
         if numero is None:
             match = re.search(r"_revue(\d+)", path.stem, flags=re.IGNORECASE)
             numero = int(match.group(1)) if match else 1
+        proposition = _load_revue_proposition(data, path)
         revues.append(
             {
                 "numero": int(numero),
@@ -7546,6 +7549,7 @@ def _load_expert_script_revues(code: str) -> list[dict]:
                 "mail": (data.get("mail") or "").strip(),
                 "mots_estimes": data.get("mots_estimes")
                 or len(re.findall(r"[A-Za-zÀ-ÖØ-öø-ÿ0-9']+", data.get("texte_propose") or "")),
+                "proposition": proposition,
             }
         )
     revues.sort(key=lambda item: item["numero"])
@@ -7762,6 +7766,124 @@ def _revue_expert_doc_name(code: str, numero: int) -> str:
     return f"revue_{code}_{numero}.doc"
 
 
+def _revue_proposition_doc_name(code: str, numero: int) -> str:
+    return f"proposition_{code}_{numero}.doc"
+
+
+_REVUE_PROPOSITION_STYLES = {
+    "noir": "color:#1a1a1a;",
+    "gris": "color:#64748b;font-style:italic;",
+    "orange": "color:#C45C26;font-weight:600;",
+}
+
+
+def _load_revue_proposition(revue_data: dict, revue_path: Path) -> dict | None:
+    """Charge le bloc proposition (segments noir / gris / orange) d'une revue."""
+    proposition = revue_data.get("proposition")
+    if isinstance(proposition, dict) and proposition.get("segments"):
+        return proposition
+    sidecar = revue_path.with_name(f"{revue_path.stem}_proposition.json")
+    if not sidecar.is_file():
+        return None
+    try:
+        data = json.loads(sidecar.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return None
+    return data if isinstance(data, dict) and data.get("segments") else None
+
+
+def _proposition_segments_word_count(proposition: dict) -> int:
+    return sum(
+        len(re.findall(r"[A-Za-zÀ-ÖØ-öø-ÿ0-9']+", seg.get("texte") or ""))
+        for seg in (proposition.get("segments") or [])
+        if isinstance(seg, dict)
+    )
+
+
+def _render_proposition_segments_html(segments: list[dict]) -> str:
+    parts: list[str] = []
+    for seg in segments:
+        if not isinstance(seg, dict):
+            continue
+        couleur = str(seg.get("couleur") or seg.get("type") or "noir").lower()
+        texte = (seg.get("texte") or seg.get("text") or "").strip()
+        if not texte:
+            continue
+        style = _REVUE_PROPOSITION_STYLES.get(couleur, _REVUE_PROPOSITION_STYLES["noir"])
+        parts.append(
+            f'<p style="{style}margin:0 0 10px 0;">{escape(texte).replace(chr(10), "<br>")}</p>'
+        )
+    return "".join(parts) if parts else "<p>Proposition à compléter.</p>"
+
+
+def _revue_proposition_doc_html(item: dict, revue: dict, proposition: dict) -> str:
+    """Word (HTML .doc) : proposition script — noir Bernard, gris éditorial, orange concepts."""
+    code = item.get("code") or revue.get("code") or ""
+    numero_video = _numero_video_expert(code)
+    objectif = _normalize_editorial_french(item.get("titre") or "")
+    body = _render_proposition_segments_html(proposition.get("segments") or [])
+    titre = (
+        f"Proposition — Vidéo {escape(numero_video)}"
+        if numero_video
+        else "Proposition script"
+    )
+    objectif_html = (
+        f"<p style='color:#64748b;font-size:10.5pt;margin:0 0 12px 0;'>{escape(objectif)}</p>"
+        if objectif
+        else ""
+    )
+    note = (proposition.get("note") or "").strip()
+    note_html = (
+        f"<p style='color:#64748b;font-size:10.5pt;margin:0 0 14px 0;'>{escape(note)}</p>"
+        if note
+        else ""
+    )
+    legende = (
+        "<p style='font-size:10.5pt;margin:0 0 6px 0;'>"
+        "<span style='color:#1a1a1a;'>■ Noir</span> — texte Bernard conservé · "
+        "<span style='color:#64748b;font-style:italic;'>■ Gris</span> — proposition éditoriale · "
+        "<span style='color:#C45C26;font-weight:600;'>■ Orange</span> — concepts exportables"
+        "</p>"
+    )
+    return (
+        "<html><head><meta charset='utf-8'>"
+        "<style>"
+        "body{font-family:Aptos,Segoe UI,Arial,sans-serif;font-size:12pt;line-height:1.5;color:#1a1a1a;}"
+        "h1{font-size:16pt;margin:0 0 8px 0;}"
+        "p{margin:0 0 8px 0;}"
+        "</style></head><body>"
+        f"<h1>{titre}</h1>"
+        f"{objectif_html}"
+        f"{note_html}"
+        f"{legende}"
+        f"<div>{body}</div>"
+        "</body></html>"
+    )
+
+
+def _proposition_panel_html(code: str, revue: dict, proposition: dict) -> str:
+    numero = revue.get("numero")
+    body = _render_proposition_segments_html(proposition.get("segments") or [])
+    doc_href = revue.get("proposition_doc_href") or _revue_proposition_doc_name(code, numero)
+    mots = proposition.get("mots_estimes") or _proposition_segments_word_count(proposition)
+    note = (proposition.get("note") or "").strip()
+    note_html = f"<p class='meta'>{escape(note)}</p>" if note else ""
+    return f"""
+<section class="methodology-panel script-revue-panel">
+  <h2>Proposition de texte (Revue {numero})</h2>
+  <p>{status_badge("EN_CONSTRUCTION")}
+    <span class="meta">~{escape(str(mots))} mots (proposition)</span></p>
+  {note_html}
+  <p class="meta"><span style="color:#1a1a1a;">Noir</span> Bernard ·
+  <span style="color:#64748b;font-style:italic;">Gris</span> éditorial ·
+  <span style="color:#C45C26;font-weight:600;">Orange</span> concepts exportables</p>
+  <p><a class="btn" href="{escape(doc_href)}" download>Exporter la proposition (Word)</a>
+  <a class="btn btn-secondary" href="{escape(doc_href)}" target="_blank" rel="noopener">Ouvrir le Word</a></p>
+  <div class="script-recu-block">{body}</div>
+</section>
+"""
+
+
 _RE_PAREN_REMARQUE = re.compile(r"\([^()]*\)")
 
 
@@ -7882,6 +8004,9 @@ def _script_expert_revues_html(code: str, revues: list[dict] | None = None) -> s
 </section>
 """
         )
+        proposition = revue.get("proposition")
+        if proposition:
+            parts.append(_proposition_panel_html(code, revue, proposition))
     return "\n".join(parts)
 
 
@@ -10140,6 +10265,15 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
             write_text(SITE / doc_name, _revue_annotee_doc_html(item, revue))
             expected.add(doc_name)
             revue["doc_href"] = doc_name
+            proposition = revue.get("proposition")
+            if proposition:
+                prop_doc = _revue_proposition_doc_name(item["code"], revue["numero"])
+                write_text(
+                    SITE / prop_doc,
+                    _revue_proposition_doc_html(item, revue, proposition),
+                )
+                expected.add(prop_doc)
+                revue["proposition_doc_href"] = prop_doc
         if item.get("script_statut") == "RECU" and item.get("script_contenu"):
             recu_doc = _script_recu_doc_name(item["code"])
             write_text(SITE / recu_doc, _script_recu_doc_html(item))
@@ -10178,6 +10312,9 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
         if path.name not in expected:
             path.unlink()
     for path in SITE.glob("revue_*.doc"):
+        if path.name not in expected:
+            path.unlink()
+    for path in SITE.glob("proposition_*.doc"):
         if path.name not in expected:
             path.unlink()
     for path in SITE.glob("script_recu_*.doc"):

@@ -4,14 +4,16 @@ Bonjour Bernard,
 
 Merci pour ton retour — et tu as raison : mon mail précédent était trop télégraphique. Désolé pour ça.
 
-Ci-joint ton texte E1 avec mes remarques **intégrées entre parenthèses**. Elles portent uniquement sur le cadrage pédagogique du MOOC — pas sur la justesse de ton expertise.
+Ci-joint :
+— **revue_E1_2.doc** : ton texte tel quel, avec mes remarques en orange entre parenthèses ;
+— **proposition_E1_2.doc** : une illustration de recentrage (noir = ton texte conservé, gris = proposition éditoriale, orange = concepts exportables). Ce n’est pas une réécriture imposée — tu gardes ta voix et ton expertise.
 
 **Sur E1**
-Le fond te convient. J’ai signalé les passages qui tiennent bien l’objectif (« d’où ça part », raccrochage chorale).
+Le fond te convient. J’ai signalé les passages qui tiennent bien l’objectif (« d’où ça part », ancrage chorale).
 
-Ma lecture : le texte est un peu trop développé pour E1, recentré sur les **origines multiples**. Sur une première vidéo, on peut englober un peu plus — mais attention à ne pas trop en dire : en fait, à ne pas tout dire.
+**Le levier principal : limiter le bloc processus** (utilisateurs → screening → maturation → POC / démonstrateur). C’est ce passage qui fait sortir E1 de son grain et qui allonge le texte. Sur une première vidéo, on peut englober un peu — mais ici on enseigne déjà E2–E5. Une évocation courte + « nous le verrons plus loin » suffit. Dans le texte annoté, le bloc est borné (début / fin) avec une proposition de remplacement.
 
-Si tu évoques des concepts des vidéos suivantes (besoin, screening, maturation, POC, voies de transfert…), reste en **pré-nommage**, pas en enseignement, et signale-le (« nous le verrons plus tard »). Le détail vient ensuite (E2–E5, E10).
+Le reste : origines multiples (identifier ce que la chorale montre, te laisser compléter/théoriser) ; « deeptech » trop tôt peut faire fuir les non-chercheurs ; durée cible ~5 min (± 2) — plus succinct n’est pas un problème si le grain est tenu.
 
 **Sur T11 / ta vidéo 2 (E20)**
 Tu as raison : la vidéo témoin montée parle de l’**évolution du métier de chercheur** et de ce qu’il faut **concilier** — pas principalement de « freins » tels qu’on les avait formulés dans notre brief initial. C’est un décalage de notre côté entre le montage final et la consigne transmise. Ton choix de structurer ton script à partir de ce que la vidéo montre réellement me paraît cohérent.

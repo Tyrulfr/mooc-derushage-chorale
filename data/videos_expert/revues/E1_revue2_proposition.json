@@ -1,0 +1,67 @@
+{
+  "titre": "Proposition E1 — recentrage origines (illustration)",
+  "note": "Noir = texte Bernard conservé · Gris = proposition éditoriale MOOC · Orange = concepts exportables (grain E1, à nommer/compléter par l'expert)",
+  "segments": [
+    {
+      "couleur": "noir",
+      "texte": "Vous venez d’entendre cinq chercheurs-entrepreneurs répondre à une question : « Pourquoi et comment oser l’innovation ? »"
+    },
+    {
+      "couleur": "gris",
+      "texte": "Leurs histoires sont différentes. Elles n’ont pas toutes le même point de départ. Ce qui les rapproche, c’est qu’à un moment un potentiel issu de la recherche a rencontré un besoin — mais la porte d’entrée n’est pas la même pour chacun."
+    },
+    {
+      "couleur": "gris",
+      "texte": "C’est le principe de l’innovation issue de la recherche : partir d’une connaissance, d’une méthode, d’un procédé ou d’une technologie issus de la recherche pour créer une valeur fortement différenciante. On peut parler de « deeptech » pour qui connaît déjà le terme — mais l’essentiel, ici, c’est ce rapprochement recherche / besoin."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Dans les cinq témoignages, ce potentiel scientifique s’est constitué pendant dix, quinze, parfois trente ans. Il s’est traduit par des thèses, des publications, des expérimentations, des savoir-faire et quelquefois des brevets."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Mais une technologie, aussi remarquable soit-elle, n’est pas encore une innovation. Elle le devient lorsqu’elle permet de répondre, mieux que les solutions existantes, à un besoin important. Toute innovation deeptech suppose donc de rapprocher deux mondes : ce que la technologie rend possible et ce que des utilisateurs, des organisations ou un marché attendent."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Ce qui différencie les cinq parcours, c’est la manière dont ce rapprochement s’est opéré."
+    },
+    {
+      "couleur": "gris",
+      "texte": "Revenons à ce que la chorale vient de montrer. Chez Jean-Jacques Greffet, c’est d’abord une rencontre — et un besoin du marché — qui rencontrent trente ans d’expertise. Chez Sylvia Cohen-Kaminski, un pas de côté scientifique ouvre un potentiel inattendu. Chez Muriel Thomas, un manque observé côté société. Chez Yann Monier, une innovation tirée par le marché, nourrie par quinze ans de laboratoire. Loïc Rajjou décrit un chemin progressif depuis la recherche fondamentale."
+    },
+    {
+      "couleur": "orange",
+      "texte": "Concepts exportables (grain E1) — à identifier dans les témoignages, puis à compléter / nommer selon ton expertise : tech-push · market-pull · observation d’usage · rencontre · sérendipité · maturation progressive."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Pour Sylvia Cohen-Kaminski et Jean-Jacques Greffet, le marché d’application n’était pas connu au départ. Chez Sylvia, un mécanisme étudié scientifiquement révèle, de manière apparemment fortuite, un potentiel dans le domaine de la communication de cellule à cellule. Chez Jean-Jacques, c’est un entrepreneur qui lui soumet un problème : comment détecter des virus de très petite taille ? Jean-Jacques comprend alors que son expertise en nanophotonique peut apporter une réponse nouvelle."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Ces rencontres semblent parfois relever du hasard. Mais aurait-on pu découvrir plus systématiquement ces domaines d’application ? Oui. C’est même une étape classique de l’innovation deeptech car il est fréquent que le marché le plus pertinent n’apparaisse pas immédiatement."
+    },
+    {
+      "couleur": "gris",
+      "texte": "Les cellules de valorisation — et d’autres interlocuteurs de l’écosystème — peuvent vous aider à identifier et nommer d’où part votre projet. Pas encore à le faire mûrir : cela viendra ensuite."
+    },
+    {
+      "couleur": "gris",
+      "texte": "Une fois l’origine reconnue, d’autres questions s’ouvrent. Nous les verrons plus loin dans le parcours. Ici, l’essentiel est de savoir d’où part l’innovation."
+    },
+    {
+      "couleur": "orange",
+      "texte": "Pré-nommage (évoquer, pas enseigner — vidéos suivantes) : étude du besoin · caractériser le potentiel · screening de marchés · maturation · proposition de valeur · preuve de concept · voies de transfert (création, licence, partenariat)."
+    },
+    {
+      "couleur": "gris",
+      "texte": "« Pourquoi oser ? » — la chorale vient déjà d’y répondre. On y reviendra notamment quand on parlera de l’évolution du métier de chercheur."
+    },
+    {
+      "couleur": "gris",
+      "texte": "Et vous ? D’où part — ou d’où pourrait partir — votre innovation ? D’une technologie déjà là ? D’un besoin de marché ? D’une observation d’usage ? D’une rencontre ? D’un pas de côté ? D’une maturation déjà longue ? Nommer cette origine, c’est déjà commencer."
+    }
+  ],
+  "mots_estimes": 589
+}
