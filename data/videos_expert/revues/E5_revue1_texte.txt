@@ -1,0 +1,36 @@
+MOOC « L'Esprit d'innover » — Guide de tournage
+Virginia Branco, ENS Paris-Saclay
+
+Vidéo expertise 5 — Dérisquer un projet par étapes
+Objectif pédagogique : Prématuration, maturation, jalons techniques et commerciaux, critères de décision
+Rattachée à : Vidéo témoin 3 — Identifier un besoin réel + Sortir du laboratoire
+Durée cible : ≈ 5 minutes (environ 780 mots)
+
+Fil conducteur :
+Donner à l'apprenant une grille simple : deux phases (prématuration / maturation), deux familles de jalons (techniques / commerciaux), un réflexe (le critère de décision), pour transformer « sortir du labo » en trajectoire pilotable plutôt qu'en saut dans l'inconnu.
+Les quatre témoignages repris (Loïc Rajjou, Jean-Jacques Greffet, Muriel Thomas, Sylvia Cohen-Kaminski) sont reformulés dans vos propres mots ; citation par prénom sans reprendre les phrases telles quelles.
+(Fil conducteur : OK — correspond à l'objectif E5.)
+
+Texte proposé (base à adapter, ≈ 803 mots)
+
+Vous venez d'entendre Loïc, Jean-Jacques, Muriel et Sylvia raconter comment ils sont sortis du laboratoire. Ce que je voudrais vous proposer maintenant, c'est une manière de structurer ce moment-là, pour que ce ne soit pas un saut dans le vide, mais une suite d'étapes que vous pouvez piloter : dérisquer un projet, pas à pas.
+
+Concrètement, un projet de recherche qui devient une innovation traverse deux grandes phases. La première, on l'appelle la prématuration. Vous êtes encore au milieu du gué : votre preuve de concept scientifique n'est pas totalement stabilisée, et vous ne savez pas encore si elle répond à un vrai besoin. L'objectif, à ce stade, n'est pas de tout prouver, c'est de lever le doute le plus critique, le plus souvent celui qui coûterait le plus cher à découvrir trop tard. La seconde phase, la maturation, démarre une fois ce doute principal levé : vous avez une preuve technique qui tient la route et un premier signal que le marché existe. Là, l'enjeu change : il faut construire un prototype représentatif, structurer votre propriété intellectuelle, et préparer le choix de la voie de valorisation, licence ou création d'entreprise : on l'abordera dans une autre vidéo.
+(Phases + jalons : OK. Renvoi vidéo 10 : pertinent.)
+
+Entre ces deux phases, il y a des jalons. Des jalons techniques d'abord : passer d'un résultat de labo à un prototype qui fonctionne dans des conditions proches du réel, puis à une version que vous pouvez montrer à un industriel sans avoir à vous excuser. Et des jalons commerciaux, tout aussi importants, et souvent négligés : un besoin confirmé par des utilisateurs réels, une étude de marché qui donne des chiffres et pas seulement une intuition, un premier partenaire qui manifeste un intérêt concret. À chaque jalon, une question simple doit se poser : est-ce que ce que je viens d'apprendre me pousse à continuer comme prévu, à pivoter, ou à arrêter ? C'est ça, un critère de décision : pas une formalité administrative, une manière de ne pas s'entêter.
+
+C'est exactement ce que vous avez entendu dans les témoignages. Loïc vous l'a dit à sa façon : sortir du laboratoire, c'est se confronter à l'industrialisation et à la manière dont les acteurs travaillent réellement, et ce fameux vrai problème de marché, on ne le trouve jamais au banc d'essai. Autrement dit, la solution technique la plus élégante ne vaut rien si personne, sur le terrain, n'en a besoin sous cette forme-là. C'est un jalon commercial qui vient corriger, parfois durement, ce qu'on croyait acquis scientifiquement et techniquement.
+
+Jean-Jacques vous a raconté quelque chose d'encore plus concret : une étude de marché quantitative, menée avec l'appui de la SATT Paris-Saclay, et des rencontres avec des utilisateurs lors de conférences. Résultat : un pivot. Pas un échec, une décision. L'équipe a pris en compte une information qui remettait en cause sa cible initiale, et elle a ajusté sa technologie vers un autre besoin, mieux identifié. Voilà un critère de décision qui a vraiment fonctionné : l'information est arrivée à temps, avant d'avoir tout misé sur la mauvaise cible.
+
+Muriel vous a donné un autre exemple : une étude de marché portée par la SATT a révélé qu'une grande partie des compléments nutritionnels prescrits à des patients fragiles n'étaient en réalité jamais consommés. Ce n'était pas la question posée au départ, c'est un jalon commercial qui a fait apparaître une opportunité qu'on n'avait pas anticipée. Dérisquer, ce n'est pas seulement confirmer ce qu'on pensait, c'est aussi accepter que le terrain vous apprenne quelque chose que le laboratoire ne pouvait pas vous dire.
+
+Et Sylvia, dans le domaine médical, insiste sur un point que je trouve essentiel : ces jalons ne doivent pas attendre la fin de la prématuration. Elle est allée voir des cliniciens très tôt, et leurs remarques ont directement reconfiguré sa recherche technique. Le jalon commercial et le jalon technique ne sont pas deux étapes qui se suivent sagement l'une après l'autre : ils s'alimentent en permanence.
+(Recoupements témoin T3 : OK — pas de coupe ni réordre nécessaires.)
+
+Alors, ramenez cela à votre projet. Où en êtes-vous aujourd'hui : encore en prématuration, en train de lever un doute technique ou un doute marché ? Ou déjà en maturation, en train de construire ce qui vous permettra de choisir une voie de valorisation ? Et surtout, quel est, en ce moment précis, le risque qui coûterait le plus cher si vous le découvriez dans six mois plutôt que maintenant ? C'est souvent la meilleure question à se poser pour savoir quel jalon viser en premier, et qui aller voir pour l'atteindre : un chargé de valorisation, une SATT, de futurs utilisateurs, un industriel.
+(Retouche suggérée : « votre situation de recherche » plutôt que « votre projet ».)
+
+Avant toute décision qui vous engage, publier, breveter, rencontrer un partenaire, prenez l'habitude de vous demander : quel est mon jalon suivant, et qu'est-ce qui, concrètement, me ferait changer de direction ? C'est ce réflexe, plus que n'importe quelle méthode, qui dérisque un projet, étape par étape.
+(Conclusion : OK. Pas besoin de couper ni réordonner — oralisez au prompteur.)

@@ -1,5 +1,5 @@
 {
-  "date_mise_a_jour": "2026-08-31",
+  "date_mise_a_jour": "2026-09-02",
   "note": "Suivi des positionnements intervenants. Proposition de notre part derivee du programme. Reponse, besoin exprime, preferences et proposition finale saisis au fil des retours.",
   "intervenants": [
     {
@@ -222,8 +222,8 @@
         "E5",
         "E10"
       ],
-      "reponse": "2026-07-22 — Bonjour Rita,\n\nJe suis en congés du 24/07 au 25/08, le timing est très serré.\n\nQuoi qu'il en soit, je suis partante par ordre de préférence : pour 10,11,  5, 22.\n\nQuelle est la prochaine étape pour moi?\n\nMerci\n\nVirginia\n\n(Note saisie : « 240/07 » corrige en 24/07 dans le suivi.)",
-      "besoin_exprime": "Congés du 24/07 au 25/08 — timing très serré. Demande la prochaine étape.",
+      "reponse": "2026-07-22 — Bonjour Rita,\n\nJe suis en congés du 24/07 au 25/08, le timing est très serré.\n\nQuoi qu'il en soit, je suis partante par ordre de préférence : pour 10,11,  5, 22.\n\nQuelle est la prochaine étape pour moi?\n\nMerci\n\nVirginia\n\n(Note saisie : « 240/07 » corrige en 24/07 dans le suivi.)\n2026-08-31 — Premier jet scripts E5 et E10 (guide de tournage, ~780 mots chacun). Reformule les témoins dans ses propres mots. Questions : fil conducteur OK ? citation par prénom ? date du tournage ?",
+      "besoin_exprime": "2026-08-31 — Validation fil conducteur E5/E10 ; confirmation citation chercheurs par prénom ; date de tournage à confirmer.",
       "positionnement_preferences": "E10 ; E11 ; E5 ; E22 (ordre de preference)",
       "proposition_finale": "E10 ; E5"
     },
