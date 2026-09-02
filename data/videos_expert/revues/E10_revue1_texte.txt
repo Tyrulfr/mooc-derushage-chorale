@@ -9,7 +9,7 @@ Durée cible : ≈ 5 minutes : environ 760 mots
 Fil conducteur :
 - se poser tôt la question « licence ou création ? », donner les 4 voies possibles (licence, création, co-développement, partenariat), puis les critères de choix (typologie du projet, écosystème, posture personnelle, maturité de la techno).
 - Les témoignages repris (Sylvia Cohen-Kaminski, Loïc Rajjou, Jean-Jacques Greffet, Muriel Thomas) sont reformulés ; l'exemple Muriel (licence exclusive INRAE / Carembouche, anonymisé en « organisme de recherche » mais l'organisme peut être nommé si préférable?
-(Oui — vous pouvez nommer INRAE et Carembouche, déjà dans le témoin T6.)
+(Oui — tu peux nommer INRAE et Carembouche, déjà dans le témoin T6.)
 - Terminer en resituant le choix de valorisation comme une décision collective, à partager tôt avec le service de valorisation et les tutelles ,  pas un choix solitaire.
 (Fil conducteur : OK.)
 
@@ -30,6 +30,6 @@ Muriel illustre une autre variante : dans son projet, la souche à l'origine du 
 Un dernier critère compte autant que les trois premiers : la maturité de votre technologie au moment du choix. Une preuve de concept encore fragile laisse peu de marge de négociation face à un industriel ou un investisseur ; plus vous avancez en maturation, plus vous arrivez en position de force pour discuter les termes, qu'il s'agisse d'une licence ou d'une levée de fonds.
 
 Posez-vous ces questions pour votre propre projet. Existe-t-il déjà, dans votre secteur, des industriels capables et désireux d'exploiter votre technologie telle quelle ? Si oui, la licence mérite d'être explorée sérieusement : elle est souvent plus rapide et moins risquée pour vous. Si la réponse est non, ou si vous avez l'ambition de capter davantage de valeur et que vous êtes prêt à l'engagement que cela suppose, la création d'entreprise devient une option à creuser. Et dans tous les cas, qui, dans votre établissement, doit être associé à cette réflexion dès maintenant : votre service de valorisation, vos tutelles, vos co-inventeurs ?
-(Retouche suggérée : « situation de recherche ou projet » plutôt que « votre propre projet ».)
+(Retouche suggérée : « situation de recherche ou projet » plutôt que « ton propre projet ».)
 
 Retenez ceci : le choix de la voie de valorisation n'est pas une étape administrative qu'on règle à la fin, c'est une décision structurante qui doit s'éclairer tôt, se documenter, et rester ouverte à la discussion avec les personnes qui vous accompagnent. Ce n'est pas un choix qu'on fait seul, ni un choix qu'on fait par défaut.
