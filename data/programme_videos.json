@@ -219,7 +219,7 @@
           "code": "E16",
           "titre": "Cartographier les competences necessaires",
           "descriptif": "Complementarite, recrutement, role du CEO, du CSO et du CTO, et criteres humains.",
-          "intervenant": null
+          "intervenant": "Pascal Corbel"
         },
         {
           "code": "E17",
@@ -247,7 +247,7 @@
           "code": "E19",
           "titre": "La posture entrepreneuriale s'apprend",
           "descriptif": "Feedback, entrainement, mentorat et evolution de l'identite professionnelle.",
-          "intervenant": null
+          "intervenant": "Pascal Corbel"
         }
       ]
     },
@@ -268,9 +268,9 @@
         },
         {
           "code": "E21",
-          "titre": "Gerer les freins et innover comme apprentissage",
-          "descriptif": "Temps, legitimite, entourage, doute ; incertitude, essais, pivot ; premiere action reversible.",
-          "intervenant": "Joel Nguen"
+          "titre": "Innover comme processus d'apprentissage",
+          "descriptif": "Incertitude, essais, erreurs, pivot et progression plutot que reussite lineaire ; leviers existants pour depasser les freins.",
+          "intervenant": "Pascal Corbel"
         }
       ]
     },

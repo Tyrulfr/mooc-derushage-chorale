@@ -199,9 +199,9 @@
       "temoin_label": "VIDÉO 9 : PARTENARIATS ET POSTURE : CONSTRUIRE UNE ÉQUIPE",
       "module": "M4",
       "experts": "Retenu : Pascal Corbel",
-      "script_statut": "EN_ATTENTE",
+      "script_statut": "RECU",
       "script_valide_statut": "EN_ATTENTE",
-      "script_fichier": "",
+      "script_fichier": "E16.txt",
       "page": "video_expert_E16.html"
     },
     {
@@ -235,9 +235,9 @@
       "temoin_label": "VIDÉO 10 : ENRICHIR SON LANGAGE",
       "module": "M4",
       "experts": "Retenu : Pascal Corbel",
-      "script_statut": "EN_ATTENTE",
+      "script_statut": "RECU",
       "script_valide_statut": "EN_ATTENTE",
-      "script_fichier": "",
+      "script_fichier": "E19.txt",
       "page": "video_expert_E19.html"
     },
     {
@@ -254,14 +254,14 @@
     },
     {
       "code": "E21",
-      "titre": "Gérer les freins et innover comme apprentissage. Temps, légitimité, entourage, doute ; incertitude, essais, pivot ; première action réversible.",
+      "titre": "Innover comme processus d’apprentissage. Incertitude, essais, erreurs, pivot et progression plutôt que réussite linéaire ; leviers existants pour dépasser les freins.",
       "capsule_code": "T11",
       "temoin_label": "VIDÉO 11 : EVOLUTION DANS LE MÉTIER DU CHERCHEUR.EUSE",
       "module": "M5",
       "experts": "Retenu : Pascal Corbel",
-      "script_statut": "EN_ATTENTE",
+      "script_statut": "RECU",
       "script_valide_statut": "EN_ATTENTE",
-      "script_fichier": "",
+      "script_fichier": "E21.txt",
       "page": "video_expert_E21.html"
     },
     {

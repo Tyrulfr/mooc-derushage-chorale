@@ -2998,7 +2998,7 @@
           "code": "E16",
           "titre": "Cartographier les competences necessaires",
           "descriptif": "Complementarite, recrutement, role du CEO, du CSO et du CTO, et criteres humains.",
-          "intervenant": null
+          "intervenant": "Pascal Corbel"
         },
         {
           "code": "E17",
@@ -3015,7 +3015,7 @@
       "orientations_expert": [
         {
           "code": "E16",
-          "expert": null,
+          "expert": "Pascal Corbel",
           "titre": "Cartographier les competences necessaires",
           "concepts": [
             "Cartographier les competences necessaires"
@@ -3307,7 +3307,7 @@
           "code": "E19",
           "titre": "La posture entrepreneuriale s'apprend",
           "descriptif": "Feedback, entrainement, mentorat et evolution de l'identite professionnelle.",
-          "intervenant": null
+          "intervenant": "Pascal Corbel"
         }
       ],
       "experts_proposes": [
@@ -3408,7 +3408,7 @@
         },
         {
           "code": "E19",
-          "expert": null,
+          "expert": "Pascal Corbel",
           "titre": "La posture entrepreneuriale s'apprend",
           "concepts": [
             "La posture entrepreneuriale s'apprend"
@@ -3520,7 +3520,7 @@
       ],
       "contenus_referents": [
         "E20 — Concilier recherche et engagement dans l'innovation",
-        "E21 — Gerer les freins et innover comme apprentissage"
+        "E21 — Innover comme processus d'apprentissage"
       ],
       "decisions_editoriales": [
         "Montage T11 : 4 voix (MUR, JJG, LOI, SYL).",
@@ -3640,9 +3640,9 @@
         },
         {
           "code": "E21",
-          "titre": "Gerer les freins et innover comme apprentissage",
-          "descriptif": "Temps, legitimite, entourage, doute ; incertitude, essais, pivot ; premiere action reversible.",
-          "intervenant": "Joel Nguen"
+          "titre": "Innover comme processus d'apprentissage",
+          "descriptif": "Incertitude, essais, erreurs, pivot et progression plutot que reussite lineaire ; leviers existants pour depasser les freins.",
+          "intervenant": "Pascal Corbel"
         }
       ],
       "experts_proposes": [
@@ -3728,7 +3728,7 @@
         },
         {
           "code": "E21",
-          "expert": null,
+          "expert": "Pascal Corbel",
           "titre": "Innover comme processus d'apprentissage",
           "concepts": [
             "Innover comme processus d'apprentissage"

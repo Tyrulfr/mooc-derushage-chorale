@@ -7,7 +7,7 @@
     "constat": "Le contenu BAB « freins, doutes et legitimite » (interview origine) n'est pas dans les montages T4 ni T11.",
     "repartition_proposee": {
       "T13_chorale": "Se lancer malgre les doutes ; ne pas attendre la certitude ; premiers pas ; solidarite entrepreneurs (deja dans le montage T13).",
-      "E21_expert": "Nommer et structurer freins (temps, legitimite, entourage, echec) + apprentissage, incertitude, pivot, premiere action reversible. Expert : Joel Nguen.",
+      "E21_expert": "Apprentissage, incertitude, essais, pivot, leviers de financement par paliers. Expert : Pascal Corbel (script recu le 03/09/2026). Les freins personnels (temps, legitimite, entourage, echec) ne sont pas portes par E21 : ils restent sur T13 chorale.",
       "E20_expert": "PAS les freins — evolution du metier / concilier (aligne sur T11 montee). Expert : Bernard Yannou."
     }
   },
@@ -16,7 +16,7 @@
       "code": "T11",
       "gravite": "HAUTE",
       "probleme": "Objectif et briefs E20/E21 disent « freins » ; montage final = evolution metier + concilier casquettes.",
-      "action": "Recadrer objectif T11, E20 (Bernard), E21 (Joel). Valider script Bernard sur T11 reel."
+      "action": "Recadrer objectif T11, E20 (Bernard), E21 (Pascal Corbel). Valider script Bernard sur T11 reel. 2026-09-03 : E21 recadre « Innover comme processus d'apprentissage » (script Pascal recu, conforme au brief clarifie). Reste a harmoniser l'orientation E20 (encore intitulee « Gerer les freins ») et l'outro animateur T11."
     },
     {
       "code": "T12",
@@ -54,17 +54,18 @@
       "expert": "Bernard Yannou"
     },
     "E21": {
-      "titre": "Gerer les freins et innover comme apprentissage",
-      "descriptif": "Temps, legitimite, entourage, doute, echec ; incertitude, essais, pivot ; leviers et premiere action reversible.",
-      "objectif": "L'apprenant identifie ses freins, comprend qu'ils ne bloquent pas necessairement le premier pas, et choisit une action realiste et reversible.",
-      "temoin": "T11 (contexte metier) + T13 (chorale motivation/doutes)",
-      "expert": "Joel Nguen"
+      "titre": "Innover comme processus d'apprentissage",
+      "descriptif": "Incertitude, essais, erreurs, pivot ; experimentations (prototype, entretien client, client-pilote, MVP) ; leviers de financement par paliers.",
+      "objectif": "L'apprenant comprend qu'un projet innovant se pilote comme un apprentissage qui reduit progressivement l'incertitude, et que ce sont les donnees ainsi acquises qui debloquent les leviers, notamment financiers.",
+      "temoin": "T11 (contexte metier)",
+      "expert": "Pascal Corbel",
+      "recadrage_2026_09_03": "Titre et objectif alignes sur le brief clarifie effectivement envoye a Pascal Corbel et sur le script recu. Les freins personnels (temps, legitimite, entourage, doute, echec) restent portes par T13 chorale."
     },
     "T11_objectif": "L'apprenant comprend comment l'innovation transforme le metier de chercheur : casquettes multiples, conciliation, impact visible — sans opposer recherche et engagement."
   },
   "experts_a_prevenir": [
     {"nom": "Bernard Yannou", "videos": ["E1", "E20"], "urgence": "immediate"},
-    {"nom": "Joel Nguen", "videos": ["E16", "E19", "E21"], "urgence": "prochaine vague — preciser E21 = freins"},
+    {"nom": "Pascal Corbel", "videos": ["E16", "E19", "E21"], "urgence": "traite — scripts recus le 03/09/2026, revues annotees et mail prets ; E21 recadre sur l'apprentissage"},
     {"nom": "Tous", "videos": [], "urgence": "note de coherence a envoyer si d'autres ecarts signales"}
   ]
 }

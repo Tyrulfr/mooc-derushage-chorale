@@ -1,0 +1,36 @@
+MOOC « L’Esprit d’innover ! Pourquoi pas Vous ! » — Revue de script
+Vidéo expertise 19 — La posture entrepreneuriale s’apprend — Pascal Corbel, Université Paris-Saclay
+
+Objectif pédagogique : la posture s’apprend — feedback, entraînement, accompagnement, évolution de l’identité professionnelle. Déconstruire la figure de l’entrepreneur visionnaire.
+Rattachée à : Vidéo témoin 10 — « Enrichir son langage » (Loïc Rajjou, Muriel Thomas, Sylvia Cohen-Kaminski, Jean-Jacques Greffet).
+Durée cible : ≈ 5 minutes (± 2 min). Script reçu : 393 mots ≈ 2 min 50 à l’oral.
+
+(C’est la vidéo la plus aboutie des trois sur le fond. La déconstruction de la figure du visionnaire — vision commode, facilement enseignable, valorisante, donc récits biaisés — est exactement ce que tu proposais, et cet angle n’existe nulle part ailleurs dans le parcours. Deux points seulement : la durée, un peu juste, et un recouvrement à arbitrer avec la vidéo 21.)
+
+(Présentation : même remarque que pour la 16 — deux phrases pour te situer en ouverture. Monica pose déjà le cadre et l’objectif de la séquence.)
+
+Texte proposé (base à adapter au prompteur)
+
+Nait-on entrepreneur ? La réponse est clairement non. Certaines personnes développent des qualités qui les prédisposent un peu plus que la moyenne à entreprendre, mais il n’y a pas un profil-type d’entrepreneur et les compétences entrepreneuriales s’apprennent.
+
+(Très bonne ouverture. Coquilles à corriger pour le prompteur : « Naît-on ».)
+
+Les recherches sur le sujet ont monté depuis longtemps que la démarche entrepreneuriale la plus courante était très éloignée de l’idée que l’on s’en fait souvent avec une fondatrice ou un fondateur qui a une capacité innée à détecter des besoins invisibles, à se projeter dans l’avenir, qui se donne un objectif de réalisation (une vision stratégique) et réunit les moyens pour y parvenir. Cette vision est commode, facilement enseignable (on a des étapes clairement identifiées). Elle est aussi valorisante pour les entrepreneurs. De ce fait, les histoires des entreprises racontées par ces derniers sont souvent biaisées. Elles prennent souvent quelques raccourcis.
+
+(Coquille : « ont monté » → « ont montré ». Phrase longue pour un prompteur : elle gagnerait à être coupée en deux, après « très éloignée de l’idée que l’on s’en fait souvent ».)
+
+La réalité est faite de tâtonnements, de rencontres, d’avancées réalisées avec les moyens du bord. En réalité, le processus de création d’une entreprise ou de pilotage d’un projet innovant n’est qu’un long processus d’apprentissage : on apprend sur sa technologie au fur et à mesure des expérimentations et prototypages, on apprend sur le marché au fur et à mesure des rencontres avec des clients ou partenaires potentiels, on apprend à mieux connaître ses associés, ses collaboratrice et collaborateurs, on apprend à surmonter les multiples barrières qui se dresseront inévitablement sur le chemin.
+
+(Coquille : « ses collaboratrice et collaborateurs » → « ses collaboratrices et ses collaborateurs ».)
+
+(Ancrage, et matière disponible : la vidéo témoin 10 documente précisément ce qui manque ici, l’apprentissage par le retour des autres. Muriel Thomas y dit qu’adapter son vocabulaire « ne se décide pas tout seul devant une feuille de papier », que « ça s’inculque juste en discutant avec les autres », et que « quand votre message ne passe pas, vous le sentez tout de suite, donc vous le modifiez la prochaine fois » : c’est la définition du feedback, formulée par une chercheuse. Elle ajoute qu’il ne s’agit pas de « se changer soi-même » mais d’« acquérir une nouvelle culture, un nouveau vocabulaire, une nouvelle posture » — l’évolution de l’identité professionnelle, dite en une phrase. Une ou deux phrases de renvoi combleraient l’essentiel de l’écart de durée.)
+
+C’est avant tout un apprentissage par la pratique. Chaque projet étant unique, il n’est pas possible de standardiser un protocole de conduite d’un projet entrepreneurial et de l’appliquer de manière répétée. Des formations à l’entrepreneuriat peuvent néanmoins accélérer cet apprentissage. Elles évitent des erreurs inutiles, permettent de comprendre plus vite ce qui est en train de se produire et peuvent proposer des méthodes qui servent de guides à adapter à votre cas particulier. Il en existe de multiples, généralistes ou portant sur des éléments précis, avec des approches et des volumes très variés, qualifiantes ou diplômantes.
+
+(Ce paragraphe est juste mais reste abstrait, alors que les apprenants viennent d’entendre trois exemples concrets de formations : Jean-Jacques Greffet et sa formation Genesis Light chez IncubAlliance, où il tenait un petit cahier dans lequel il notait des mots de vocabulaire, comme lorsqu’il apprenait l’anglais aux États-Unis ; Sylvia Cohen-Kaminski et la Life Science Leadership School proposée par la SATT, « une sorte de MBA dédiée à l’entrepreneuriat en santé » ; les deux jeunes scientifiques de l’équipe de Jean-Jacques envoyés plusieurs mois à HEC, financés par la SATT Paris-Saclay, qui en sont revenus « transformés » — démoralisés les premières semaines, décidés ensuite. Nommer d’un mot ce qu’ils viennent de voir avant de généraliser rendrait le passage beaucoup plus concret, et c’est ce que fait ton propos sur les formations qui « évitent des erreurs inutiles ».)
+
+Mais le plus important est la posture : penser les différentes étapes du projet comme des expérimentations, organiser des réunions de prise de recul sur les résultats obtenus, considérer chaque rencontre comme une occasion d’apprentissage. Mais, finalement, cette posture est-elle si éloignée de celle de la recherche ?
+
+(Point à arbitrer, et c’est la seule vraie question sur ces trois scripts : ce paragraphe est le résumé de la vidéo 21, et sa question finale est presque mot pour mot celle qui clôt la 21. Les deux vidéos sont éloignées dans le parcours — la 19 en module 4, la 21 en module 5 — mais deux chutes identiques se remarquent.
+Notre proposition : garder l’expérimentation et le rapprochement avec la recherche pour la 21, où c’est le sujet même et où la vidéo témoin porte justement sur le métier de chercheur ; et clore la 19 sur l’apprentissage social, qui est l’objectif de ce grain — le feedback, l’entraînement, l’accompagnement, le fait de devenir progressivement quelqu’un d’autre professionnellement sans cesser d’être chercheuse ou chercheur. Tu peux évidemment conserver la mention de la posture expérimentale en une phrase, comme annonce de ce qui vient ensuite.
+À décider par toi : si tu préfères l’inverse — garder la chute ici et clore la 21 autrement — cela nous convient aussi, l’essentiel est que les deux fins diffèrent.)
