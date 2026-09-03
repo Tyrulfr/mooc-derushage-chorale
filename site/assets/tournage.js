@@ -24,6 +24,19 @@
     });
   }
 
+  function groupsFor(id, field) {
+    var found = [];
+    document.querySelectorAll("[data-tournage-id][data-tournage-field]").forEach(function (group) {
+      if (
+        group.getAttribute("data-tournage-id") === id &&
+        group.getAttribute("data-tournage-field") === field
+      ) {
+        found.push(group);
+      }
+    });
+    return found;
+  }
+
   function init() {
     var state = loadState();
     document.querySelectorAll("[data-tournage-id][data-tournage-field]").forEach(function (group) {
@@ -42,7 +55,9 @@
           }
           state[id][field] = value;
           saveState(state);
-          applyGroup(group, value);
+          groupsFor(id, field).forEach(function (sibling) {
+            applyGroup(sibling, value);
+          });
         });
       });
     });

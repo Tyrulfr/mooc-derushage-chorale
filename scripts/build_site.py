@@ -464,6 +464,9 @@ tbody tr:last-child td { border-bottom: none; }
   background: var(--accent-soft);
   border: 1px solid var(--line);
 }
+.tournage-table-title {
+  margin: 28px 0 10px;
+}
 .chip {
   display: inline-flex;
   align-items: center;
@@ -10954,28 +10957,30 @@ def _tournage_toggle_html(row_id: str, field: str, label: str) -> str:
     )
 
 
-def build_tournage_page(programme_table: dict, experts_profils: dict) -> None:
-    """Onglet Tournage : planning + Script / Script final / Filmé / Monté / Validé / Implémenté."""
-    planning = _load_tournage()
-    inventory = {item["code"]: item for item in _inventory_videos_expert(programme_table, experts_profils)}
-    catalogue = {item["code"]: item for item in _load_expert_videos_catalogue()}
-    rows: list[str] = []
-    video_count = 0
-    pending_text = 0
-    scripts_finaux = 0
+def _tournage_titres(code: str, inventory: dict, catalogue: dict) -> tuple[str, str]:
+    """Titre = objectif résumé ; descriptif = précisions (hors verbatim)."""
+    cat = catalogue.get(code) or {}
+    inv = inventory.get(code) or {}
+    titre = _normalize_editorial_french(cat.get("titre") or inv.get("titre") or "")
+    descriptif = _normalize_editorial_french(cat.get("descriptif") or "")
+    if descriptif and titre.endswith(descriptif):
+        titre = titre[: -len(descriptif)].rstrip(" .")
+    return titre, descriptif
 
+
+def _tournage_collect_records(
+    planning: dict, inventory: dict, catalogue: dict
+) -> list[dict]:
+    records: list[dict] = []
     for jour in planning.get("jours") or []:
         lieu_bits = [
             jour.get("label") or "",
             jour.get("lieu") or "",
             jour.get("salle") or "",
         ]
-        day_label = " — ".join(bit for bit in lieu_bits if bit)
+        day_header = " — ".join(bit for bit in lieu_bits if bit)
         if jour.get("reservation"):
-            day_label += f" · Réservation {jour['reservation']}"
-        rows.append(
-            f"<tr class='tournage-day'><td colspan='9'>{escape(day_label)}</td></tr>"
-        )
+            day_header += f" · Réservation {jour['reservation']}"
         for creneau in jour.get("creneaux") or []:
             role = (creneau.get("role") or "expert").strip().lower()
             is_animatrice = role == "animatrice"
@@ -10985,63 +10990,215 @@ def build_tournage_page(programme_table: dict, experts_profils: dict) -> None:
             elif not videos:
                 continue
             for code in videos:
-                if not is_animatrice:
-                    video_count += 1
-                row_id = code or f"{creneau.get('slug') or 'slot'}-{jour.get('date')}-{creneau.get('heure')}"
-                meta = inventory.get(code) or catalogue.get(code) or {}
-                titre = meta.get("titre") or ""
-                if is_animatrice:
-                    video_cell = (
-                        "<strong>Intros / outros</strong>"
-                        "<span class='tournage-note'>Objectif, debrief, à retenir — toutes les vidéos expertise.</span>"
-                    )
-                else:
-                    video_cell = (
-                        f"<a href='{_expert_video_page_name(code)}'><strong>{escape(code)}</strong></a>"
-                        f"<span class='tournage-note'>{escape(titre)}</span>"
-                    )
-                date_cell = (
-                    f"{escape(jour.get('label') or '')}"
-                    f"<span class='tournage-note'>{escape(creneau.get('heure') or '')}"
-                    f" · {escape(jour.get('lieu') or '')}</span>"
-                )
-                intervenant = creneau.get("intervenant") or ""
-                slug_val = creneau.get("slug") or slug(intervenant)
-                organisme = creneau.get("organisme") or ""
-                if is_animatrice:
-                    nom_html = f"<strong>{escape(intervenant)}</strong>"
-                    nom_html += "<span class='tournage-note'>Animatrice</span>"
-                elif slug_val:
-                    nom_html = f"<a href='suivi_intervenant_{escape(slug_val)}.html'>{escape(intervenant)}</a>"
-                else:
-                    nom_html = escape(intervenant)
-                intervenant_cell = nom_html
-                if organisme:
-                    intervenant_cell += f"<span class='tournage-note'>{escape(organisme)}</span>"
-                note = creneau.get("note") or ""
-                if note:
-                    intervenant_cell += f"<span class='tournage-note'>{escape(note)}</span>"
-
+                titre, descriptif = _tournage_titres(code, inventory, catalogue)
                 has_script, script_href, has_final, final_href = _tournage_script_flags(code)
-                if not is_animatrice:
-                    if not has_script:
-                        pending_text += 1
-                    if has_final:
-                        scripts_finaux += 1
-
-                rows.append(
-                    "<tr>"
-                    f"<td>{video_cell}</td>"
-                    f"<td>{date_cell}</td>"
-                    f"<td>{intervenant_cell}</td>"
-                    f"<td>{_tournage_oui_non_html(has_script, script_href)}</td>"
-                    f"<td>{_tournage_oui_non_html(has_final, final_href)}</td>"
-                    f"<td>{_tournage_toggle_html(row_id, 'filme', 'Filmé')}</td>"
-                    f"<td>{_tournage_toggle_html(row_id, 'monte', 'Monté')}</td>"
-                    f"<td>{_tournage_toggle_html(row_id, 'valide', 'Validé')}</td>"
-                    f"<td>{_tournage_toggle_html(row_id, 'implemente', 'Implémenté')}</td>"
-                    "</tr>"
+                records.append(
+                    {
+                        "code": code,
+                        "row_id": code
+                        or f"{creneau.get('slug') or 'slot'}-{jour.get('date')}-{creneau.get('heure')}",
+                        "is_animatrice": is_animatrice,
+                        "titre": titre,
+                        "descriptif": descriptif,
+                        "day_header": day_header,
+                        "date_label": jour.get("label") or "",
+                        "heure": creneau.get("heure") or "",
+                        "lieu": jour.get("lieu") or "",
+                        "salle": jour.get("salle") or "",
+                        "intervenant": creneau.get("intervenant") or "",
+                        "slug": creneau.get("slug") or slug(creneau.get("intervenant") or ""),
+                        "organisme": creneau.get("organisme") or "",
+                        "note": creneau.get("note") or "",
+                        "has_script": has_script,
+                        "script_href": script_href,
+                        "has_final": has_final,
+                        "final_href": final_href,
+                    }
                 )
+    return records
+
+
+def _tournage_video_cell(rec: dict) -> str:
+    if rec.get("is_animatrice"):
+        return (
+            "<strong>Intros / outros</strong>"
+            "<span class='tournage-note'>Objectif, debrief, à retenir — toutes les vidéos expertise.</span>"
+        )
+    code = rec.get("code") or ""
+    titre = rec.get("titre") or ""
+    label = f"{code} — {titre}" if titre else code
+    cell = (
+        f"<a href='{_expert_video_page_name(code)}'><strong>{_e_fr(label)}</strong></a>"
+    )
+    descriptif = rec.get("descriptif") or ""
+    if descriptif and descriptif != titre:
+        cell += f"<span class='tournage-note'>{_e_fr(descriptif)}</span>"
+    return cell
+
+
+def _tournage_row_html(rec: dict) -> str:
+    date_cell = (
+        f"{escape(rec.get('date_label') or '')}"
+        f"<span class='tournage-note'>{escape(rec.get('heure') or '')}"
+        f" · {escape(rec.get('lieu') or '')}</span>"
+    )
+    intervenant = rec.get("intervenant") or ""
+    slug_val = rec.get("slug") or ""
+    organisme = rec.get("organisme") or ""
+    if rec.get("is_animatrice"):
+        nom_html = f"<strong>{escape(intervenant)}</strong>"
+        nom_html += "<span class='tournage-note'>Animatrice</span>"
+    elif slug_val:
+        nom_html = f"<a href='suivi_intervenant_{escape(slug_val)}.html'>{escape(intervenant)}</a>"
+    else:
+        nom_html = escape(intervenant)
+    intervenant_cell = nom_html
+    if organisme:
+        intervenant_cell += f"<span class='tournage-note'>{escape(organisme)}</span>"
+    note = rec.get("note") or ""
+    if note:
+        intervenant_cell += f"<span class='tournage-note'>{escape(note)}</span>"
+    row_id = rec.get("row_id") or rec.get("code") or ""
+    return (
+        "<tr>"
+        f"<td>{_tournage_video_cell(rec)}</td>"
+        f"<td>{date_cell}</td>"
+        f"<td>{intervenant_cell}</td>"
+        f"<td>{_tournage_oui_non_html(rec.get('has_script'), rec.get('script_href') or '')}</td>"
+        f"<td>{_tournage_oui_non_html(rec.get('has_final'), rec.get('final_href') or '')}</td>"
+        f"<td>{_tournage_toggle_html(row_id, 'filme', 'Filmé')}</td>"
+        f"<td>{_tournage_toggle_html(row_id, 'monte', 'Monté')}</td>"
+        f"<td>{_tournage_toggle_html(row_id, 'valide', 'Validé')}</td>"
+        f"<td>{_tournage_toggle_html(row_id, 'implemente', 'Implémenté')}</td>"
+        "</tr>"
+    )
+
+
+def _tournage_table_html(rows: list[str]) -> str:
+    body = "\n".join(rows) if rows else "<tr><td colspan='9'>Aucune ligne.</td></tr>"
+    return (
+        "<div class='table-wrap'><table><thead><tr>"
+        "<th>Vidéo</th><th>Date</th><th>Personne</th>"
+        "<th>Script</th><th>Script final</th>"
+        "<th>Filmé</th><th>Monté</th><th>Validé</th><th>Implémenté</th>"
+        "</tr></thead><tbody>"
+        f"{body}</tbody></table></div>"
+    )
+
+
+def _write_tournage_xlsx(records: list[dict], path: Path) -> str:
+    from openpyxl import Workbook
+    from openpyxl.styles import Alignment, Font, PatternFill
+    from openpyxl.utils import get_column_letter
+
+    headers = [
+        "Code",
+        "Titre / objectif",
+        "Précisions",
+        "Date",
+        "Heure",
+        "Lieu",
+        "Personne",
+        "Organisme",
+        "Script",
+        "Script final",
+        "Filmé",
+        "Monté",
+        "Validé",
+        "Implémenté",
+    ]
+    header_fill = PatternFill("solid", fgColor="0B6E77")
+    header_font = Font(color="FFFFFF", bold=True)
+
+    def _row(rec: dict) -> list:
+        if rec.get("is_animatrice"):
+            code = "Intros / outros"
+            titre = "Objectif, debrief, à retenir"
+            descriptif = rec.get("note") or ""
+        else:
+            code = rec.get("code") or ""
+            titre = rec.get("titre") or ""
+            descriptif = rec.get("descriptif") or ""
+        return [
+            code,
+            titre,
+            descriptif,
+            rec.get("date_label") or "",
+            rec.get("heure") or "",
+            rec.get("lieu") or "",
+            rec.get("intervenant") or "",
+            rec.get("organisme") or "",
+            "Oui" if rec.get("has_script") else "Non",
+            "Oui" if rec.get("has_final") else "Non",
+            "",
+            "",
+            "",
+            "",
+        ]
+
+    def _fill_sheet(ws, recs: list[dict]) -> None:
+        ws.append(headers)
+        for cell in ws[1]:
+            cell.fill = header_fill
+            cell.font = header_font
+            cell.alignment = Alignment(vertical="center", wrap_text=True)
+        for rec in recs:
+            ws.append(_row(rec))
+        widths = [16, 48, 42, 22, 10, 36, 28, 28, 12, 14, 10, 10, 10, 14]
+        for idx, width in enumerate(widths, start=1):
+            ws.column_dimensions[get_column_letter(idx)].width = width
+        for row in ws.iter_rows(min_row=2, max_row=ws.max_row, min_col=1, max_col=len(headers)):
+            for cell in row:
+                cell.alignment = Alignment(vertical="top", wrap_text=True)
+
+    wb = Workbook()
+    ws_jour = wb.active
+    ws_jour.title = "Par journée"
+    _fill_sheet(ws_jour, records)
+    ws_num = wb.create_sheet("Par numéro")
+    numbered = [
+        rec for rec in records if not rec.get("is_animatrice") and rec.get("code")
+    ]
+    numbered.sort(key=lambda rec: _expert_video_sort_key(rec.get("code") or ""))
+    _fill_sheet(ws_num, numbered)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    wb.save(path)
+    return path.name
+
+
+def build_tournage_page(programme_table: dict, experts_profils: dict) -> None:
+    """Onglet Tournage : planning + Script / Script final / Filmé / Monté / Validé / Implémenté."""
+    planning = _load_tournage()
+    inventory = {item["code"]: item for item in _inventory_videos_expert(programme_table, experts_profils)}
+    catalogue = {item["code"]: item for item in _load_expert_videos_catalogue()}
+    records = _tournage_collect_records(planning, inventory, catalogue)
+
+    day_rows: list[str] = []
+    current_day = ""
+    video_count = 0
+    pending_text = 0
+    scripts_finaux = 0
+    for rec in records:
+        if rec.get("day_header") != current_day:
+            current_day = rec.get("day_header") or ""
+            day_rows.append(
+                f"<tr class='tournage-day'><td colspan='9'>{escape(current_day)}</td></tr>"
+            )
+        if not rec.get("is_animatrice"):
+            video_count += 1
+            if not rec.get("has_script"):
+                pending_text += 1
+            if rec.get("has_final"):
+                scripts_finaux += 1
+        day_rows.append(_tournage_row_html(rec))
+
+    numbered = [
+        rec for rec in records if not rec.get("is_animatrice") and rec.get("code")
+    ]
+    numbered.sort(key=lambda rec: _expert_video_sort_key(rec.get("code") or ""))
+    numbered_rows = [_tournage_row_html(rec) for rec in numbered]
+
+    xlsx_name = _write_tournage_xlsx(records, SITE / "tournage.xlsx")
 
     recus = video_count - pending_text
     animatrice = planning.get("animatrice") or {}
@@ -11056,10 +11213,12 @@ def build_tournage_page(programme_table: dict, experts_profils: dict) -> None:
         "Créneau mercredi 9 septembre, 13h, CentraleSupélec (Le Repaire 006).</p>"
         "<p class='meta'>Une ligne = une vidéo expertise à tourner, sauf la ligne "
         "<strong>Intros / outros</strong> (animatrice). "
+        "Le titre après le code (E1 — …) résume l’objectif pédagogique. "
         "<strong>Script</strong> = texte reçu ; <strong>Script final</strong> = version validée "
         "pour le prompteur. Oui est cliquable vers le fichier. "
         "Filmé / Monté / Validé / Implémenté se cochent ici "
         "(mémorisés dans ce navigateur).</p>"
+        f"<p><a class='btn' href='{escape(xlsx_name)}' download>Télécharger le tableau (XLSX)</a></p>"
         "<section class='stats-grid'>"
         "<div class='stat-card'><div class='stat-card__label'>Vidéos au planning</div>"
         f"<div class='stat-card__value'>{video_count}</div>"
@@ -11071,13 +11230,11 @@ def build_tournage_page(programme_table: dict, experts_profils: dict) -> None:
         f"<div class='stat-card__value'>{scripts_finaux}</div>"
         "<div class='stat-card__meta'>versions validées prompteur</div></div>"
         "</section>"
-        "<div class='table-wrap'><table><thead><tr>"
-        "<th>Vidéo</th><th>Date</th><th>Personne</th>"
-        "<th>Script</th><th>Script final</th>"
-        "<th>Filmé</th><th>Monté</th><th>Validé</th><th>Implémenté</th>"
-        "</tr></thead><tbody>"
-        + ("\n".join(rows) if rows else "<tr><td colspan='9'>Aucun créneau de tournage.</td></tr>")
-        + "</tbody></table></div>"
+        "<h2 class='tournage-table-title'>Planning par journée</h2>"
+        + _tournage_table_html(day_rows)
+        + "<h2 class='tournage-table-title'>Par numéro de vidéo</h2>"
+        "<p class='meta'>Même suivi, classé E1 → E23 (E13bis juste après E13).</p>"
+        + _tournage_table_html(numbered_rows)
     )
     write_text(
         SITE / "tournage.html",

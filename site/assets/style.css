@@ -417,6 +417,9 @@ tbody tr:last-child td { border-bottom: none; }
   background: var(--accent-soft);
   border: 1px solid var(--line);
 }
+.tournage-table-title {
+  margin: 28px 0 10px;
+}
 .chip {
   display: inline-flex;
   align-items: center;
