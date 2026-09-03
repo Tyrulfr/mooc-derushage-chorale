@@ -419,6 +419,45 @@ tbody tr:last-child td { border-bottom: none; }
   gap: 10px;
   margin-top: 8px;
 }
+.toggle-yn {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+  background: #fff;
+}
+.toggle-yn button {
+  border: 0;
+  background: transparent;
+  padding: 5px 11px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  cursor: pointer;
+}
+.toggle-yn button.is-on[data-value="oui"] {
+  background: var(--accent-soft);
+  color: var(--ok);
+}
+.toggle-yn button.is-on[data-value="non"] {
+  background: #f4efe8;
+  color: var(--warn);
+}
+.tournage-day td {
+  background: #f4f8f9;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--accent-dark);
+}
+.tournage-note {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+}
 .chip {
   display: inline-flex;
   align-items: center;
@@ -525,6 +564,7 @@ tbody tr:last-child td { border-bottom: none; }
   white-space: normal;
 }
 .script-attente-panel { border-left: 4px solid var(--warn); }
+.script-valide-panel { border-left: 4px solid #047857; }
 .script-revue-panel { border-left: 4px solid #0b6e77; }
 .script-revue-demandes {
   margin: 12px 0 0;
@@ -4223,6 +4263,7 @@ def link_segment(segment: dict) -> str:
 def status_badge(value: str) -> str:
     css = {
         "EN_CONSTRUCTION": "status--progress",
+        "RECU": "status--progress",
         "VALIDEE": "status--ok",
         "VERROUILLEE": "status--ok",
         "A_ARBITRER": "status--warn",
@@ -4239,6 +4280,12 @@ def build_home(capsules: list[dict], segments: list[dict]) -> None:
             "⊞",
             "Tableau de bord",
             "Vue d'ensemble des capsules, durees, chercheurs et acces aux montages.",
+        ),
+        (
+            "tournage.html",
+            "●",
+            "Tournage",
+            "Planning de captation des videos expertise, textes et suivi filme / monte / implemente.",
         ),
         (
             "suivi_intervenants.html",
@@ -7486,6 +7533,7 @@ def _guide_editorial_expert_doc_html(expert: dict, grouped_tb: dict[str, list[di
 
 VIDEOS_EXPERT_DATA = ROOT / "data" / "videos_expert"
 VIDEOS_EXPERT_SCRIPTS = VIDEOS_EXPERT_DATA / "scripts_recus"
+VIDEOS_EXPERT_SCRIPTS_VALIDES = VIDEOS_EXPERT_DATA / "scripts_valides"
 VIDEOS_EXPERT_REVUES = VIDEOS_EXPERT_DATA / "revues"
 
 
@@ -7510,6 +7558,26 @@ def _load_expert_script_recu(code: str) -> dict:
             if text:
                 return {
                     "statut": "RECU",
+                    "fichier": path.name,
+                    "contenu": text,
+                }
+    return {
+        "statut": "EN_ATTENTE",
+        "fichier": "",
+        "contenu": "",
+    }
+
+
+def _load_expert_script_valide(code: str) -> dict:
+    """Charge le script validé (prompteur / tournage) depuis scripts_valides/."""
+    VIDEOS_EXPERT_SCRIPTS_VALIDES.mkdir(parents=True, exist_ok=True)
+    for suffix in (".txt", ".md"):
+        path = VIDEOS_EXPERT_SCRIPTS_VALIDES / f"{code}{suffix}"
+        if path.exists() and path.is_file():
+            text = path.read_text(encoding="utf-8").strip()
+            if text:
+                return {
+                    "statut": "VALIDE",
                     "fichier": path.name,
                     "contenu": text,
                 }
@@ -7610,6 +7678,7 @@ def _inventory_videos_expert(programme_table: dict, experts_profils: dict) -> li
             if not code:
                 continue
             script = _load_expert_script_recu(code)
+            script_valide = _load_expert_script_valide(code)
             retained = retained_by_e.get(code.upper(), [])
             experts = retained or proposed
             names = [item["nom"] for item in experts if item.get("nom")]
@@ -7631,6 +7700,9 @@ def _inventory_videos_expert(programme_table: dict, experts_profils: dict) -> li
                     "script_statut": script["statut"],
                     "script_fichier": script["fichier"],
                     "script_contenu": script["contenu"],
+                    "script_valide_statut": script_valide["statut"],
+                    "script_valide_fichier": script_valide["fichier"],
+                    "script_valide_contenu": script_valide["contenu"],
                     "page_href": _expert_video_page_name(code),
                     "tb_edito_href": f"tb_edito_{capsule_code}.html",
                 }
@@ -7721,6 +7793,10 @@ def _script_recu_doc_name(code: str) -> str:
     return f"script_recu_{code}.doc"
 
 
+def _script_valide_doc_name(code: str) -> str:
+    return f"script_valide_{code}.doc"
+
+
 def _script_recu_doc_html(item: dict) -> str:
     """Word (HTML .doc) : script renvoyé par l'expert, tel quel, sans annotation."""
     code = item.get("code") or ""
@@ -7729,6 +7805,26 @@ def _script_recu_doc_html(item: dict) -> str:
     body = escape(texte).replace("\n", "<br>") if texte else "<p>Script à compléter.</p>"
     titre = f"Script — Vidéo {escape(numero)}" if numero else "Script"
     return _word_html_document(f"<h1>{titre}</h1><div>{body}</div>")
+
+
+def _script_valide_doc_html(item: dict, valide: dict) -> str:
+    """Word (HTML .doc) : script validé pour tournage / prompteur."""
+    code = item.get("code") or ""
+    numero = _numero_video_expert(code)
+    texte = valide.get("contenu") or ""
+    body = escape(texte).replace("\n", "<br>") if texte else "<p>Script à compléter.</p>"
+    titre = (
+        f"Script validé — Vidéo {escape(numero)}"
+        if numero
+        else "Script validé"
+    )
+    return _word_html_document(
+        f"<h1>{titre}</h1>"
+        "<p style='font-size:10.5pt;color:#555;margin:0 0 12px 0;'>"
+        "Version arrêtée pour tournage / prompteur."
+        "</p>"
+        f"<div>{body}</div>"
+    )
 
 
 def _script_expert_recu_html(item: dict) -> str:
@@ -7743,7 +7839,7 @@ def _script_expert_recu_html(item: dict) -> str:
         return f"""
 <section class="methodology-panel">
   <h2>Script renvoye par l'expert</h2>
-  <p>{status_badge('VALIDEE')} <span class="meta">Fichier : <code>{escape(fichier)}</code></span></p>
+  <p>{status_badge('RECU')} <span class="meta">Fichier : <code>{escape(fichier)}</code></span></p>
   <p><a class='btn' href='{escape(doc_href)}' download='{escape(download_name)}'>Télécharger le script (Word)</a></p>
   <div class="script-recu-block">{body}</div>
 </section>
@@ -7760,6 +7856,31 @@ def _script_expert_recu_html(item: dict) -> str:
   <div class="script-placeholder" aria-label="Emplacement reserve au script expert">
     <p>Emplacement reserve — script expert a venir.</p>
   </div>
+</section>
+"""
+
+
+def _script_expert_valide_html(item: dict, valide: dict | None = None) -> str:
+    """Bloc script validé (tournage / prompteur)."""
+    code = item["code"]
+    if valide is None:
+        valide = _load_expert_script_valide(code)
+    if valide.get("statut") != "VALIDE" or not valide.get("contenu"):
+        return ""
+    fichier = valide.get("fichier", "")
+    body = escape(valide["contenu"]).replace("\n", "<br>")
+    doc_href = item.get("script_valide_doc_href") or _script_valide_doc_name(code)
+    download_name = _script_valide_doc_name(code)
+    mots = len(re.findall(r"[A-Za-zÀ-ÖØ-öø-ÿ0-9']+", valide["contenu"]))
+    return f"""
+<section class="methodology-panel script-valide-panel">
+  <h2>Script validé</h2>
+  <p>{status_badge('VALIDEE')}
+    <span class="meta">Version arrêtée pour tournage / prompteur</span>
+    <span class="meta">Fichier : <code>{escape(fichier)}</code></span>
+    <span class="meta">~{mots} mots</span></p>
+  <p><a class='btn' href='{escape(doc_href)}' download='{escape(download_name)}'>Télécharger le script validé (Word)</a></p>
+  <div class="script-recu-block">{body}</div>
 </section>
 """
 
@@ -7825,7 +7946,8 @@ def _synthesize_proposition_final_paragraphs(segments: list[dict]) -> list[str]:
         if not texte or couleur in {"commentaire", "rouge"}:
             continue
         if couleur == "ajout":
-            paragraphs.append(texte)
+            if not seg.get("exclure_synthese"):
+                paragraphs.append(texte)
             continue
         if couleur == "gris":
             paragraphs.append(_extract_piste_text(texte))
@@ -7859,10 +7981,28 @@ def _synthesize_proposition_final_paragraphs(segments: list[dict]) -> list[str]:
             (z.get("texte") or "").strip()
             for z in zone
             if str(z.get("couleur") or "").lower() == "ajout"
+            and not z.get("exclure_synthese")
         ]
 
         kept = [nt for nt in noirs if nt not in rouge_texts]
         suppressed = [nt for nt in noirs if nt in rouge_texts]
+
+        if suppressed and kept:
+            paragraphs.extend(kept)
+            amorce = [
+                _extract_piste_text(z.get("texte") or "")
+                for z in zone
+                if str(z.get("couleur") or "").lower() == "gris"
+                and "amorce" in str(z.get("texte") or "").lower()
+            ]
+            if amorce:
+                paragraphs.append(amorce[-1])
+            else:
+                for gt in gris_items:
+                    paragraphs.append(gt)
+                    break
+            paragraphs.extend(ajout_items)
+            continue
 
         if suppressed and not kept:
             amorce = [
@@ -7880,7 +8020,14 @@ def _synthesize_proposition_final_paragraphs(segments: list[dict]) -> list[str]:
 
         if kept and gris_items and not suppressed:
             if len(kept) > 1 and len(gris_items) == 1:
-                paragraphs.append(gris_items[0])
+                if kept[0].strip().startswith("Et vous"):
+                    paragraphs.append(gris_items[0])
+                else:
+                    for idx, nt in enumerate(kept):
+                        if idx == len(kept) - 1:
+                            paragraphs.append(gris_items[0])
+                        else:
+                            paragraphs.append(nt)
             else:
                 for idx, nt in enumerate(kept):
                     if idx < len(gris_items):
@@ -8256,19 +8403,30 @@ def _proposition_panel_html(code: str, revue: dict, proposition: dict) -> str:
 """
 
 
-_RE_PAREN_REMARQUE = re.compile(r"\([^()]*\)")
+_RE_PAREN_REMARQUE = re.compile(r"\([^()]*\)", re.DOTALL)
 
 
 def _colorize_parenthetical_remarks(texte: str) -> str:
-    """Colorie les remarques entre parenthèses (orange) pour l'export Word."""
+    """Colorie les remarques entre parenthèses pour l'export Word.
+
+    Préfixes :
+    - (Objectif atteint …) → vert
+    - (Autre vidéo …) → bleu
+    - autres parenthèses → orange (cadrage / piste)
+    """
     escaped = escape(texte)
 
     def _wrap(match: re.Match) -> str:
-        return (
-            '<span style="color:#C45C26;font-style:italic;">'
-            f"{match.group(0)}"
-            "</span>"
-        )
+        raw = match.group(0)
+        inner = raw[1:-1].lstrip()
+        lower = inner.lower()
+        if lower.startswith("objectif atteint"):
+            style = "color:#15803d;font-style:italic;font-weight:600;"
+        elif lower.startswith("autre vidéo") or lower.startswith("autre video"):
+            style = "color:#1d4ed8;font-style:italic;font-weight:600;"
+        else:
+            style = "color:#C45C26;font-style:italic;"
+        return f'<span style="{style}">{raw}</span>'
 
     return _RE_PAREN_REMARQUE.sub(_wrap, escaped).replace("\n", "<br>")
 
@@ -8282,7 +8440,7 @@ def _numero_video_expert(code: str) -> str:
 
 
 def _revue_annotee_doc_html(item: dict, revue: dict) -> str:
-    """Word (HTML .doc) : script de l'expert, inchangé, remarques en orange."""
+    """Word (HTML .doc) : script de l'expert, inchangé, remarques colorées."""
     code = item.get("code") or revue.get("code") or ""
     numero_video = _numero_video_expert(code)
     objectif = _normalize_editorial_french(item.get("titre") or "")
@@ -8301,8 +8459,13 @@ def _revue_annotee_doc_html(item: dict, revue: dict) -> str:
     return _word_html_document(
         f"<h1>{titre}</h1>"
         f"{objectif_html}"
-        "<p style='color:#C45C26;font-size:10.5pt;font-style:italic;margin:0 0 18px 0;'>"
-        "J’ai laissé ton texte tel quel. Mes remarques sont en orange, entre parenthèses."
+        "<p style='font-size:10.5pt;font-style:italic;margin:0 0 8px 0;'>"
+        "J’ai laissé ton texte tel quel. Mes remarques sont entre parenthèses :"
+        "</p>"
+        "<p style='font-size:10.5pt;margin:0 0 18px 0;'>"
+        "<span style='color:#15803d;font-weight:600;'>■ Vert</span> — objectif de cette vidéo atteint · "
+        "<span style='color:#1d4ed8;font-weight:600;'>■ Bleu</span> — objectif d’une autre vidéo · "
+        "<span style='color:#C45C26;font-weight:600;'>■ Orange</span> — cadrage / piste"
         "</p>"
         f"<div>{body}</div>"
     )
@@ -10569,6 +10732,7 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
             "module": item.get("module", ""),
             "experts": item.get("experts_label", ""),
             "script_statut": item.get("script_statut", "EN_ATTENTE"),
+            "script_valide_statut": item.get("script_valide_statut", "EN_ATTENTE"),
             "script_fichier": item.get("script_fichier", ""),
             "page": item.get("page_href", ""),
         }
@@ -10580,10 +10744,18 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
     )
 
     recus = sum(1 for item in inventory if item.get("script_statut") == "RECU")
+    valides = sum(1 for item in inventory if item.get("script_valide_statut") == "VALIDE")
     table_rows = []
     for item in inventory:
-        statut_label = "Reçu" if item["script_statut"] == "RECU" else "En attente"
-        badge = status_badge("VALIDEE" if item["script_statut"] == "RECU" else "EN_CONSTRUCTION")
+        if item.get("script_valide_statut") == "VALIDE":
+            statut_label = "Validé"
+            badge = status_badge("VALIDEE")
+        elif item["script_statut"] == "RECU":
+            statut_label = "Reçu"
+            badge = status_badge("RECU")
+        else:
+            statut_label = "En attente"
+            badge = status_badge("EN_CONSTRUCTION")
         table_rows.append(
             "<tr>"
             f"<td><a href='{escape(item['page_href'])}'><strong>{escape(item['code'])}</strong></a></td>"
@@ -10599,9 +10771,11 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
     body = (
         "<p class='meta'>Inventaire des videos expertise du programme de conception. "
         "Chaque fiche reprend les consignes envoyees dans le guide Word et accueille le script "
-        "quand l'expert le renvoie (<code>data/videos_expert/scripts_recus/</code>).</p>"
+        "quand l'expert le renvoie (<code>data/videos_expert/scripts_recus/</code>), "
+        "puis le script validé pour tournage (<code>data/videos_expert/scripts_valides/</code>).</p>"
         f"<p class='meta'><strong>{len(inventory)}</strong> videos — "
-        f"<strong>{recus}</strong> script(s) recu(s), "
+        f"<strong>{recus}</strong> script(s) reçu(s), "
+        f"<strong>{valides}</strong> validé(s), "
         f"<strong>{len(inventory) - recus}</strong> en attente.</p>"
         "<p>"
         "<a class='btn' href='videos_expert.xlsx' download>Télécharger le tableau (XLSX)</a> "
@@ -10656,6 +10830,19 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
             write_word_doc(SITE / recu_doc, _script_recu_doc_html(item))
             expected.add(recu_doc)
             item["script_doc_href"] = recu_doc
+        script_valide = {
+            "statut": item.get("script_valide_statut") or "EN_ATTENTE",
+            "fichier": item.get("script_valide_fichier") or "",
+            "contenu": item.get("script_valide_contenu") or "",
+        }
+        if script_valide.get("statut") == "VALIDE" and script_valide.get("contenu"):
+            valide_doc = _script_valide_doc_name(item["code"])
+            write_word_doc(
+                SITE / valide_doc,
+                _script_valide_doc_html(item, script_valide),
+            )
+            expected.add(valide_doc)
+            item["script_valide_doc_href"] = valide_doc
         standalone_prop = _load_expert_standalone_proposition(item["code"])
         if standalone_prop:
             prop_doc = _proposition_doc_name(item["code"])
@@ -10680,6 +10867,7 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
             f"{_consignes_envoyees_expert_html(item)}"
             f"{_script_expert_recu_html(item)}"
             f"{_script_expert_editorial_html(item['code'], revues)}"
+            f"{_script_expert_valide_html(item, script_valide)}"
             "<p><a class='btn btn-secondary' href='videos_expert.html'>← Retour au tableau</a> "
             f"<a class='btn btn-secondary' href='videos_expert.xlsx' download>Export XLSX</a></p>"
         )
@@ -10717,7 +10905,179 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
     for path in SITE.glob("script_recu_*.doc"):
         if path.name not in expected:
             path.unlink()
+    for path in SITE.glob("script_valide_*.doc"):
+        if path.name not in expected:
+            path.unlink()
 
+
+def _load_tournage() -> dict:
+    path = ROOT / "data" / "tournage.json"
+    if not path.exists():
+        return {"jours": []}
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _tournage_texte_etat(code: str) -> dict:
+    """Lien vers le texte le plus avance : script validé > proposition > revue > script reçu."""
+    if not code:
+        return {"etat": "attente", "href": "", "label": "En attente"}
+    valide = _load_expert_script_valide(code)
+    if valide.get("statut") == "VALIDE" and valide.get("contenu"):
+        return {
+            "etat": "valide",
+            "href": _script_valide_doc_name(code),
+            "label": "Script validé",
+        }
+    if _load_expert_standalone_proposition(code):
+        return {
+            "etat": "final",
+            "href": _texte_final_doc_name(code),
+            "label": "Script final",
+        }
+    revues = _load_expert_script_revues(code)
+    if revues:
+        last = revues[-1]
+        numero = last.get("numero") or 1
+        return {
+            "etat": "revue",
+            "href": _revue_expert_doc_name(code, int(numero)),
+            "label": f"Revue {numero}",
+        }
+    script = _load_expert_script_recu(code)
+    if script.get("statut") == "RECU" and script.get("contenu"):
+        return {
+            "etat": "script",
+            "href": _script_recu_doc_name(code),
+            "label": "Script reçu",
+        }
+    return {"etat": "attente", "href": "", "label": "En attente"}
+
+
+def _tournage_toggle_html(row_id: str, field: str, label: str) -> str:
+    return (
+        f'<div class="toggle-yn" data-tournage-id="{escape(row_id)}" '
+        f'data-tournage-field="{escape(field)}" role="group" aria-label="{escape(label)}">'
+        '<button type="button" data-value="oui">Oui</button>'
+        '<button type="button" data-value="non">Non</button>'
+        "</div>"
+    )
+
+
+def build_tournage_page(programme_table: dict, experts_profils: dict) -> None:
+    """Onglet Tournage : planning de captation + suivi filme / monte / implemente."""
+    planning = _load_tournage()
+    inventory = {item["code"]: item for item in _inventory_videos_expert(programme_table, experts_profils)}
+    catalogue = {item["code"]: item for item in _load_expert_videos_catalogue()}
+    rows: list[str] = []
+    video_count = 0
+    pending_text = 0
+
+    for jour in planning.get("jours") or []:
+        lieu_bits = [
+            jour.get("label") or "",
+            jour.get("lieu") or "",
+            jour.get("salle") or "",
+        ]
+        day_label = " — ".join(bit for bit in lieu_bits if bit)
+        if jour.get("reservation"):
+            day_label += f" · Réservation {jour['reservation']}"
+        rows.append(
+            f"<tr class='tournage-day'><td colspan='7'>{escape(day_label)}</td></tr>"
+        )
+        for creneau in jour.get("creneaux") or []:
+            videos = list(creneau.get("videos") or [])
+            if not videos:
+                videos = [""]
+            for code in videos:
+                video_count += 1
+                row_id = code or f"{creneau.get('slug') or 'slot'}-{jour.get('date')}-{creneau.get('heure')}"
+                meta = inventory.get(code) or catalogue.get(code) or {}
+                titre = meta.get("titre") or (creneau.get("note") if not code else "Titre à préciser")
+                if code:
+                    video_cell = (
+                        f"<a href='{_expert_video_page_name(code)}'><strong>{escape(code)}</strong></a>"
+                        f"<span class='tournage-note'>{escape(titre)}</span>"
+                    )
+                else:
+                    video_cell = (
+                        "<strong>À préciser</strong>"
+                        f"<span class='tournage-note'>{escape(creneau.get('note') or 'Codes expertise non renseignés.')}</span>"
+                    )
+                date_cell = (
+                    f"{escape(jour.get('label') or '')}"
+                    f"<span class='tournage-note'>{escape(creneau.get('heure') or '')}"
+                    f" · {escape(jour.get('lieu') or '')}</span>"
+                )
+                intervenant = creneau.get("intervenant") or ""
+                slug_val = creneau.get("slug") or slug(intervenant)
+                organisme = creneau.get("organisme") or ""
+                if slug_val and slug_val != "monica-henao":
+                    nom_html = f"<a href='suivi_intervenant_{escape(slug_val)}.html'>{escape(intervenant)}</a>"
+                else:
+                    nom_html = escape(intervenant)
+                intervenant_cell = nom_html
+                if organisme:
+                    intervenant_cell += f"<span class='tournage-note'>{escape(organisme)}</span>"
+                note = creneau.get("note") or ""
+                if note and code:
+                    intervenant_cell += f"<span class='tournage-note'>{escape(note)}</span>"
+
+                texte = _tournage_texte_etat(code)
+                if texte["href"]:
+                    texte_cell = (
+                        f"<a href='{escape(texte['href'])}'>{escape(texte['label'])}</a>"
+                    )
+                else:
+                    pending_text += 1
+                    texte_cell = f"<span class='meta'>{escape(texte['label'])}</span>"
+
+                rows.append(
+                    "<tr>"
+                    f"<td>{video_cell}</td>"
+                    f"<td>{date_cell}</td>"
+                    f"<td>{intervenant_cell}</td>"
+                    f"<td>{texte_cell}</td>"
+                    f"<td>{_tournage_toggle_html(row_id, 'filme', 'Filmé')}</td>"
+                    f"<td>{_tournage_toggle_html(row_id, 'montee', 'Montée')}</td>"
+                    f"<td>{_tournage_toggle_html(row_id, 'implemente', 'Implémenté')}</td>"
+                    "</tr>"
+                )
+
+    recus = video_count - pending_text
+    body = (
+        "<p class='meta'>Une ligne = une vidéo expertise à tourner. "
+        "Le lien Texte pointe vers le livrable le plus avancé "
+        "(script final, sinon revue, sinon script reçu). "
+        "Filmé / Montée / Implémenté se cochent ici ; l’état est mémorisé dans ce navigateur.</p>"
+        "<section class='stats-grid'>"
+        "<div class='stat-card'><div class='stat-card__label'>Vidéos au planning</div>"
+        f"<div class='stat-card__value'>{video_count}</div>"
+        f"<div class='stat-card__meta'>{len(planning.get('jours') or [])} journées confirmées</div></div>"
+        "<div class='stat-card'><div class='stat-card__label'>Textes disponibles</div>"
+        f"<div class='stat-card__value'>{recus}</div>"
+        f"<div class='stat-card__meta'>{pending_text} encore en attente</div></div>"
+        "</section>"
+        "<div class='table-wrap'><table><thead><tr>"
+        "<th>Vidéo</th><th>Date</th><th>Intervenant</th><th>Texte</th>"
+        "<th>Filmé</th><th>Montée</th><th>Implémenté</th>"
+        "</tr></thead><tbody>"
+        + ("\n".join(rows) if rows else "<tr><td colspan='7'>Aucun créneau de tournage.</td></tr>")
+        + "</tbody></table></div>"
+    )
+    write_text(
+        SITE / "tournage.html",
+        html_page(
+            "Tournage",
+            body,
+            scripts=["assets/tournage.js"],
+            nav_current="tournage.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Tournage", None)),
+            page_header=(
+                '<div class="page-head"><h1>Tournage</h1>'
+                '<p class="lead">Planning de captation des vidéos expertise, textes et suivi plateau.</p></div>'
+            ),
+        ),
+    )
 
 
 def _filter_capsule_data_for_expert(
@@ -12618,6 +12978,8 @@ if __name__ == "__main__":
     write_text(SITE / "assets" / "style.css", STYLE)
     export_word_js = (ROOT / "assets" / "export-word.js").read_text(encoding="utf-8")
     write_text(SITE / "assets" / "export-word.js", export_word_js)
+    tournage_js = (ROOT / "assets" / "tournage.js").read_text(encoding="utf-8")
+    write_text(SITE / "assets" / "tournage.js", tournage_js)
     all_capsules = load_capsules()
     all_segments = load_segments()
     all_affectations = load_affectations()
@@ -12643,6 +13005,7 @@ if __name__ == "__main__":
     build_proposition_edito_pages(programme_table)
     build_fonctions_temoins_page()
     build_videos_expert_pages(programme_table, experts_profils)
+    build_tournage_page(programme_table, experts_profils)
     build_prev_vid_page(programme_table)
     build_suivi_intervenants_pages(programme_table, experts_profils)
     build_edito_hub_page()

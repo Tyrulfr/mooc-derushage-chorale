@@ -8,6 +8,7 @@
       "module": "M1",
       "experts": "Retenu : Bernard Yannou",
       "script_statut": "RECU",
+      "script_valide_statut": "VALIDE",
       "script_fichier": "E1.txt",
       "page": "video_expert_E1.html"
     },
@@ -19,6 +20,7 @@
       "module": "M1",
       "experts": "Retenu : Gregoire Burgé",
       "script_statut": "EN_ATTENTE",
+      "script_valide_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E2.html"
     },
@@ -30,6 +32,7 @@
       "module": "M1",
       "experts": "Retenu : Gregoire Burgé",
       "script_statut": "EN_ATTENTE",
+      "script_valide_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E3.html"
     },
@@ -41,6 +44,7 @@
       "module": "M1",
       "experts": "Retenu : Stephanie Oger-Roussel",
       "script_statut": "EN_ATTENTE",
+      "script_valide_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E4.html"
     },
@@ -51,8 +55,9 @@
       "temoin_label": "VIDÉO 3 : IDENTIFIER UN BESOIN RÉEL + SORTIR DU LABORATOIRE (fusion)",
       "module": "M1",
       "experts": "Retenu : Virginia Branco",
-      "script_statut": "EN_ATTENTE",
-      "script_fichier": "",
+      "script_statut": "RECU",
+      "script_valide_statut": "EN_ATTENTE",
+      "script_fichier": "E5.txt",
       "page": "video_expert_E5.html"
     },
     {
@@ -63,6 +68,7 @@
       "module": "M1",
       "experts": "Retenu : Stephanie Sano",
       "script_statut": "RECU",
+      "script_valide_statut": "EN_ATTENTE",
       "script_fichier": "E6.txt",
       "page": "video_expert_E6.html"
     },
@@ -74,6 +80,7 @@
       "module": "M1",
       "experts": "Retenu : Arielle Santé, Stephanie Sano",
       "script_statut": "RECU",
+      "script_valide_statut": "EN_ATTENTE",
       "script_fichier": "E7.txt",
       "page": "video_expert_E7.html"
     },
@@ -85,6 +92,7 @@
       "module": "M2",
       "experts": "Retenu : Arielle Santé, Stanislas De Lapasse",
       "script_statut": "RECU",
+      "script_valide_statut": "EN_ATTENTE",
       "script_fichier": "E8.txt",
       "page": "video_expert_E8.html"
     },
@@ -96,6 +104,7 @@
       "module": "M2",
       "experts": "Retenu : Antoine Latreille, Stanislas De Lapasse",
       "script_statut": "RECU",
+      "script_valide_statut": "EN_ATTENTE",
       "script_fichier": "E9.txt",
       "page": "video_expert_E9.html"
     },
@@ -106,8 +115,9 @@
       "temoin_label": "VIDÉO 6 : TRANSFERT ET LICENSING",
       "module": "M2",
       "experts": "Retenu : Arielle Santé, Virginia Branco",
-      "script_statut": "EN_ATTENTE",
-      "script_fichier": "",
+      "script_statut": "RECU",
+      "script_valide_statut": "EN_ATTENTE",
+      "script_fichier": "E10.txt",
       "page": "video_expert_E10.html"
     },
     {
@@ -118,6 +128,7 @@
       "module": "M2",
       "experts": "Retenu : Soizic Lefeuvre",
       "script_statut": "EN_ATTENTE",
+      "script_valide_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E11.html"
     },
@@ -129,6 +140,7 @@
       "module": "M3",
       "experts": "Retenu : Fatoumata Aonon",
       "script_statut": "EN_ATTENTE",
+      "script_valide_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E12.html"
     },
@@ -140,6 +152,7 @@
       "module": "M3",
       "experts": "Arielle Santé, Fatoumata Aonon, Stephanie Oger-Roussel, Yoann Montenot",
       "script_statut": "EN_ATTENTE",
+      "script_valide_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E13.html"
     },
@@ -151,6 +164,7 @@
       "module": "M3",
       "experts": "Retenu : Yoann Montenot",
       "script_statut": "EN_ATTENTE",
+      "script_valide_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E13bis.html"
     },
@@ -162,6 +176,7 @@
       "module": "M3",
       "experts": "Retenu : Fatoumata Aonon",
       "script_statut": "EN_ATTENTE",
+      "script_valide_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E14.html"
     },
@@ -173,6 +188,7 @@
       "module": "M3",
       "experts": "Arielle Santé, Fatoumata Aonon, Stephanie Oger-Roussel",
       "script_statut": "EN_ATTENTE",
+      "script_valide_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E15.html"
     },
@@ -184,6 +200,7 @@
       "module": "M4",
       "experts": "Retenu : Pascal Corbel",
       "script_statut": "EN_ATTENTE",
+      "script_valide_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E16.html"
     },
@@ -195,6 +212,7 @@
       "module": "M4",
       "experts": "Arielle Santé, Pascal Corbel",
       "script_statut": "EN_ATTENTE",
+      "script_valide_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E17.html"
     },
@@ -206,6 +224,7 @@
       "module": "M4",
       "experts": "Arielle Santé, Pascal Corbel",
       "script_statut": "EN_ATTENTE",
+      "script_valide_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E18.html"
     },
@@ -217,6 +236,7 @@
       "module": "M4",
       "experts": "Retenu : Pascal Corbel",
       "script_statut": "EN_ATTENTE",
+      "script_valide_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E19.html"
     },
@@ -228,6 +248,7 @@
       "module": "M5",
       "experts": "Retenu : Bernard Yannou",
       "script_statut": "RECU",
+      "script_valide_statut": "VALIDE",
       "script_fichier": "E20.txt",
       "page": "video_expert_E20.html"
     },
@@ -239,6 +260,7 @@
       "module": "M5",
       "experts": "Retenu : Pascal Corbel",
       "script_statut": "EN_ATTENTE",
+      "script_valide_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E21.html"
     },
@@ -250,6 +272,7 @@
       "module": "M5",
       "experts": "Retenu : Rémi Waché",
       "script_statut": "EN_ATTENTE",
+      "script_valide_statut": "EN_ATTENTE",
       "script_fichier": "",
       "page": "video_expert_E22.html"
     },
@@ -261,6 +284,7 @@
       "module": "M5",
       "experts": "Retenu : Eneli Vino",
       "script_statut": "RECU",
+      "script_valide_statut": "EN_ATTENTE",
       "script_fichier": "E23.txt",
       "page": "video_expert_E23.html"
     }

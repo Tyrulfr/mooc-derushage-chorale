@@ -1,0 +1,150 @@
+{
+  "date_mise_a_jour": "2026-09-02",
+  "note": "Planning de captation des videos expertise. Une ligne du tableau site = une video a tourner. V = video temoin, E = video expertise.",
+  "jours": [
+    {
+      "date": "2026-09-07",
+      "label": "Lundi 7 septembre",
+      "lieu": "AgroParisTech Palaiseau",
+      "salle": "Salle créativité — Bâtiment E1.301",
+      "reservation": "Confirmée",
+      "creneaux": [
+        {
+          "heure": "09:00",
+          "intervenant": "Stanislas De Lapasse",
+          "organisme": "INPI",
+          "slug": "stanislas-de-lapasse",
+          "videos": ["E8", "E9"]
+        },
+        {
+          "heure": "10:30",
+          "intervenant": "Stephanie Sano",
+          "organisme": "UVSQ",
+          "slug": "stephanie-sano",
+          "videos": ["E6", "E7"]
+        },
+        {
+          "heure": "13:00",
+          "intervenant": "Pascal Corbel",
+          "organisme": "Université Paris-Saclay",
+          "slug": "pascal-corbel",
+          "videos": ["E16", "E19", "E21"]
+        },
+        {
+          "heure": "14:30",
+          "intervenant": "Yoann Montenot",
+          "organisme": "Design Spot",
+          "slug": "yoann-montenot",
+          "videos": ["E13bis"]
+        }
+      ]
+    },
+    {
+      "date": "2026-09-09",
+      "label": "Mercredi 9 septembre",
+      "lieu": "CentraleSupélec, bâtiment Bouygues",
+      "salle": "Le Repaire 006",
+      "reservation": "Confirmée",
+      "creneaux": [
+        {
+          "heure": "09:00",
+          "intervenant": "Bernard Yannou",
+          "organisme": "CentraleSupélec",
+          "slug": "bernard-yannou",
+          "videos": ["E1", "E20"]
+        },
+        {
+          "heure": "10:30",
+          "intervenant": "Virginia Branco",
+          "organisme": "ENS Paris-Saclay",
+          "slug": "virginia-branco",
+          "videos": ["E5", "E10"]
+        },
+        {
+          "heure": "13:00",
+          "intervenant": "Monica Henao",
+          "organisme": "Université Paris-Saclay",
+          "slug": "monica-henao",
+          "videos": [],
+          "note": "Nombre et codes des vidéos expertise non renseignés."
+        }
+      ]
+    },
+    {
+      "date": "2026-09-11",
+      "label": "Vendredi 11 septembre",
+      "lieu": "AgroParisTech Palaiseau",
+      "salle": "Salle créativité — Bâtiment E1.301",
+      "reservation": "Confirmée",
+      "creneaux": [
+        {
+          "heure": "09:00",
+          "intervenant": "Rémi Waché",
+          "organisme": "Université Paris-Saclay",
+          "slug": "rémi-waché",
+          "videos": ["E22"]
+        },
+        {
+          "heure": "10:30",
+          "intervenant": "Soizic Lefeuvre",
+          "organisme": "Université Paris-Saclay",
+          "slug": "soizic-lefeuvre",
+          "videos": ["E11"]
+        },
+        {
+          "heure": "13:00",
+          "intervenant": "Eneli Vino",
+          "organisme": "CNRS",
+          "slug": "eneli-vino",
+          "videos": ["E23"]
+        },
+        {
+          "heure": "14:30",
+          "intervenant": "Fatoumata Aonon",
+          "organisme": "CNRS",
+          "slug": "fatoumata-aonon",
+          "videos": ["E12", "E14"],
+          "note": "Planning : Fatoumata Gnacko."
+        }
+      ]
+    },
+    {
+      "date": "2026-09-24",
+      "label": "Jeudi 24 septembre",
+      "lieu": "IncubAlliance Palaiseau",
+      "salle": "Salle de convivialité, 1er étage",
+      "reservation": "Confirmée",
+      "creneaux": [
+        {
+          "heure": "09:00",
+          "intervenant": "Arielle Santé",
+          "organisme": "IncubAlliance",
+          "slug": "arielle-santé",
+          "videos": ["E13", "E15", "E18"]
+        },
+        {
+          "heure": "10:30",
+          "intervenant": "Antoine Latreille",
+          "organisme": "Université Paris-Saclay",
+          "slug": "antoine-latreille",
+          "videos": ["E17"]
+        },
+        {
+          "heure": "12:00",
+          "intervenant": "Stephanie Oger-Roussel",
+          "organisme": "SATT Paris-Saclay",
+          "slug": "stephanie-oger-roussel",
+          "videos": ["E4"],
+          "note": "Créneau 12h (pas 13h)."
+        },
+        {
+          "heure": "14:30",
+          "intervenant": "Gregoire Burgé",
+          "organisme": "AgroParisTech",
+          "slug": "gregoire-burgé",
+          "videos": ["E2", "E3"]
+        }
+      ]
+    }
+  ]
+}

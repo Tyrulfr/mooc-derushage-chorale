@@ -18,8 +18,8 @@
     },
     {
       "decision": "AJOUTER",
-      "passage": "Paragraphe d'objectif E1 (à insérer après l'ouverture)",
-      "justification": "Objectif : poser le grain E1 (origines + premier pas) et distinguer T1 (« pourquoi oser »). Forme : cadrage d'ouverture — ajout proposé, pas dans le script reçu."
+      "passage": "Paragraphe d'objectif (cadrage apprenant, après l'ouverture)",
+      "justification": "Objectif : annoncer ce que fait la vidéo sans jargon interne. Forme : après la question chorale (et l'intro si filmée) ; pas de « chorale », pas de codes parcours."
     },
     {
       "decision": "GARDER",
@@ -53,8 +53,8 @@
     },
     {
       "decision": "AJOUTER",
-      "passage": "Grille des six origines (descriptif E1)",
-      "justification": "Objectif : donner des mots pour reconnaître d'où part une innovation — compétence visée du tableau de conception. Forme : nommer sans développer ; Bernard complète avec ses termes."
+      "passage": "Transition après les exemples (portes d'entrée, premier geste)",
+      "justification": "Objectif : nommer la diversité des situations à partir des témoins déjà vus — pas une grille abstraite. Forme : langage apprenant, pas de référence interne au parcours."
     },
     {
       "decision": "SUPPRIMER",
@@ -103,24 +103,33 @@
       "texte": "Vous venez d’entendre cinq chercheurs-entrepreneurs répondre à une question : « Pourquoi et comment oser l’innovation ? »"
     },
     {
+      "couleur": "commentaire",
+      "texte": "(Montage : présentation Bernard Yannou possible ici, ou traitée dans l’incrustation d’ouverture — à trancher au montage.)"
+    },
+    {
+      "couleur": "ajout",
+      "exclure_synthese": true,
+      "texte": "Bonjour, je suis Bernard Yannou… [piste d’introduction — à rédiger / ou à retirer si traité au montage]"
+    },
+    {
+      "couleur": "ajout",
+      "texte": "Dans cette vidéo, je vous propose de regarder ces témoignages sous un autre angle : qu’est-ce qui a ouvert la démarche de chacun, et quel a été le premier geste ? Vous venez d’entendre pourquoi ils ont osé — l’utilité, l’impact, une autre inflexion de carrière… Ici, nous nous intéressons à ce qui suit : comment une démarche d’innovation peut commencer, sans entrer encore dans toute la suite du parcours."
+    },
+    {
+      "couleur": "commentaire",
+      "texte": "(Ajout proposé : cadrage apprenant — pas de référence « chorale » ni codes internes. À placer après l’intro si elle est filmée.)"
+    },
+    {
       "couleur": "noir",
       "texte": "Leurs histoires sont différentes, mais elles partagent un même point de départ : un potentiel scientifique ou technologique exceptionnel, que ces chercheurs ont décidé de rapprocher d’un besoin sur un marché."
     },
     {
       "couleur": "commentaire",
-      "texte": "(Objectif / forme : T1 montre plusieurs portes d’entrée — besoin, rencontre, pas de côté, maturation… Pas un seul « potentiel scientifique » comme point de départ unique.)"
+      "texte": "(Forme : les témoignages ne montrent pas un seul point de départ — besoin pressenti, rencontre, pas de côté, maturation longue… Nuancer sans contredire Bernard.)"
     },
     {
       "couleur": "gris",
       "texte": "Piste de reformulation : « Leurs histoires sont différentes. Elles n’ont pas toutes le même point de départ. Ce qui les rapproche, c’est qu’à un moment un potentiel issu de la recherche a rencontré un besoin — mais la porte d’entrée n’est pas la même pour chacun. »"
-    },
-    {
-      "couleur": "ajout",
-      "texte": "Dans cette vidéo, mon rôle est de vous aider à reconnaître d’où part une innovation — et quel premier pas peut l’ouvrir — à partir des témoignages que vous venez d’entendre. Le « pourquoi oser », la chorale vient de le dire : utile, impact, carrière, résultats qui ne restent pas sur étagère. Ici, nous nous concentrons sur l’autre versant de la question : les origines possibles, et le geste qui engage la démarche — pas encore tout le processus qui suivra dans le parcours."
-    },
-    {
-      "couleur": "commentaire",
-      "texte": "(Ajout proposé : poser l’objectif d’E1 dès l’ouverture — à adapter à ta voix.)"
     },
     {
       "couleur": "noir",
@@ -160,11 +169,11 @@
     },
     {
       "couleur": "commentaire",
-      "texte": "(Objectif E1 : préciser d’où il est parti.)"
+      "texte": "(Objectif : préciser que les parcours divergent — sans surcharger « origine ».)"
     },
     {
       "couleur": "ajout",
-      "texte": "— et surtout d’où il est parti."
+      "texte": "— et ce n’est pas la même histoire pour chacun."
     },
     {
       "couleur": "noir",
@@ -184,7 +193,7 @@
     },
     {
       "couleur": "gris",
-      "texte": "Piste d’amorce : « Connaître un domaine d’application ne dit pas encore tout du besoin précis — nous verrons cela dans les vidéos suivantes. »"
+      "texte": "Piste de reformulation : « Avoir une piste d’application ne dit pas encore tout du besoin précis — nous reviendrons sur cela plus loin dans le parcours. »"
     },
     {
       "couleur": "noir",
@@ -200,7 +209,7 @@
     },
     {
       "couleur": "gris",
-      "texte": "Piste : « Ces rencontres semblent parfois relever du hasard — la chorale montre aussi des sérendipités et des pas de côté : on peut les reconnaître sans encore décrire toute la méthode pour les explorer. »"
+      "texte": "Piste de reformulation : « Ces rencontres semblent parfois relever du hasard. Chez Sylvia, un mécanisme étudié révèle un potentiel inattendu ; chez Jean-Jacques, c’est une question posée par un entrepreneur qui ouvre une piste. On n’a pas besoin, ici, d’une méthode pour tout expliquer : il s’agit déjà de reconnaître ce type de situation. »"
     },
     {
       "couleur": "noir",
@@ -228,15 +237,7 @@
     },
     {
       "couleur": "commentaire",
-      "texte": "(Objectif : ce bloc enseigne E2–E5. Forme : levier durée ~5 min — à raccourcir ou renvoyer.)"
-    },
-    {
-      "couleur": "commentaire",
-      "texte": "(Forme : ici, rôle des cellules = aider à identifier l’origine, pas encore à mûrir le projet — E4/E5.)"
-    },
-    {
-      "couleur": "gris",
-      "texte": "Piste : « Les cellules de valorisation peuvent vous aider à identifier et nommer d’où part un projet — pas encore à le faire mûrir. »"
+      "texte": "(Objectif : ce bloc enseigne le processus détaillé — E2–E5. Forme : levier durée ~5 min ; remplacer par une transition ancrée dans les témoins déjà cités.)"
     },
     {
       "couleur": "rouge",
@@ -263,16 +264,8 @@
       "texte": "Ce processus n’est pas une ligne droite. Il se construit progressivement, avec de la méthode et des compétences scientifiques, industrielles, économiques et entrepreneuriales complémentaires."
     },
     {
-      "couleur": "gris",
-      "texte": "Piste d’amorce unique : « Une fois l’origine reconnue, d’autres questions s’ouvrent : caractériser le potentiel, explorer des marchés, faire mûrir technologie et besoin, éprouver une preuve de concept, choisir une voie de transfert. Nous verrons tout cela dans les vidéos suivantes. Ici, l’essentiel est de repérer d’où part l’innovation. »"
-    },
-    {
       "couleur": "ajout",
-      "texte": "Et le premier pas ? Accepter qu’une recherche puisse servir ailleurs ; partir d’un manque observé ; convertir un résultat en utilité ; répondre à une question posée par un acteur extérieur. Ce n’est pas encore tout le processus : c’est le geste qui ouvre la démarche."
-    },
-    {
-      "couleur": "ajout",
-      "texte": "Six portes d’entrée à nommer à partir de T1 (avec vos mots) : tech-push, market-pull, observation d’usage, rencontre, sérendipité, maturation progressive."
+      "texte": "Autrement dit : une application peut déjà se pressentir, comme pour Loïc, Muriel ou Yann ; elle peut aussi émerger d’une rencontre, d’un problème posé, d’un résultat observé presque par hasard — comme pour Sylvia ou Jean-Jacques. Reconnaître ces situations dans vos propres travaux, c’est déjà un premier pas. Caractériser un potentiel, explorer des marchés, faire mûrir une technologie et un besoin : nous y reviendrons ; ce n’est pas l’objet de cette vidéo."
     },
     {
       "couleur": "noir",
@@ -300,7 +293,7 @@
     },
     {
       "couleur": "commentaire",
-      "texte": "(Objectif : doublon T1 — déjà reconnu en ouverture. Évolution du métier → E20 / T11.)"
+      "texte": "(Objectif : doublon avec la vidéo témoin — déjà entendu en ouverture.)"
     },
     {
       "couleur": "rouge",
@@ -328,7 +321,7 @@
     },
     {
       "couleur": "gris",
-      "texte": "Piste de reformulation : « Oser l’innovation, ce n’est donc pas décider immédiatement de créer une start-up, ni abandonner son identité de chercheur. C’est commencer à considérer son expertise scientifique comme un potentiel d’utilité — et identifier d’où pourrait partir une démarche. »"
+      "texte": "Piste de reformulation : « Oser l’innovation, ce n’est donc pas décider immédiatement de créer une start-up, ni abandonner son identité de chercheur. C’est commencer à considérer son expertise scientifique comme un potentiel d’utilité — et se demander quelle situation pourrait l’ouvrir. »"
     },
     {
       "couleur": "noir",
@@ -340,11 +333,11 @@
     },
     {
       "couleur": "commentaire",
-      "texte": "(Forme : trop large pour E1 — motivation = T1 ; marché = E2+.)"
+      "texte": "(Forme : trop large — motivation déjà entendue ; exploration de marché = plus loin.)"
     },
     {
       "couleur": "gris",
-      "texte": "Piste de question finale : « Et vous ? D’où part — ou d’où pourrait partir — votre innovation ? Et quel premier pas pourrait l’ouvrir ? »"
+      "texte": "Piste de question finale : « Et vous ? Dans vos travaux, qu’est-ce qui pourrait ouvrir une démarche — et quel premier geste pourrait l’engager ? »"
     },
     {
       "couleur": "noir",
@@ -356,7 +349,7 @@
     },
     {
       "couleur": "gris",
-      "texte": "Piste de reformulation : « Oser, c’est peut-être cela : ne plus attendre qu’une rencontre fortuite révèle l’utilité de votre recherche, mais oser regarder vos travaux sous l’angle de l’origine et du premier pas — avec curiosité, et en vous faisant accompagner si besoin. »"
+      "texte": "Piste de reformulation : « Oser, c’est peut-être cela : ne plus attendre qu’une rencontre fortuite révèle l’utilité de votre recherche, mais regarder vos travaux avec curiosité — et vous faire accompagner si besoin. »"
     }
   ],
   "mots_estimes": 1000

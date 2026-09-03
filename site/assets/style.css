@@ -372,6 +372,45 @@ tbody tr:last-child td { border-bottom: none; }
   gap: 10px;
   margin-top: 8px;
 }
+.toggle-yn {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+  background: #fff;
+}
+.toggle-yn button {
+  border: 0;
+  background: transparent;
+  padding: 5px 11px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  cursor: pointer;
+}
+.toggle-yn button.is-on[data-value="oui"] {
+  background: var(--accent-soft);
+  color: var(--ok);
+}
+.toggle-yn button.is-on[data-value="non"] {
+  background: #f4efe8;
+  color: var(--warn);
+}
+.tournage-day td {
+  background: #f4f8f9;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--accent-dark);
+}
+.tournage-note {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+}
 .chip {
   display: inline-flex;
   align-items: center;
@@ -478,6 +517,7 @@ tbody tr:last-child td { border-bottom: none; }
   white-space: normal;
 }
 .script-attente-panel { border-left: 4px solid var(--warn); }
+.script-valide-panel { border-left: 4px solid #047857; }
 .script-revue-panel { border-left: 4px solid #0b6e77; }
 .script-revue-demandes {
   margin: 12px 0 0;
