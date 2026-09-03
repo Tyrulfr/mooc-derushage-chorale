@@ -465,7 +465,32 @@ tbody tr:last-child td { border-bottom: none; }
   border: 1px solid var(--line);
 }
 .tournage-table-title {
-  margin: 28px 0 10px;
+  margin: 18px 0 10px;
+}
+.tournage-views__tabs {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 8px 0 4px;
+  background: #fff;
+}
+.tournage-views__tabs button {
+  border: 0;
+  background: transparent;
+  padding: 10px 18px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted);
+  cursor: pointer;
+}
+.tournage-views__tabs button[aria-selected="true"] {
+  background: var(--accent);
+  color: #fff;
+}
+.tournage-views [hidden] {
+  display: none;
 }
 .chip {
   display: inline-flex;
@@ -11230,11 +11255,29 @@ def build_tournage_page(programme_table: dict, experts_profils: dict) -> None:
         f"<div class='stat-card__value'>{scripts_finaux}</div>"
         "<div class='stat-card__meta'>versions validées prompteur</div></div>"
         "</section>"
-        "<h2 class='tournage-table-title'>Planning par journée</h2>"
-        + _tournage_table_html(day_rows)
-        + "<h2 class='tournage-table-title'>Par numéro de vidéo</h2>"
-        "<p class='meta'>Même suivi, classé E1 → E23 (E13bis juste après E13).</p>"
+        "<div class='tournage-views' data-tournage-views>"
+        "<p class='meta'>Choisissez un mode de lecture : un seul tableau s’affiche à la fois.</p>"
+        "<div class='tournage-views__tabs' role='tablist' aria-label='Mode de lecture'>"
+        "<button type='button' role='tab' id='tournage-tab-video' "
+        "aria-controls='tournage-panel-video' aria-selected='true' "
+        "data-tournage-view='video'>Par vidéo</button>"
+        "<button type='button' role='tab' id='tournage-tab-date' "
+        "aria-controls='tournage-panel-date' aria-selected='false' "
+        "data-tournage-view='date'>Par date</button>"
+        "</div>"
+        "<section id='tournage-panel-video' class='tournage-panel' role='tabpanel' "
+        "aria-labelledby='tournage-tab-video' data-tournage-panel='video'>"
+        "<h2 class='tournage-table-title'>Par vidéo</h2>"
+        "<p class='meta'>Classement E1 → E23 (E13bis juste après E13).</p>"
         + _tournage_table_html(numbered_rows)
+        + "</section>"
+        "<section id='tournage-panel-date' class='tournage-panel' role='tabpanel' "
+        "aria-labelledby='tournage-tab-date' data-tournage-panel='date' hidden>"
+        "<h2 class='tournage-table-title'>Par date</h2>"
+        "<p class='meta'>Planning de captation, journée par journée.</p>"
+        + _tournage_table_html(day_rows)
+        + "</section>"
+        "</div>"
     )
     write_text(
         SITE / "tournage.html",
