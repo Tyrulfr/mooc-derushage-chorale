@@ -1,6 +1,17 @@
 {
-  "date_mise_a_jour": "2026-09-02",
-  "note": "Planning de captation des videos expertise. Une ligne du tableau site = une video a tourner. V = video temoin, E = video expertise.",
+  "date_mise_a_jour": "2026-09-03",
+  "note": "Planning de captation des videos expertise. Une ligne du tableau site = une video E a tourner. V = video temoin, E = video expertise.",
+  "animatrice": {
+    "nom": "Monica Henao",
+    "organisme": "Université Paris-Saclay",
+    "role": "Animatrice : intro et outro de chaque vidéo expertise (objectif, debrief de ce qui a été vu, ce qu'il faut retenir).",
+    "creneau": {
+      "date": "2026-09-09",
+      "heure": "13:00",
+      "lieu": "CentraleSupélec, bâtiment Bouygues",
+      "salle": "Le Repaire 006"
+    }
+  },
   "jours": [
     {
       "date": "2026-09-07",
@@ -62,11 +73,12 @@
         },
         {
           "heure": "13:00",
+          "role": "animatrice",
           "intervenant": "Monica Henao",
           "organisme": "Université Paris-Saclay",
           "slug": "monica-henao",
           "videos": [],
-          "note": "Nombre et codes des vidéos expertise non renseignés."
+          "note": "Intro et outro de chaque vidéo expertise : objectif, debrief, à retenir. Pas une intervenante expert."
         }
       ]
     },

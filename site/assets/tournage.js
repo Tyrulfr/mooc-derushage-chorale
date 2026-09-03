@@ -1,6 +1,6 @@
 (function () {
-  var STORAGE_KEY = "mooc-tournage-suivi-v1";
-  var FIELDS = ["filme", "montee", "implemente"];
+  var STORAGE_KEY = "mooc-tournage-suivi-v2";
+  var FIELDS = ["filme", "monte", "valide", "implemente"];
 
   function loadState() {
     try {

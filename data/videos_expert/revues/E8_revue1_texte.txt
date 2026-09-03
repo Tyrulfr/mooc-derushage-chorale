@@ -1,5 +1,5 @@
 Bonjour {JE ME PRESENTE ?}.
-(Oui, présentez-vous. Vous pouvez reprendre l’ouverture de votre seconde vidéo.)
+(Oui, présente-toi. Monica pose déjà le cadre et les objectifs en début de séquence : tu n’as pas besoin de les énumérer. Enchaîne ensuite sur Loïc.)
 
 Je suis Stanislas de Lapasse.
 
@@ -8,21 +8,18 @@ Je suis Chargé d’Affaires à l’INPI, l’Institut National de la Propriét�
 L’INPI accompagne les entrepreneurs dans leurs démarches de valorisation de leurs actifs immatériels, et plus précisément dans leurs démarches de propriété intellectuelle.
 
 Mon travail consiste à aider l’entrepreneur à comprendre la PI, ses enjeux, à identifier ses actifs, élaborer une stratégie PI sur mesure et à la mettre en œuvre concrètement.
-(Piste : après le « Bonjour », enchaîner vite sur les témoignages — comme vous le faites juste après avec Loïc.)
 
 Lors des témoignages, Loïc a abordé la notion de brevet, un outil indispensable de la propriété intellectuelle pour la protection des inventions. Loïc nous a aussi parlé du secret, un autre moyen de protection qui peut s’avérer précieux dans certains cas, par exemple lorsque l’innovation technique n’est pas brevetable.
 
 Nous commençons donc à comprendre que la protection des innovations techniques peut se faire de plusieurs manières, parfois complémentaires comme le dit Loïc : une partie de la technologie doit parfois rester secrète car il serait presque impossible de détecter des contrefaçons. L’autre partie de la technologie doit faire l’objet d’une protection par brevet.
 
 Il faut donc savoir comment s’y prendre pour choisir entre brevet et secret pour la protection des innovations techniques.
-(Objectif « choisir un mode de protection » : bien posé — Loïc, brevet + secret selon la démontrabilité.)
 
 Tout d’abord, un réflexe de base, généralement prévu dans les processus des laboratoires. Maintenir secrète votre innovation technique tant que vous n’avez pas décidé d’une stratégie de protection adaptée et que cette stratégie n’est pas mise en œuvre.
 
 C’est le fond des premières paroles de Sylvia qui nous dit qu’il faut à tout prix protéger son innovation avant d'en parler publiquement.
 
 En effet, la publication détruit la nouveauté de votre innovation et donc plus aucun dépôt de brevet n’est possible. La publication et le choix de son contenu doivent donc tenir compte de cette contrainte.
-(Rappel utile. La vidéo 6 a déjà développé la divulgation : ici une phrase suffit.)
 
 Votre innovation technique secrète s’appelle un savoir-faire.
 
@@ -37,7 +34,6 @@ Cela passe par des mesures contractuelles comme des accords de confidentialité 
 Cela passe aussi par des mesures techniques comme la sécurité de vos systèmes d’informations et de vos locaux.
 
 En cas de problème, vous pouvez alors agir dans le cadre juridique du secret des affaires, car vous aurez pris en amont ces mesures de protection raisonnables.
-(Savoir-faire, preuve, confidentialité : OK pour cette vidéo.)
 
 Une fois le savoir-faire sécurisé vous pouvez commencer à réfléchir à une protection par les brevets.
 
@@ -46,7 +42,6 @@ Il faut alors se poser la question « qu’est-ce qui est brevetable dans mon sa
 Il faut alors regarder si le savoir-faire n’est pas exclu de la brevetabilité par le code de la PI, sujet effleuré dans le témoignage de Muriel.
 
 Les découvertes et les théories scientifiques sont par exemple exclues de la brevetabilité, ainsi que les logiciels considérés en tant que tels.
-(Objectif « brevetabilité » : bien tenu — Muriel.)
 
 Lorsque vous avez déterminé ce qui est brevetable dans votre savoir-faire, vous devez avoir à l’esprit que secret et brevet sont incompatibles.
 
@@ -64,14 +59,11 @@ Si non, la question n’est pas tranchée et des considérations plus stratégiq
 -	Le secret est plus vulnérable que le brevet, les risques de fuites sont multiples aussi bien de façon volontaire que par inadvertance ;
 -	Le brevet et les mesures raisonnables de protection du secret ont tous deux un coût à évaluer qui évolue dans le temps ;
 -	Les investisseurs sont rassurés par le brevet pour de multiples raisons parmi lesquelles une procédure de délivrance et d’opposition qui garantissent au brevet une certaine solidité et une barrière à l’entrée claire, une évaluation financière du brevet peut être envisagée ; il est donc plus simple de lever des fonds avec un brevet qu’avec un secret. Cette relation entre l’investisseur et le brevet sera évoquée dans la vidéo suivante traitant du brevet comme actif stratégique ;
-(Les investisseurs : plutôt la vidéo suivante. Le renvoi est déjà là — ici, une phrase suffit.)
 -	Par ailleurs, comme l’a très bien dit Loïc, vous pouvez analyser la facilité ou difficulté avec laquelle les contrefaçons de vos inventions peuvent être détectées, car si elles sont indétectables, le brevet n’est pas le meilleur outil et le secret prend tout son sens.
 Ce sont des considérations à analyser au cas par cas.
 Une fois ce travail réalisé, la stratégie de protection de vos technologies doit apparaître clairement.
-(Critères de choix : à garder.)
 
 Ce travail est bien entendu à mener non seulement pour toutes les innovations technologiques matérielles, mais aussi pour les logiciels dont certaines fonctionnalités pourraient être protégées par brevet.
-(Logiciel : OK.)
 
 L’INPI, l’Institut National de la Propriété Industrielle, examine et délivre les titres de PI.
 
@@ -82,5 +74,3 @@ Pour vous entrepreneurs, en fin de compte le processus est simple, vous créez u
 L’INPI peut vous éclairer sur chacun de ces sujets.
 
 Je vous remercie.
-(Pour ~5 min, le processus final peut se serrer.
-Piste : ajouter Sylvia — elle n’a pas breveté qu’une molécule, mais le mécanisme puis les séries : la stratégie se construit en plusieurs volets. C’est l’un des trois axes de cette vidéo.)

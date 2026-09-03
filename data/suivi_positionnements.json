@@ -1,5 +1,5 @@
 {
-  "date_mise_a_jour": "2026-09-02",
+  "date_mise_a_jour": "2026-09-03",
   "note": "Suivi des positionnements intervenants. Proposition de notre part derivee du programme. Reponse, besoin exprime, preferences et proposition finale saisis au fil des retours.",
   "intervenants": [
     {
@@ -8,15 +8,15 @@
       "organisme": "Université Paris-Saclay",
       "proposition_notre_part": "T4 (E6, E7) ; T5 (E8, E9)",
       "capsules": [
-        "T5"
+        "T9"
       ],
       "videos_expert": [
-        "E9"
+        "E17"
       ],
       "reponse": "",
       "besoin_exprime": "",
       "positionnement_preferences": "",
-      "proposition_finale": "E9"
+      "proposition_finale": "E17"
     },
     {
       "nom": "Arielle Santé",
@@ -24,19 +24,19 @@
       "organisme": "IncubAlliance",
       "proposition_notre_part": "T7 (E12, E13, E13bis) ; T8 (E14, E15) ; T9 (E16, E17) ; T10 (E18, E19) ; T11 (E20, E21)",
       "capsules": [
-        "T4",
-        "T5",
-        "T6"
+        "T7",
+        "T8",
+        "T10"
       ],
       "videos_expert": [
-        "E7",
-        "E8",
-        "E10"
+        "E13",
+        "E15",
+        "E18"
       ],
       "reponse": "",
       "besoin_exprime": "",
       "positionnement_preferences": "",
-      "proposition_finale": "E7 ; E8 ; E10"
+      "proposition_finale": "E13 ; E15 ; E18"
     },
     {
       "nom": "Bernard Yannou",

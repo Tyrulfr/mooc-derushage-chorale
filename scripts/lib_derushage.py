@@ -15,6 +15,7 @@ MATCH_DATA = DATA / "match"
 NAV_ITEMS = (
     ("index.html", "Accueil"),
     ("tableau_de_bord.html", "Tableau de bord"),
+    ("tournage.html", "Tournage"),
     ("suivi_intervenants.html", "Suivi Intervenants"),
     ("edito.html", "Edito"),
     ("fichiers_travail.html", "Fichiers de travail"),

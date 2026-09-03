@@ -458,6 +458,12 @@ tbody tr:last-child td { border-bottom: none; }
   font-size: 12px;
   font-weight: 500;
 }
+.tournage-role {
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  border: 1px solid var(--line);
+}
 .chip {
   display: inline-flex;
   align-items: center;
@@ -4285,7 +4291,7 @@ def build_home(capsules: list[dict], segments: list[dict]) -> None:
             "tournage.html",
             "●",
             "Tournage",
-            "Planning de captation des videos expertise, textes et suivi filme / monte / implemente.",
+            "Planning de captation : scripts, filmé, monté, validé, implémenté.",
         ),
         (
             "suivi_intervenants.html",
@@ -10917,40 +10923,25 @@ def _load_tournage() -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def _tournage_texte_etat(code: str) -> dict:
-    """Lien vers le texte le plus avance : script validé > proposition > revue > script reçu."""
+def _tournage_oui_non_html(oui: bool, href: str = "") -> str:
+    if oui and href:
+        return f'<a href="{escape(href)}">Oui</a>'
+    if oui:
+        return "<strong>Oui</strong>"
+    return '<span class="meta">Non</span>'
+
+
+def _tournage_script_flags(code: str) -> tuple[bool, str, bool, str]:
+    """Script reçu / script final (validé) pour une vidéo E."""
     if not code:
-        return {"etat": "attente", "href": "", "label": "En attente"}
+        return False, "", False, ""
+    recu = _load_expert_script_recu(code)
+    has_script = recu.get("statut") == "RECU" and bool(recu.get("contenu"))
+    script_href = _script_recu_doc_name(code) if has_script else ""
     valide = _load_expert_script_valide(code)
-    if valide.get("statut") == "VALIDE" and valide.get("contenu"):
-        return {
-            "etat": "valide",
-            "href": _script_valide_doc_name(code),
-            "label": "Script validé",
-        }
-    if _load_expert_standalone_proposition(code):
-        return {
-            "etat": "final",
-            "href": _texte_final_doc_name(code),
-            "label": "Script final",
-        }
-    revues = _load_expert_script_revues(code)
-    if revues:
-        last = revues[-1]
-        numero = last.get("numero") or 1
-        return {
-            "etat": "revue",
-            "href": _revue_expert_doc_name(code, int(numero)),
-            "label": f"Revue {numero}",
-        }
-    script = _load_expert_script_recu(code)
-    if script.get("statut") == "RECU" and script.get("contenu"):
-        return {
-            "etat": "script",
-            "href": _script_recu_doc_name(code),
-            "label": "Script reçu",
-        }
-    return {"etat": "attente", "href": "", "label": "En attente"}
+    has_final = valide.get("statut") == "VALIDE" and bool(valide.get("contenu"))
+    final_href = _script_valide_doc_name(code) if has_final else ""
+    return has_script, script_href, has_final, final_href
 
 
 def _tournage_toggle_html(row_id: str, field: str, label: str) -> str:
@@ -10964,13 +10955,14 @@ def _tournage_toggle_html(row_id: str, field: str, label: str) -> str:
 
 
 def build_tournage_page(programme_table: dict, experts_profils: dict) -> None:
-    """Onglet Tournage : planning de captation + suivi filme / monte / implemente."""
+    """Onglet Tournage : planning + Script / Script final / Filmé / Monté / Validé / Implémenté."""
     planning = _load_tournage()
     inventory = {item["code"]: item for item in _inventory_videos_expert(programme_table, experts_profils)}
     catalogue = {item["code"]: item for item in _load_expert_videos_catalogue()}
     rows: list[str] = []
     video_count = 0
     pending_text = 0
+    scripts_finaux = 0
 
     for jour in planning.get("jours") or []:
         lieu_bits = [
@@ -10982,26 +10974,31 @@ def build_tournage_page(programme_table: dict, experts_profils: dict) -> None:
         if jour.get("reservation"):
             day_label += f" · Réservation {jour['reservation']}"
         rows.append(
-            f"<tr class='tournage-day'><td colspan='7'>{escape(day_label)}</td></tr>"
+            f"<tr class='tournage-day'><td colspan='9'>{escape(day_label)}</td></tr>"
         )
         for creneau in jour.get("creneaux") or []:
+            role = (creneau.get("role") or "expert").strip().lower()
+            is_animatrice = role == "animatrice"
             videos = list(creneau.get("videos") or [])
-            if not videos:
+            if is_animatrice:
                 videos = [""]
+            elif not videos:
+                continue
             for code in videos:
-                video_count += 1
+                if not is_animatrice:
+                    video_count += 1
                 row_id = code or f"{creneau.get('slug') or 'slot'}-{jour.get('date')}-{creneau.get('heure')}"
                 meta = inventory.get(code) or catalogue.get(code) or {}
-                titre = meta.get("titre") or (creneau.get("note") if not code else "Titre à préciser")
-                if code:
+                titre = meta.get("titre") or ""
+                if is_animatrice:
                     video_cell = (
-                        f"<a href='{_expert_video_page_name(code)}'><strong>{escape(code)}</strong></a>"
-                        f"<span class='tournage-note'>{escape(titre)}</span>"
+                        "<strong>Intros / outros</strong>"
+                        "<span class='tournage-note'>Objectif, debrief, à retenir — toutes les vidéos expertise.</span>"
                     )
                 else:
                     video_cell = (
-                        "<strong>À préciser</strong>"
-                        f"<span class='tournage-note'>{escape(creneau.get('note') or 'Codes expertise non renseignés.')}</span>"
+                        f"<a href='{_expert_video_page_name(code)}'><strong>{escape(code)}</strong></a>"
+                        f"<span class='tournage-note'>{escape(titre)}</span>"
                     )
                 date_cell = (
                     f"{escape(jour.get('label') or '')}"
@@ -11011,7 +11008,10 @@ def build_tournage_page(programme_table: dict, experts_profils: dict) -> None:
                 intervenant = creneau.get("intervenant") or ""
                 slug_val = creneau.get("slug") or slug(intervenant)
                 organisme = creneau.get("organisme") or ""
-                if slug_val and slug_val != "monica-henao":
+                if is_animatrice:
+                    nom_html = f"<strong>{escape(intervenant)}</strong>"
+                    nom_html += "<span class='tournage-note'>Animatrice</span>"
+                elif slug_val:
                     nom_html = f"<a href='suivi_intervenant_{escape(slug_val)}.html'>{escape(intervenant)}</a>"
                 else:
                     nom_html = escape(intervenant)
@@ -11019,49 +11019,64 @@ def build_tournage_page(programme_table: dict, experts_profils: dict) -> None:
                 if organisme:
                     intervenant_cell += f"<span class='tournage-note'>{escape(organisme)}</span>"
                 note = creneau.get("note") or ""
-                if note and code:
+                if note:
                     intervenant_cell += f"<span class='tournage-note'>{escape(note)}</span>"
 
-                texte = _tournage_texte_etat(code)
-                if texte["href"]:
-                    texte_cell = (
-                        f"<a href='{escape(texte['href'])}'>{escape(texte['label'])}</a>"
-                    )
-                else:
-                    pending_text += 1
-                    texte_cell = f"<span class='meta'>{escape(texte['label'])}</span>"
+                has_script, script_href, has_final, final_href = _tournage_script_flags(code)
+                if not is_animatrice:
+                    if not has_script:
+                        pending_text += 1
+                    if has_final:
+                        scripts_finaux += 1
 
                 rows.append(
                     "<tr>"
                     f"<td>{video_cell}</td>"
                     f"<td>{date_cell}</td>"
                     f"<td>{intervenant_cell}</td>"
-                    f"<td>{texte_cell}</td>"
+                    f"<td>{_tournage_oui_non_html(has_script, script_href)}</td>"
+                    f"<td>{_tournage_oui_non_html(has_final, final_href)}</td>"
                     f"<td>{_tournage_toggle_html(row_id, 'filme', 'Filmé')}</td>"
-                    f"<td>{_tournage_toggle_html(row_id, 'montee', 'Montée')}</td>"
+                    f"<td>{_tournage_toggle_html(row_id, 'monte', 'Monté')}</td>"
+                    f"<td>{_tournage_toggle_html(row_id, 'valide', 'Validé')}</td>"
                     f"<td>{_tournage_toggle_html(row_id, 'implemente', 'Implémenté')}</td>"
                     "</tr>"
                 )
 
     recus = video_count - pending_text
+    animatrice = planning.get("animatrice") or {}
+    animatrice_nom = animatrice.get("nom") or "Monica Henao"
+    animatrice_role = animatrice.get("role") or (
+        "Animatrice : intro et outro de chaque vidéo expertise "
+        "(objectif, debrief de ce qui a été vu, ce qu'il faut retenir)."
+    )
     body = (
-        "<p class='meta'>Une ligne = une vidéo expertise à tourner. "
-        "Le lien Texte pointe vers le livrable le plus avancé "
-        "(script final, sinon revue, sinon script reçu). "
-        "Filmé / Montée / Implémenté se cochent ici ; l’état est mémorisé dans ce navigateur.</p>"
+        f"<p class='tournage-role'><strong>{escape(animatrice_nom)}</strong> n’est pas une intervenante. "
+        f"{escape(animatrice_role)} "
+        "Créneau mercredi 9 septembre, 13h, CentraleSupélec (Le Repaire 006).</p>"
+        "<p class='meta'>Une ligne = une vidéo expertise à tourner, sauf la ligne "
+        "<strong>Intros / outros</strong> (animatrice). "
+        "<strong>Script</strong> = texte reçu ; <strong>Script final</strong> = version validée "
+        "pour le prompteur. Oui est cliquable vers le fichier. "
+        "Filmé / Monté / Validé / Implémenté se cochent ici "
+        "(mémorisés dans ce navigateur).</p>"
         "<section class='stats-grid'>"
         "<div class='stat-card'><div class='stat-card__label'>Vidéos au planning</div>"
         f"<div class='stat-card__value'>{video_count}</div>"
         f"<div class='stat-card__meta'>{len(planning.get('jours') or [])} journées confirmées</div></div>"
-        "<div class='stat-card'><div class='stat-card__label'>Textes disponibles</div>"
+        "<div class='stat-card'><div class='stat-card__label'>Scripts reçus</div>"
         f"<div class='stat-card__value'>{recus}</div>"
         f"<div class='stat-card__meta'>{pending_text} encore en attente</div></div>"
+        "<div class='stat-card'><div class='stat-card__label'>Scripts finaux</div>"
+        f"<div class='stat-card__value'>{scripts_finaux}</div>"
+        "<div class='stat-card__meta'>versions validées prompteur</div></div>"
         "</section>"
         "<div class='table-wrap'><table><thead><tr>"
-        "<th>Vidéo</th><th>Date</th><th>Intervenant</th><th>Texte</th>"
-        "<th>Filmé</th><th>Montée</th><th>Implémenté</th>"
+        "<th>Vidéo</th><th>Date</th><th>Personne</th>"
+        "<th>Script</th><th>Script final</th>"
+        "<th>Filmé</th><th>Monté</th><th>Validé</th><th>Implémenté</th>"
         "</tr></thead><tbody>"
-        + ("\n".join(rows) if rows else "<tr><td colspan='7'>Aucun créneau de tournage.</td></tr>")
+        + ("\n".join(rows) if rows else "<tr><td colspan='9'>Aucun créneau de tournage.</td></tr>")
         + "</tbody></table></div>"
     )
     write_text(
