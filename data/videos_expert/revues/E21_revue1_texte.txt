@@ -1,52 +1,35 @@
-MOOC « L’Esprit d’innover ! Pourquoi pas Vous ! » — Revue de script
-Vidéo expertise 21 — Innover comme processus d’apprentissage — Pascal Corbel, Université Paris-Saclay
+MOOC « L’Esprit d’innover ! Pourquoi pas Vous ! »
+Vidéo expertise 21 — Innover comme processus d’apprentissage — Pascal Corbel
+Rattachée à la vidéo témoin 11 — « Évolution dans le métier du chercheur ou de la chercheuse » — Muriel Thomas, Loïc Rajjou, Jean-Jacques Greffet.
 
-Objectif pédagogique : incertitude, essais, erreurs, pivot et progression plutôt que réussite linéaire ; leviers existants pour dépasser les freins.
-Rattachée à : Vidéo témoin 11 — « Évolution dans le métier du chercheur ou de la chercheuse » — Muriel Thomas, Loïc Rajjou, Jean-Jacques Greffet.
-Durée cible : ≈ 5 minutes, plus ou moins 2 min. Script reçu : 541 mots ≈ 3 min 50 à l’oral — la seule des trois dans la fourchette.
+(Le contenu est aligné, et le lien que tu fais entre apprentissage et étagement des financements est exactement ce qu’on attendait sur les leviers. On ne touche pas à ton texte : on te propose seulement des inserts pour fluidifier et relier ta vidéo à la vidéo témoin. À prendre tels quels, à raccourcir ou à ignorer.)
 
-(Script conforme au brief. Le lien que tu établis entre le processus d’apprentissage et l’étagement des financements répond exactement à la demande de focaliser le discours sur les leviers existants : c’est le passage le plus utile des trois vidéos. Ton texte n’est pas modifié. La durée étant déjà bonne, les raccords ci-dessous sont facultatifs, à l’exception du dernier : ta question finale mérite d’être appuyée sur ce que les apprenants viennent de voir, sinon elle reste une intuition.)
+(Durée : 541 mots, soit 3 min 50 — tu es dans la cible. Les inserts sont donc facultatifs, sauf le dernier : il fait dire ta conclusion par les chercheurs, ce qui la rend beaucoup plus forte.)
 
-(Présentation : même remarque que pour les deux autres — deux phrases pour te situer en ouverture.)
-
-(Longueur : les quatre raccords proposés ci-dessous ajoutent, à eux tous, environ 250 mots, ce qui porterait la vidéo à 5 min 40. Ce n’est pas nécessaire ici : la seule proposition 4 la place à environ 4 min 30, ce qui est le bon format.)
-
-Texte proposé — ton texte, avec nos propositions de raccord
+(Points de forme : ajouter deux phrases de présentation en ouverture ; Monica pose déjà les objectifs. Coquilles avant prompteur : « accros », « peu à peu », « fruste » ou « rustique ». Et le « De même » du premier paragraphe enchaîne sur une négation : « Il est vrai que tous les partenaires… acceptent une certaine dose de risque, mais cela ne signifie pas… » se lit mieux.)
 
 Innover, c’est s’aventurer dans l’inconnu. Mais cela ne veut évidemment pas dire que l’on a l’âme d’une aventurière ou d’un aventurier permanent. De même, tous les partenaires d’un projet innovant acceptent une certaine dose de risque. Mais cela ne signifie pas qu’ils sont accrocs au risque maximal. En réalité conduire un projet innovant, c’est piloter un processus d’apprentissage qui va peut à peu réduire les zones d’incertitudes et, si le projet est effectivement viable, en réduire les risques à chaque étape.
 
-(Deux coquilles : « accrocs » → « accros » ; « peut à peu » → « peu à peu ». Une remarque de logique : le « De même » enchaîne sur une phrase négative, ce qui rend la construction bancale à l’oral. « Il est vrai que tous les partenaires d’un projet innovant acceptent une certaine dose de risque, mais cela ne signifie pas… » se lit mieux au prompteur.)
-
-(PROPOSITION 1 — facultative, à coller ici, après « … à chaque étape. ». Environ 40 mots, 20 secondes. Elle installe ta distinction entre goût du risque et enthousiasme raisonné avec la première phrase du montage que les apprenants viennent de voir.
+(INSERT 1 — facultatif, à coller ici :
 « Muriel Thomas ouvre d’ailleurs la vidéo que vous venez de voir sur une phrase très simple : il ne faut pas hésiter à y aller. Ce n’est pas le goût du risque qui parle là, c’est l’expérience d’un projet mené jusqu’au bout. »)
 
 C’est vrai au niveau technologique. L’échelle bien connue des TRL (technology readiness level) reflète, d’une manière certes un peu trop linéaire par rapport à la réalité, cette avancée progressive d’un simple concept à un système complet commercialisé. Mais c’est vrai aussi sur les autres dimensions du projet : quelles applications prioritaires ? Quels clients viser ? De quelles compétences aura-t-on besoin ? Quels sont les fournisseurs et partenaires potentiels ? Comment je transforme mon offre en revenus (vente, location, abonnement, valorisation de la technologie sous forme de royalties…) ? Les questions sont multiples et interdépendantes. Au départ, on est donc en face d’une multitude de chemins possibles. Les décisions prises ouvrent de nouvelles questions mais ferment certains des chemins (sauf retour en arrière). Parfois on se heurte à une impasse et il faut revoir en profondeur le projet. C’est ce que dans le monde entrepreneurial on appelle des « pivots ».
 
-(Tu explicites le sigle TRL, c’est ce qu’il faut pour un public de sensibilisation. « Bien connue » peut se retirer : une partie des apprenants la découvre ici.)
-
-(PROPOSITION 2 — à coller ici, après « … on appelle des « pivots ». ». Environ 55 mots, 25 secondes. Intérêt particulier : la notion de pivot est ainsi cautionnée par un physicien plutôt que par le vocabulaire des start-up, ce qui la rend acceptable pour un public académique.
+(INSERT 2 — à coller ici. Intérêt : la notion de pivot est ainsi cautionnée par un physicien plutôt que par le vocabulaire des start-up.
 « La notion vous a d’ailleurs déjà été présentée, et par un physicien plutôt que par le monde des start-up. Dans la vidéo consacrée à l’équipe, Jean-Jacques Greffet rappelle que la grande majorité des projets pivotent, et qu’en conséquence l’évaluation technique initiale d’un projet n’a presque aucune valeur. Ce qui compte, c’est la capacité à prendre un virage. »)
 
 Cette approche du projet signifie que l’on va tenter le plus possible de concevoir et d’interpréter les différentes activités liées au projet comme des expérimentations. Il ne s’agit pas seulement ici des essais de prototypes, même s’ils en font partie. C’est aussi tester un concept lors d’une rencontre avec un client potentiel. C’est aussi essayer de trouver un client-pilote qui accepte de tester votre offre en conditions réelles. C’est aussi, quand c’est possible, commercialiser une première version un peu frustre du produit (les startuppers parlent de « MVP » pour « Minimum Viable Product ») pour glaner des retours clients, des données d’utilisation et parfois de vente si cette v0 n’est pas gratuite.
 
-(Coquille : « un peu frustre » → « fruste », ou simplement « rustique », plus courant à l’oral.)
-
-(Cœur de la vidéo, et bonne gradation : prototype, entretien client, client-pilote, MVP. Une limite en revanche, et nous te la signalons comme telle : cette dernière marche n’a aucun équivalent dans notre corpus, et pour de bonnes raisons — en santé, les essais cliniques ne se contournent pas, et Sylvia Cohen-Kaminski n’aurait pas pu commercialiser une v0. Plutôt qu’un renvoi, l’ouverture est ici de le dire.)
-
-(PROPOSITION 3 — à coller ici, après « … n’est pas gratuite. ». Environ 55 mots, 25 secondes. Elle prévient l’objection d’une partie du public de Paris-Saclay, très présent en santé et en biologie.
+(INSERT 3 — à coller ici. Le MVP est la seule marche sans équivalent dans nos témoignages : en santé, les essais cliniques ne se contournent pas. Autant le dire, une partie du public est concernée.
 « Un mot de prudence sur cette dernière forme. Elle se transpose très bien en logiciel ou en instrumentation, beaucoup moins en santé, où les essais cliniques ne se contournent pas. Dans ces cas-là, l’expérimentation prend d’autres formes — un accord avec un centre clinique, un partenariat industriel, un démonstrateur — mais la logique d’apprentissage, elle, ne change pas. »)
 
 Les données ainsi recueillies et analysées serviront pour alimenter les décisions ultérieures, mais constitueront aussi la base de l’argumentation pour convaincre les partenaires, notamment financiers. Il y a donc un lien direct entre ce processus d’apprentissage et les leviers disponibles pour lever les freins à un projet. On mise rarement 15 millions d’euros sur la base d’un simple prototype de laboratoire. Par contre, on peut investir 100 000 € pour voir, puis 1,5 millions pour l’industrialisation et la commercialisation à petite échelle. Une fois la preuve qu’il y a une réponse du marché, il sera beaucoup moins difficile de lever 15 millions pour accélérer sa croissance.
 
-(C’est le passage que nous attendions le plus, et la gradation chiffrée est parlante. Deux précautions. D’abord un cadrage : les apprenants ont déjà vu, au module 3, deux vidéos consacrées à la chaîne des financements et à la logique des investisseurs. Ta démonstration ne les répète pas — tu montres l’inverse, que c’est l’apprentissage qui débloque le financement — mais une demi-phrase de raccord éviterait l’impression de redite, par exemple : « Vous avez vu comment la chaîne des financements était étagée ; voici pourquoi elle l’est. » Ensuite, préciser d’un mot que ces ordres de grandeur sont indicatifs et varient fortement selon les secteurs, la santé et le logiciel n’ayant pas les mêmes paliers.)
+(Deux précautions sur ce passage, qui est le meilleur des trois vidéos. Les apprenants ont déjà vu la chaîne des financements au module 3 : une demi-phrase de raccord suffit à éviter l’impression de redite, par exemple « vous avez vu comment cette chaîne était étagée ; voici pourquoi elle l’est ». Et préciser d’un mot que les ordres de grandeur sont indicatifs, la santé et le logiciel n’ayant pas les mêmes paliers.)
+
+(INSERT 4 — le seul qu’on te recommande vraiment. À coller ici, juste avant ta chute : posée seule, ta question reste une intuition, alors que les trois chercheurs y ont répondu quelques minutes plus tôt.
+« Regardez ce que disent les chercheurs que vous venez d’entendre. Loïc Rajjou siège au comité scientifique de son entreprise tout en gardant ses fonctions d’enseignant-chercheur, et ce qu’il met en avant, c’est son impartialité et sa neutralité. Jean-Jacques Greffet est au conseil de surveillance depuis la création. Muriel Thomas, elle, retient de tout son parcours que l’innovation est un fabuleux intégrateur social : elle a rendu visible à quoi servaient trente ans de laboratoire. Aucun des trois ne décrit une prise de risque. Tous les trois décrivent une manière de continuer à chercher. »)
 
 S’il y a une posture de l’innovateur, ce n’est pas celle d’un casse-cou prêt à tout risquer sur un coup de poker. C’est plutôt celle d’un humain cherchant peu à peu à mieux comprendre les différentes dimensions de son projet. C’est loin d’être antinomique de celle d’une chercheuse ou d’un chercheur, non ?
 
-(Excellente chute, et c’est bien ici qu’elle doit rester : la vidéo témoin porte précisément sur ce que l’innovation change au métier de chercheur. Mais elle mérite d’être appuyée : posée telle quelle, ta question reste une intuition, alors que les trois chercheurs y ont déjà répondu quelques minutes plus tôt.)
-
-(PROPOSITION 4 — la seule que nous te recommandons vraiment sur cette vidéo. À coller juste avant « S’il y a une posture de l’innovateur… ». Environ 90 mots, 40 secondes.
-« Regardez ce que disent les chercheurs que vous venez d’entendre. Loïc Rajjou siège au comité scientifique de son entreprise tout en gardant ses fonctions d’enseignant-chercheur, et ce qu’il met en avant, c’est son impartialité et sa neutralité. Jean-Jacques Greffet est au conseil de surveillance depuis la création. Muriel Thomas, elle, retient de tout son parcours que l’innovation est un fabuleux intégrateur social : elle a rendu visible à quoi servaient trente ans de laboratoire. Aucun des trois ne décrit une prise de risque. Tous les trois décrivent une manière de continuer à chercher. »)
-
-(Voir aussi la remarque sur la vidéo 19 : le paragraphe de conclusion de la 19 résume la présente vidéo et se termine par la même question. Nous proposons de garder l’expérimentation et le rapprochement avec la recherche ici, et de clore la 19 sur l’apprentissage social.)
-
-(Point d’arbitrage de notre côté, sans conséquence pour toi : l’intitulé de ce grain dans nos référentiels mentionnait encore les freins personnels — temps, légitimité, entourage, doute. Ce n’est pas ce que porte ton script, et c’est cohérent : ces freins-là sont traités par la vidéo témoin de conclusion, et le brief que nous t’avons envoyé demandait bien l’apprentissage et les leviers. Nous alignons l’intitulé sur « Innover comme processus d’apprentissage ». Aucune modification à faire de ton côté.)
+(Excellente chute, à garder ici : c’est le sujet même de la vidéo témoin. Voir la remarque sur la vidéo 19, dont la conclusion actuelle résume la présente vidéo.)

@@ -1,22 +1,20 @@
-Objet : Re: MOOC L'Esprit d'innover — script vidéo 23 (version révisée)
+Objet : Re: MOOC L'Esprit d'innover — retour sur votre script révisé (vidéo 23)
 
 Bonjour Eneli,
 
-Merci pour cette reprise : le texte répond bien au cadrage.
+Merci pour cette nouvelle version : elle répond à tout ce que nous vous avions demandé. L'enchaînement des dispositifs vers la sécurisation juridique arrive maintenant dès la première phrase, la durée est juste — environ 757 mots, soit 5 minutes à l'oral —, la confidentialité et les clauses de publication sont resserrées, et la conclusion renvoie vers la structure de valorisation. Sur le fond juridique, nous n'avons rien à ajouter.
 
-Ce qui est acquis
-- Enchaînement rapide dispositifs (témoin 12) → sécurisation juridique
-- Durée : environ 750–780 mots, compatible avec ~5 minutes
-- Confidentialité et publications resserrées
-- Conclusion : contacter tôt la structure de valorisation
+Nous n'avons donc modifié aucune de vos phrases. Ce que vous trouverez dans le document joint, ce sont quatre propositions d'insert vers la vidéo témoin : des phrases rédigées, numérotées, avec l'endroit exact où les coller. À prendre telles quelles, à raccourcir, ou à ignorer.
 
-Ci-joint le script avec deux ou trois remarques optionnelles entre parenthèses (cadrage pédagogique / oral prompteur uniquement) — pas de demande de fond.
+Pourquoi ces inserts. Votre texte tient parfaitement debout seul, ce qui est une qualité, mais il ne renvoie qu'une fois à ce que les apprenants viennent de voir, par une formule générale — « comme nous l'avons vu dans la vidéo précédente ». Or la vidéo témoin 12 offre trois accroches très concrètes vers votre sujet. Jean-Jacques Greffet dit que le programme RISE et IncubAlliance lui ont surtout fait « beaucoup d'introductions » : une introduction, c'est déjà une conversation avec un tiers. Yann Monier raconte avoir participé à plusieurs formations et événements pour travailler son pitch, et la vidéo cite Star Thèse, le Paris-Saclay Summit, la BIG, Genesis Light : pitcher, c'est parler de son projet devant des inconnus. Et le montage se termine sur la cohorte, ces échanges entre entrepreneurs d'une même promotion, précieux et encadrés par aucun contrat. Aucune de ces trois séquences ne parle de droit — c'est précisément votre apport — mais chacune décrit le moment exact où votre sujet commence.
 
-Une seule retouche utile avant prompteur : la phrase « Les projets collaboratifs comportant nécessairement une part d’aléa. » (forme inachevée) → « comportent ».
+Sur la durée : votre script étant déjà à la cible, les quatre inserts ajoutent environ 155 mots, soit un peu plus d'une minute, ce qui porterait la vidéo à environ 6 minutes — toujours dans la fourchette. Si vous préférez ne pas allonger, les inserts 1 et 2 sont les plus utiles ; les deux autres sont du confort.
 
-Le reste peut rester tel quel ; les autres pistes sont facultatives.
+Deux points de forme, enfin, à corriger avant le prompteur : la phrase « Les projets collaboratifs comportant nécessairement une part d'aléa. », dont la proposition principale manque — « comportent » suffit ; et « envoyer les précisions … dans un contrat ultérieur », où « renvoyer » ou « reporter » se comprendrait mieux à l'oral.
 
-Si vous validez cette version (avec ou sans les micro-ajustements), on l’arrête pour le tournage.
+Ci-joint, votre texte en noir et nos propositions en orange : revue_E23_2.doc
+
+Si vous souhaitez en parler avant de trancher, un point Teams est possible. Dès que vous nous confirmez la version retenue, nous l'arrêtons pour le tournage.
 
 Bien cordialement,
 Christophe Dubois
