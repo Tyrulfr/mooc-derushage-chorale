@@ -6,17 +6,28 @@ Merci pour les trois textes, et pour la rapidité.
 
 Le contenu est aligné : c'est bien l'angle que tu avais demandé, et nous n'avons rien à redire sur le fond. Nous n'avons donc touché à aucune de tes phrases.
 
-Ce que tu trouveras dans les documents joints, ce sont des inserts : des phrases rédigées, numérotées, avec l'endroit exact où les coller, pour fluidifier le propos et le relier à la vidéo témoin que les apprenants viennent de voir. À prendre tels quels, à raccourcir ou à ignorer.
+Les premiers aperçus des vidéos témoins
+Tu peux désormais voir les trois montages auxquels tes vidéos sont rattachées : la 9, « Partenariats et posture : construire une équipe », la 10, « Enrichir son langage », et la 11, « Évolution dans le métier du chercheur ou de la chercheuse ». C'est exactement ce que les apprenants auront vu juste avant ta prise de parole.
+[LIEN À COMPLÉTER]
+Ce sont des premiers montages, encore provisoires, mais la parole des chercheurs y est stabilisée. L'idée est simplement que tu puisses adapter ton propos si tu le souhaites, en sachant ce qui vient d'être dit.
 
-Deux points seulement, en plus.
+Ce que nous te proposons
+Dans les documents joints, ton texte est en noir, inchangé. En orange, des inserts : des phrases rédigées, numérotées, avec l'endroit exact où les coller, pour fluidifier le propos et le relier à ce que les chercheurs viennent de dire. Six pour la 16, cinq pour la 19, quatre pour la 21.
 
-La durée. Les trois scripts sont courts par rapport à la cible de 5 minutes (± 2 min) : 3 min 50 pour la 21, ce qui est bon, mais 2 min 50 pour la 19 et 2 min 20 pour la 16, qui passe sous le plancher. Les inserts comblent l'écart : six pour la 16, cinq pour la 19, quatre pour la 21.
+Un exemple, pour te donner le ton. Ta liste d'ouverture en 16, les chercheurs la font eux-mêmes, en creux : Loïc Rajjou dit trois fois de suite « on ne sait pas faire », et Jean-Jacques Greffet énumère à peu près tes domaines — gestion, marketing, ventes, comptabilité, RH, logistique — pour conclure « et là, on avait zéro compétence ». Il suffit d'une phrase avant ton « Vous n'avez pas tout cela ? » et ta chute porte deux fois plus.
 
-La conclusion de la 19. Son dernier paragraphe annonce la vidéo 21, et les deux se terminent sur la même question, presque mot pour mot. Nous te proposons de garder l'expérimentation et le rapprochement avec la recherche en 21, et de clore la 19 sur l'apprentissage social — une conclusion de rechange t'est proposée dans le document. L'inverse nous convient aussi : l'essentiel est que les deux fins diffèrent. À toi de choisir.
+Transparence sur la méthode : ces inserts ont été rédigés avec l'aide d'une IA, à partir des transcriptions des montages, puis relus et vérifiés de notre côté — chaque renvoi correspond bien à ce que disent les chercheurs à l'écran, sans citation inventée. Le fond, l'angle et la formulation finale restent les tiens.
 
-Il manque aussi une courte présentation en ouverture des trois vidéos — nom, fonction, M2 EMPI. Monica pose le cadre et les objectifs en début de séquence, tu n'as donc pas à les énumérer, seulement à te situer. Quelques coquilles sont signalées au fil du texte.
+Et c'est toi qui choisis : ton texte tel que tu l'as écrit, ou ton texte avec les inserts, en tout ou partie. Les deux nous conviennent. Comme ton texte est intact dans les documents, tu peux aussi trancher au dernier moment, au prompteur.
 
-Ci-joint, ton texte en noir et nos inserts en orange :
+Deux points en plus
+La durée, d'abord. Les trois scripts sont courts par rapport à la cible de 5 minutes (± 2 min) : 3 min 50 pour la 21, ce qui est bon, mais 2 min 50 pour la 19 et 2 min 20 pour la 16, qui passe sous le plancher. Les inserts comblent l'écart — c'est la seule raison pour laquelle nous te suggérons d'en retenir au moins une partie sur la 16.
+
+La conclusion de la 19, ensuite. Son dernier paragraphe annonce la vidéo 21, et les deux se terminent sur la même question, presque mot pour mot. Nous te proposons de garder l'expérimentation et le rapprochement avec la recherche en 21, et de clore la 19 sur l'apprentissage social — une conclusion de rechange t'est proposée dans le document. L'inverse nous convient aussi : l'essentiel est que les deux fins diffèrent. À toi de voir.
+
+Enfin, il manque une courte présentation en ouverture des trois vidéos — nom, fonction, M2 EMPI. Monica pose le cadre et les objectifs en début de séquence, tu n'as donc pas à les énumérer, seulement à te situer. Quelques coquilles sont signalées au fil du texte.
+
+Ci-joint :
 — revue_E16_1.doc
 — revue_E19_1.doc
 — revue_E21_1.doc
