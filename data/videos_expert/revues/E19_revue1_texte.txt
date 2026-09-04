@@ -1,19 +1,24 @@
 MOOC « L’Esprit d’innover ! Pourquoi pas Vous ! » — Revue de script
 Vidéo expertise 19 — La posture entrepreneuriale s’apprend — Pascal Corbel, Université Paris-Saclay
 
-Objectif pédagogique : la posture s’apprend — feedback, entraînement, accompagnement, évolution de l’identité professionnelle. Déconstruire la figure de l’entrepreneur visionnaire.
-Rattachée à : Vidéo témoin 10 — « Enrichir son langage » (Loïc Rajjou, Muriel Thomas, Sylvia Cohen-Kaminski, Jean-Jacques Greffet).
-Durée cible : ≈ 5 minutes (± 2 min). Script reçu : 393 mots ≈ 2 min 50 à l’oral.
+Objectif pédagogique : la posture s’apprend — retour des autres, entraînement, accompagnement, évolution de l’identité professionnelle. Déconstruire la figure de l’entrepreneur visionnaire.
+Rattachée à : Vidéo témoin 10 — « Enrichir son langage » — Loïc Rajjou, Muriel Thomas, Sylvia Cohen-Kaminski, Jean-Jacques Greffet.
+Durée cible : ≈ 5 minutes, plus ou moins 2 min. Script reçu : 393 mots ≈ 2 min 50 à l’oral.
 
-(C’est la vidéo la plus aboutie des trois sur le fond. La déconstruction de la figure du visionnaire — vision commode, facilement enseignable, valorisante, donc récits biaisés — est exactement ce que tu proposais, et cet angle n’existe nulle part ailleurs dans le parcours. Deux points seulement : la durée, un peu juste, et un recouvrement à arbitrer avec la vidéo 21.)
+(C’est la vidéo la plus aboutie des trois sur le fond. La déconstruction de la figure du visionnaire — vision commode, facilement enseignable, valorisante, donc récits biaisés — est exactement ce que tu proposais, et cet angle n’existe nulle part ailleurs dans le parcours. Ton texte n’est pas modifié. Deux points seulement : la durée, un peu juste, et un recouvrement à arbitrer avec la vidéo 21. Et c’est ici que la vidéo témoin offre le plus de matière : elle documente précisément l’apprentissage par le retour des autres, qui est l’objectif de ce grain.)
+
+(Longueur : les raccords proposés ci-dessous ajoutent, à eux tous, environ 400 mots, soit près de 3 minutes. Tous retenus, la vidéo atteint environ 5 min 40 ; la moitié la place à 4 min 10, au centre de la cible.)
 
 (Présentation : même remarque que pour la 16 — deux phrases pour te situer en ouverture. Monica pose déjà le cadre et l’objectif de la séquence.)
 
-Texte proposé (base à adapter au prompteur)
+Texte proposé — ton texte, avec nos propositions de raccord
 
 Nait-on entrepreneur ? La réponse est clairement non. Certaines personnes développent des qualités qui les prédisposent un peu plus que la moyenne à entreprendre, mais il n’y a pas un profil-type d’entrepreneur et les compétences entrepreneuriales s’apprennent.
 
-(Très bonne ouverture. Coquilles à corriger pour le prompteur : « Naît-on ».)
+(Très bonne ouverture. Coquille à corriger pour le prompteur : « Naît-on ».)
+
+(PROPOSITION 1 — à coller ici, juste après « … s’apprennent. ». Environ 65 mots, 30 secondes. Jean-Jacques donne l’image la plus juste du parcours pour dire ta thèse : l’entrepreneuriat comme une langue étrangère.
+« Jean-Jacques Greffet en donne l’image la plus parlante. Lors de sa première formation, il tenait un petit cahier dans lequel il notait des mots de vocabulaire, comme lorsqu’il apprenait l’anglais aux États-Unis. Sauf que cette fois, dit-il, il apprenait la langue de l’entrepreneuriat. Une langue, cela s’apprend — plus ou moins vite selon les personnes, mais cela s’apprend. »)
 
 Les recherches sur le sujet ont monté depuis longtemps que la démarche entrepreneuriale la plus courante était très éloignée de l’idée que l’on s’en fait souvent avec une fondatrice ou un fondateur qui a une capacité innée à détecter des besoins invisibles, à se projeter dans l’avenir, qui se donne un objectif de réalisation (une vision stratégique) et réunit les moyens pour y parvenir. Cette vision est commode, facilement enseignable (on a des étapes clairement identifiées). Elle est aussi valorisante pour les entrepreneurs. De ce fait, les histoires des entreprises racontées par ces derniers sont souvent biaisées. Elles prennent souvent quelques raccourcis.
 
@@ -23,14 +28,24 @@ La réalité est faite de tâtonnements, de rencontres, d’avancées réalisée
 
 (Coquille : « ses collaboratrice et collaborateurs » → « ses collaboratrices et ses collaborateurs ».)
 
-(Ancrage, et matière disponible : la vidéo témoin 10 documente précisément ce qui manque ici, l’apprentissage par le retour des autres. Muriel Thomas y dit qu’adapter son vocabulaire « ne se décide pas tout seul devant une feuille de papier », que « ça s’inculque juste en discutant avec les autres », et que « quand votre message ne passe pas, vous le sentez tout de suite, donc vous le modifiez la prochaine fois » : c’est la définition du feedback, formulée par une chercheuse. Elle ajoute qu’il ne s’agit pas de « se changer soi-même » mais d’« acquérir une nouvelle culture, un nouveau vocabulaire, une nouvelle posture » — l’évolution de l’identité professionnelle, dite en une phrase. Une ou deux phrases de renvoi combleraient l’essentiel de l’écart de durée.)
+(PROPOSITION 2 — à coller ici, après « … sur le chemin. ». Environ 85 mots, 35 secondes. C’est le meilleur raccord de cette vidéo : Muriel décrit le mécanisme du retour des autres, et Loïc en donne un cas daté. Si tu ne gardes qu’une phrase, garde celle de Muriel.
+« Muriel Thomas décrit ce mécanisme mieux qu’un manuel. Adapter son vocabulaire, dit-elle, ça ne se décide pas en un jour et ça ne se décide pas tout seul devant une feuille de papier : ça s’inculque en discutant avec les autres. Et quand votre message ne passe pas, vous le sentez tout de suite, donc vous le modifiez la fois suivante. Loïc Rajjou en donne un exemple précis : un article écrit pour une fédération d’ingénieurs, trop scientifique, qu’il a repris ensuite en parlant de bénéfices et de retour sur investissement. Un essai, un retour, une correction. »)
 
 C’est avant tout un apprentissage par la pratique. Chaque projet étant unique, il n’est pas possible de standardiser un protocole de conduite d’un projet entrepreneurial et de l’appliquer de manière répétée. Des formations à l’entrepreneuriat peuvent néanmoins accélérer cet apprentissage. Elles évitent des erreurs inutiles, permettent de comprendre plus vite ce qui est en train de se produire et peuvent proposer des méthodes qui servent de guides à adapter à votre cas particulier. Il en existe de multiples, généralistes ou portant sur des éléments précis, avec des approches et des volumes très variés, qualifiantes ou diplômantes.
 
-(Ce paragraphe est juste mais reste abstrait, alors que les apprenants viennent d’entendre trois exemples concrets de formations : Jean-Jacques Greffet et sa formation Genesis Light chez IncubAlliance, où il tenait un petit cahier dans lequel il notait des mots de vocabulaire, comme lorsqu’il apprenait l’anglais aux États-Unis ; Sylvia Cohen-Kaminski et la Life Science Leadership School proposée par la SATT, « une sorte de MBA dédiée à l’entrepreneuriat en santé » ; les deux jeunes scientifiques de l’équipe de Jean-Jacques envoyés plusieurs mois à HEC, financés par la SATT Paris-Saclay, qui en sont revenus « transformés » — démoralisés les premières semaines, décidés ensuite. Nommer d’un mot ce qu’ils viennent de voir avant de généraliser rendrait le passage beaucoup plus concret, et c’est ce que fait ton propos sur les formations qui « évitent des erreurs inutiles ».)
+(Ce paragraphe est juste mais reste abstrait, alors que ta typologie — généralistes ou ciblées, volumes variés, qualifiantes ou diplômantes — est exactement illustrée par trois cas que les apprenants viennent de voir. C’est le passage où le raccord rapporte le plus.)
+
+(PROPOSITION 3 — à coller ici, après « … qualifiantes ou diplômantes. ». Environ 95 mots, 40 secondes.
+« Vous en avez d’ailleurs vu trois formes différentes dans les témoignages. Une formation courte et généraliste pour Jean-Jacques Greffet, dans un incubateur : ses premiers cours de b.a.-ba, dit-il. Une formation sectorielle pour Sylvia Cohen-Kaminski, proposée par la SATT — une sorte de MBA dédié à l’entrepreneuriat en santé, dont elle retient autant la posture que les connaissances : l’écosystème pharma, la négociation, le pitch, l’accès au marché. Et plusieurs mois à HEC, financés par la SATT, pour les deux jeunes scientifiques de l’équipe de Jean-Jacques. Muriel Thomas ajoute un point qui vaut pour beaucoup d’entre vous : même avec une dirigeante ou un dirigeant compétent dans l’équipe, elle a senti le besoin de se former elle-même. »)
+
+(PROPOSITION 3 bis — facultative, à coller à la suite si tu veux appuyer ton « elles évitent des erreurs inutiles ». Environ 45 mots, 20 secondes. Elle a l’avantage de montrer que l’apprentissage n’est pas linéaire, ce qui sert ta thèse.
+« Cela ne se fait pas sans heurt. Muriel Thomas raconte que ces deux jeunes scientifiques revenaient au laboratoire démoralisés les premières semaines. Jean-Jacques Greffet, lui, se souvient de les avoir vus, quelques semaines plus tard, complètement transformés : ils avaient pris confiance. »)
 
 Mais le plus important est la posture : penser les différentes étapes du projet comme des expérimentations, organiser des réunions de prise de recul sur les résultats obtenus, considérer chaque rencontre comme une occasion d’apprentissage. Mais, finalement, cette posture est-elle si éloignée de celle de la recherche ?
 
 (Point à arbitrer, et c’est la seule vraie question sur ces trois scripts : ce paragraphe est le résumé de la vidéo 21, et sa question finale est presque mot pour mot celle qui clôt la 21. Les deux vidéos sont éloignées dans le parcours — la 19 en module 4, la 21 en module 5 — mais deux chutes identiques se remarquent.
-Notre proposition : garder l’expérimentation et le rapprochement avec la recherche pour la 21, où c’est le sujet même et où la vidéo témoin porte justement sur le métier de chercheur ; et clore la 19 sur l’apprentissage social, qui est l’objectif de ce grain — le feedback, l’entraînement, l’accompagnement, le fait de devenir progressivement quelqu’un d’autre professionnellement sans cesser d’être chercheuse ou chercheur. Tu peux évidemment conserver la mention de la posture expérimentale en une phrase, comme annonce de ce qui vient ensuite.
+Notre proposition : garder l’expérimentation et le rapprochement avec la recherche pour la 21, où c’est le sujet même et où la vidéo témoin porte justement sur le métier de chercheur ; et clore la 19 sur l’apprentissage social, qui est l’objectif de ce grain. Tu peux évidemment conserver la mention de la posture expérimentale en une phrase, comme annonce de ce qui vient ensuite.
 À décider par toi : si tu préfères l’inverse — garder la chute ici et clore la 21 autrement — cela nous convient aussi, l’essentiel est que les deux fins diffèrent.)
+
+(PROPOSITION 4 — conclusion de rechange, si tu retiens l’arbitrage ci-dessus. À substituer à la seule dernière phrase, « Mais, finalement, cette posture est-elle si éloignée de celle de la recherche ? », en conservant tout le début du paragraphe. Environ 85 mots, 35 secondes. Elle referme la vidéo sur son objectif propre, et ce sont les chercheurs qui emploient le mot « posture ».
+« Et c’est bien le mot qu’emploient les chercheurs eux-mêmes. Muriel Thomas : il faut changer de posture, changer de vocabulaire, s’adapter à d’autres interlocuteurs. Elle ajoute une nuance qui me paraît essentielle : il ne s’agit pas de se changer soi-même, mais d’acquérir une nouvelle culture, un nouveau vocabulaire, une nouvelle posture. Autrement dit, on ne cesse pas d’être chercheuse ou chercheur en devenant entrepreneur. On apprend une langue de plus, et une pratique de plus. Et cela, personne ne l’apprend seul. »)

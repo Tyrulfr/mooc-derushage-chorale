@@ -8440,29 +8440,56 @@ def _proposition_panel_html(code: str, revue: dict, proposition: dict) -> str:
 _RE_PAREN_REMARQUE = re.compile(r"\([^()]*\)", re.DOTALL)
 
 
+def _remark_style(inner: str) -> str:
+    lower = inner.lstrip().lower()
+    if lower.startswith("objectif atteint"):
+        return "color:#15803d;font-style:italic;font-weight:600;"
+    if lower.startswith("autre vidéo") or lower.startswith("autre video"):
+        return "color:#1d4ed8;font-style:italic;font-weight:600;"
+    return "color:#C45C26;font-style:italic;"
+
+
 def _colorize_parenthetical_remarks(texte: str) -> str:
     """Colorie les remarques entre parenthèses pour l'export Word.
+
+    Une remarque est un bloc de lignes ouvrant sur « ( » et refermant sur « ) ».
+    Les parenthèses en incise dans le texte de l'expert restent en noir : son
+    script n'est pas relu comme une annotation.
 
     Préfixes :
     - (Objectif atteint …) → vert
     - (Autre vidéo …) → bleu
-    - autres parenthèses → orange (cadrage / piste)
+    - autres remarques → orange (cadrage / piste)
     """
-    escaped = escape(texte)
+    lignes = texte.split("\n")
+    sortie: list[str] = []
+    bloc: list[str] | None = None
+    profondeur = 0
 
-    def _wrap(match: re.Match) -> str:
-        raw = match.group(0)
-        inner = raw[1:-1].lstrip()
-        lower = inner.lower()
-        if lower.startswith("objectif atteint"):
-            style = "color:#15803d;font-style:italic;font-weight:600;"
-        elif lower.startswith("autre vidéo") or lower.startswith("autre video"):
-            style = "color:#1d4ed8;font-style:italic;font-weight:600;"
-        else:
-            style = "color:#C45C26;font-style:italic;"
-        return f'<span style="{style}">{raw}</span>'
+    for ligne in lignes:
+        if bloc is None and ligne.lstrip().startswith("("):
+            bloc = [ligne]
+            profondeur = ligne.count("(") - ligne.count(")")
+            if profondeur <= 0:
+                raw = escape(bloc[0])
+                sortie.append(f'<span style="{_remark_style(bloc[0].lstrip()[1:])}">{raw}</span>')
+                bloc = None
+            continue
+        if bloc is not None:
+            bloc.append(ligne)
+            profondeur += ligne.count("(") - ligne.count(")")
+            if profondeur <= 0:
+                raw = escape("\n".join(bloc))
+                sortie.append(f'<span style="{_remark_style(bloc[0].lstrip()[1:])}">{raw}</span>')
+                bloc = None
+            continue
+        sortie.append(escape(ligne))
 
-    return _RE_PAREN_REMARQUE.sub(_wrap, escaped).replace("\n", "<br>")
+    if bloc is not None:
+        # Parenthèse jamais refermée : on rend le bloc tel quel, sans coloration.
+        sortie.extend(escape(ligne) for ligne in bloc)
+
+    return "\n".join(sortie).replace("\n", "<br>")
 
 
 def _numero_video_expert(code: str) -> str:
