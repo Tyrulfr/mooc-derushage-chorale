@@ -1,0 +1,66 @@
+{
+  "titre": "Proposition E2 revue 1 — plan inversé (méthodes puis chercheurs)",
+  "source_script": "E2.txt",
+  "date": "2026-09-10",
+  "mode": "proposition_plan_inverse",
+  "objectif_pedagogique": "Méthodes d'abord, témoins T2 ensuite. Techno-push comme geste E2. Sans Fabry (hors chorale).",
+  "note": "Trois gestes : traduction opérationnelle (Loïc, Yann) ; rôles (Sylvia, Muriel, Yann) ; problème de contrôle (Jean-Jacques). Unveil / Charles Fabry absents de T2.",
+  "justifications": [
+    {
+      "decision": "RÉÉCRIRE",
+      "passage": "Plan",
+      "justification": "Partir des méthodes, réunir les chercheurs par geste, plutôt qu'un portrait après l'autre."
+    },
+    {
+      "decision": "SUPPRIMER",
+      "passage": "Laboratoire Charles Fabry / Unveil comme citation témoin",
+      "justification": "Aucun BAB ni transcript monté T2 ne les nomme. Apport Joël possible en voix expert, pas comme propos de Jean-Jacques dans la chorale."
+    }
+  ],
+  "segments": [
+    {
+      "couleur": "noir",
+      "texte": "Je m'appelle Joël Nguyen. Je suis responsable du pôle de développement à la Direction de l'Innovation de l'Institut d'Optique."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Vous venez d'entendre plusieurs chercheurs relier une connaissance ou une technologie à un usage. Cette vidéo porte sur une méthode : comment, à partir d'un résultat de recherche ou d'une capacité technique, identifier des usages concrets."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Dans une démarche de techno-push, on ne part pas d'une demande déjà formulée. On part d'une connaissance, d'une méthode ou d'une performance nouvelle. Il faut ensuite déterminer ce qu'elle rend possible, pour qui et dans quelles conditions. Un résultat prometteur n'est pas encore une innovation : on peut en parler lorsque cette capacité est réellement utilisée et améliore une situation."
+    },
+    {
+      "couleur": "noir",
+      "texte": "L'envers existe : parfois un besoin est identifié en premier, et la recherche y répond. Ces deux logiques indiquent seulement le point de départ. Dans la réalité, le besoin et la technologie se précisent souvent ensemble."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Le risque, en partant d'une capacité, est de confondre ce que la technologie sait faire avec le problème qu'elle pourrait résoudre. On ne cherche pas forcément une « douleur ». Le problème peut être une limite, une perte de temps, un risque, un coût ou une action aujourd'hui impossible."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Trois gestes aident à passer de la capacité au problème."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Premier geste : traduire la connaissance en problème opérationnel, pas en exploit de laboratoire. Chez Loïc, le laboratoire comprend les mécanismes moléculaires de la germination et de la croissance. Les producteurs, eux, n'ont pas besoin de ces mécanismes. Ils cherchent des graines qui germent plus vite, des plants plus résistants, moins de traitements de synthèse. Le problème à formuler, c'est cette performance agricole. Chez Yann, la méthode consiste à construire des jumeaux numériques de chaînes de production à partir des données des capteurs. Le problème industriel, ce n'est pas « avoir un modèle ». C'est des arrêts de ligne qui coûtent cher, et la possibilité de surveiller la production sans mobiliser pendant des mois des équipes d'ingénieurs."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Deuxième geste : distinguer les rôles. L'utilisateur se sert de la solution. Le décideur autorise l'achat ou le déploiement. Le bénéficiaire est celui dont la situation s'améliore. Le financeur peut être un autre acteur. Les confondre conduit souvent à mal formuler le problème. Sylvia part des limites des traitements actuels. L'hypertension artérielle pulmonaire est grave ; les vasodilatateurs soulagent les symptômes sans traiter la cause — le remodelage des vaisseaux. L'enjeu n'est pas une molécule de plus : c'est agir sur ce que les traitements ne traitent pas. Quand elle parle d'aller jusqu'au lit du patient, le bénéficiaire est clair. Chez Muriel, l'application émerge en écrivant les contextes des demandes de financement. Une bactérie prometteuse ne suffit pas. Il faut un aliment que l'on accepte de consommer — goût, couleur, odeur — stable, conforme aux recommandations de la Haute Autorité de santé, et adopté par une chaîne : médecins, diététiciens, cuisiniers, équipes de soin. L'utilisateur, le prescripteur, le décideur et le bénéficiaire ne sont pas les mêmes. Chez Yann, la même question reste ouverte : qui, dans l'entreprise, utilisera l'outil, et qui décidera de son déploiement."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Troisième geste : formuler le problème de contrôle, pas la performance de la technique. Jean-Jacques le fait sur les nanoparticules des vaccins à ARN : il faut mesurer concentration, taille, masse, et distinguer les vecteurs pleins des vecteurs vides. Le problème n'est pas « de la nanophotonique ». C'est caractériser ce que la matière vivante a produit, mieux que l'on ne le ferait pour un comprimé."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Retenez le geste. Vous partez d'une capacité, pas d'un produit ni d'un marché déjà établis. Choisissez une situation précise. Décrivez le changement attendu : pour qui, dans quelle situation, par rapport à quoi, avec quel effet observable. Formulez le problème sans nommer la technologie. Ce sera une hypothèse, assez précise pour être confrontée au terrain. La mettre à l'épreuve viendra ensuite."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Essayez maintenant, en une phrase : « Aujourd'hui, [un acteur précis] rencontre [une difficulté ou une limite] dans [une situation donnée]. Cela entraîne [telles conséquences]. » Puis les rôles : qui l'utiliserait ? Qui déciderait ? Qui en bénéficierait ? Qui, si besoin, financerait ? Les cellules de valorisation de votre établissement et la SATT Paris-Saclay peuvent vous accompagner."
+    }
+  ]
+}

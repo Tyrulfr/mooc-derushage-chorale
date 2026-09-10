@@ -524,16 +524,17 @@
           "code": "E2",
           "titre": "Passer d'une technologie a un probleme a resoudre",
           "descriptif": "Utilisateur, client, beneficiaire, usage et proposition de valeur.",
-          "intervenant": null
+          "intervenant": "Joel Nguyen"
         },
         {
           "code": "E3",
           "titre": "Poser ou identifier le bon probleme avant de chercher la solution",
           "descriptif": "Validation, hypotheses, experimentation, pivot et apprentissage.",
-          "intervenant": null
+          "intervenant": "Gregoire Burge"
         }
       ],
       "experts_proposes": [
+        "Joel Nguyen",
         "Gregoire Burge",
         "Bernard Yannou"
       ],
@@ -541,7 +542,7 @@
       "orientations_expert": [
         {
           "code": "E2",
-          "expert": null,
+          "expert": "Joel Nguyen",
           "titre": "Passer d'une technologie a un probleme a resoudre",
           "concepts": [
             "Passer d'une technologie a un probleme a resoudre"
@@ -647,7 +648,7 @@
         },
         {
           "code": "E3",
-          "expert": null,
+          "expert": "Gregoire Burge",
           "titre": "Poser ou identifier le bon probleme avant de chercher la solution",
           "concepts": [
             "Poser ou identifier le bon probleme avant de chercher la solution"
@@ -3004,7 +3005,7 @@
           "code": "E17",
           "titre": "Organiser la relation entre fondateurs",
           "descriptif": "Gouvernance, responsabilites, repartition du pouvoir, parts, pacte et prevention des conflits.",
-          "intervenant": null
+          "intervenant": "Antoine Latreille"
         }
       ],
       "experts_proposes": [
@@ -3089,7 +3090,7 @@
         },
         {
           "code": "E17",
-          "expert": null,
+          "expert": "Antoine Latreille",
           "titre": "Organiser la relation entre fondateurs",
           "concepts": [
             "Organiser la relation entre fondateurs"
@@ -3962,7 +3963,7 @@
           "code": "E22",
           "titre": "Concevoir une collaboration equilibree",
           "descriptif": "Objectifs partages, complementarite, gouvernance, engagement, creation et partage de valeur.",
-          "intervenant": null
+          "intervenant": "Remi Wache"
         },
         {
           "code": "E23",
@@ -3982,7 +3983,7 @@
       "orientations_expert": [
         {
           "code": "E22",
-          "expert": null,
+          "expert": "Remi Wache",
           "titre": "Concevoir une collaboration equilibree",
           "concepts": [
             "Concevoir une collaboration equilibree"

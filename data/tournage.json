@@ -1,5 +1,5 @@
 {
-  "date_mise_a_jour": "2026-09-03",
+  "date_mise_a_jour": "2026-09-08",
   "note": "Planning de captation des videos expertise. Une ligne du tableau site = une video E a tourner. V = video temoin, E = video expertise.",
   "animatrice": {
     "nom": "Monica Henao",
@@ -155,7 +155,16 @@
           "intervenant": "Gregoire Burgé",
           "organisme": "AgroParisTech",
           "slug": "gregoire-burgé",
-          "videos": ["E2", "E3"]
+          "videos": ["E3"],
+          "note": "E2 retirée : Grégoire ne fait que E3."
+        },
+        {
+          "heure": "16:00",
+          "intervenant": "Joël Nguyen",
+          "organisme": "Institut d’Optique",
+          "slug": "joël-nguyen",
+          "videos": ["E2"],
+          "note": "Créneau à confirmer. Script E2 reçu le 2026-09-10."
         }
       ]
     }

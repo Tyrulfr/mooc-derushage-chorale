@@ -18,10 +18,10 @@
       "capsule_code": "T2",
       "temoin_label": "VIDÉO 2 : DE LA RECHERCHE À L’INNOVATION",
       "module": "M1",
-      "experts": "Retenu : Gregoire Burgé",
-      "script_statut": "EN_ATTENTE",
+      "experts": "Retenu : Joël Nguyen",
+      "script_statut": "RECU",
       "script_valide_statut": "EN_ATTENTE",
-      "script_fichier": "",
+      "script_fichier": "E2.txt",
       "page": "video_expert_E2.html"
     },
     {
@@ -200,7 +200,7 @@
       "module": "M4",
       "experts": "Retenu : Pascal Corbel",
       "script_statut": "RECU",
-      "script_valide_statut": "EN_ATTENTE",
+      "script_valide_statut": "VALIDE",
       "script_fichier": "E16.txt",
       "page": "video_expert_E16.html"
     },
@@ -236,7 +236,7 @@
       "module": "M4",
       "experts": "Retenu : Pascal Corbel",
       "script_statut": "RECU",
-      "script_valide_statut": "EN_ATTENTE",
+      "script_valide_statut": "VALIDE",
       "script_fichier": "E19.txt",
       "page": "video_expert_E19.html"
     },
@@ -260,7 +260,7 @@
       "module": "M5",
       "experts": "Retenu : Pascal Corbel",
       "script_statut": "RECU",
-      "script_valide_statut": "EN_ATTENTE",
+      "script_valide_statut": "VALIDE",
       "script_fichier": "E21.txt",
       "page": "video_expert_E21.html"
     },

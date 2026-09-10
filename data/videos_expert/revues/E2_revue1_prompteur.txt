@@ -1,0 +1,200 @@
+Je m’appelle Joël Nguyen.
+
+Je suis responsable du pôle de développement
+à la Direction de l’Innovation
+de l’Institut d’Optique.
+
+
+Vous venez d’entendre plusieurs chercheurs
+relier une connaissance, ou une technologie, à un usage.
+
+Cette vidéo porte sur une méthode :
+comment, à partir d’un résultat de recherche
+ou d’une capacité technique,
+identifier des usages concrets.
+
+
+Dans une démarche de techno-push,
+on ne part pas d’une demande déjà formulée.
+
+On part d’une connaissance,
+d’une méthode,
+ou d’une performance nouvelle.
+
+Il faut ensuite déterminer ce qu’elle rend possible.
+Pour qui.
+Et dans quelles conditions.
+
+Un résultat prometteur n’est pas encore une innovation.
+On peut en parler
+lorsque cette capacité est réellement utilisée
+et améliore une situation.
+
+
+L’envers existe.
+Parfois un besoin est identifié en premier,
+et la recherche y répond.
+
+Ces deux logiques indiquent seulement le point de départ.
+
+Dans la réalité,
+le besoin et la technologie se précisent souvent ensemble.
+
+
+Le risque, en partant d’une capacité,
+est de confondre ce que la technologie sait faire
+avec le problème qu’elle pourrait résoudre.
+
+On ne cherche pas forcément une « douleur ».
+
+Le problème peut être une limite.
+Une perte de temps.
+Un risque.
+Un coût.
+Ou une action aujourd’hui impossible.
+
+
+Trois gestes aident à passer de la capacité au problème.
+
+
+Premier geste :
+traduire la connaissance en problème opérationnel.
+Pas en exploit de laboratoire.
+
+Chez Loïc,
+le laboratoire comprend les mécanismes moléculaires
+de la germination et de la croissance.
+
+Les producteurs, eux,
+n’ont pas besoin de ces mécanismes.
+
+Ils cherchent des graines qui germent plus vite.
+Des plants plus résistants.
+Moins de traitements de synthèse.
+
+Le problème à formuler,
+c’est cette performance agricole.
+
+Chez Yann,
+la méthode consiste à construire des jumeaux numériques
+de chaînes de production
+à partir des données des capteurs.
+
+Le problème industriel,
+ce n’est pas « avoir un modèle ».
+
+C’est des arrêts de ligne qui coûtent cher.
+Et la possibilité de surveiller la production
+sans mobiliser pendant des mois
+des équipes d’ingénieurs.
+
+
+Deuxième geste :
+distinguer les rôles.
+
+L’utilisateur se sert de la solution.
+Le décideur autorise l’achat ou le déploiement.
+Le bénéficiaire est celui dont la situation s’améliore.
+Le financeur peut être un autre acteur.
+
+Les confondre
+conduit souvent à mal formuler le problème.
+
+Sylvia part des limites des traitements actuels.
+
+L’hypertension artérielle pulmonaire est grave.
+Les vasodilatateurs soulagent les symptômes
+sans traiter la cause :
+le remodelage des vaisseaux.
+
+L’enjeu n’est pas une molécule de plus.
+C’est agir sur ce que les traitements ne traitent pas.
+
+Quand elle parle d’aller jusqu’au lit du patient,
+le bénéficiaire est clair.
+
+Chez Muriel,
+l’application émerge
+en écrivant les contextes des demandes de financement.
+
+Une bactérie prometteuse ne suffit pas.
+
+Il faut un aliment que l’on accepte de consommer.
+Goût.
+Couleur.
+Odeur.
+Stable.
+Conforme aux recommandations
+de la Haute Autorité de santé.
+
+Et adopté par une chaîne :
+médecins,
+diététiciens,
+cuisiniers,
+équipes de soin.
+
+L’utilisateur, le prescripteur, le décideur et le bénéficiaire
+ne sont pas les mêmes.
+
+Chez Yann, la même question reste ouverte.
+Qui, dans l’entreprise, utilisera l’outil ?
+Et qui décidera de son déploiement ?
+
+
+Troisième geste :
+formuler le problème de contrôle,
+pas la performance de la technique.
+
+Jean-Jacques le fait
+sur les nanoparticules des vaccins à ARN.
+
+Il faut mesurer la concentration, la taille, la masse.
+Et distinguer les vecteurs pleins
+des vecteurs vides.
+
+Le problème n’est pas « de la nanophotonique ».
+
+C’est caractériser ce que la matière vivante a produit.
+Mieux que l’on ne le ferait pour un comprimé.
+
+
+Retenez le geste.
+
+Vous partez d’une capacité.
+Pas d’un produit.
+Pas d’un marché déjà établi.
+
+Choisissez une situation précise.
+
+Décrivez le changement attendu.
+Pour qui.
+Dans quelle situation.
+Par rapport à quoi.
+Avec quel effet observable.
+
+Formulez le problème
+sans nommer la technologie.
+
+Ce sera une hypothèse.
+Assez précise pour être confrontée au terrain.
+
+La mettre à l’épreuve viendra ensuite.
+
+
+Essayez maintenant, en une phrase.
+
+« Aujourd’hui,
+un acteur précis
+rencontre une difficulté, ou une limite,
+dans une situation donnée.
+Cela entraîne telles conséquences. »
+
+Puis les rôles.
+Qui l’utiliserait ?
+Qui déciderait ?
+Qui en bénéficierait ?
+Qui, si besoin, financerait ?
+
+Les cellules de valorisation de votre établissement
+et la SATT Paris-Saclay
+peuvent vous accompagner.

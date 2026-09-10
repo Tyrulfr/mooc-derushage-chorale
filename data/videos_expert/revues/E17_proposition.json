@@ -1,0 +1,97 @@
+{
+  "titre": "Proposition E17 — script proposé pour Antoine Latreille",
+  "source_script": "briefs/antoine_latreille_E17.txt",
+  "date": "2026-09-10",
+  "mode": "proposition_initiale",
+  "objectif_pedagogique": "Organiser la relation entre fondateurs : gouvernance, responsabilités, répartition du pouvoir, parts, pacte d'associés et prévention des conflits — à partir de la vidéo témoin 9 montée, sans recouvrir E16.",
+  "note": "Ancrage : script_final T9 (JJG-0012, SYL-0011, MUR-0011, LOI-0009). E16 cartographie compétences et places ; E17 écrit la relation. Ne pas nommer la loi PACTE à l'oral : cadrage interne uniquement. Le volet SAS / contrats de MUR-0011 n'est pas cité (coupe éditoriale vers T12).",
+  "justifications": [
+    {
+      "decision": "GARDER",
+      "passage": "Frontière E16 / E17",
+      "justification": "E16 validé s'arrête avant parts et pacte d'associés. Pascal a refusé E17 (« un juriste me paraîtrait plus pertinent »)."
+    },
+    {
+      "decision": "GARDER",
+      "passage": "Pacte d'associés nommé, sans mention de la loi PACTE",
+      "justification": "La question « pacte = loi PACTE ? » était un cadrage ingénierie pédagogique, pas un contenu apprenant. L'oral dit seulement pacte d'associés."
+    },
+    {
+      "decision": "GARDER",
+      "passage": "Ancrage T9 sans le volet contractualisation Muriel",
+      "justification": "Décision éditoriale T9 : MUR-0011 coupe avant contractualisation (réservé T12). On garde noyau et comités ; on n'attribue pas à Muriel les contrats / SAS."
+    },
+    {
+      "decision": "GARDER",
+      "passage": "Sylvia : CEO quatrième cofondatrice",
+      "justification": "E16 a déjà le casting et l'alignement. E17 prend l'entrée au capital et dans les décisions."
+    }
+  ],
+  "segments": [
+    {
+      "couleur": "noir",
+      "texte": "Bonjour. Je m'appelle Antoine Latreille. Je suis professeur à l'Université Paris-Saclay, où je dirige le Master DIPI — innovation et propriété industrielle."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Vous venez d'entendre comment se constitue une équipe. La vidéo précédente a cartographié les compétences et les places : diriger, ou rester du côté scientifique. Celle-ci ne refait pas cette carte. Elle pose la question suivante : une fois les places choisies, comment on les organise — et comment on les écrit."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Organiser la relation entre fondateurs, ce n'est pas un formalisme lointain. C'est décider qui fait quoi, qui décide quoi, qui détient quoi, et que se passe-t-il quand on n'est plus d'accord. Le document qui porte souvent ces accords s'appelle un pacte d'associés : le contrat entre ceux qui fondent ensemble."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Sylvia Cohen-Kaminski a tranché sa place : biologiste, elle ne dirige pas. Le CEO entre comme quatrième personne, cofondatrice. Ce geste-là n'est pas seulement un recrutement. C'est une entrée dans les décisions, souvent une entrée au capital, une entrée dans la relation. Si l'on ne dit pas, à ce moment-là, les responsabilités, les parts et le pouvoir, on improvise ce qui fera le plus mal plus tard."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Muriel Thomas décrit une gouvernance en couches. Un noyau : des cofondatrices, celle qui dirige la société, un ingénieur. Puis un comité stratégique, pour le conseil et le réseau. Puis un comité scientifique, pour les choix de recherche. Trois cercles, trois fonctions. La question, ensuite, c'est : qui, dans ces cercles, est associé ? Qui conseille sans décider ? Qui décide sans tout détenir ? Un comité n'est pas un pacte. Un organigramme non plus. Le pacte d'associés sert à écrire ce que l'organigramme ne dit pas : les règles entre ceux qui portent le risque ensemble."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Jean-Jacques Greffet insiste sur l'étape d'après. L'équipe parfaite pour la preuve de concept peut être bancale pour l'entreprise. Les investisseurs, dit-il, regardent surtout la capacité de l'équipe à prendre des virages, parce que la grande majorité des projets pivotent. Pivoter, ce n'est pas seulement changer de technologie. C'est souvent changer l'allocation du temps, de l'argent, parfois d'un rôle. Si personne n'a prévu qui arbitrera, le pivot devient un conflit. Prévenir les conflits, ce n'est pas prévoir que l'on s'entendra toujours. C'est prévoir la procédure pour le jour où l'on ne s'entendra plus."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Loïc Rajjou raconte l'entrée d'un co-créateur : pas un profil d'école de commerce générique, quelqu'un qui connaissait le secteur agricole. Cette personne « rentre dans l'équipe de co-création ». Co-créer, ce n'est pas seulement conseiller. C'est souvent devenir associé. Et devenir associé, c'est ouvrir la question des parts, des droits de vote, des clauses de sortie."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Cinq gestes, pour passer du récit à l'écrit."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Premier geste : nommer les rôles. Qui est dirigeant ? Qui reste scientifique ? Qui est salarié, qui est associé ? Sylvia choisit de ne pas occuper la direction opérationnelle. Ce choix doit se lire dans la gouvernance, pas seulement dans une conversation."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Deuxième : répartir le pouvoir. Qui décide d'un recrutement, d'un budget, d'un pivot, d'une levée ? Unanimité, majorité, droit de veto ? Muriel distingue le noyau, le stratégique, le scientifique. Reprenez ces trois cercles et écrivez, pour chacun, s'il conseille ou s'il tranche."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Troisième : répartir les parts. Les parts ne récompensent pas seulement l'idée de départ. Elles disent la contribution dans la durée, le risque pris, le temps consacré. Un nouveau cofondateur — le CEO chez Sylvia, le profil sectoriel chez Loïc — n'entre pas « un peu » : il entre avec une quote-part, ou il n'entre pas vraiment."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Quatrième : écrire le pacte d'associés. Le pacte complète les statuts. Il peut traiter la gouvernance, l'agrément, la sortie, les apports, parfois la propriété intellectuelle entre associés, et le règlement des désaccords. Ce n'est pas un cours de droit des sociétés. C'est le minimum : ne pas laisser ces sujets au non-dit. Faites-vous accompagner pour le rédiger. Ne le dictez pas seul."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Cinquième : prévoir le désaccord. Avant qu'il n'arrive. Médiation, rachat, départ. Jean-Jacques le dit autrement : ce qui survit, c'est l'équipe. Une équipe qui survit a prévu comment on se sépare sans détruire le projet."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Mise en pratique. Une feuille, quatre colonnes : nom, rôle, décision, parts. Une cinquième ligne : que se passe-t-il si l'un s'en va, ou si l'on n'est plus d'accord. Puis une phrase : ce n'est pas encore un pacte, mais c'est déjà ce que le pacte devra dire."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Vous n'avez pas à tout figer aujourd'hui. Vous avez à ne pas attendre le premier conflit pour commencer."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Et vous ? Parmi les places que vous venez d'entendre — diriger, rester scientifique, entrer comme cofondateur, siéger dans un comité — laquelle est la plus proche de votre situation ? Pour celle-là : qui déciderait avec vous, et qu'est-ce qui serait déjà écrit ?"
+    }
+  ],
+  "mots_estimes": 796
+}

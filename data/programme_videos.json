@@ -41,6 +41,7 @@
       "module": "M1",
       "resume_temoignages": "Yann : sortir du labo pour un vrai probleme de marche. Jean-Jacques : nice to have / must have et pivot apres etude de marche. Muriel : complements non consommes et co-construction EHPAD. Loic : filieres revelent des problemes plus larges que prevu. Sylvia : cliniciens et patients precisent le besoin medical.",
       "experts_proposes": [
+        "Joel Nguyen",
         "Gregoire Burge",
         "Bernard Yannou"
       ],
@@ -49,13 +50,13 @@
           "code": "E2",
           "titre": "Passer d'une technologie a un probleme a resoudre",
           "descriptif": "Utilisateur, client, beneficiaire, usage et proposition de valeur.",
-          "intervenant": null
+          "intervenant": "Joel Nguyen"
         },
         {
           "code": "E3",
           "titre": "Poser ou identifier le bon probleme avant de chercher la solution",
           "descriptif": "Validation, hypotheses, experimentation, pivot et apprentissage.",
-          "intervenant": null
+          "intervenant": "Gregoire Burge"
         }
       ]
     },
@@ -225,7 +226,7 @@
           "code": "E17",
           "titre": "Organiser la relation entre fondateurs",
           "descriptif": "Gouvernance, responsabilites, repartition du pouvoir, parts, pacte et prevention des conflits.",
-          "intervenant": null
+          "intervenant": "Antoine Latreille"
         }
       ]
     },
@@ -289,7 +290,7 @@
           "code": "E22",
           "titre": "Concevoir une collaboration equilibree",
           "descriptif": "Objectifs partages, complementarite, gouvernance, engagement, creation et partage de valeur.",
-          "intervenant": null
+          "intervenant": "Remi Wache"
         },
         {
           "code": "E23",

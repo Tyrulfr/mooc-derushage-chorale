@@ -3578,6 +3578,32 @@ def _script_expertise_bridge(seed: int, angle: str) -> str:
     return bridges[seed % len(bridges)]
 
 
+def _try_editorial_expertise_script(code: str) -> tuple[str, str] | None:
+    """Script validé, puis proposition autonome. Corps + libellé de source."""
+    if not code:
+        return None
+    base = ROOT / "data" / "videos_expert"
+    for suffix in (".txt", ".md"):
+        path = base / "scripts_valides" / f"{code}{suffix}"
+        if path.is_file():
+            text = path.read_text(encoding="utf-8").strip()
+            if text:
+                return text, f"scripts_valides/{path.name}"
+    prop_path = base / "revues" / f"{code}_proposition.json"
+    if prop_path.is_file():
+        try:
+            data = json.loads(prop_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            data = None
+        if isinstance(data, dict) and data.get("segments"):
+            paras = _synthesize_proposition_final_paragraphs(data["segments"])
+            body = "\n\n".join(p.strip() for p in paras if p and str(p).strip())
+            if body:
+                source = str(data.get("source_script") or prop_path.name)
+                return body, source
+    return None
+
+
 def _build_script_expertise_projete(
     orientation: dict,
     video: dict | None = None,
@@ -3593,6 +3619,19 @@ def _build_script_expertise_projete(
     """
     code = orientation.get("code") or (video or {}).get("code", "")
     titre = orientation.get("titre") or (video or {}).get("titre", "")
+    label = _label_video_expert(code)
+    editorial = _try_editorial_expertise_script(code)
+    if editorial:
+        body, source = editorial
+        word_count = _count_words_fr(body)
+        header = (
+            f"[PROPOSITION ÉDITORIALE — {label} — script oral expert → apprenants]\n"
+            f"Objectif pédagogique : {_normalize_editorial_french(titre) or '—'}\n"
+            f"Volume : {word_count} mots (cible {SCRIPT_EXPERTISE_WORD_MIN}–{SCRIPT_EXPERTISE_WORD_MAX})\n"
+            f"Source : {source}\n"
+        )
+        return f"{header}\n{body}".strip(), word_count
+
     concepts = [c for c in orientation.get("concepts", []) if c]
     introduction = (orientation.get("introduction") or "").strip()
     guides = _orientation_guides(orientation)
@@ -4068,11 +4107,17 @@ def scripts_expertise_projetes_section(capsule_data: dict) -> str:
         plan_html = "".join(f"<li>{escape(item)}</li>" for item in plan)
         in_range = SCRIPT_EXPERTISE_WORD_MIN <= word_count <= SCRIPT_EXPERTISE_WORD_MAX
         count_class = "meta" if in_range else "warn"
+        editorial = script.startswith("[PROPOSITION ÉDITORIALE")
+        intro = (
+            "Script proposé (validé ou rédaction éditoriale), adressé aux apprenants."
+            if editorial
+            else "Script oral d'expertise adressé aux apprenants. La vidéo témoin sert de <strong>prétexte pédagogique</strong> pour enseigner l'objectif (ex. réflexe de déclaration avant divulgation)."
+        )
         articles.append(
             f"""
   <article class="script-expertise-block">
     <h3>{escape(_label_video_expert(code))} — {escape(_normalize_editorial_french(titre or 'Script projeté'))}</h3>
-    <p class="meta">Script oral d'expertise adressé aux apprenants. La vidéo témoin sert de <strong>prétexte pédagogique</strong> pour enseigner l'objectif (ex. réflexe de déclaration avant divulgation).</p>
+    <p class="meta">{intro}</p>
     <p class="{count_class}"><strong>Volume :</strong> {word_count} mots (cible {SCRIPT_EXPERTISE_WORD_MIN}–{SCRIPT_EXPERTISE_WORD_MAX}).</p>
     <div class="script-expertise-plan">
       <h4>Plan du script (notions traitées)</h4>
@@ -4407,7 +4452,8 @@ EXPERT_NAME_ALIASES = {
     "stephanie oger roussel": "Stephanie Oger-Roussel",
     "stephanie oger-roussel": "Stephanie Oger-Roussel",
     "arielle sante": "Arielle Santé",
-    "joel nguen": "Joël Nguen",
+    "joel nguen": "Joël Nguyen",
+    "joel nguyen": "Joël Nguyen",
     "remi wache": "Rémi Waché",
     "gregoire burge": "Gregoire Burgé",
 }

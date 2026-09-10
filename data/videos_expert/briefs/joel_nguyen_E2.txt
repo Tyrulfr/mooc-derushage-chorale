@@ -1,0 +1,8 @@
+# Script E2 — Joël Nguyen (version expert)
+# Date depot : 2026-09-10
+# Source : modifications proposees par Joël Nguyen
+# Capsule temoin : T2 (Trancript_Video2.docx)
+# Statut : SCRIPT_RECU (texte expert, non reecrit)
+# Copie de travail : data/videos_expert/scripts_recus/E2.txt
+
+Voir scripts_recus/E2.txt — texte integral de Joël.

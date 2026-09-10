@@ -1,4 +1,4 @@
-Objet : MOOC L'Esprit d'innover — vos vidéos expertise (Gregoire Burgé)
+Objet : MOOC L'Esprit d'innover — votre vidéo expertise (Gregoire Burgé)
 
 Bonjour Gregoire,
 
@@ -8,10 +8,6 @@ En deux mots
 Les apprenants voient d’abord une vidéo témoin (parole de chercheurs). Ensuite, votre vidéo expertise éclaire une notion précise. Registre : sensibilisation (montrer / informer), pas une formation technique.
 
 Ce que l’on vous demande
-- Vidéo Expert 2 — Passer d'une technologie a un problème a resoudre
-  Liée à : Vidéo témoin 2 — DE LA RECHERCHE À L’INNOVATION
-  Objectif à atteindre : Utilisateur, client, beneficiaire, usage et proposition de valeur.
-
 - Vidéo Expert 3 — Poser ou identifier le bon problème avant de chercher la solution
   Liée à : Vidéo témoin 2 — DE LA RECHERCHE À L’INNOVATION
   Objectif à atteindre : Validation, hypotheses, experimentation, pivot et apprentissage.
