@@ -1,0 +1,24 @@
+{
+  "code": "E22",
+  "revue": 1,
+  "date": "2026-09-11",
+  "statut": "PROMPTEUR",
+  "expert": "Rémi Waché",
+  "source_script": "E22.txt",
+  "mode_texte": "script_recu_puis_prompteur",
+  "reference_critique": "Script revu/corrigé par Rémi Waché pour le tournage du 11/09/2026 (AgroParisTech). Remplace la proposition éditoriale initiale briefs/remi_wache_E22.txt.",
+  "demandes": [
+    "Coquilles prompteur uniquement (pas de réécriture de fond le jour du tournage).",
+    "Corriger « vidéos de Jean-Jacques ou de Yann » : c’est la vidéo témoin 12, pas des vidéos expert.",
+    "Corriger « à l’aide avec la négociation » → « à l’aise ».",
+    "Dénouer « Se protéger en amont : et avant tout protégés ».",
+    "Signaler le recouvrement E23 (accord de confidentialité, connaissances antérieures, publication) sans le retirer : Rémi y tient et renvoie déjà à la vidéo suivante."
+  ],
+  "texte_propose": "Voir scripts_valides/E22.txt (prompteur). Texte reçu inchangé : scripts_recus/E22.txt.",
+  "mail": "",
+  "mots_estimes": 1202,
+  "notes": [
+    "Durée orale estimée ~8 min (cible 5 ± 2). Si Rita/Christophe doivent couper sur plateau : le bloc prospection/qualités interpersonnelles ou le rappel NDA déjà traité en E23.",
+    "Le grain E22 (objectifs, complémentarité, engagement, gouvernance, bénéfices) est conservé en repères. L’apport propre de Rémi est la cellule partenariats : point d’entrée, prospection, distinction collaboration / prestation."
+  ]
+}

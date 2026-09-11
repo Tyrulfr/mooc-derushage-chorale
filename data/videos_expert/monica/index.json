@@ -1,0 +1,138 @@
+{
+  "date_mise_a_jour": "2026-09-10",
+  "animatrice": "Monica Henao",
+  "critere": "Vidéo filmée le 7 ou le 9 septembre 2026, ou script déposé dans scripts_valides/. Les autres restent de côté.",
+  "propositions": [
+    {
+      "code": "E1",
+      "fichier": "E1.txt",
+      "expert": "Bernard Yannou",
+      "temoin": "T1",
+      "base": ["filme_2026-09-09", "scripts_valides/E1.txt"]
+    },
+    {
+      "code": "E5",
+      "fichier": "E5.txt",
+      "expert": "Virginia Branco",
+      "temoin": "T3",
+      "base": ["filme_2026-09-09", "scripts_recus/E5.txt"]
+    },
+    {
+      "code": "E6",
+      "fichier": "E6.txt",
+      "expert": "Stephanie Sano",
+      "temoin": "T4",
+      "base": ["filme_2026-09-07", "scripts_recus/E6.txt"]
+    },
+    {
+      "code": "E7",
+      "fichier": "E7.txt",
+      "expert": "Stephanie Sano",
+      "temoin": "T4",
+      "base": ["filme_2026-09-07", "scripts_recus/E7.txt"]
+    },
+    {
+      "code": "E8",
+      "fichier": "E8.txt",
+      "expert": "Stanislas De Lapasse",
+      "temoin": "T5",
+      "base": ["filme_2026-09-07", "scripts_recus/E8.txt"]
+    },
+    {
+      "code": "E9",
+      "fichier": "E9.txt",
+      "expert": "Stanislas De Lapasse",
+      "temoin": "T5",
+      "base": ["filme_2026-09-07", "scripts_recus/E9.txt"]
+    },
+    {
+      "code": "E10",
+      "fichier": "E10.txt",
+      "expert": "Virginia Branco",
+      "temoin": "T6",
+      "base": ["filme_2026-09-09", "scripts_recus/E10.txt"]
+    },
+    {
+      "code": "E16",
+      "fichier": "E16.txt",
+      "expert": "Pascal Corbel",
+      "temoin": "T9",
+      "base": ["filme_2026-09-07", "scripts_valides/E16.txt"]
+    },
+    {
+      "code": "E19",
+      "fichier": "E19.txt",
+      "expert": "Pascal Corbel",
+      "temoin": "T10",
+      "base": ["filme_2026-09-07", "scripts_valides/E19.txt"]
+    },
+    {
+      "code": "E20",
+      "fichier": "E20.txt",
+      "expert": "Bernard Yannou",
+      "temoin": "T11",
+      "base": ["filme_2026-09-09", "scripts_valides/E20.txt"]
+    },
+    {
+      "code": "E21",
+      "fichier": "E21.txt",
+      "expert": "Pascal Corbel",
+      "temoin": "T11",
+      "base": ["filme_2026-09-07", "scripts_valides/E21.txt"]
+    }
+  ],
+  "de_cote": [
+    {
+      "code": "E13bis",
+      "raison": "Tournée le 7 septembre (Yoann Montenot) mais aucun script dans le dépôt : intro/outro non rédigées pour ne pas inventer le debrief."
+    },
+    {
+      "code": "E2",
+      "raison": "Ni filmée les 7/9 septembre, ni dans scripts_valides."
+    },
+    {
+      "code": "E3",
+      "raison": "Ni filmée les 7/9 septembre, ni dans scripts_valides."
+    },
+    {
+      "code": "E4",
+      "raison": "Ni filmée les 7/9 septembre, ni dans scripts_valides."
+    },
+    {
+      "code": "E11",
+      "raison": "Ni filmée les 7/9 septembre, ni dans scripts_valides."
+    },
+    {
+      "code": "E12",
+      "raison": "Ni filmée les 7/9 septembre, ni dans scripts_valides."
+    },
+    {
+      "code": "E13",
+      "raison": "Ni filmée les 7/9 septembre, ni dans scripts_valides."
+    },
+    {
+      "code": "E14",
+      "raison": "Ni filmée les 7/9 septembre, ni dans scripts_valides."
+    },
+    {
+      "code": "E15",
+      "raison": "Ni filmée les 7/9 septembre, ni dans scripts_valides."
+    },
+    {
+      "code": "E17",
+      "raison": "Ni filmée les 7/9 septembre, ni dans scripts_valides."
+    },
+    {
+      "code": "E18",
+      "raison": "Ni filmée les 7/9 septembre, ni dans scripts_valides."
+    },
+    {
+      "code": "E22",
+      "raison": "Ni filmée les 7/9 septembre, ni dans scripts_valides."
+    },
+    {
+      "code": "E23",
+      "raison": "Ni filmée les 7/9 septembre, ni dans scripts_valides."
+    }
+  ]
+}

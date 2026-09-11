@@ -1,0 +1,23 @@
+MOOC « L’Esprit d’innover ! Pourquoi pas Vous ! » — Revue de script (revue 1)
+Vidéo expertise 22 — Concevoir une collaboration équilibrée — Rémi Waché, Université Paris-Saclay
+
+Objectif pédagogique : objectifs partagés, complémentarité, gouvernance, engagement, création et partage de valeur.
+Rattachée à : Vidéo témoin 12 — « Dispositifs d’accompagnement et collaboration ».
+Durée cible : ≈ 5 minutes, plus ou moins 2 min. Script reçu : ~1200 mots ≈ 8 min à l’oral.
+
+Statut : script revu et corrigé par Rémi, arrêté pour le tournage du 11/09/2026. Le texte reçu est dans scripts_recus/E22.txt. Le prompteur (scripts_valides/E22.txt) ne change que la forme.
+
+Corrections de forme appliquées au prompteur (le fond reste le sien)
+• « à l’aide avec la négociation » → « à l’aise ».
+• « qui parle du pitch » → « parlent du pitch » ; « les vidéos de Jean-Jacques ou de Yann » → « la vidéo témoin que vous venez de voir, où Jean-Jacques et Yann parlent du pitch » (ce n’est pas une vidéo expert de chacun).
+• « commence les négociations » → « commencent ».
+• « Se protéger en amont : et avant tout protégés » → « se protéger en amont. Avant tout, protégez-vous. » (correction supposée d’une phrase cassée).
+• « Rapprochez vous / Rappelez vous » → traits d’union ; « Qu’est ce que » → « Qu’est-ce que » ; « plein de façon » → « façons » ; « lui incombe » → « lui incombent » (ces points).
+• « convenables de tous » → « convenables pour tous » ; « Des nouvelles connaissances » → « De nouvelles connaissances ».
+
+Cadrage pédagogique (non modifié dans le prompteur)
+• Rémi ancre E22 dans son métier (point d’entrée unique, prospection, écoute, distinction collaboration / prestation). C’est l’apport demandé : un script « déjà tout fait » réécrit avec sa voix.
+• Recouvrement avec E23 (Eneli Vino) : accord de confidentialité, divulgation orale, connaissances antérieures / résultats communs, publication. Il renvoie déjà à « la vidéo suivante » pour le détail. On ne coupe pas le jour du tournage.
+• Durée : environ 8 min, un peu au-dessus de la fourchette. Coupes possibles sur plateau si besoin : (1) qualités interpersonnelles / analyse comportementale ; (2) le rappel NDA, déjà traité juridiquement en E23.
+
+Chute à garder : ne pas opposer académique et industriel ; trop d’idées restent dans les placards faute de partenaire.

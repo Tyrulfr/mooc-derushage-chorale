@@ -271,9 +271,9 @@
       "temoin_label": "VIDÉO 12 : DISPOSITIFS D’ACCOMPAGNEMENT & COLLAB",
       "module": "M5",
       "experts": "Retenu : Rémi Waché",
-      "script_statut": "EN_ATTENTE",
-      "script_valide_statut": "EN_ATTENTE",
-      "script_fichier": "",
+      "script_statut": "RECU",
+      "script_valide_statut": "VALIDE",
+      "script_fichier": "E22.txt",
       "page": "video_expert_E22.html"
     },
     {

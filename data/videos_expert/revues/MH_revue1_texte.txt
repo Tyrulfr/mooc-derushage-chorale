@@ -1,0 +1,132 @@
+MOOC « L’Esprit d’innover ! Pourquoi pas Vous ! » — Revue de script (revue 1)
+Monica Henao — intros / outros (script global Vdraft)
+
+Source : Script MH Global Vdraft.docx (copie : data/videos_expert/monica/).
+Cette revue traite le script de Monica comme celui d’un intervenant : texte repris, remarques de cadrage, pistes. Rien n’est inventé comme verbatim d’expert ou de chercheur.
+
+Règles (intros / outros expert)
+• Intro : nommer le sujet de la vidéo qui commence ; présenter l’expert ; finir par « Écoutons Prénom Nom, institution. »
+• Ne pas recopier le plan de l’expert, ni les prénoms de la chorale, ni enseigner déjà la méthode.
+• Outro : ce qu’il faut retenir de CETTE vidéo, puis une projection vers la suivante (prochain expert du même témoin, sinon prochain témoin).
+• Une intro par code E. Pas de « les référents » au pluriel.
+• Pas de codes internes à l’oral (pas « E1 », pas « chorale »).
+• Conclusion des témoignages : ouvrir vers l’expert qui suit, pas sauter au témoin d’après.
+
+---
+
+Diagnostic d’ensemble
+
+Le draft est calé sur des « vidéos 1 à 13 » avec une « partie B » unique par capsule. Le parcours actuel est T1–T13, chaque témoin suivi d’une ou plusieurs vidéos expert nominatives.
+
+Conséquences :
+• « Les référents vont… » ne présente personne et vole souvent l’ouverture de l’expert (méthodes, outils, plan).
+• Plusieurs conclusions récapitulent tout un module, ou projettent deux fois, ou projettent au mauvais grain.
+• Mapping à recaler (détail ci-dessous). Les intros/outros témoins peuvent attendre ; priorité = partie B experts, d’abord E1 et E5 (scripts déjà là).
+
+---
+
+Mapping draft Monica → parcours
+
+Vidéo 1 « Pourquoi oser ? » → T1 + E1 Bernard Yannou. Ensuite : T2 / E2 (technologie → problème).
+Vidéo 2 « De la recherche fondamentale à l’innovation » → T2 + E2 Joël Nguyen puis E3 Grégoire Burgé. Le titre Monica est trop large : T2 = vérifier le besoin.
+Vidéo 3 « Besoin réel et aller au-delà du laboratoire » → mélange T2 et T3. T3 réel = preuve utilisable (POC) + E4 (si tournée) puis E5 Virginia Branco.
+Vidéo 4 « Une idée ne suffit pas / freins » → mélange T3 (expérimentation) et T12 (freins). Après T3/E5 le parcours va à T4 (protéger avant de communiquer), pas à un module 2 entier.
+Vidéo 5 Module 2 « Protection et valorisation » → T4 + E6 puis E7 Stéphanie Sano.
+Vidéo 6 « Transfert et licensing » → T6 + E10 Virginia. T5 (brevet / secret / savoir-faire, Stanislas) est sauté.
+Vidéo 7 « Vous n’êtes pas seul » → T7 (accompagnement) + E12 / E13 / E13bis.
+Vidéo 8 financements → T8 + E14 / E15.
+Vidéo 9 « Partenariats et posture : construire une équipe » → le texte est celui du métier de chercheur (T11), pas T9 (équipe, Pascal / Antoine).
+Vidéo 10 « Enrichir son langage » → le texte est celui des dispositifs / collaborations (T12), pas T10 (pitch).
+Vidéo 11 = copie de la vidéo 10.
+Vidéo 12 « Évolution dans le métier ATTENTION INVERSE » → texte T11 ; les blocs 9 à 12 sont permutés.
+Vidéo 13 conclusion → T13. Pas d’intro expert du même type ; pas de « vidéo suivante » de contenu.
+
+Ouverture « Module ressources » (18/06) : hors champ (autre captation).
+
+---
+
+1,1 — T1 / E1 Bernard Yannou (priorité)
+
+Introduction Partie B (texte Monica)
+« Les référents vont maintenant mettre ces expériences en perspective. Ils vont nous aider à comprendre comment une idée scientifique peut devenir une opportunité d'innovation et quelles sont les premières étapes qui permettent d'en révéler le potentiel. Ces facteurs seront utiles pour apprendre à repérer, dans vos propres travaux, ce qui peut ouvrir de nouvelles perspectives. »
+
+(Cadrage : « les référents » — un seul expert, Bernard Yannou. « Premières étapes / opportunité » empiète sur E2–E5. Bernard ouvre déjà sur origines, ingrédients, déclencheurs : ne pas lui voler ce plan. La conclusion des témoignages saute E1 et envoie déjà vers « à qui utile » : à recaler vers l’expert.)
+
+Piste intro E1
+Dans ces témoignages, une innovation issue de la recherche ne part pas toujours du même endroit. Il n’y a pas un seul « moment Eurêka ».
+
+Le sujet de cette vidéo : reconnaître ces origines — d’où une démarche peut commencer — pour les repérer ensuite dans vos propres travaux.
+
+Écoutons Bernard Yannou, CentraleSupélec.
+
+Conclusion 1,1 (texte Monica)
+« Vous avez découvert que l'innovation qui commence souvent par une découverte… Dans la prochaine vidéo, nous irons plus loin… comment passer d'une découverte scientifique à une solution qui répond à un besoin concret ? »
+
+(Cadrage : la projection vers le besoin concret est la bonne direction après E1, mais le récap « découverte / technologie / regard nouveau » double T1 plus que E1. L’outro expert doit retenir le grain Bernard, puis projeter.)
+
+Piste outro E1
+Ce qu’il faut retenir.
+
+Une technologie n’est pas encore une innovation. Elle le devient quand un potentiel scientifique rencontre un besoin important, mieux traité que les solutions existantes.
+
+Les origines se combinent. Trois ingrédients tiennent ensemble : un potentiel scientifique singulier, un potentiel d’utilité, une démarche organisée par étapes. Oser, ce n’est ni créer tout de suite une start-up, ni abandonner son identité de chercheur.
+
+La suite : une fois une origine reconnue, il s’agit de passer de la technologie à un problème à résoudre — pour qui, dans quelle situation, par rapport à quoi. C’est le prochain temps.
+
+---
+
+1,3 — T3 / E5 Virginia Branco (priorité 2)
+
+Le titre et l’intro 1,3 parlent surtout de besoin réel et de terrain (grain T2). T3 / E5 portent la preuve, la prématuration, les jalons.
+
+Introduction de la Partie B (texte Monica)
+« Les référents vont vous présenter les méthodes qui permettent d'identifier et de valider un besoin. Ils expliqueront comment recueillir des retours utiles… »
+
+(Cadrage : c’est le sujet d’E2/E3, pas d’E5. Virginia structure la sortie du labo : deux phases, jalons, critère continuer / pivoter / arrêter. Elle cite déjà Loïc, Jean-Jacques, Muriel, Sylvia : Monica ne recopie pas les prénoms. Elle ouvre déjà sur « pas un saut dans le vide » : l’intro Monica ne reprend pas cette formule telle quelle si Virginia la dit en premier — à recouper au rush. Présenter Virginia nommément.)
+
+Piste intro E5
+Dans ces témoignages, sortir du laboratoire n’est pas un saut dans le vide : le terrain corrige souvent ce que l’on croyait acquis.
+
+Le sujet de cette vidéo : dérisquer un projet par étapes — continuer, changer de cible, ou s’arrêter, à partir de ce que l’on apprend.
+
+Écoutons Virginia Branco, ENS Paris-Saclay.
+
+Conclusion 1,3 (texte Monica)
+Double projection : « ouverture vers l’extérieur » puis « idée prometteuse → expérimentation ». Après E5, le parcours va à T4 / E6 : déclarer avant de divulguer. Virginia amorce déjà « avant de publier, breveter, rencontrer un partenaire ».
+
+Piste outro E5
+Ce qu’il faut retenir.
+
+Deux temps. D’abord lever le doute le plus coûteux — trop tard, il coûte cher. Ensuite, une fois ce doute levé, construire ce qui permet de choisir une voie : prototype, propriété intellectuelle, licence ou création.
+
+Technique et marché ne s’enchaînent pas sagement : ils se répondent. Un critère de décision, ce n’est pas une case à cocher, c’est une information arrivée à temps.
+
+La suite : avant de publier, de breveter, de vous lier, le réflexe est de déclarer et de parler à la valorisation. C’est le prochain temps.
+
+(Ne pas développer licence vs création : Virginia renvoie déjà « dans une autre vidéo » = plus loin, E10.)
+
+---
+
+Autres « Introduction Partie B » — même gabarit, pas encore rédigées grain par grain
+
+1,2 (T2) — Monica : « identifier un usage / proposition de valeur ». Proche d’E2, mais il faut deux intros : Joël Nguyen (capacité → problème) puis Grégoire Burgé (poser le bon problème). Ne pas fondre les deux. Projection E2 → E3 (hypothèse à éprouver), puis E3 → T3/E5 (preuve / dérisquer).
+
+1,4 — Recaler : si c’est la fin du module 1, l’outro E5 (ci-dessus) suffit ; ne pas ouvrir les « freins » (T12) ici. Les « référents POC / maturation » = E4/E5, déjà couverts.
+
+2,1 (T4) — Sujet : déclarer avant de divulguer. Expert : Stéphanie Sano (E6, puis E7 : à qui parler). Intro E6 ≠ intro E7. Projection E6 → E7, E7 → T5 (stratégie de protection).
+
+2,2 (transfert) — Sujet T6 / E10, pas la suite immédiate de T4. Réintroduire T5 (Stanislas) entre les deux. Virginia E10 : ne pas lui voler les voies licence / création.
+
+3,1 / 3,2 — T7 puis T8. Plusieurs experts : une intro chacun. Outro de la dernière expert du témoin = projection vers le témoin suivant.
+
+4,1 / 4,2 / 5,1 / 5,2 — Permutations : réassigner les textes au bon T (T9 équipe, T10 langage/pitch, T11 métier, T12 collaborations). E20 (Bernard, métier) : intro distincte d’E1. E21 (Pascal). E22 Rémi, E23 Eneli.
+
+6,1 T13 — Conclusion de parcours, pas d’« Écoutons un référent » générique. Pas de projection vers une vidéo de contenu.
+
+---
+
+Suite de travail proposée
+
+1. Valider les deux exemples E1 et E5 (règle + textes).
+2. Recaler le plan des capsules du draft sur T1–T13.
+3. Rédiger les autres intros/outros expert une par une, à partir du script expert (validé ou reçu), jamais à partir du seul titre Monica.
