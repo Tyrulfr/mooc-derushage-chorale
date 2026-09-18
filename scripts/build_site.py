@@ -552,6 +552,29 @@ tbody tr:last-child td { border-bottom: none; }
 .script-voice { font-weight: 700; margin: 0 0 6px; }
 .script-timed .script-body { white-space: normal; }
 .script-timed .script-body p { margin: 0 0 0.65em; }
+.rapport-temoin {
+  margin: 28px 0 0;
+  padding: 18px 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.rapport-temoin h3 { margin: 0 0 8px; font-size: 18px; }
+.rapport-temoin h4 { margin: 16px 0 8px; font-size: 15px; }
+.rapport-temoin ul { margin: 0; padding-left: 1.2em; }
+.rapport-temoin li { margin: 0 0 8px; }
+.avis {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-right: 6px;
+}
+.avis--ok { background: #d1fae5; color: #047857; }
+.avis--mid { background: #e0f2fe; color: #0369a1; }
+.avis--no { background: #ffedd5; color: #c2410c; }
 .script-ref {
   font-size: 0.92em;
   color: #94a3b8;
@@ -2178,6 +2201,89 @@ def _sequences_off_html(trans_item: dict) -> str:
 
 def _sequences_additionnelles_html(trans_item: dict) -> str:
     return _sequences_off_html(trans_item)
+
+
+def _load_rapports_temoins() -> dict:
+    path = ROOT / "data" / "rapports_temoins.json"
+    if not path.exists():
+        return {}
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _avis_badge(avis: str) -> str:
+    mapping = {
+        "integrer": ("avis--ok", "Intégrer"),
+        "integrer_si_court": ("avis--mid", "Intégrer, très court"),
+        "ne_pas_integrer": ("avis--no", "Ne pas intégrer"),
+    }
+    css, label = mapping.get(avis or "", ("avis--mid", avis or "—"))
+    return f'<span class="avis {css}">{escape(label)}</span>'
+
+
+def _rapport_temoin_html(code: str, *, heading: str = "h2") -> str:
+    reports = _load_rapports_temoins().get("capsules") or {}
+    report = reports.get(code)
+    if not report:
+        return ""
+    parts = [
+        f'<{heading} id="rapport-{escape(code)}">Rapport {escape(code)}</{heading}>',
+        "<div class='rapport-temoin'>",
+        f"<p>{escape(report.get('synthese') or '')}</p>",
+    ]
+    redos = report.get("redondances_video") or []
+    parts.append("<h4>Textes redondants / repris dans la vidéo</h4>")
+    if redos:
+        items = []
+        for item in redos:
+            tcs = " · ".join(item.get("timecodes") or [])
+            items.append(
+                f"<li><span class='meta'>{escape(tcs)}</span> "
+                f"{escape(item.get('detail') or '')}</li>"
+            )
+        parts.append("<ul>" + "".join(items) + "</ul>")
+    else:
+        parts.append(
+            "<p class='meta'>Aucune réplique reprise deux fois dans le script de la vidéo.</p>"
+        )
+    offs = report.get("off") or []
+    parts.append("<h4>Séquences en off</h4>")
+    if offs:
+        items = []
+        for item in offs:
+            meta = item.get("debut") or ""
+            voice = item.get("chercheur") or ""
+            if voice:
+                meta = f"{meta} · {voice}" if meta else voice
+            items.append(
+                "<li>"
+                + _avis_badge(item.get("avis") or "")
+                + (f"<span class='meta'>{escape(meta)}</span> " if meta else "")
+                + escape(item.get("critique") or "")
+                + "</li>"
+            )
+        parts.append("<ul>" + "".join(items) + "</ul>")
+    else:
+        parts.append(
+            "<p class='meta'>Pas de séquence en off dans la transcription "
+            "(rien à arbitrer au-delà de la durée réelle).</p>"
+        )
+    parts.append("</div>")
+    return "".join(parts)
+
+
+def _rapports_temoins_hub_html() -> str:
+    reports = _load_rapports_temoins().get("capsules") or {}
+    if not reports:
+        return ""
+    blocks = [
+        "<h2 id='rapports-temoins'>Rapports par vidéo</h2>",
+        "<p class='meta'>Redondances dans le script, répliques reprises, "
+        "et avis d’intégration des séquences en off. "
+        "Les timecodes sont ceux de la transcription.</p>",
+    ]
+    for code in sorted(reports, key=lambda item: int(item[1:])):
+        blocks.append(_rapport_temoin_html(code, heading="h3"))
+    return "".join(blocks)
 
 
 def _narrative_temoin_block(capsule_code: str) -> dict | None:
@@ -4626,6 +4732,7 @@ def build_videos_temoins_hub_page(
         + "</tbody></table></div>"
         "<h2>Fiches</h2>"
         + _sommaire_cards(cards)
+        + _rapports_temoins_hub_html()
     )
     write_text(
         SITE / "videos_temoins.html",
@@ -5494,6 +5601,9 @@ def build_tb_edito_capsule_pages(programme_table: dict) -> None:
             extras_html = _sequences_additionnelles_html(trans_item)
             if extras_html:
                 sections.append(extras_html)
+            rapport_html = _rapport_temoin_html(code)
+            if rapport_html:
+                sections.append(rapport_html)
         else:
             sections.append(
                 f"<p class='meta'><strong>Sequences edito apparies :</strong> {len(sequences_sorted)} "
@@ -5920,6 +6030,9 @@ def build_capsule_pages(
             extras_html = _sequences_additionnelles_html(trans_item)
             if extras_html:
                 sections.append(extras_html)
+            rapport_html = _rapport_temoin_html(code)
+            if rapport_html:
+                sections.append(rapport_html)
         sections.append(synthese_temoignages_section(code, capsule_data, by_id))
         sections.append("<h2>Manques et décisions</h2>")
         for item in capsule_data.get("manques", []):
@@ -10578,6 +10691,7 @@ def build_script_propose_pages(programme_table: dict, affectations: dict, segmen
                 else f"<div class='script' id='script-final'>{escape(script_text) if script_text else 'A construire.'}</div>"
             )
             + _sequences_additionnelles_html(_transcript_item(code))
+            + _rapport_temoin_html(code)
             + "<h2>Ordre des voix / extraits</h2>"
             + (
                 "<ul>" + "".join(voice_preview) + "</ul>"

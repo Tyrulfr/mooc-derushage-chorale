@@ -1,0 +1,287 @@
+{
+  "note": "Rapports éditoriaux T1–T13 : redondances et reprises dans le script de la vidéo ; critique des séquences en off (à intégrer ou non). Timecodes = transcription, pas des BAB.",
+  "date_mise_a_jour": "2026-09-18",
+  "capsules": {
+    "T1": {
+      "synthese": "Le montage tient : cinq origines distinctes. Une reprise nette en off (Sylvia / récepteur). Les autres off ajoutent surtout du médical ou de l’entourage, hors objectif « chemins d’origine ».",
+      "redondances_video": [
+        {
+          "gravite": "faible",
+          "timecodes": ["00:00:56", "00:01:45"],
+          "detail": "Loïc « Pourquoi oser ? » puis Muriel « Pourquoi j’ai osé ? » : écho choral volontaire, pas un doublon de contenu."
+        }
+      ],
+      "off": [
+        {
+          "debut": "00:06:50",
+          "chercheur": "Muriel Thomas",
+          "avis": "ne_pas_integrer",
+          "critique": "Le probiotique et la fonte musculaire sont déjà dans la vidéo (00:04:31). Intégrer cette phrase rallongerait T1 sans nouvelle origine."
+        },
+        {
+          "debut": "00:07:20",
+          "chercheur": "Muriel Thomas",
+          "avis": "ne_pas_integrer",
+          "critique": "Réactions de l’entourage (« Ah super ! »). Utile pour T11, pas pour les origines d’une innovation."
+        },
+        {
+          "debut": "00:07:55",
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "avis": "integrer_si_court",
+          "critique": "« L’idée est venue des causes de la maladie » : une origine de plus (le problème clinique). À garder seulement en une phrase, collée après le pas de côté (00:00:13–00:00:26)."
+        },
+        {
+          "debut": "00:08:42",
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "avis": "ne_pas_integrer",
+          "critique": "Preuve de concept / passage à l’application : c’est T3, pas T1."
+        },
+        {
+          "debut": "00:08:55",
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "avis": "ne_pas_integrer",
+          "critique": "Formule vague, sans fait nouveau par rapport au pas de côté déjà monté."
+        },
+        {
+          "debut": "00:09:00",
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "avis": "ne_pas_integrer",
+          "critique": "Expériences in vivo dès le départ : niveau de preuve, donc T3."
+        },
+        {
+          "debut": "00:09:24",
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "avis": "ne_pas_integrer",
+          "critique": "Amorce sans contenu (« La jeunesse de cette idée, c’est très simple »)."
+        },
+        {
+          "debut": "00:09:25",
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "avis": "ne_pas_integrer",
+          "critique": "Reprise de 00:00:15 : même récepteur, même système nerveux, même communication cellule à cellule. Déjà dans le script."
+        },
+        {
+          "debut": "00:09:33",
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "avis": "ne_pas_integrer",
+          "critique": "Détail de remodelage vasculaire / occlusion. Trop clinique pour T1."
+        },
+        {
+          "debut": "00:09:45",
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "avis": "ne_pas_integrer",
+          "critique": "Suite du même récit médical. N’ouvre pas un nouveau chemin d’innovation."
+        }
+      ]
+    },
+    "T2": {
+      "synthese": "Pas de séquence en off dans la transcription. Le script ne se répète pas : chaque voix porte un terrain ou un bénéficiaire différent.",
+      "redondances_video": [],
+      "off": []
+    },
+    "T3": {
+      "synthese": "Le script (jusqu’à 07:15) dit déjà clairement : sortir du labo, terrain, besoin. Les 56 répliques en off sont un second film : beaucoup de matière utile, mais aussi des doublons, du hors-sujet et du hors-vidéo (T2, T7, T9, T13).",
+      "redondances_video": [],
+      "off": [
+        {
+          "debut": "00:07:35–00:07:51",
+          "chercheur": "Yann Monier",
+          "avis": "integrer",
+          "critique": "L’échange terrain a fait évoluer la solution. C’est exactement le saut « preuve scientifique → preuve d’usage ». Court, à coller après 00:06:19."
+        },
+        {
+          "debut": "00:08:00",
+          "chercheur": "Yann Monier",
+          "avis": "ne_pas_integrer",
+          "critique": "S’entourer de compétences complémentaires : plutôt T9."
+        },
+        {
+          "debut": "00:08:27–00:08:33",
+          "chercheur": "Loïc Rajjou",
+          "avis": "ne_pas_integrer",
+          "critique": "Bien collectif / utilité sociétale : plutôt T1 ou T13."
+        },
+        {
+          "debut": "00:09:03–00:09:24",
+          "chercheur": "Yann Monier",
+          "avis": "ne_pas_integrer",
+          "critique": "Maison du doctorat, SATT, incubateur : T7 / T12, pas le POC ni le besoin."
+        },
+        {
+          "debut": "00:09:40–00:10:18",
+          "chercheur": "Muriel Thomas",
+          "avis": "integrer_si_court",
+          "critique": "EHPAD, co-construction 5 ans, espoir. Preuve d’usage réelle. À garder en 2–3 phrases max. Ne pas cumuler avec le second récit EHPAD à 00:13:53."
+        },
+        {
+          "debut": "00:10:38–00:11:45",
+          "chercheur": "Loïc Rajjou",
+          "avis": "integrer",
+          "critique": "L’idée a beaucoup évolué ; l’innovation est « utilisateur-dépendant » (laitue 98–99 %). Meilleure illustration T3 de toute la bande off."
+        },
+        {
+          "debut": "00:11:49",
+          "chercheur": "SPK_6",
+          "avis": "ne_pas_integrer",
+          "critique": "Bruit de diarisation (« En. »). Inutilisable."
+        },
+        {
+          "debut": "00:11:58–00:12:07",
+          "chercheur": "Loïc Rajjou",
+          "avis": "integrer_si_court",
+          "critique": "On ne va pas au marché sans les industriels. Utile en une phrase, pas en discours."
+        },
+        {
+          "debut": "00:12:39",
+          "chercheur": "Loïc Rajjou",
+          "avis": "ne_pas_integrer",
+          "critique": "« Pourquoi sortir du laboratoire ? » est déjà dans la vidéo (00:04:47 et 00:06:31)."
+        },
+        {
+          "debut": "00:12:43–00:13:37",
+          "chercheur": "Loïc Rajjou",
+          "avis": "integrer_si_court",
+          "critique": "Scale-up grammes → kilos et contraintes réglementaires : vraie prochaine incertitude. Couper les hésitations 00:13:13–00:13:19 (« Je ne sais pas / je réfléchis »)."
+        },
+        {
+          "debut": "00:13:01",
+          "chercheur": "Jean-Jacques Greffet",
+          "avis": "ne_pas_integrer",
+          "critique": "Amorce coupée (« Il est. »)."
+        },
+        {
+          "debut": "00:13:53–00:14:54",
+          "chercheur": "Muriel Thomas",
+          "avis": "ne_pas_integrer",
+          "critique": "Second récit EHPAD, plus long, même histoire qu’à 00:09:40 (espoir, Covid). Choisir un seul, pas les deux."
+        },
+        {
+          "debut": "00:15:03–00:15:21",
+          "chercheur": "Jean-Jacques Greffet",
+          "avis": "ne_pas_integrer",
+          "critique": "Nice to have / must have / client qui paie : c’est le cœur de T2, déjà traité ailleurs. Le recoller ici ferait doublon de programme."
+        },
+        {
+          "debut": "00:15:48–00:15:57",
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "avis": "ne_pas_integrer",
+          "critique": "Besoin urgent côté patients : déjà incarné en T2 (HTAP). T3 a assez de terrain."
+        }
+      ]
+    },
+    "T4": {
+      "synthese": "Pas de séquence en off. Trois échos dans le script, tous des reprises orales de la même idée, pas des copier-coller de plans.",
+      "redondances_video": [
+        {
+          "gravite": "faible",
+          "timecodes": ["00:02:48", "00:02:51"],
+          "detail": "Loïc répète « dimensionner différemment » (essais puis volumes). Une des deux suffit au montage serré."
+        },
+        {
+          "gravite": "faible",
+          "timecodes": ["00:04:30", "00:04:40"],
+          "detail": "Muriel nomme deux fois « la peur de l’échec ». Le second est une anaphore, tenable."
+        },
+        {
+          "gravite": "faible",
+          "timecodes": ["00:05:31", "00:05:39"],
+          "detail": "Jean-Jacques : si ça ne marche pas, on essaie autre chose — d’abord dans le même projet, puis dans un autre. Ce n’est pas un doublon : c’est une montée."
+        }
+      ],
+      "off": []
+    },
+    "T5": {
+      "synthese": "Le script se termine déjà sur le conseil « le plus tôt possible » (Sylvia 00:05:09–00:05:16). Les 6 off de Yann redisent la même chose.",
+      "redondances_video": [],
+      "off": [
+        {
+          "debut": "00:06:02",
+          "chercheur": "Yann Monier",
+          "avis": "ne_pas_integrer",
+          "critique": "Même conseil que Sylvia à 00:05:09 : aller tôt vers la cellule de valorisation."
+        },
+        {
+          "debut": "00:06:19–00:06:28",
+          "chercheur": "Yann Monier",
+          "avis": "integrer_si_court",
+          "critique": "Seul ajout utile : arbitrer tôt quoi protéger / quoi publier. Une phrase, pas le bloc entier."
+        },
+        {
+          "debut": "00:06:34",
+          "chercheur": "Yann Monier",
+          "avis": "integrer_si_court",
+          "critique": "L’anecdote thèse (milieu de 3e année, arbitrage précipité) rend le conseil concret. Si on intègre, c’est celle-ci, pas 00:06:02."
+        },
+        {
+          "debut": "00:06:45–00:06:47",
+          "chercheur": "Yann Monier",
+          "avis": "ne_pas_integrer",
+          "critique": "« Le plus tôt on le sait, le mieux on s’adapte » : clôture déjà dite dans la vidéo."
+        }
+      ]
+    },
+    "T6": {
+      "synthese": "Pas de séquence en off. Deux échos de formulation, pas de plan doublé.",
+      "redondances_video": [
+        {
+          "gravite": "aucune",
+          "timecodes": ["00:00:19", "00:00:20"],
+          "detail": "Licensing vs création d’entreprise : ce n’est pas une redondance, ce sont les deux options de la vidéo."
+        },
+        {
+          "gravite": "faible",
+          "timecodes": ["00:02:32", "00:03:04"],
+          "detail": "Loïc dit deux fois qu’on continue le développement techno. L’un des deux peut partir."
+        }
+      ],
+      "off": []
+    },
+    "T7": {
+      "synthese": "Pas de séquence en off. Un seul écho d’accompagnement, qui s’enrichit (puis le financement).",
+      "redondances_video": [
+        {
+          "gravite": "faible",
+          "timecodes": ["00:01:55", "00:02:06"],
+          "detail": "« On a eu besoin d’être accompagné » puis « aussi pour être financés ». Complément, pas doublon."
+        }
+      ],
+      "off": []
+    },
+    "T8": {
+      "synthese": "Pas de séquence en off. Pas de réplique reprise deux fois.",
+      "redondances_video": [],
+      "off": []
+    },
+    "T9": {
+      "synthese": "Pas de séquence en off. La série « on ne sait pas faire » est une liste, pas un copier-coller.",
+      "redondances_video": [
+        {
+          "gravite": "aucune",
+          "timecodes": ["00:00:16", "00:00:19"],
+          "detail": "Étude de marché / brevetabilité : même tournure, compétences différentes. À garder."
+        }
+      ],
+      "off": []
+    },
+    "T10": {
+      "synthese": "Pas de séquence en off. Pas de texte repris deux fois.",
+      "redondances_video": [],
+      "off": []
+    },
+    "T11": {
+      "synthese": "Pas de séquence en off. Script court (02:53), sans reprise interne.",
+      "redondances_video": [],
+      "off": []
+    },
+    "T12": {
+      "synthese": "Pas de séquence en off. Une voix reste étiquetée SPK_3 dans la transcription (00:01:39, 00:01:45) : à identifier, ce n’est pas une redondance.",
+      "redondances_video": [],
+      "off": []
+    },
+    "T13": {
+      "synthese": "Pas de séquence en off. Conclusion sans doublon de réplique.",
+      "redondances_video": [],
+      "off": []
+    }
+  }
+}
