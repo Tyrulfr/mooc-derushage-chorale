@@ -1,0 +1,61 @@
+# T5 — ancien script Clarisse (remplace par Myriam V1)
+# source: Trancript_Vidéo5.docx
+# Ne plus utiliser sauf demande explicite.
+
+=== Yann Monier ===
+
+J'ai compris qu'il fallait que je protège mon travail après deux ou trois discussions avec la cellule de valorisation, qui m'a fait comprendre que protéger la propriété intellectuelle, c'est quelque chose de très important, parce que c'est sur ça que la valeur de la recherche humaine sur startup est fondée au début de la boîte, et donc il faut se protéger, soit d'attaques industrielles extérieures, ou de personnes qui vous donnent de nouveaux libidés.
+
+=== Loïc Rajjou ===
+
+Concernant la propriété intellectuelle, on s'est posé des questions dès le départ, parce qu'on est dans un institut académique, moi je travaille dans un laboratoire public à Versailles qui s'appelle l'institut Jean-Pierre Bourgin, c'est une unité mixte, une règle paritéque, et toutes les questions de valorisation, de brevetabilité, sont gérées par nos tutelles.
+
+=== Yann Monier ===
+
+Il se trouve que c'est un projet qui est rentré en pré-maturation, puis ensuite en maturation à la SAT, et la SAT avait mandat sur la gestion de la propriété intellectuelle, sur l'accompagnement de la propriété intellectuelle avec les cellules de valorisation respectives d'Hydra et d'Agro-ParisTech.
+
+=== Loïc Rajjou ===
+
+Donc on s'est posé des questions collectivement.
+
+=== Yann Monier ===
+
+En discutant avec les cellules de valorisation, j'ai compris qu'il fallait qu'on fasse une déclaration d'invention, ou du moins qu'on décrive un document qui va permettre ensuite de pouvoir faire une étude de brevetabilité avec la SAT, pour voir parmi ce qu'on a inventé, qu'est-ce qui doit rester un secret de méthode industrielle et qu'est-ce qui doit être protégé par le relais.
+
+=== Loïc Rajjou ===
+
+Une grande question qui s'est posée, nous, sur notre technologie, c'est qu'est Potentiellement, tout était breveté. Par contre, il y avait une partie de la techno qu'on ne souhaitait pas divulguer pour une question assez simple. Si un acteur faisait exactement la même chose que nous sans le dire, on était incapable de le démontrer.
+
+Donc là, ça nous a amené à réfléchir à une stratégie qui n'était plus une stratégie de secret industriel.
+
+=== Muriel Thomas ===
+
+Pendant un projet de recherche qui était financé par Carnot-Caliman, on a abouti à la caractérisation du probiotique et là, je savais qu'il y avait un potentiel de valorisation. Tout simplement, on ne peut pas breveter du vivant, donc on ne peut pas breveter une bactérie. En revanche, on peut breveter son application.
+
+Cette idée-là, cette application, elle est travaillée par les ingénieurs d'Inra et Transfert qui regardent si, dans tous les brevets qui existent dans le monde, ce brevet a une place, cette application a une place.
+
+=== Sylvia Cohen-Kaminski ===
+
+Il faut à tout prix protéger son innovation avant d'en parler publiquement. Je le savais déjà avant même de commencer, sans protection intellectuelle, personne ne s'intéresse à notre innovation et personne ne veut développer derrière. C'est pourquoi nous avons, dès le départ, breveté y compris le mécanisme d'action avant même de développer les molécules.
+
+Pendant que la recherche était encore au sein du laboratoire, par la suite, on a pu breveter effectivement deux séries chimiques. Donc notre innovation est liée à trois brevets qui sont maintenant délivrés mondialement.
+
+=== Muriel Thomas ===
+
+L'objectif final d'un projet de recherche, c'est la publication. Mais jamais, le fait d'écrire un brevet ou d'imaginer une application, par exemple pour un probiotique, a freiné cette publication. Parce qu'en fait, dans le temps, c'est séquentiel.
+
+Et vous commencez à travailler la propriété intellectuelle, avec notamment InBrain et Transfer, avant de publier.
+
+=== Sylvia Cohen-Kaminski ===
+
+Donc notre laboratoire était dépendant de deux entités, l'Inserm et l'Université Paris-Saclay. Il y avait également les acteurs CNRS et les acteurs CEA. Nous nous sommes beaucoup posé la question de savoir qui allait être porteur de ces innovations, en copartenariat bien sûr avec toutes les tutelles.
+
+En fait, nous avons par défaut choisi l'Inserm puisque c'était eux qui, par définition, étaient liés aux innovations de notre laboratoire. Et je dois dire qu'avec l'Inserm Transfer, ça s'est passé très facilement, il n'y a eu aucun conflit par rapport à l'idée de publier.
+
+=== Yann Monier ===
+
+La cellule de valorisation a joué un rôle de conseil et d'accompagnement sur quelles sont les informations qu'on a le droit de publier, que ce soit dans des articles scientifiques ou dans des communications sur l'Indien ou dans des journaux industriels.
+
+=== Sylvia Cohen-Kaminski ===
+
+Si je devais donner un conseil par rapport à la valorisation du projet, c'est de s'y prendre le plus tôt possible. On peut discuter avec les cellules de valorisation, pourquoi pas avec les SAT, très très tôt dans le projet, afin de choisir le bon moment pour breveter, ni trop tôt, ni trop tard, et afin de choisir le bon moment pour entrer en maturation éventuellement avec la SAT Paris-Saclay.

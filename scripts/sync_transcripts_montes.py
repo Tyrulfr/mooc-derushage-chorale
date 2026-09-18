@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Synchronise transcripts montés (docx raw) → JSON + affectations.script_final."""
+"""Synchronise le transcript monté restant (T13 Clarisse) sans écraser le script T monté V1.
+
+T1–T12 : source de vérité = data/scripts_temoin_v1/ (import_scripts_temoin_v1.py).
+Les anciens Trancript_Video1–12 sont dans archive/scripts_temoin_remplaces/.
+"""
 from __future__ import annotations
 
 import json
@@ -221,18 +225,42 @@ def extract_all_docx() -> dict[str, dict]:
 
 
 def main() -> None:
+    existing = {}
+    if TRANSCRIPTS_PATH.exists():
+        existing = json.loads(TRANSCRIPTS_PATH.read_text(encoding="utf-8"))
+    existing_caps = existing.get("capsules") or {}
+
     candidates = load_verbatim_candidates()
     print(f"{len(candidates)} candidats verbatim pour attribution voix")
 
-    capsules = extract_all_docx()
-    for code, item in sorted(capsules.items(), key=lambda kv: int(kv[0][1:])):
+    extracted = extract_all_docx()
+    for code, item in sorted(extracted.items(), key=lambda kv: int(kv[0][1:])):
+        if (existing_caps.get(code) or {}).get("source_kind") in {
+            "script_t_monte_v1",
+            "script_myriam_v1",
+        }:
+            print(f"  {code}: script T monté V1 conservé, docx Clarisse ignoré")
+            continue
         item["text"] = attribute_text(item["text_raw"], candidates)
         item["words"] = len(item["text"].split())
         names = re.findall(r"^=== (.+) ===$", item["text"], flags=re.M)
         print(f"  {code} voix: {' | '.join(dict.fromkeys(names))}")
 
+    capsules = dict(existing_caps)
+    for code, item in extracted.items():
+        if (existing_caps.get(code) or {}).get("source_kind") in {
+            "script_t_monte_v1",
+            "script_myriam_v1",
+        }:
+            continue
+        capsules[code] = item
+
     payload = {
-        "note": "Transcripts montages finaux Video1–N (extraits des docx raw, non inventés).",
+        "note": (
+            "T1–T12 : scripts T monté V1 (vidéo montée). "
+            "T13 : transcript Clarisse (Trancript_Video13.docx). "
+            "Anciens Trancript T1–T12 archivés."
+        ),
         "date_mise_a_jour": date.today().isoformat(),
         "capsules": capsules,
     }
@@ -244,7 +272,12 @@ def main() -> None:
 
     affectations = load_affectations()
     updated = 0
-    for code, item in capsules.items():
+    for code, item in extracted.items():
+        if (existing_caps.get(code) or {}).get("source_kind") in {
+            "script_t_monte_v1",
+            "script_myriam_v1",
+        }:
+            continue
         cap = (affectations.get("capsules") or {}).get(code)
         if not cap:
             continue
@@ -255,11 +288,11 @@ def main() -> None:
         json.dumps(affectations, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
-    print(f"script_final mis à jour pour {updated} capsule(s)")
+    print(f"script_final Clarisse mis à jour pour {updated} capsule(s)")
 
     missing = [f"T{i}" for i in range(1, 14) if f"T{i}" not in capsules]
     if missing:
-        print(f"Sans transcript docx : {', '.join(missing)}")
+        print(f"Sans script : {', '.join(missing)}")
 
 
 if __name__ == "__main__":

@@ -442,7 +442,8 @@ tbody tr:last-child td { border-bottom: none; }
   background: var(--accent);
   color: #fff;
 }
-.tournage-views [hidden] {
+.tournage-views [hidden],
+.split-views [hidden] {
   display: none;
 }
 .chip {

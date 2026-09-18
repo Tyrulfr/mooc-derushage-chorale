@@ -14,12 +14,60 @@ MATCH_DATA = DATA / "match"
 
 NAV_ITEMS = (
     ("index.html", "Accueil"),
-    ("tableau_de_bord.html", "Tableau de bord"),
+    ("videos_temoins.html", "Vidéos témoins"),
+    ("videos_expert.html", "Vidéos expert"),
     ("tournage.html", "Tournage"),
-    ("suivi_intervenants.html", "Suivi Intervenants"),
-    ("edito.html", "Edito"),
-    ("fichiers_travail.html", "Fichiers de travail"),
+    ("mise_en_oeuvre.html", "Mise en œuvre"),
 )
+
+NAV_CURRENT_EXACT = {
+    "index.html": "index.html",
+    "videos_temoins.html": "videos_temoins.html",
+    "script_propose.html": "videos_temoins.html",
+    "videos_expert.html": "videos_expert.html",
+    "tournage.html": "tournage.html",
+    "mise_en_oeuvre.html": "mise_en_oeuvre.html",
+    "suivi_intervenants.html": "mise_en_oeuvre.html",
+    "edito.html": "mise_en_oeuvre.html",
+    "fichiers_travail.html": "mise_en_oeuvre.html",
+    "tableau_de_bord.html": "mise_en_oeuvre.html",
+    "tb_edito.html": "mise_en_oeuvre.html",
+    "proposition_edito.html": "mise_en_oeuvre.html",
+    "derushage_edito.html": "mise_en_oeuvre.html",
+    "mails_experts.html": "mise_en_oeuvre.html",
+}
+
+NAV_CURRENT_PREFIXES = (
+    ("capsule_T", "videos_temoins.html"),
+    ("capsule_GEN", "videos_temoins.html"),
+    ("script_propose_", "videos_temoins.html"),
+    ("video_expert_", "videos_expert.html"),
+    ("mail_videos_attendues_", "videos_expert.html"),
+    ("guide_editorial_", "videos_expert.html"),
+    ("guide_videos_attendues_", "videos_expert.html"),
+    ("tournage", "tournage.html"),
+    ("tb_edito_", "mise_en_oeuvre.html"),
+    ("suivi_", "mise_en_oeuvre.html"),
+    ("proposition_edito_", "mise_en_oeuvre.html"),
+    ("derushage_edito_", "mise_en_oeuvre.html"),
+    ("mails_experts_", "mise_en_oeuvre.html"),
+    ("mails_videos_", "mise_en_oeuvre.html"),
+)
+
+
+def resolve_nav_current(current: str | None) -> str | None:
+    """Rattache une page fille à l'onglet principal correspondant."""
+    if not current:
+        return None
+    name = current.rsplit("/", 1)[-1]
+    if name in NAV_CURRENT_EXACT:
+        return NAV_CURRENT_EXACT[name]
+    for prefix, tab in NAV_CURRENT_PREFIXES:
+        if name.startswith(prefix):
+            return tab
+    if name in {href for href, _label in NAV_ITEMS}:
+        return name
+    return "mise_en_oeuvre.html"
 
 SITE_BRAND = "Dérushage chorale"
 SITE_TAGLINE = "L'Esprit d'innover — MOOC Paris-Saclay"
@@ -364,9 +412,10 @@ def html_breadcrumb(*parts: tuple[str, str | None]) -> str:
 
 
 def html_nav(current: str | None = None) -> str:
+    current_tab = resolve_nav_current(current)
     links: list[str] = []
     for href, label in NAV_ITEMS:
-        if href == current:
+        if href == current_tab:
             links.append(f'<a class="site-nav__link site-nav__link--current" href="{href}" aria-current="page">{escape(label)}</a>')
         else:
             links.append(f'<a class="site-nav__link" href="{href}">{escape(label)}</a>')

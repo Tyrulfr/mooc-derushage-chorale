@@ -1,0 +1,336 @@
+{
+  "note": "Sequences presentes en fin des docx script T monte V1, hors montage. Pas le script de la video. Arbitrage ulterieur.",
+  "date": "2026-09-17",
+  "capsules": {
+    "T1": [
+      {
+        "texte": "Cette innovation est également née d'acquisitions de connaissances et de projets de recherche où j'ai isolé au laboratoire un probiotique qui limite la fonte musculaire en cas de dénutrition liée à l'âge.",
+        "chercheur": "Muriel Thomas",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.424
+      },
+      {
+        "texte": "«Ah super!» ou «Tiens, je ne m'attendais pas à ça de toi, mais vas-y!» ou «Ah oui, ok, pour une fois, on va comprendre ce que tu fais au laboratoire.» Et puis, s'il y a des personnes qui sont plus difficiles à convaincre, c'est parce qu'il leur faut du temps pour accepter le fait qu'on travaille un peu différemment, même quand on a été chercheur.",
+        "chercheur": "Muriel Thomas",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.299
+      },
+      {
+        "texte": "L'idée de ce projet est venue des causes de la maladie elle-même.",
+        "chercheur": "Sylvia Cohen-Kaminski",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.412
+      },
+      {
+        "texte": "Le passage de la recherche à l'application a été à partir du moment où j'ai fait la première preuve de concept que ce récepteur pouvait être impliqué dans la maladie hypertension artérielle pulmonaire.",
+        "chercheur": "Sylvia Cohen-Kaminski",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.446
+      },
+      {
+        "texte": "J'ai fait les choses de façon différente de ce qu'on fait dans la recherche habituellement.",
+        "chercheur": "Sylvia Cohen-Kaminski",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.503
+      },
+      {
+        "texte": "Pour moi, il fallait déjà démontrer que ces récepteurs étaient actifs dans la maladie dès le départ, donc des expériences in vivo dès le départ, sans même connaître les mécanismes d'action.",
+        "chercheur": "Sylvia Cohen-Kaminski",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.322
+      },
+      {
+        "texte": "La jeunesse de cette idée, c'est très simple.",
+        "chercheur": "Intervenant",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.507
+      },
+      {
+        "texte": "J'étais passionnée par ce récepteur du système nerveux central impliqué dans la communication cellule à cellule.",
+        "chercheur": "Sylvia Cohen-Kaminski",
+        "nature": "doublon",
+        "doublon_de": 1,
+        "score": 0.802
+      },
+      {
+        "texte": "Et le fait est que dans l'hypertension artérielle pulmonaire, il y a ce processus de remodelage vasculaire qui conduit à une occlusion des artères pulmonaires et empêche le sang de se réoxygéner.",
+        "chercheur": "Sylvia Cohen-Kaminski",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.375
+      },
+      {
+        "texte": "Et mon idée était que ce récepteur était impliqué dans ce remodelage vasculaire conduisant à la maladie.",
+        "chercheur": "Sylvia Cohen-Kaminski",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.482
+      }
+    ],
+    "T3": [
+      {
+        "texte": "Improbable, impossible d'aller au marché.",
+        "chercheur": "Loïc Rajjou",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.407
+      },
+      {
+        "texte": "Ce qu'on a découvert, qu'on n'aurait jamais appris si on était resté simplement au laboratoire...",
+        "chercheur": "Loïc Rajjou",
+        "nature": "doublon",
+        "doublon_de": 70,
+        "score": 0.92
+      },
+      {
+        "texte": "Je ne sais pas.",
+        "chercheur": "Sylvia Cohen-Kaminski",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.378
+      },
+      {
+        "texte": "Non, non, je réfléchis.",
+        "chercheur": "Intervenant",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.408
+      },
+      {
+        "texte": "Il y a sûrement plein de trucs.",
+        "chercheur": "Intervenant",
+        "nature": "doublon",
+        "doublon_de": 70,
+        "score": 0.92
+      },
+      {
+        "texte": "Quand on est au labo, dans le monde académique, on est assez peu contraint aux exigences réglementaires ou aux exigences économiques des industries.",
+        "chercheur": "Loïc Rajjou",
+        "nature": "doublon",
+        "doublon_de": 70,
+        "score": 0.92
+      },
+      {
+        "texte": "Et ça, il fallait qu'on le prenne en compte dans notre dimensionnement.",
+        "chercheur": "Loïc Rajjou",
+        "nature": "doublon",
+        "doublon_de": 70,
+        "score": 0.92
+      },
+      {
+        "texte": "Ça nous a permis aussi de se positionner pour leur apporter notre technologie.",
+        "chercheur": "Loïc Rajjou",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.43
+      },
+      {
+        "texte": "Clairement, il y a eu des échanges qui ont été fondateurs dans le parcours de l'innovation, notamment un échange qu'on a établi avec un EHPAD, qui s'appelle l'EHPAD de Notre-Dame de Puraveau, parce que cet EHPAD travaillait déjà depuis 15 ans sur la façon dont on pouvait innover en nutrition dans l'établissement pour essayer d'adapter les aliments aux contraintes de l'âge ou de la maladie.",
+        "chercheur": "Muriel Thomas",
+        "nature": "doublon",
+        "doublon_de": 70,
+        "score": 0.92
+      },
+      {
+        "texte": "Et nous avons eu un parcours depuis maintenant plus de cinq ans de co-construction, de co-réflexion, mais aussi de co-action.",
+        "chercheur": "Muriel Thomas",
+        "nature": "doublon",
+        "doublon_de": 70,
+        "score": 0.92
+      },
+      {
+        "texte": "Peut-être trois ans après avoir établi le premier contact, j'ai demandé à cette équipe de l'EHPAD, mais qu'est-ce qui vous motive pour continuer à travailler avec nous, à passer du temps avec nous?",
+        "chercheur": "Muriel Thomas",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.363
+      },
+      {
+        "texte": "Et leur réponse m'a surprise.",
+        "chercheur": "Muriel Thomas",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.438
+      },
+      {
+        "texte": "Ils m'ont dit, c'est tout simplement un projet qui parle d'espoir et d'innovation.",
+        "chercheur": "Muriel Thomas",
+        "nature": "doublon",
+        "doublon_de": 70,
+        "score": 0.92
+      },
+      {
+        "texte": "Et après le Covid, on en avait besoin.",
+        "chercheur": "Muriel Thomas",
+        "nature": "doublon",
+        "doublon_de": 70,
+        "score": 0.92
+      },
+      {
+        "texte": "On n'est pas là pour faire un beau projet de physicien, on est là pour répondre à des besoins réels de clients.",
+        "chercheur": "Jean-Jacques Greffet",
+        "nature": "doublon",
+        "doublon_de": 70,
+        "score": 0.92
+      },
+      {
+        "texte": "Et un besoin réel, ça veut dire que le client va payer.",
+        "chercheur": "Jean-Jacques Greffet",
+        "nature": "doublon",
+        "doublon_de": 70,
+        "score": 0.92
+      },
+      {
+        "texte": "Donc en fait, on distingue entre le «nice to have» et le «must have».",
+        "chercheur": "Jean-Jacques Greffet",
+        "nature": "doublon",
+        "doublon_de": 70,
+        "score": 0.92
+      },
+      {
+        "texte": "Et une première façon d'ailleurs de le faire, c'est de vérifier s'ils sont prêts à payer un petit peu pour voir, c'est-à-dire louer un instrument par exemple.",
+        "chercheur": "Jean-Jacques Greffet",
+        "nature": "doublon",
+        "doublon_de": 70,
+        "score": 0.92
+      },
+      {
+        "texte": "Le besoin réel était une évidence.",
+        "chercheur": "Intervenant",
+        "nature": "doublon",
+        "doublon_de": 70,
+        "score": 0.92
+      },
+      {
+        "texte": "Je travaillais déjà avec les cliniciens impliqués dans le suivi de ces patients.",
+        "chercheur": "Sylvia Cohen-Kaminski",
+        "nature": "doublon",
+        "doublon_de": 70,
+        "score": 0.92
+      },
+      {
+        "texte": "J'ai aussi discuté avec les patients et donc le besoin était urgent et évident.",
+        "chercheur": "Sylvia Cohen-Kaminski",
+        "nature": "doublon",
+        "doublon_de": 70,
+        "score": 0.92
+      }
+    ],
+    "T5": [
+      {
+        "texte": "Si je devais donner un conseil aujourd'hui aux jeunes chercheurs, ce serait de se rapprocher très tôt de leur cellule de valorisation pour pouvoir discuter avec eux et voir quelle est la valorisation possible de leurs travaux.",
+        "chercheur": "Yann Monier",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.399
+      },
+      {
+        "texte": "Même s'il n'y a pas de vocation à faire de la valorisation des travaux, c'est toujours un travail intéressant parce que le plus tôt On sait ce qu'on veut faire.",
+        "chercheur": "Yann Monier",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.422
+      },
+      {
+        "texte": "Le plus tôt, on peut avoir une stratégie sur quoi protéger et quoi publier.",
+        "chercheur": "Yann Monier",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.471
+      },
+      {
+        "texte": "Et on n'a pas à se retrouver, comme dans mon cas, en milieu de troisième année de thèse, à devoir essayer de faire un arbitrage rapide entre qu'est-ce qu'on va écrire et mettre dans la thèse et qu'est- ce qu'on va devoir protéger.",
+        "chercheur": "Intervenant",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.327
+      },
+      {
+        "texte": "Le plus tôt, on le sait.",
+        "chercheur": "Intervenant",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.448
+      },
+      {
+        "texte": "Le mieux, on peut s'adapter et donc suivre ce processus sereinement.",
+        "chercheur": "Intervenant",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.417
+      }
+    ],
+    "T11": [
+      {
+        "texte": "Lorsque l'on se lance dans une activité d'entreprenariat, on a plusieurs retours.",
+        "chercheur": "Jean-Jacques Greffet",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.427
+      },
+      {
+        "texte": "Il y en a un qui est extrêmement important pour un scientifique, c'est de voir une application concrète de ce qu'il a fait pendant 35 ans.",
+        "chercheur": "Intervenant",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.342
+      },
+      {
+        "texte": "Voir que ce que l'on a fait se transforme en un produit qui va avoir un impact sur le développement des solutions des maladies auto-immunes ou des cancers, c'est extrêmement satisfaisant.",
+        "chercheur": "Jean-Jacques Greffet",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.285
+      },
+      {
+        "texte": "L'innovation que nous avons développée aujourd'hui, elle s'est traduite par un prototype d'appareil.",
+        "chercheur": "Jean-Jacques Greffet",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.323
+      },
+      {
+        "texte": "On parle de MVP dans le jargon entrepreneurial, donc de Minimum Viable Product.",
+        "chercheur": "Jean-Jacques Greffet",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.34
+      },
+      {
+        "texte": "Ce n'est pas encore un produit commercial stabilisé et fiable.",
+        "chercheur": "Jean-Jacques Greffet",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.369
+      },
+      {
+        "texte": "Et on l'a déjà vendu à deux entreprises.",
+        "chercheur": "Jean-Jacques Greffet",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.427
+      },
+      {
+        "texte": "Et donc là, on voit les conséquences concrètes.",
+        "chercheur": "Jean-Jacques Greffet",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.405
+      },
+      {
+        "texte": "C'est l'une des rares solutions alternatives aux antibiotiques, ce qui est aujourd'hui un problème majeur compte tenu des résistances aux antibiotiques qui apparaissent de plus en plus.",
+        "chercheur": "Jean-Jacques Greffet",
+        "nature": "ajout",
+        "doublon_de": null,
+        "score": 0.358
+      }
+    ]
+  }
+}

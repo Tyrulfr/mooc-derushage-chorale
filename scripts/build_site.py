@@ -489,7 +489,8 @@ tbody tr:last-child td { border-bottom: none; }
   background: var(--accent);
   color: #fff;
 }
-.tournage-views [hidden] {
+.tournage-views [hidden],
+.split-views [hidden] {
   display: none;
 }
 .chip {
@@ -2034,6 +2035,62 @@ def _script_final_prefer_mounted_transcript(
 ) -> str:
     mounted = _mounted_transcript_script(capsule_code)
     return mounted if mounted else fallback
+
+
+def _transcript_item(capsule_code: str) -> dict:
+    return (_load_transcripts_videos_finaux().get("capsules") or {}).get(capsule_code) or {}
+
+
+def _transcript_source_note_html(trans_item: dict) -> str:
+    source = trans_item.get("source") or ""
+    kind = trans_item.get("source_kind") or ""
+    extras = trans_item.get("sequences_additionnelles") or []
+    if kind in {"script_t_monte_v1", "script_myriam_v1"}:
+        extra_note = (
+            f" {len(extras)} séquence(s) additionnelle(s) hors vidéo (ajouts / doublons), "
+            "non montées — arbitrage ultérieur."
+            if extras
+            else " Pas de séquence additionnelle dans le fichier V1."
+        )
+        return (
+            f"Script T monté V1 (<code>{escape(source)}</code>). "
+            f"Voix identifiées par recoupement BAB.{extra_note}"
+        )
+    if source:
+        return (
+            f"Transcript de la vidéo montée — <code>{escape(source)}</code> "
+            "· voix identifiées par recoupement BAB."
+        )
+    return ""
+
+
+def _sequences_additionnelles_html(trans_item: dict) -> str:
+    extras = trans_item.get("sequences_additionnelles") or []
+    if not extras:
+        return ""
+    cards = []
+    for extra in extras:
+        nature = extra.get("nature") or "ajout"
+        label = "doublon" if nature == "doublon" else "ajout proposé"
+        voice = extra.get("chercheur") or "Intervenant"
+        text = extra.get("texte") or ""
+        doublon_de = extra.get("doublon_de")
+        meta = f"<strong>{escape(voice)}</strong> · {escape(label)}"
+        if nature == "doublon" and doublon_de is not None:
+            meta += f" · proche de la séquence vidéo n°{int(doublon_de) + 1}"
+        cards.append(
+            "<div class='card'>"
+            f"<p class='meta'>{meta}</p>"
+            f"<p>{escape(text)}</p>"
+            "</div>"
+        )
+    return (
+        "<h2 id='sequences-additionnelles'>Séquences additionnelles (hors vidéo)</h2>"
+        "<p class='meta'>Présentes dans le fichier V1 mais <strong>absentes du montage actuel</strong>. "
+        "Ce sont des propositions d'ajouts et/ou des doublons. "
+        "Elles ne font pas partie de la vidéo témoin. Arbitrage ultérieur : les additionner ou non.</p>"
+        + "".join(cards)
+    )
 
 
 def _narrative_temoin_block(capsule_code: str) -> dict | None:
@@ -4355,10 +4412,16 @@ def build_home(capsules: list[dict], segments: list[dict]) -> None:
     used_count = sum(1 for segment in segments if segment.get("statut") == "UTILISE")
     sections = [
         (
-            "tableau_de_bord.html",
-            "⊞",
-            "Tableau de bord",
-            "Vue d'ensemble des capsules, durees, chercheurs et acces aux montages.",
+            "videos_temoins.html",
+            "◎",
+            "Vidéos témoins",
+            "Les 13 vidéos chorales : scripts T monté V1 (T1–T12) et T13.",
+        ),
+        (
+            "videos_expert.html",
+            "▶",
+            "Vidéos expert",
+            "Scripts, revues et cahier édito envoyé aux experts — par vidéo ou par nom.",
         ),
         (
             "tournage.html",
@@ -4367,22 +4430,10 @@ def build_home(capsules: list[dict], segments: list[dict]) -> None:
             "Planning de captation : scripts, filmé, monté, validé, implémenté.",
         ),
         (
-            "suivi_intervenants.html",
-            "◎",
-            "Suivi Intervenants",
-            "Structure principale : modules, intervenants, capsules temoin et videos expert.",
-        ),
-        (
-            "edito.html",
-            "✎",
-            "Edito",
-            "Proposition edito, correspondances et derushage des selections Clarisse.",
-        ),
-        (
-            "fichiers_travail.html",
-            "📁",
-            "Fichiers de travail",
-            "Informations, Prev Vid, videos expert, mails et BAB encodes.",
+            "mise_en_oeuvre.html",
+            "⚙",
+            "Mise en œuvre",
+            "Suivi intervenants, édito et fichiers de travail.",
         ),
     ]
     cards = "".join(
@@ -4398,7 +4449,7 @@ def build_home(capsules: list[dict], segments: list[dict]) -> None:
 <section class="hero">
   <p class="hero__eyebrow">MOOC · L'Esprit d'innover ! Pourquoi pas Vous !</p>
   <h1>Dérushage éditorial chorale</h1>
-  <p class="hero__lead">Cartographier, qualifier et assembler les temoignages BAB pour les videos chorales du MOOC.</p>
+  <p class="hero__lead">Scripts des vidéos témoins et expertise, tournage, puis outils de mise en œuvre.</p>
   <div class="hero__stats">
     <span class="stat-pill"><strong>{len(capsules)}</strong> capsules</span>
     <span class="stat-pill"><strong>{len(segments)}</strong> extraits indexes</span>
@@ -4417,6 +4468,136 @@ def build_home(capsules: list[dict], segments: list[dict]) -> None:
             body,
             nav_current="index.html",
             page_header="",
+            main_class="page-home",
+        ),
+    )
+
+
+def build_videos_temoins_hub_page(
+    capsules: list[dict],
+) -> None:
+    capsules_by_code = {item.get("code", ""): item for item in capsules}
+    transcripts = _load_transcripts_videos_finaux().get("capsules") or {}
+    cards = []
+    table_rows = []
+    for code, spec in sorted(FIXED_TEMOIN_PLAN.items(), key=lambda item: int(item[0][1:])):
+        trans = transcripts.get(code) or {}
+        extras = trans.get("sequences_additionnelles") or []
+        kind = trans.get("source_kind") or ""
+        if kind in {"script_t_monte_v1", "script_myriam_v1"}:
+            source_label = f"script T monté V1 · {trans.get('source') or code + '.docx'}"
+        elif trans.get("source"):
+            source_label = f"Transcript Clarisse · {trans.get('source')}"
+        else:
+            source_label = "Script à construire"
+        extra_label = (
+            f"{len(extras)} séquence(s) hors vidéo"
+            if extras
+            else "Pas d'ajout en fin de fichier"
+        )
+        titre = (
+            capsules_by_code.get(code, {}).get("titre")
+            or spec.get("label")
+            or _label_video_temoin(code)
+        )
+        cards.append(
+            (
+                f"capsule_{code}.html",
+                code,
+                f"{code} — {_label_video_temoin(code)}",
+                f"{titre}. {source_label}. {extra_label}.",
+                "temoin",
+            )
+        )
+        extras_cell = (
+            f"<a href='script_propose_{escape(code)}.html#sequences-additionnelles'>"
+            f"{len(extras)} hors vidéo</a>"
+            if extras
+            else "—"
+        )
+        table_rows.append(
+            "<tr>"
+            f"<td><a href='capsule_{escape(code)}.html'><strong>{escape(code)}</strong></a></td>"
+            f"<td>{escape(_label_video_temoin(code))}<br>"
+            f"<span class='meta'>{escape(titre)}</span></td>"
+            f"<td>{escape(source_label)}</td>"
+            f"<td>{extras_cell}</td>"
+            f"<td><a class='btn' href='capsule_{escape(code)}.html'>Script</a> "
+            f"<a class='btn btn-secondary' href='script_propose_{escape(code)}.html'>Fiche</a></td>"
+            "</tr>"
+        )
+    body = (
+        "<p class='meta'>Les vidéos témoin T1–T12 sont les scripts T monté V1 "
+        "(<strong>sans</strong> les séquences additionnelles en fin de fichier). "
+        "T13 reste le transcript Clarisse. "
+        "Les ajouts / doublons hors montage restent listés à part, à arbitrer.</p>"
+        "<div class='table-wrap'><table><thead><tr>"
+        "<th>Code</th><th>Vidéo</th><th>Source du script</th><th>Hors vidéo</th><th></th>"
+        "</tr></thead><tbody>"
+        + "".join(table_rows)
+        + "</tbody></table></div>"
+        "<h2>Fiches</h2>"
+        + _sommaire_cards(cards)
+    )
+    write_text(
+        SITE / "videos_temoins.html",
+        html_page(
+            "Vidéos témoins",
+            body,
+            nav_current="videos_temoins.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Vidéos témoins", None)),
+            page_header=(
+                '<div class="page-head"><h1>Vidéos témoins</h1>'
+                '<p class="lead">Scripts des 13 vidéos chorales — montage réel, hors propositions d’ajout.</p></div>'
+            ),
+            main_class="page-home",
+        ),
+    )
+
+
+def build_mise_en_oeuvre_page() -> None:
+    sections = [
+        (
+            "suivi_intervenants.html",
+            "◎",
+            "Suivi Intervenants",
+            "Modules, intervenants, capsules témoin et vidéos expert.",
+        ),
+        (
+            "edito.html",
+            "✎",
+            "Edito",
+            "Proposition édito, correspondances et dérushage des sélections Clarisse.",
+        ),
+        (
+            "fichiers_travail.html",
+            "📁",
+            "Fichiers de travail",
+            "Informations, Prev Vid, mails, BAB encodés.",
+        ),
+        (
+            "tableau_de_bord.html",
+            "⊞",
+            "Tableau de bord",
+            "Vue d'ensemble interne des capsules, durées et chercheurs.",
+        ),
+    ]
+    body = (
+        "<p class='meta'>Outils de suivi et d'éditorialisation — distincts des scripts "
+        "des vidéos témoins et expert.</p>"
+        + _sommaire_cards(sections)
+    )
+    write_text(
+        SITE / "mise_en_oeuvre.html",
+        html_page(
+            "Mise en œuvre",
+            body,
+            nav_current="mise_en_oeuvre.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Mise en œuvre", None)),
+            page_header=(
+                '<div class="page-head"><h1>Mise en œuvre</h1>'
+                '<p class="lead">Suivi intervenants, édito et fichiers de travail.</p></div>'
+            ),
             main_class="page-home",
         ),
     )
@@ -5199,8 +5380,7 @@ def build_tb_edito_capsule_pages(programme_table: dict) -> None:
         script_final = mounted if has_mounted else _tb_edito_script_with_cadrage(
             ordre, by_seq_id, cadrage
         )
-        trans_item = (_load_transcripts_videos_finaux().get("capsules") or {}).get(code) or {}
-        docx_name = trans_item.get("source") or ""
+        trans_item = _transcript_item(code)
 
         capsule_data = {
             "ordre_montage": ordre,
@@ -5216,17 +5396,20 @@ def build_tb_edito_capsule_pages(programme_table: dict) -> None:
             f"<p><strong>Video temoin :</strong> {escape(spec.get('label', _label_video_temoin(code)))}</p>",
         ]
         if has_mounted:
+            source_note = _transcript_source_note_html(trans_item)
             sections.append(
-                f"<p class='meta'><strong>Source :</strong> transcript monté "
-                f"(<code>{escape(docx_name)}</code>) — résultat du travail Clarisse / monteur. "
+                f"<p class='meta'><strong>Source :</strong> {source_note} "
                 f"Banque surlignages historique : {len(sequences_sorted)} sequence(s).</p>"
             )
-            sections.append("<h2>Script monté</h2>")
+            sections.append("<h2>Script de la vidéo</h2>")
             sections.append(
                 f"<div class='script' id='script-final'>"
                 f"{escape(_normalize_script_final_editorial(script_final))}"
                 f"</div>"
             )
+            extras_html = _sequences_additionnelles_html(trans_item)
+            if extras_html:
+                sections.append(extras_html)
         else:
             sections.append(
                 f"<p class='meta'><strong>Sequences edito apparies :</strong> {len(sequences_sorted)} "
@@ -5419,7 +5602,7 @@ def build_tb_edito_page() -> None:
         mounted = transcripts.get(code) or {}
         source = mounted.get("source") or ""
         if source:
-            statut = f"Script monté — <code>{escape(source)}</code>"
+            statut = f"Script de la vidéo — <code>{escape(source)}</code>"
         else:
             statut = f"Surlignages Clarisse ({coverage_counter.get(code, 0)} seq.)"
         coverage_rows.append(
@@ -5471,8 +5654,10 @@ def build_tb_edito_page() -> None:
         + ("\n".join(rows) or "<tr><td colspan='8'>Aucun document edito detecte.</td></tr>")
         + "</tbody></table></div>"
         "<h2>Couverture du plan témoin édito</h2>"
-        "<p class='meta'>Quand un <code>Trancript_Video*.docx</code> est disponible, la capsule ouvre le "
-        "<strong>script monté</strong> (travail Clarisse / monteur). Sinon, les surlignages historiques restent affichés.</p>"
+        "<p class='meta'>Quand un script T monté V1 (T1–T12) ou un <code>Trancript_Video*.docx</code> (T13) "
+        "est disponible, la capsule ouvre le <strong>script de la vidéo montée</strong>. "
+        "Les séquences additionnelles hors montage restent listées à part. "
+        "Sinon, les surlignages historiques restent affichés.</p>"
         "<div class='table-wrap'><table><thead><tr>"
         "<th>Module</th><th>Code</th><th>Vidéo témoin fixée</th><th>Statut</th>"
         "</tr></thead><tbody>"
@@ -5495,12 +5680,13 @@ def build_tb_edito_page() -> None:
             nav_current="edito.html",
             breadcrumb=html_breadcrumb(
                 ("Accueil", "index.html"),
+                ("Mise en œuvre", "mise_en_oeuvre.html"),
                 ("Edito", "edito.html"),
                 ("Capsules témoins", None),
             ),
             page_header=(
                 '<div class="page-head"><h1>Capsules témoins</h1>'
-                '<p class="lead">Scripts montés (Trancript_Video*.docx — Clarisse / monteur) '
+                '<p class="lead">Scripts T monté V1 (T1–T12) '
                 "et banque de surlignages historique.</p></div>"
             ),
         ),
@@ -5641,19 +5827,19 @@ def build_capsule_pages(
                 f"</div>"
             )
         else:
-            trans_item = (_load_transcripts_videos_finaux().get("capsules") or {}).get(code) or {}
-            docx_name = trans_item.get("source") or ""
-            sections.append("<h2>Script monté</h2>")
-            if docx_name:
-                sections.append(
-                    f"<p class='meta'>Transcript de la vidéo montée — "
-                    f"<code>{escape(docx_name)}</code> · voix identifiées par recoupement BAB.</p>"
-                )
+            trans_item = _transcript_item(code)
+            source_note = _transcript_source_note_html(trans_item)
+            sections.append("<h2>Script de la vidéo</h2>")
+            if source_note:
+                sections.append(f"<p class='meta'>{source_note}</p>")
             sections.append(
                 f"<div class='script' id='script-final'>"
                 f"{escape(_normalize_script_final_editorial(mounted_script))}"
                 f"</div>"
             )
+            extras_html = _sequences_additionnelles_html(trans_item)
+            if extras_html:
+                sections.append(extras_html)
         sections.append(synthese_temoignages_section(code, capsule_data, by_id))
         sections.append("<h2>Manques et décisions</h2>")
         for item in capsule_data.get("manques", []):
@@ -5678,10 +5864,10 @@ def build_capsule_pages(
                 page_title,
                 "\n".join(sections),
                 scripts=["assets/export-word.js"],
-                nav_current=None,
+                nav_current="videos_temoins.html",
                 breadcrumb=html_breadcrumb(
                     ("Accueil", "index.html"),
-                    ("Tableau de bord", "tableau_de_bord.html"),
+                    ("Vidéos témoins", "videos_temoins.html"),
                     (code, None),
                 ),
             ),
@@ -9642,6 +9828,7 @@ def build_suivi_positionnements_page(rows: list[dict]) -> None:
             nav_current="suivi_intervenants.html",
             breadcrumb=html_breadcrumb(
                 ("Accueil", "index.html"),
+                ("Mise en œuvre", "mise_en_oeuvre.html"),
                 ("Suivi Intervenants", "suivi_intervenants.html"),
                 ("Suivi positionnements", None),
             ),
@@ -9715,7 +9902,7 @@ def build_suivi_intervenants_pages(programme_table: dict, experts_profils: dict)
                 "Proposition de notre part, réponse, préférences et proposition finale.",
             ),
         ],
-        [("Accueil", "index.html"), ("Suivi Intervenants", None)],
+        [("Accueil", "index.html"), ("Mise en œuvre", "mise_en_oeuvre.html"), ("Suivi Intervenants", None)],
         meta="Sommaire de suivi operationnel du plan de conception.",
     )
 
@@ -10069,10 +10256,10 @@ def build_suivi_intervenants_pages(programme_table: dict, experts_profils: dict)
 def build_edito_hub_page() -> None:
     sections = [
         (
-            "script_propose.html",
-            "🎬",
-            "Script proposé",
-            "Montages realistes et comprehensibles (grain tournage), distincts de la banque Clarisse.",
+            "videos_temoins.html",
+            "◎",
+            "Scripts des vidéos témoins",
+            "Les scripts montés sont dans l’onglet Vidéos témoins (script T monté V1).",
         ),
         (
             "proposition_edito.html",
@@ -10096,11 +10283,12 @@ def build_edito_hub_page() -> None:
             "tb_edito.html",
             "🗂",
             "Capsules témoins (Clarisse)",
-            "Scripts montés (Trancript_Video*.docx) issus du travail Clarisse / monteur.",
+            "Scripts T monté V1 (T1–T12) et banque de surlignages.",
         ),
     ]
     body = (
-        "<p class='meta'>Espace edito : scripts montés, selections Clarisse et derushage.</p>"
+        "<p class='meta'>Espace édito interne (Clarisse, correspondances). "
+        "Les scripts des vidéos montées sont dans <a href='videos_temoins.html'>Vidéos témoins</a>.</p>"
         + _sommaire_cards(sections)
     )
     write_text(
@@ -10109,7 +10297,7 @@ def build_edito_hub_page() -> None:
             "Edito",
             body,
             nav_current="edito.html",
-            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Edito", None)),
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Mise en œuvre", "mise_en_oeuvre.html"), ("Edito", None)),
             page_header='<div class="page-head"><h1>Edito</h1><p class="lead">Travaux et livrables de l’éditorialisation.</p></div>',
             main_class="page-home",
         ),
@@ -10185,7 +10373,8 @@ def _script_propose_stats_for_code(
     script = _script_final_prefer_mounted_transcript(code, fallback).strip()
     source = capsule.get("script_final_source") or ""
     if script and _mounted_transcript_script(code):
-        source = "transcript_video_monte"
+        trans_kind = _transcript_item(code).get("source_kind") or ""
+        source = trans_kind or "transcript_video_monte"
     ordre = capsule.get("ordre_montage") or capsule.get("extraits_utilises") or []
     duree = capsule_duration(code, segments_by_id, affectations) if ordre else 0.0
     voice_blocks = re.findall(r"^=== (.+) ===$", script, flags=re.M)
@@ -10232,12 +10421,15 @@ def build_script_propose_pages(programme_table: dict, affectations: dict, segmen
                 "Source : proposition provisoire construite par consolidation des surlignages Clarisse "
                 "(fragments de la meme voix regroupes). Pas encore de montage BAB valide."
             )
-        elif stats.get("script_source") == "transcript_video_monte":
-            trans_item = (_load_transcripts_videos_finaux().get("capsules") or {}).get(code) or {}
-            docx_name = trans_item.get("source") or "Trancript_Video*.docx"
+        elif stats.get("script_source") in {
+            "transcript_video_monte",
+            "script_t_monte_v1",
+            "script_myriam_v1",
+        }:
+            trans_item = _transcript_item(code)
             source_note = (
-                f"Source : transcript de la vidéo montée (<code>{escape(docx_name)}</code>) — "
-                "texte tel que monté, voix identifiées par recoupement BAB (non inventé)."
+                f"Source : {_transcript_source_note_html(trans_item) or 'script de la vidéo montée'} "
+                "Texte tel que monté, voix identifiées par recoupement BAB (non inventé)."
             )
         else:
             source_note = (
@@ -10289,9 +10481,10 @@ def build_script_propose_pages(programme_table: dict, affectations: dict, segmen
             f"reste disponible ({stats['clarisse_count']} fragments) mais n'est pas le decoupage de tournage.</p>"
             f"<p class='meta'>Blocs : <strong>{blocks_meta}</strong> · Duree estimee : <strong>{escape(duree_label)}</strong></p>"
             "</div>"
-            "<h2>Script proposé</h2>"
+            "<h2>Script de la vidéo</h2>"
             f"<div class='script' id='script-final'>{escape(script_text) if script_text else 'A construire.'}</div>"
-            "<h2>Ordre des voix / extraits</h2>"
+            + _sequences_additionnelles_html(_transcript_item(code))
+            + "<h2>Ordre des voix / extraits</h2>"
             + (
                 "<ul>" + "".join(voice_preview) + "</ul>"
                 if voice_preview
@@ -10308,10 +10501,10 @@ def build_script_propose_pages(programme_table: dict, affectations: dict, segmen
             html_page(
                 f"Script proposé — {code}",
                 body,
-                nav_current="edito.html",
+                nav_current="videos_temoins.html",
                 breadcrumb=html_breadcrumb(
                     ("Accueil", "index.html"),
-                    ("Edito", "edito.html"),
+                    ("Vidéos témoins", "videos_temoins.html"),
                     ("Script proposé", "script_propose.html"),
                     (code, None),
                 ),
@@ -10333,10 +10526,10 @@ def build_script_propose_pages(programme_table: dict, affectations: dict, segmen
         html_page(
             "Script proposé",
             hub_body,
-            nav_current="edito.html",
+            nav_current="videos_temoins.html",
             breadcrumb=html_breadcrumb(
                 ("Accueil", "index.html"),
-                ("Edito", "edito.html"),
+                ("Vidéos témoins", "videos_temoins.html"),
                 ("Script proposé", None),
             ),
             page_header=(
@@ -10383,6 +10576,7 @@ def build_fichiers_travail_pages() -> None:
             nav_current="fichiers_travail.html",
             breadcrumb=html_breadcrumb(
                 ("Accueil", "index.html"),
+                ("Mise en œuvre", "mise_en_oeuvre.html"),
                 ("Fichiers de travail", "fichiers_travail.html"),
                 ("Informations", None),
             ),
@@ -10409,7 +10603,7 @@ def build_fichiers_travail_pages() -> None:
             "videos_expert.html",
             "▶",
             "Vidéos expert",
-            "Tableau des videos expertise, consignes et scripts recus.",
+            "Raccourci vers l'onglet Vidéos expert : scripts, revues et cahier édito.",
         ),
         (
             "mails_experts.html",
@@ -10437,7 +10631,11 @@ def build_fichiers_travail_pages() -> None:
             "<p class='meta'>Documents et exports de travail pour le suivi du MOOC.</p>"
             + _sommaire_cards(sections),
             nav_current="fichiers_travail.html",
-            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Fichiers de travail", None)),
+            breadcrumb=html_breadcrumb(
+                ("Accueil", "index.html"),
+                ("Mise en œuvre", "mise_en_oeuvre.html"),
+                ("Fichiers de travail", None),
+            ),
             page_header='<div class="page-head"><h1>Fichiers de travail</h1><p class="lead">Informations et livrables operationnels.</p></div>',
             main_class="page-home",
         ),
@@ -10582,6 +10780,7 @@ def build_fascicules_oser_innover_pages() -> None:
             nav_current="fichiers_travail.html",
             breadcrumb=html_breadcrumb(
                 ("Accueil", "index.html"),
+                ("Mise en œuvre", "mise_en_oeuvre.html"),
                 ("Fichiers de travail", "fichiers_travail.html"),
                 ("Oser pour innover (fascicules)", None),
             ),
@@ -10642,6 +10841,7 @@ def build_fascicules_oser_innover_pages() -> None:
             nav_current="fichiers_travail.html",
             breadcrumb=html_breadcrumb(
                 ("Accueil", "index.html"),
+                ("Mise en œuvre", "mise_en_oeuvre.html"),
                 ("Fichiers de travail", "fichiers_travail.html"),
                 ("Oser pour innover (fascicules)", "fascicules_oser_innover.html"),
                 ("Le document", None),
@@ -10732,6 +10932,7 @@ def build_fascicules_oser_innover_pages() -> None:
             nav_current="fichiers_travail.html",
             breadcrumb=html_breadcrumb(
                 ("Accueil", "index.html"),
+                ("Mise en œuvre", "mise_en_oeuvre.html"),
                 ("Fichiers de travail", "fichiers_travail.html"),
                 ("Oser pour innover (fascicules)", "fascicules_oser_innover.html"),
                 ("Corrélation grains", None),
@@ -10852,35 +11053,119 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
 
     recus = sum(1 for item in inventory if item.get("script_statut") == "RECU")
     valides = sum(1 for item in inventory if item.get("script_valide_statut") == "VALIDE")
-    table_rows = []
     for item in inventory:
+        item["revue_count"] = len(_load_expert_script_revues(item["code"]))
+
+    def script_cell(item: dict) -> str:
         if item.get("script_valide_statut") == "VALIDE":
-            statut_label = "Validé"
-            badge = status_badge("VALIDEE")
-        elif item["script_statut"] == "RECU":
-            statut_label = "Reçu"
-            badge = status_badge("RECU")
-        else:
-            statut_label = "En attente"
-            badge = status_badge("EN_CONSTRUCTION")
-        table_rows.append(
+            return f"{status_badge('VALIDEE')} Validé"
+        if item.get("script_statut") == "RECU":
+            return f"{status_badge('RECU')} Reçu"
+        return f"{status_badge('EN_CONSTRUCTION')} En attente"
+
+    def cahier_cell(item: dict) -> str:
+        bits = []
+        seen = set()
+        for expert in item.get("experts") or []:
+            guide = expert.get("guide_href") or ""
+            mail = expert.get("mail_href") or ""
+            key = (guide, mail)
+            if key in seen or (not guide and not mail):
+                continue
+            seen.add(key)
+            parts = []
+            if guide:
+                parts.append(f"<a href='{escape(guide)}'>Guide</a>")
+            if mail:
+                parts.append(f"<a href='{escape(mail)}'>Cahier</a>")
+            bits.append(" · ".join(parts))
+        return "<br>".join(bits) if bits else "—"
+
+    def video_row(item: dict) -> str:
+        revue_n = int(item.get("revue_count") or 0)
+        revue_label = f"{revue_n} revue(s)" if revue_n else "—"
+        return (
             "<tr>"
             f"<td><a href='{escape(item['page_href'])}'><strong>{escape(item['code'])}</strong></a></td>"
             f"<td>{escape(item.get('titre', ''))}</td>"
-            f"<td><a href='{escape(item['tb_edito_href'])}'>{escape(item['capsule_code'])}</a></td>"
-            f"<td>{escape(item.get('temoin_label', ''))}</td>"
+            f"<td><a href='capsule_{escape(item['capsule_code'])}.html'>{escape(item['capsule_code'])}</a></td>"
             f"<td>{escape(item.get('experts_label', ''))}</td>"
-            f"<td>{badge} {escape(statut_label)}</td>"
+            f"<td>{script_cell(item)}</td>"
+            f"<td>{escape(revue_label)}</td>"
+            f"<td>{cahier_cell(item)}</td>"
             f"<td><a class='btn' href='{escape(item['page_href'])}'>Ouvrir</a></td>"
             "</tr>"
         )
 
+    video_rows = [video_row(item) for item in inventory]
+    by_expert: dict[str, dict] = {}
+    for item in inventory:
+        experts = [entry for entry in (item.get("experts") or []) if entry.get("nom")]
+        if not experts:
+            bucket = by_expert.setdefault(
+                "À confirmer",
+                {"nom": "À confirmer", "organisme": "", "guide": "", "mail": "", "videos": []},
+            )
+            bucket["videos"].append(item)
+            continue
+        for expert in experts:
+            nom = expert.get("nom") or "À confirmer"
+            bucket = by_expert.setdefault(
+                nom,
+                {
+                    "nom": nom,
+                    "organisme": expert.get("organisme") or "",
+                    "guide": expert.get("guide_href") or "",
+                    "mail": expert.get("mail_href") or "",
+                    "videos": [],
+                },
+            )
+            if expert.get("guide_href"):
+                bucket["guide"] = expert.get("guide_href")
+            if expert.get("mail_href"):
+                bucket["mail"] = expert.get("mail_href")
+            if not any(video["code"] == item["code"] for video in bucket["videos"]):
+                bucket["videos"].append(item)
+
+    expert_sections = []
+    for nom, bucket in sorted(by_expert.items(), key=lambda kv: _normalize_for_match(kv[0])):
+        links = []
+        if bucket.get("guide"):
+            links.append(f"<a href='{escape(bucket['guide'])}'>Guide édito (Word)</a>")
+        if bucket.get("mail"):
+            links.append(f"<a href='{escape(bucket['mail'])}'>Cahier / mail vidéos attendues</a>")
+        org = f"<p class='meta'>{escape(bucket.get('organisme') or '')}</p>" if bucket.get("organisme") else ""
+        links_html = (" · ".join(links) + "<br>") if links else ""
+        rows = [video_row(video) for video in bucket["videos"]]
+        expert_sections.append(
+            f"<h3>{escape(bucket['nom'])}</h3>"
+            + org
+            + (f"<p>{links_html}</p>" if links_html else "")
+            + "<div class='table-wrap'><table><thead><tr>"
+            "<th>Code</th><th>Titre / objectif</th><th>Témoin</th><th>Expert</th>"
+            "<th>Script</th><th>Revue</th><th>Cahier</th><th></th>"
+            "</tr></thead><tbody>"
+            + "".join(rows)
+            + "</tbody></table></div>"
+        )
+
+    table_head = (
+        "<div class='table-wrap'><table><thead><tr>"
+        "<th>Code</th><th>Titre / objectif</th><th>Témoin</th><th>Expert</th>"
+        "<th>Script</th><th>Revue</th><th>Cahier</th><th></th>"
+        "</tr></thead><tbody>"
+    )
+    video_table = table_head + (
+        "".join(video_rows)
+        if video_rows
+        else "<tr><td colspan='8'>Aucune video expert dans le programme_table.</td></tr>"
+    ) + "</tbody></table></div>"
+
     body = (
-        "<p class='meta'>Inventaire des videos expertise du programme de conception. "
-        "Chaque fiche reprend les consignes envoyees dans le guide Word et accueille le script "
-        "quand l'expert le renvoie (<code>data/videos_expert/scripts_recus/</code>), "
-        "puis le script validé pour tournage (<code>data/videos_expert/scripts_valides/</code>).</p>"
-        f"<p class='meta'><strong>{len(inventory)}</strong> videos — "
+        "<p class='meta'>Scripts reçus et validés, revues, et cahier édito envoyé aux experts "
+        "(guide Word + mail vidéos attendues). "
+        "Deux classements : par numéro de vidéo, ou par nom d'expert.</p>"
+        f"<p class='meta'><strong>{len(inventory)}</strong> vidéos — "
         f"<strong>{recus}</strong> script(s) reçu(s), "
         f"<strong>{valides}</strong> validé(s), "
         f"<strong>{len(inventory) - recus}</strong> en attente.</p>"
@@ -10888,27 +11173,42 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
         "<a class='btn' href='videos_expert.xlsx' download>Télécharger le tableau (XLSX)</a> "
         "<a class='btn btn-secondary' href='videos_expert.json' download>JSON</a>"
         "</p>"
-        "<div class='table-wrap'><table><thead><tr>"
-        "<th>Code</th><th>Titre / objectif</th><th>Capsule</th><th>Titre temoin</th>"
-        "<th>Experts proposes</th><th>Script</th><th></th>"
-        "</tr></thead><tbody>"
-        + (
-            "".join(table_rows)
-            if table_rows
-            else "<tr><td colspan='7'>Aucune video expert dans le programme_table.</td></tr>"
-        )
-        + "</tbody></table></div>"
+        "<div class='split-views tournage-views' data-split-views "
+        "data-split-options='video,nom' data-split-storage='mooc-videos-expert-vue'>"
+        "<p class='meta'>Un seul classement s’affiche à la fois.</p>"
+        "<div class='tournage-views__tabs' role='tablist' aria-label='Classement'>"
+        "<button type='button' role='tab' id='expert-tab-video' "
+        "aria-controls='expert-panel-video' aria-selected='true' "
+        "data-split-view='video'>Par numéro de vidéo</button>"
+        "<button type='button' role='tab' id='expert-tab-nom' "
+        "aria-controls='expert-panel-nom' aria-selected='false' "
+        "data-split-view='nom'>Par nom des experts</button>"
+        "</div>"
+        "<section id='expert-panel-video' class='tournage-panel' role='tabpanel' "
+        "aria-labelledby='expert-tab-video' data-split-panel='video'>"
+        "<h2 class='tournage-table-title'>Par numéro de vidéo</h2>"
+        "<p class='meta'>Classement E1 → E23 (E13bis juste après E13).</p>"
+        + video_table
+        + "</section>"
+        "<section id='expert-panel-nom' class='tournage-panel' role='tabpanel' "
+        "aria-labelledby='expert-tab-nom' data-split-panel='nom' hidden>"
+        "<h2 class='tournage-table-title'>Par nom des experts</h2>"
+        "<p class='meta'>Chaque expert avec ses vidéos, son guide et son cahier édito.</p>"
+        + ("".join(expert_sections) or "<p class='meta'>Aucun expert nommé.</p>")
+        + "</section>"
+        "</div>"
     )
     write_text(
         SITE / "videos_expert.html",
         html_page(
             "Vidéos expert",
             body,
-            nav_current="fichiers_travail.html",
-            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Fichiers de travail", "fichiers_travail.html"), ("Vidéos expert", None)),
+            scripts=["assets/split-views.js"],
+            nav_current="videos_expert.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Vidéos expert", None)),
             page_header=(
                 '<div class="page-head"><h1>Vidéos expert</h1>'
-                '<p class="lead">Tableau des videos expertise, consignes transmises et scripts recus.</p></div>'
+                '<p class="lead">Scripts, revues et cahier édito — classés par vidéo ou par expert.</p></div>'
             ),
         ),
     )
@@ -10975,7 +11275,7 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
             f"{_script_expert_recu_html(item)}"
             f"{_script_expert_editorial_html(item['code'], revues)}"
             f"{_script_expert_valide_html(item, script_valide)}"
-            "<p><a class='btn btn-secondary' href='videos_expert.html'>← Retour au tableau</a> "
+            "<p><a class='btn btn-secondary' href='videos_expert.html'>← Retour aux vidéos expert</a> "
             f"<a class='btn btn-secondary' href='videos_expert.xlsx' download>Export XLSX</a></p>"
         )
         write_text(
@@ -10983,10 +11283,9 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
             html_page(
                 f"{item['code']} — Vidéo expert",
                 detail_body,
-                nav_current="fichiers_travail.html",
+                nav_current="videos_expert.html",
                 breadcrumb=html_breadcrumb(
                     ("Accueil", "index.html"),
-                    ("Fichiers de travail", "fichiers_travail.html"),
                     ("Vidéos expert", "videos_expert.html"),
                     (item["code"], None),
                 ),
@@ -12385,6 +12684,7 @@ def build_mails_experts_pages(
             nav_current="fichiers_travail.html",
             breadcrumb=html_breadcrumb(
                 ("Accueil", "index.html"),
+                ("Mise en œuvre", "mise_en_oeuvre.html"),
                 ("Fichiers de travail", "fichiers_travail.html"),
                 ("Mails experts", None),
             ),
@@ -12422,6 +12722,7 @@ def build_mails_experts_pages(
             nav_current="fichiers_travail.html",
             breadcrumb=html_breadcrumb(
                 ("Accueil", "index.html"),
+                ("Mise en œuvre", "mise_en_oeuvre.html"),
                 ("Fichiers de travail", "fichiers_travail.html"),
                 ("Mails experts", "mails_experts.html"),
                 (date_attendues_label, None),
@@ -12470,6 +12771,7 @@ def build_mails_experts_pages(
             nav_current="fichiers_travail.html",
             breadcrumb=html_breadcrumb(
                 ("Accueil", "index.html"),
+                ("Mise en œuvre", "mise_en_oeuvre.html"),
                 ("Fichiers de travail", "fichiers_travail.html"),
                 ("Mails experts", "mails_experts.html"),
                 (date_attendues_label, date_attendues_href),
@@ -12757,8 +13059,8 @@ def build_correspondances_edito_page(programme_table: dict) -> None:
         "<p class='meta'>Tableau basé sur le programme de conception "
         f"<code>{escape(programme_table.get('source_document', '20260710_Prev_Vid.xlsx'))}</code> "
         f"et les capsules témoins T1..T13. "
-        f"<strong>{mounted_count}/13</strong> scripts montés disponibles "
-        "(<code>Trancript_Video*.docx</code>) ; les métriques d'alignement s'appuient sur le script monté "
+        f"<strong>{mounted_count}/13</strong> scripts de la vidéo montée disponibles "
+        "(script T monté V1 pour T1–T12, transcript Clarisse pour T13) ; les métriques d'alignement s'appuient sur ce script "
         "quand il existe, sinon sur les surlignages Clarisse.</p>"
         "<p><a class='btn' href='tableau_correspondances_edito.csv' download>Télécharger le tableau (CSV)</a></p>"
         "<p><a class='btn' href='tableau_corr.html'>Voir le tableau corrigé (HTML)</a></p>"
@@ -13268,6 +13570,8 @@ if __name__ == "__main__":
     write_text(SITE / "assets" / "export-word.js", export_word_js)
     tournage_js = (ROOT / "assets" / "tournage.js").read_text(encoding="utf-8")
     write_text(SITE / "assets" / "tournage.js", tournage_js)
+    split_views_js = (ROOT / "assets" / "split-views.js").read_text(encoding="utf-8")
+    write_text(SITE / "assets" / "split-views.js", split_views_js)
     all_capsules = load_capsules()
     all_segments = load_segments()
     all_affectations = load_affectations()
@@ -13286,6 +13590,8 @@ if __name__ == "__main__":
     for path in SITE.glob("match_module_*.html"):
         path.unlink()
     build_home(all_capsules, all_segments)
+    build_videos_temoins_hub_page(all_capsules)
+    build_mise_en_oeuvre_page()
     build_experts_profiles_page(experts_profils)
     build_tb_edito_capsule_pages(programme_table)
     build_tb_edito_page()
