@@ -2066,6 +2066,17 @@ def _load_transcripts_videos_finaux() -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _load_transcripts_videos_expert() -> dict:
+    path = ROOT / "data" / "transcripts_videos_expert.json"
+    if not path.exists():
+        return {}
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _expert_transcript_item(code: str) -> dict:
+    return (_load_transcripts_videos_expert().get("capsules") or {}).get(code) or {}
+
+
 def _mounted_transcript_script(capsule_code: str) -> str:
     """Script final = transcript de la vidéo montée, s'il est disponible."""
     data = _load_transcripts_videos_finaux()
@@ -2104,6 +2115,23 @@ def _transcript_source_note_html(trans_item: dict) -> str:
         return (
             f"Script T monté V1 (<code>{escape(source)}</code>). "
             f"Horodatages et prénoms issus de la transcription.{duree_note}{extra_note}"
+        )
+    if kind == "script_e_filme_v0":
+        extra_note = (
+            f" {len(extras)} séquence(s) en off (après la durée réelle de la vidéo)."
+            if extras
+            else " Pas de séquence en off dans la transcription."
+        )
+        duree = trans_item.get("duree_video") or ""
+        duree_note = (
+            f" Durée réelle de la vidéo : <strong>{escape(duree)}</strong>."
+            if duree
+            else ""
+        )
+        return (
+            f"Script E filmé V0 (<code>{escape(source)}</code>). "
+            f"Horodatages et prénoms issus de la transcription.{duree_note}{extra_note} "
+            "Ce n’est pas un fichier de travail ni une fiche."
         )
     if source:
         return (
@@ -2220,6 +2248,45 @@ def _avis_badge(avis: str) -> str:
     return f'<span class="avis {css}">{escape(label)}</span>'
 
 
+def _gravite_badge(gravite: str) -> str:
+    mapping = {
+        "forte": ("avis--no", "Reprise nette"),
+        "moyenne": ("avis--mid", "Même récit"),
+        "faible": ("avis--mid", "Écho"),
+    }
+    css, label = mapping.get(gravite or "", ("avis--mid", gravite or "—"))
+    return f'<span class="avis {css}">{escape(label)}</span>'
+
+
+def _occurrence_label(item: dict) -> str:
+    code = item.get("capsule") or ""
+    debut = item.get("debut") or ""
+    fin = item.get("fin") or ""
+    lieu = item.get("lieu") or "video"
+    span = debut
+    if fin and fin != debut:
+        span = f"{debut}–{fin}"
+    suffix = " (off)" if lieu == "off" else ""
+    return f"{code} {span}{suffix}"
+
+
+def _redondance_item_html(item: dict) -> str:
+    occs = item.get("occurrences") or []
+    if occs:
+        tcs = " · ".join(_occurrence_label(occ) for occ in occs)
+    else:
+        tcs = " · ".join(item.get("timecodes") or [])
+    voice = item.get("chercheur") or ""
+    meta = tcs if not voice else f"{tcs} · {voice}"
+    return (
+        "<li>"
+        + _gravite_badge(item.get("gravite") or "")
+        + (f"<span class='meta'>{escape(meta)}</span> " if meta else "")
+        + escape(item.get("detail") or "")
+        + "</li>"
+    )
+
+
 def _rapport_temoin_html(code: str, *, heading: str = "h2") -> str:
     reports = _load_rapports_temoins().get("capsules") or {}
     report = reports.get(code)
@@ -2231,19 +2298,13 @@ def _rapport_temoin_html(code: str, *, heading: str = "h2") -> str:
         f"<p>{escape(report.get('synthese') or '')}</p>",
     ]
     redos = report.get("redondances_video") or []
-    parts.append("<h4>Textes redondants / repris dans la vidéo</h4>")
+    parts.append("<h4>Séquences reprises dans d’autres vidéos</h4>")
     if redos:
-        items = []
-        for item in redos:
-            tcs = " · ".join(item.get("timecodes") or [])
-            items.append(
-                f"<li><span class='meta'>{escape(tcs)}</span> "
-                f"{escape(item.get('detail') or '')}</li>"
-            )
-        parts.append("<ul>" + "".join(items) + "</ul>")
+        parts.append("<ul>" + "".join(_redondance_item_html(item) for item in redos) + "</ul>")
     else:
         parts.append(
-            "<p class='meta'>Aucune réplique reprise deux fois dans le script de la vidéo.</p>"
+            "<p class='meta'>Aucune séquence de cette vidéo n’est réutilisée "
+            "dans une autre vidéo témoin.</p>"
         )
     offs = report.get("off") or []
     parts.append("<h4>Séquences en off</h4>")
@@ -2272,15 +2333,23 @@ def _rapport_temoin_html(code: str, *, heading: str = "h2") -> str:
 
 
 def _rapports_temoins_hub_html() -> str:
-    reports = _load_rapports_temoins().get("capsules") or {}
+    payload = _load_rapports_temoins()
+    reports = payload.get("capsules") or {}
     if not reports:
         return ""
     blocks = [
         "<h2 id='rapports-temoins'>Rapports par vidéo</h2>",
-        "<p class='meta'>Redondances dans le script, répliques reprises, "
-        "et avis d’intégration des séquences en off. "
-        "Les timecodes sont ceux de la transcription.</p>",
+        "<p class='meta'>Une redondance = une séquence (même voix, même récit) "
+        "montée dans <strong>plusieurs vidéos</strong> témoin. "
+        "Les échos à l’intérieur d’une même capsule ne sont pas listés. "
+        "Timecodes de transcription.</p>",
     ]
+    recap = payload.get("recap_inter_videos") or []
+    if recap:
+        blocks.append("<div class='rapport-temoin'>")
+        blocks.append("<h3>Reprises entre vidéos</h3>")
+        blocks.append("<ul>" + "".join(_redondance_item_html(item) for item in recap) + "</ul>")
+        blocks.append("</div>")
     for code in sorted(reports, key=lambda item: int(item[1:])):
         blocks.append(_rapport_temoin_html(code, heading="h3"))
     return "".join(blocks)
@@ -8138,6 +8207,7 @@ def _inventory_videos_expert(programme_table: dict, experts_profils: dict) -> li
                 continue
             script = _load_expert_script_recu(code)
             script_valide = _load_expert_script_valide(code)
+            filme = _expert_transcript_item(code)
             retained = retained_by_e.get(code.upper(), [])
             experts = retained or proposed
             names = [item["nom"] for item in experts if item.get("nom")]
@@ -8162,6 +8232,8 @@ def _inventory_videos_expert(programme_table: dict, experts_profils: dict) -> li
                     "script_valide_statut": script_valide["statut"],
                     "script_valide_fichier": script_valide["fichier"],
                     "script_valide_contenu": script_valide["contenu"],
+                    "filme_v0": bool(filme.get("sequences_video") or filme.get("text")),
+                    "duree_video": filme.get("duree_video") or "",
                     "page_href": _expert_video_page_name(code),
                     "tb_edito_href": f"tb_edito_{capsule_code}.html",
                 }
@@ -8284,6 +8356,22 @@ def _script_valide_doc_html(item: dict, valide: dict) -> str:
         "</p>"
         f"<div>{body}</div>"
     )
+
+
+def _script_expert_filme_html(code: str) -> str:
+    """Script de la vidéo filmée (V0), comme les scripts T monté V1."""
+    trans = _expert_transcript_item(code)
+    if not (trans.get("sequences_video") or trans.get("text")):
+        return ""
+    source_note = _transcript_source_note_html(trans)
+    parts = ["<h2>Script de la vidéo</h2>"]
+    if source_note:
+        parts.append(f"<p class='meta'>{source_note}</p>")
+    parts.append(_mounted_script_html(trans, trans.get("text") or ""))
+    extras = _sequences_off_html(trans)
+    if extras:
+        parts.append(extras)
+    return "".join(parts)
 
 
 def _script_expert_recu_html(item: dict) -> str:
@@ -11249,6 +11337,8 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
             "experts": item.get("experts_label", ""),
             "script_statut": item.get("script_statut", "EN_ATTENTE"),
             "script_valide_statut": item.get("script_valide_statut", "EN_ATTENTE"),
+            "filme_v0": bool(item.get("filme_v0")),
+            "duree_video": item.get("duree_video") or "",
             "script_fichier": item.get("script_fichier", ""),
             "page": item.get("page_href", ""),
         }
@@ -11261,10 +11351,15 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
 
     recus = sum(1 for item in inventory if item.get("script_statut") == "RECU")
     valides = sum(1 for item in inventory if item.get("script_valide_statut") == "VALIDE")
+    filmes = sum(1 for item in inventory if item.get("filme_v0"))
     for item in inventory:
         item["revue_count"] = len(_load_expert_script_revues(item["code"]))
 
     def script_cell(item: dict) -> str:
+        if item.get("filme_v0"):
+            duree = item.get("duree_video") or ""
+            extra = f" · {escape(duree)}" if duree else ""
+            return f"{status_badge('VALIDEE')} Filmé V0{extra}"
         if item.get("script_valide_statut") == "VALIDE":
             return f"{status_badge('VALIDEE')} Validé"
         if item.get("script_statut") == "RECU":
@@ -11298,6 +11393,7 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
             f"<td>{escape(item.get('titre', ''))}</td>"
             f"<td><a href='capsule_{escape(item['capsule_code'])}.html'>{escape(item['capsule_code'])}</a></td>"
             f"<td>{escape(item.get('experts_label', ''))}</td>"
+            f"<td>{escape(item.get('duree_video') or '—')}</td>"
             f"<td>{script_cell(item)}</td>"
             f"<td>{escape(revue_label)}</td>"
             f"<td>{cahier_cell(item)}</td>"
@@ -11351,7 +11447,7 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
             + (f"<p>{links_html}</p>" if links_html else "")
             + "<div class='table-wrap'><table><thead><tr>"
             "<th>Code</th><th>Titre / objectif</th><th>Témoin</th><th>Expert</th>"
-            "<th>Script</th><th>Revue</th><th>Cahier</th><th></th>"
+            "<th>Durée</th><th>Script</th><th>Revue</th><th>Cahier</th><th></th>"
             "</tr></thead><tbody>"
             + "".join(rows)
             + "</tbody></table></div>"
@@ -11360,23 +11456,24 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
     table_head = (
         "<div class='table-wrap'><table><thead><tr>"
         "<th>Code</th><th>Titre / objectif</th><th>Témoin</th><th>Expert</th>"
-        "<th>Script</th><th>Revue</th><th>Cahier</th><th></th>"
+        "<th>Durée</th><th>Script</th><th>Revue</th><th>Cahier</th><th></th>"
         "</tr></thead><tbody>"
     )
     video_table = table_head + (
         "".join(video_rows)
         if video_rows
-        else "<tr><td colspan='8'>Aucune video expert dans le programme_table.</td></tr>"
+        else "<tr><td colspan='9'>Aucune video expert dans le programme_table.</td></tr>"
     ) + "</tbody></table></div>"
 
     body = (
-        "<p class='meta'>Scripts reçus et validés, revues, et cahier édito envoyé aux experts "
-        "(guide Word + mail vidéos attendues). "
-        "Deux classements : par numéro de vidéo, ou par nom d'expert.</p>"
+        "<p class='meta'>Quand la vidéo a été filmée, le script affiché est la transcription V0 "
+        "(horodatages réels), comme pour les vidéos témoin. "
+        "Les scripts reçus, validés et les revues restent des fichiers de travail.</p>"
         f"<p class='meta'><strong>{len(inventory)}</strong> vidéos — "
+        f"<strong>{filmes}</strong> filmée(s) V0, "
         f"<strong>{recus}</strong> script(s) reçu(s), "
         f"<strong>{valides}</strong> validé(s), "
-        f"<strong>{len(inventory) - recus}</strong> en attente.</p>"
+        f"<strong>{len(inventory) - recus}</strong> en attente de script reçu.</p>"
         "<p>"
         "<a class='btn' href='videos_expert.xlsx' download>Télécharger le tableau (XLSX)</a> "
         "<a class='btn btn-secondary' href='videos_expert.json' download>JSON</a>"
@@ -11475,14 +11572,26 @@ def build_videos_expert_pages(programme_table: dict, experts_profils: dict) -> N
                 _texte_final_doc_html(item, standalone_prop, final_paragraphs),
             )
             expected.add(final_doc)
-        detail_body = (
-            f"<p class='meta'>Module : {escape(item.get('module') or '—')} — "
-            f"Capsule : <a href='{escape(item['tb_edito_href'])}'>{escape(item['capsule_code'])}</a> — "
-            f"Experts : {escape(item.get('experts_label', ''))}</p>"
+        filme_html = _script_expert_filme_html(item["code"])
+        working_html = (
             f"{_consignes_envoyees_expert_html(item)}"
             f"{_script_expert_recu_html(item)}"
             f"{_script_expert_editorial_html(item['code'], revues)}"
             f"{_script_expert_valide_html(item, script_valide)}"
+        )
+        if filme_html:
+            working_html = (
+                "<h2>Fichiers de travail</h2>"
+                "<p class='meta'>Guide envoyé, script reçu, revues et script validé. "
+                "Ce ne sont pas le script de la vidéo filmée.</p>"
+                + working_html
+            )
+        detail_body = (
+            f"<p class='meta'>Module : {escape(item.get('module') or '—')} — "
+            f"Capsule : <a href='{escape(item['tb_edito_href'])}'>{escape(item['capsule_code'])}</a> — "
+            f"Experts : {escape(item.get('experts_label', ''))}</p>"
+            f"{filme_html}"
+            f"{working_html}"
             "<p><a class='btn btn-secondary' href='videos_expert.html'>← Retour aux vidéos expert</a> "
             f"<a class='btn btn-secondary' href='videos_expert.xlsx' download>Export XLSX</a></p>"
         )
@@ -11544,11 +11653,21 @@ def _tournage_script_flags(code: str) -> tuple[bool, str, bool, str]:
     if not code:
         return False, "", False, ""
     recu = _load_expert_script_recu(code)
+    filme = _expert_transcript_item(code)
+    has_filme = bool(filme.get("sequences_video") or filme.get("text"))
     has_script = recu.get("statut") == "RECU" and bool(recu.get("contenu"))
-    script_href = _script_recu_doc_name(code) if has_script else ""
+    script_href = _expert_video_page_name(code) if has_filme else (
+        _script_recu_doc_name(code) if has_script else ""
+    )
+    if has_filme:
+        has_script = True
     valide = _load_expert_script_valide(code)
-    has_final = valide.get("statut") == "VALIDE" and bool(valide.get("contenu"))
-    final_href = _script_valide_doc_name(code) if has_final else ""
+    has_final = has_filme or (
+        valide.get("statut") == "VALIDE" and bool(valide.get("contenu"))
+    )
+    final_href = _expert_video_page_name(code) if has_filme else (
+        _script_valide_doc_name(code) if has_final else ""
+    )
     return has_script, script_href, has_final, final_href
 
 

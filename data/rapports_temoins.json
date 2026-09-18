@@ -1,14 +1,47 @@
 {
-  "note": "Rapports éditoriaux T1–T13 : redondances et reprises dans le script de la vidéo ; critique des séquences en off (à intégrer ou non). Timecodes = transcription, pas des BAB.",
+  "note": "Rapports T1–T13 : une redondance = une séquence (même voix, même récit) montée dans plusieurs vidéos témoin. Pas les échos à l’intérieur d’une même capsule. Timecodes = transcription V1, pas des BAB.",
   "date_mise_a_jour": "2026-09-18",
   "capsules": {
     "T1": {
-      "synthese": "Le montage tient : cinq origines distinctes. Une reprise nette en off (Sylvia / récepteur). Les autres off ajoutent surtout du médical ou de l’entourage, hors objectif « chemins d’origine ».",
+      "synthese": "Deux séquences de T1 reviennent ailleurs : le récepteur (Sylvia, repris en T3) et les jumeaux numériques (Yann, repris en T2). Les offs n’ouvrent pas d’origine nouvelle.",
       "redondances_video": [
         {
-          "gravite": "faible",
-          "timecodes": ["00:00:56", "00:01:45"],
-          "detail": "Loïc « Pourquoi oser ? » puis Muriel « Pourquoi j’ai osé ? » : écho choral volontaire, pas un doublon de contenu."
+          "gravite": "forte",
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "detail": "Le récepteur du système nerveux central est dans T1 (origine). T3 y renvoie explicitement : « Cette cible, je vous l’ai dit ». Rappel de T1, pas une nouvelle preuve.",
+          "occurrences": [
+            {
+              "capsule": "T1",
+              "debut": "00:00:22",
+              "fin": "00:00:35",
+              "lieu": "video"
+            },
+            {
+              "capsule": "T3",
+              "debut": "00:03:44",
+              "fin": "00:03:48",
+              "lieu": "video"
+            }
+          ]
+        },
+        {
+          "gravite": "moyenne",
+          "chercheur": "Yann Monier",
+          "detail": "Même description du projet : jumeaux numériques de chaînes de production « à partir des données provenant des capteurs et des actionneurs ». T1 s’en sert comme présentation, T2 comme objet de l’innovation.",
+          "occurrences": [
+            {
+              "capsule": "T1",
+              "debut": "00:02:48",
+              "fin": "00:03:00",
+              "lieu": "video"
+            },
+            {
+              "capsule": "T2",
+              "debut": "00:01:37",
+              "fin": "00:02:00",
+              "lieu": "video"
+            }
+          ]
         }
       ],
       "off": [
@@ -75,13 +108,53 @@
       ]
     },
     "T2": {
-      "synthese": "Pas de séquence en off dans la transcription. Le script ne se répète pas : chaque voix porte un terrain ou un bénéficiaire différent.",
-      "redondances_video": [],
+      "synthese": "Une séquence Yann (jumeaux numériques / capteurs) est déjà dans T1. Le reste du script T2 est propre au besoin.",
+      "redondances_video": [
+        {
+          "gravite": "moyenne",
+          "chercheur": "Yann Monier",
+          "detail": "Même description du projet : jumeaux numériques de chaînes de production « à partir des données provenant des capteurs et des actionneurs ». T1 s’en sert comme présentation, T2 comme objet de l’innovation.",
+          "occurrences": [
+            {
+              "capsule": "T1",
+              "debut": "00:02:48",
+              "fin": "00:03:00",
+              "lieu": "video"
+            },
+            {
+              "capsule": "T2",
+              "debut": "00:01:37",
+              "fin": "00:02:00",
+              "lieu": "video"
+            }
+          ]
+        }
+      ],
       "off": []
     },
     "T3": {
-      "synthese": "Le script (jusqu’à 07:15) dit déjà clairement : sortir du labo, terrain, besoin. Les 56 répliques en off sont un second film : beaucoup de matière utile, mais aussi des doublons, du hors-sujet et du hors-vidéo (T2, T7, T9, T13).",
-      "redondances_video": [],
+      "synthese": "Sylvia rappelle T1 (« je vous l’ai dit », système nerveux central). Les 56 offs sont un second film : une partie est utile à T3, le reste appartient à T2 / T7 / T9.",
+      "redondances_video": [
+        {
+          "gravite": "forte",
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "detail": "Le récepteur du système nerveux central est dans T1 (origine). T3 y renvoie explicitement : « Cette cible, je vous l’ai dit ». Rappel de T1, pas une nouvelle preuve.",
+          "occurrences": [
+            {
+              "capsule": "T1",
+              "debut": "00:00:22",
+              "fin": "00:00:35",
+              "lieu": "video"
+            },
+            {
+              "capsule": "T3",
+              "debut": "00:03:44",
+              "fin": "00:03:48",
+              "lieu": "video"
+            }
+          ]
+        }
+      ],
       "off": [
         {
           "debut": "00:07:35–00:07:51",
@@ -170,29 +243,72 @@
       ]
     },
     "T4": {
-      "synthese": "Pas de séquence en off. Trois échos dans le script, tous des reprises orales de la même idée, pas des copier-coller de plans.",
+      "synthese": "Yann PoCkin Lab est recollé tel quel en T8. Sylvia SAT / preuve de concept revient en T7. Pas d’off.",
       "redondances_video": [
         {
-          "gravite": "faible",
-          "timecodes": ["00:02:48", "00:02:51"],
-          "detail": "Loïc répète « dimensionner différemment » (essais puis volumes). Une des deux suffit au montage serré."
+          "gravite": "forte",
+          "chercheur": "Yann Monier",
+          "detail": "Même séquence PoCkin Lab / prématuration / preuve de concept : T4 et T8. T8 allonge sur le contrat labo ; une des deux suffirait.",
+          "occurrences": [
+            {
+              "capsule": "T4",
+              "debut": "00:01:48",
+              "fin": "00:02:12",
+              "lieu": "video"
+            },
+            {
+              "capsule": "T8",
+              "debut": "00:01:01",
+              "fin": "00:01:46",
+              "lieu": "video"
+            }
+          ]
         },
         {
-          "gravite": "faible",
-          "timecodes": ["00:04:30", "00:04:40"],
-          "detail": "Muriel nomme deux fois « la peur de l’échec ». Le second est une anaphore, tenable."
-        },
-        {
-          "gravite": "faible",
-          "timecodes": ["00:05:31", "00:05:39"],
-          "detail": "Jean-Jacques : si ça ne marche pas, on essaie autre chose — d’abord dans le même projet, puis dans un autre. Ce n’est pas un doublon : c’est une montée."
+          "gravite": "moyenne",
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "detail": "Même continuum preuve de concept → maturation SAT Paris-Saclay (et PoCkin Lab en T7). T4 en fait la pierre angulaire de la viabilité ; T7 le cite comme accompagnement.",
+          "occurrences": [
+            {
+              "capsule": "T4",
+              "debut": "00:01:19",
+              "fin": "00:01:35",
+              "lieu": "video"
+            },
+            {
+              "capsule": "T7",
+              "debut": "00:04:56",
+              "fin": "00:05:08",
+              "lieu": "video"
+            }
+          ]
         }
       ],
       "off": []
     },
     "T5": {
-      "synthese": "Le script se termine déjà sur le conseil « le plus tôt possible » (Sylvia 00:05:09–00:05:16). Les 6 off de Yann redisent la même chose.",
-      "redondances_video": [],
+      "synthese": "Loïc « prématuration puis maturation à la SAT » est recollé en T9. Les offs Yann redisent le conseil déjà clos par Sylvia.",
+      "redondances_video": [
+        {
+          "gravite": "forte",
+          "chercheur": "Loïc Rajjou",
+          "detail": "Même phrase de parcours : « rentré en prématuration, puis en maturation à la SAT ». T5 développe le mandat PI ; T9 n’en garde que la marche. Doublon net.",
+          "occurrences": [
+            {
+              "capsule": "T5",
+              "debut": "00:01:09",
+              "fin": "00:01:26",
+              "lieu": "video"
+            },
+            {
+              "capsule": "T9",
+              "debut": "00:00:32",
+              "fin": "00:00:36",
+              "lieu": "video"
+            }
+          ]
+        }
+      ],
       "off": [
         {
           "debut": "00:06:02",
@@ -221,67 +337,373 @@
       ]
     },
     "T6": {
-      "synthese": "Pas de séquence en off. Deux échos de formulation, pas de plan doublé.",
-      "redondances_video": [
-        {
-          "gravite": "aucune",
-          "timecodes": ["00:00:19", "00:00:20"],
-          "detail": "Licensing vs création d’entreprise : ce n’est pas une redondance, ce sont les deux options de la vidéo."
-        },
-        {
-          "gravite": "faible",
-          "timecodes": ["00:02:32", "00:03:04"],
-          "detail": "Loïc dit deux fois qu’on continue le développement techno. L’un des deux peut partir."
-        }
-      ],
+      "synthese": "Aucune séquence de T6 n’est réutilisée dans une autre vidéo témoin. Pas d’off.",
+      "redondances_video": [],
       "off": []
     },
     "T7": {
-      "synthese": "Pas de séquence en off. Un seul écho d’accompagnement, qui s’enrichit (puis le financement).",
+      "synthese": "Trois séquences de T7 reviennent ailleurs : Muriel « projet ambitieux » (T9), Yann Startez/pitch (T12), Sylvia continuum SAT (T4).",
       "redondances_video": [
         {
-          "gravite": "faible",
-          "timecodes": ["00:01:55", "00:02:06"],
-          "detail": "« On a eu besoin d’être accompagné » puis « aussi pour être financés ». Complément, pas doublon."
+          "gravite": "forte",
+          "chercheur": "Yann Monier",
+          "detail": "Même parcours Startez / Star Thèse → pitch BIG et Paris-Saclay Summit. Transcription : « Startez » en T7, « Star Thèse » en T12. C’est la même séquence d’événements, montée deux fois.",
+          "occurrences": [
+            {
+              "capsule": "T7",
+              "debut": "00:03:50",
+              "fin": "00:04:11",
+              "lieu": "video"
+            },
+            {
+              "capsule": "T12",
+              "debut": "00:00:57",
+              "fin": "00:01:14",
+              "lieu": "video"
+            }
+          ]
+        },
+        {
+          "gravite": "forte",
+          "chercheur": "Muriel Thomas",
+          "detail": "Même formule : plus le projet est ambitieux, plus il faut de l’aide / de l’entourage. Ouverture de T7 et de T9.",
+          "occurrences": [
+            {
+              "capsule": "T7",
+              "debut": "00:00:14",
+              "fin": "00:00:19",
+              "lieu": "video"
+            },
+            {
+              "capsule": "T9",
+              "debut": "00:00:48",
+              "fin": "00:00:55",
+              "lieu": "video"
+            }
+          ]
+        },
+        {
+          "gravite": "moyenne",
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "detail": "Même continuum preuve de concept → maturation SAT Paris-Saclay (et PoCkin Lab en T7). T4 en fait la pierre angulaire de la viabilité ; T7 le cite comme accompagnement.",
+          "occurrences": [
+            {
+              "capsule": "T4",
+              "debut": "00:01:19",
+              "fin": "00:01:35",
+              "lieu": "video"
+            },
+            {
+              "capsule": "T7",
+              "debut": "00:04:56",
+              "fin": "00:05:08",
+              "lieu": "video"
+            }
+          ]
         }
       ],
       "off": []
     },
     "T8": {
-      "synthese": "Pas de séquence en off. Pas de réplique reprise deux fois.",
-      "redondances_video": [],
+      "synthese": "Deux séquences reviennent ailleurs : Yann PoCkin Lab (déjà en T4) et l’ingénieur Carambouche (T9).",
+      "redondances_video": [
+        {
+          "gravite": "forte",
+          "chercheur": "Yann Monier",
+          "detail": "Même séquence PoCkin Lab / prématuration / preuve de concept : T4 et T8. T8 allonge sur le contrat labo ; une des deux suffirait.",
+          "occurrences": [
+            {
+              "capsule": "T4",
+              "debut": "00:01:48",
+              "fin": "00:02:12",
+              "lieu": "video"
+            },
+            {
+              "capsule": "T8",
+              "debut": "00:01:01",
+              "fin": "00:01:46",
+              "lieu": "video"
+            }
+          ]
+        },
+        {
+          "gravite": "forte",
+          "chercheur": "Muriel Thomas",
+          "detail": "Même recrutement : l’ingénieur de Carambouche pour les développements scientifiques et cliniques. T9 le nomme (Paul Biscara).",
+          "occurrences": [
+            {
+              "capsule": "T8",
+              "debut": "00:02:02",
+              "fin": "00:02:12",
+              "lieu": "video"
+            },
+            {
+              "capsule": "T9",
+              "debut": "00:01:12",
+              "fin": "00:01:20",
+              "lieu": "video"
+            }
+          ]
+        }
+      ],
       "off": []
     },
     "T9": {
-      "synthese": "Pas de séquence en off. La série « on ne sait pas faire » est une liste, pas un copier-coller.",
+      "synthese": "T9 recycle trois séquences déjà vues : Loïc SAT (T5), Muriel « projet ambitieux » (T7), ingénieur Carambouche (T8).",
       "redondances_video": [
         {
-          "gravite": "aucune",
-          "timecodes": ["00:00:16", "00:00:19"],
-          "detail": "Étude de marché / brevetabilité : même tournure, compétences différentes. À garder."
+          "gravite": "forte",
+          "chercheur": "Loïc Rajjou",
+          "detail": "Même phrase de parcours : « rentré en prématuration, puis en maturation à la SAT ». T5 développe le mandat PI ; T9 n’en garde que la marche. Doublon net.",
+          "occurrences": [
+            {
+              "capsule": "T5",
+              "debut": "00:01:09",
+              "fin": "00:01:26",
+              "lieu": "video"
+            },
+            {
+              "capsule": "T9",
+              "debut": "00:00:32",
+              "fin": "00:00:36",
+              "lieu": "video"
+            }
+          ]
+        },
+        {
+          "gravite": "forte",
+          "chercheur": "Muriel Thomas",
+          "detail": "Même formule : plus le projet est ambitieux, plus il faut de l’aide / de l’entourage. Ouverture de T7 et de T9.",
+          "occurrences": [
+            {
+              "capsule": "T7",
+              "debut": "00:00:14",
+              "fin": "00:00:19",
+              "lieu": "video"
+            },
+            {
+              "capsule": "T9",
+              "debut": "00:00:48",
+              "fin": "00:00:55",
+              "lieu": "video"
+            }
+          ]
+        },
+        {
+          "gravite": "forte",
+          "chercheur": "Muriel Thomas",
+          "detail": "Même recrutement : l’ingénieur de Carambouche pour les développements scientifiques et cliniques. T9 le nomme (Paul Biscara).",
+          "occurrences": [
+            {
+              "capsule": "T8",
+              "debut": "00:02:02",
+              "fin": "00:02:12",
+              "lieu": "video"
+            },
+            {
+              "capsule": "T9",
+              "debut": "00:01:12",
+              "fin": "00:01:20",
+              "lieu": "video"
+            }
+          ]
         }
       ],
       "off": []
     },
     "T10": {
-      "synthese": "Pas de séquence en off. Pas de texte repris deux fois.",
+      "synthese": "Aucune séquence de T10 n’est réutilisée dans une autre vidéo témoin. Pas d’off. (Genesis Light est aussi cité par Yann en T12 : autre voix, autre prise.)",
       "redondances_video": [],
       "off": []
     },
     "T11": {
-      "synthese": "Pas de séquence en off. Script court (02:53), sans reprise interne.",
+      "synthese": "Aucune séquence de T11 n’est réutilisée à l’identique dans une autre vidéo. Pas d’off.",
       "redondances_video": [],
       "off": []
     },
     "T12": {
-      "synthese": "Pas de séquence en off. Une voix reste étiquetée SPK_3 dans la transcription (00:01:39, 00:01:45) : à identifier, ce n’est pas une redondance.",
-      "redondances_video": [],
+      "synthese": "Le parcours pitch de Yann (Star Thèse, BIG, Summit) est déjà dans T7. SPK_3 à 00:01:39 et 00:01:45 reste à identifier.",
+      "redondances_video": [
+        {
+          "gravite": "forte",
+          "chercheur": "Yann Monier",
+          "detail": "Même parcours Startez / Star Thèse → pitch BIG et Paris-Saclay Summit. Transcription : « Startez » en T7, « Star Thèse » en T12. C’est la même séquence d’événements, montée deux fois.",
+          "occurrences": [
+            {
+              "capsule": "T7",
+              "debut": "00:03:50",
+              "fin": "00:04:11",
+              "lieu": "video"
+            },
+            {
+              "capsule": "T12",
+              "debut": "00:00:57",
+              "fin": "00:01:14",
+              "lieu": "video"
+            }
+          ]
+        }
+      ],
       "off": []
     },
     "T13": {
-      "synthese": "Pas de séquence en off. Conclusion sans doublon de réplique.",
+      "synthese": "Aucune séquence de T13 n’est réutilisée dans une autre vidéo témoin. Pas d’off.",
       "redondances_video": [],
       "off": []
     }
-  }
+  },
+  "recap_inter_videos": [
+    {
+      "gravite": "forte",
+      "chercheur": "Yann Monier",
+      "detail": "Même séquence PoCkin Lab / prématuration / preuve de concept : T4 et T8. T8 allonge sur le contrat labo ; une des deux suffirait.",
+      "occurrences": [
+        {
+          "capsule": "T4",
+          "debut": "00:01:48",
+          "fin": "00:02:12",
+          "lieu": "video"
+        },
+        {
+          "capsule": "T8",
+          "debut": "00:01:01",
+          "fin": "00:01:46",
+          "lieu": "video"
+        }
+      ]
+    },
+    {
+      "gravite": "forte",
+      "chercheur": "Yann Monier",
+      "detail": "Même parcours Startez / Star Thèse → pitch BIG et Paris-Saclay Summit. Transcription : « Startez » en T7, « Star Thèse » en T12. C’est la même séquence d’événements, montée deux fois.",
+      "occurrences": [
+        {
+          "capsule": "T7",
+          "debut": "00:03:50",
+          "fin": "00:04:11",
+          "lieu": "video"
+        },
+        {
+          "capsule": "T12",
+          "debut": "00:00:57",
+          "fin": "00:01:14",
+          "lieu": "video"
+        }
+      ]
+    },
+    {
+      "gravite": "forte",
+      "chercheur": "Loïc Rajjou",
+      "detail": "Même phrase de parcours : « rentré en prématuration, puis en maturation à la SAT ». T5 développe le mandat PI ; T9 n’en garde que la marche. Doublon net.",
+      "occurrences": [
+        {
+          "capsule": "T5",
+          "debut": "00:01:09",
+          "fin": "00:01:26",
+          "lieu": "video"
+        },
+        {
+          "capsule": "T9",
+          "debut": "00:00:32",
+          "fin": "00:00:36",
+          "lieu": "video"
+        }
+      ]
+    },
+    {
+      "gravite": "forte",
+      "chercheur": "Muriel Thomas",
+      "detail": "Même formule : plus le projet est ambitieux, plus il faut de l’aide / de l’entourage. Ouverture de T7 et de T9.",
+      "occurrences": [
+        {
+          "capsule": "T7",
+          "debut": "00:00:14",
+          "fin": "00:00:19",
+          "lieu": "video"
+        },
+        {
+          "capsule": "T9",
+          "debut": "00:00:48",
+          "fin": "00:00:55",
+          "lieu": "video"
+        }
+      ]
+    },
+    {
+      "gravite": "forte",
+      "chercheur": "Muriel Thomas",
+      "detail": "Même recrutement : l’ingénieur de Carambouche pour les développements scientifiques et cliniques. T9 le nomme (Paul Biscara).",
+      "occurrences": [
+        {
+          "capsule": "T8",
+          "debut": "00:02:02",
+          "fin": "00:02:12",
+          "lieu": "video"
+        },
+        {
+          "capsule": "T9",
+          "debut": "00:01:12",
+          "fin": "00:01:20",
+          "lieu": "video"
+        }
+      ]
+    },
+    {
+      "gravite": "forte",
+      "chercheur": "Sylvia Cohen-Kaminski",
+      "detail": "Le récepteur du système nerveux central est dans T1 (origine). T3 y renvoie explicitement : « Cette cible, je vous l’ai dit ». Rappel de T1, pas une nouvelle preuve.",
+      "occurrences": [
+        {
+          "capsule": "T1",
+          "debut": "00:00:22",
+          "fin": "00:00:35",
+          "lieu": "video"
+        },
+        {
+          "capsule": "T3",
+          "debut": "00:03:44",
+          "fin": "00:03:48",
+          "lieu": "video"
+        }
+      ]
+    },
+    {
+      "gravite": "moyenne",
+      "chercheur": "Yann Monier",
+      "detail": "Même description du projet : jumeaux numériques de chaînes de production « à partir des données provenant des capteurs et des actionneurs ». T1 s’en sert comme présentation, T2 comme objet de l’innovation.",
+      "occurrences": [
+        {
+          "capsule": "T1",
+          "debut": "00:02:48",
+          "fin": "00:03:00",
+          "lieu": "video"
+        },
+        {
+          "capsule": "T2",
+          "debut": "00:01:37",
+          "fin": "00:02:00",
+          "lieu": "video"
+        }
+      ]
+    },
+    {
+      "gravite": "moyenne",
+      "chercheur": "Sylvia Cohen-Kaminski",
+      "detail": "Même continuum preuve de concept → maturation SAT Paris-Saclay (et PoCkin Lab en T7). T4 en fait la pierre angulaire de la viabilité ; T7 le cite comme accompagnement.",
+      "occurrences": [
+        {
+          "capsule": "T4",
+          "debut": "00:01:19",
+          "fin": "00:01:35",
+          "lieu": "video"
+        },
+        {
+          "capsule": "T7",
+          "debut": "00:04:56",
+          "fin": "00:05:08",
+          "lieu": "video"
+        }
+      ]
+    }
+  ]
 }

@@ -9,6 +9,8 @@
       "experts": "Retenu : Bernard Yannou",
       "script_statut": "RECU",
       "script_valide_statut": "VALIDE",
+      "filme_v0": true,
+      "duree_video": "05:08",
       "script_fichier": "E1.txt",
       "page": "video_expert_E1.html"
     },
@@ -21,6 +23,8 @@
       "experts": "Retenu : Joël Nguyen",
       "script_statut": "RECU",
       "script_valide_statut": "EN_ATTENTE",
+      "filme_v0": false,
+      "duree_video": "",
       "script_fichier": "E2.txt",
       "page": "video_expert_E2.html"
     },
@@ -33,6 +37,8 @@
       "experts": "Retenu : Gregoire Burgé",
       "script_statut": "EN_ATTENTE",
       "script_valide_statut": "EN_ATTENTE",
+      "filme_v0": false,
+      "duree_video": "",
       "script_fichier": "",
       "page": "video_expert_E3.html"
     },
@@ -45,6 +51,8 @@
       "experts": "Retenu : Stephanie Oger-Roussel",
       "script_statut": "EN_ATTENTE",
       "script_valide_statut": "EN_ATTENTE",
+      "filme_v0": false,
+      "duree_video": "",
       "script_fichier": "",
       "page": "video_expert_E4.html"
     },
@@ -57,6 +65,8 @@
       "experts": "Retenu : Virginia Branco",
       "script_statut": "RECU",
       "script_valide_statut": "EN_ATTENTE",
+      "filme_v0": true,
+      "duree_video": "03:28",
       "script_fichier": "E5.txt",
       "page": "video_expert_E5.html"
     },
@@ -69,6 +79,8 @@
       "experts": "Retenu : Stephanie Sano",
       "script_statut": "RECU",
       "script_valide_statut": "EN_ATTENTE",
+      "filme_v0": true,
+      "duree_video": "06:22",
       "script_fichier": "E6.txt",
       "page": "video_expert_E6.html"
     },
@@ -81,6 +93,8 @@
       "experts": "Retenu : Stephanie Sano",
       "script_statut": "RECU",
       "script_valide_statut": "EN_ATTENTE",
+      "filme_v0": true,
+      "duree_video": "04:39",
       "script_fichier": "E7.txt",
       "page": "video_expert_E7.html"
     },
@@ -93,6 +107,8 @@
       "experts": "Retenu : Stanislas De Lapasse",
       "script_statut": "RECU",
       "script_valide_statut": "EN_ATTENTE",
+      "filme_v0": true,
+      "duree_video": "06:31",
       "script_fichier": "E8.txt",
       "page": "video_expert_E8.html"
     },
@@ -105,6 +121,8 @@
       "experts": "Retenu : Stanislas De Lapasse",
       "script_statut": "RECU",
       "script_valide_statut": "EN_ATTENTE",
+      "filme_v0": true,
+      "duree_video": "05:51",
       "script_fichier": "E9.txt",
       "page": "video_expert_E9.html"
     },
@@ -117,6 +135,8 @@
       "experts": "Retenu : Virginia Branco",
       "script_statut": "RECU",
       "script_valide_statut": "EN_ATTENTE",
+      "filme_v0": true,
+      "duree_video": "06:07",
       "script_fichier": "E10.txt",
       "page": "video_expert_E10.html"
     },
@@ -129,6 +149,8 @@
       "experts": "Retenu : Soizic Lefeuvre",
       "script_statut": "EN_ATTENTE",
       "script_valide_statut": "EN_ATTENTE",
+      "filme_v0": true,
+      "duree_video": "05:17",
       "script_fichier": "",
       "page": "video_expert_E11.html"
     },
@@ -141,6 +163,8 @@
       "experts": "Retenu : Fatoumata Aonon",
       "script_statut": "EN_ATTENTE",
       "script_valide_statut": "EN_ATTENTE",
+      "filme_v0": false,
+      "duree_video": "",
       "script_fichier": "",
       "page": "video_expert_E12.html"
     },
@@ -153,6 +177,8 @@
       "experts": "Retenu : Arielle Santé",
       "script_statut": "EN_ATTENTE",
       "script_valide_statut": "EN_ATTENTE",
+      "filme_v0": false,
+      "duree_video": "",
       "script_fichier": "",
       "page": "video_expert_E13.html"
     },
@@ -165,6 +191,8 @@
       "experts": "Retenu : Yoann Montenot",
       "script_statut": "EN_ATTENTE",
       "script_valide_statut": "EN_ATTENTE",
+      "filme_v0": true,
+      "duree_video": "04:17",
       "script_fichier": "",
       "page": "video_expert_E13bis.html"
     },
@@ -177,6 +205,8 @@
       "experts": "Retenu : Fatoumata Aonon",
       "script_statut": "EN_ATTENTE",
       "script_valide_statut": "EN_ATTENTE",
+      "filme_v0": false,
+      "duree_video": "",
       "script_fichier": "",
       "page": "video_expert_E14.html"
     },
@@ -189,6 +219,8 @@
       "experts": "Retenu : Arielle Santé",
       "script_statut": "EN_ATTENTE",
       "script_valide_statut": "EN_ATTENTE",
+      "filme_v0": false,
+      "duree_video": "",
       "script_fichier": "",
       "page": "video_expert_E15.html"
     },
@@ -201,6 +233,8 @@
       "experts": "Retenu : Pascal Corbel",
       "script_statut": "RECU",
       "script_valide_statut": "VALIDE",
+      "filme_v0": true,
+      "duree_video": "04:48",
       "script_fichier": "E16.txt",
       "page": "video_expert_E16.html"
     },
@@ -213,6 +247,8 @@
       "experts": "Retenu : Antoine Latreille",
       "script_statut": "EN_ATTENTE",
       "script_valide_statut": "EN_ATTENTE",
+      "filme_v0": false,
+      "duree_video": "",
       "script_fichier": "",
       "page": "video_expert_E17.html"
     },
@@ -225,6 +261,8 @@
       "experts": "Retenu : Arielle Santé",
       "script_statut": "EN_ATTENTE",
       "script_valide_statut": "EN_ATTENTE",
+      "filme_v0": false,
+      "duree_video": "",
       "script_fichier": "",
       "page": "video_expert_E18.html"
     },
@@ -237,6 +275,8 @@
       "experts": "Retenu : Pascal Corbel",
       "script_statut": "RECU",
       "script_valide_statut": "VALIDE",
+      "filme_v0": true,
+      "duree_video": "05:06",
       "script_fichier": "E19.txt",
       "page": "video_expert_E19.html"
     },
@@ -249,6 +289,8 @@
       "experts": "Retenu : Bernard Yannou",
       "script_statut": "RECU",
       "script_valide_statut": "VALIDE",
+      "filme_v0": true,
+      "duree_video": "03:57",
       "script_fichier": "E20.txt",
       "page": "video_expert_E20.html"
     },
@@ -261,6 +303,8 @@
       "experts": "Retenu : Pascal Corbel",
       "script_statut": "RECU",
       "script_valide_statut": "VALIDE",
+      "filme_v0": true,
+      "duree_video": "04:30",
       "script_fichier": "E21.txt",
       "page": "video_expert_E21.html"
     },
@@ -273,6 +317,8 @@
       "experts": "Retenu : Rémi Waché",
       "script_statut": "RECU",
       "script_valide_statut": "VALIDE",
+      "filme_v0": true,
+      "duree_video": "07:41",
       "script_fichier": "E22.txt",
       "page": "video_expert_E22.html"
     },
@@ -285,6 +331,8 @@
       "experts": "Retenu : Eneli Vino",
       "script_statut": "RECU",
       "script_valide_statut": "EN_ATTENTE",
+      "filme_v0": true,
+      "duree_video": "05:43",
       "script_fichier": "E23.txt",
       "page": "video_expert_E23.html"
     }

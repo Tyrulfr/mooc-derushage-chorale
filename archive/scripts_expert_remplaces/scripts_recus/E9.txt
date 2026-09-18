@@ -1,0 +1,37 @@
+Bonjour à tous,
+Je m’appelle Stanislas de Lapasse. Je suis Chargé d’Affaires à l’INPI, l’Institut National de la Propriété Industrielle. Notre mission est de vous accompagner pour valoriser vos actifs immatériels et sécuriser votre propriété intellectuelle.
+L’objet de cette séquence est de comprendre pourquoi et comment la PI est un levier stratégique pour votre entreprise, surtout si vous partez de résultats de recherche.
+Les actifs immatériels, souvent votre seule richesse au départ, prennent une importance croissante. A titre d’illustration, selon une étude Ocean Tomo, 92% de la valeur des entreprises du S&P 500 proviennent aujourd’hui d’actifs intangibles. Les usines, équipements ou stocks ne représentent plus que 8%.
+Pour sécuriser ces actifs, tout commence avant même la R&D.
+Avec votre idée en tête, explorez l’existant : utilisez les bases de données de brevets et publications scientifiques, gratuites via l’INPI ou l’Office Européen des Brevets, afin de faire une veille technologique.
+Cette étape est cruciale : elle vous permet de voir ce qui se fait déjà dans votre domaine, d’éviter les doublons, et même de trouver de l’inspiration.
+Une fois cette recherche faite, passez à la R&D.
+Mais attention : documentez et datez chaque étape de vos travaux. Et surtout, protégez vos secrets en mettant en place des mesures raisonnables : accords de confidentialité, sécurité des locaux, accès restreints aux informations sensibles.
+Quand votre invention est suffisamment aboutie, une étape clé s’impose : l’étude de liberté d’exploitation, ou FTO (Freedom To Operate). Cette étude, à réaliser avec un Conseil en Propriété Industrielle, détermine si votre invention ne dépend pas d’un brevet existant. C’est essentiel parce que si votre technologie repose sur un brevet tiers, vous devrez peut-être négocier une licence… ou revoir votre business model.
+En parallèle, vous pouvez :
+-	Lancer avec un conseil en propriété industrielle une recherche d’antériorités pour valider par une recherche brevet plus fouillée la brevetabilité de l’invention.
+-	Lancer une étude de marché pour valider le potentiel commercial de votre invention.
+-	Déposer un brevet, si cela s’inscrit dans votre stratégie. Sur ce point, je vous renvoie à notre précédente vidéo.
+A noter qu’en tant que chercheur dans un organisme public de recherche, l’invention appartient à l’employeur et c’est à lui de décider de déposer ou non. La déclaration d’invention est donc indispensable.
+Vous pouvez bien entendu vous impliquer dans ces processus de décision.
+Dans votre projet technologique, tenez compte aussi des autres moyens d’appropriation de la propriété intellectuelle, indispensable pour protéger la technologie et bénéficier ainsi d’un monopole temporaire. Vous aurez ainsi le temps d’avance nécessaire sur vos concurrents pour : développer et commercialiser la technologie puis, valoriser financièrement votre future société.
+Le droit d’auteur : pour vos logiciels par exemple, il protège votre code source contre la copie ou la distribution non autorisée ainsi que les travaux préparatoires. Un dépôt probatoire sera donc indispensable.
+Les dépôts de titres de PI : brevets pour vos inventions techniques nous l’avons vu, mais aussi marques pour vos signes distinctifs, dessins et modèles pour vos créations esthétiques.
+Le secret des affaires pour protéger vos savoir-faire indétectables ou non retrouvables par rétro-ingénierie, comme un procédé de fabrication ou une recette. Mais attention, une fuite peut tout compromettre.
+Vous pouvez aussi prendre licence exclusive sur des titres de PI (brevets, savoir-faire, droits d’auteur) détenus par des organismes publics de recherche via la société que vous aurez créée en spin-off par exemple. C’est un modèle de valorisation de la recherche bien connu et valorisées par les investisseurs, car ces licences sont généralement stables et sécurisées.
+Une étude conjointe de l’Office Européen des Brevets (OEB) et de l’EUIPO révèle un chiffre frappant : les startups qui déposent des brevets ou des marques lors de leur phase d’amorçage ont jusqu’à 10 fois plus de chances d’obtenir un financement.
+Parce qu’un brevet, par exemple, est un titre validé après une procédure exigeante. Il constitue une barrière à l’entrée solide pour vos concurrents, sécurise votre marché et devient un levier de négociation lors des levées de fonds.
+Les investisseurs sont rassurés par un portefeuille de PI bien construit. Lors d’une levée de fonds, ils mèneront un audit de votre PI : soyez prêt à justifier chaque choix.
+Et n’oubliez pas : selon votre stratégie, vous pourrez aussi concéder des licences sur vos actifs de PI pour des marchés que vous ne souhaitez pas exploiter directement. Dans le cas où vous souhaitez exploiter votre technologie sous licence exclusive, il vous faudra alors prévoir dans le contrat de licence exclusive la capacité à sous-licencier à d’autres opérateurs économiques.
+A noter qu’en tant que chercheur dans un organisme public de recherche, nombre de processus PI sont déjà mis en place dans votre organisme, vous êtes ainsi épaulés dès le début de votre projet sur les questions de PI.
+
+Pour synthétiser :
+La propriété intellectuelle n’est pas une option, c’est un pilier stratégique. Que ce soit pour protéger vos innovations, sécuriser vos actifs immatériels ou attirer des investisseurs, chaque étape compte :
+
+-	Recherchez l’existant avant de démarrer.
+-	Documentez et protégez vos travaux en cours.
+-	Vérifiez la brevetabilité et votre liberté d’exploitation avant de commercialiser.
+-	Sécurisez vos actifs via les outils disponibles : brevets, marques, datation et secret, dessins et modèles …
+-	Valorisez votre PI pour lever des fonds ou concéder des licences.
+L’INPI est là pour vous accompagner dans cette démarche. N’hésitez pas à nous solliciter pour éclairer vos choix dans la construction d’une stratégie de PI adaptée à votre projet.
+Je vous remercie.
