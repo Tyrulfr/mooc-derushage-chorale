@@ -1,0 +1,2175 @@
+{
+  "note": "Propositions d’incrustations pédagogiques pour les vidéos filmées. Verbatim et timecodes = transcription V0/V1. Les textes à l’écran sont des étiquettes, pas des reformulations du dit.",
+  "date_mise_a_jour": "2026-09-18",
+  "bonnes_pratiques": {
+    "titre": "Bonnes pratiques — incrustations pédagogiques",
+    "sous_titre": "Guide pour l’équipe (motion design faible : mot-clé, acronyme, petit schéma).",
+    "sources": [
+      {
+        "titre": "Mayer — Research-Based Principles for Designing Multimedia Instruction",
+        "url": "https://www.unh.edu/teaching-learning-resource-hub/sites/default/files/media/2023-06/itow-research-based-principles-for-designing-multimedia-instruction-mayer.pdf",
+        "usage": "Cohérence, redondance, signaling, pré-entraînement, contiguité temporelle."
+      },
+      {
+        "titre": "Mayer — Using multimedia for e-learning (2017)",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1111/jcal.12197",
+        "usage": "Ne pas surcharger le canal visuel ; signaler l’essentiel."
+      },
+      {
+        "titre": "Alpizar, Adesope & Wong (2020) — Signaling in multimedia",
+        "url": "https://eric.ed.gov/?id=EJ1269127",
+        "usage": "Les signaux visuels améliorent l’apprentissage (d ≈ 0,38) s’ils sont sobres."
+      },
+      {
+        "titre": "Schneider et al. (2018) — How signaling affects learning with media",
+        "url": "https://www.sciencedirect.com/science/article/abs/pii/S1747938X17300581",
+        "usage": "Les indices réduisent la charge cognitive ; labels courts plutôt que phrases."
+      }
+    ],
+    "principes": [
+      {
+        "id": "signaler",
+        "titre": "Signaler, ne pas sous-titrer",
+        "texte": "L’incrustation n’est pas le script. Elle pointe ce que l’apprenant doit retenir (un concept, un acronyme, une relation). Mayer : le signaling aide ; la redondance (texte = parole mot pour mot) surcharge le canal visuel, surtout face caméra."
+      },
+      {
+        "id": "court",
+        "titre": "Un à quatre mots",
+        "texte": "Concept = 1 mot, ou une formule de 3–4 mots maximum. Pas de phrase. Le visage et la voix portent le récit ; l’écran porte l’étiquette."
+      },
+      {
+        "id": "acronyme",
+        "titre": "Acronymes : première fois, ou sujet du grain",
+        "texte": "À la première rencontre dans le parcours, ou quand l’acronyme est l’objet de la vidéo : afficher le sigle + le développement en plus petit (pré-entraînement). Ensuite, le sigle seul suffit. Exemple : SATT → Société d’accélération du transfert de technologies."
+      },
+      {
+        "id": "objectif",
+        "titre": "Aligné sur l’objectif de la vidéo",
+        "texte": "N’incruster que ce qui sert le message pédagogique de ce grain. Un détail biographique, un nom d’entreprise ou une anecdote n’ont pas d’étiquette s’ils n’enseignent pas le concept du module."
+      },
+      {
+        "id": "rythme",
+        "titre": "Peu, au bon moment",
+        "texte": "Une incrustation toutes les 30–50 s en moyenne, jamais deux en même temps. Apparition avec le verbatim, disparition avant le concept suivant (contiguité temporelle). Motion faible : fondu, pas d’animation décorative."
+      },
+      {
+        "id": "schema",
+        "titre": "Petit schéma, pas un slide",
+        "texte": "2 à 4 nœuds maximum (flèches, choix A/B). Un schéma remplace un mot-clé quand la relation compte plus que le terme (licence vs création, brevet vs secret, labo → terrain)."
+      },
+      {
+        "id": "sous-titres",
+        "titre": "Séparer sous-titres et pédagogie",
+        "texte": "Les sous-titres d’accessibilité restent en bas, intégraux. Les incrustations pédagogiques sont ailleurs (tiers inférieur opposé, ou coin), plus grandes, plus rares."
+      }
+    ],
+    "conduite_equipe": [
+      "Ne jamais recoller le verbatim à l’écran.",
+      "Corriger l’ASR des sigles à l’écran (SAT / ASAT / Assad → SATT) sans réécrire la parole.",
+      "Une incrustation = un objectif de la vidéo, pas un résumé de toute la réplique.",
+      "Si le chercheur développe déjà l’acronyme à l’oral, l’écran peut n’afficher que le sigle.",
+      "Tester : muet 3 secondes, le mot à l’écran doit encore dire le concept."
+    ]
+  },
+  "videos": {
+    "T1": {
+      "code": "T1",
+      "kind": "temoin",
+      "nb": 7,
+      "items": [
+        {
+          "debut": "00:00:13",
+          "fin": "00:00:15",
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "verbatim": "Cette innovation est née d'un pas de côté.",
+          "type": "concept",
+          "ecran": "Pas de côté",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Origine : sérendipité scientifique, objectif T1."
+        },
+        {
+          "debut": "00:00:48",
+          "fin": "00:00:56",
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "verbatim": "Chercher s'est créé, mais innover, ça va plus loin, dans le sens où il y a un impact sociétal derrière.",
+          "type": "concept",
+          "ecran": "Impact sociétal",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Ce qui distingue chercher et innover."
+        },
+        {
+          "debut": "00:02:10",
+          "fin": "00:02:17",
+          "chercheur": "Muriel Thomas",
+          "verbatim": "Mon innovation découle à la fois d'un besoin identifié, en tout cas d'un manque identifié.",
+          "type": "concept",
+          "ecran": "Besoin identifié",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Origine market-pull / manque d’usage."
+        },
+        {
+          "debut": "00:03:43",
+          "fin": "00:03:45",
+          "chercheur": "Jean-Jacques Greffet",
+          "verbatim": "C'est tiré par le marché.",
+          "type": "concept",
+          "ecran": "Tiré par le marché",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Nommer le market-pull."
+        },
+        {
+          "debut": "00:03:56",
+          "fin": "00:04:08",
+          "chercheur": "Jean-Jacques Greffet",
+          "verbatim": "C'est le résultat d'une rencontre avec un jeune start-uppeur qui travaillait dans une start-up qui avait une problématique de détection de virus.",
+          "type": "concept",
+          "ecran": "Une rencontre",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Origine par rencontre, pas par labo seul."
+        },
+        {
+          "debut": "00:04:20",
+          "fin": "00:04:25",
+          "chercheur": "Muriel Thomas",
+          "verbatim": "Cette innovation est le fruit d'un parcours assez progressif.",
+          "type": "schema",
+          "ecran": "Parcours progressif",
+          "developpe": "",
+          "schema": "Connaissances → publication → terrain",
+          "pourquoi": "Maturation longue, quatrième chemin d’origine."
+        },
+        {
+          "debut": "00:05:26",
+          "fin": "00:05:46",
+          "chercheur": "Yann Monier",
+          "verbatim": "Il faut aussi oser, pour moi, transformer des résultats de recherche en véritables solutions parce que c'est toujours un petit peu triste, je trouve, d'avoir plein de personnes talentueuses qui développent de nouvelles technologies et qui font finalement restent sur des étagères dans le laboratoire sans être utilisées.",
+          "type": "concept",
+          "ecran": "Sortir de l’étagère",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Utilité des résultats de recherche."
+        }
+      ]
+    },
+    "T2": {
+      "code": "T2",
+      "kind": "temoin",
+      "nb": 6,
+      "items": [
+        {
+          "debut": "00:00:13",
+          "fin": "00:00:18",
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "verbatim": "Je me suis posé cette question de l'usage et de l'utilité de l'innovation dès le début du projet.",
+          "type": "concept",
+          "ecran": "Usage et utilité",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Question centrale T2 : besoin réel."
+        },
+        {
+          "debut": "00:00:20",
+          "fin": "00:00:27",
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "verbatim": "Cette innovation intervient à un moment où l'hypertension artérielle pulmonaire est très grave.",
+          "type": "concept",
+          "ecran": "Problème concret",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Le besoin se dit par un problème patient."
+        },
+        {
+          "debut": "00:01:04",
+          "fin": "00:01:08",
+          "chercheur": "Loïc Rajjou",
+          "verbatim": "Les producteurs de plants veulent une graine efficace pour un plant efficace.",
+          "type": "concept",
+          "ecran": "Pour qui ?",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Bénéficiaire identifiable (producteurs)."
+        },
+        {
+          "debut": "00:02:00",
+          "fin": "00:02:11",
+          "chercheur": "Yann Monier",
+          "verbatim": "Et ensuite, ce modèle, il peut être utilisé par les industriels pour pouvoir faire du monitoring et ainsi limiter des temps d'arrêt qui sont assez coûteux pour l'industrie.",
+          "type": "concept",
+          "ecran": "Chez l’industriel",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Preuve d’usage hors labo."
+        },
+        {
+          "debut": "00:03:06",
+          "fin": "00:03:08",
+          "chercheur": "Muriel Thomas",
+          "verbatim": "Les défis principaux?",
+          "type": "schema",
+          "ecran": "Trois défis",
+          "developpe": "",
+          "schema": "Techno · Réglementaire · Terrain",
+          "pourquoi": "Le besoin se heurte à plus que la science."
+        },
+        {
+          "debut": "00:05:34",
+          "fin": "00:05:52",
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "verbatim": "Moi, j'avais envie d'aller jusqu'au bout, d'aller au lit du patient.",
+          "type": "concept",
+          "ecran": "Jusqu’au patient",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Bénéficiaire final, pas seulement le brevet."
+        }
+      ]
+    },
+    "T3": {
+      "code": "T3",
+      "kind": "temoin",
+      "nb": 7,
+      "items": [
+        {
+          "debut": "00:00:22",
+          "fin": "00:00:29",
+          "chercheur": "Loïc Rajjou",
+          "verbatim": "On a échangé aussi dans le cadre d'une étude de marché qu'on a fait réaliser, portée par l'ASAT Paris-Saclay.",
+          "type": "acronyme",
+          "ecran": "SATT",
+          "developpe": "Société d’accélération du transfert de technologies",
+          "schema": "",
+          "pourquoi": "Première rencontre pédagogique du sigle (dit « ASAT » à l’oral)."
+        },
+        {
+          "debut": "00:00:52",
+          "fin": "00:01:03",
+          "chercheur": "Jean-Jacques Greffet",
+          "verbatim": "Pour autant, nous avons réalisé une étude de marché pour essayer d'avoir une approche qui ne soit pas cette fois-ci qualitative, mais un peu plus quantitative de ce que serait le marché.",
+          "type": "concept",
+          "ecran": "Étude de marché",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Preuve d’usage, pas seulement preuve scientifique."
+        },
+        {
+          "debut": "00:01:19",
+          "fin": "00:01:39",
+          "chercheur": "Jean-Jacques Greffet",
+          "verbatim": "L'ensemble de ces étapes nous a conduit à modifier notre cible et nous avons fait ce qu'on appelle un pivot, c'est-à-dire qu'on a adapté notre technologie pour répondre à un autre besoin qu'on a défini à ce moment-là.",
+          "type": "concept",
+          "ecran": "Pivot",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Le terrain fait changer de cible."
+        },
+        {
+          "debut": "00:02:40",
+          "fin": "00:02:50",
+          "chercheur": "Muriel Thomas",
+          "verbatim": "Avec la Société d'accélération de transfert technologique, donc la SAT de Paris-Saclay, j'ai déposé un projet pour obtenir un financement.",
+          "type": "acronyme",
+          "ecran": "SATT",
+          "developpe": "Société d’accélération du transfert de technologies",
+          "schema": "",
+          "pourquoi": "L’orale développe le sigle : l’écran ancre le nom officiel."
+        },
+        {
+          "debut": "00:04:47",
+          "fin": "00:04:51",
+          "chercheur": "Muriel Thomas",
+          "verbatim": "C'est obligatoire de sortir du labo pour innover.",
+          "type": "concept",
+          "ecran": "Sortir du labo",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Message central T3."
+        },
+        {
+          "debut": "00:05:57",
+          "fin": "00:06:08",
+          "chercheur": "Yann Monier",
+          "verbatim": "En confrontant ma recherche au terrain, la première chose qui m'a surprise, c'est le fait que la technologie et la solution technique n'est pas la chose la plus importante.",
+          "type": "concept",
+          "ecran": "Vrai problème de marché",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Preuve scientifique ≠ preuve d’usage."
+        },
+        {
+          "debut": "00:06:19",
+          "fin": "00:06:31",
+          "chercheur": "Yann Monier",
+          "verbatim": "Par les problèmes et c'est grâce à cette information qu'on va pouvoir essayer de créer un business plan, un business model et toute une économie qui va accompagner notre innovation.",
+          "type": "schema",
+          "ecran": "Terrain → offre",
+          "developpe": "",
+          "schema": "Clients → besoin → business plan",
+          "pourquoi": "Prochaine incertitude à lever."
+        }
+      ]
+    },
+    "T4": {
+      "code": "T4",
+      "kind": "temoin",
+      "nb": 7,
+      "items": [
+        {
+          "debut": "00:00:20",
+          "fin": "00:00:26",
+          "chercheur": "Jean-Jacques Greffet",
+          "verbatim": "Cette idée, on peut l'utiliser pour rédiger un brevet et protéger l'innovation.",
+          "type": "schema",
+          "ecran": "Idée et preuve",
+          "developpe": "",
+          "schema": "Brevet ∥ expérience",
+          "pourquoi": "Deux niveaux de preuve en parallèle."
+        },
+        {
+          "debut": "00:01:05",
+          "fin": "00:01:13",
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "verbatim": "Pour passer d'un résultat scientifique à une validation concrète, avant la maturation, il y a l'étape de prématuration.",
+          "type": "concept",
+          "ecran": "Prématuration",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Étape avant maturation, objectif T4."
+        },
+        {
+          "debut": "00:01:19",
+          "fin": "00:01:35",
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "verbatim": "La véritable pierre angulaire qui a permis de montrer que la technologie était viable, c'était pendant la maturation à la SAT Paris-Saclay, quand on a fait la preuve de concept que notre candidat médicament marchait dans les modèles expérimentaux d'HTAP.",
+          "type": "concept",
+          "ecran": "Preuve de concept",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Viabilité technique, pas encore marché."
+        },
+        {
+          "debut": "00:01:48",
+          "fin": "00:01:56",
+          "chercheur": "Yann Monier",
+          "verbatim": "Moi, pour le moment, je suis dans une phase de prématuration, sous un financement Pockin Lab de l'Université Paris-Saclay.",
+          "type": "acronyme",
+          "ecran": "PoCkin Lab",
+          "developpe": "Preuve de concept in lab — prématuration Université Paris-Saclay",
+          "schema": "",
+          "pourquoi": "Dispositif nommé ; première fois dans le parcours."
+        },
+        {
+          "debut": "00:03:19",
+          "fin": "00:03:27",
+          "chercheur": "Muriel Thomas",
+          "verbatim": "Donc on a fait un pivot technologique et on est passé d'une formulation prête à consommer à une formulation prête à préparer.",
+          "type": "concept",
+          "ecran": "Pivot technologique",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Le terrain impose de changer de formulation."
+        },
+        {
+          "debut": "00:04:14",
+          "fin": "00:04:20",
+          "chercheur": "Muriel Thomas",
+          "verbatim": "Je dirais peut-être le premier frein, c'est la peur du manque de temps.",
+          "type": "schema",
+          "ecran": "Trois freins",
+          "developpe": "",
+          "schema": "Temps · Légitimité · Échec",
+          "pourquoi": "Leviers personnels du grain."
+        },
+        {
+          "debut": "00:05:23",
+          "fin": "00:05:31",
+          "chercheur": "Jean-Jacques Greffet",
+          "verbatim": "Ce qu'il faut surtout finalement dire, c'est qu'il est impossible de tout maîtriser et que de toute façon, il faut se jeter à l'eau.",
+          "type": "concept",
+          "ecran": "Se jeter à l’eau",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Décision malgré l’incertitude."
+        }
+      ]
+    },
+    "T5": {
+      "code": "T5",
+      "kind": "temoin",
+      "nb": 7,
+      "items": [
+        {
+          "debut": "00:00:20",
+          "fin": "00:00:41",
+          "chercheur": "Yann Monier",
+          "verbatim": "J'ai compris qu'il fallait que je protège mon travail après deux ou trois discussions avec la cellule de valorisation, qui m'a fait comprendre que protéger la propriété intellectuelle, c'est quelque chose de très important parce que c'est sur ça que la valeur de la recherche ou même de la future startup est fondée au début de la boîte.",
+          "type": "concept",
+          "ecran": "Protéger tôt",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Réflexe avant divulgation."
+        },
+        {
+          "debut": "00:00:49",
+          "fin": "00:01:09",
+          "chercheur": "Loïc Rajjou",
+          "verbatim": "Concernant la propriété intellectuelle, on s'est posé des questions dès le départ, parce qu'on est dans un institut académique, donc moi je travaille dans un laboratoire public à Versailles qui s'appelle l'Institut Jean-Pierre Bourgin, c'est une unité mixte Inrae-Agro-ParisTech, et toutes les questions de valorisation, de brevetabilité sont gérées par nos tutelles.",
+          "type": "acronyme",
+          "ecran": "PI",
+          "developpe": "Propriété intellectuelle",
+          "schema": "",
+          "pourquoi": "Sujet du grain ; sigle à poser."
+        },
+        {
+          "debut": "00:01:28",
+          "fin": "00:01:51",
+          "chercheur": "Yann Monier",
+          "verbatim": "En discutant avec les cellules de valorisation, j'ai compris qu'il fallait qu'on fasse une déclaration d'invention, ou du moins qu'on décrive un document qui va permettre ensuite de pouvoir faire une étude de brevetabilité avec la SAT pour voir parmi ce qu'on a inventé Qu'est-ce qui doit rester un secret de méthode industrielle et qu'est-ce qui doit être protégé par un brevet?",
+          "type": "concept",
+          "ecran": "Déclaration d’invention",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Premier geste vers la valorisation."
+        },
+        {
+          "debut": "00:01:51",
+          "fin": "00:01:56",
+          "chercheur": "Loïc Rajjou",
+          "verbatim": "Une grande question qui s'est posée nous sur notre technologie, c'est qu'est- ce qui est brevetable?",
+          "type": "schema",
+          "ecran": "Breveter ou taire",
+          "developpe": "",
+          "schema": "Brevetable ? → Divulgable ?",
+          "pourquoi": "Choix de stratégie, objectif T5."
+        },
+        {
+          "debut": "00:02:24",
+          "fin": "00:02:30",
+          "chercheur": "Loïc Rajjou",
+          "verbatim": "Donc là, ça nous a amené à réfléchir à une stratégie qui était plus une stratégie de secret industriel.",
+          "type": "concept",
+          "ecran": "Secret industriel",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Alternative au brevet."
+        },
+        {
+          "debut": "00:02:44",
+          "fin": "00:02:48",
+          "chercheur": "Muriel Thomas",
+          "verbatim": "Tout simplement, on ne peut pas breveter du vivant.",
+          "type": "concept",
+          "ecran": "Pas le vivant",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Limite de brevetabilité (application, pas l’organisme)."
+        },
+        {
+          "debut": "00:05:09",
+          "fin": "00:05:16",
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "verbatim": "Si je devais donner un conseil par rapport à la valorisation du projet, c'est de s'y prendre le plus tôt possible.",
+          "type": "concept",
+          "ecran": "Le plus tôt possible",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Conseil opératoire du grain."
+        }
+      ]
+    },
+    "T6": {
+      "code": "T6",
+      "kind": "temoin",
+      "nb": 5,
+      "items": [
+        {
+          "debut": "00:00:19",
+          "fin": "00:00:20",
+          "chercheur": "Muriel Thomas",
+          "verbatim": "Est-ce que ça va être du licensing?",
+          "type": "schema",
+          "ecran": "Deux voies",
+          "developpe": "",
+          "schema": "Licence  |  Création",
+          "pourquoi": "Objectif T6 : ce n’est pas que la start-up."
+        },
+        {
+          "debut": "00:01:19",
+          "fin": "00:01:39",
+          "chercheur": "Jean-Jacques Greffet",
+          "verbatim": "Ce brevet, quand on l'exploite, soit on peut utiliser une licence exclusive qui est délivrée par les établissements qui sont copropriétaires du brevet, ou il peut y avoir un transfert de propriété en échange d'une part de participation dans la société.",
+          "type": "concept",
+          "ecran": "Licence exclusive",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Mécanisme de transfert."
+        },
+        {
+          "debut": "00:01:39",
+          "fin": "00:01:49",
+          "chercheur": "Jean-Jacques Greffet",
+          "verbatim": "Le schéma le plus couramment utilisé jusqu'ici était le premier, mais il se trouve que dans notre cas, nous sommes partis à la demande des établissements sur le deuxième cas.",
+          "type": "concept",
+          "ecran": "Propriété du brevet",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Variante : cession plutôt que licence."
+        },
+        {
+          "debut": "00:02:14",
+          "fin": "00:02:20",
+          "chercheur": "Muriel Thomas",
+          "verbatim": "Dans le cadre de la start-up, on a négocié avec l'Inrae une licence exclusive d'exploitation.",
+          "type": "concept",
+          "ecran": "Licence d’exploitation",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "L’organisme reste propriétaire, l’entreprise exploite."
+        },
+        {
+          "debut": "00:03:20",
+          "fin": "00:03:27",
+          "chercheur": "Loïc Rajjou",
+          "verbatim": "Et donc la stratégie aujourd'hui elle est plus orientée vers une stratégie brevet puisque la stratégie savoir faire secret elle est soclée.",
+          "type": "schema",
+          "ecran": "Mixte",
+          "developpe": "",
+          "schema": "Brevet + secret",
+          "pourquoi": "La voie de PI suit la voie de transfert."
+        }
+      ]
+    },
+    "T7": {
+      "code": "T7",
+      "kind": "temoin",
+      "nb": 6,
+      "items": [
+        {
+          "debut": "00:00:14",
+          "fin": "00:00:19",
+          "chercheur": "Muriel Thomas",
+          "verbatim": "Plus le projet est ambitieux, plus vous avez besoin d'aide, plus vous avez besoin d'acteurs.",
+          "type": "concept",
+          "ecran": "S’entourer",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "On n’avance pas seul, objectif T7."
+        },
+        {
+          "debut": "00:00:32",
+          "fin": "00:00:49",
+          "chercheur": "Muriel Thomas",
+          "verbatim": "J'entends par là les instituts de recherche comme INRAE et AgroParisTech, les incubateurs comme Incube Alliance et le FoodinLab, les financeurs comme la SAT Paris-Saclay ou Réseau Entreprendre Paris-Saclay ou la BPI.",
+          "type": "concept",
+          "ecran": "Incubateur",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Distinguer incubation et maturation."
+        },
+        {
+          "debut": "00:02:12",
+          "fin": "00:02:24",
+          "chercheur": "Loïc Rajjou",
+          "verbatim": "Donc, on a frappé à la porte de l'écosystème d'innovation Paris-Saclay et donc à la SAT Paris-Saclay particulièrement, où on a eu un financement de maturation.",
+          "type": "acronyme",
+          "ecran": "SATT",
+          "developpe": "Société d’accélération du transfert de technologies",
+          "schema": "",
+          "pourquoi": "Ici la SATT est l’acteur d’accompagnement (sujet T7)."
+        },
+        {
+          "debut": "00:02:46",
+          "fin": "00:02:56",
+          "chercheur": "Loïc Rajjou",
+          "verbatim": "On a été vers d'autres sources de financement, notamment à BPI France, sur le programme iLab, pour lequel on a été lauréat.",
+          "type": "acronyme",
+          "ecran": "i-Lab",
+          "developpe": "Concours d’innovation Bpifrance",
+          "schema": "",
+          "pourquoi": "Première occurrence du concours."
+        },
+        {
+          "debut": "00:03:50",
+          "fin": "00:04:00",
+          "chercheur": "Yann Monier",
+          "verbatim": "L'écosystème m'a aussi permis d'assister à différents événements et concours, comme par exemple Startez, qui est un concours de pitch.",
+          "type": "concept",
+          "ecran": "Pitch",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Mise en visibilité via l’écosystème."
+        },
+        {
+          "debut": "00:04:56",
+          "fin": "00:05:08",
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "verbatim": "Qui représente un certain continuum, depuis la preuve de concept avec le Pockin Lab jusqu'à la maturation technologique avec la SAT Paris-Saclay.",
+          "type": "schema",
+          "ecran": "Continuum",
+          "developpe": "",
+          "schema": "PoCkin Lab → SATT",
+          "pourquoi": "Prématuration puis maturation."
+        }
+      ]
+    },
+    "T8": {
+      "code": "T8",
+      "kind": "temoin",
+      "nb": 7,
+      "items": [
+        {
+          "debut": "00:00:21",
+          "fin": "00:00:25",
+          "chercheur": "Jean-Jacques Greffet",
+          "verbatim": "Il y a les étapes anti-création d'entreprise, les étapes post-création.",
+          "type": "schema",
+          "ecran": "Avant / après création",
+          "developpe": "",
+          "schema": "Pré-création → Post-création",
+          "pourquoi": "Le financement dépend du stade."
+        },
+        {
+          "debut": "00:00:25",
+          "fin": "00:00:34",
+          "chercheur": "Jean-Jacques Greffet",
+          "verbatim": "Donc là, il faut savoir qu'il ne faut pas créer trop tôt, surtout, parce qu'il y a beaucoup de financements qui sont anti-créations auxquels vous n'êtes plus éligible si vous créez.",
+          "type": "concept",
+          "ecran": "Créer trop tôt",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Message central T8 : ne pas créer trop tôt."
+        },
+        {
+          "debut": "00:01:01",
+          "fin": "00:01:11",
+          "chercheur": "Yann Monier",
+          "verbatim": "Personnellement, je suis en phase de prématuration avec un financement Pockin Lab qui me paye pendant un an pour faire une preuve de concept de mon projet.",
+          "type": "acronyme",
+          "ecran": "PoCkin Lab",
+          "developpe": "Financement de prématuration (laboratoire)",
+          "schema": "",
+          "pourquoi": "Aide non dilutive, stade précoce."
+        },
+        {
+          "debut": "00:01:46",
+          "fin": "00:02:00",
+          "chercheur": "Muriel Thomas",
+          "verbatim": "Le fait d'avoir été lauréat du concours iLab, ça nous a fait passer une marche, parce qu'on a pu passer des aliments prêts à consommer à des aliments en poudre qui vont se garder à température ambiante pendant très longtemps.",
+          "type": "acronyme",
+          "ecran": "i-Lab",
+          "developpe": "Concours d’innovation Bpifrance",
+          "schema": "",
+          "pourquoi": "Marche de financement + recrutement."
+        },
+        {
+          "debut": "00:02:37",
+          "fin": "00:03:00",
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "verbatim": "Et la loi Pacte sur l'innovation nous permet de pouvoir disposer de ce dispositif concours scientifique qui nous permet de consacrer un certain pourcentage de temps, en général 20%, au développement de notre start-up, tout en continuant à être payé à 100% par notre organisme de recherche.",
+          "type": "acronyme",
+          "ecran": "Loi PACTE",
+          "developpe": "Plan d’action pour la croissance et la transformation des entreprises",
+          "schema": "",
+          "pourquoi": "Premier croisement du dispositif concours scientifique."
+        },
+        {
+          "debut": "00:03:14",
+          "fin": "00:03:24",
+          "chercheur": "Muriel Thomas",
+          "verbatim": "Alors que j'ai signé un concours scientifique qui m'autorise à passer 40 pour Carambouche.",
+          "type": "schema",
+          "ecran": "Temps partagé",
+          "developpe": "",
+          "schema": "60 % labo · 40 % start-up",
+          "pourquoi": "Levier concret pour entreprendre sans tout quitter."
+        },
+        {
+          "debut": "00:04:51",
+          "fin": "00:04:57",
+          "chercheur": "Jean-Jacques Greffet",
+          "verbatim": "Une fois que vous avez créé, vous pouvez avoir de la part de la BPI un programme émergence, c'est 90 000 euros.",
+          "type": "acronyme",
+          "ecran": "BPI",
+          "developpe": "Bpifrance",
+          "schema": "",
+          "pourquoi": "Financeur public, sujet du grain."
+        }
+      ]
+    },
+    "T9": {
+      "code": "T9",
+      "kind": "temoin",
+      "nb": 7,
+      "items": [
+        {
+          "debut": "00:00:16",
+          "fin": "00:00:19",
+          "chercheur": "Loïc Rajjou",
+          "verbatim": "Nous, une étude de marché, on ne sait pas faire.",
+          "type": "concept",
+          "ecran": "Savoirs manquants",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Compétences manquantes, objectif T9."
+        },
+        {
+          "debut": "00:00:29",
+          "fin": "00:00:32",
+          "chercheur": "Loïc Rajjou",
+          "verbatim": "Et donc, il faut qu'on aille chercher des experts.",
+          "type": "concept",
+          "ecran": "Aller chercher des experts",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Complémentarité d’équipe."
+        },
+        {
+          "debut": "00:01:01",
+          "fin": "00:01:04",
+          "chercheur": "Muriel Thomas",
+          "verbatim": "Nous sommes trois femmes confondatrices.",
+          "type": "schema",
+          "ecran": "Noyau fondateur",
+          "developpe": "",
+          "schema": "Médical · Direction · Science",
+          "pourquoi": "Équipe, pas un héros seul."
+        },
+        {
+          "debut": "00:01:25",
+          "fin": "00:01:42",
+          "chercheur": "Muriel Thomas",
+          "verbatim": "Puis après, il y a par exemple le comité stratégique de l'entreprise, qui sont des personnes qui vont plutôt nous donner des conseils ou des orientations, ou nous ouvrir leur réseau pour l'entreprise.",
+          "type": "concept",
+          "ecran": "Comité stratégique",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Entourage au-delà des cofondateurs."
+        },
+        {
+          "debut": "00:01:42",
+          "fin": "00:01:48",
+          "chercheur": "Muriel Thomas",
+          "verbatim": "Et puis il y a aussi le comité scientifique qui vont être plutôt des chercheurs pour nous guider, pour nous aider dans nos choix.",
+          "type": "concept",
+          "ecran": "Comité scientifique",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Place du chercheur dans l’entreprise."
+        },
+        {
+          "debut": "00:03:29",
+          "fin": "00:03:42",
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "verbatim": "Un autre élément important a été la recherche de notre CIO qui s'est fait avec l'accompagnement de la SAT en véritable casting pour trouver la bonne personne qui a la fois la valance pharma et la valance biotech.",
+          "type": "acronyme",
+          "ecran": "CEO",
+          "developpe": "Directeur ou directrice général(e)",
+          "schema": "",
+          "pourquoi": "Rôle à pourvoir ; sigle du grain."
+        },
+        {
+          "debut": "00:05:45",
+          "fin": "00:05:50",
+          "chercheur": "Jean-Jacques Greffet",
+          "verbatim": "Et ce qu'il faut savoir, c'est que la grande majorité des projets pivotent.",
+          "type": "concept",
+          "ecran": "Les projets pivotent",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "L’équipe survit à la techno."
+        }
+      ]
+    },
+    "T10": {
+      "code": "T10",
+      "kind": "temoin",
+      "nb": 6,
+      "items": [
+        {
+          "debut": "00:00:13",
+          "fin": "00:00:18",
+          "chercheur": "Muriel Thomas",
+          "verbatim": "Adapter le vocabulaire, ça ne se décide pas en un jour.",
+          "type": "concept",
+          "ecran": "Adapter le vocabulaire",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Objectif T10 : autre langue que celle des pairs."
+        },
+        {
+          "debut": "00:00:39",
+          "fin": "00:00:53",
+          "chercheur": "Yann Monier",
+          "verbatim": "Pour discuter avec des partenaires non académiques, j'ai dû arrêter de parler de termes techniques, pour plutôt parler de termes relatifs aux bénéfices et aux gains que va avoir mon interlocuteur.",
+          "type": "concept",
+          "ecran": "Moins de jargon",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Partir de la valeur, pas de la techno."
+        },
+        {
+          "debut": "00:01:41",
+          "fin": "00:01:50",
+          "chercheur": "Muriel Thomas",
+          "verbatim": "Donc il faut changer de posture, il faut changer de vocabulaire, et il faut s'adapter à d'autres interlocuteurs.",
+          "type": "concept",
+          "ecran": "Changer de posture",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Le langage suit l’interlocuteur."
+        },
+        {
+          "debut": "00:03:49",
+          "fin": "00:03:51",
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "verbatim": "Qu'est-ce que c'est que le market access?",
+          "type": "acronyme",
+          "ecran": "Market access",
+          "developpe": "Accès au marché",
+          "schema": "",
+          "pourquoi": "Terme métier à poser la première fois."
+        },
+        {
+          "debut": "00:04:00",
+          "fin": "00:04:20",
+          "chercheur": "Jean-Jacques Greffet",
+          "verbatim": "Donc la première aide que j'ai eue, mes premiers cours de BABA, c'était une formation d'un cube alliance qui s'appelle Genesis Light, où j'avais un petit cahier dans lequel je notais des mots de vocabulaire, comme lorsque j'étais aux Etats-Unis et que je notais les mots de vocabulaire d'anglais que j'apprenais tous les jours, mais là j'apprenai la langue de l'entrepreneuriat.",
+          "type": "concept",
+          "ecran": "Langue de l’entrepreneuriat",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Apprentissage, pas don."
+        },
+        {
+          "debut": "00:05:17",
+          "fin": "00:05:19",
+          "chercheur": "Loïc Rajjou",
+          "verbatim": "Et comment est-ce qu'on en fait quelque chose de désirable?",
+          "type": "concept",
+          "ecran": "Rendre désirable",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Valeur pour l’interlocuteur."
+        }
+      ]
+    },
+    "T11": {
+      "code": "T11",
+      "kind": "temoin",
+      "nb": 4,
+      "items": [
+        {
+          "debut": "00:00:57",
+          "fin": "00:01:00",
+          "chercheur": "Muriel Thomas",
+          "verbatim": "C'est un fabuleux intégrateur social.",
+          "type": "concept",
+          "ecran": "Intégrateur social",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "L’innovation rend la recherche lisible."
+        },
+        {
+          "debut": "00:01:00",
+          "fin": "00:01:05",
+          "chercheur": "Loïc Rajjou",
+          "verbatim": "Aujourd'hui, je participe au comité scientifique de l'entreprise.",
+          "type": "schema",
+          "ecran": "Deux casquettes",
+          "developpe": "",
+          "schema": "Comité scientifique + labo",
+          "pourquoi": "Concilier, objectif T11."
+        },
+        {
+          "debut": "00:01:45",
+          "fin": "00:01:55",
+          "chercheur": "Jean-Jacques Greffet",
+          "verbatim": "Il y en a un qui est extrêmement important pour un scientifique, c'est de voir une application concrète de ce qu'il a fait pendant 35 ans.",
+          "type": "concept",
+          "ecran": "Application concrète",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Retour pour le chercheur."
+        },
+        {
+          "debut": "00:02:14",
+          "fin": "00:02:20",
+          "chercheur": "Jean-Jacques Greffet",
+          "verbatim": "On parle de MVP dans le jargon entrepreneurial, donc de Minimum Viable Product.",
+          "type": "acronyme",
+          "ecran": "MVP",
+          "developpe": "Minimum Viable Product — premier produit viable",
+          "schema": "",
+          "pourquoi": "Première occurrence du sigle."
+        }
+      ]
+    },
+    "T12": {
+      "code": "T12",
+      "kind": "temoin",
+      "nb": 5,
+      "items": [
+        {
+          "debut": "00:00:22",
+          "fin": "00:00:32",
+          "chercheur": "Jean-Jacques Greffet",
+          "verbatim": "Le CNRS a un programme de prématuration et un programme de coaching pour les entrepreneurs qui s'appelle RISE, qui nous a fait beaucoup d'introductions.",
+          "type": "acronyme",
+          "ecran": "RISE",
+          "developpe": "Programme CNRS de coaching entrepreneurs",
+          "schema": "",
+          "pourquoi": "Première occurrence ; autre structure que la SATT."
+        },
+        {
+          "debut": "00:00:32",
+          "fin": "00:00:43",
+          "chercheur": "Jean-Jacques Greffet",
+          "verbatim": "Au niveau de l'université, nous avons été accompagnés par un incubateur qui s'appelle IncubAlliance, qui a également fourni d'une part beaucoup de formations et aussi beaucoup d'introductions.",
+          "type": "concept",
+          "ecran": "IncubAlliance",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Incubateur, complément de la maturation."
+        },
+        {
+          "debut": "00:01:04",
+          "fin": "00:01:14",
+          "chercheur": "Yann Monier",
+          "verbatim": "Donc il y a tout d'abord eu Star Thèse, un concours de pitch, qui m'a donné ensuite l'opportunité de pitcher au Paris SAC Le Summit et aussi à la BIG.",
+          "type": "concept",
+          "ecran": "Concours de pitch",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Mise en visibilité."
+        },
+        {
+          "debut": "00:01:28",
+          "fin": "00:01:39",
+          "chercheur": "Jean-Jacques Greffet",
+          "verbatim": "Nous avons bénéficié du programme de Luminage, qui est un programme de l'Institut d'Optique avec X-Campus, qui a été très précieux pour faire des introductions auprès d'investisseurs.",
+          "type": "concept",
+          "ecran": "Luminage",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Programme technique local."
+        },
+        {
+          "debut": "00:02:18",
+          "fin": "00:02:21",
+          "chercheur": "Jean-Jacques Greffet",
+          "verbatim": "Et autre chose aussi qui est intéressante, qui est le fait de faire partie d'une cohorte.",
+          "type": "concept",
+          "ecran": "Cohorte",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Accompagnement entre pairs."
+        }
+      ]
+    },
+    "T13": {
+      "code": "T13",
+      "kind": "temoin",
+      "nb": 5,
+      "items": [
+        {
+          "debut": "00:00:13",
+          "fin": "00:00:15",
+          "chercheur": "Jean-Jacques Greffet",
+          "verbatim": "Il ne faut pas hésiter, il faut y aller.",
+          "type": "concept",
+          "ecran": "Il faut y aller",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Appel à l’action, objectif T13."
+        },
+        {
+          "debut": "00:00:19",
+          "fin": "00:00:25",
+          "chercheur": "Yann Monier",
+          "verbatim": "Pour entreprendre, en fait, on n'a pas besoin d'une idée, on a besoin d'un problème, d'une problématique terrain.",
+          "type": "concept",
+          "ecran": "Un problème d’abord",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Pas besoin d’une idée révolutionnaire."
+        },
+        {
+          "debut": "00:00:40",
+          "fin": "00:00:44",
+          "chercheur": "Jean-Jacques Greffet",
+          "verbatim": "Lorsqu'on se lance dans l'aventure de l'entreprenariat, on n'est pas tout seul.",
+          "type": "concept",
+          "ecran": "On n’est pas seul",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Écosystème déjà vu, conclusion."
+        },
+        {
+          "debut": "00:01:10",
+          "fin": "00:01:15",
+          "chercheur": "Loïc Rajjou",
+          "verbatim": "Mon seul conseil, c'est aller discuter avec des entrepreneurs.",
+          "type": "concept",
+          "ecran": "Parler aux entrepreneurs",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Geste concret."
+        },
+        {
+          "debut": "00:03:03",
+          "fin": "00:03:06",
+          "chercheur": "Sylvia Cohen-Kaminski",
+          "verbatim": "Si j'ai un mot à dire, c'est go.",
+          "type": "concept",
+          "ecran": "Oser innover",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Mot de clôture."
+        }
+      ]
+    },
+    "E1": {
+      "code": "E1",
+      "kind": "expert",
+      "nb": 7,
+      "items": [
+        {
+          "debut": "00:00:57",
+          "fin": "00:01:02",
+          "chercheur": "Bernard Yannou",
+          "verbatim": "Mais une technologie aussi remarquable soit-elle n'est pas encore une innovation.",
+          "type": "concept",
+          "ecran": "Techno ≠ innovation",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Objectif E1 : origines, pas le process entier."
+        },
+        {
+          "debut": "00:01:02",
+          "fin": "00:01:08",
+          "chercheur": "Bernard Yannou",
+          "verbatim": "Elle le devient lorsqu'elle rencontre un besoin important auquel elle peut répondre mieux que les autres solutions existantes.",
+          "type": "concept",
+          "ecran": "Rencontre d’un besoin",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Condition pour qu’il y ait innovation."
+        },
+        {
+          "debut": "00:01:11",
+          "fin": "00:01:17",
+          "chercheur": "Bernard Yannou",
+          "verbatim": "Dans une première situation, les chercheurs connaissent déjà un domaine dans lequel leurs travaux pourraient être utiles.",
+          "type": "concept",
+          "ecran": "Marché pressenti",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Première famille d’origines (Loïc, Muriel, Yann)."
+        },
+        {
+          "debut": "00:01:52",
+          "fin": "00:01:56",
+          "chercheur": "Bernard Yannou",
+          "verbatim": "Une découverte inattendue ou une rencontre peut alors révéler une possibilité nouvelle.",
+          "type": "concept",
+          "ecran": "Rencontre inattendue",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Seconde famille (Sylvia, Jean-Jacques)."
+        },
+        {
+          "debut": "00:02:33",
+          "fin": "00:02:40",
+          "chercheur": "Bernard Yannou",
+          "verbatim": "Le premier est un potentiel scientifique singulier, quelque chose que le chercheur ou son laboratoire maîtrise particulièrement bien.",
+          "type": "schema",
+          "ecran": "Trois ingrédients",
+          "developpe": "",
+          "schema": "Science · Utilité · Méthode",
+          "pourquoi": "Ce qu’il faut retenir, pas le récit."
+        },
+        {
+          "debut": "00:03:12",
+          "fin": "00:03:16",
+          "chercheur": "Bernard Yannou",
+          "verbatim": "Les structures de valorisation accompagnent précisément ce parcours.",
+          "type": "concept",
+          "ecran": "Structures de valorisation",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Où faire le premier pas."
+        },
+        {
+          "debut": "00:03:35",
+          "fin": "00:03:37",
+          "chercheur": "Bernard Yannou",
+          "verbatim": "Reste ce qui déclenche le passage à l'action.",
+          "type": "concept",
+          "ecran": "Ce qui déclenche",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Passage à l’action."
+        }
+      ]
+    },
+    "E5": {
+      "code": "E5",
+      "kind": "expert",
+      "nb": 6,
+      "items": [
+        {
+          "debut": "00:00:28",
+          "fin": "00:00:31",
+          "chercheur": "Virginia Branco",
+          "verbatim": "Dérisquer un projet, Pas à pas.",
+          "type": "concept",
+          "ecran": "Dérisquer pas à pas",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Objectif E5."
+        },
+        {
+          "debut": "00:00:34",
+          "fin": "00:00:41",
+          "chercheur": "Virginia Branco",
+          "verbatim": "Un jalon commercial peut corriger, parfois durement, ce qu'on croyait acquis scientifiquement et techniquement.",
+          "type": "concept",
+          "ecran": "Jalon commercial",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Critère de décision, pas seulement techno."
+        },
+        {
+          "debut": "00:01:26",
+          "fin": "00:01:30",
+          "chercheur": "Virginia Branco",
+          "verbatim": "Résultat, un pivot, pas un échec, une décision.",
+          "type": "concept",
+          "ecran": "Pivot, pas échec",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Lecture pédagogique du terrain T3."
+        },
+        {
+          "debut": "00:02:17",
+          "fin": "00:02:23",
+          "chercheur": "Virginia Branco",
+          "verbatim": "Le jalon commercial et le jalon technique ne sont pas deux étapes qui se suivent l'une après l'autre.",
+          "type": "schema",
+          "ecran": "Deux jalons ensemble",
+          "developpe": "",
+          "schema": "Technique ⇄ Marché",
+          "pourquoi": "Ils ne se suivent pas, ils s’alimentent."
+        },
+        {
+          "debut": "00:02:30",
+          "fin": "00:02:42",
+          "chercheur": "Virginia Branco",
+          "verbatim": "Encore en prématuration, en train de lever un doute technique ou un doute de marché, ou déjà en maturation, en train de construire ce que vous permettra de choisir une voie de valorisation.",
+          "type": "schema",
+          "ecran": "Prématuration / maturation",
+          "developpe": "",
+          "schema": "Doute → jalon → décision",
+          "pourquoi": "Situer le projet de l’apprenant."
+        },
+        {
+          "debut": "00:02:59",
+          "fin": "00:03:05",
+          "chercheur": "Virginia Branco",
+          "verbatim": "Un chargé de valorisation, une SAT, des futurs utilisateurs, un industriel.",
+          "type": "acronyme",
+          "ecran": "SATT",
+          "developpe": "Société d’accélération du transfert de technologies",
+          "schema": "",
+          "pourquoi": "Sujet du grain : qui aller voir pour le jalon."
+        }
+      ]
+    },
+    "E6": {
+      "code": "E6",
+      "kind": "expert",
+      "nb": 6,
+      "items": [
+        {
+          "debut": "00:00:21",
+          "fin": "00:00:27",
+          "chercheur": "Stephanie Sano",
+          "verbatim": "Préparer un article, proposer une communication en congrès, en parler à ses collègues.",
+          "type": "concept",
+          "ecran": "Réflexe de publier",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Le piège avant toute protection."
+        },
+        {
+          "debut": "00:00:42",
+          "fin": "00:00:51",
+          "chercheur": "Stephanie Sano",
+          "verbatim": "Car une communication publique, même réalisée avec les meilleures intentions, peut parfois fermer certaines portes en matière de protection de l'innovation.",
+          "type": "concept",
+          "ecran": "Communication publique",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Divulgation = risque pour la nouveauté."
+        },
+        {
+          "debut": "00:00:51",
+          "fin": "00:00:56",
+          "chercheur": "Stephanie Sano",
+          "verbatim": "C'est justement pour éviter cela qu'existe la déclaration d'invention.",
+          "type": "acronyme",
+          "ecran": "DI",
+          "developpe": "Déclaration d’invention",
+          "schema": "",
+          "pourquoi": "Sujet de la vidéo ; première définition claire."
+        },
+        {
+          "debut": "00:03:24",
+          "fin": "00:03:28",
+          "chercheur": "Stephanie Sano",
+          "verbatim": "Et c'est précisément là qu'intervient la déclaration d'invention.",
+          "type": "concept",
+          "ecran": "Lever la main",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "La DI comme premier échange, pas un brevet."
+        },
+        {
+          "debut": "00:04:12",
+          "fin": "00:04:15",
+          "chercheur": "Stephanie Sano",
+          "verbatim": "C'est avant tout le point de départ d'un échange.",
+          "type": "concept",
+          "ecran": "Point de départ",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "La DI n’arrête pas la publication, elle l’anticipe."
+        },
+        {
+          "debut": "00:04:51",
+          "fin": "00:04:56",
+          "chercheur": "Stephanie Sano",
+          "verbatim": "Votre rôle, c'est d'identifier un résultat qui vous semble prometteur et d'en parler.",
+          "type": "concept",
+          "ecran": "En parler tôt",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Geste attendu de l’apprenant."
+        }
+      ]
+    },
+    "E7": {
+      "code": "E7",
+      "kind": "expert",
+      "nb": 5,
+      "items": [
+        {
+          "debut": "00:00:14",
+          "fin": "00:00:21",
+          "chercheur": "Stephanie Sano",
+          "verbatim": "Quand on écoute les témoignages de Jean-Jacques, Sylvia, Yann, Loïc ou Muriel, on retrouve toujours le même moment clé.",
+          "type": "concept",
+          "ecran": "Chargé de valorisation",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Objectif E7 : à qui parler."
+        },
+        {
+          "debut": "00:03:09",
+          "fin": "00:03:13",
+          "chercheur": "Stephanie Sano",
+          "verbatim": "Là aussi, le chargé de valorisation a un rôle important.",
+          "type": "concept",
+          "ecran": "Dialogue deux mondes",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Rôle d’interface académique / socio-éco."
+        },
+        {
+          "debut": "00:03:30",
+          "fin": "00:03:32",
+          "chercheur": "Stephanie Sano",
+          "verbatim": "Il faut également le formaliser.",
+          "type": "concept",
+          "ecran": "Formaliser",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Accords, pas seulement la mise en relation."
+        },
+        {
+          "debut": "00:03:52",
+          "fin": "00:03:58",
+          "chercheur": "Stephanie Sano",
+          "verbatim": "Alors si demain vous obtenez un résultat prometteur, n'attendez pas d'avoir toutes les réponses avant d'en parler.",
+          "type": "concept",
+          "ecran": "Sans toutes les réponses",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Premier contact tôt."
+        },
+        {
+          "debut": "00:04:16",
+          "fin": "00:04:27",
+          "chercheur": "Stephanie Sano",
+          "verbatim": "Aider les chercheurs à transformer une opportunité en projet concret en leur apportant les conseils, les contacts, les financements et le cadre nécessaire pour avancer.",
+          "type": "schema",
+          "ecran": "Ce qu’il apporte",
+          "developpe": "",
+          "schema": "Conseils · Contacts · Cadre",
+          "pourquoi": "Avec quoi arriver / ce qu’on en retire."
+        }
+      ]
+    },
+    "E8": {
+      "code": "E8",
+      "kind": "expert",
+      "nb": 7,
+      "items": [
+        {
+          "debut": "00:00:07",
+          "fin": "00:00:13",
+          "chercheur": "Stanislas De Lapasse",
+          "verbatim": "Je suis chargé d'affaires à l'INPI, l'Institut national de la propriété industrielle.",
+          "type": "acronyme",
+          "ecran": "INPI",
+          "developpe": "Institut national de la propriété industrielle",
+          "schema": "",
+          "pourquoi": "Première occurrence ; l’institution du grain."
+        },
+        {
+          "debut": "00:01:12",
+          "fin": "00:01:18",
+          "chercheur": "Stanislas De Lapasse",
+          "verbatim": "Il faut donc savoir comment s'y prendre pour choisir entre brevet et secret pour la protection des innovations techniques.",
+          "type": "schema",
+          "ecran": "Brevet ou secret",
+          "developpe": "",
+          "schema": "Brevet  |  Secret",
+          "pourquoi": "Objectif E8."
+        },
+        {
+          "debut": "00:01:39",
+          "fin": "00:01:45",
+          "chercheur": "Stanislas De Lapasse",
+          "verbatim": "En effet, la publication détruit la nouveauté de votre innovation et donc plus aucun dépôt de brevet n'est possible.",
+          "type": "concept",
+          "ecran": "Publier tue la nouveauté",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Lien avec T5 / E6."
+        },
+        {
+          "debut": "00:01:51",
+          "fin": "00:01:54",
+          "chercheur": "Stanislas De Lapasse",
+          "verbatim": "Votre innovation technique secrète s'appelle un savoir-faire.",
+          "type": "concept",
+          "ecran": "Savoir-faire",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Nommer le secret documenté."
+        },
+        {
+          "debut": "00:02:42",
+          "fin": "00:02:51",
+          "chercheur": "Stanislas De Lapasse",
+          "verbatim": "Cela passe par des mesures contractuelles, comme des accords de confidentialité ou NDA, bien adaptés à chaque situation et toutes clauses de confidentialité.",
+          "type": "acronyme",
+          "ecran": "NDA",
+          "developpe": "Accord de confidentialité",
+          "schema": "",
+          "pourquoi": "Mesure contractuelle du secret."
+        },
+        {
+          "debut": "00:04:01",
+          "fin": "00:04:08",
+          "chercheur": "Stanislas De Lapasse",
+          "verbatim": "Peut-on retrouver par retro-engineering mon savoir-faire derrière le produit ou service qui sera finalement commercialisé?",
+          "type": "concept",
+          "ecran": "Rétro-ingénierie ?",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Critère de choix brevet vs secret."
+        },
+        {
+          "debut": "00:04:55",
+          "fin": "00:04:59",
+          "chercheur": "Stanislas De Lapasse",
+          "verbatim": "Il est donc plus simple de lever des fonds avec un brevet qu'avec un secret.",
+          "type": "concept",
+          "ecran": "Lever des fonds",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Le brevet rassure l’investisseur — pont vers E9."
+        }
+      ]
+    },
+    "E9": {
+      "code": "E9",
+      "kind": "expert",
+      "nb": 7,
+      "items": [
+        {
+          "debut": "00:00:19",
+          "fin": "00:00:29",
+          "chercheur": "Stanislas De Lapasse",
+          "verbatim": "L'objet de cette séquence est de comprendre pourquoi et comment la propriété intellectuelle est un levier stratégique pour votre entreprise, surtout si vous partez de résultats de recherche.",
+          "type": "concept",
+          "ecran": "Levier stratégique",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Objectif E9 : la PI n’est pas un tampon."
+        },
+        {
+          "debut": "00:00:29",
+          "fin": "00:00:35",
+          "chercheur": "Stanislas De Lapasse",
+          "verbatim": "Les actifs immatériels sont souvent votre seule richesse au départ et prennent une importance croissante.",
+          "type": "concept",
+          "ecran": "Actifs immatériels",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Ce que l’on protège vraiment."
+        },
+        {
+          "debut": "00:00:52",
+          "fin": "00:00:55",
+          "chercheur": "Stanislas De Lapasse",
+          "verbatim": "Avec votre idée en tête, explorez l'existant.",
+          "type": "concept",
+          "ecran": "Explorer l’existant",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Avant la R&D."
+        },
+        {
+          "debut": "00:02:26",
+          "fin": "00:02:29",
+          "chercheur": "Stanislas De Lapasse",
+          "verbatim": "La déclaration d'invention est donc indispensable.",
+          "type": "concept",
+          "ecran": "Déclaration d’invention",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Dans un organisme public, l’invention appartient à l’employeur."
+        },
+        {
+          "debut": "00:03:57",
+          "fin": "00:04:04",
+          "chercheur": "Stanislas De Lapasse",
+          "verbatim": "Les startups qui déposent des brevets ou des marques lors de leur phase d'amorçage ont jusqu'à 10 fois plus de chances d'obtenir un financement.",
+          "type": "concept",
+          "ecran": "Barrière à l’entrée",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Effet investisseur des brevets / marques."
+        },
+        {
+          "debut": "00:04:21",
+          "fin": "00:04:25",
+          "chercheur": "Stanislas De Lapasse",
+          "verbatim": "Lors d'une levée de fonds, ils mèneront un audit de votre propriété intellectuelle.",
+          "type": "concept",
+          "ecran": "Audit PI",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Ce que regardera une levée de fonds."
+        },
+        {
+          "debut": "00:05:02",
+          "fin": "00:05:15",
+          "chercheur": "Stanislas De Lapasse",
+          "verbatim": "Pour synthétiser, la propriété intellectuelle n'est pas une option, c'est un pilier stratégique, que ce soit pour protéger vos innovations, sécuriser vos actifs immatériels ou attirer des investisseurs, chaque étape compte.",
+          "type": "schema",
+          "ecran": "Pilier, pas option",
+          "developpe": "",
+          "schema": "Rechercher → Protéger → Valoriser",
+          "pourquoi": "Synthèse du grain."
+        }
+      ]
+    },
+    "E10": {
+      "code": "E10",
+      "kind": "expert",
+      "nb": 6,
+      "items": [
+        {
+          "debut": "00:00:17",
+          "fin": "00:00:20",
+          "chercheur": "Virginia Branco",
+          "verbatim": "Licensing ou créer son entreprise?",
+          "type": "schema",
+          "ecran": "Licence ou création",
+          "developpe": "",
+          "schema": "Licence  |  Start-up",
+          "pourquoi": "Question structurante, objectif E10."
+        },
+        {
+          "debut": "00:00:37",
+          "fin": "00:00:41",
+          "chercheur": "Virginia Branco",
+          "verbatim": "Il existe, en simplifiant, quatre grandes voies de valorisation.",
+          "type": "schema",
+          "ecran": "Quatre voies",
+          "developpe": "",
+          "schema": "Licence · Création · Co-dev · Partenariat",
+          "pourquoi": "Élargir au-delà du binôme."
+        },
+        {
+          "debut": "00:01:36",
+          "fin": "00:01:39",
+          "chercheur": "Virginia Branco",
+          "verbatim": "D'abord, la typologie du projet.",
+          "type": "schema",
+          "ecran": "Trois critères",
+          "developpe": "",
+          "schema": "Projet · Écosystème · Posture",
+          "pourquoi": "Grille de choix."
+        },
+        {
+          "debut": "00:02:40",
+          "fin": "00:02:42",
+          "chercheur": "Virginia Branco",
+          "verbatim": "C'est avant tout une question de posture.",
+          "type": "concept",
+          "ecran": "Question de posture",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Légitimité académique vs engagement."
+        },
+        {
+          "debut": "00:02:46",
+          "fin": "00:02:48",
+          "chercheur": "Virginia Branco",
+          "verbatim": "Licence ou transfert de propriété?",
+          "type": "concept",
+          "ecran": "Licence ou propriété",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Montage juridique une fois l’entreprise créée."
+        },
+        {
+          "debut": "00:04:16",
+          "fin": "00:04:20",
+          "chercheur": "Virginia Branco",
+          "verbatim": "La maturité de votre technologie au moment du choix.",
+          "type": "concept",
+          "ecran": "Maturité de la techno",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Plus on a de preuve, plus on négocie."
+        }
+      ]
+    },
+    "E11": {
+      "code": "E11",
+      "kind": "expert",
+      "nb": 7,
+      "items": [
+        {
+          "debut": "00:01:07",
+          "fin": "00:01:30",
+          "chercheur": "Soizic Lefeuvre",
+          "verbatim": "Le mécanisme contractuel de la licence abordé par plusieurs des chercheurs ayant témoigné, et notamment Muriel, permet au propriétaire d'un titre de propriété industrielle, par exemple un brevet, ou d'un savoir-faire identifié, de concéder à un tiers, en toute ou partie, la jouissance de son droit d'exploitation, moyennant une contrepartie financière, cash et ou redevance.",
+          "type": "concept",
+          "ecran": "Licence = louage",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Objectif E11 : mécanisme, pas le choix de voie."
+        },
+        {
+          "debut": "00:01:36",
+          "fin": "00:01:42",
+          "chercheur": "Soizic Lefeuvre",
+          "verbatim": "Cette licence peut être exclusive, c'est-à-dire concédée à un seul licencié, ou non exclusive.",
+          "type": "schema",
+          "ecran": "Exclusive ou non",
+          "developpe": "",
+          "schema": "1 licencié  |  plusieurs",
+          "pourquoi": "Clause déterminante."
+        },
+        {
+          "debut": "00:02:10",
+          "fin": "00:02:25",
+          "chercheur": "Soizic Lefeuvre",
+          "verbatim": "Le mécanisme contractuel de la cession abordé par Jean-Jacques permet quant à lui au propriétaire d'un titre de propriété industrielle ou d'un savoir-faire identifié de transférer la propriété de celui-ci à un tiers, moyennant une contrepartie financière.",
+          "type": "concept",
+          "ecran": "Cession = vente",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Transfert de propriété, distinct de la licence."
+        },
+        {
+          "debut": "00:02:43",
+          "fin": "00:02:49",
+          "chercheur": "Soizic Lefeuvre",
+          "verbatim": "Virginia aborde par ailleurs dans son intervention la possibilité de codévelopper les résultats de la recherche.",
+          "type": "concept",
+          "ecran": "Co-développement",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Risques et résultats partagés."
+        },
+        {
+          "debut": "00:03:15",
+          "fin": "00:03:23",
+          "chercheur": "Soizic Lefeuvre",
+          "verbatim": "Il y a des apports matériels, humains et financiers des partenaires qui partagent les risques et il y a copropriété des résultats.",
+          "type": "concept",
+          "ecran": "Copropriété",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Conséquence du contrat de collaboration."
+        },
+        {
+          "debut": "00:04:02",
+          "fin": "00:04:07",
+          "chercheur": "Soizic Lefeuvre",
+          "verbatim": "On ne peut enfin pas se quitter sans aborder un autre type de contrat qui est le contrat de prestation.",
+          "type": "concept",
+          "ecran": "Prestation",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Obligation de résultat, pas d’inventivité."
+        },
+        {
+          "debut": "00:05:14",
+          "fin": "00:05:17",
+          "chercheur": "Soizic Lefeuvre",
+          "verbatim": "On dit que le contrat est la loi des parties.",
+          "type": "concept",
+          "ecran": "Le contrat fait loi",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Conseil de clôture."
+        }
+      ]
+    },
+    "E13bis": {
+      "code": "E13bis",
+      "kind": "expert",
+      "nb": 6,
+      "items": [
+        {
+          "debut": "00:00:05",
+          "fin": "00:00:10",
+          "chercheur": "Yoann Montenot",
+          "verbatim": "Je suis Yoann Monteneau, le directeur du Design Spot, le centre de design de l'Université Paris-Saclay.",
+          "type": "concept",
+          "ecran": "Design Spot",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Autre structure que SATT / incubateur, objectif E13bis."
+        },
+        {
+          "debut": "00:00:41",
+          "fin": "00:00:52",
+          "chercheur": "Yoann Montenot",
+          "verbatim": "L'Université Paris-Saclay s'appuie pour cela sur plusieurs espaces et plateformes techniques comme La Fabrique de Centrale Supélec, le Fab Lab de l'Université Paris-Saclay ou encore celui de l'IOGS.",
+          "type": "schema",
+          "ecran": "Plateformes",
+          "developpe": "",
+          "schema": "Fablab · Fabrique · POC",
+          "pourquoi": "Passer de l’idée au concret."
+        },
+        {
+          "debut": "00:01:33",
+          "fin": "00:01:39",
+          "chercheur": "Yoann Montenot",
+          "verbatim": "Est-ce que la solution que l'on développe répond réellement à un besoin et à un usage?",
+          "type": "concept",
+          "ecran": "Besoin et usage",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Le design n’est pas le styling."
+        },
+        {
+          "debut": "00:01:58",
+          "fin": "00:02:05",
+          "chercheur": "Yoann Montenot",
+          "verbatim": "Il permet de travailler sur les usages, l'expérience utilisateur, la compréhension de la solution et son appropriation.",
+          "type": "concept",
+          "ecran": "Expérience utilisateur",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Valeur du design en amont."
+        },
+        {
+          "debut": "00:03:15",
+          "fin": "00:03:18",
+          "chercheur": "Yoann Montenot",
+          "verbatim": "L'intérêt de cet écosystème, c'est donc sa complémentarité.",
+          "type": "concept",
+          "ecran": "Complémentarité",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Pas un parcours unique."
+        },
+        {
+          "debut": "00:03:18",
+          "fin": "00:03:21",
+          "chercheur": "Yoann Montenot",
+          "verbatim": "Il n'existe pas un parcours unique pour innover.",
+          "type": "concept",
+          "ecran": "La bonne ressource",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Au bon moment."
+        }
+      ]
+    },
+    "E16": {
+      "code": "E16",
+      "kind": "expert",
+      "nb": 6,
+      "items": [
+        {
+          "debut": "00:00:53",
+          "fin": "00:01:04",
+          "chercheur": "Pascal Corbel",
+          "verbatim": "Par contre, ils parviennent à réunir une équipe qui, collectivement, rassemble les compétences et qualités nécessaires pour mener à bien un projet entrepreneurial.",
+          "type": "concept",
+          "ecran": "Équipe, pas CV",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Objectif E16 : compétences collectives."
+        },
+        {
+          "debut": "00:01:08",
+          "fin": "00:01:11",
+          "chercheur": "Pascal Corbel",
+          "verbatim": "L'étude de marché, on ne sait pas faire.",
+          "type": "concept",
+          "ecran": "Savoirs manquants",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Ancrage T9."
+        },
+        {
+          "debut": "00:01:47",
+          "fin": "00:01:58",
+          "chercheur": "Pascal Corbel",
+          "verbatim": "Parce que la grande majorité des projets pivotent, et que ce qui survit à un pivot, ce n'est pas la technologie de départ, encore moins les applications, c'est l'équipe.",
+          "type": "concept",
+          "ecran": "L’équipe survit",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Les projets pivotent."
+        },
+        {
+          "debut": "00:02:09",
+          "fin": "00:02:14",
+          "chercheur": "Pascal Corbel",
+          "verbatim": "Aucun d'eux, finalement, n'a pris la direction opérationnelle de son entreprise.",
+          "type": "schema",
+          "ecran": "Diriger ou non",
+          "developpe": "",
+          "schema": "CEO  |  Scientifique",
+          "pourquoi": "Place du chercheur."
+        },
+        {
+          "debut": "00:03:50",
+          "fin": "00:03:54",
+          "chercheur": "Pascal Corbel",
+          "verbatim": "Et la recherche de son CEO se fait avec l'accompagnement de la SAT.",
+          "type": "concept",
+          "ecran": "Casting du dirigeant",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Alignement, pas un profil générique."
+        },
+        {
+          "debut": "00:04:33",
+          "fin": "00:04:36",
+          "chercheur": "Pascal Corbel",
+          "verbatim": "Il n'y a pas de place pour l'ego.",
+          "type": "concept",
+          "ecran": "Pas d’ego",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Collaboration dans l’équipe."
+        }
+      ]
+    },
+    "E19": {
+      "code": "E19",
+      "kind": "expert",
+      "nb": 6,
+      "items": [
+        {
+          "debut": "00:00:22",
+          "fin": "00:00:29",
+          "chercheur": "Pascal Corbel",
+          "verbatim": "Mais il n'y a pas un profil type d'entrepreneur et les compétences entrepreneuriales s'apprennent.",
+          "type": "concept",
+          "ecran": "Ça s’apprend",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Objectif E19 : pas de profil type."
+        },
+        {
+          "debut": "00:00:42",
+          "fin": "00:00:47",
+          "chercheur": "Pascal Corbel",
+          "verbatim": "Sauf que cette fois, dit-il, il apprenait la langue de l'entrepreneuriat.",
+          "type": "concept",
+          "ecran": "Langue de l’entrepreneuriat",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Métaphore T10, ici enseignée."
+        },
+        {
+          "debut": "00:01:42",
+          "fin": "00:01:51",
+          "chercheur": "Pascal Corbel",
+          "verbatim": "En réalité, le processus de création d'une entreprise ou de pilotage d'un projet innovant n'est qu'un long processus d'apprentissage.",
+          "type": "concept",
+          "ecran": "Tâtonnements",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Le récit lisse n’est pas le réel."
+        },
+        {
+          "debut": "00:02:21",
+          "fin": "00:02:29",
+          "chercheur": "Pascal Corbel",
+          "verbatim": "Adapter son vocabulaire, dit-elle, ça ne se décide pas en un jour et ça ne se décident pas tout seul devant une feuille de papier.",
+          "type": "concept",
+          "ecran": "En discutant",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Apprentissage par la pratique."
+        },
+        {
+          "debut": "00:02:53",
+          "fin": "00:02:56",
+          "chercheur": "Pascal Corbel",
+          "verbatim": "C'est avant tout un apprentissage par la pratique.",
+          "type": "concept",
+          "ecran": "Essai, retour, correction",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Posture entrepreneuriale."
+        },
+        {
+          "debut": "00:04:51",
+          "fin": "00:04:58",
+          "chercheur": "Pascal Corbel",
+          "verbatim": "Autrement dit, on ne cesse pas d'être chercheuse ou chercheur en devenant un entrepreneur ou une entrepreneuse.",
+          "type": "concept",
+          "ecran": "Une langue de plus",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "On reste chercheur."
+        }
+      ]
+    },
+    "E20": {
+      "code": "E20",
+      "kind": "expert",
+      "nb": 6,
+      "items": [
+        {
+          "debut": "00:00:20",
+          "fin": "00:00:29",
+          "chercheur": "Bernard Yannou",
+          "verbatim": "Ces témoignages dessinent plusieurs manières d'enrichir le métier de chercheurs, sans le renier, et de donner à la recherche une portée plus concrète.",
+          "type": "concept",
+          "ecran": "Enrichir le métier",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Objectif E20 : pas une reconversion."
+        },
+        {
+          "debut": "00:01:15",
+          "fin": "00:01:19",
+          "chercheur": "Bernard Yannou",
+          "verbatim": "Elle qualifie ainsi l'innovation de «fabuleux intégrateur social».",
+          "type": "concept",
+          "ecran": "Intégrateur social",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Utilité visible de la recherche."
+        },
+        {
+          "debut": "00:01:45",
+          "fin": "00:01:52",
+          "chercheur": "Bernard Yannou",
+          "verbatim": "Loïc Rajoux, par exemple, participe au comité scientifique de l'entreprise tout en conservant ses fonctions d'enseignant-chercheur.",
+          "type": "schema",
+          "ecran": "Double posture",
+          "developpe": "",
+          "schema": "Labo + entreprise",
+          "pourquoi": "Articuler les casquettes."
+        },
+        {
+          "debut": "00:01:52",
+          "fin": "00:02:01",
+          "chercheur": "Bernard Yannou",
+          "verbatim": "Cette double posture est possible à condition de préserver son impartialité et de distinguer clairement ses responsabilités académiques de celles exercées auprès de l'entreprise.",
+          "type": "concept",
+          "ecran": "Impartialité",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Condition de la double casquette."
+        },
+        {
+          "debut": "00:03:05",
+          "fin": "00:03:09",
+          "chercheur": "Bernard Yannou",
+          "verbatim": "Le temps long de la recherche n'est pas toujours celui du marché.",
+          "type": "schema",
+          "ecran": "Deux temporalités",
+          "developpe": "",
+          "schema": "Recherche ≠ marché",
+          "pourquoi": "Ce qu’il faut concilier."
+        },
+        {
+          "debut": "00:03:35",
+          "fin": "00:03:40",
+          "chercheur": "Bernard Yannou",
+          "verbatim": "Entreprendre à partir de ses recherches, ce n'est donc pas renoncer à être chercheur.",
+          "type": "concept",
+          "ecran": "Pas renoncer",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Message de clôture."
+        }
+      ]
+    },
+    "E21": {
+      "code": "E21",
+      "kind": "expert",
+      "nb": 6,
+      "items": [
+        {
+          "debut": "00:00:30",
+          "fin": "00:00:45",
+          "chercheur": "Pascal Corbel",
+          "verbatim": "En réalité, conduire un projet innovant, c'est piloter un processus d'apprentissage qui va peu à peu réduire les zones d'incertitude, et si le projet est effectivement viable, en réduire les risques à chaque étape.",
+          "type": "concept",
+          "ecran": "Réduire l’inconnu",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Objectif E21 : innover = apprendre."
+        },
+        {
+          "debut": "00:01:00",
+          "fin": "00:01:13",
+          "chercheur": "Pascal Corbel",
+          "verbatim": "L'échelle bien connue des TRL, pour Technology Readiness Level, reflète d'une manière certes un peu trop linéaire par rapport à la réalité, cette avancée progressive d'un simple concept à un système complet commercialisé.",
+          "type": "acronyme",
+          "ecran": "TRL",
+          "developpe": "Technology Readiness Level — niveau de maturité technologique",
+          "schema": "",
+          "pourquoi": "Première occurrence claire du sigle."
+        },
+        {
+          "debut": "00:01:54",
+          "fin": "00:01:57",
+          "chercheur": "Pascal Corbel",
+          "verbatim": "C'est ce que, dans le monde des start-up, on appelle des pivots.",
+          "type": "concept",
+          "ecran": "Pivot",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Impasse → virage, pas échec."
+        },
+        {
+          "debut": "00:02:52",
+          "fin": "00:03:04",
+          "chercheur": "Pascal Corbel",
+          "verbatim": "Les start-uppers parlent de MVP pour Minimum Viable Product, et ce pour glaner des retours clients, des données d'utilisation et parfois de vente si cette V0 n'est pas gratuite.",
+          "type": "acronyme",
+          "ecran": "MVP",
+          "developpe": "Minimum Viable Product",
+          "schema": "",
+          "pourquoi": "Ici le sigle est enseigné (après T11)."
+        },
+        {
+          "debut": "00:03:18",
+          "fin": "00:03:23",
+          "chercheur": "Pascal Corbel",
+          "verbatim": "Mais la logique d'apprentissage, elle, ne change pas.",
+          "type": "concept",
+          "ecran": "Logique d’apprentissage",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Indépendante du secteur."
+        },
+        {
+          "debut": "00:04:17",
+          "fin": "00:04:24",
+          "chercheur": "Pascal Corbel",
+          "verbatim": "C'est plutôt celle d'un humain cherchant peu à peu à mieux comprendre les différentes dimensions de son projet.",
+          "type": "concept",
+          "ecran": "Pas un casse-cou",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Posture de l’innovateur."
+        }
+      ]
+    },
+    "E22": {
+      "code": "E22",
+      "kind": "expert",
+      "nb": 6,
+      "items": [
+        {
+          "debut": "00:00:29",
+          "fin": "00:00:39",
+          "chercheur": "Rémi Waché",
+          "verbatim": "Nous intervenons donc en amont de la contractualisation pour concevoir une collaboration qui se veut équilibrée et bénéfique à l'ensemble des partis.",
+          "type": "concept",
+          "ecran": "Collaboration équilibrée",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Objectif E22."
+        },
+        {
+          "debut": "00:00:43",
+          "fin": "00:00:50",
+          "chercheur": "Rémi Waché",
+          "verbatim": "Pour aboutir à une collaboration, il faut trouver des conditions d'entente mutuelles permettant un équilibre.",
+          "type": "schema",
+          "ecran": "Apports / attentes",
+          "developpe": "",
+          "schema": "Chacun apporte · chacun gagne",
+          "pourquoi": "Équilibre, pas prestation."
+        },
+        {
+          "debut": "00:00:56",
+          "fin": "00:01:05",
+          "chercheur": "Rémi Waché",
+          "verbatim": "On distingue d'ailleurs souvent la collaboration d'un autre cadre contractuel, dit de prestation, dans lequel le client achète des résultats.",
+          "type": "concept",
+          "ecran": "Pas une prestation",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Distinguer les cadres."
+        },
+        {
+          "debut": "00:03:02",
+          "fin": "00:03:07",
+          "chercheur": "Rémi Waché",
+          "verbatim": "Attention toutefois, pas d'échange d'informations sensibles sans mise en place d'un accord de confidentialité au préalable.",
+          "type": "acronyme",
+          "ecran": "NDA",
+          "developpe": "Accord de confidentialité",
+          "schema": "",
+          "pourquoi": "Avant toute info sensible."
+        },
+        {
+          "debut": "00:03:41",
+          "fin": "00:03:44",
+          "chercheur": "Rémi Waché",
+          "verbatim": "Objectifs, moyens, temporalité.",
+          "type": "schema",
+          "ecran": "Trois contraintes",
+          "developpe": "",
+          "schema": "Objectifs · Moyens · Temps",
+          "pourquoi": "Dimensionner la collab."
+        },
+        {
+          "debut": "00:05:01",
+          "fin": "00:05:05",
+          "chercheur": "Rémi Waché",
+          "verbatim": "Premièrement, se protéger en amont.",
+          "type": "concept",
+          "ecran": "Se protéger en amont",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Réflexe avant de parler."
+        }
+      ]
+    },
+    "E23": {
+      "code": "E23",
+      "kind": "expert",
+      "nb": 7,
+      "items": [
+        {
+          "debut": "00:00:30",
+          "fin": "00:00:33",
+          "chercheur": "Eneli Vino",
+          "verbatim": "Mais comment les sécuriser?",
+          "type": "concept",
+          "ecran": "Sécuriser",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Objectif E23."
+        },
+        {
+          "debut": "00:00:33",
+          "fin": "00:00:41",
+          "chercheur": "Eneli Vino",
+          "verbatim": "Avant toute discussion avec un tiers concernant le projet, un réflexe utile est de penser à la confidentialité.",
+          "type": "concept",
+          "ecran": "Confidentialité d’abord",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Réflexe avant tout tiers."
+        },
+        {
+          "debut": "00:00:41",
+          "fin": "00:00:49",
+          "chercheur": "Eneli Vino",
+          "verbatim": "Pour cela, il faudra faire signer un accord de confidentialité entre votre structure de valorisation et votre partenaire.",
+          "type": "concept",
+          "ecran": "Accord de confidentialité",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Outil, pas le discours."
+        },
+        {
+          "debut": "00:01:08",
+          "fin": "00:01:16",
+          "chercheur": "Eneli Vino",
+          "verbatim": "Avant toute nouvelle collaboration, il faudra également réaliser un état des lieux des connaissances propres de chaque partie.",
+          "type": "concept",
+          "ecran": "Connaissances propres",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "État des lieux avant collab."
+        },
+        {
+          "debut": "00:02:19",
+          "fin": "00:02:30",
+          "chercheur": "Eneli Vino",
+          "verbatim": "Un contrat de collaboration permet de préciser les modalités applicables à la propriété, à l'utilisation et à l'exploitation de la propriété intellectuelle.",
+          "type": "concept",
+          "ecran": "Contrat de collaboration",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Cadre PI, usage, publication."
+        },
+        {
+          "debut": "00:02:30",
+          "fin": "00:02:33",
+          "chercheur": "Eneli Vino",
+          "verbatim": "Mais à quoi correspond le terme «propriété intellectuelle»?",
+          "type": "acronyme",
+          "ecran": "PI",
+          "developpe": "Propriété intellectuelle",
+          "schema": "",
+          "pourquoi": "Ici le terme est défini pour le grain juridique."
+        },
+        {
+          "debut": "00:04:44",
+          "fin": "00:04:49",
+          "chercheur": "Eneli Vino",
+          "verbatim": "Un contrat de collaboration doit également prévoir une porte-sortie.",
+          "type": "concept",
+          "ecran": "Porte de sortie",
+          "developpe": "",
+          "schema": "",
+          "pourquoi": "Clause de résiliation, équilibre."
+        }
+      ]
+    }
+  }
+}

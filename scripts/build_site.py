@@ -335,6 +335,21 @@ code {
 .sommaire-card--expert .sommaire-card__cta {
   color: #2d6b5a;
 }
+.sommaire-card--guide {
+  background: #fff7ed;
+  border-color: #f5d0a8;
+}
+.sommaire-card--guide .sommaire-card__icon {
+  background: #ffedd5;
+  color: #9a3412;
+}
+.sommaire-card--guide:hover {
+  border-color: #fdba74;
+  box-shadow: 0 14px 34px rgba(154, 52, 18, 0.12);
+}
+.sommaire-card--guide .sommaire-card__cta {
+  color: #9a3412;
+}
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -575,6 +590,109 @@ tbody tr:last-child td { border-bottom: none; }
 .avis--ok { background: #d1fae5; color: #047857; }
 .avis--mid { background: #e0f2fe; color: #0369a1; }
 .avis--no { background: #ffedd5; color: #c2410c; }
+.incrust-type {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+.incrust-type--acronyme { background: #ede9fe; color: #5b21b6; }
+.incrust-type--concept { background: var(--accent-soft); color: var(--accent-dark); }
+.incrust-type--schema { background: #ffedd5; color: #9a3412; }
+.incrust-card {
+  margin: 0 0 22px;
+  padding: 18px 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.incrust-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  align-items: baseline;
+  margin: 0 0 12px;
+}
+.incrust-preview {
+  position: relative;
+  background:
+    radial-gradient(ellipse at 30% 20%, #2a3d4d 0%, transparent 55%),
+    linear-gradient(180deg, #1a2834 0%, #0f1720 100%);
+  border-radius: 10px;
+  aspect-ratio: 16 / 9;
+  max-width: 520px;
+  margin: 0 0 14px;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+}
+.incrust-preview__chip {
+  position: absolute;
+  left: 5%;
+  bottom: 11%;
+  max-width: 78%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(8, 18, 24, 0.72);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: #fff;
+  backdrop-filter: blur(4px);
+}
+.incrust-preview__label {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+.incrust-preview__sub {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #d7e3ea;
+  line-height: 1.3;
+}
+.incrust-preview__nodes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+.incrust-preview__node {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: rgba(230, 244, 245, 0.16);
+  border: 1px solid rgba(255,255,255,0.22);
+  font-size: 13px;
+  font-weight: 700;
+}
+.incrust-preview__arrow {
+  color: #9dd4c4;
+  font-weight: 700;
+}
+.incrust-verbatim {
+  margin: 0 0 10px;
+  padding: 10px 12px;
+  border-left: 3px solid var(--accent);
+  background: var(--panel);
+  font-size: 14px;
+}
+.incrust-pourquoi { margin: 0; font-size: 14px; color: var(--muted); }
+.incrust-guide h2 { margin-top: 28px; }
+.incrust-guide .principe {
+  margin: 0 0 14px;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.incrust-guide .principe h3 { margin: 0 0 6px; font-size: 16px; }
+.incrust-guide .principe p { margin: 0; }
+.incrust-guide .sources { font-size: 14px; }
 .script-ref {
   font-size: 0.92em;
   color: #94a3b8;
@@ -2075,6 +2193,26 @@ def _load_transcripts_videos_expert() -> dict:
 
 def _expert_transcript_item(code: str) -> dict:
     return (_load_transcripts_videos_expert().get("capsules") or {}).get(code) or {}
+
+
+def _load_incrustations() -> dict:
+    path = ROOT / "data" / "incrustations.json"
+    if not path.exists():
+        return {}
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _incrustation_page_name(code: str) -> str:
+    return f"incrustation_{code}.html"
+
+
+def _incrust_sort_key(code: str) -> tuple:
+    if code.startswith("T") and code[1:].isdigit():
+        return (0, int(code[1:]), 0)
+    match = re.fullmatch(r"E(\d+)(bis)?", code, re.IGNORECASE)
+    if match:
+        return (1, int(match.group(1)), 1 if match.group(2) else 0)
+    return (2, 0, 0)
 
 
 def _mounted_transcript_script(capsule_code: str) -> str:
@@ -4686,6 +4824,12 @@ def build_home(capsules: list[dict], segments: list[dict]) -> None:
             "Scripts, revues et cahier édito envoyé aux experts — par vidéo ou par nom.",
         ),
         (
+            "incrustations.html",
+            "▣",
+            "Incrustations",
+            "Propositions d’incrustations pédagogiques (mots-clés, acronymes, petits schémas) pour les vidéos filmées.",
+        ),
+        (
             "tournage.html",
             "●",
             "Tournage",
@@ -4711,7 +4855,7 @@ def build_home(capsules: list[dict], segments: list[dict]) -> None:
 <section class="hero">
   <p class="hero__eyebrow">MOOC · L'Esprit d'innover ! Pourquoi pas Vous !</p>
   <h1>Dérushage éditorial chorale</h1>
-  <p class="hero__lead">Scripts des vidéos témoins et expertise, tournage, puis outils de mise en œuvre.</p>
+  <p class="hero__lead">Scripts des vidéos témoins et expertise, incrustations pédagogiques, tournage, puis outils de mise en œuvre.</p>
   <div class="hero__stats">
     <span class="stat-pill"><strong>{len(capsules)}</strong> capsules</span>
     <span class="stat-pill"><strong>{len(segments)}</strong> extraits indexes</span>
@@ -4865,6 +5009,282 @@ def build_mise_en_oeuvre_page() -> None:
             main_class="page-home",
         ),
     )
+
+
+INCRUST_TYPE_LABELS = {
+    "acronyme": "Acronyme",
+    "concept": "Mot-clé",
+    "schema": "Petit schéma",
+}
+
+
+def _incrust_type_badge(typ: str) -> str:
+    label = INCRUST_TYPE_LABELS.get(typ, typ)
+    css = typ if typ in INCRUST_TYPE_LABELS else "concept"
+    return f'<span class="incrust-type incrust-type--{escape(css)}">{escape(label)}</span>'
+
+
+def _incrust_schema_nodes(spec: str) -> tuple[list[str], str]:
+    text = (spec or "").strip()
+    for sep, joiner in (("⇄", "⇄"), ("→", "→"), ("|", "ou"), ("·", "·")):
+        if sep in text:
+            return [part.strip() for part in text.split(sep) if part.strip()], joiner
+    return ([text] if text else [], "")
+
+
+def _incrust_preview_html(item: dict) -> str:
+    typ = item.get("type") or "concept"
+    label = item.get("ecran") or ""
+    if typ == "schema":
+        nodes, joiner = _incrust_schema_nodes(item.get("schema") or label)
+        bits = []
+        for index, node in enumerate(nodes):
+            if index:
+                bits.append(
+                    f'<span class="incrust-preview__arrow" aria-hidden="true">{escape(joiner or "→")}</span>'
+                )
+            bits.append(f'<span class="incrust-preview__node">{escape(node)}</span>')
+        inner = f'<div class="incrust-preview__nodes">{"".join(bits)}</div>'
+        chip = f'<div class="incrust-preview__chip">{inner}</div>'
+    else:
+        sub = item.get("developpe") or ""
+        inner = f'<span class="incrust-preview__label">{escape(label)}</span>'
+        if sub:
+            inner += f'<span class="incrust-preview__sub">{escape(sub)}</span>'
+        chip = f'<div class="incrust-preview__chip">{inner}</div>'
+    return f'<div class="incrust-preview" aria-label="Aperçu écran : {escape(label)}">{chip}</div>'
+
+
+def _incrust_meta_lookup(programme_table: dict) -> dict[str, dict]:
+    capsules_by_code = {item.get("code", ""): item for item in load_capsules()}
+    expert_titles: dict[str, str] = {}
+    temoin_objectifs: dict[str, str] = {}
+    for row in programme_table.get("rows") or []:
+        t_code = row.get("code") or ""
+        if t_code:
+            temoin_objectifs[t_code] = row.get("objectif_pedagogique") or ""
+        for video in _tb_edito_parse_videos_expert(row.get("videos_referent") or ""):
+            expert_titles[video.get("code") or ""] = video.get("titre") or ""
+    lookup: dict[str, dict] = {}
+    temoin_tx = _load_transcripts_videos_finaux().get("capsules") or {}
+    expert_tx = _load_transcripts_videos_expert().get("capsules") or {}
+    for code, cap in capsules_by_code.items():
+        lookup[code] = {
+            "titre": cap.get("titre") or _label_video_temoin(code),
+            "objectif": cap.get("objectif_pedagogique") or temoin_objectifs.get(code) or "",
+            "duree": (temoin_tx.get(code) or {}).get("duree_video") or "",
+            "script_href": f"capsule_{code}.html",
+            "kind_label": _label_video_temoin(code),
+        }
+    for code, titre in expert_titles.items():
+        filme = expert_tx.get(code) or {}
+        lookup[code] = {
+            "titre": titre or _label_video_expert(code),
+            "objectif": titre or "",
+            "duree": filme.get("duree_video") or "",
+            "script_href": _expert_video_page_name(code),
+            "kind_label": _label_video_expert(code),
+        }
+    return lookup
+
+
+def _incrust_item_html(item: dict) -> str:
+    debut = item.get("debut") or ""
+    fin = item.get("fin") or ""
+    span = debut
+    if fin and fin != debut:
+        span = f"{debut}–{fin}"
+    voice = item.get("chercheur") or ""
+    verbatim = item.get("verbatim") or ""
+    pourquoi = item.get("pourquoi") or ""
+    return (
+        "<article class='incrust-card'>"
+        "<div class='incrust-card__meta'>"
+        f"<span class='script-tc'>{escape(span)}</span>"
+        + _incrust_type_badge(item.get("type") or "")
+        + (f"<span class='meta'>{escape(voice)}</span>" if voice else "")
+        + "</div>"
+        + _incrust_preview_html(item)
+        + (f"<blockquote class='incrust-verbatim'>{escape(verbatim)}</blockquote>" if verbatim else "")
+        + (f"<p class='incrust-pourquoi'><strong>Pourquoi.</strong> {escape(pourquoi)}</p>" if pourquoi else "")
+        + "</article>"
+    )
+
+
+def build_incrustations_bonnes_pratiques_page(guide: dict) -> None:
+    principes = []
+    for item in guide.get("principes") or []:
+        principes.append(
+            "<article class='principe'>"
+            f"<h3>{escape(item.get('titre') or '')}</h3>"
+            f"<p>{escape(item.get('texte') or '')}</p>"
+            "</article>"
+        )
+    conduite = "".join(f"<li>{escape(line)}</li>" for line in (guide.get("conduite_equipe") or []))
+    sources = []
+    for source in guide.get("sources") or []:
+        url = source.get("url") or ""
+        titre = source.get("titre") or url
+        usage = source.get("usage") or ""
+        link = f'<a href="{escape(url)}" rel="noopener noreferrer">{escape(titre)}</a>' if url else escape(titre)
+        sources.append(f"<li>{link} — {escape(usage)}</li>" if usage else f"<li>{link}</li>")
+    body = (
+        "<div class='incrust-guide'>"
+        f"<p class='lead'>{escape(guide.get('sous_titre') or '')}</p>"
+        "<p>Ces incrustations sont un <strong>signaling pédagogique</strong> : un mot-clé, "
+        "un acronyme développé, ou un petit schéma de 2 à 4 nœuds. "
+        "Elles ne sous-titrent pas la parole et ne recopient pas le verbatim.</p>"
+        "<h2>Principes</h2>"
+        + "".join(principes)
+        + "<h2>Conduite pour l’équipe</h2>"
+        + (f"<ul>{conduite}</ul>" if conduite else "")
+        + "<h2>Sources</h2>"
+        + (f"<ul class='sources'>{''.join(sources)}</ul>" if sources else "")
+        + "</div>"
+    )
+    write_text(
+        SITE / "incrustations_bonnes_pratiques.html",
+        html_page(
+            "Bonnes pratiques — Incrustations",
+            body,
+            nav_current="incrustations.html",
+            breadcrumb=html_breadcrumb(
+                ("Accueil", "index.html"),
+                ("Incrustations", "incrustations.html"),
+                ("Bonnes pratiques", None),
+            ),
+            page_header=(
+                '<div class="page-head"><h1>Bonnes pratiques</h1>'
+                '<p class="lead">Guide à communiquer à l’équipe motion / pédagogique.</p></div>'
+            ),
+        ),
+    )
+
+
+def build_incrustation_video_page(code: str, video: dict, meta: dict) -> None:
+    titre = meta.get("titre") or code
+    objectif = meta.get("objectif") or ""
+    duree = meta.get("duree") or ""
+    script_href = meta.get("script_href") or ""
+    kind_label = meta.get("kind_label") or code
+    items = video.get("items") or []
+    counts = Counter(item.get("type") for item in items)
+    type_words = {
+        "acronyme": ("acronyme", "acronymes"),
+        "concept": ("mot-clé", "mots-clés"),
+        "schema": ("petit schéma", "petits schémas"),
+    }
+    mix_parts = []
+    for typ in ("acronyme", "concept", "schema"):
+        n = counts.get(typ, 0)
+        if not n:
+            continue
+        singular, plural = type_words[typ]
+        mix_parts.append(f"{n} {singular if n == 1 else plural}")
+    mix = " · ".join(mix_parts)
+    header_bits = [f"{len(items)} proposition{'s' if len(items) != 1 else ''}"]
+    if duree:
+        header_bits.append(f"durée {duree}")
+    if mix:
+        header_bits.append(mix)
+    script_link = (
+        f"<p class='meta'><a href='{escape(script_href)}'>Voir le script filmé</a></p>"
+        if script_href
+        else ""
+    )
+    body = (
+        f"<p class='meta'>{escape(' · '.join(header_bits))}</p>"
+        + (f"<p><strong>Objectif de la vidéo.</strong> {escape(objectif)}</p>" if objectif else "")
+        + script_link
+        + "<p class='meta'>Chaque incrustation est calée sur un verbatim et son horodatage de transcription. "
+        "Le texte à l’écran est une étiquette pédagogique, pas une reformulation du dit.</p>"
+        + "".join(_incrust_item_html(item) for item in items)
+    )
+    write_text(
+        SITE / _incrustation_page_name(code),
+        html_page(
+            f"Incrustations {code}",
+            body,
+            nav_current="incrustations.html",
+            breadcrumb=html_breadcrumb(
+                ("Accueil", "index.html"),
+                ("Incrustations", "incrustations.html"),
+                (code, None),
+            ),
+            page_header=(
+                f'<div class="page-head"><h1>{escape(code)} — {escape(kind_label)}</h1>'
+                f'<p class="lead">{escape(titre)}</p></div>'
+            ),
+        ),
+    )
+
+
+def build_incrustations_pages(programme_table: dict) -> None:
+    data = _load_incrustations()
+    videos = data.get("videos") or {}
+    guide = data.get("bonnes_pratiques") or {}
+    meta = _incrust_meta_lookup(programme_table)
+    n_items = sum(len(video.get("items") or []) for video in videos.values())
+    n_temoin = sum(1 for video in videos.values() if video.get("kind") == "temoin")
+    n_expert = sum(1 for video in videos.values() if video.get("kind") == "expert")
+
+    cards: list[tuple[str, ...]] = [
+        (
+            "incrustations_bonnes_pratiques.html",
+            "☰",
+            "Bonnes pratiques",
+            "Guide pour l’équipe : signaling, acronymes, 1 à 4 mots, petit schéma, rythme.",
+            "guide",
+        )
+    ]
+    for code in sorted(videos, key=_incrust_sort_key):
+        video = videos[code]
+        info = meta.get(code) or {}
+        kind = video.get("kind") or ("expert" if code.startswith("E") else "temoin")
+        label = info.get("kind_label") or ( _label_video_expert(code) if kind == "expert" else _label_video_temoin(code) )
+        titre = info.get("titre") or ""
+        n = len(video.get("items") or [])
+        cards.append(
+            (
+                _incrustation_page_name(code),
+                code,
+                f"{code} — {label}",
+                f"{titre}. {n} incrustation{'s' if n != 1 else ''} proposée{'s' if n != 1 else ''}.",
+                kind,
+            )
+        )
+
+    body = (
+        f"<p class='meta'>{n_items} propositions sur {len(videos)} vidéos filmées "
+        f"({n_temoin} témoin, {n_expert} expert). "
+        "Motion design faible : mot-clé, acronyme développé à la première rencontre, ou petit schéma.</p>"
+        + _sommaire_cards(cards)
+    )
+    write_text(
+        SITE / "incrustations.html",
+        html_page(
+            "Incrustations",
+            body,
+            nav_current="incrustations.html",
+            breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Incrustations", None)),
+            page_header=(
+                '<div class="page-head"><h1>Incrustations</h1>'
+                '<p class="lead">Propositions d’incrustations pédagogiques pour les vidéos filmées, '
+                "témoin et expert — calées sur verbatim et horodatage.</p></div>"
+            ),
+            main_class="page-home",
+        ),
+    )
+    build_incrustations_bonnes_pratiques_page(guide)
+    for code, video in videos.items():
+        build_incrustation_video_page(code, video, meta.get(code) or {})
+
+    expected = {"incrustations.html", "incrustations_bonnes_pratiques.html"} | {
+        _incrustation_page_name(code) for code in videos
+    }
+    for path in SITE.glob("incrustation*.html"):
+        if path.name not in expected:
+            path.unlink()
 
 
 def _normalize_for_match(text: str) -> str:
@@ -9195,6 +9615,8 @@ def _sommaire_cards(sections: list[tuple[str, ...]]) -> str:
             kind_class = " sommaire-card--temoin"
         elif kind == "expert":
             kind_class = " sommaire-card--expert"
+        elif kind == "guide":
+            kind_class = " sommaire-card--guide"
         cards.append(
             f"<a class='sommaire-card{kind_class}' href='{escape(href)}'>"
             f"<span class='sommaire-card__icon' aria-hidden='true'>{escape(icon)}</span>"
@@ -13919,6 +14341,7 @@ if __name__ == "__main__":
     build_home(all_capsules, all_segments)
     build_videos_temoins_hub_page(all_capsules)
     build_mise_en_oeuvre_page()
+    build_incrustations_pages(programme_table)
     build_experts_profiles_page(experts_profils)
     build_tb_edito_capsule_pages(programme_table)
     build_tb_edito_page()

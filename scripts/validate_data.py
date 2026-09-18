@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import sys
 from collections import Counter
 
@@ -194,6 +195,46 @@ def validate() -> tuple[list[str], list[str]]:
                 for code in segment.get("capsules", {}):
                     if code not in capsule_codes:
                         errors.append(f"bab_encodes/{encode_id}/{sid}: capsule inconnue {code}")
+
+    incrust_path = DATA / "incrustations.json"
+    if incrust_path.exists():
+        incrust = json.loads(incrust_path.read_text(encoding="utf-8"))
+        temoin_tx = {}
+        expert_tx = {}
+        temoin_file = DATA / "transcripts_videos_finaux.json"
+        expert_file = DATA / "transcripts_videos_expert.json"
+        if temoin_file.exists():
+            temoin_tx = (json.loads(temoin_file.read_text(encoding="utf-8")).get("capsules") or {})
+        if expert_file.exists():
+            expert_tx = (json.loads(expert_file.read_text(encoding="utf-8")).get("capsules") or {})
+        allowed_types = {"acronyme", "concept", "schema"}
+        for code, video in (incrust.get("videos") or {}).items():
+            source = expert_tx if str(code).startswith("E") else temoin_tx
+            by_debut = {
+                seq.get("debut"): seq
+                for seq in (source.get(code) or {}).get("sequences_video") or []
+                if seq.get("debut")
+            }
+            for item in video.get("items") or []:
+                debut = item.get("debut") or ""
+                typ = item.get("type") or ""
+                ecran = item.get("ecran") or ""
+                loc = f"incrustations/{code} {debut}"
+                if typ not in allowed_types:
+                    errors.append(f"{loc}: type inconnu {typ}")
+                seq = by_debut.get(debut)
+                if not seq:
+                    errors.append(f"{loc}: horodatage absent de la transcription filmée")
+                else:
+                    if (item.get("verbatim") or "") != (seq.get("texte") or ""):
+                        errors.append(f"{loc}: verbatim différent de la transcription")
+                words = [w for w in ecran.replace("·", " ").replace("/", " ").split() if w]
+                if typ != "acronyme" and len(words) > 4:
+                    errors.append(f"{loc}: libellé écran trop long ({len(words)} mots): {ecran}")
+                if typ == "acronyme" and not (item.get("developpe") or "").strip():
+                    warnings.append(f"{loc}: acronyme sans développement")
+                if typ == "schema" and not (item.get("schema") or "").strip():
+                    warnings.append(f"{loc}: schéma sans nœuds")
 
     return errors, warnings
 
