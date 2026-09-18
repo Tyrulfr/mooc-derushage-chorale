@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Synchronise le transcript monté restant (T13 Clarisse) sans écraser le script T monté V1.
+"""Synchronise uniquement un transcript Clarisse s'il restait hors T1–T13.
 
-T1–T12 : source de vérité = data/scripts_temoin_v1/ (import_scripts_temoin_v1.py).
-Les anciens Trancript_Video1–12 sont dans archive/scripts_temoin_remplaces/.
+T1–T13 : source de vérité = data/scripts_temoin_v1/ (import_scripts_temoin_v1.py).
+Ne jamais écraser un script_t_monte_v1.
 """
 from __future__ import annotations
 
@@ -257,9 +257,8 @@ def main() -> None:
 
     payload = {
         "note": (
-            "T1–T12 : scripts T monté V1 (vidéo montée). "
-            "T13 : transcript Clarisse (Trancript_Video13.docx). "
-            "Anciens Trancript T1–T12 archivés."
+            "T1–T13 : scripts T monté V1 (transcriptions horodatées). "
+            "Anciens Trancript Clarisse archivés."
         ),
         "date_mise_a_jour": date.today().isoformat(),
         "capsules": capsules,

@@ -550,7 +550,8 @@ tbody tr:last-child td { border-bottom: none; }
   margin: 0 0 4px;
 }
 .script-voice { font-weight: 700; margin: 0 0 6px; }
-.script-timed .script-body { white-space: pre-wrap; }
+.script-timed .script-body { white-space: normal; }
+.script-timed .script-body p { margin: 0 0 0.65em; }
 .script-ref {
   font-size: 0.92em;
   color: #94a3b8;
@@ -2064,152 +2065,119 @@ def _transcript_item(capsule_code: str) -> dict:
 def _transcript_source_note_html(trans_item: dict) -> str:
     source = trans_item.get("source") or ""
     kind = trans_item.get("source_kind") or ""
-    extras = trans_item.get("sequences_additionnelles") or []
+    extras = trans_item.get("sequences_off") or trans_item.get("sequences_additionnelles") or []
     if kind in {"script_t_monte_v1", "script_myriam_v1"}:
         extra_note = (
-            f" {len(extras)} séquence(s) additionnelle(s) hors vidéo (ajouts / doublons), "
-            "non montées — arbitrage ultérieur."
+            f" {len(extras)} séquence(s) en off (après la durée réelle de la vidéo)."
             if extras
-            else " Pas de séquence additionnelle dans le fichier V1."
+            else " Pas de séquence en off dans la transcription."
         )
         duree = trans_item.get("duree_video") or ""
         duree_note = (
-            f" Durée (horodatage fichier) : <strong>{escape(duree)}</strong>."
+            f" Durée réelle de la vidéo : <strong>{escape(duree)}</strong>."
             if duree
             else ""
         )
         return (
             f"Script T monté V1 (<code>{escape(source)}</code>). "
-            f"Voix identifiées par recoupement BAB.{duree_note}{extra_note}"
+            f"Horodatages et prénoms issus de la transcription.{duree_note}{extra_note}"
         )
     if source:
         return (
-            f"Transcript de la vidéo montée — <code>{escape(source)}</code> "
-            "· voix identifiées par recoupement BAB."
+            f"Transcript de la vidéo montée — <code>{escape(source)}</code>."
         )
     return ""
 
 
-_VOICE_HEADER_RE = re.compile(r"^=== (.+) ===\s*$", re.M)
-
-
-def _split_script_voice_blocks(script: str) -> list[dict]:
-    text = (script or "").strip()
-    if not text:
-        return []
-    matches = list(_VOICE_HEADER_RE.finditer(text))
-    if not matches:
-        return [{"chercheur": "", "texte": text}]
-    blocks = []
-    for index, match in enumerate(matches):
-        start = match.end()
-        end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
-        blocks.append(
-            {
-                "chercheur": match.group(1).strip(),
-                "texte": text[start:end].strip(),
-            }
-        )
-    return blocks
-
-
-def _allocate_block_times(blocks: list[dict], total_seconds: float) -> list[dict]:
-    if not blocks or total_seconds <= 0:
-        return blocks
-    weights = [max(1, len((item.get("texte") or "").split())) for item in blocks]
-    total_weight = sum(weights) or 1
-    cursor = 0.0
-    timed = []
-    for block, weight in zip(blocks, weights):
-        duration = total_seconds * weight / total_weight
-        timed.append(
-            {
-                **block,
-                "debut_s": cursor,
-                "fin_s": cursor + duration,
-                "duree_s": duration,
-            }
-        )
-        cursor += duration
-    if timed:
-        timed[-1]["fin_s"] = total_seconds
-        timed[-1]["duree_s"] = timed[-1]["fin_s"] - timed[-1]["debut_s"]
-    return timed
-
-
 def _mounted_script_html(trans_item: dict, script_text: str) -> str:
+    seqs = trans_item.get("sequences_video") or []
+    duree = trans_item.get("duree_video") or ""
+    header = ""
+    if duree:
+        header = (
+            f"<p class='meta'><strong>Durée de la vidéo :</strong> {escape(duree)}. "
+            "Les timecodes ci-dessous sont ceux de la transcription "
+            "(pas une estimation, pas des BAB).</p>"
+        )
+    structured = [item for item in seqs if isinstance(item, dict) and item.get("texte")]
+    if structured:
+        parts = []
+        current = None
+        body: list[str] = []
+
+        def flush() -> None:
+            if current is None:
+                return
+            parts.append(
+                "<div class='script-block'>"
+                f"<p class='script-voice'>=== {escape(current)} ===</p>"
+                f"<div class='script-body'>{''.join(body)}</div>"
+                "</div>"
+            )
+
+        for item in structured:
+            voice = item.get("chercheur") or item.get("prenom") or ""
+            if voice != current:
+                flush()
+                current = voice
+                body = []
+            tc = item.get("debut") or ""
+            line = escape(item.get("texte") or "")
+            if tc:
+                body.append(
+                    f"<p class='script-tc'>{escape(tc)}</p>"
+                    f"<p>{line}</p>"
+                )
+            else:
+                body.append(f"<p>{line}</p>")
+        flush()
+        return (
+            header
+            + f"<div class='script script-timed' id='script-final'>{''.join(parts)}</div>"
+        )
     normalized = _normalize_script_final_editorial(script_text or "")
     if not normalized:
-        return "<div class='script' id='script-final'>À construire.</div>"
-    duree = float(trans_item.get("duree_video_secondes") or 0)
-    if duree <= 0:
-        return (
-            f"<div class='script' id='script-final'>{escape(normalized)}</div>"
-        )
-    blocks = _allocate_block_times(_split_script_voice_blocks(normalized), duree)
-    parts = []
-    for block in blocks:
-        voice = block.get("chercheur") or ""
-        header = f"=== {voice} ===" if voice else ""
-        tc = f"{format_seconds(block['debut_s'])} → {format_seconds(block['fin_s'])}"
-        parts.append(
-            "<div class='script-block'>"
-            f"<p class='script-tc'>{escape(tc)} · durée {format_seconds(block['duree_s'])}</p>"
-            + (f"<p class='script-voice'>{escape(header)}</p>" if header else "")
-            + f"<div class='script-body'>{escape(block.get('texte') or '')}</div>"
-            "</div>"
-        )
-    source_video = trans_item.get("source_video") or ""
-    source_bit = (
-        f" · fichier <code>{escape(source_video)}</code>" if source_video else ""
-    )
-    return (
-        f"<p class='meta'><strong>Durée de la vidéo :</strong> "
-        f"{format_seconds(duree)} (horodatage{source_bit}). "
-        "Les timecodes des blocs sont répartis selon la durée du fichier.</p>"
-        f"<div class='script script-timed' id='script-final'>{''.join(parts)}</div>"
-    )
+        return header + "<div class='script' id='script-final'>À construire.</div>"
+    return header + f"<div class='script' id='script-final'>{escape(normalized)}</div>"
 
 
-def _sequences_additionnelles_html(trans_item: dict) -> str:
-    extras = trans_item.get("sequences_additionnelles") or []
+def _sequences_off_html(trans_item: dict) -> str:
+    extras = trans_item.get("sequences_off") or trans_item.get("sequences_additionnelles") or []
     if not extras:
         return ""
+    duree = trans_item.get("duree_video") or ""
     cards = []
     for extra in extras:
-        nature = extra.get("nature") or "ajout"
-        label = "doublon" if nature == "doublon" else "ajout proposé"
-        voice = extra.get("chercheur") or "Intervenant"
-        text = extra.get("texte") or ""
-        doublon_de = extra.get("doublon_de")
-        meta = f"<strong>{escape(voice)}</strong> · {escape(label)}"
-        if nature == "doublon" and doublon_de is not None:
-            meta += f" · proche de la séquence vidéo n°{int(doublon_de) + 1}"
-        debut, fin = extra.get("debut") or "", extra.get("fin") or ""
-        if debut and fin:
-            bab_voice = extra.get("chercheur_bab") or ""
-            source_bab = extra.get("source_bab") or ""
-            horodatage = f"Horodatage BAB : {debut} → {fin}"
-            if bab_voice:
-                horodatage += f" · {bab_voice}"
-            if source_bab:
-                horodatage += f" · <code>{escape(source_bab)}</code>"
-            meta += f"<br>{horodatage}"
+        if isinstance(extra, str):
+            voice, text, debut, fin = "Intervenant", extra, "", ""
         else:
-            meta += "<br>Horodatage BAB : non retrouvé"
+            voice = extra.get("chercheur") or extra.get("prenom") or "Intervenant"
+            text = extra.get("texte") or ""
+            debut = extra.get("debut") or ""
+            fin = extra.get("fin") or ""
+        meta = f"<strong>{escape(voice)}</strong> · séquence en off"
+        if debut:
+            horodatage = f"Horodatage : {debut}"
+            if fin and fin != debut:
+                horodatage += f" → {fin}"
+            meta += f"<br>{escape(horodatage)}"
         cards.append(
             "<div class='card'>"
             f"<p class='meta'>{meta}</p>"
             f"<p>{escape(text)}</p>"
             "</div>"
         )
+    after = f" après {escape(duree)}" if duree else ""
     return (
-        "<h2 id='sequences-additionnelles'>Séquences additionnelles (hors vidéo)</h2>"
-        "<p class='meta'>Présentes dans le fichier V1 mais <strong>absentes du montage actuel</strong>. "
-        "Ce sont des propositions d'ajouts et/ou des doublons. "
-        "Elles ne font pas partie de la vidéo témoin. Arbitrage ultérieur : les additionner ou non.</p>"
+        "<h2 id='sequences-additionnelles'>Séquences en off</h2>"
+        f"<p class='meta'>Répliques de la transcription dont l'horodatage va plus loin que "
+        f"la durée réelle de la vidéo{after}. Elles ne font pas partie du script de la vidéo.</p>"
         + "".join(cards)
     )
+
+
+def _sequences_additionnelles_html(trans_item: dict) -> str:
+    return _sequences_off_html(trans_item)
 
 
 def _narrative_temoin_block(capsule_code: str) -> dict | None:
@@ -4534,7 +4502,7 @@ def build_home(capsules: list[dict], segments: list[dict]) -> None:
             "videos_temoins.html",
             "◎",
             "Vidéos témoins",
-            "Les 13 vidéos chorales : scripts T monté V1 (T1–T12) et T13.",
+            "Les 13 vidéos chorales : scripts T monté V1, durée réelle et séquences en off.",
         ),
         (
             "videos_expert.html",
@@ -4601,18 +4569,18 @@ def build_videos_temoins_hub_page(
     table_rows = []
     for code, spec in sorted(FIXED_TEMOIN_PLAN.items(), key=lambda item: int(item[0][1:])):
         trans = transcripts.get(code) or {}
-        extras = trans.get("sequences_additionnelles") or []
+        extras = trans.get("sequences_off") or trans.get("sequences_additionnelles") or []
         kind = trans.get("source_kind") or ""
         if kind in {"script_t_monte_v1", "script_myriam_v1"}:
             source_label = f"script T monté V1 · {trans.get('source') or code + '.docx'}"
         elif trans.get("source"):
-            source_label = f"Transcript Clarisse · {trans.get('source')}"
+            source_label = f"Transcript · {trans.get('source')}"
         else:
             source_label = "Script à construire"
         extra_label = (
-            f"{len(extras)} séquence(s) hors vidéo"
+            f"{len(extras)} séquence(s) en off"
             if extras
-            else "Pas d'ajout en fin de fichier"
+            else "Pas de séquence en off"
         )
         titre = (
             capsules_by_code.get(code, {}).get("titre")
@@ -4630,7 +4598,7 @@ def build_videos_temoins_hub_page(
         )
         extras_cell = (
             f"<a href='script_propose_{escape(code)}.html#sequences-additionnelles'>"
-            f"{len(extras)} hors vidéo</a>"
+            f"{len(extras)} en off</a>"
             if extras
             else "—"
         )
@@ -4648,12 +4616,11 @@ def build_videos_temoins_hub_page(
             "</tr>"
         )
     body = (
-        "<p class='meta'>Les vidéos témoin T1–T12 sont les scripts T monté V1 "
-        "(<strong>sans</strong> les séquences additionnelles en fin de fichier). "
-        "T13 reste le transcript Clarisse. "
-        "Les ajouts / doublons hors montage restent listés à part, à arbitrer.</p>"
+        "<p class='meta'>Les vidéos témoin T1–T13 sont les scripts T monté V1. "
+        "La durée indiquée est la durée réelle de la vidéo ; "
+        "les répliques dont l’horodatage va plus loin sont des <strong>séquences en off</strong>.</p>"
         "<div class='table-wrap'><table><thead><tr>"
-        "<th>Code</th><th>Vidéo</th><th>Source du script</th><th>Durée</th><th>Hors vidéo</th><th></th>"
+        "<th>Code</th><th>Vidéo</th><th>Source du script</th><th>Durée</th><th>En off</th><th></th>"
         "</tr></thead><tbody>"
         + "".join(table_rows)
         + "</tbody></table></div>"
@@ -4669,7 +4636,7 @@ def build_videos_temoins_hub_page(
             breadcrumb=html_breadcrumb(("Accueil", "index.html"), ("Vidéos témoins", None)),
             page_header=(
                 '<div class="page-head"><h1>Vidéos témoins</h1>'
-                '<p class="lead">Scripts des 13 vidéos chorales — montage réel, hors propositions d’ajout.</p></div>'
+                '<p class="lead">Scripts des 13 vidéos chorales — durée réelle, puis séquences en off.</p></div>'
             ),
             main_class="page-home",
         ),
@@ -5771,9 +5738,9 @@ def build_tb_edito_page() -> None:
         + ("\n".join(rows) or "<tr><td colspan='8'>Aucun document edito detecte.</td></tr>")
         + "</tbody></table></div>"
         "<h2>Couverture du plan témoin édito</h2>"
-        "<p class='meta'>Quand un script T monté V1 (T1–T12) ou un <code>Trancript_Video*.docx</code> (T13) "
-        "est disponible, la capsule ouvre le <strong>script de la vidéo montée</strong>. "
-        "Les séquences additionnelles hors montage restent listées à part. "
+        "<p class='meta'>Quand un script T monté V1 (T1–T13) est disponible, "
+        "la capsule ouvre le <strong>script de la vidéo</strong> (durée réelle). "
+        "Les séquences en off (horodatage au-delà de cette durée) restent listées à part. "
         "Sinon, les surlignages historiques restent affichés.</p>"
         "<div class='table-wrap'><table><thead><tr>"
         "<th>Module</th><th>Code</th><th>Vidéo témoin fixée</th><th>Statut</th>"
@@ -10548,10 +10515,10 @@ def build_script_propose_pages(programme_table: dict, affectations: dict, segmen
             trans_item = _transcript_item(code)
             source_note = (
                 f"Source : {_transcript_source_note_html(trans_item) or 'script de la vidéo montée'} "
-                "Texte tel que monté, voix identifiées par recoupement BAB (non inventé)."
+                "Horodatages et prénoms issus de la transcription (pas des BAB)."
             )
             if trans_item.get("duree_video"):
-                duree_caption = "Durée (horodatage)"
+                duree_caption = "Durée réelle"
                 duree_label = trans_item["duree_video"]
             mounted_html = _mounted_script_html(trans_item, script_text)
         else:
@@ -13187,7 +13154,7 @@ def build_correspondances_edito_page(programme_table: dict) -> None:
         f"<code>{escape(programme_table.get('source_document', '20260710_Prev_Vid.xlsx'))}</code> "
         f"et les capsules témoins T1..T13. "
         f"<strong>{mounted_count}/13</strong> scripts de la vidéo montée disponibles "
-        "(script T monté V1 pour T1–T12, transcript Clarisse pour T13) ; les métriques d'alignement s'appuient sur ce script "
+        "(script T monté V1 T1–T13, durées réelles et séquences en off) ; les métriques d'alignement s'appuient sur ce script "
         "quand il existe, sinon sur les surlignages Clarisse.</p>"
         "<p><a class='btn' href='tableau_correspondances_edito.csv' download>Télécharger le tableau (CSV)</a></p>"
         "<p><a class='btn' href='tableau_corr.html'>Voir le tableau corrigé (HTML)</a></p>"
