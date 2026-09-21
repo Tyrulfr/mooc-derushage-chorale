@@ -635,6 +635,12 @@ tbody tr:last-child td { border-bottom: none; }
   font-size: 14px;
 }
 .incrust-pourquoi { margin: 0; font-size: 14px; color: var(--muted); }
+.incrust-source {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: var(--accent-dark);
+}
+.incrust-source a { font-weight: 700; }
 .incrust-guide h2 { margin-top: 28px; }
 .incrust-guide .principe {
   margin: 0 0 14px;

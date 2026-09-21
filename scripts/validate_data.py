@@ -228,13 +228,20 @@ def validate() -> tuple[list[str], list[str]]:
                 else:
                     if (item.get("verbatim") or "") != (seq.get("texte") or ""):
                         errors.append(f"{loc}: verbatim différent de la transcription")
-                words = [w for w in ecran.replace("·", " ").replace("/", " ").split() if w]
+                cleaned = ecran
+                for sep in ("·", "/", "|", "→", "⇄", "≠", "∥", "+"):
+                    cleaned = cleaned.replace(sep, " ")
+                words = [w for w in cleaned.split() if w]
                 if typ != "acronyme" and len(words) > 4:
                     errors.append(f"{loc}: libellé écran trop long ({len(words)} mots): {ecran}")
                 if typ == "acronyme" and not (item.get("developpe") or "").strip():
                     warnings.append(f"{loc}: acronyme sans développement")
                 if typ == "schema" and not (item.get("schema") or "").strip():
                     warnings.append(f"{loc}: schéma sans nœuds")
+                fasc = item.get("fascicule") or {}
+                if fasc:
+                    if not fasc.get("fascicule") or not fasc.get("pages") or not fasc.get("extrait"):
+                        errors.append(f"{loc}: référence fascicule incomplète")
 
     return errors, warnings
 

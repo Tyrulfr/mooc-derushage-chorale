@@ -682,6 +682,12 @@ tbody tr:last-child td { border-bottom: none; }
   font-size: 14px;
 }
 .incrust-pourquoi { margin: 0; font-size: 14px; color: var(--muted); }
+.incrust-source {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: var(--accent-dark);
+}
+.incrust-source a { font-weight: 700; }
 .incrust-guide h2 { margin-top: 28px; }
 .incrust-guide .principe {
   margin: 0 0 14px;
@@ -5026,7 +5032,7 @@ def _incrust_type_badge(typ: str) -> str:
 
 def _incrust_schema_nodes(spec: str) -> tuple[list[str], str]:
     text = (spec or "").strip()
-    for sep, joiner in (("⇄", "⇄"), ("→", "→"), ("|", "ou"), ("·", "·")):
+    for sep, joiner in (("⇄", "⇄"), ("→", "→"), ("≠", "≠"), ("∥", "∥"), ("|", "ou"), ("·", "·")):
         if sep in text:
             return [part.strip() for part in text.split(sep) if part.strip()], joiner
     return ([text] if text else [], "")
@@ -5045,6 +5051,9 @@ def _incrust_preview_html(item: dict) -> str:
                 )
             bits.append(f'<span class="incrust-preview__node">{escape(node)}</span>')
         inner = f'<div class="incrust-preview__nodes">{"".join(bits)}</div>'
+        sub = item.get("developpe") or ""
+        if sub:
+            inner += f'<span class="incrust-preview__sub">{escape(sub)}</span>'
         chip = f'<div class="incrust-preview__chip">{inner}</div>'
     else:
         sub = item.get("developpe") or ""
@@ -5088,6 +5097,28 @@ def _incrust_meta_lookup(programme_table: dict) -> dict[str, dict]:
     return lookup
 
 
+def _incrust_fascicule_html(item: dict) -> str:
+    fasc = item.get("fascicule") or {}
+    if not fasc:
+        return ""
+    numero = fasc.get("fascicule") or ""
+    pages = fasc.get("pages") or ""
+    titre = fasc.get("titre") or ""
+    pdf = fasc.get("pdf") or ""
+    note = fasc.get("note") or ""
+    label = f"Fascicule {numero}"
+    if pages:
+        label += f", p. {pages}"
+    if titre:
+        label += f" — {titre}"
+    if pdf:
+        label_html = f'<a href="{escape(pdf)}" target="_blank" rel="noopener">{escape(label)}</a>'
+    else:
+        label_html = escape(label)
+    extra = f" {escape(note)}" if note else ""
+    return f'<p class="incrust-source"><strong>Schéma du fascicule.</strong> Extrait : {label_html}.{extra}</p>'
+
+
 def _incrust_item_html(item: dict) -> str:
     debut = item.get("debut") or ""
     fin = item.get("fin") or ""
@@ -5107,11 +5138,67 @@ def _incrust_item_html(item: dict) -> str:
         + _incrust_preview_html(item)
         + (f"<blockquote class='incrust-verbatim'>{escape(verbatim)}</blockquote>" if verbatim else "")
         + (f"<p class='incrust-pourquoi'><strong>Pourquoi.</strong> {escape(pourquoi)}</p>" if pourquoi else "")
+        + _incrust_fascicule_html(item)
         + "</article>"
     )
 
 
-def build_incrustations_bonnes_pratiques_page(guide: dict) -> None:
+def _incrust_schemas_catalogue_html(schemas: list[dict], ecartes: list[dict]) -> str:
+    if not schemas and not ecartes:
+        return ""
+    rows = []
+    for schema in schemas:
+        pdf = schema.get("pdf") or ""
+        pages = schema.get("pages") or ""
+        fasc = schema.get("fascicule") or ""
+        ref = f"F{fasc} p. {pages}" if fasc else pages
+        if pdf:
+            ref_html = f'<a href="{escape(pdf)}" target="_blank" rel="noopener">{escape(ref)}</a>'
+        else:
+            ref_html = escape(ref)
+        rows.append(
+            "<tr>"
+            f"<td><code>{escape(schema.get('id') or '')}</code></td>"
+            f"<td>{escape(schema.get('titre') or '')}</td>"
+            f"<td>{ref_html}</td>"
+            f"<td><code>{escape(schema.get('extrait') or '')}</code></td>"
+            f"<td>{escape(schema.get('note') or '')}</td>"
+            "</tr>"
+        )
+    table = ""
+    if rows:
+        table = (
+            "<h2>Schémas des fascicules — extraits utilisables</h2>"
+            "<p>Référence graphique pour l’équipe. À l’écran : uniquement l’extrait (2 à 4 nœuds).</p>"
+            "<div class='table-wrap'><table><thead><tr>"
+            "<th>Id</th><th>Schéma</th><th>Source</th><th>Extrait à l’écran</th><th>Conduite</th>"
+            "</tr></thead><tbody>"
+            + "".join(rows)
+            + "</tbody></table></div>"
+        )
+    skipped = ""
+    if ecartes:
+        items = "".join(
+            "<li>"
+            f"<strong>{escape(item.get('titre') or '')}</strong> "
+            f"(fascicule {escape(str(item.get('fascicule') or ''))}, p. {escape(str(item.get('pages') or ''))}) "
+            f"— {escape(item.get('pourquoi') or '')}"
+            "</li>"
+            for item in ecartes
+        )
+        skipped = (
+            "<h2>Schémas examinés, non incrustés en l’état</h2>"
+            "<p>Trop denses face caméra, ou concept absent de la parole filmée.</p>"
+            f"<ul>{items}</ul>"
+        )
+    return table + skipped
+
+
+def build_incrustations_bonnes_pratiques_page(
+    guide: dict,
+    schemas: list[dict] | None = None,
+    ecartes: list[dict] | None = None,
+) -> None:
     principes = []
     for item in guide.get("principes") or []:
         principes.append(
@@ -5140,6 +5227,7 @@ def build_incrustations_bonnes_pratiques_page(guide: dict) -> None:
         + (f"<ul>{conduite}</ul>" if conduite else "")
         + "<h2>Sources</h2>"
         + (f"<ul class='sources'>{''.join(sources)}</ul>" if sources else "")
+        + _incrust_schemas_catalogue_html(schemas or [], ecartes or [])
         + "</div>"
     )
     write_text(
@@ -5228,12 +5316,18 @@ def build_incrustations_pages(programme_table: dict) -> None:
     n_temoin = sum(1 for video in videos.values() if video.get("kind") == "temoin")
     n_expert = sum(1 for video in videos.values() if video.get("kind") == "expert")
 
+    n_fasc = sum(
+        1
+        for video in videos.values()
+        for item in (video.get("items") or [])
+        if item.get("fascicule")
+    )
     cards: list[tuple[str, ...]] = [
         (
             "incrustations_bonnes_pratiques.html",
             "☰",
             "Bonnes pratiques",
-            "Guide pour l’équipe : signaling, acronymes, 1 à 4 mots, petit schéma, rythme.",
+            "Guide pour l’équipe : signaling, extraits des schémas des fascicules, 1 à 4 mots.",
             "guide",
         )
     ]
@@ -5256,8 +5350,9 @@ def build_incrustations_pages(programme_table: dict) -> None:
 
     body = (
         f"<p class='meta'>{n_items} propositions sur {len(videos)} vidéos filmées "
-        f"({n_temoin} témoin, {n_expert} expert). "
-        "Motion design faible : mot-clé, acronyme développé à la première rencontre, ou petit schéma.</p>"
+        f"({n_temoin} témoin, {n_expert} expert), dont {n_fasc} extraits des schémas "
+        "des fascicules « Oser pour innover ». "
+        "Motion design faible : mot-clé, acronyme, ou petit schéma (jamais le slide complet).</p>"
         + _sommaire_cards(cards)
     )
     write_text(
@@ -5275,7 +5370,11 @@ def build_incrustations_pages(programme_table: dict) -> None:
             main_class="page-home",
         ),
     )
-    build_incrustations_bonnes_pratiques_page(guide)
+    build_incrustations_bonnes_pratiques_page(
+        guide,
+        data.get("schemas_fascicule") or [],
+        data.get("schemas_fascicule_ecartes") or [],
+    )
     for code, video in videos.items():
         build_incrustation_video_page(code, video, meta.get(code) or {})
 

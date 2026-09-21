@@ -1,6 +1,6 @@
 {
-  "note": "Propositions d’incrustations pédagogiques pour les vidéos filmées. Verbatim et timecodes = transcription V0/V1. Les textes à l’écran sont des étiquettes, pas des reformulations du dit.",
-  "date_mise_a_jour": "2026-09-18",
+  "note": "Propositions d’incrustations pédagogiques pour les vidéos filmées. Verbatim et timecodes = transcription V0/V1. Les textes à l’écran sont des étiquettes, pas des reformulations du dit. Quand un schéma des fascicules « Oser pour innover » recouvre l’objectif, on l’incruste en extrait (2–4 nœuds), jamais en slide complet.",
+  "date_mise_a_jour": "2026-09-21",
   "bonnes_pratiques": {
     "titre": "Bonnes pratiques — incrustations pédagogiques",
     "sous_titre": "Guide pour l’équipe (motion design faible : mot-clé, acronyme, petit schéma).",
@@ -58,6 +58,11 @@
         "texte": "2 à 4 nœuds maximum (flèches, choix A/B). Un schéma remplace un mot-clé quand la relation compte plus que le terme (licence vs création, brevet vs secret, labo → terrain)."
       },
       {
+        "id": "fascicule",
+        "titre": "Réutiliser les schémas des fascicules, en extrait",
+        "texte": "Quand un schéma de « Oser pour innover » recouvre l’objectif du grain, on l’incruste — mais jamais en plein écran. Extraire 2 à 4 nœuds, dans le vocabulaire du fascicule. Trop denses face caméra : écosystème Henao (9 groupes), chaîne de valorisation complète, tableau TRL 1–9, tableau des financements. Le PDF reste la référence graphique pour l’équipe motion."
+      },
+      {
         "id": "sous-titres",
         "titre": "Séparer sous-titres et pédagogie",
         "texte": "Les sous-titres d’accessibilité restent en bas, intégraux. Les incrustations pédagogiques sont ailleurs (tiers inférieur opposé, ou coin), plus grandes, plus rares."
@@ -68,9 +73,215 @@
       "Corriger l’ASR des sigles à l’écran (SAT / ASAT / Assad → SATT) sans réécrire la parole.",
       "Une incrustation = un objectif de la vidéo, pas un résumé de toute la réplique.",
       "Si le chercheur développe déjà l’acronyme à l’oral, l’écran peut n’afficher que le sigle.",
-      "Tester : muet 3 secondes, le mot à l’écran doit encore dire le concept."
+      "Tester : muet 3 secondes, le mot à l’écran doit encore dire le concept.",
+      "Si un schéma du fascicule s’applique : extraire, caler sur le verbatim, renvoyer au PDF (fascicule + page imprimée).",
+      "Ne pas introduire à l’écran un concept du fascicule (ex. DRL) s’il n’est pas dit dans la vidéo."
     ]
   },
+  "schemas_fascicule": [
+    {
+      "id": "F1-INV-INNOV",
+      "fascicule": 1,
+      "pages": "7-8",
+      "pdf": "fascicule_1.pdf",
+      "titre": "Invention ≠ innovation",
+      "extrait": "Invention ≠ Innovation",
+      "usage": "extrait",
+      "note": "Distinction F1 §4.2. Ne pas coller les exemples Edison."
+    },
+    {
+      "id": "F1-INV-BREVET",
+      "fascicule": 1,
+      "pages": "8",
+      "pdf": "fascicule_1.pdf",
+      "titre": "Invention ≠ brevet",
+      "extrait": "Invention ≠ Brevet",
+      "usage": "extrait",
+      "note": "L’invention est le contenu technique ; le brevet est le titre."
+    },
+    {
+      "id": "F1-LICENCE-CESSION",
+      "fascicule": 1,
+      "pages": "8",
+      "pdf": "fascicule_1.pdf",
+      "titre": "Licence ≠ cession",
+      "extrait": "Licence ≠ Cession",
+      "usage": "extrait",
+      "note": "La licence autorise ; la cession transfère la propriété."
+    },
+    {
+      "id": "F1-PI-BRANCHES",
+      "fascicule": 1,
+      "pages": "8-9",
+      "pdf": "fascicule_1.pdf",
+      "titre": "Deux branches de la PI",
+      "extrait": "Littéraire | Industrielle",
+      "usage": "extrait",
+      "note": "Schéma PI du fascicule 1. Pas le tableau des durées."
+    },
+    {
+      "id": "F1-PI-TYPES",
+      "fascicule": 1,
+      "pages": "9-10",
+      "pdf": "fascicule_1.pdf",
+      "titre": "Types de protection",
+      "extrait": "Brevet | Secret",
+      "usage": "extrait",
+      "note": "Extrait du tableau p. 9-10 (brevet, secret, marque, dessin, Soleau…). Ne pas incruster le tableau complet."
+    },
+    {
+      "id": "F1-ECOSYSTEME",
+      "fascicule": 1,
+      "pages": "15",
+      "pdf": "fascicule_1.pdf",
+      "titre": "Écosystème de l’innovation (Henao, 2025)",
+      "extrait": "SATT · Incubateurs · Pôles",
+      "usage": "extrait",
+      "note": "Le schéma complet (9 groupes + Europe / international) est trop dense face caméra. Extraire 3 acteurs du grain."
+    },
+    {
+      "id": "F2-CYCLE-3",
+      "fascicule": 2,
+      "pages": "3-5",
+      "pdf": "fascicule_2.pdf",
+      "titre": "Cycle de l’innovation — 3 phases",
+      "extrait": "Recherche → Propulsion → Adoption",
+      "usage": "extrait",
+      "note": "Macro du cycle F2. Le schéma complet (idée → impact, 12 nœuds) ne tient pas à l’écran."
+    },
+    {
+      "id": "F2-CYCLE-AMONT",
+      "fascicule": 2,
+      "pages": "3",
+      "pdf": "fascicule_2.pdf",
+      "titre": "Phase amont : recherche → expérimentation",
+      "extrait": "Idée → Prototype → Expérimentation",
+      "usage": "extrait",
+      "note": "6 nœuds dans le fascicule ; 3 à l’écran."
+    },
+    {
+      "id": "F2-CHAINE-VALO",
+      "fascicule": 2,
+      "pages": "6-7",
+      "pdf": "fascicule_2.pdf",
+      "titre": "Chaîne de valeur valorisation (Henao, 2025)",
+      "extrait": "Protection → Maturation → Transfert",
+      "usage": "extrait",
+      "note": "Ne pas coller le schéma complet (université / SATT / incubateurs + blocs annexes)."
+    },
+    {
+      "id": "F2-VOIES-TRANSFERT",
+      "fascicule": 2,
+      "pages": "6-7",
+      "pdf": "fascicule_2.pdf",
+      "titre": "Voies de transfert",
+      "extrait": "Licence | Création",
+      "usage": "extrait",
+      "note": "Extrait de la chaîne : création d’entreprises / licences vs transfert vers une société existante."
+    },
+    {
+      "id": "F2-PUSH-PULL",
+      "fascicule": 2,
+      "pages": "6-7",
+      "pdf": "fascicule_2.pdf",
+      "titre": "Tech-push / market-pull",
+      "extrait": "Tech-push | Market-pull",
+      "usage": "extrait",
+      "note": "Entrées du schéma de valorisation (inventions vs besoins de marché)."
+    },
+    {
+      "id": "F2-UNIV-SATT-INCUB",
+      "fascicule": 2,
+      "pages": "6-7",
+      "pdf": "fascicule_2.pdf",
+      "titre": "Université, SATT, incubateurs",
+      "extrait": "Université → SATT → Incubateurs",
+      "usage": "extrait",
+      "note": "Bandeau du schéma de valorisation. Caler les nœuds sur les structures nommées à l’oral."
+    },
+    {
+      "id": "F2-PARTENARIAT",
+      "fascicule": 2,
+      "pages": "7",
+      "pdf": "fascicule_2.pdf",
+      "titre": "Modalités de recherche partenariale",
+      "extrait": "Prestation | Collaboration",
+      "usage": "extrait",
+      "note": "Le fascicule en compte trois (prestation, collaborative, consultance). À l’écran, le contraste du grain suffit."
+    },
+    {
+      "id": "F2-TRL",
+      "fascicule": 2,
+      "pages": "12-13",
+      "pdf": "fascicule_2.pdf",
+      "titre": "Échelle TRL (ISO 16290)",
+      "extrait": "TRL 1 → 9",
+      "usage": "extrait",
+      "note": "Ne pas incruster le tableau à 9 lignes. L’échelle complète reste dans le fascicule (grain E4)."
+    },
+    {
+      "id": "F2-TRL-DRL",
+      "fascicule": 2,
+      "pages": "14-15",
+      "pdf": "fascicule_2.pdf",
+      "titre": "Approche hybride TRL / DRL",
+      "extrait": "Techno ⇄ Marché",
+      "usage": "extrait",
+      "note": "Faisabilité technologique ⇄ désirabilité / demande. N’afficher le sigle DRL que s’il est dit."
+    },
+    {
+      "id": "F2-FINANCE",
+      "fascicule": 2,
+      "pages": "15",
+      "pdf": "fascicule_2.pdf",
+      "titre": "Financement non-dilutif / dilutif",
+      "extrait": "Non-dilutif | Dilutif",
+      "usage": "extrait",
+      "note": "Extrait du tableau comparatif ; ne pas coller les six lignes de critères."
+    },
+    {
+      "id": "F2-CYCLE-ITER",
+      "fascicule": 2,
+      "pages": "3",
+      "pdf": "fascicule_2.pdf",
+      "titre": "Cycle itératif essai / erreur / pivot",
+      "extrait": "Essai → Pivot → Essai",
+      "usage": "extrait",
+      "note": "Le cycle « est rarement linéaire » (F2 §3)."
+    }
+  ],
+  "schemas_fascicule_ecartes": [
+    {
+      "titre": "Écosystème de l’innovation — schéma complet",
+      "fascicule": 1,
+      "pages": "15",
+      "pourquoi": "9 groupes d’acteurs + Europe / international : slide, pas incrustation."
+    },
+    {
+      "titre": "Chaîne de valorisation — schéma complet",
+      "fascicule": 2,
+      "pages": "6-7",
+      "pourquoi": "Plus de 20 blocs. Extraire la colonne Protection → Maturation → Transfert."
+    },
+    {
+      "titre": "Tableau TRL ISO 1–9",
+      "fascicule": 2,
+      "pages": "12-13",
+      "pourquoi": "Illisible face caméra. Extraire 1 → 9, renvoyer au fascicule / E4."
+    },
+    {
+      "titre": "Tableau croisé DRL × TRL (Paun)",
+      "fascicule": 2,
+      "pages": "14",
+      "pourquoi": "DRL n’est pas dit dans les vidéos filmées. Pas d’incrustation du sigle DRL."
+    },
+    {
+      "titre": "Tableau comparatif des financements",
+      "fascicule": 2,
+      "pages": "15",
+      "pourquoi": "Six critères × deux colonnes. Extraire Non-dilutif | Dilutif."
+    }
+  ],
   "videos": {
     "T1": {
       "code": "T1",
@@ -86,7 +297,8 @@
           "ecran": "Pas de côté",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Origine : sérendipité scientifique, objectif T1."
+          "pourquoi": "Origine : sérendipité scientifique, objectif T1.",
+          "fascicule": null
         },
         {
           "debut": "00:00:48",
@@ -97,7 +309,8 @@
           "ecran": "Impact sociétal",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Ce qui distingue chercher et innover."
+          "pourquoi": "Ce qui distingue chercher et innover.",
+          "fascicule": null
         },
         {
           "debut": "00:02:10",
@@ -108,18 +321,29 @@
           "ecran": "Besoin identifié",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Origine market-pull / manque d’usage."
+          "pourquoi": "Origine market-pull / manque d’usage.",
+          "fascicule": null
         },
         {
           "debut": "00:03:43",
           "fin": "00:03:45",
           "chercheur": "Jean-Jacques Greffet",
           "verbatim": "C'est tiré par le marché.",
-          "type": "concept",
+          "type": "schema",
           "ecran": "Tiré par le marché",
           "developpe": "",
-          "schema": "",
-          "pourquoi": "Nommer le market-pull."
+          "schema": "Tech-push | Market-pull",
+          "pourquoi": "Vocabulaire du schéma de valorisation (F2 p. 6-7), calé sur le market-pull.",
+          "fascicule": {
+            "id": "F2-PUSH-PULL",
+            "fascicule": 2,
+            "pages": "6-7",
+            "pdf": "fascicule_2.pdf",
+            "titre": "Tech-push / market-pull",
+            "extrait": "Tech-push | Market-pull",
+            "usage": "extrait",
+            "note": "Entrées du schéma de valorisation (inventions vs besoins de marché)."
+          }
         },
         {
           "debut": "00:03:56",
@@ -130,7 +354,8 @@
           "ecran": "Une rencontre",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Origine par rencontre, pas par labo seul."
+          "pourquoi": "Origine par rencontre, pas par labo seul.",
+          "fascicule": null
         },
         {
           "debut": "00:04:20",
@@ -138,21 +363,41 @@
           "chercheur": "Muriel Thomas",
           "verbatim": "Cette innovation est le fruit d'un parcours assez progressif.",
           "type": "schema",
-          "ecran": "Parcours progressif",
+          "ecran": "Idée → Impact",
           "developpe": "",
-          "schema": "Connaissances → publication → terrain",
-          "pourquoi": "Maturation longue, quatrième chemin d’origine."
+          "schema": "Recherche → Propulsion → Adoption",
+          "pourquoi": "Parcours progressif de Loïc : extrait du cycle F2, pas le schéma à 12 nœuds.",
+          "fascicule": {
+            "id": "F2-CYCLE-3",
+            "fascicule": 2,
+            "pages": "3-5",
+            "pdf": "fascicule_2.pdf",
+            "titre": "Cycle de l’innovation — 3 phases",
+            "extrait": "Recherche → Propulsion → Adoption",
+            "usage": "extrait",
+            "note": "Macro du cycle F2. Le schéma complet (idée → impact, 12 nœuds) ne tient pas à l’écran."
+          }
         },
         {
           "debut": "00:05:26",
           "fin": "00:05:46",
           "chercheur": "Yann Monier",
           "verbatim": "Il faut aussi oser, pour moi, transformer des résultats de recherche en véritables solutions parce que c'est toujours un petit peu triste, je trouve, d'avoir plein de personnes talentueuses qui développent de nouvelles technologies et qui font finalement restent sur des étagères dans le laboratoire sans être utilisées.",
-          "type": "concept",
-          "ecran": "Sortir de l’étagère",
+          "type": "schema",
+          "ecran": "Invention ≠ Innovation",
           "developpe": "",
-          "schema": "",
-          "pourquoi": "Utilité des résultats de recherche."
+          "schema": "Invention ≠ Innovation",
+          "pourquoi": "Transformer un résultat en solution : distinction F1 §4.2.",
+          "fascicule": {
+            "id": "F1-INV-INNOV",
+            "fascicule": 1,
+            "pages": "7-8",
+            "pdf": "fascicule_1.pdf",
+            "titre": "Invention ≠ innovation",
+            "extrait": "Invention ≠ Innovation",
+            "usage": "extrait",
+            "note": "Distinction F1 §4.2. Ne pas coller les exemples Edison."
+          }
         }
       ]
     },
@@ -170,7 +415,8 @@
           "ecran": "Usage et utilité",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Question centrale T2 : besoin réel."
+          "pourquoi": "Question centrale T2 : besoin réel.",
+          "fascicule": null
         },
         {
           "debut": "00:00:20",
@@ -181,7 +427,8 @@
           "ecran": "Problème concret",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Le besoin se dit par un problème patient."
+          "pourquoi": "Le besoin se dit par un problème patient.",
+          "fascicule": null
         },
         {
           "debut": "00:01:04",
@@ -192,18 +439,29 @@
           "ecran": "Pour qui ?",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Bénéficiaire identifiable (producteurs)."
+          "pourquoi": "Bénéficiaire identifiable (producteurs).",
+          "fascicule": null
         },
         {
           "debut": "00:02:00",
           "fin": "00:02:11",
           "chercheur": "Yann Monier",
           "verbatim": "Et ensuite, ce modèle, il peut être utilisé par les industriels pour pouvoir faire du monitoring et ainsi limiter des temps d'arrêt qui sont assez coûteux pour l'industrie.",
-          "type": "concept",
-          "ecran": "Chez l’industriel",
+          "type": "schema",
+          "ecran": "Sortir du labo",
           "developpe": "",
-          "schema": "",
-          "pourquoi": "Preuve d’usage hors labo."
+          "schema": "Idée → Prototype → Expérimentation",
+          "pourquoi": "Preuve d’usage hors labo : extrait de la phase amont du cycle F2.",
+          "fascicule": {
+            "id": "F2-CYCLE-AMONT",
+            "fascicule": 2,
+            "pages": "3",
+            "pdf": "fascicule_2.pdf",
+            "titre": "Phase amont : recherche → expérimentation",
+            "extrait": "Idée → Prototype → Expérimentation",
+            "usage": "extrait",
+            "note": "6 nœuds dans le fascicule ; 3 à l’écran."
+          }
         },
         {
           "debut": "00:03:06",
@@ -214,7 +472,8 @@
           "ecran": "Trois défis",
           "developpe": "",
           "schema": "Techno · Réglementaire · Terrain",
-          "pourquoi": "Le besoin se heurte à plus que la science."
+          "pourquoi": "Spécifique au récit (pas un schéma du fascicule).",
+          "fascicule": null
         },
         {
           "debut": "00:05:34",
@@ -225,7 +484,8 @@
           "ecran": "Jusqu’au patient",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Bénéficiaire final, pas seulement le brevet."
+          "pourquoi": "Bénéficiaire final, pas seulement le brevet.",
+          "fascicule": null
         }
       ]
     },
@@ -243,7 +503,8 @@
           "ecran": "SATT",
           "developpe": "Société d’accélération du transfert de technologies",
           "schema": "",
-          "pourquoi": "Première rencontre pédagogique du sigle (dit « ASAT » à l’oral)."
+          "pourquoi": "Première rencontre pédagogique du sigle (dit « ASAT » à l’oral).",
+          "fascicule": null
         },
         {
           "debut": "00:00:52",
@@ -254,7 +515,8 @@
           "ecran": "Étude de marché",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Preuve d’usage, pas seulement preuve scientifique."
+          "pourquoi": "Preuve d’usage, pas seulement preuve scientifique.",
+          "fascicule": null
         },
         {
           "debut": "00:01:19",
@@ -265,7 +527,8 @@
           "ecran": "Pivot",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Le terrain fait changer de cible."
+          "pourquoi": "Le terrain fait changer de cible.",
+          "fascicule": null
         },
         {
           "debut": "00:02:40",
@@ -276,7 +539,8 @@
           "ecran": "SATT",
           "developpe": "Société d’accélération du transfert de technologies",
           "schema": "",
-          "pourquoi": "L’orale développe le sigle : l’écran ancre le nom officiel."
+          "pourquoi": "L’orale développe le sigle : l’écran ancre le nom officiel.",
+          "fascicule": null
         },
         {
           "debut": "00:04:47",
@@ -287,7 +551,8 @@
           "ecran": "Sortir du labo",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Message central T3."
+          "pourquoi": "Message central T3.",
+          "fascicule": null
         },
         {
           "debut": "00:05:57",
@@ -298,7 +563,8 @@
           "ecran": "Vrai problème de marché",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Preuve scientifique ≠ preuve d’usage."
+          "pourquoi": "Preuve scientifique ≠ preuve d’usage.",
+          "fascicule": null
         },
         {
           "debut": "00:06:19",
@@ -306,10 +572,20 @@
           "chercheur": "Yann Monier",
           "verbatim": "Par les problèmes et c'est grâce à cette information qu'on va pouvoir essayer de créer un business plan, un business model et toute une économie qui va accompagner notre innovation.",
           "type": "schema",
-          "ecran": "Terrain → offre",
+          "ecran": "Vers l’adoption",
           "developpe": "",
-          "schema": "Clients → besoin → business plan",
-          "pourquoi": "Prochaine incertitude à lever."
+          "schema": "Transfert → Adoption",
+          "pourquoi": "Clients / business plan : phase « mise en service au collectif » du cycle F2.",
+          "fascicule": {
+            "id": "F2-CYCLE-3",
+            "fascicule": 2,
+            "pages": "3-5",
+            "pdf": "fascicule_2.pdf",
+            "titre": "Cycle de l’innovation — 3 phases",
+            "extrait": "Recherche → Propulsion → Adoption",
+            "usage": "extrait",
+            "note": "Macro du cycle F2. Le schéma complet (idée → impact, 12 nœuds) ne tient pas à l’écran."
+          }
         }
       ]
     },
@@ -327,18 +603,29 @@
           "ecran": "Idée et preuve",
           "developpe": "",
           "schema": "Brevet ∥ expérience",
-          "pourquoi": "Deux niveaux de preuve en parallèle."
+          "pourquoi": "Deux niveaux de preuve en parallèle.",
+          "fascicule": null
         },
         {
           "debut": "00:01:05",
           "fin": "00:01:13",
           "chercheur": "Sylvia Cohen-Kaminski",
           "verbatim": "Pour passer d'un résultat scientifique à une validation concrète, avant la maturation, il y a l'étape de prématuration.",
-          "type": "concept",
+          "type": "schema",
           "ecran": "Prématuration",
           "developpe": "",
-          "schema": "",
-          "pourquoi": "Étape avant maturation, objectif T4."
+          "schema": "Protection → Maturation → Transfert",
+          "pourquoi": "Situer la prématuration sur la chaîne de valorisation du fascicule 2.",
+          "fascicule": {
+            "id": "F2-CHAINE-VALO",
+            "fascicule": 2,
+            "pages": "6-7",
+            "pdf": "fascicule_2.pdf",
+            "titre": "Chaîne de valeur valorisation (Henao, 2025)",
+            "extrait": "Protection → Maturation → Transfert",
+            "usage": "extrait",
+            "note": "Ne pas coller le schéma complet (université / SATT / incubateurs + blocs annexes)."
+          }
         },
         {
           "debut": "00:01:19",
@@ -349,7 +636,8 @@
           "ecran": "Preuve de concept",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Viabilité technique, pas encore marché."
+          "pourquoi": "Viabilité technique, pas encore marché.",
+          "fascicule": null
         },
         {
           "debut": "00:01:48",
@@ -360,7 +648,8 @@
           "ecran": "PoCkin Lab",
           "developpe": "Preuve de concept in lab — prématuration Université Paris-Saclay",
           "schema": "",
-          "pourquoi": "Dispositif nommé ; première fois dans le parcours."
+          "pourquoi": "Dispositif nommé ; première fois dans le parcours.",
+          "fascicule": null
         },
         {
           "debut": "00:03:19",
@@ -371,7 +660,8 @@
           "ecran": "Pivot technologique",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Le terrain impose de changer de formulation."
+          "pourquoi": "Le terrain impose de changer de formulation.",
+          "fascicule": null
         },
         {
           "debut": "00:04:14",
@@ -382,7 +672,8 @@
           "ecran": "Trois freins",
           "developpe": "",
           "schema": "Temps · Légitimité · Échec",
-          "pourquoi": "Leviers personnels du grain."
+          "pourquoi": "Leviers personnels du grain.",
+          "fascicule": null
         },
         {
           "debut": "00:05:23",
@@ -393,7 +684,8 @@
           "ecran": "Se jeter à l’eau",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Décision malgré l’incertitude."
+          "pourquoi": "Décision malgré l’incertitude.",
+          "fascicule": null
         }
       ]
     },
@@ -411,7 +703,8 @@
           "ecran": "Protéger tôt",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Réflexe avant divulgation."
+          "pourquoi": "Réflexe avant divulgation.",
+          "fascicule": null
         },
         {
           "debut": "00:00:49",
@@ -422,7 +715,8 @@
           "ecran": "PI",
           "developpe": "Propriété intellectuelle",
           "schema": "",
-          "pourquoi": "Sujet du grain ; sigle à poser."
+          "pourquoi": "Sujet du grain ; sigle à poser.",
+          "fascicule": null
         },
         {
           "debut": "00:01:28",
@@ -433,7 +727,8 @@
           "ecran": "Déclaration d’invention",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Premier geste vers la valorisation."
+          "pourquoi": "Premier geste vers la valorisation.",
+          "fascicule": null
         },
         {
           "debut": "00:01:51",
@@ -441,10 +736,20 @@
           "chercheur": "Loïc Rajjou",
           "verbatim": "Une grande question qui s'est posée nous sur notre technologie, c'est qu'est- ce qui est brevetable?",
           "type": "schema",
-          "ecran": "Breveter ou taire",
+          "ecran": "Brevet ou secret",
           "developpe": "",
-          "schema": "Brevetable ? → Divulgable ?",
-          "pourquoi": "Choix de stratégie, objectif T5."
+          "schema": "Brevet | Secret",
+          "pourquoi": "Choix de stratégie : extrait du tableau des types de protection F1 p. 9-10.",
+          "fascicule": {
+            "id": "F1-PI-TYPES",
+            "fascicule": 1,
+            "pages": "9-10",
+            "pdf": "fascicule_1.pdf",
+            "titre": "Types de protection",
+            "extrait": "Brevet | Secret",
+            "usage": "extrait",
+            "note": "Extrait du tableau p. 9-10 (brevet, secret, marque, dessin, Soleau…). Ne pas incruster le tableau complet."
+          }
         },
         {
           "debut": "00:02:24",
@@ -455,7 +760,8 @@
           "ecran": "Secret industriel",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Alternative au brevet."
+          "pourquoi": "Alternative au brevet.",
+          "fascicule": null
         },
         {
           "debut": "00:02:44",
@@ -466,7 +772,8 @@
           "ecran": "Pas le vivant",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Limite de brevetabilité (application, pas l’organisme)."
+          "pourquoi": "Limite de brevetabilité (application, pas l’organisme).",
+          "fascicule": null
         },
         {
           "debut": "00:05:09",
@@ -477,7 +784,8 @@
           "ecran": "Le plus tôt possible",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Conseil opératoire du grain."
+          "pourquoi": "Conseil opératoire du grain.",
+          "fascicule": null
         }
       ]
     },
@@ -494,8 +802,18 @@
           "type": "schema",
           "ecran": "Deux voies",
           "developpe": "",
-          "schema": "Licence  |  Création",
-          "pourquoi": "Objectif T6 : ce n’est pas que la start-up."
+          "schema": "Licence | Création",
+          "pourquoi": "Objectif T6 : extrait de la chaîne de valorisation F2.",
+          "fascicule": {
+            "id": "F2-VOIES-TRANSFERT",
+            "fascicule": 2,
+            "pages": "6-7",
+            "pdf": "fascicule_2.pdf",
+            "titre": "Voies de transfert",
+            "extrait": "Licence | Création",
+            "usage": "extrait",
+            "note": "Extrait de la chaîne : création d’entreprises / licences vs transfert vers une société existante."
+          }
         },
         {
           "debut": "00:01:19",
@@ -506,18 +824,29 @@
           "ecran": "Licence exclusive",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Mécanisme de transfert."
+          "pourquoi": "Mécanisme de transfert.",
+          "fascicule": null
         },
         {
           "debut": "00:01:39",
           "fin": "00:01:49",
           "chercheur": "Jean-Jacques Greffet",
           "verbatim": "Le schéma le plus couramment utilisé jusqu'ici était le premier, mais il se trouve que dans notre cas, nous sommes partis à la demande des établissements sur le deuxième cas.",
-          "type": "concept",
-          "ecran": "Propriété du brevet",
+          "type": "schema",
+          "ecran": "Licence ≠ Cession",
           "developpe": "",
-          "schema": "",
-          "pourquoi": "Variante : cession plutôt que licence."
+          "schema": "Licence ≠ Cession",
+          "pourquoi": "Transfert de propriété du brevet : distinction F1 p. 8.",
+          "fascicule": {
+            "id": "F1-LICENCE-CESSION",
+            "fascicule": 1,
+            "pages": "8",
+            "pdf": "fascicule_1.pdf",
+            "titre": "Licence ≠ cession",
+            "extrait": "Licence ≠ Cession",
+            "usage": "extrait",
+            "note": "La licence autorise ; la cession transfère la propriété."
+          }
         },
         {
           "debut": "00:02:14",
@@ -528,7 +857,8 @@
           "ecran": "Licence d’exploitation",
           "developpe": "",
           "schema": "",
-          "pourquoi": "L’organisme reste propriétaire, l’entreprise exploite."
+          "pourquoi": "L’organisme reste propriétaire, l’entreprise exploite.",
+          "fascicule": null
         },
         {
           "debut": "00:03:20",
@@ -539,7 +869,8 @@
           "ecran": "Mixte",
           "developpe": "",
           "schema": "Brevet + secret",
-          "pourquoi": "La voie de PI suit la voie de transfert."
+          "pourquoi": "La voie de PI suit la voie de transfert.",
+          "fascicule": null
         }
       ]
     },
@@ -557,18 +888,29 @@
           "ecran": "S’entourer",
           "developpe": "",
           "schema": "",
-          "pourquoi": "On n’avance pas seul, objectif T7."
+          "pourquoi": "On n’avance pas seul, objectif T7.",
+          "fascicule": null
         },
         {
           "debut": "00:00:32",
           "fin": "00:00:49",
           "chercheur": "Muriel Thomas",
           "verbatim": "J'entends par là les instituts de recherche comme INRAE et AgroParisTech, les incubateurs comme Incube Alliance et le FoodinLab, les financeurs comme la SAT Paris-Saclay ou Réseau Entreprendre Paris-Saclay ou la BPI.",
-          "type": "concept",
-          "ecran": "Incubateur",
+          "type": "schema",
+          "ecran": "Écosystème",
           "developpe": "",
-          "schema": "",
-          "pourquoi": "Distinguer incubation et maturation."
+          "schema": "Université → SATT → Incubateurs",
+          "pourquoi": "INRAE, incubateurs, SATT : bandeau du schéma de valorisation F2.",
+          "fascicule": {
+            "id": "F2-UNIV-SATT-INCUB",
+            "fascicule": 2,
+            "pages": "6-7",
+            "pdf": "fascicule_2.pdf",
+            "titre": "Université, SATT, incubateurs",
+            "extrait": "Université → SATT → Incubateurs",
+            "usage": "extrait",
+            "note": "Bandeau du schéma de valorisation. Caler les nœuds sur les structures nommées à l’oral."
+          }
         },
         {
           "debut": "00:02:12",
@@ -579,7 +921,8 @@
           "ecran": "SATT",
           "developpe": "Société d’accélération du transfert de technologies",
           "schema": "",
-          "pourquoi": "Ici la SATT est l’acteur d’accompagnement (sujet T7)."
+          "pourquoi": "Ici la SATT est l’acteur d’accompagnement (sujet T7).",
+          "fascicule": null
         },
         {
           "debut": "00:02:46",
@@ -590,7 +933,8 @@
           "ecran": "i-Lab",
           "developpe": "Concours d’innovation Bpifrance",
           "schema": "",
-          "pourquoi": "Première occurrence du concours."
+          "pourquoi": "Première occurrence du concours.",
+          "fascicule": null
         },
         {
           "debut": "00:03:50",
@@ -601,7 +945,8 @@
           "ecran": "Pitch",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Mise en visibilité via l’écosystème."
+          "pourquoi": "Mise en visibilité via l’écosystème.",
+          "fascicule": null
         },
         {
           "debut": "00:04:56",
@@ -612,7 +957,17 @@
           "ecran": "Continuum",
           "developpe": "",
           "schema": "PoCkin Lab → SATT",
-          "pourquoi": "Prématuration puis maturation."
+          "pourquoi": "Prématuration puis maturation : même colonne que F2, calée sur les dispositifs nommés.",
+          "fascicule": {
+            "id": "F2-CHAINE-VALO",
+            "fascicule": 2,
+            "pages": "6-7",
+            "pdf": "fascicule_2.pdf",
+            "titre": "Chaîne de valeur valorisation (Henao, 2025)",
+            "extrait": "Protection → Maturation → Transfert",
+            "usage": "extrait",
+            "note": "Ne pas coller le schéma complet (université / SATT / incubateurs + blocs annexes)."
+          }
         }
       ]
     },
@@ -627,10 +982,20 @@
           "chercheur": "Jean-Jacques Greffet",
           "verbatim": "Il y a les étapes anti-création d'entreprise, les étapes post-création.",
           "type": "schema",
-          "ecran": "Avant / après création",
+          "ecran": "Non-dilutif | Dilutif",
           "developpe": "",
-          "schema": "Pré-création → Post-création",
-          "pourquoi": "Le financement dépend du stade."
+          "schema": "Non-dilutif | Dilutif",
+          "pourquoi": "Avant / après création : extrait du tableau des financements F2 p. 15 (pas les 6 critères).",
+          "fascicule": {
+            "id": "F2-FINANCE",
+            "fascicule": 2,
+            "pages": "15",
+            "pdf": "fascicule_2.pdf",
+            "titre": "Financement non-dilutif / dilutif",
+            "extrait": "Non-dilutif | Dilutif",
+            "usage": "extrait",
+            "note": "Extrait du tableau comparatif ; ne pas coller les six lignes de critères."
+          }
         },
         {
           "debut": "00:00:25",
@@ -641,7 +1006,8 @@
           "ecran": "Créer trop tôt",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Message central T8 : ne pas créer trop tôt."
+          "pourquoi": "Message central T8 : ne pas créer trop tôt.",
+          "fascicule": null
         },
         {
           "debut": "00:01:01",
@@ -652,7 +1018,8 @@
           "ecran": "PoCkin Lab",
           "developpe": "Financement de prématuration (laboratoire)",
           "schema": "",
-          "pourquoi": "Aide non dilutive, stade précoce."
+          "pourquoi": "Aide non dilutive, stade précoce.",
+          "fascicule": null
         },
         {
           "debut": "00:01:46",
@@ -663,7 +1030,8 @@
           "ecran": "i-Lab",
           "developpe": "Concours d’innovation Bpifrance",
           "schema": "",
-          "pourquoi": "Marche de financement + recrutement."
+          "pourquoi": "Marche de financement + recrutement.",
+          "fascicule": null
         },
         {
           "debut": "00:02:37",
@@ -674,7 +1042,8 @@
           "ecran": "Loi PACTE",
           "developpe": "Plan d’action pour la croissance et la transformation des entreprises",
           "schema": "",
-          "pourquoi": "Premier croisement du dispositif concours scientifique."
+          "pourquoi": "Premier croisement du dispositif concours scientifique.",
+          "fascicule": null
         },
         {
           "debut": "00:03:14",
@@ -685,7 +1054,8 @@
           "ecran": "Temps partagé",
           "developpe": "",
           "schema": "60 % labo · 40 % start-up",
-          "pourquoi": "Levier concret pour entreprendre sans tout quitter."
+          "pourquoi": "Levier concret pour entreprendre sans tout quitter.",
+          "fascicule": null
         },
         {
           "debut": "00:04:51",
@@ -696,7 +1066,8 @@
           "ecran": "BPI",
           "developpe": "Bpifrance",
           "schema": "",
-          "pourquoi": "Financeur public, sujet du grain."
+          "pourquoi": "Financeur public, sujet du grain.",
+          "fascicule": null
         }
       ]
     },
@@ -714,7 +1085,8 @@
           "ecran": "Savoirs manquants",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Compétences manquantes, objectif T9."
+          "pourquoi": "Compétences manquantes, objectif T9.",
+          "fascicule": null
         },
         {
           "debut": "00:00:29",
@@ -725,7 +1097,8 @@
           "ecran": "Aller chercher des experts",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Complémentarité d’équipe."
+          "pourquoi": "Complémentarité d’équipe.",
+          "fascicule": null
         },
         {
           "debut": "00:01:01",
@@ -736,7 +1109,8 @@
           "ecran": "Noyau fondateur",
           "developpe": "",
           "schema": "Médical · Direction · Science",
-          "pourquoi": "Équipe, pas un héros seul."
+          "pourquoi": "Équipe, pas un héros seul.",
+          "fascicule": null
         },
         {
           "debut": "00:01:25",
@@ -747,7 +1121,8 @@
           "ecran": "Comité stratégique",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Entourage au-delà des cofondateurs."
+          "pourquoi": "Entourage au-delà des cofondateurs.",
+          "fascicule": null
         },
         {
           "debut": "00:01:42",
@@ -758,7 +1133,8 @@
           "ecran": "Comité scientifique",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Place du chercheur dans l’entreprise."
+          "pourquoi": "Place du chercheur dans l’entreprise.",
+          "fascicule": null
         },
         {
           "debut": "00:03:29",
@@ -769,7 +1145,8 @@
           "ecran": "CEO",
           "developpe": "Directeur ou directrice général(e)",
           "schema": "",
-          "pourquoi": "Rôle à pourvoir ; sigle du grain."
+          "pourquoi": "Rôle à pourvoir ; sigle du grain.",
+          "fascicule": null
         },
         {
           "debut": "00:05:45",
@@ -780,7 +1157,8 @@
           "ecran": "Les projets pivotent",
           "developpe": "",
           "schema": "",
-          "pourquoi": "L’équipe survit à la techno."
+          "pourquoi": "L’équipe survit à la techno.",
+          "fascicule": null
         }
       ]
     },
@@ -798,7 +1176,8 @@
           "ecran": "Adapter le vocabulaire",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Objectif T10 : autre langue que celle des pairs."
+          "pourquoi": "Objectif T10 : autre langue que celle des pairs.",
+          "fascicule": null
         },
         {
           "debut": "00:00:39",
@@ -809,7 +1188,8 @@
           "ecran": "Moins de jargon",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Partir de la valeur, pas de la techno."
+          "pourquoi": "Partir de la valeur, pas de la techno.",
+          "fascicule": null
         },
         {
           "debut": "00:01:41",
@@ -820,7 +1200,8 @@
           "ecran": "Changer de posture",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Le langage suit l’interlocuteur."
+          "pourquoi": "Le langage suit l’interlocuteur.",
+          "fascicule": null
         },
         {
           "debut": "00:03:49",
@@ -831,7 +1212,8 @@
           "ecran": "Market access",
           "developpe": "Accès au marché",
           "schema": "",
-          "pourquoi": "Terme métier à poser la première fois."
+          "pourquoi": "Terme métier à poser la première fois.",
+          "fascicule": null
         },
         {
           "debut": "00:04:00",
@@ -842,7 +1224,8 @@
           "ecran": "Langue de l’entrepreneuriat",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Apprentissage, pas don."
+          "pourquoi": "Apprentissage, pas don.",
+          "fascicule": null
         },
         {
           "debut": "00:05:17",
@@ -853,7 +1236,8 @@
           "ecran": "Rendre désirable",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Valeur pour l’interlocuteur."
+          "pourquoi": "Valeur pour l’interlocuteur.",
+          "fascicule": null
         }
       ]
     },
@@ -871,7 +1255,8 @@
           "ecran": "Intégrateur social",
           "developpe": "",
           "schema": "",
-          "pourquoi": "L’innovation rend la recherche lisible."
+          "pourquoi": "L’innovation rend la recherche lisible.",
+          "fascicule": null
         },
         {
           "debut": "00:01:00",
@@ -882,7 +1267,8 @@
           "ecran": "Deux casquettes",
           "developpe": "",
           "schema": "Comité scientifique + labo",
-          "pourquoi": "Concilier, objectif T11."
+          "pourquoi": "Concilier, objectif T11.",
+          "fascicule": null
         },
         {
           "debut": "00:01:45",
@@ -893,7 +1279,8 @@
           "ecran": "Application concrète",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Retour pour le chercheur."
+          "pourquoi": "Retour pour le chercheur.",
+          "fascicule": null
         },
         {
           "debut": "00:02:14",
@@ -904,7 +1291,8 @@
           "ecran": "MVP",
           "developpe": "Minimum Viable Product — premier produit viable",
           "schema": "",
-          "pourquoi": "Première occurrence du sigle."
+          "pourquoi": "Première occurrence du sigle.",
+          "fascicule": null
         }
       ]
     },
@@ -922,18 +1310,29 @@
           "ecran": "RISE",
           "developpe": "Programme CNRS de coaching entrepreneurs",
           "schema": "",
-          "pourquoi": "Première occurrence ; autre structure que la SATT."
+          "pourquoi": "Première occurrence ; autre structure que la SATT.",
+          "fascicule": null
         },
         {
           "debut": "00:00:32",
           "fin": "00:00:43",
           "chercheur": "Jean-Jacques Greffet",
           "verbatim": "Au niveau de l'université, nous avons été accompagnés par un incubateur qui s'appelle IncubAlliance, qui a également fourni d'une part beaucoup de formations et aussi beaucoup d'introductions.",
-          "type": "concept",
-          "ecran": "IncubAlliance",
+          "type": "schema",
+          "ecran": "Université · Incubateur",
           "developpe": "",
-          "schema": "",
-          "pourquoi": "Incubateur, complément de la maturation."
+          "schema": "Université · Incubateur",
+          "pourquoi": "IncubAlliance à l’université : extrait de l’écosystème F1, pas le schéma à 9 groupes.",
+          "fascicule": {
+            "id": "F1-ECOSYSTEME",
+            "fascicule": 1,
+            "pages": "15",
+            "pdf": "fascicule_1.pdf",
+            "titre": "Écosystème de l’innovation (Henao, 2025)",
+            "extrait": "SATT · Incubateurs · Pôles",
+            "usage": "extrait",
+            "note": "Le schéma complet (9 groupes + Europe / international) est trop dense face caméra. Extraire 3 acteurs du grain."
+          }
         },
         {
           "debut": "00:01:04",
@@ -944,7 +1343,8 @@
           "ecran": "Concours de pitch",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Mise en visibilité."
+          "pourquoi": "Mise en visibilité.",
+          "fascicule": null
         },
         {
           "debut": "00:01:28",
@@ -955,7 +1355,8 @@
           "ecran": "Luminage",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Programme technique local."
+          "pourquoi": "Programme technique local.",
+          "fascicule": null
         },
         {
           "debut": "00:02:18",
@@ -966,7 +1367,8 @@
           "ecran": "Cohorte",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Accompagnement entre pairs."
+          "pourquoi": "Accompagnement entre pairs.",
+          "fascicule": null
         }
       ]
     },
@@ -984,7 +1386,8 @@
           "ecran": "Il faut y aller",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Appel à l’action, objectif T13."
+          "pourquoi": "Appel à l’action, objectif T13.",
+          "fascicule": null
         },
         {
           "debut": "00:00:19",
@@ -995,7 +1398,8 @@
           "ecran": "Un problème d’abord",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Pas besoin d’une idée révolutionnaire."
+          "pourquoi": "Pas besoin d’une idée révolutionnaire.",
+          "fascicule": null
         },
         {
           "debut": "00:00:40",
@@ -1006,7 +1410,8 @@
           "ecran": "On n’est pas seul",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Écosystème déjà vu, conclusion."
+          "pourquoi": "Écosystème déjà vu, conclusion.",
+          "fascicule": null
         },
         {
           "debut": "00:01:10",
@@ -1017,7 +1422,8 @@
           "ecran": "Parler aux entrepreneurs",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Geste concret."
+          "pourquoi": "Geste concret.",
+          "fascicule": null
         },
         {
           "debut": "00:03:03",
@@ -1028,7 +1434,8 @@
           "ecran": "Oser innover",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Mot de clôture."
+          "pourquoi": "Mot de clôture.",
+          "fascicule": null
         }
       ]
     },
@@ -1042,11 +1449,21 @@
           "fin": "00:01:02",
           "chercheur": "Bernard Yannou",
           "verbatim": "Mais une technologie aussi remarquable soit-elle n'est pas encore une innovation.",
-          "type": "concept",
-          "ecran": "Techno ≠ innovation",
+          "type": "schema",
+          "ecran": "Invention ≠ Innovation",
           "developpe": "",
-          "schema": "",
-          "pourquoi": "Objectif E1 : origines, pas le process entier."
+          "schema": "Invention ≠ Innovation",
+          "pourquoi": "Objectif E1 : une techno n’est pas encore une innovation (F1 §4.2).",
+          "fascicule": {
+            "id": "F1-INV-INNOV",
+            "fascicule": 1,
+            "pages": "7-8",
+            "pdf": "fascicule_1.pdf",
+            "titre": "Invention ≠ innovation",
+            "extrait": "Invention ≠ Innovation",
+            "usage": "extrait",
+            "note": "Distinction F1 §4.2. Ne pas coller les exemples Edison."
+          }
         },
         {
           "debut": "00:01:02",
@@ -1057,18 +1474,29 @@
           "ecran": "Rencontre d’un besoin",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Condition pour qu’il y ait innovation."
+          "pourquoi": "Condition pour qu’il y ait innovation.",
+          "fascicule": null
         },
         {
           "debut": "00:01:11",
           "fin": "00:01:17",
           "chercheur": "Bernard Yannou",
           "verbatim": "Dans une première situation, les chercheurs connaissent déjà un domaine dans lequel leurs travaux pourraient être utiles.",
-          "type": "concept",
-          "ecran": "Marché pressenti",
+          "type": "schema",
+          "ecran": "Tech-push | Market-pull",
           "developpe": "",
-          "schema": "",
-          "pourquoi": "Première famille d’origines (Loïc, Muriel, Yann)."
+          "schema": "Tech-push | Market-pull",
+          "pourquoi": "Première famille d’origines : entrées du schéma de valorisation F2.",
+          "fascicule": {
+            "id": "F2-PUSH-PULL",
+            "fascicule": 2,
+            "pages": "6-7",
+            "pdf": "fascicule_2.pdf",
+            "titre": "Tech-push / market-pull",
+            "extrait": "Tech-push | Market-pull",
+            "usage": "extrait",
+            "note": "Entrées du schéma de valorisation (inventions vs besoins de marché)."
+          }
         },
         {
           "debut": "00:01:52",
@@ -1079,7 +1507,8 @@
           "ecran": "Rencontre inattendue",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Seconde famille (Sylvia, Jean-Jacques)."
+          "pourquoi": "Seconde famille (Sylvia, Jean-Jacques).",
+          "fascicule": null
         },
         {
           "debut": "00:02:33",
@@ -1090,7 +1519,8 @@
           "ecran": "Trois ingrédients",
           "developpe": "",
           "schema": "Science · Utilité · Méthode",
-          "pourquoi": "Ce qu’il faut retenir, pas le récit."
+          "pourquoi": "Ce qu’il faut retenir, pas le récit.",
+          "fascicule": null
         },
         {
           "debut": "00:03:12",
@@ -1101,7 +1531,8 @@
           "ecran": "Structures de valorisation",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Où faire le premier pas."
+          "pourquoi": "Où faire le premier pas.",
+          "fascicule": null
         },
         {
           "debut": "00:03:35",
@@ -1112,7 +1543,8 @@
           "ecran": "Ce qui déclenche",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Passage à l’action."
+          "pourquoi": "Passage à l’action.",
+          "fascicule": null
         }
       ]
     },
@@ -1130,7 +1562,8 @@
           "ecran": "Dérisquer pas à pas",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Objectif E5."
+          "pourquoi": "Objectif E5.",
+          "fascicule": null
         },
         {
           "debut": "00:00:34",
@@ -1141,7 +1574,8 @@
           "ecran": "Jalon commercial",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Critère de décision, pas seulement techno."
+          "pourquoi": "Critère de décision, pas seulement techno.",
+          "fascicule": null
         },
         {
           "debut": "00:01:26",
@@ -1152,7 +1586,8 @@
           "ecran": "Pivot, pas échec",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Lecture pédagogique du terrain T3."
+          "pourquoi": "Lecture pédagogique du terrain T3.",
+          "fascicule": null
         },
         {
           "debut": "00:02:17",
@@ -1160,10 +1595,20 @@
           "chercheur": "Virginia Branco",
           "verbatim": "Le jalon commercial et le jalon technique ne sont pas deux étapes qui se suivent l'une après l'autre.",
           "type": "schema",
-          "ecran": "Deux jalons ensemble",
+          "ecran": "Techno ⇄ Marché",
           "developpe": "",
-          "schema": "Technique ⇄ Marché",
-          "pourquoi": "Ils ne se suivent pas, ils s’alimentent."
+          "schema": "Techno ⇄ Marché",
+          "pourquoi": "Jalons technique et commercial : extrait de l’approche hybride TRL/DRL. Le sigle DRL n’est pas dit, on ne l’affiche pas.",
+          "fascicule": {
+            "id": "F2-TRL-DRL",
+            "fascicule": 2,
+            "pages": "14-15",
+            "pdf": "fascicule_2.pdf",
+            "titre": "Approche hybride TRL / DRL",
+            "extrait": "Techno ⇄ Marché",
+            "usage": "extrait",
+            "note": "Faisabilité technologique ⇄ désirabilité / demande. N’afficher le sigle DRL que s’il est dit."
+          }
         },
         {
           "debut": "00:02:30",
@@ -1173,8 +1618,18 @@
           "type": "schema",
           "ecran": "Prématuration / maturation",
           "developpe": "",
-          "schema": "Doute → jalon → décision",
-          "pourquoi": "Situer le projet de l’apprenant."
+          "schema": "Protection → Maturation → Transfert",
+          "pourquoi": "Situer le projet sur la chaîne de valorisation F2.",
+          "fascicule": {
+            "id": "F2-CHAINE-VALO",
+            "fascicule": 2,
+            "pages": "6-7",
+            "pdf": "fascicule_2.pdf",
+            "titre": "Chaîne de valeur valorisation (Henao, 2025)",
+            "extrait": "Protection → Maturation → Transfert",
+            "usage": "extrait",
+            "note": "Ne pas coller le schéma complet (université / SATT / incubateurs + blocs annexes)."
+          }
         },
         {
           "debut": "00:02:59",
@@ -1185,14 +1640,15 @@
           "ecran": "SATT",
           "developpe": "Société d’accélération du transfert de technologies",
           "schema": "",
-          "pourquoi": "Sujet du grain : qui aller voir pour le jalon."
+          "pourquoi": "Sujet du grain : qui aller voir pour le jalon.",
+          "fascicule": null
         }
       ]
     },
     "E6": {
       "code": "E6",
       "kind": "expert",
-      "nb": 6,
+      "nb": 7,
       "items": [
         {
           "debut": "00:00:21",
@@ -1203,7 +1659,8 @@
           "ecran": "Réflexe de publier",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Le piège avant toute protection."
+          "pourquoi": "Le piège avant toute protection.",
+          "fascicule": null
         },
         {
           "debut": "00:00:42",
@@ -1214,7 +1671,8 @@
           "ecran": "Communication publique",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Divulgation = risque pour la nouveauté."
+          "pourquoi": "Divulgation = risque pour la nouveauté.",
+          "fascicule": null
         },
         {
           "debut": "00:00:51",
@@ -1225,7 +1683,29 @@
           "ecran": "DI",
           "developpe": "Déclaration d’invention",
           "schema": "",
-          "pourquoi": "Sujet de la vidéo ; première définition claire."
+          "pourquoi": "Sujet de la vidéo ; première définition claire.",
+          "fascicule": null
+        },
+        {
+          "debut": "00:02:25",
+          "fin": "00:02:30",
+          "chercheur": "Stephanie Sano",
+          "verbatim": "Vient ensuite la maturation, dont l'objectif est de consolider la preuve de concept.",
+          "type": "schema",
+          "ecran": "Puis la maturation",
+          "developpe": "",
+          "schema": "Protection → Maturation → Transfert",
+          "pourquoi": "La DI ouvre la chaîne de valorisation du fascicule 2.",
+          "fascicule": {
+            "id": "F2-CHAINE-VALO",
+            "fascicule": 2,
+            "pages": "6-7",
+            "pdf": "fascicule_2.pdf",
+            "titre": "Chaîne de valeur valorisation (Henao, 2025)",
+            "extrait": "Protection → Maturation → Transfert",
+            "usage": "extrait",
+            "note": "Ne pas coller le schéma complet (université / SATT / incubateurs + blocs annexes)."
+          }
         },
         {
           "debut": "00:03:24",
@@ -1236,7 +1716,8 @@
           "ecran": "Lever la main",
           "developpe": "",
           "schema": "",
-          "pourquoi": "La DI comme premier échange, pas un brevet."
+          "pourquoi": "La DI comme premier échange, pas un brevet.",
+          "fascicule": null
         },
         {
           "debut": "00:04:12",
@@ -1247,7 +1728,8 @@
           "ecran": "Point de départ",
           "developpe": "",
           "schema": "",
-          "pourquoi": "La DI n’arrête pas la publication, elle l’anticipe."
+          "pourquoi": "La DI n’arrête pas la publication, elle l’anticipe.",
+          "fascicule": null
         },
         {
           "debut": "00:04:51",
@@ -1258,7 +1740,8 @@
           "ecran": "En parler tôt",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Geste attendu de l’apprenant."
+          "pourquoi": "Geste attendu de l’apprenant.",
+          "fascicule": null
         }
       ]
     },
@@ -1276,7 +1759,8 @@
           "ecran": "Chargé de valorisation",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Objectif E7 : à qui parler."
+          "pourquoi": "Objectif E7 : à qui parler.",
+          "fascicule": null
         },
         {
           "debut": "00:03:09",
@@ -1287,7 +1771,8 @@
           "ecran": "Dialogue deux mondes",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Rôle d’interface académique / socio-éco."
+          "pourquoi": "Rôle d’interface académique / socio-éco.",
+          "fascicule": null
         },
         {
           "debut": "00:03:30",
@@ -1298,7 +1783,8 @@
           "ecran": "Formaliser",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Accords, pas seulement la mise en relation."
+          "pourquoi": "Accords, pas seulement la mise en relation.",
+          "fascicule": null
         },
         {
           "debut": "00:03:52",
@@ -1309,7 +1795,8 @@
           "ecran": "Sans toutes les réponses",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Premier contact tôt."
+          "pourquoi": "Premier contact tôt.",
+          "fascicule": null
         },
         {
           "debut": "00:04:16",
@@ -1320,7 +1807,8 @@
           "ecran": "Ce qu’il apporte",
           "developpe": "",
           "schema": "Conseils · Contacts · Cadre",
-          "pourquoi": "Avec quoi arriver / ce qu’on en retire."
+          "pourquoi": "Avec quoi arriver / ce qu’on en retire.",
+          "fascicule": null
         }
       ]
     },
@@ -1338,7 +1826,8 @@
           "ecran": "INPI",
           "developpe": "Institut national de la propriété industrielle",
           "schema": "",
-          "pourquoi": "Première occurrence ; l’institution du grain."
+          "pourquoi": "Première occurrence ; l’institution du grain.",
+          "fascicule": null
         },
         {
           "debut": "00:01:12",
@@ -1348,8 +1837,18 @@
           "type": "schema",
           "ecran": "Brevet ou secret",
           "developpe": "",
-          "schema": "Brevet  |  Secret",
-          "pourquoi": "Objectif E8."
+          "schema": "Brevet | Secret",
+          "pourquoi": "Objectif E8 : extrait du tableau des types de protection F1.",
+          "fascicule": {
+            "id": "F1-PI-TYPES",
+            "fascicule": 1,
+            "pages": "9-10",
+            "pdf": "fascicule_1.pdf",
+            "titre": "Types de protection",
+            "extrait": "Brevet | Secret",
+            "usage": "extrait",
+            "note": "Extrait du tableau p. 9-10 (brevet, secret, marque, dessin, Soleau…). Ne pas incruster le tableau complet."
+          }
         },
         {
           "debut": "00:01:39",
@@ -1360,7 +1859,8 @@
           "ecran": "Publier tue la nouveauté",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Lien avec T5 / E6."
+          "pourquoi": "Lien avec T5 / E6.",
+          "fascicule": null
         },
         {
           "debut": "00:01:51",
@@ -1371,7 +1871,8 @@
           "ecran": "Savoir-faire",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Nommer le secret documenté."
+          "pourquoi": "Nommer le secret documenté.",
+          "fascicule": null
         },
         {
           "debut": "00:02:42",
@@ -1382,7 +1883,8 @@
           "ecran": "NDA",
           "developpe": "Accord de confidentialité",
           "schema": "",
-          "pourquoi": "Mesure contractuelle du secret."
+          "pourquoi": "Mesure contractuelle du secret.",
+          "fascicule": null
         },
         {
           "debut": "00:04:01",
@@ -1393,7 +1895,8 @@
           "ecran": "Rétro-ingénierie ?",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Critère de choix brevet vs secret."
+          "pourquoi": "Critère de choix brevet vs secret.",
+          "fascicule": null
         },
         {
           "debut": "00:04:55",
@@ -1404,14 +1907,15 @@
           "ecran": "Lever des fonds",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Le brevet rassure l’investisseur — pont vers E9."
+          "pourquoi": "Le brevet rassure l’investisseur — pont vers E9.",
+          "fascicule": null
         }
       ]
     },
     "E9": {
       "code": "E9",
       "kind": "expert",
-      "nb": 7,
+      "nb": 8,
       "items": [
         {
           "debut": "00:00:19",
@@ -1422,7 +1926,8 @@
           "ecran": "Levier stratégique",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Objectif E9 : la PI n’est pas un tampon."
+          "pourquoi": "Objectif E9 : la PI n’est pas un tampon.",
+          "fascicule": null
         },
         {
           "debut": "00:00:29",
@@ -1433,7 +1938,8 @@
           "ecran": "Actifs immatériels",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Ce que l’on protège vraiment."
+          "pourquoi": "Ce que l’on protège vraiment.",
+          "fascicule": null
         },
         {
           "debut": "00:00:52",
@@ -1444,7 +1950,8 @@
           "ecran": "Explorer l’existant",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Avant la R&D."
+          "pourquoi": "Avant la R&D.",
+          "fascicule": null
         },
         {
           "debut": "00:02:26",
@@ -1455,7 +1962,8 @@
           "ecran": "Déclaration d’invention",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Dans un organisme public, l’invention appartient à l’employeur."
+          "pourquoi": "Dans un organisme public, l’invention appartient à l’employeur.",
+          "fascicule": null
         },
         {
           "debut": "00:03:57",
@@ -1466,7 +1974,8 @@
           "ecran": "Barrière à l’entrée",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Effet investisseur des brevets / marques."
+          "pourquoi": "Effet investisseur des brevets / marques.",
+          "fascicule": null
         },
         {
           "debut": "00:04:21",
@@ -1477,7 +1986,8 @@
           "ecran": "Audit PI",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Ce que regardera une levée de fonds."
+          "pourquoi": "Ce que regardera une levée de fonds.",
+          "fascicule": null
         },
         {
           "debut": "00:05:02",
@@ -1487,8 +1997,39 @@
           "type": "schema",
           "ecran": "Pilier, pas option",
           "developpe": "",
-          "schema": "Rechercher → Protéger → Valoriser",
-          "pourquoi": "Synthèse du grain."
+          "schema": "Protection → Maturation → Transfert",
+          "pourquoi": "Synthèse E9 : même colonne que le schéma de valorisation F2.",
+          "fascicule": {
+            "id": "F2-CHAINE-VALO",
+            "fascicule": 2,
+            "pages": "6-7",
+            "pdf": "fascicule_2.pdf",
+            "titre": "Chaîne de valeur valorisation (Henao, 2025)",
+            "extrait": "Protection → Maturation → Transfert",
+            "usage": "extrait",
+            "note": "Ne pas coller le schéma complet (université / SATT / incubateurs + blocs annexes)."
+          }
+        },
+        {
+          "debut": "00:05:26",
+          "fin": "00:05:34",
+          "chercheur": "Stanislas De Lapasse",
+          "verbatim": "Sécurisez vos actifs via les outils disponibles, brevets, marques, datations et secrets, dessins et modèles, etc.",
+          "type": "schema",
+          "ecran": "Outils de PI",
+          "developpe": "",
+          "schema": "Brevet · Marque · Secret",
+          "pourquoi": "Brevets, marques, secrets, dessins : extrait du tableau F1, pas les durées/territoires.",
+          "fascicule": {
+            "id": "F1-PI-TYPES",
+            "fascicule": 1,
+            "pages": "9-10",
+            "pdf": "fascicule_1.pdf",
+            "titre": "Types de protection",
+            "extrait": "Brevet | Secret",
+            "usage": "extrait",
+            "note": "Extrait du tableau p. 9-10 (brevet, secret, marque, dessin, Soleau…). Ne pas incruster le tableau complet."
+          }
         }
       ]
     },
@@ -1505,8 +2046,18 @@
           "type": "schema",
           "ecran": "Licence ou création",
           "developpe": "",
-          "schema": "Licence  |  Start-up",
-          "pourquoi": "Question structurante, objectif E10."
+          "schema": "Licence | Création",
+          "pourquoi": "Question structurante : extrait de la chaîne de valorisation F2.",
+          "fascicule": {
+            "id": "F2-VOIES-TRANSFERT",
+            "fascicule": 2,
+            "pages": "6-7",
+            "pdf": "fascicule_2.pdf",
+            "titre": "Voies de transfert",
+            "extrait": "Licence | Création",
+            "usage": "extrait",
+            "note": "Extrait de la chaîne : création d’entreprises / licences vs transfert vers une société existante."
+          }
         },
         {
           "debut": "00:00:37",
@@ -1517,7 +2068,8 @@
           "ecran": "Quatre voies",
           "developpe": "",
           "schema": "Licence · Création · Co-dev · Partenariat",
-          "pourquoi": "Élargir au-delà du binôme."
+          "pourquoi": "Élargir au-delà du binôme du fascicule (récit E10).",
+          "fascicule": null
         },
         {
           "debut": "00:01:36",
@@ -1528,7 +2080,8 @@
           "ecran": "Trois critères",
           "developpe": "",
           "schema": "Projet · Écosystème · Posture",
-          "pourquoi": "Grille de choix."
+          "pourquoi": "Grille de choix.",
+          "fascicule": null
         },
         {
           "debut": "00:02:40",
@@ -1539,18 +2092,29 @@
           "ecran": "Question de posture",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Légitimité académique vs engagement."
+          "pourquoi": "Légitimité académique vs engagement.",
+          "fascicule": null
         },
         {
           "debut": "00:02:46",
           "fin": "00:02:48",
           "chercheur": "Virginia Branco",
           "verbatim": "Licence ou transfert de propriété?",
-          "type": "concept",
-          "ecran": "Licence ou propriété",
+          "type": "schema",
+          "ecran": "Licence ≠ Cession",
           "developpe": "",
-          "schema": "",
-          "pourquoi": "Montage juridique une fois l’entreprise créée."
+          "schema": "Licence ≠ Cession",
+          "pourquoi": "Licence ou transfert de propriété : distinction F1 p. 8.",
+          "fascicule": {
+            "id": "F1-LICENCE-CESSION",
+            "fascicule": 1,
+            "pages": "8",
+            "pdf": "fascicule_1.pdf",
+            "titre": "Licence ≠ cession",
+            "extrait": "Licence ≠ Cession",
+            "usage": "extrait",
+            "note": "La licence autorise ; la cession transfère la propriété."
+          }
         },
         {
           "debut": "00:04:16",
@@ -1561,7 +2125,8 @@
           "ecran": "Maturité de la techno",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Plus on a de preuve, plus on négocie."
+          "pourquoi": "Plus on a de preuve, plus on négocie.",
+          "fascicule": null
         }
       ]
     },
@@ -1579,7 +2144,8 @@
           "ecran": "Licence = louage",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Objectif E11 : mécanisme, pas le choix de voie."
+          "pourquoi": "Objectif E11 : mécanisme, pas le choix de voie.",
+          "fascicule": null
         },
         {
           "debut": "00:01:36",
@@ -1590,18 +2156,29 @@
           "ecran": "Exclusive ou non",
           "developpe": "",
           "schema": "1 licencié  |  plusieurs",
-          "pourquoi": "Clause déterminante."
+          "pourquoi": "Clause déterminante.",
+          "fascicule": null
         },
         {
           "debut": "00:02:10",
           "fin": "00:02:25",
           "chercheur": "Soizic Lefeuvre",
           "verbatim": "Le mécanisme contractuel de la cession abordé par Jean-Jacques permet quant à lui au propriétaire d'un titre de propriété industrielle ou d'un savoir-faire identifié de transférer la propriété de celui-ci à un tiers, moyennant une contrepartie financière.",
-          "type": "concept",
-          "ecran": "Cession = vente",
+          "type": "schema",
+          "ecran": "Licence ≠ Cession",
           "developpe": "",
-          "schema": "",
-          "pourquoi": "Transfert de propriété, distinct de la licence."
+          "schema": "Licence ≠ Cession",
+          "pourquoi": "La cession transfère la propriété : distinction F1 p. 8.",
+          "fascicule": {
+            "id": "F1-LICENCE-CESSION",
+            "fascicule": 1,
+            "pages": "8",
+            "pdf": "fascicule_1.pdf",
+            "titre": "Licence ≠ cession",
+            "extrait": "Licence ≠ Cession",
+            "usage": "extrait",
+            "note": "La licence autorise ; la cession transfère la propriété."
+          }
         },
         {
           "debut": "00:02:43",
@@ -1612,7 +2189,8 @@
           "ecran": "Co-développement",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Risques et résultats partagés."
+          "pourquoi": "Risques et résultats partagés.",
+          "fascicule": null
         },
         {
           "debut": "00:03:15",
@@ -1623,18 +2201,29 @@
           "ecran": "Copropriété",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Conséquence du contrat de collaboration."
+          "pourquoi": "Conséquence du contrat de collaboration.",
+          "fascicule": null
         },
         {
           "debut": "00:04:02",
           "fin": "00:04:07",
           "chercheur": "Soizic Lefeuvre",
           "verbatim": "On ne peut enfin pas se quitter sans aborder un autre type de contrat qui est le contrat de prestation.",
-          "type": "concept",
-          "ecran": "Prestation",
+          "type": "schema",
+          "ecran": "Prestation | Collaboration",
           "developpe": "",
-          "schema": "",
-          "pourquoi": "Obligation de résultat, pas d’inventivité."
+          "schema": "Prestation | Collaboration",
+          "pourquoi": "Contraste du grain : extrait des modalités partenariales F2 p. 7.",
+          "fascicule": {
+            "id": "F2-PARTENARIAT",
+            "fascicule": 2,
+            "pages": "7",
+            "pdf": "fascicule_2.pdf",
+            "titre": "Modalités de recherche partenariale",
+            "extrait": "Prestation | Collaboration",
+            "usage": "extrait",
+            "note": "Le fascicule en compte trois (prestation, collaborative, consultance). À l’écran, le contraste du grain suffit."
+          }
         },
         {
           "debut": "00:05:14",
@@ -1645,7 +2234,8 @@
           "ecran": "Le contrat fait loi",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Conseil de clôture."
+          "pourquoi": "Conseil de clôture.",
+          "fascicule": null
         }
       ]
     },
@@ -1663,7 +2253,8 @@
           "ecran": "Design Spot",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Autre structure que SATT / incubateur, objectif E13bis."
+          "pourquoi": "Autre structure que SATT / incubateur, objectif E13bis.",
+          "fascicule": null
         },
         {
           "debut": "00:00:41",
@@ -1674,7 +2265,17 @@
           "ecran": "Plateformes",
           "developpe": "",
           "schema": "Fablab · Fabrique · POC",
-          "pourquoi": "Passer de l’idée au concret."
+          "pourquoi": "Autres acteur·rices de l’écosystème F1 : extrait, pas le schéma à 9 groupes.",
+          "fascicule": {
+            "id": "F1-ECOSYSTEME",
+            "fascicule": 1,
+            "pages": "15",
+            "pdf": "fascicule_1.pdf",
+            "titre": "Écosystème de l’innovation (Henao, 2025)",
+            "extrait": "SATT · Incubateurs · Pôles",
+            "usage": "extrait",
+            "note": "Le schéma complet (9 groupes + Europe / international) est trop dense face caméra. Extraire 3 acteurs du grain."
+          }
         },
         {
           "debut": "00:01:33",
@@ -1685,7 +2286,8 @@
           "ecran": "Besoin et usage",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Le design n’est pas le styling."
+          "pourquoi": "Le design n’est pas le styling.",
+          "fascicule": null
         },
         {
           "debut": "00:01:58",
@@ -1696,7 +2298,8 @@
           "ecran": "Expérience utilisateur",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Valeur du design en amont."
+          "pourquoi": "Valeur du design en amont.",
+          "fascicule": null
         },
         {
           "debut": "00:03:15",
@@ -1707,7 +2310,8 @@
           "ecran": "Complémentarité",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Pas un parcours unique."
+          "pourquoi": "Pas un parcours unique.",
+          "fascicule": null
         },
         {
           "debut": "00:03:18",
@@ -1718,7 +2322,8 @@
           "ecran": "La bonne ressource",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Au bon moment."
+          "pourquoi": "Au bon moment.",
+          "fascicule": null
         }
       ]
     },
@@ -1736,7 +2341,8 @@
           "ecran": "Équipe, pas CV",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Objectif E16 : compétences collectives."
+          "pourquoi": "Objectif E16 : compétences collectives.",
+          "fascicule": null
         },
         {
           "debut": "00:01:08",
@@ -1747,7 +2353,8 @@
           "ecran": "Savoirs manquants",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Ancrage T9."
+          "pourquoi": "Ancrage T9.",
+          "fascicule": null
         },
         {
           "debut": "00:01:47",
@@ -1758,7 +2365,8 @@
           "ecran": "L’équipe survit",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Les projets pivotent."
+          "pourquoi": "Les projets pivotent.",
+          "fascicule": null
         },
         {
           "debut": "00:02:09",
@@ -1769,7 +2377,8 @@
           "ecran": "Diriger ou non",
           "developpe": "",
           "schema": "CEO  |  Scientifique",
-          "pourquoi": "Place du chercheur."
+          "pourquoi": "Place du chercheur.",
+          "fascicule": null
         },
         {
           "debut": "00:03:50",
@@ -1780,7 +2389,8 @@
           "ecran": "Casting du dirigeant",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Alignement, pas un profil générique."
+          "pourquoi": "Alignement, pas un profil générique.",
+          "fascicule": null
         },
         {
           "debut": "00:04:33",
@@ -1791,7 +2401,8 @@
           "ecran": "Pas d’ego",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Collaboration dans l’équipe."
+          "pourquoi": "Collaboration dans l’équipe.",
+          "fascicule": null
         }
       ]
     },
@@ -1809,7 +2420,8 @@
           "ecran": "Ça s’apprend",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Objectif E19 : pas de profil type."
+          "pourquoi": "Objectif E19 : pas de profil type.",
+          "fascicule": null
         },
         {
           "debut": "00:00:42",
@@ -1820,18 +2432,29 @@
           "ecran": "Langue de l’entrepreneuriat",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Métaphore T10, ici enseignée."
+          "pourquoi": "Métaphore T10, ici enseignée.",
+          "fascicule": null
         },
         {
           "debut": "00:01:42",
           "fin": "00:01:51",
           "chercheur": "Pascal Corbel",
           "verbatim": "En réalité, le processus de création d'une entreprise ou de pilotage d'un projet innovant n'est qu'un long processus d'apprentissage.",
-          "type": "concept",
-          "ecran": "Tâtonnements",
+          "type": "schema",
+          "ecran": "Essai → Pivot → Essai",
           "developpe": "",
-          "schema": "",
-          "pourquoi": "Le récit lisse n’est pas le réel."
+          "schema": "Essai → Pivot → Essai",
+          "pourquoi": "Tâtonnements : le cycle F2 « est rarement linéaire ».",
+          "fascicule": {
+            "id": "F2-CYCLE-ITER",
+            "fascicule": 2,
+            "pages": "3",
+            "pdf": "fascicule_2.pdf",
+            "titre": "Cycle itératif essai / erreur / pivot",
+            "extrait": "Essai → Pivot → Essai",
+            "usage": "extrait",
+            "note": "Le cycle « est rarement linéaire » (F2 §3)."
+          }
         },
         {
           "debut": "00:02:21",
@@ -1842,7 +2465,8 @@
           "ecran": "En discutant",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Apprentissage par la pratique."
+          "pourquoi": "Apprentissage par la pratique.",
+          "fascicule": null
         },
         {
           "debut": "00:02:53",
@@ -1853,7 +2477,8 @@
           "ecran": "Essai, retour, correction",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Posture entrepreneuriale."
+          "pourquoi": "Posture entrepreneuriale.",
+          "fascicule": null
         },
         {
           "debut": "00:04:51",
@@ -1864,7 +2489,8 @@
           "ecran": "Une langue de plus",
           "developpe": "",
           "schema": "",
-          "pourquoi": "On reste chercheur."
+          "pourquoi": "On reste chercheur.",
+          "fascicule": null
         }
       ]
     },
@@ -1882,7 +2508,8 @@
           "ecran": "Enrichir le métier",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Objectif E20 : pas une reconversion."
+          "pourquoi": "Objectif E20 : pas une reconversion.",
+          "fascicule": null
         },
         {
           "debut": "00:01:15",
@@ -1893,7 +2520,8 @@
           "ecran": "Intégrateur social",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Utilité visible de la recherche."
+          "pourquoi": "Utilité visible de la recherche.",
+          "fascicule": null
         },
         {
           "debut": "00:01:45",
@@ -1904,7 +2532,8 @@
           "ecran": "Double posture",
           "developpe": "",
           "schema": "Labo + entreprise",
-          "pourquoi": "Articuler les casquettes."
+          "pourquoi": "Articuler les casquettes.",
+          "fascicule": null
         },
         {
           "debut": "00:01:52",
@@ -1915,7 +2544,8 @@
           "ecran": "Impartialité",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Condition de la double casquette."
+          "pourquoi": "Condition de la double casquette.",
+          "fascicule": null
         },
         {
           "debut": "00:03:05",
@@ -1926,7 +2556,8 @@
           "ecran": "Deux temporalités",
           "developpe": "",
           "schema": "Recherche ≠ marché",
-          "pourquoi": "Ce qu’il faut concilier."
+          "pourquoi": "Ce qu’il faut concilier.",
+          "fascicule": null
         },
         {
           "debut": "00:03:35",
@@ -1937,7 +2568,8 @@
           "ecran": "Pas renoncer",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Message de clôture."
+          "pourquoi": "Message de clôture.",
+          "fascicule": null
         }
       ]
     },
@@ -1955,18 +2587,29 @@
           "ecran": "Réduire l’inconnu",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Objectif E21 : innover = apprendre."
+          "pourquoi": "Objectif E21 : innover = apprendre.",
+          "fascicule": null
         },
         {
           "debut": "00:01:00",
           "fin": "00:01:13",
           "chercheur": "Pascal Corbel",
           "verbatim": "L'échelle bien connue des TRL, pour Technology Readiness Level, reflète d'une manière certes un peu trop linéaire par rapport à la réalité, cette avancée progressive d'un simple concept à un système complet commercialisé.",
-          "type": "acronyme",
-          "ecran": "TRL",
-          "developpe": "Technology Readiness Level — niveau de maturité technologique",
-          "schema": "",
-          "pourquoi": "Première occurrence claire du sigle."
+          "type": "schema",
+          "ecran": "Échelle TRL",
+          "developpe": "Technology Readiness Level",
+          "schema": "TRL 1 → 9",
+          "pourquoi": "Première occurrence. Extraire 1→9 ; le tableau ISO 9 lignes reste dans le fascicule / E4.",
+          "fascicule": {
+            "id": "F2-TRL",
+            "fascicule": 2,
+            "pages": "12-13",
+            "pdf": "fascicule_2.pdf",
+            "titre": "Échelle TRL (ISO 16290)",
+            "extrait": "TRL 1 → 9",
+            "usage": "extrait",
+            "note": "Ne pas incruster le tableau à 9 lignes. L’échelle complète reste dans le fascicule (grain E4)."
+          }
         },
         {
           "debut": "00:01:54",
@@ -1977,7 +2620,8 @@
           "ecran": "Pivot",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Impasse → virage, pas échec."
+          "pourquoi": "Impasse → virage, pas échec.",
+          "fascicule": null
         },
         {
           "debut": "00:02:52",
@@ -1988,7 +2632,8 @@
           "ecran": "MVP",
           "developpe": "Minimum Viable Product",
           "schema": "",
-          "pourquoi": "Ici le sigle est enseigné (après T11)."
+          "pourquoi": "Ici le sigle est enseigné (après T11).",
+          "fascicule": null
         },
         {
           "debut": "00:03:18",
@@ -1999,7 +2644,8 @@
           "ecran": "Logique d’apprentissage",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Indépendante du secteur."
+          "pourquoi": "Indépendante du secteur.",
+          "fascicule": null
         },
         {
           "debut": "00:04:17",
@@ -2010,7 +2656,8 @@
           "ecran": "Pas un casse-cou",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Posture de l’innovateur."
+          "pourquoi": "Posture de l’innovateur.",
+          "fascicule": null
         }
       ]
     },
@@ -2028,7 +2675,8 @@
           "ecran": "Collaboration équilibrée",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Objectif E22."
+          "pourquoi": "Objectif E22.",
+          "fascicule": null
         },
         {
           "debut": "00:00:43",
@@ -2039,18 +2687,29 @@
           "ecran": "Apports / attentes",
           "developpe": "",
           "schema": "Chacun apporte · chacun gagne",
-          "pourquoi": "Équilibre, pas prestation."
+          "pourquoi": "Équilibre, pas prestation.",
+          "fascicule": null
         },
         {
           "debut": "00:00:56",
           "fin": "00:01:05",
           "chercheur": "Rémi Waché",
           "verbatim": "On distingue d'ailleurs souvent la collaboration d'un autre cadre contractuel, dit de prestation, dans lequel le client achète des résultats.",
-          "type": "concept",
-          "ecran": "Pas une prestation",
+          "type": "schema",
+          "ecran": "Prestation | Collaboration",
           "developpe": "",
-          "schema": "",
-          "pourquoi": "Distinguer les cadres."
+          "schema": "Prestation | Collaboration",
+          "pourquoi": "Le récit oppose les deux cadres : extrait F2 p. 7.",
+          "fascicule": {
+            "id": "F2-PARTENARIAT",
+            "fascicule": 2,
+            "pages": "7",
+            "pdf": "fascicule_2.pdf",
+            "titre": "Modalités de recherche partenariale",
+            "extrait": "Prestation | Collaboration",
+            "usage": "extrait",
+            "note": "Le fascicule en compte trois (prestation, collaborative, consultance). À l’écran, le contraste du grain suffit."
+          }
         },
         {
           "debut": "00:03:02",
@@ -2061,7 +2720,8 @@
           "ecran": "NDA",
           "developpe": "Accord de confidentialité",
           "schema": "",
-          "pourquoi": "Avant toute info sensible."
+          "pourquoi": "Avant toute info sensible.",
+          "fascicule": null
         },
         {
           "debut": "00:03:41",
@@ -2072,7 +2732,8 @@
           "ecran": "Trois contraintes",
           "developpe": "",
           "schema": "Objectifs · Moyens · Temps",
-          "pourquoi": "Dimensionner la collab."
+          "pourquoi": "Dimensionner la collab.",
+          "fascicule": null
         },
         {
           "debut": "00:05:01",
@@ -2083,14 +2744,15 @@
           "ecran": "Se protéger en amont",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Réflexe avant de parler."
+          "pourquoi": "Réflexe avant de parler.",
+          "fascicule": null
         }
       ]
     },
     "E23": {
       "code": "E23",
       "kind": "expert",
-      "nb": 7,
+      "nb": 8,
       "items": [
         {
           "debut": "00:00:30",
@@ -2101,7 +2763,8 @@
           "ecran": "Sécuriser",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Objectif E23."
+          "pourquoi": "Objectif E23.",
+          "fascicule": null
         },
         {
           "debut": "00:00:33",
@@ -2112,7 +2775,8 @@
           "ecran": "Confidentialité d’abord",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Réflexe avant tout tiers."
+          "pourquoi": "Réflexe avant tout tiers.",
+          "fascicule": null
         },
         {
           "debut": "00:00:41",
@@ -2123,7 +2787,8 @@
           "ecran": "Accord de confidentialité",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Outil, pas le discours."
+          "pourquoi": "Outil, pas le discours.",
+          "fascicule": null
         },
         {
           "debut": "00:01:08",
@@ -2134,7 +2799,29 @@
           "ecran": "Connaissances propres",
           "developpe": "",
           "schema": "",
-          "pourquoi": "État des lieux avant collab."
+          "pourquoi": "État des lieux avant collab.",
+          "fascicule": null
+        },
+        {
+          "debut": "00:01:51",
+          "fin": "00:02:01",
+          "chercheur": "Eneli Vino",
+          "verbatim": "À titre d'exemple, le savoir-faire doit faire l'objet d'un dépôt d'enveloppes solos, les inventions doivent être brevetées et les logiciels déposés.",
+          "type": "schema",
+          "ecran": "Preuves et titres",
+          "developpe": "",
+          "schema": "Brevet · Logiciel · Soleau",
+          "pourquoi": "Enveloppe Soleau, brevets, logiciels : extrait du tableau F1 p. 9-10.",
+          "fascicule": {
+            "id": "F1-PI-TYPES",
+            "fascicule": 1,
+            "pages": "9-10",
+            "pdf": "fascicule_1.pdf",
+            "titre": "Types de protection",
+            "extrait": "Brevet | Secret",
+            "usage": "extrait",
+            "note": "Extrait du tableau p. 9-10 (brevet, secret, marque, dessin, Soleau…). Ne pas incruster le tableau complet."
+          }
         },
         {
           "debut": "00:02:19",
@@ -2145,7 +2832,8 @@
           "ecran": "Contrat de collaboration",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Cadre PI, usage, publication."
+          "pourquoi": "Cadre PI, usage, publication.",
+          "fascicule": null
         },
         {
           "debut": "00:02:30",
@@ -2156,7 +2844,8 @@
           "ecran": "PI",
           "developpe": "Propriété intellectuelle",
           "schema": "",
-          "pourquoi": "Ici le terme est défini pour le grain juridique."
+          "pourquoi": "Ici le terme est défini pour le grain juridique.",
+          "fascicule": null
         },
         {
           "debut": "00:04:44",
@@ -2167,7 +2856,8 @@
           "ecran": "Porte de sortie",
           "developpe": "",
           "schema": "",
-          "pourquoi": "Clause de résiliation, équilibre."
+          "pourquoi": "Clause de résiliation, équilibre.",
+          "fascicule": null
         }
       ]
     }
