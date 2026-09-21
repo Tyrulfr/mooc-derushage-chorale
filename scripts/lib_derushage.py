@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import json
 import re
-from dataclasses import dataclass
+import zipfile
+import xml.etree.ElementTree as ET
+from dataclasses import dataclass, field
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -162,6 +164,263 @@ def write_word_doc(path: Path, content: str) -> None:
     """Écrit un fichier .doc (HTML) lisible par Microsoft Word (UTF-8 + BOM)."""
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_bytes(b"\xef\xbb\xbf" + content.encode("utf-8"))
+
+
+W_NS = "http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+XML_NS = "http://www.w3.org/XML/1998/namespace"
+ET.register_namespace("w", W_NS)
+
+
+def _w(tag: str) -> str:
+    return f"{{{W_NS}}}{tag}"
+
+
+def _xml_bytes(root: ET.Element) -> bytes:
+    xml = ET.tostring(root, encoding="unicode")
+    xml = xml.replace(" />", "/>")
+    return b'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' + xml.encode("utf-8")
+
+
+def _docx_run(
+    paragraph: ET.Element,
+    text: str,
+    *,
+    bold: bool = False,
+    size_half: int | None = None,
+    color: str | None = None,
+) -> None:
+    parts = (text or "").split("\n")
+    for index, part in enumerate(parts):
+        if index:
+            ET.SubElement(ET.SubElement(paragraph, _w("r")), _w("br"))
+        run = ET.SubElement(paragraph, _w("r"))
+        rpr = ET.SubElement(run, _w("rPr"))
+        if bold:
+            ET.SubElement(rpr, _w("b"))
+        if size_half:
+            sz = ET.SubElement(rpr, _w("sz"))
+            sz.set(_w("val"), str(size_half))
+            sz_cs = ET.SubElement(rpr, _w("szCs"))
+            sz_cs.set(_w("val"), str(size_half))
+        if color:
+            col = ET.SubElement(rpr, _w("color"))
+            col.set(_w("val"), color)
+        node = ET.SubElement(run, _w("t"))
+        if part[:1].isspace() or part[-1:].isspace():
+            node.set(f"{{{XML_NS}}}space", "preserve")
+        node.text = part
+
+
+@dataclass
+class DocxDocument:
+    """Package .docx OOXML minimal (stdlib), ouvrable dans Microsoft Word."""
+
+    title: str = ""
+    _blocks: list[ET.Element] = field(default_factory=list, init=False)
+
+    def __post_init__(self) -> None:
+        if self.title:
+            self.heading(self.title, level=1)
+
+    def heading(self, text: str, level: int = 1) -> None:
+        paragraph = ET.Element(_w("p"))
+        ppr = ET.SubElement(paragraph, _w("pPr"))
+        style = ET.SubElement(ppr, _w("pStyle"))
+        style.set(_w("val"), "Heading1" if level <= 1 else "Heading2")
+        _docx_run(paragraph, text, bold=True, size_half=36 if level <= 1 else 26)
+        self._blocks.append(paragraph)
+
+    def paragraph(
+        self,
+        text: str = "",
+        *,
+        bold: bool = False,
+        muted: bool = False,
+        large: bool = False,
+        runs: list[tuple[str, bool]] | None = None,
+    ) -> None:
+        paragraph = ET.Element(_w("p"))
+        size = 28 if large else (21 if muted else None)
+        color = "5C6B7A" if muted else None
+        if runs:
+            for chunk, chunk_bold in runs:
+                _docx_run(
+                    paragraph,
+                    chunk,
+                    bold=chunk_bold,
+                    size_half=size,
+                    color=color,
+                )
+        else:
+            _docx_run(paragraph, text, bold=bold, size_half=size, color=color)
+        self._blocks.append(paragraph)
+
+    def bullets(self, items: list[str]) -> None:
+        for item in items:
+            paragraph = ET.Element(_w("p"))
+            ppr = ET.SubElement(paragraph, _w("pPr"))
+            ind = ET.SubElement(ppr, _w("ind"))
+            ind.set(_w("left"), "360")
+            _docx_run(paragraph, f"• {item}")
+            self._blocks.append(paragraph)
+
+    def table(
+        self,
+        rows: list[list[str]],
+        *,
+        header: bool = False,
+        key_value: bool = False,
+    ) -> None:
+        if not rows:
+            return
+        ncols = max(len(row) for row in rows)
+        tbl = ET.Element(_w("tbl"))
+        tbl_pr = ET.SubElement(tbl, _w("tblPr"))
+        tbl_w = ET.SubElement(tbl_pr, _w("tblW"))
+        tbl_w.set(_w("w"), "5000")
+        tbl_w.set(_w("type"), "pct")
+        borders = ET.SubElement(tbl_pr, _w("tblBorders"))
+        for edge in ("top", "left", "bottom", "right", "insideH", "insideV"):
+            el = ET.SubElement(borders, _w(edge))
+            el.set(_w("val"), "single")
+            el.set(_w("sz"), "4")
+            el.set(_w("space"), "0")
+            el.set(_w("color"), "CBD5E1")
+        grid = ET.SubElement(tbl, _w("tblGrid"))
+        col_w = 9638 // ncols
+        for _ in range(ncols):
+            col = ET.SubElement(grid, _w("gridCol"))
+            col.set(_w("w"), str(col_w))
+        for row_index, row in enumerate(rows):
+            tr = ET.SubElement(tbl, _w("tr"))
+            padded = list(row) + [""] * (ncols - len(row))
+            for col_index, cell in enumerate(padded):
+                tc = ET.SubElement(tr, _w("tc"))
+                tc_pr = ET.SubElement(tc, _w("tcPr"))
+                shade = None
+                if header and row_index == 0:
+                    shade = "E2E8F0"
+                elif key_value and col_index == 0:
+                    shade = "F1F5F9"
+                if shade:
+                    shd = ET.SubElement(tc_pr, _w("shd"))
+                    shd.set(_w("val"), "clear")
+                    shd.set(_w("fill"), shade)
+                paragraph = ET.SubElement(tc, _w("p"))
+                _docx_run(
+                    paragraph,
+                    cell,
+                    bold=(header and row_index == 0) or (key_value and col_index == 0),
+                    size_half=21,
+                )
+        self._blocks.append(tbl)
+        self.paragraph("")
+
+    def save(self, path: Path) -> None:
+        from xml.sax.saxutils import escape as xml_escape
+
+        document = ET.Element(_w("document"))
+        body = ET.SubElement(document, _w("body"))
+        for block in self._blocks:
+            body.append(block)
+        sect = ET.SubElement(body, _w("sectPr"))
+        pg_sz = ET.SubElement(sect, _w("pgSz"))
+        pg_sz.set(_w("w"), "11906")
+        pg_sz.set(_w("h"), "16838")
+        pg_mar = ET.SubElement(sect, _w("pgMar"))
+        for attr, value in (
+            ("top", "1134"),
+            ("right", "1134"),
+            ("bottom", "1134"),
+            ("left", "1134"),
+        ):
+            pg_mar.set(_w(attr), value)
+
+        styles = ET.Element(_w("styles"))
+        normal = ET.SubElement(styles, _w("style"))
+        normal.set(_w("type"), "paragraph")
+        normal.set(_w("default"), "1")
+        normal.set(_w("styleId"), "Normal")
+        ET.SubElement(normal, _w("name")).set(_w("val"), "Normal")
+        rpr = ET.SubElement(normal, _w("rPr"))
+        fonts = ET.SubElement(rpr, _w("rFonts"))
+        fonts.set(_w("ascii"), "Calibri")
+        fonts.set(_w("hAnsi"), "Calibri")
+        sz = ET.SubElement(rpr, _w("sz"))
+        sz.set(_w("val"), "22")
+        for style_id, name, size in (
+            ("Heading1", "heading 1", "36"),
+            ("Heading2", "heading 2", "26"),
+        ):
+            style = ET.SubElement(styles, _w("style"))
+            style.set(_w("type"), "paragraph")
+            style.set(_w("styleId"), style_id)
+            ET.SubElement(style, _w("name")).set(_w("val"), name)
+            based = ET.SubElement(style, _w("basedOn"))
+            based.set(_w("val"), "Normal")
+            ET.SubElement(style, _w("qFormat"))
+            ppr = ET.SubElement(style, _w("pPr"))
+            outline = ET.SubElement(ppr, _w("outlineLvl"))
+            outline.set(_w("val"), "0" if style_id == "Heading1" else "1")
+            srpr = ET.SubElement(style, _w("rPr"))
+            ET.SubElement(srpr, _w("b"))
+            ssz = ET.SubElement(srpr, _w("sz"))
+            ssz.set(_w("val"), size)
+
+        title = xml_escape(self.title or path.stem)
+        creator = xml_escape(SITE_BRAND)
+        content_types = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+  <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
+  <Default Extension="xml" ContentType="application/xml"/>
+          <Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>
+          <Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/>
+          <Override PartName="/word/settings.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.settings+xml"/>
+          <Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/>
+          <Override PartName="/docProps/app.xml" ContentType="application/vnd.openxmlformats-officedocument.extended-properties+xml"/>
+        </Types>
+        """
+        pkg_rels = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+        <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+          <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>
+          <Relationship Id="rId2" Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="docProps/core.xml"/>
+          <Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/extended-properties" Target="docProps/app.xml"/>
+        </Relationships>
+        """
+        doc_rels = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+        <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+          <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>
+          <Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/settings" Target="settings.xml"/>
+        </Relationships>
+        """
+        core = f"""<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+        <cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" xmlns:dc="http://purl.org/dc/elements/1.1/">
+          <dc:title>{title}</dc:title>
+          <dc:creator>{creator}</dc:creator>
+        </cp:coreProperties>
+        """
+        app = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+        <Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties">
+          <Application>Microsoft Office Word</Application>
+        </Properties>
+        """
+        settings = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+        <w:settings xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+          <w:compat>
+            <w:compatSetting w:name="compatibilityMode" w:uri="http://schemas.microsoft.com/office/word" w:val="15"/>
+          </w:compat>
+        </w:settings>
+        """
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with zipfile.ZipFile(path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+            zf.writestr("[Content_Types].xml", content_types)
+            zf.writestr("_rels/.rels", pkg_rels)
+            zf.writestr("docProps/core.xml", core)
+            zf.writestr("docProps/app.xml", app)
+            zf.writestr("word/document.xml", _xml_bytes(document))
+            zf.writestr("word/_rels/document.xml.rels", doc_rels)
+            zf.writestr("word/styles.xml", _xml_bytes(styles))
+            zf.writestr("word/settings.xml", settings)
 
 
 def load_capsules() -> list[dict]:

@@ -39,6 +39,7 @@ from lib_derushage import (
     total_score,
     write_text,
     write_word_doc,
+    DocxDocument,
 )
 
 TEST_MAIL_RECIPIENT = "christophe.dubois@universite-paris-saclay.fr"
@@ -5217,6 +5218,7 @@ def build_incrustations_bonnes_pratiques_page(
         sources.append(f"<li>{link} — {escape(usage)}</li>" if usage else f"<li>{link}</li>")
     body = (
         "<div class='incrust-guide'>"
+        f"<p>{_file_download_btn('incrustations_bonnes_pratiques.docx', 'Exporter')}</p>"
         f"<p class='lead'>{escape(guide.get('sous_titre') or '')}</p>"
         "<p>Ces incrustations sont un <strong>signaling pédagogique</strong> : un mot-clé, "
         "un acronyme développé, ou un petit schéma de 2 à 4 nœuds. "
@@ -5249,13 +5251,218 @@ def build_incrustations_bonnes_pratiques_page(
     )
 
 
-def build_incrustation_video_page(code: str, video: dict, meta: dict) -> None:
+def _incrustation_doc_name(code: str) -> str:
+    return f"incrustation_{code}.docx"
+
+
+def _file_download_btn(filename: str, label: str, *, secondary: bool = False) -> str:
+    css = "btn btn-secondary" if secondary else "btn"
+    mime = (
+        "application/zip"
+        if filename.endswith(".zip")
+        else "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    )
+    return (
+        f"<a class='{css}' href='{escape(filename)}' "
+        f"download='{escape(filename)}' type='{mime}'>{escape(label)}</a>"
+    )
+
+
+def _incrust_type_label(typ: str) -> str:
+    return INCRUST_TYPE_LABELS.get(typ, typ or "—")
+
+
+def _incrust_fascicule_plain(item: dict) -> str:
+    fasc = item.get("fascicule") or {}
+    if not fasc:
+        return ""
+    bits = []
+    numero = fasc.get("fascicule")
+    pages = fasc.get("pages") or ""
+    titre = fasc.get("titre") or ""
+    if numero:
+        bits.append(f"Fascicule {numero}")
+    if pages:
+        bits.append(f"p. {pages}")
+    line = ", ".join(bits)
+    if titre:
+        line = f"{line} — {titre}" if line else titre
+    extrait = fasc.get("extrait") or ""
+    if extrait:
+        line = f"{line}. Extrait écran : {extrait}" if line else f"Extrait écran : {extrait}"
+    note = fasc.get("note") or ""
+    if note:
+        line = f"{line}. {note}" if line else note
+    return line
+
+
+def _incrust_item_span(item: dict) -> str:
+    debut = item.get("debut") or ""
+    fin = item.get("fin") or ""
+    if fin and fin != debut:
+        return f"{debut}–{fin}"
+    return debut
+
+
+def _add_incrust_item_docx(doc: DocxDocument, item: dict, index: int) -> None:
+    span = _incrust_item_span(item)
+    typ = _incrust_type_label(item.get("type") or "")
+    ecran = item.get("ecran") or ""
+    doc.heading(f"{index}. {span} — {typ}", level=2)
+    if ecran:
+        doc.paragraph(ecran, bold=True, large=True)
+    rows: list[list[str]] = [
+        ["Horodatage", span or "—"],
+        ["Type", typ],
+        ["À l’écran", ecran or "—"],
+    ]
+    if item.get("developpe"):
+        rows.append(["Développé", item["developpe"]])
+    if item.get("schema"):
+        rows.append(["Schéma (nœuds)", item["schema"]])
+    if item.get("chercheur"):
+        rows.append(["Voix", item["chercheur"]])
+    rows.append(["Verbatim", item.get("verbatim") or "—"])
+    if item.get("pourquoi"):
+        rows.append(["Pourquoi", item["pourquoi"]])
+    fasc = _incrust_fascicule_plain(item)
+    if fasc:
+        rows.append(["Fascicule", fasc])
+    doc.table(rows, key_value=True)
+
+
+def _write_incrustation_word_doc(code: str, video: dict, meta: dict) -> str:
+    titre = meta.get("titre") or code
+    kind_label = meta.get("kind_label") or code
+    objectif = meta.get("objectif") or ""
+    duree = meta.get("duree") or ""
+    items = video.get("items") or []
+    doc = DocxDocument(title=f"Incrustations — {code}")
+    doc.paragraph(f"{kind_label} — {titre}", bold=True)
+    if objectif:
+        doc.paragraph(runs=[("Objectif de la vidéo. ", True), (objectif, False)])
+    meta_line = f"{len(items)} proposition{'s' if len(items) != 1 else ''}"
+    if duree:
+        meta_line += f" · durée {duree}"
+    doc.paragraph(meta_line, muted=True)
+    doc.paragraph(
+        "Le texte à l’écran n’est pas le verbatim. Motion faible : "
+        "mot-clé (1 à 4 mots), acronyme développé à la première rencontre, ou petit schéma (2 à 4 nœuds). "
+        "Les sous-titres d’accessibilité restent séparés.",
+        muted=True,
+    )
+    doc.heading("Récapitulatif", level=2)
+    recap = [["n°", "Timecode", "Type", "À l’écran"]]
+    for index, item in enumerate(items, start=1):
+        recap.append(
+            [
+                str(index),
+                item.get("debut") or "",
+                _incrust_type_label(item.get("type") or ""),
+                item.get("ecran") or "",
+            ]
+        )
+    if len(recap) == 1:
+        recap.append(["", "", "Aucune proposition.", ""])
+    doc.table(recap, header=True)
+    doc.heading("Fiches", level=2)
+    for index, item in enumerate(items, start=1):
+        _add_incrust_item_docx(doc, item, index)
+    filename = _incrustation_doc_name(code)
+    doc.save(SITE / filename)
+    return filename
+
+
+def _write_incrustations_bonnes_pratiques_word(
+    guide: dict,
+    schemas: list[dict],
+    ecartes: list[dict],
+) -> str:
+    doc = DocxDocument(title=guide.get("titre") or "Bonnes pratiques — Incrustations")
+    if guide.get("sous_titre"):
+        doc.paragraph(guide["sous_titre"])
+    doc.paragraph(
+        "Guide à communiquer à l’équipe motion / pédagogique. "
+        "Incruster un extrait (2 à 4 nœuds), jamais le schéma complet du fascicule."
+    )
+    doc.heading("Principes", level=2)
+    for item in guide.get("principes") or []:
+        doc.heading(item.get("titre") or "", level=2)
+        if item.get("texte"):
+            doc.paragraph(item["texte"])
+    conduite = list(guide.get("conduite_equipe") or [])
+    if conduite:
+        doc.heading("Conduite pour l’équipe", level=2)
+        doc.bullets(conduite)
+    sources = []
+    for source in guide.get("sources") or []:
+        titre = source.get("titre") or ""
+        url = source.get("url") or ""
+        usage = source.get("usage") or ""
+        line = titre
+        if url:
+            line = f"{titre} ({url})" if titre else url
+        if usage:
+            line = f"{line} — {usage}"
+        if line:
+            sources.append(line)
+    if sources:
+        doc.heading("Sources", level=2)
+        doc.bullets(sources)
+    doc.heading("Schémas des fascicules — extraits utilisables", level=2)
+    schema_rows = [["Id", "Schéma", "Source", "Extrait", "Conduite"]]
+    for schema in schemas:
+        schema_rows.append(
+            [
+                schema.get("id") or "",
+                schema.get("titre") or "",
+                f"F{schema.get('fascicule') or ''} p. {schema.get('pages') or ''}",
+                schema.get("extrait") or "",
+                schema.get("note") or "",
+            ]
+        )
+    if len(schema_rows) == 1:
+        schema_rows.append(["", "Aucun.", "", "", ""])
+    doc.table(schema_rows, header=True)
+    if ecartes:
+        doc.heading("Schémas examinés, non incrustés en l’état", level=2)
+        doc.bullets(
+            [
+                f"{item.get('titre') or ''} (fascicule {item.get('fascicule') or ''}, "
+                f"p. {item.get('pages') or ''}) — {item.get('pourquoi') or ''}"
+                for item in ecartes
+            ]
+        )
+    filename = "incrustations_bonnes_pratiques.docx"
+    doc.save(SITE / filename)
+    return filename
+
+
+def _write_incrustations_word_zip(doc_names: list[str]) -> str:
+    zip_name = "incrustations_word.zip"
+    zip_path = SITE / zip_name
+    with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+        for name in doc_names:
+            path = SITE / name
+            if path.is_file():
+                zf.write(path, arcname=name)
+    return zip_name
+
+
+def build_incrustation_video_page(
+    code: str,
+    video: dict,
+    meta: dict,
+    doc_name: str | None = None,
+) -> None:
     titre = meta.get("titre") or code
     objectif = meta.get("objectif") or ""
     duree = meta.get("duree") or ""
     script_href = meta.get("script_href") or ""
     kind_label = meta.get("kind_label") or code
     items = video.get("items") or []
+    if not doc_name:
+        doc_name = _write_incrustation_word_doc(code, video, meta)
     counts = Counter(item.get("type") for item in items)
     type_words = {
         "acronyme": ("acronyme", "acronymes"),
@@ -5280,8 +5487,10 @@ def build_incrustation_video_page(code: str, video: dict, meta: dict) -> None:
         if script_href
         else ""
     )
+    word_link = f"<p>{_file_download_btn(doc_name, 'Exporter')}</p>"
     body = (
         f"<p class='meta'>{escape(' · '.join(header_bits))}</p>"
+        + word_link
         + (f"<p><strong>Objectif de la vidéo.</strong> {escape(objectif)}</p>" if objectif else "")
         + script_link
         + "<p class='meta'>Chaque incrustation est calée sur un verbatim et son horodatage de transcription. "
@@ -5348,12 +5557,54 @@ def build_incrustations_pages(programme_table: dict) -> None:
             )
         )
 
+    doc_names: list[str] = []
+    export_rows = []
+    for code in sorted(videos, key=_incrust_sort_key):
+        video = videos[code]
+        info = meta.get(code) or {}
+        doc_name = _write_incrustation_word_doc(code, video, info)
+        doc_names.append(doc_name)
+        n = len(video.get("items") or [])
+        kind = video.get("kind") or ("expert" if code.startswith("E") else "temoin")
+        label = info.get("kind_label") or (
+            _label_video_expert(code) if kind == "expert" else _label_video_temoin(code)
+        )
+        titre = info.get("titre") or ""
+        export_rows.append(
+            "<tr>"
+            f"<td><a href='{_incrustation_page_name(code)}'>{escape(code)}</a></td>"
+            f"<td>{escape(label)}</td>"
+            f"<td>{escape(titre)}</td>"
+            f"<td>{n}</td>"
+            f"<td>{_file_download_btn(doc_name, 'Exporter')}</td>"
+            "</tr>"
+        )
+    bp_doc = _write_incrustations_bonnes_pratiques_word(
+        guide,
+        data.get("schemas_fascicule") or [],
+        data.get("schemas_fascicule_ecartes") or [],
+    )
+    zip_name = _write_incrustations_word_zip([bp_doc] + doc_names)
+
     body = (
         f"<p class='meta'>{n_items} propositions sur {len(videos)} vidéos filmées "
         f"({n_temoin} témoin, {n_expert} expert), dont {n_fasc} extraits des schémas "
         "des fascicules « Oser pour innover ». "
         "Motion design faible : mot-clé, acronyme, ou petit schéma (jamais le slide complet).</p>"
+        "<p>"
+        + _file_download_btn(zip_name, "Télécharger toutes les propositions")
+        + " "
+        + _file_download_btn(bp_doc, "Exporter le guide", secondary=True)
+        + "</p>"
         + _sommaire_cards(cards)
+        + "<h2>Exports Word par vidéo</h2>"
+        "<p class='meta'>Un fichier par vidéo filmée : récapitulatif des incrustations, "
+        "puis une fiche par proposition (timecode, texte à l’écran, verbatim, fascicule).</p>"
+        "<div class='table-wrap'><table><thead><tr>"
+        "<th>Vidéo</th><th>Type</th><th>Titre</th><th>n°</th><th>Export</th>"
+        "</tr></thead><tbody>"
+        + "".join(export_rows)
+        + "</tbody></table></div>"
     )
     write_text(
         SITE / "incrustations.html",
@@ -5376,13 +5627,30 @@ def build_incrustations_pages(programme_table: dict) -> None:
         data.get("schemas_fascicule_ecartes") or [],
     )
     for code, video in videos.items():
-        build_incrustation_video_page(code, video, meta.get(code) or {})
+        build_incrustation_video_page(
+            code,
+            video,
+            meta.get(code) or {},
+            doc_name=_incrustation_doc_name(code),
+        )
 
-    expected = {"incrustations.html", "incrustations_bonnes_pratiques.html"} | {
+    expected_html = {"incrustations.html", "incrustations_bonnes_pratiques.html"} | {
         _incrustation_page_name(code) for code in videos
     }
     for path in SITE.glob("incrustation*.html"):
-        if path.name not in expected:
+        if path.name not in expected_html:
+            path.unlink()
+
+    expected_docs = set(doc_names) | {bp_doc}
+    for path in SITE.glob("incrustation*.doc"):
+        if path.suffix.lower() == ".doc":
+            path.unlink()
+    for path in SITE.glob("incrustation*.docx"):
+        if path.suffix.lower() == ".docx" and path.name not in expected_docs:
+            path.unlink()
+    expected_zips = {zip_name}
+    for path in SITE.glob("incrustations_word*.zip"):
+        if path.name not in expected_zips:
             path.unlink()
 
 
