@@ -1,30 +1,15 @@
 {
-  "titre": "Proposition E12 — script Stéphanie Oger-Roussel (swap depuis E4)",
+  "titre": "Proposition E12 — script final Stéphanie Oger-Roussel (240926)",
   "source_script": "E12.txt",
   "date": "2026-09-24",
-  "mode": "elargissement_script_recu",
+  "mode": "script_final_expert",
   "objectif_pedagogique": "De la prématuration à la maturation : étapes, sélection, investissement, jalons et accompagnement SATT, à partir de T7 filmé.",
-  "note": "Son texte v2 est conservé. Trois ajouts seulement : accroche T7 (Loïc, Sylvia, Muriel), sélection, maturation ≠ incubation. Pas les cinq niveaux. E4 proposé à Fatoumata.",
+  "note": "Script final = dernière version envoyée par Stéphanie le 24/09. Sélection à sa voix (Poc In Labs + comités SATT). Pas les trois inserts Christophe.",
   "justifications": [
     {
       "decision": "GARDER",
-      "passage": "Présentation SATT, étude, foisonnement, valeur, 100 k€ / 500 k€, équipe, transfert",
-      "justification": "C'est déjà le geste E12. On n'y touche pas."
-    },
-    {
-      "decision": "AJOUTER",
-      "passage": "Accroche T7",
-      "justification": "La vidéo se place après T7. Loïc, Sylvia, Muriel tels que filmés."
-    },
-    {
-      "decision": "AJOUTER",
-      "passage": "On ne prend pas tous les projets. On sélectionne.",
-      "justification": "Trou du grain E12 : sélection / investissement public."
-    },
-    {
-      "decision": "AJOUTER",
-      "passage": "Maturer, ce n'est pas incuber.",
-      "justification": "Intention T7 ; prépare E13 sans l'enseigner."
+      "passage": "Texte 240926 intégral",
+      "justification": "C'est le texte filmé / de tournage. On n'y revient pas."
     }
   ],
   "segments": [
@@ -34,15 +19,27 @@
     },
     {
       "couleur": "noir",
-      "texte": "Vous venez d’entendre que l’on n’y va pas seul. Loïc a frappé à notre porte pour un financement de maturation, puis a créé. Sylvia décrit un continuum : une première preuve de concept, puis la maturation à la SATT. Muriel situe la SATT parmi les financeurs, à côté des incubateurs. Ce que je vais vous dire, c’est comment on entre chez nous, et ce qui se passe entre la prématuration et la maturation."
+      "texte": "Les témoignages des chercheurs montrent que nous sommes à leurs côtés pour les aider sur le chemin de l’innovation et ce à différents stades de maturité : conseils, expertises marché, technologiques et en propriété intellectuelle et également nous investissons dans les technologies."
     },
     {
       "couleur": "noir",
-      "texte": "Nous travaillons avec les chercheurs sur leur stratégie d’innovation : nous les aidons à évaluer si leurs inventions peuvent se transformer en innovation à fort potentiel. Toutes les inventions n’aboutissent pas à des innovations. Une invention ne se développera pas si elle ne rencontre pas un enjeu commercial. Une innovation, c’est la création de quelque chose de nouveau et qui crée de la valeur : elle répond à un besoin marché. Notre écosystème d’innovation dispose de plusieurs dispositifs et de financements pour accompagner les porteurs de projets à développer leurs technologies pour transformer leurs inventions en innovations. Selon la maturité technologique du projet, des accompagnements appropriés sont accessibles pour dérisquer les projets tout au long de leur développement. Lorsqu’un chercheur a une idée, et des premiers résultats prometteurs, il va pouvoir valider une première preuve de concept via des financements de prématuration. Ce sont des financements à hauteur de 100 k€ pendant 1 an qui permettent de valider une hypothèse sur un premier marché applicatif."
+      "texte": "Le plus tôt possible, nous travaillons avec les chercheurs sur leur stratégie d’innovation : nous les aidons à évaluer si leurs inventions peuvent se transformer en innovation à fort potentiel. Toutes les inventions n’aboutissent pas à des innovations. Une invention ne se développera pas si elle ne rencontre pas un enjeu commercial. Une innovation, c’est la création de quelque chose de nouveau et qui crée de la valeur : elle répond à un besoin marché. Notre écosystème d’innovation dispose de plusieurs dispositifs et de financements pour accompagner les porteurs de projets à développer leurs technologies pour transformer leurs inventions en innovations."
     },
     {
       "couleur": "noir",
-      "texte": "On ne prend pas tous les projets. On sélectionne. Une première preuve, un enjeu applicatif, souvent une piste de propriété intellectuelle. Ce n’est pas un droit. C’est un investissement public pour lever le doute le plus coûteux."
+      "texte": "Prematuration"
+    },
+    {
+      "couleur": "noir",
+      "texte": "Selon la maturité technologique du projet, des accompagnements appropriés sont accessibles pour dérisquer les projets tout au long de leur développement. Lorsqu’un chercheur a une idée, et des premiers résultats prometteurs, il va pouvoir valider une première preuve de concept via des financements de prématuration. Ce sont des financements à hauteur de 100 k€ pendant 1 an qui permettent de valider une hypothèse sur un premier marché applicatif."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Il y a des étapes de sélection : les chercheurs déposent leur candidature à des programmes tels que Poc In Labs proposés par l’Université Paris-Saclay. Les projets sont évalués et analysés par un jury d’expert sur les thématiques et une dizaine de projet est financé par an."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Etude de marché"
     },
     {
       "couleur": "noir",
@@ -54,12 +51,16 @@
     },
     {
       "couleur": "noir",
-      "texte": "Maturer, ce n’est pas incuber. Chez nous, on fait mûrir la technologie et le positionnement, avec une équipe, des jalons. L’incubateur, ensuite, prépare la création et l’équipe. Ce n’est pas le même métier."
+      "texte": "La maturation"
     },
     {
       "couleur": "noir",
-      "texte": "Le développement du projet peut se poursuivre via des étapes de maturation notamment dans les SATT, société d’acceleration de transfert de technologie, qui disposent de financements publiques pour maturer la preuve de concept. La technologie doit être à un TRL 3-4, avoir une marché applicatif identifié et qu’il y ait de la propriété intellectuelle associée. L’objectif est d’accompagner le projet à forte valeur d’innovation pour créer de la valeur économique et dérisquer au maximum des verrous technologiques. La finalité est de réaliser un transfert vers un partenaire industriel qui peut être soit une entreprise existante soit une vers une SU selon la technologie et le modèle d’affaire associé à la mise sur le marché de la technologie. Les financements de maturation sont en moyenne de 500 k€. Le projet est accompagné par toute une équipe qui va soutenir le porteur et lui apporter les éléments essentiels pour sécuriser son développement : chef de projet, ingénieur brevet, juriste. Il est structuré via des jalons débloqués au fur et à mesure de l’avancée du projet. Un véritable business plan est réalisé pour mesurer les retours sur investissements potentiels. A l’issu du projet, un transfert de technologie est réalisé permettant la poursuite des développements par tiers privé qui exploitera la technologie pour sa mise sur le marché. Là encore, les équipes de la SATT vont accompagner le porteur dans les étapes de transfert où lui permettre d’ouvrir les premières portes de l’entreprenariat si une start-up est crée. L’ambition finale reste d’accompagner les chercheurs pour que leurs innovation puissent bénéficier à la société et répondre aux enjeux et transitions de notre époque."
+      "texte": "Le développement du projet peut se poursuivre via des étapes de maturation notamment dans les SATT, société d’acceleration de transfert de technologie, qui disposent de financements publiques pour maturer la preuve de concept. La technologie doit être à un TRL 3-4, avoir une marché applicatif identifié et qu’il y ait de la propriété intellectuelle associée. Là encore il y a un processus des sélection : le chercheur dépose son dossier et va venir pitch devant le comité de sélection de la SATT composé d’experts innovation de la SATT. Les projets sont évalués sur plusieurs critères tels que le caractere innovant de la technologie, la proposition de valeur marché, la robustesse de la PI et la motivation de l’équipe. 55% des projets sont en moyenne retenus. On va passer ensuite en phase de co-construction qui peut durer quelques mois et qui va permettre de constituer un dossier d’investissement qui sera présenté à notre comité d’investissement : composé de professionnels de l’industrie, du capital risques, et d’entrepreneurs. En moyenne , 80 % des projets sont retenus. Reste une phase plus administrative ou le conseil d’administration a la responsabilité de valider les décisions d’investissment."
+    },
+    {
+      "couleur": "noir",
+      "texte": "L’objectif de la maturation est d’accompagner le projet à forte valeur d’innovation pour créer de la valeur économique et dérisquer au maximum des verrous technologiques. La finalité est de réaliser un transfert vers un partenaire industriel qui peut être soit une entreprise existante soit une vers une SU selon la technologie et le modèle d’affaire associé à la mise sur le marché de la technologie. Les financements de maturation sont en moyenne de 500 k€. Le projet est accompagné par toute une équipe qui va soutenir le porteur et lui apporter les éléments essentiels pour sécuriser son développement : chef de projet, ingénieur brevet, juriste. Il est structuré via des jalons débloqués au fur et à mesure de l’avancée du projet. Un véritable business plan est réalisé pour mesurer les retours sur investissements potentiels. A l’issu du projet, un transfert de technologie est réalisé permettant la poursuite des développements par tiers privé qui exploitera la technologie pour sa mise sur le marché. Là encore, les équipes de la SATT vont accompagner le porteur dans les étapes de transfert où lui permettre d’ouvrir les premières portes de l’entreprenariat si une start-up est crée. L’ambition finale reste d’accompagner les chercheurs pour que leurs innovations puissent bénéficier à la société et répondre aux enjeux et transitions de notre époque."
     }
   ],
-  "mots_estimes": 1306
+  "mots_estimes": 1399
 }

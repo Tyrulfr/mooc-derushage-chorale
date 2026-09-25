@@ -164,7 +164,7 @@
             "E15",
             "E18"
           ],
-          "note": "Filmé le 24/09. V0 pas encore importé."
+          "note": "Filmé le 24/09. Scripts finaux déposés (E13, E15, E18). V0 pas encore importé."
         },
         {
           "heure": "10:30",
@@ -174,7 +174,7 @@
           "videos": [
             "E17"
           ],
-          "note": "Filmé le 24/09. Oral : pacte d'associés, sans loi PACTE. V0 pas encore importé."
+          "note": "Filmé le 24/09. Script final déposé. Oral : pacte d'associés, sans loi PACTE. V0 pas encore importé."
         },
         {
           "heure": "12:00",
@@ -184,7 +184,7 @@
           "videos": [
             "E12"
           ],
-          "note": "Filmé le 24/09 12h. Texte SATT = E12. V0 pas encore importé."
+          "note": "Filmé le 24/09 12h. Script final = texte SATT (scripts_valides/E12.txt). V0 pas encore importé."
         },
         {
           "heure": "14:30",
@@ -194,7 +194,7 @@
           "videos": [
             "E3"
           ],
-          "note": "Filmé le 24/09. E3 seulement. V0 pas encore importé."
+          "note": "Filmé le 24/09. E3 seulement. Script final déposé. V0 pas encore importé."
         },
         {
           "heure": "16:00",
@@ -289,37 +289,37 @@
       "filme": true,
       "filme_le": "2026-09-24",
       "v0": false,
-      "note": "Filmé le 24/09 ; transcription V0 pas encore dans le dépôt."
+      "note": "Filmé le 24/09 ; script final déposé ; transcription V0 pas encore dans le dépôt."
     },
     "E12": {
       "filme": true,
       "filme_le": "2026-09-24",
       "v0": false,
-      "note": "Filmé le 24/09 ; transcription V0 pas encore dans le dépôt."
+      "note": "Filmé le 24/09 ; script final déposé ; transcription V0 pas encore dans le dépôt."
     },
     "E13": {
       "filme": true,
       "filme_le": "2026-09-24",
       "v0": false,
-      "note": "Filmé le 24/09 ; transcription V0 pas encore dans le dépôt."
+      "note": "Filmé le 24/09 ; script final déposé ; transcription V0 pas encore dans le dépôt."
     },
     "E15": {
       "filme": true,
       "filme_le": "2026-09-24",
       "v0": false,
-      "note": "Filmé le 24/09 ; transcription V0 pas encore dans le dépôt."
+      "note": "Filmé le 24/09 ; script final déposé ; transcription V0 pas encore dans le dépôt."
     },
     "E17": {
       "filme": true,
       "filme_le": "2026-09-24",
       "v0": false,
-      "note": "Filmé le 24/09 ; transcription V0 pas encore dans le dépôt."
+      "note": "Filmé le 24/09 ; script final déposé ; transcription V0 pas encore dans le dépôt."
     },
     "E18": {
       "filme": true,
       "filme_le": "2026-09-24",
       "v0": false,
-      "note": "Filmé le 24/09 ; transcription V0 pas encore dans le dépôt."
+      "note": "Filmé le 24/09 ; script final déposé ; transcription V0 pas encore dans le dépôt."
     },
     "E2": {
       "filme": false,
