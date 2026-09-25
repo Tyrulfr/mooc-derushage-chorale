@@ -1,7 +1,7 @@
 {
   "source_document": "20260710_Prev_Vid.xlsx",
   "source_path": "/Users/ups_ifpoc/Documents/01_Ingenierie/01_INNOV/04_Conception/20260710_Prev_Vid.xlsx",
-  "date_mise_a_jour": "2026-07-10",
+  "date_mise_a_jour": "2026-09-25",
   "note": "Les noms de la colonne « Nom propose » du tableau de conception sont des propositions ; l'intervenant de chaque video expert reste a definir.",
   "capsules": {
     "GEN": {
@@ -17,7 +17,7 @@
           "code": "E1",
           "titre": "Reconnaitre les differentes origines d'une innovation",
           "descriptif": "Tech-push, market-pull, observation d'usage, rencontre, serendipite, maturation progressive.",
-          "intervenant": null
+          "intervenant": "Bernard Yannou"
         }
       ]
     },
@@ -33,7 +33,7 @@
           "code": "E1",
           "titre": "Reconnaitre les differentes origines d'une innovation",
           "descriptif": "Tech-push, market-pull, observation d'usage, rencontre, serendipite, maturation progressive.",
-          "intervenant": null
+          "intervenant": "Bernard Yannou"
         }
       ]
     },
@@ -73,13 +73,13 @@
           "code": "E4",
           "titre": "Resultat scientifique, POC, prototype, MVP et TRL",
           "descriptif": "Clarifier les niveaux de preuve.",
-          "intervenant": null
+          "intervenant": "Fatoumata Aonon"
         },
         {
           "code": "E5",
           "titre": "Derisquer un projet par etapes",
           "descriptif": "Prematuration, maturation, jalons techniques et commerciaux, criteres de decision.",
-          "intervenant": null
+          "intervenant": "Virginia Branco"
         }
       ]
     },
@@ -145,13 +145,20 @@
           "code": "E10",
           "titre": "Quelle voie de valorisation pour quel projet ?",
           "descriptif": "Licence, creation, co-developpement, partenariat et criteres de choix.",
-          "intervenant": null
+          "intervenant": "Virginia Branco"
         },
         {
           "code": "E11",
           "titre": "Les mecanismes juridiques du transfert",
           "descriptif": "Licence exclusive ou non, cession, contrat de collaboration, copropriete et principes de negociation.",
-          "intervenant": null
+          "intervenant": "Soizic Lefeuvre"
+        },
+        {
+          "code": "E11bis",
+          "titre": "La loi PACTE et le concours scientifique",
+          "descriptif": "Optionnel. Regime de l'agent public (loi Allegre 1999 / loi PACTE 2019) : participer a une societe qui valorise ses travaux sans quitter l'etablissement. Temps de service, parts, fonctions. Ce n'est pas un concours de financement (i-Lab). Distinct du pacte d'associes (E17).",
+          "intervenant": "Soizic Lefeuvre",
+          "optionnel": true
         }
       ]
     },
@@ -169,13 +176,13 @@
           "code": "E12",
           "titre": "De la prematuration a la maturation",
           "descriptif": "Etapes, selection, investissement, jalons et accompagnement.",
-          "intervenant": "Fatoumata Aonon"
+          "intervenant": "Stephanie Oger-Roussel"
         },
         {
           "code": "E13",
           "titre": "Ce que fait reellement un incubateur",
           "descriptif": "Coaching, reseau, formation, confrontation, equipe et preparation de la creation.",
-          "intervenant": null
+          "intervenant": "Arielle Sante"
         },
         {
           "code": "E13bis",
@@ -204,7 +211,7 @@
           "code": "E15",
           "titre": "Comprendre la logique des investisseurs",
           "descriptif": "Dilution, retour attendu, rythme de croissance, gouvernance et compatibilite avec le projet.",
-          "intervenant": null
+          "intervenant": "Arielle Sante"
         }
       ]
     },
@@ -242,7 +249,7 @@
           "code": "E18",
           "titre": "Passer de la preuve scientifique a la valeur pour l'interlocuteur",
           "descriptif": "Adapter le message selon l'utilisateur, le decideur, le partenaire ou l'investisseur.",
-          "intervenant": null
+          "intervenant": "Arielle Sante"
         },
         {
           "code": "E19",

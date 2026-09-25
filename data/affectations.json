@@ -24,7 +24,7 @@
           "code": "E1",
           "titre": "Reconnaitre les differentes origines d'une innovation",
           "descriptif": "Tech-push, market-pull, observation d'usage, rencontre, serendipite, maturation progressive.",
-          "intervenant": null
+          "intervenant": "Bernard Yannou"
         }
       ],
       "experts_proposes": [
@@ -209,7 +209,7 @@
           "code": "E1",
           "titre": "Reconnaitre les differentes origines d'une innovation",
           "descriptif": "Tech-push, market-pull, observation d'usage, rencontre, serendipite, maturation progressive.",
-          "intervenant": null
+          "intervenant": "Bernard Yannou"
         }
       ],
       "experts_proposes": [
@@ -890,13 +890,13 @@
           "code": "E4",
           "titre": "Resultat scientifique, POC, prototype, MVP et TRL",
           "descriptif": "Clarifier les niveaux de preuve.",
-          "intervenant": null
+          "intervenant": "Fatoumata Aonon"
         },
         {
           "code": "E5",
           "titre": "Derisquer un projet par etapes",
           "descriptif": "Prematuration, maturation, jalons techniques et commerciaux, criteres de decision.",
-          "intervenant": null
+          "intervenant": "Virginia Branco"
         }
       ],
       "experts_proposes": [
@@ -1805,13 +1805,15 @@
       ],
       "contenus_referents": [
         "E10 — Quelle voie de valorisation pour quel projet ?",
-        "E11 — Les mecanismes juridiques du transfert"
+        "E11 — Les mecanismes juridiques du transfert",
+        "E11bis — La loi PACTE et le concours scientifique (optionnel)"
       ],
       "decisions_editoriales": [
         "Montage T6 : 4 voix (SYL, MUR, JJG, LOI).",
         "JJG-0009 = volet licence/cession (reutilisation partielle de JJG-0008 / T5).",
         "Duree montage ~300 s hors cadrage.",
-        "Orientations E10/E11 premachees : utilisation_script_temoin.par_voix."
+        "Orientations E10/E11 premachees : utilisation_script_temoin.par_voix.",
+        "2026-09-25 : E11bis optionnelle (Soizic) — concours scientifique = regime de l'agent, pas un financement. Pas T8, pas E17."
       ],
       "plan_montage": [
         {
@@ -1911,10 +1913,10 @@
         "outro": {
           "position": "Apres LOI-0006",
           "duree_cible_secondes": 30,
-          "fonction": "Synthese + E10 puis E11.",
-          "enchainement_expert": "E10, E11",
-          "texte_intervenant": "La creation d'entreprise n'est qu'une option. E10 compare les voies ; E11 en explique les mecanismes juridiques.",
-          "texte_pancarte": "Choisir sa voie de transfert\n→ Suite : E10 puis E11"
+          "fonction": "Synthese + E10, E11, E11bis.",
+          "enchainement_expert": "E10, E11, E11bis",
+          "texte_intervenant": "La creation d'entreprise n'est qu'une option. E10 compare les voies ; E11 les contrats de transfert. En option, E11bis (Soizic) : concours scientifique — regime de l'agent public (Allègre / PACTE), pas un concours de financement.",
+          "texte_pancarte": "Voie + contrats\n→ Option : statut de l'agent / PACTE"
         }
       },
       "videos_expert": [
@@ -1922,13 +1924,20 @@
           "code": "E10",
           "titre": "Quelle voie de valorisation pour quel projet ?",
           "descriptif": "Licence, creation, co-developpement, partenariat et criteres de choix.",
-          "intervenant": null
+          "intervenant": "Virginia Branco"
         },
         {
           "code": "E11",
           "titre": "Les mecanismes juridiques du transfert",
           "descriptif": "Licence exclusive ou non, cession, contrat de collaboration, copropriete et principes de negociation.",
-          "intervenant": null
+          "intervenant": "Soizic Lefeuvre"
+        },
+        {
+          "code": "E11bis",
+          "titre": "La loi PACTE et le concours scientifique",
+          "descriptif": "Optionnel. Regime de l'agent public (loi Allegre 1999 / loi PACTE 2019) : participer a une societe qui valorise ses travaux sans quitter l'etablissement. Distinct du pacte d'associes (E17). Ce n'est pas un concours de financement.",
+          "intervenant": "Soizic Lefeuvre",
+          "optionnel": true
         }
       ],
       "experts_proposes": [
@@ -2086,6 +2095,91 @@
             "Inviter l'apprenant a transferer vers son projet.",
             "Ne pas inventer d'exemples absents de la video temoin."
           ]
+        },
+        {
+          "code": "E11bis",
+          "expert": "Soizic Lefeuvre",
+          "titre": "La loi PACTE et le concours scientifique",
+          "optionnel": true,
+          "concepts": [
+            "Regime de l'agent public",
+            "Loi Allègre 1999",
+            "Loi PACTE 2019",
+            "Concours scientifique",
+            "Participation / parts / fonctions"
+          ],
+          "introduction": "Vidéo optionnelle. Le concours scientifique n'est pas un concours de financement. C'est le régime qui permet à un agent public de participer à une société valorisant ses travaux (temps de service, parts, parfois fonctions) sans quitter l'établissement. Il se pose quand on choisit la création (T6), pas dans la chaîne des aides (T8). Les vécus filmés qui le nomment sont dans T8 : les citer comme tels, sans les inventer.",
+          "utilisation_script_temoin": {
+            "principe": "Partir du choix de voie T6. Citer les vécus T8 uniquement avec timecodes. Ne pas inventer de verbatim.",
+            "sequence_recommandee": [
+              "Ouverture : ce n'est pas un concours (i-Lab)",
+              "Ancrage T6 : création vs licence",
+              "Allègre puis PACTE : ce que l'agent peut faire",
+              "Échos T8 (Sylvia, Muriel, Loïc)",
+              "Frontière E17 (pacte d'associés)",
+              "Cloture"
+            ],
+            "par_voix": [
+              {
+                "extrait_id": "TRANSCRIPT-T6",
+                "chercheur": "Loïc Rajjou",
+                "timecodes": "montage final",
+                "source": "T6.docx",
+                "angle": "Le choix création d'entreprise ouvre la question du statut de l'agent",
+                "verbatim_cle": "Dès le début, il faut se demander : licensing ou création d’entreprise ?",
+                "travail_expert": "E11bis : si création, l'agent a besoin d'une autorisation (concours scientifique, participation). Ce n'est pas le contrat de licence (E11).",
+                "erreur_a_eviter": "Ne pas traiter le concours scientifique comme une aide ou un appel à projets."
+              },
+              {
+                "extrait_id": "TRANSCRIPT-T6",
+                "chercheur": "Jean-Jacques Greffet",
+                "timecodes": "montage final",
+                "source": "T6.docx",
+                "angle": "Participation au capital ≠ concours scientifique",
+                "verbatim_cle": "Deux schémas : licence exclusive délivrée par les établissements copropriétaires, ou transfert de propriété contre participation au capital.",
+                "travail_expert": "E11bis : distinguer parts de l'établissement (transfert) et parts / temps de l'agent (concours scientifique, participation Allègre / PACTE).",
+                "erreur_a_eviter": "Ne pas fusionner participation de l'établissement et régime personnel de l'agent."
+              },
+              {
+                "extrait_id": "TRANSCRIPT-T8",
+                "chercheur": "Sylvia Cohen-Kaminski",
+                "timecodes": "00:02:37–00:03:00",
+                "source": "T8.docx",
+                "angle": "Écho vécu (autre grain) : temps et salaire",
+                "verbatim_cle": "Et la loi Pacte sur l'innovation nous permet de pouvoir disposer de ce dispositif concours scientifique qui nous permet de consacrer un certain pourcentage de temps, en général 20%, au développement de notre start-up, tout en continuant à être payé à 100% par notre organisme de recherche.",
+                "travail_expert": "E11bis : nommer le dispositif ; le pourcentage n'est pas le cœur juridique (plafond, autorisation, cumul).",
+                "erreur_a_eviter": "Ne pas en faire une leçon de financement T8. Ne pas confondre loi PACTE et pacte d'associés."
+              },
+              {
+                "extrait_id": "TRANSCRIPT-T8",
+                "chercheur": "Muriel Thomas",
+                "timecodes": "00:03:14–00:03:40",
+                "source": "T8.docx",
+                "angle": "Écho vécu : 40 % Carambouche, salaire INRAE",
+                "verbatim_cle": "Alors que j'ai signé un concours scientifique qui m'autorise à passer 40 pour Carambouche. Ça signifie que je garde mon salaire et je suis simplement 60 de mon temps en labo, puis 40 Carambouche, donc le concours scientifique est un levier extrêmement important pour se lancer dans notre entrepreneuriat.",
+                "travail_expert": "E11bis : autorisation de temps, pas une subvention.",
+                "erreur_a_eviter": "Ne pas généraliser le 20 % comme seule règle."
+              },
+              {
+                "extrait_id": "TRANSCRIPT-T8",
+                "chercheur": "Loïc Rajjou",
+                "timecodes": "00:03:40–00:04:05",
+                "source": "T8.docx",
+                "angle": "Écho vécu : pas automatique",
+                "verbatim_cle": "Je n'ai pas de concours scientifique, pour une raison assez simple, c'est qu'AgroParisTech via AgroParisTech Innovation avait aussi pris des parts et qu'on considérait que, vu que je n'étais que au conseil scientifique et cofondateur, ça incombait sur mon activité de recherche, qui était une activité de recherche plutôt finalisée.",
+                "travail_expert": "E11bis : le dispositif dépend du rôle, des parts et de l'employeur. Pas obligatoire.",
+                "erreur_a_eviter": "Ne pas présenter le concours scientifique comme le passage obligé de toute création."
+              }
+            ]
+          },
+          "consignes": [
+            "Video optionnelle.",
+            "Enseigner un régime de l'agent public, pas une aide.",
+            "Distinguer Allègre (participation / création / fonctions) et PACTE (assouplissement, concours scientifique élargi).",
+            "E11 = contrats établissement–entreprise. E11bis = statut de la personne.",
+            "Frontière stricte avec E17 (pacte d'associés).",
+            "Les verbatims T8 sont des échos, pas le grain de la vidéo."
+          ]
         }
       ],
       "script_final_source": "script_t_monte_v1"
@@ -2227,19 +2321,19 @@
           "code": "E12",
           "titre": "De la prematuration a la maturation",
           "descriptif": "Etapes, selection, investissement, jalons et accompagnement.",
-          "intervenant": "Fatoumata Aonon"
+          "intervenant": "Stephanie Oger-Roussel"
         },
         {
           "code": "E13",
           "titre": "Ce que fait reellement un incubateur",
           "descriptif": "Coaching, reseau, formation, confrontation, equipe et preparation de la creation.",
-          "intervenant": null
+          "intervenant": "Arielle Sante"
         },
         {
           "code": "E13bis",
           "titre": "Autres structures d'accompagnement",
           "descriptif": "Design spot, fablab, pole de competitivite, OTT, etc.",
-          "intervenant": null
+          "intervenant": "Yoann Montenot"
         }
       ],
       "experts_proposes": [
@@ -2252,7 +2346,7 @@
       "orientations_expert": [
         {
           "code": "E12",
-          "expert": null,
+          "expert": "Stephanie Oger-Roussel",
           "titre": "De la prematuration a la maturation",
           "concepts": [
             "De la prematuration a la maturation"
@@ -2666,7 +2760,7 @@
           "code": "E15",
           "titre": "Comprendre la logique des investisseurs",
           "descriptif": "Dilution, retour attendu, rythme de croissance, gouvernance et compatibilite avec le projet.",
-          "intervenant": null
+          "intervenant": "Arielle Sante"
         }
       ],
       "experts_proposes": [
@@ -3302,7 +3396,7 @@
           "code": "E18",
           "titre": "Passer de la preuve scientifique a la valeur pour l'interlocuteur",
           "descriptif": "Adapter le message selon l'utilisateur, le decideur, le partenaire ou l'investisseur.",
-          "intervenant": null
+          "intervenant": "Arielle Sante"
         },
         {
           "code": "E19",

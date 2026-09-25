@@ -1,0 +1,65 @@
+{
+  "titre": "Proposition E12 — script Stéphanie Oger-Roussel (swap depuis E4)",
+  "source_script": "E12.txt",
+  "date": "2026-09-24",
+  "mode": "elargissement_script_recu",
+  "objectif_pedagogique": "De la prématuration à la maturation : étapes, sélection, investissement, jalons et accompagnement SATT, à partir de T7 filmé.",
+  "note": "Son texte v2 est conservé. Trois ajouts seulement : accroche T7 (Loïc, Sylvia, Muriel), sélection, maturation ≠ incubation. Pas les cinq niveaux. E4 proposé à Fatoumata.",
+  "justifications": [
+    {
+      "decision": "GARDER",
+      "passage": "Présentation SATT, étude, foisonnement, valeur, 100 k€ / 500 k€, équipe, transfert",
+      "justification": "C'est déjà le geste E12. On n'y touche pas."
+    },
+    {
+      "decision": "AJOUTER",
+      "passage": "Accroche T7",
+      "justification": "La vidéo se place après T7. Loïc, Sylvia, Muriel tels que filmés."
+    },
+    {
+      "decision": "AJOUTER",
+      "passage": "On ne prend pas tous les projets. On sélectionne.",
+      "justification": "Trou du grain E12 : sélection / investissement public."
+    },
+    {
+      "decision": "AJOUTER",
+      "passage": "Maturer, ce n'est pas incuber.",
+      "justification": "Intention T7 ; prépare E13 sans l'enseigner."
+    }
+  ],
+  "segments": [
+    {
+      "couleur": "noir",
+      "texte": "Je suis Stéphanie Oger-Roussel, Directrice Stratégie Innovation à la Société d’Accéleration de Transfert de Technologie de Paris-Saclay. Mon équipe accompagne plus d’une cinquantaine de projets par an issus des laboratoires du Pôle Universitaire d’Innovation de l’Université Paris-Saclay, essentiellement au stade de prématuration et dans toutes disciplines technologiques tels que les sciences du vivant, la santé, les sciences de l’ingénieur ou le numérique."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Vous venez d’entendre que l’on n’y va pas seul. Loïc a frappé à notre porte pour un financement de maturation, puis a créé. Sylvia décrit un continuum : une première preuve de concept, puis la maturation à la SATT. Muriel situe la SATT parmi les financeurs, à côté des incubateurs. Ce que je vais vous dire, c’est comment on entre chez nous, et ce qui se passe entre la prématuration et la maturation."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Nous travaillons avec les chercheurs sur leur stratégie d’innovation : nous les aidons à évaluer si leurs inventions peuvent se transformer en innovation à fort potentiel. Toutes les inventions n’aboutissent pas à des innovations. Une invention ne se développera pas si elle ne rencontre pas un enjeu commercial. Une innovation, c’est la création de quelque chose de nouveau et qui crée de la valeur : elle répond à un besoin marché. Notre écosystème d’innovation dispose de plusieurs dispositifs et de financements pour accompagner les porteurs de projets à développer leurs technologies pour transformer leurs inventions en innovations. Selon la maturité technologique du projet, des accompagnements appropriés sont accessibles pour dérisquer les projets tout au long de leur développement. Lorsqu’un chercheur a une idée, et des premiers résultats prometteurs, il va pouvoir valider une première preuve de concept via des financements de prématuration. Ce sont des financements à hauteur de 100 k€ pendant 1 an qui permettent de valider une hypothèse sur un premier marché applicatif."
+    },
+    {
+      "couleur": "noir",
+      "texte": "On ne prend pas tous les projets. On sélectionne. Une première preuve, un enjeu applicatif, souvent une piste de propriété intellectuelle. Ce n’est pas un droit. C’est un investissement public pour lever le doute le plus coûteux."
+    },
+    {
+      "couleur": "noir",
+      "texte": "A ce stade, une étude de positionnement technico-économique est nécessaire pour explorer et valider le ou les marchés cible. Il y a plusieurs étapes : on commence par une étude de foisonnement où il faut tester plusieurs positionnements. En santé, ca peut être plusieurs types d’indications, ou différentes populations de patients. Et pour chaque hypothèse, on va réaliser une étude de marché. Ces études sont essentielles pour accompagner la stratégie R&D du projet et répondre à réel besoin. Une première étape consiste à réaliser un état de l’art technologique et concurrentiel pour comprendre les aspects différenciants de la technologie par rapport à la concurrence. Il s’agit de positionner la technologie dans son environnement. L’analyse des différents segments de marché, de la chaine de la valeur sont des étapes préalables essentielles avant de pouvoir mettre en évidence la proposition de valeur du projet ou de la technologie. Il faut décortiquer tout l’environnement du domaine ciblé pour positionner finement la technologie et se concentrer sur une problématique précise. La valeur dépend de la façon dont la technologie va répondre à un besoin concret. Cette notion de proposition de valeur est essentielle : quelle est la proposition de valeur par rapport à la concurrence ? quelle est la proposition pour répondre à un besoin ? qu’est ce qui fait qu’un client sera prêt à payer pour pouvoir bénéficier de ma technologie ? Quel est le problème que ma technologie lui retire ? en anglais, on dit « more the pain, more the gain » : plus le problème est important, plus la valeur est forte. Il y a plusieurs façons d’appréhender la valeur : elle peut être économique, bien évidemment mais en thérapeutique humaine, on parle de bénéfice/risque par exemple. Elle dépend également du degré de maturité de la technologie et du temps de mise sur le marché, du potentiel du marché adressé. Cette valeur peut être également dépendante du contexte. J’aime bien prendre l’exemple du prix que l’on serait prêt à mettre pour l’achat d’une bouteille d’eau qu’on soit à Paris ou dans le désert : la valeur dépend du contexte puisque dans le désert, on serait prêt à payer très cher pour une bouteille d’eau que dans Paris."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Pour réaliser une étude de marché, il y a souvent 2 grandes phases : La première : très documentaire : rechercher des données bibliographies, dans les bases brevets, dans des bases de données spécialisées pour décrypter tout l’environnement du marché visé, sur internet. Puis, dans une deuxième phase, il est nécessaire d’interagir avec des experts industriels, des cliniciens si la technologie est dans le domaine de la santé. C’est nécessaire pour comprendre déjà leur pratique, les solutions qui sont déjà utilisées, ce qui marche, ce qui ne marche pas et quel est le besoin non satisfait, quels sont les enjeux ou les barrières à l’entrée. Après, seulement, on échange sur la réceptivité de la technologie, elle doit se faire challenger, est ce qu’elle peut répondre à un réel besoin ? Il est important également de comprendre les contraintes de la montée en échelle de la technologie afin de réaliser un développement qui intègre les critères de performances attendus. Ce n’est pas la même chose d’avoir des résultats dans un laboratoire où l’environnement est extrêmement contrôlé que dans des environnements où les paramètres peuvent être plus aléatoires où si il existe des contraintes de coûts liés à la montée en échelle. Il peut exister plusieurs positionnements pertinents. Il faudra se tourner dans un premier temps sur la démonstration d’une première preuve de concept sur une application donnée pour après envisager d’autres applications où la captation de valeur économique ou sociétale est souvent la plus forte. La stratégie de propriété intellectuelle doit se faire en parallèle."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Maturer, ce n’est pas incuber. Chez nous, on fait mûrir la technologie et le positionnement, avec une équipe, des jalons. L’incubateur, ensuite, prépare la création et l’équipe. Ce n’est pas le même métier."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Le développement du projet peut se poursuivre via des étapes de maturation notamment dans les SATT, société d’acceleration de transfert de technologie, qui disposent de financements publiques pour maturer la preuve de concept. La technologie doit être à un TRL 3-4, avoir une marché applicatif identifié et qu’il y ait de la propriété intellectuelle associée. L’objectif est d’accompagner le projet à forte valeur d’innovation pour créer de la valeur économique et dérisquer au maximum des verrous technologiques. La finalité est de réaliser un transfert vers un partenaire industriel qui peut être soit une entreprise existante soit une vers une SU selon la technologie et le modèle d’affaire associé à la mise sur le marché de la technologie. Les financements de maturation sont en moyenne de 500 k€. Le projet est accompagné par toute une équipe qui va soutenir le porteur et lui apporter les éléments essentiels pour sécuriser son développement : chef de projet, ingénieur brevet, juriste. Il est structuré via des jalons débloqués au fur et à mesure de l’avancée du projet. Un véritable business plan est réalisé pour mesurer les retours sur investissements potentiels. A l’issu du projet, un transfert de technologie est réalisé permettant la poursuite des développements par tiers privé qui exploitera la technologie pour sa mise sur le marché. Là encore, les équipes de la SATT vont accompagner le porteur dans les étapes de transfert où lui permettre d’ouvrir les premières portes de l’entreprenariat si une start-up est crée. L’ambition finale reste d’accompagner les chercheurs pour que leurs innovation puissent bénéficier à la société et répondre aux enjeux et transitions de notre époque."
+    }
+  ],
+  "mots_estimes": 1306
+}

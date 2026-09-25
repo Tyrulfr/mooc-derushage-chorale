@@ -1,5 +1,5 @@
 {
-  "date_mise_a_jour": "2026-09-21",
+  "date_mise_a_jour": "2026-09-25",
   "note": "Suivi des positionnements intervenants. Proposition de notre part derivee du programme. Reponse, besoin exprime, preferences et proposition finale saisis au fil des retours.",
   "intervenants": [
     {
@@ -14,7 +14,7 @@
         "E17"
       ],
       "reponse": "",
-      "besoin_exprime": "2026-09-10 — Proposition de script E17 (briefs/antoine_latreille_E17.txt). Ancrage T9 ; frontière E16. Oral : pacte d'associés, sans mention de la loi PACTE. Tournage 24/09 10:30.",
+      "besoin_exprime": "2026-09-10 — Proposition de script E17 (briefs/antoine_latreille_E17.txt). Ancrage T9 ; frontière E16. Oral : pacte d'associés, sans mention de la loi PACTE.\n2026-09-24 — Filmé E17 (10:30, IncubAlliance). V0 pas encore importé.",
       "positionnement_preferences": "",
       "proposition_finale": "E17"
     },
@@ -34,7 +34,7 @@
         "E18"
       ],
       "reponse": "",
-      "besoin_exprime": "",
+      "besoin_exprime": "2026-09-24 — Filmé E13, E15, E18 (09:00, IncubAlliance). V0 pas encore importé.",
       "positionnement_preferences": "",
       "proposition_finale": "E13 ; E15 ; E18"
     },
@@ -76,19 +76,19 @@
       "nom": "Fatoumata Aonon",
       "slug": "fatoumata-aonon",
       "organisme": "CNRS",
-      "proposition_notre_part": "T3 (E4, E5) ; T6 (E10, E11) ; T7 (E12, E13, E13bis) ; T8 (E14, E15) ; T12 (E22, E23)",
+      "proposition_notre_part": "T3 (E4, E5) ; T6 (E10, E11, E11bis) ; T7 (E12, E13, E13bis) ; T8 (E14, E15) ; T12 (E22, E23)",
       "capsules": [
-        "T7",
+        "T3",
         "T8"
       ],
       "videos_expert": [
-        "E12",
+        "E4",
         "E14"
       ],
       "reponse": "Bonjour Rita,\n\nJ'espère que tu vas bien.\n\nJe te remercie pour ton message et te prie de m'excuser du délai de réponse.\n\nAprès relecture du guide de travail, je souhaiterais me positionner sur les vidéos expertises suivantes :\n\nVidéo expertise 5 — Objectif : Dérisquer un projet par étapes. Prématuration, maturation, jalons techniques et commerciaux, critères de décision.\nVidéo expertise 12 — Objectif : De la prématuration à la maturation. Étapes, sélection, investissement, jalons et accompagnement.\nVidéo expertise 14 — Objectif : La chaîne des financements de l'innovation. Prématuration, maturation, aides non dilutives, concours, Bpifrance et financement privé.\nVidéo expertise 15 — Objectif : Comprendre la logique des investisseurs. Dilution, retour attendu, rythme de croissance, gouvernance et compatibilité avec le projet.\n\nPar contre, il n'y avait pas en pièce jointe du mail initial les capsules témoins concernées, en particulier T3, T7 et T8.\n\nPourrais-tu s'il te plaît me les transmettre pour information ?\n\nJe pourrais, selon ton retour sur le positionnement retenu, te faire part de mes commentaires plus précis sur les scripts.\n\nEnfin, pour information, je serai absente à partir de ce soir jusqu'au 14 août inclus.\n\nJe reste à ta disposition pour échanger au besoin à mon retour.\n\nBel été",
-      "besoin_exprime": "Demande la transmission des capsules témoins T3, T7 et T8. Souhaite commenter plus précisément les scripts après retour sur le positionnement retenu. Absente jusqu'au 14 août inclus.",
+      "besoin_exprime": "Demande la transmission des capsules témoins T3, T7 et T8. Souhaite commenter plus précisément les scripts après retour sur le positionnement retenu. Absente jusqu'au 14 août inclus.\n2026-09-24 — E12 repris par Stephanie Oger-Roussel (texte SATT). E4 (niveaux de preuve, T3) proposé à Fatoumata ; E14 conservé. Si refus : recaster E4 (Joël, Bernard, Grégoire — dans cet ordre). Accord Fatoumata à obtenir.",
       "positionnement_preferences": "E5 ; E12 ; E14 ; E15",
-      "proposition_finale": "E12 ; E14"
+      "proposition_finale": "E4 ; E14"
     },
     {
       "nom": "Gregoire Burgé",
@@ -102,7 +102,7 @@
         "E3"
       ],
       "reponse": "Bonjour Christophe,\n\nMerci Rita pour ton mail et pour toutes ces précisions !\nJe peux faire la vidéo expert 3, par contre les phrases du script ne sont pas très claires et j'ai du mal à voir le lien/la connexion entre elles et les sujets des vidéos experts.\nSerait ce possible de prévoir un point ensemble à la rentrée pour en discuter et préparer les contours de mon intervention ?\nPas forcément utile d'écrire un script en amont de mon côté, je suis plus à l'aise à parler d'un sujet sans me raccrocher à un texte pré-écrit.\n\nTrès bonne fin de journée\n\nGrégoire",
-      "besoin_exprime": "Point à la rentrée pour clarifier le lien script / sujets expert et cadrer l'intervention. Préfère parler sans script pré-écrit.",
+      "besoin_exprime": "Point à la rentrée pour clarifier le lien script / sujets expert et cadrer l'intervention. Préfère parler sans script pré-écrit.\n2026-09-24 — Filmé E3 (14:30, IncubAlliance). V0 pas encore importé.",
       "positionnement_preferences": "E3",
       "proposition_finale": "E3"
     },
@@ -118,7 +118,7 @@
         "E2"
       ],
       "reponse": "2026-09-08 — Accord potentiel pour la vidéo expert 2 (E2), communiqué oralement. Grégoire Burgé ne fera pas E2.\n2026-09-10 — Script E2 renvoyé (modifications sur la proposition). Se présente : responsable du pôle de développement à la Direction de l’Innovation de l’Institut d’Optique. Texte déposé dans scripts_recus/E2.txt.",
-      "besoin_exprime": "Script reçu le 2026-09-10. Revue 1 : resserrement durée (~8 min → ~6 min), frontière E1 (market-pull court) et E3 (s'arrêter à l'hypothèse), coupe exemple SHS et matériau. Proposition dans E2_revue1.json.",
+      "besoin_exprime": "Script reçu le 2026-09-10. Revue 1 : resserrement durée (~8 min → ~6 min), frontière E1 (market-pull court) et E3 (s'arrêter à l'hypothèse), coupe exemple SHS et matériau. Proposition dans E2_revue1.json.\n2026-09-24 — Non filmé (créneau 16:00 à confirmer, non cité parmi les tournages du jour). À reprogrammer.",
       "positionnement_preferences": "E2",
       "proposition_finale": "E2"
     },
@@ -162,17 +162,18 @@
       "nom": "Soizic Lefeuvre",
       "slug": "soizic-lefeuvre",
       "organisme": "Université Paris-Saclay",
-      "proposition_notre_part": "T4 (E6, E7) ; T5 (E8, E9) ; T6 (E10, E11) ; T12 (E22, E23)",
+      "proposition_notre_part": "T4 (E6, E7) ; T5 (E8, E9) ; T6 (E10, E11, E11bis) ; T12 (E22, E23)",
       "capsules": [
         "T6"
       ],
       "videos_expert": [
-        "E11"
+        "E11",
+        "E11bis"
       ],
       "reponse": "",
-      "besoin_exprime": "",
+      "besoin_exprime": "2026-09-25 — E11bis optionnelle : loi PACTE / Allègre, concours scientifique. Grain T6 (statut de l'agent au moment du choix de voie), pas T8 (financements). Distincte de E11 (contrats) et de E17 (pacte d'associés). Accord et créneau à obtenir.",
       "positionnement_preferences": "",
-      "proposition_finale": "E11"
+      "proposition_finale": "E11 ; E11bis (optionnel)"
     },
     {
       "nom": "Stanislas De Lapasse",
@@ -195,17 +196,17 @@
       "nom": "Stephanie Oger-Roussel",
       "slug": "stephanie-oger-roussel",
       "organisme": "Communication de SATT Paris-Saclay",
-      "proposition_notre_part": "T3 (E4, E5) ; T6 (E10, E11) ; T7 (E12, E13, E13bis) ; T8 (E14, E15)",
+      "proposition_notre_part": "T3 (E4, E5) ; T6 (E10, E11, E11bis) ; T7 (E12, E13, E13bis) ; T8 (E14, E15)",
       "capsules": [
-        "T3"
+        "T7"
       ],
       "videos_expert": [
-        "E4"
+        "E12"
       ],
       "reponse": "",
-      "besoin_exprime": "",
+      "besoin_exprime": "2026-09-24 — Swap : son script SATT devient E12. Filmé E12 (12:00, IncubAlliance). V0 pas encore importé. E4 proposé à Fatoumata.",
       "positionnement_preferences": "",
-      "proposition_finale": "E4"
+      "proposition_finale": "E12"
     },
     {
       "nom": "Stephanie Sano",
@@ -228,7 +229,7 @@
       "nom": "Virginia Branco",
       "slug": "virginia-branco",
       "organisme": "ENS Paris-Saclay",
-      "proposition_notre_part": "T3 (E4, E5) ; T6 (E10, E11) ; T12 (E22, E23)",
+      "proposition_notre_part": "T3 (E4, E5) ; T6 (E10, E11, E11bis) ; T12 (E22, E23)",
       "capsules": [
         "T3",
         "T6"

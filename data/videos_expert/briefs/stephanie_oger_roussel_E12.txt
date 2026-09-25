@@ -1,0 +1,24 @@
+# Cadrage E12 — Stephanie Oger-Roussel
+# Script oral : data/videos_expert/scripts_valides/E12.txt
+# Ne pas modifier son texte.
+
+Video : E12 — De la prématuration à la maturation
+Temoin : T7 filmé (T7.docx, 05:51)
+Tournage : 24/09/2026 12:00 — IncubAlliance Palaiseau
+Monica : intro / outro dans data/videos_expert/monica/E12.txt
+
+Grain : étapes, sélection, investissement, jalons, accompagnement SATT.
+Ancrage T7 (uniquement) :
+- Loïc 00:02:12 — porte SATT, maturation, puis création
+- Sylvia 00:04:56 — continuum POC in Lab → maturation SAT
+- Muriel 00:00:32 — SATT parmi les financeurs, à côté des incubateurs
+
+Hors sujet (déjà ailleurs) :
+- E4 — niveaux de preuve (résultat, POC, prototype, MVP, TRL)
+- E5 — dérisquer / pivot / critères de décision (Virginia, filmée)
+- E13 — ce que fait un incubateur (Arielle)
+- E14 — chaîne des financements (Fatoumata)
+
+Incrustations : après rush. Mot-clés possibles (signaling, 1–4 mots) :
+prématuration, sélection, étude de positionnement, foisonnement, TRL 3-4, maturation, jalons.
+Pas de tableau 1–9. Pas de montants à l’écran si elle les dit déjà.

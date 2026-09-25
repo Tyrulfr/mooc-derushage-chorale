@@ -1,0 +1,82 @@
+(Votre texte, inchangé. Nos remarques entre parenthèses : pourquoi on retire, ce que l'on garde, ce que l'on recadre. Vidéo 4 = clarifier les niveaux de preuve. Le titre ci-dessous est celui de la vidéo 5, déjà filmée.)
+
+MOOC Innovation — Stéphanie Oger-Roussel
+Dérisquer un projet par étapes. Prématuration, maturation, jalons techniques et commerciaux, critères de décision.
+(On retire ce titre. C'est l'objectif de la vidéo 5, déjà tournée par Virginia Branco. Votre vidéo 4 : résultat scientifique, POC, prototype, MVP et TRL.)
+
+Notre écosystème d'innovation dispose de plusieurs dispositifs et de financements pour accompagner les porteurs de projets à développer leurs technologies pour transformer leurs inventions en innovations.
+(On retire l'ouverture « écosystème / dispositifs / financements ». C'est le fil des vidéos 12 et 14. Ici, on n'enseigne pas comment on finance, on nomme le niveau de preuve.)
+
+Toutes les inventions ne se transforment pas en innovation. Une innovation est une invention qui répond à un besoin marché.
+(On retire cette définition. Elle est fausse : une innovation n'est pas « une invention + un marché ». Bernard, vidéo 1 : une technologie n'est pas encore une innovation ; plusieurs origines. On part du résultat / de la technologie, pas de l'invention.)
+
+Selon la maturité technologique du projet, des accompagnements appropriés sont accessibles pour dérisquer les projets tout au long de leur développement.
+(On retire. « Dérisquer par étapes » est le cœur de la vidéo 5, déjà filmée.)
+
+Lorsqu'un chercheur a une idée, et des premiers résultats prometteurs, il va pouvoir valider une première preuve de concept via des financements de prématuration.
+(On garde l'idée et les premiers résultats, et la première preuve de concept. On retire « via des financements de prématuration » : c'est la vidéo 5 / 12 / 14. Pour la vidéo 4, le POC est un niveau de preuve, pas une ligne budgétaire.)
+
+Ce sont des financements à hauteur de 100 k€ pendant 1 an qui permettent de valider une hypothèse sur un premier marché applicatif.
+(On retire les 100 k€ et la durée d'un an. Chaîne des financements = vidéo 14. On peut garder, en une phrase, l'idée d'une première application pour le POC.)
+
+A ce stade, une étude de positionnement technico-économique peut être nécessaire et réalisée par la SATT pour explorer et valider le marché cible.
+(On ne développe pas l'étude SATT comme méthode. Virginia l'a déjà illustrée dans la vidéo 5 avec Jean-Jacques et Muriel. On rattache plutôt Jean-Jacques : un besoin « connu » n'est pas encore une preuve.)
+
+Une première stratégie de propriété intellectuelle est également élaborée.
+(On retire. Brevet, secret, droit d'auteur = vidéos 8 et 9, Stanislas. Ce n'est pas un niveau de preuve.)
+
+Ces études sont essentielles pour accompagner la stratégie R&D du projet et répondre à réel besoin. Une première étape consiste à réaliser un état de l'art technologique et marché pour comprendre les aspects différenciants de la technologie par rapport à la concurrence. L'analyse des différents segments de marché, de la chaine de la valeur sont des étapes préalables avant de pouvoir mettre en évidence la proposition de valeur du projet ou de la technologie.
+(On retire l'état de l'art, la concurrence, la chaîne de valeur et la proposition de valeur développés. C'est le grain de la vidéo 2, Joël Nguyen. Trop d'étapes de méthode pour une vidéo qui doit nommer des niveaux.)
+
+La valeur dépend de la façon dont la technologie va répondre à un besoin concret. Pour cela, il est nécessaire d'interagir avec des experts industriels via des interviews pour évaluer la réceptivité de la technologie, comprendre les problématiques, les enjeux et comment la technologie elle peut résoudre une problématique.
+(On garde le besoin concret et le terrain / les industriels. On le raccroche à Yann et Jean-Jacques dans la vidéo témoin 3. On ne développe pas le protocole d'interviews.)
+
+Il est important également de comprendre les contraintes de la montée en échelle de la technologie afin de réaliser un développement qui intègre les critères de performances attendus.
+(On garde. C'est votre phrase la plus utile pour le prototype. On la rattache à Loïc dans la vidéo témoin 3.)
+
+Il peut exister plusieurs positionnements pertinents. Il faudra se tourner dans un premier temps sur la démonstration d'une première preuve de concept sur une application donnée pour après envisager d'autres applications où la captation de valeur économique ou sociétale est souvent la plus forte.
+(On garde la première application pour le POC. On retire « captation de valeur » et le portefeuille d'applications : ce n'est pas le grain, et cela ouvre le dérisquage / le choix de marché, vidéo 5.)
+
+Une stratégie de propriété intellectuelle doit être également envisagée, souvent soit par le brevet, savoir faire secret ou droit d'auteur pour les logiciels.
+(On retire. Encore les vidéos 8 et 9.)
+
+Le développement du projet peut se poursuivre via des étapes de maturation notamment dans les SATT, société d'acceleration de transfert de technologie, qui disposent de financements publiques pour maturer la preuve de concept. La technologie doit être à un TRL 3-4, avoir une marché applicatif identifié et qu'il y ait de la propriété intellectuelle associée.
+(On retire prématuration / maturation / financements publics / PI associée. C'est la vidéo 5 et la vidéo 12. On garde le TRL, mais comme langage pour se situer, pas comme seuil d'entrée dans un financement SATT.)
+
+L'objectif est d'accompagner le projet à forte valeur d'innovation pour créer de la valeur économique et dérisquer au maximum des verrous technologiques. La finalité est de réaliser un transfert vers un partenaire industriel qui peut être soit une entreprise existante soit une vers une SU selon la technologie et le modèle d'affaire associé à la mise sur le marché de la technologie.
+(On retire. Transfert, licence ou création, modèle d'affaires = vidéos 10 et 11. « Dérisquer les verrous » = vidéo 5.)
+
+Les financements de maturation sont en moyenne de 500 k€. Le projet est accompagné par toute une équipe : chef de projet, ingénieur brevet, juriste. Il est structuré via des jalons débloqués au fur et à mesure de l'avancée du projet. Un véritable business plan est réalisé pour mesurer les retours sur investissements potentiels. A l'issu du projet, un transfert de technologie est réalisé permettant la poursuite des développements par tiers privé qui exploitera la technologie pour sa mise sur le marché.
+(On retire tout ce paragraphe. 500 k€, équipe SATT, jalons de déblocage, business plan, ROI, transfert vers un tiers : vidéos 12 et 14, pas la 4. Les jalons de la vidéo 5 sont des critères de décision, pas des jalons de paiement.)
+
+--- Texte proposé recadré ---
+
+Bonjour. Je m'appelle Stéphanie Oger-Roussel. Je suis directrice de l'innovation et de la stratégie à la SATT Paris-Saclay.
+
+Vous venez d'entendre des chercheurs sortir du laboratoire pour vérifier un besoin.
+
+Un résultat prometteur, une technologie, n'est pas encore une innovation. Encore faut-il savoir ce que l'on a déjà démontré — et ce que l'on n'a pas encore démontré.
+
+Cinq repères. Le résultat scientifique. La preuve de concept, le POC. Le prototype. Le produit minimum viable, le MVP. Et l'échelle TRL, pour se situer.
+
+Lorsqu'un chercheur a une idée, et des premiers résultats prometteurs, il va pouvoir valider une première preuve de concept. Ce n'est pas encore une preuve d'usage. Yann Monier part de la bibliographie et de rapports : ils confirment un intérêt possible. Ce n'est pas encore une preuve que des industriels, un par un, ont ce problème au quotidien.
+
+Sylvia Cohen-Kaminski a identifié une cible, puis une feuille de route jusqu'au candidat médicament dans des modèles. On n'est plus seulement dans l'idée. On n'est pas encore dans l'usage auprès des patients. Chez elle, passer des séries chimiques au candidat dans des modèles, c'est déjà une première preuve de concept.
+
+Il faudra se tourner dans un premier temps sur la démonstration d'une première preuve de concept sur une application donnée. Est-ce que ça marche, dans un cadre encore contrôlé ? Pas : est-ce que le marché l'achètera. Pas : est-ce que l'usine peut le produire.
+
+La valeur dépend de la façon dont la technologie va répondre à un besoin concret. Pour cela, il est nécessaire d'interagir avec des experts industriels, des utilisateurs, pour évaluer la réceptivité de la technologie, comprendre les problématiques, les enjeux. Jean-Jacques Greffet avait un besoin « connu » par le cofondateur. Cela n'a pas suffi. Une étude plus chiffrée, des échanges avec des utilisateurs, et la cible a changé. Une intuition de marché n'est pas encore une preuve.
+
+Dans une SATT, on étudie un projet avec les chercheurs, et on les accompagne pour situer où ils en sont. Quelle preuve ont-ils — un résultat, une première preuve de concept ? À quelle maturité, le TRL ? Et si l'usage commence à se poser : a-t-on déjà quelque chose qu'un utilisateur peut tester — ce que l'on appelle parfois un MVP ? On ne tranche pas à leur place. On aide à lire le niveau.
+
+C'est à ça que la SATT a servi dans ce que vous venez d'entendre. Loïc : une étude de marché portée avec nous, puis les acteurs — les besoins n'étaient pas les mêmes d'une filière à l'autre. Jean-Jacques : une étude plus chiffrée, avec la SATT — le besoin « connu » ne tenait pas. Muriel : un projet déposé à la SATT, une étude, et la découverte que des produits prescrits n'étaient pas consommés. Sylvia : la rencontre a permis une feuille de route jusqu'au candidat médicament. Quatre lectures de preuve. Le déroulé des financements, des jalons, vient après — une fois le niveau nommé.
+
+Il est important également de comprendre les contraintes de la montée en échelle de la technologie, afin de réaliser un développement qui intègre les critères de performances attendus. C'est le passage au prototype : une version que l'on peut montrer et faire tourner, parfois à une autre échelle. Loïc Rajjou le dit à sa façon : si le transfert de laboratoire est trop décalé de ce que l'industrie fait au quotidien, la rupture est trop forte.
+
+Le MVP, le produit minimum viable, n'est pas le produit fini. C'est la plus petite version qu'un utilisateur réel peut tester, là où le produit ou l'usage est censé vivre. Muriel Thomas le dit sans le nommer : il faut tester l'idée là où elle sera utilisée. Son étude a montré qu'une grande partie des compléments prescrits n'étaient pas consommés. Une preuve de laboratoire n'aurait rien dit de cette preuve d'usage.
+
+On parle souvent de TRL 3 ou 4 à ce moment-là : la preuve de concept tient ; le prototype représentatif n'est pas encore là. Le TRL, Technology Readiness Level, est une échelle de maturité technologique. On s'en sert pour parler le même langage — avec un industriel, un financeur, une SATT. On ne récite pas les neuf crans. Le TRL nomme où l'on est.
+
+Alors, pour vous. Trois lignes. Quelle est ma preuve aujourd'hui — scientifique, POC, prototype, usage ? Qu'est-ce qu'elle ne dit pas encore ? Quelle serait la prochaine preuve minimale à obtenir ?
+
+Vous n'avez pas à tout prouver maintenant. Vous avez à ne pas confondre ce que vous savez déjà avec ce que vous n'avez pas encore démontré. Quand vous viendrez nous voir, c'est souvent par là que l'on commencera.

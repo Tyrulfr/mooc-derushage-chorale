@@ -1,6 +1,6 @@
 {
-  "date_mise_a_jour": "2026-09-08",
-  "note": "Planning de captation des videos expertise. Une ligne du tableau site = une video E a tourner. V = video temoin, E = video expertise.",
+  "date_mise_a_jour": "2026-09-25",
+  "note": "Planning de captation des videos expertise. Une ligne = une video E. Statuts.filme : source de verite pour la colonne Filmé (tous les utilisateurs). V0 = transcription importee. E11bis (Soizic, PACTE / Allègre, optionnel, T6) : à programmer. E2, E4, E14 : pas filmées ou V0 absent.",
   "animatrice": {
     "nom": "Monica Henao",
     "organisme": "Université Paris-Saclay",
@@ -25,28 +25,40 @@
           "intervenant": "Stanislas De Lapasse",
           "organisme": "INPI",
           "slug": "stanislas-de-lapasse",
-          "videos": ["E8", "E9"]
+          "videos": [
+            "E8",
+            "E9"
+          ]
         },
         {
           "heure": "10:30",
           "intervenant": "Stephanie Sano",
           "organisme": "UVSQ",
           "slug": "stephanie-sano",
-          "videos": ["E6", "E7"]
+          "videos": [
+            "E6",
+            "E7"
+          ]
         },
         {
           "heure": "13:00",
           "intervenant": "Pascal Corbel",
           "organisme": "Université Paris-Saclay",
           "slug": "pascal-corbel",
-          "videos": ["E16", "E19", "E21"]
+          "videos": [
+            "E16",
+            "E19",
+            "E21"
+          ]
         },
         {
           "heure": "14:30",
           "intervenant": "Yoann Montenot",
           "organisme": "Design Spot",
           "slug": "yoann-montenot",
-          "videos": ["E13bis"],
+          "videos": [
+            "E13bis"
+          ],
           "note": "Public : start-up de nos chercheurs (chorale T7), pas des start-up génériques."
         }
       ]
@@ -63,14 +75,20 @@
           "intervenant": "Bernard Yannou",
           "organisme": "CentraleSupélec",
           "slug": "bernard-yannou",
-          "videos": ["E1", "E20"]
+          "videos": [
+            "E1",
+            "E20"
+          ]
         },
         {
           "heure": "10:30",
           "intervenant": "Virginia Branco",
           "organisme": "ENS Paris-Saclay",
           "slug": "virginia-branco",
-          "videos": ["E5", "E10"]
+          "videos": [
+            "E5",
+            "E10"
+          ]
         },
         {
           "heure": "13:00",
@@ -95,29 +113,37 @@
           "intervenant": "Rémi Waché",
           "organisme": "Université Paris-Saclay",
           "slug": "rémi-waché",
-          "videos": ["E22"]
+          "videos": [
+            "E22"
+          ]
         },
         {
           "heure": "10:30",
           "intervenant": "Soizic Lefeuvre",
           "organisme": "Université Paris-Saclay",
           "slug": "soizic-lefeuvre",
-          "videos": ["E11"]
+          "videos": [
+            "E11"
+          ]
         },
         {
           "heure": "13:00",
           "intervenant": "Eneli Vino",
           "organisme": "CNRS",
           "slug": "eneli-vino",
-          "videos": ["E23"]
+          "videos": [
+            "E23"
+          ]
         },
         {
           "heure": "14:30",
           "intervenant": "Fatoumata Aonon",
           "organisme": "CNRS",
           "slug": "fatoumata-aonon",
-          "videos": ["E12", "E14"],
-          "note": "Planning : Fatoumata Gnacko."
+          "videos": [
+            "E14"
+          ],
+          "note": "Planning : Fatoumata Gnacko. E12 repris par Stephanie (24/09, filmé). E14 : pas de V0, filmé non confirmé. E4 proposé, accord à obtenir."
         }
       ]
     },
@@ -133,40 +159,184 @@
           "intervenant": "Arielle Santé",
           "organisme": "IncubAlliance",
           "slug": "arielle-santé",
-          "videos": ["E13", "E15", "E18"]
+          "videos": [
+            "E13",
+            "E15",
+            "E18"
+          ],
+          "note": "Filmé le 24/09. V0 pas encore importé."
         },
         {
           "heure": "10:30",
           "intervenant": "Antoine Latreille",
           "organisme": "Université Paris-Saclay",
           "slug": "antoine-latreille",
-          "videos": ["E17"]
+          "videos": [
+            "E17"
+          ],
+          "note": "Filmé le 24/09. Oral : pacte d'associés, sans loi PACTE. V0 pas encore importé."
         },
         {
           "heure": "12:00",
           "intervenant": "Stephanie Oger-Roussel",
           "organisme": "SATT Paris-Saclay",
           "slug": "stephanie-oger-roussel",
-          "videos": ["E4"],
-          "note": "Créneau 12h (pas 13h)."
+          "videos": [
+            "E12"
+          ],
+          "note": "Filmé le 24/09 12h. Texte SATT = E12. V0 pas encore importé."
         },
         {
           "heure": "14:30",
           "intervenant": "Gregoire Burgé",
           "organisme": "AgroParisTech",
           "slug": "gregoire-burgé",
-          "videos": ["E3"],
-          "note": "E2 retirée : Grégoire ne fait que E3."
+          "videos": [
+            "E3"
+          ],
+          "note": "Filmé le 24/09. E3 seulement. V0 pas encore importé."
         },
         {
           "heure": "16:00",
           "intervenant": "Joël Nguyen",
           "organisme": "Institut d’Optique",
           "slug": "joël-nguyen",
-          "videos": ["E2"],
-          "note": "Créneau à confirmer. Script E2 reçu le 2026-09-10."
+          "videos": [
+            "E2"
+          ],
+          "note": "Non filmé le 24/09 (non cité). Créneau à reprogrammer. Script E2 reçu le 2026-09-10."
         }
       ]
     }
-  ]
+  ],
+  "statuts": {
+    "E1": {
+      "filme": true,
+      "filme_le": "2026-09-09",
+      "v0": true
+    },
+    "E5": {
+      "filme": true,
+      "filme_le": "2026-09-09",
+      "v0": true
+    },
+    "E6": {
+      "filme": true,
+      "filme_le": "2026-09-07",
+      "v0": true
+    },
+    "E7": {
+      "filme": true,
+      "filme_le": "2026-09-07",
+      "v0": true
+    },
+    "E8": {
+      "filme": true,
+      "filme_le": "2026-09-07",
+      "v0": true
+    },
+    "E9": {
+      "filme": true,
+      "filme_le": "2026-09-07",
+      "v0": true
+    },
+    "E10": {
+      "filme": true,
+      "filme_le": "2026-09-09",
+      "v0": true
+    },
+    "E11": {
+      "filme": true,
+      "filme_le": "2026-09-11",
+      "v0": true
+    },
+    "E13bis": {
+      "filme": true,
+      "filme_le": "2026-09-07",
+      "v0": true
+    },
+    "E16": {
+      "filme": true,
+      "filme_le": "2026-09-07",
+      "v0": true
+    },
+    "E19": {
+      "filme": true,
+      "filme_le": "2026-09-07",
+      "v0": true
+    },
+    "E20": {
+      "filme": true,
+      "filme_le": "2026-09-09",
+      "v0": true
+    },
+    "E21": {
+      "filme": true,
+      "filme_le": "2026-09-07",
+      "v0": true
+    },
+    "E22": {
+      "filme": true,
+      "filme_le": "2026-09-11",
+      "v0": true
+    },
+    "E23": {
+      "filme": true,
+      "filme_le": "2026-09-11",
+      "v0": true
+    },
+    "E3": {
+      "filme": true,
+      "filme_le": "2026-09-24",
+      "v0": false,
+      "note": "Filmé le 24/09 ; transcription V0 pas encore dans le dépôt."
+    },
+    "E12": {
+      "filme": true,
+      "filme_le": "2026-09-24",
+      "v0": false,
+      "note": "Filmé le 24/09 ; transcription V0 pas encore dans le dépôt."
+    },
+    "E13": {
+      "filme": true,
+      "filme_le": "2026-09-24",
+      "v0": false,
+      "note": "Filmé le 24/09 ; transcription V0 pas encore dans le dépôt."
+    },
+    "E15": {
+      "filme": true,
+      "filme_le": "2026-09-24",
+      "v0": false,
+      "note": "Filmé le 24/09 ; transcription V0 pas encore dans le dépôt."
+    },
+    "E17": {
+      "filme": true,
+      "filme_le": "2026-09-24",
+      "v0": false,
+      "note": "Filmé le 24/09 ; transcription V0 pas encore dans le dépôt."
+    },
+    "E18": {
+      "filme": true,
+      "filme_le": "2026-09-24",
+      "v0": false,
+      "note": "Filmé le 24/09 ; transcription V0 pas encore dans le dépôt."
+    },
+    "E2": {
+      "filme": false,
+      "note": "Créneau 24/09 16:00 à confirmer. Non cité parmi les tournages du jour."
+    },
+    "E4": {
+      "filme": false,
+      "note": "Proposé à Fatoumata (accord à obtenir). Recast Joël → Bernard → Grégoire."
+    },
+    "E14": {
+      "filme": false,
+      "note": "Créneau 11/09 au planning ; pas de V0. Statut filmé non confirmé."
+    },
+    "E11bis": {
+      "filme": false,
+      "optionnel": true,
+      "note": "À programmer. Accord Soizic à obtenir."
+    }
+  }
 }

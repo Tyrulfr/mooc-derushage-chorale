@@ -45,7 +45,7 @@
       if (!id || FIELDS.indexOf(field) === -1) {
         return;
       }
-      var current = (state[id] && state[id][field]) || "non";
+      var current = (state[id] && state[id][field]) || group.getAttribute("data-default") || "non";
       applyGroup(group, current);
       group.querySelectorAll("button[data-value]").forEach(function (btn) {
         btn.addEventListener("click", function () {

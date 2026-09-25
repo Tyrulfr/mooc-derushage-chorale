@@ -1,4 +1,4 @@
-Objet : MOOC L'Esprit d'innover — votre vidéo expertise (Soizic Lefeuvre)
+Objet : MOOC L'Esprit d'innover — vos vidéos expertise (Soizic Lefeuvre)
 
 Bonjour Soizic,
 
@@ -11,6 +11,10 @@ Ce que l’on vous demande
 - Vidéo Expert 11 — Les mecanismes juridiques du transfert
   Liée à : Vidéo témoin 6 — TRANSFERT ET LICENSING
   Objectif à atteindre : Licence exclusive ou non, cession, contrat de collaboration, copropriete et principes de negociation.
+
+- Vidéo Expert 11 BIS — La loi PACTE et le concours scientifique
+  Liée à : Vidéo témoin 6 — TRANSFERT ET LICENSING
+  Objectif à atteindre : Optionnel. Regime de l'agent public (loi Allegre 1999 / loi PACTE 2019) : participer a une societe qui valorise ses travaux sans quitter l'etablissement. Temps de service, parts, fonctions. Ce n'est pas un concours de financement (i-Lab). Distinct du pacte d'associes (E17).
 
 Format
 - Environ 5 minutes (± 2 min)

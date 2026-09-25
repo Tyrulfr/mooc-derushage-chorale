@@ -12460,10 +12460,14 @@ def _tournage_script_flags(code: str) -> tuple[bool, str, bool, str]:
     return has_script, script_href, has_final, final_href
 
 
-def _tournage_toggle_html(row_id: str, field: str, label: str) -> str:
+def _tournage_toggle_html(
+    row_id: str, field: str, label: str, default: str = "non"
+) -> str:
+    value = "oui" if default == "oui" else "non"
     return (
         f'<div class="toggle-yn" data-tournage-id="{escape(row_id)}" '
-        f'data-tournage-field="{escape(field)}" role="group" aria-label="{escape(label)}">'
+        f'data-tournage-field="{escape(field)}" data-default="{value}" '
+        f'role="group" aria-label="{escape(label)}">'
         '<button type="button" data-value="oui">Oui</button>'
         '<button type="button" data-value="non">Non</button>'
         "</div>"
@@ -12485,6 +12489,7 @@ def _tournage_collect_records(
     planning: dict, inventory: dict, catalogue: dict
 ) -> list[dict]:
     records: list[dict] = []
+    statuts = planning.get("statuts") or {}
     for jour in planning.get("jours") or []:
         lieu_bits = [
             jour.get("label") or "",
@@ -12505,6 +12510,10 @@ def _tournage_collect_records(
             for code in videos:
                 titre, descriptif = _tournage_titres(code, inventory, catalogue)
                 has_script, script_href, has_final, final_href = _tournage_script_flags(code)
+                statut = statuts.get(code) or {}
+                filme = bool(statut.get("filme"))
+                if is_animatrice:
+                    filme = True
                 records.append(
                     {
                         "code": code,
@@ -12521,11 +12530,13 @@ def _tournage_collect_records(
                         "intervenant": creneau.get("intervenant") or "",
                         "slug": creneau.get("slug") or slug(creneau.get("intervenant") or ""),
                         "organisme": creneau.get("organisme") or "",
-                        "note": creneau.get("note") or "",
+                        "note": creneau.get("note") or statut.get("note") or "",
                         "has_script": has_script,
                         "script_href": script_href,
                         "has_final": has_final,
                         "final_href": final_href,
+                        "filme": filme,
+                        "filme_le": statut.get("filme_le") or "",
                     }
                 )
     return records
@@ -12579,7 +12590,7 @@ def _tournage_row_html(rec: dict) -> str:
         f"<td>{intervenant_cell}</td>"
         f"<td>{_tournage_oui_non_html(rec.get('has_script'), rec.get('script_href') or '')}</td>"
         f"<td>{_tournage_oui_non_html(rec.get('has_final'), rec.get('final_href') or '')}</td>"
-        f"<td>{_tournage_toggle_html(row_id, 'filme', 'Filmé')}</td>"
+        f"<td>{_tournage_toggle_html(row_id, 'filme', 'Filmé', 'oui' if rec.get('filme') else 'non')}</td>"
         f"<td>{_tournage_toggle_html(row_id, 'monte', 'Monté')}</td>"
         f"<td>{_tournage_toggle_html(row_id, 'valide', 'Validé')}</td>"
         f"<td>{_tournage_toggle_html(row_id, 'implemente', 'Implémenté')}</td>"
@@ -12643,7 +12654,7 @@ def _write_tournage_xlsx(records: list[dict], path: Path) -> str:
             rec.get("organisme") or "",
             "Oui" if rec.get("has_script") else "Non",
             "Oui" if rec.get("has_final") else "Non",
-            "",
+            "Oui" if rec.get("filme") else "Non",
             "",
             "",
             "",
@@ -12714,6 +12725,7 @@ def build_tournage_page(programme_table: dict, experts_profils: dict) -> None:
     xlsx_name = _write_tournage_xlsx(records, SITE / "tournage.xlsx")
 
     recus = video_count - pending_text
+    filmes = sum(1 for rec in records if not rec.get("is_animatrice") and rec.get("filme"))
     animatrice = planning.get("animatrice") or {}
     animatrice_nom = animatrice.get("nom") or "Monica Henao"
     animatrice_role = animatrice.get("role") or (
@@ -12729,7 +12741,7 @@ def build_tournage_page(programme_table: dict, experts_profils: dict) -> None:
         "Le titre après le code (E1 — …) résume l’objectif pédagogique. "
         "<strong>Script</strong> = texte reçu ; <strong>Script final</strong> = version validée "
         "pour le prompteur. Oui est cliquable vers le fichier. "
-        "Filmé / Monté / Validé / Implémenté se cochent ici "
+        "Filmé vient du planning partagé ; Monté / Validé / Implémenté se cochent ici "
         "(mémorisés dans ce navigateur).</p>"
         f"<p><a class='btn' href='{escape(xlsx_name)}' download>Télécharger le tableau (XLSX)</a></p>"
         "<section class='stats-grid'>"
@@ -12742,6 +12754,9 @@ def build_tournage_page(programme_table: dict, experts_profils: dict) -> None:
         "<div class='stat-card'><div class='stat-card__label'>Scripts finaux</div>"
         f"<div class='stat-card__value'>{scripts_finaux}</div>"
         "<div class='stat-card__meta'>versions validées prompteur</div></div>"
+        "<div class='stat-card'><div class='stat-card__label'>Filmées</div>"
+        f"<div class='stat-card__value'>{filmes}</div>"
+        f"<div class='stat-card__meta'>{video_count - filmes} encore à tourner</div></div>"
         "</section>"
         "<div class='tournage-views' data-tournage-views>"
         "<p class='meta'>Choisissez un mode de lecture : un seul tableau s’affiche à la fois.</p>"

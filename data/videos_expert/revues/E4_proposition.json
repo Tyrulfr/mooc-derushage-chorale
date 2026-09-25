@@ -1,0 +1,98 @@
+{
+  "titre": "Proposition E4 — recadrage du script reçu de Stephanie Oger-Roussel",
+  "source_script": "E4.txt",
+  "date": "2026-09-23",
+  "mode": "recadrage_script_recu",
+  "objectif_pedagogique": "Clarifier les niveaux de preuve : résultat scientifique, POC, prototype, MVP et TRL — à partir de la vidéo témoin 3 montée, sans recouvrir E5.",
+  "note": "Revue 2c. Bloc SATT vérifié : étudier / accompagner pour situer POC et TRL ; MVP seulement comme « ce que l'on appelle parfois un MVP ». Débouchés T3 filmé : Loïc, Jean-Jacques, Muriel, Sylvia. Yann T3 ne nomme pas la SATT : il reste le contraste résultat scientifique. Hors : montants, PI, transfert, prématuration comme sujet.",
+  "justifications": [
+    {
+      "decision": "RÉÉCRIRE",
+      "passage": "Titre E5",
+      "justification": "Le titre reçu est l'objectif d'E5, déjà filmée par Virginia Branco."
+    },
+    {
+      "decision": "GARDER",
+      "passage": "Phrases SATT : POC, besoin concret / interviews, scale-up, TRL 3-4, place SATT",
+      "justification": "On réinjecte son texte. La SATT reste le lieu d'où elle parle et prépare E5, sans enseigner les financements."
+    },
+    {
+      "decision": "SUPPRIMER",
+      "passage": "Prématuration 100 k€, maturation 500 k€, équipe, jalons, business plan",
+      "justification": "E5 / E12 / E14."
+    },
+    {
+      "decision": "SUPPRIMER",
+      "passage": "PI et transfert entreprise / SU",
+      "justification": "E8–E9 et E10–E11."
+    },
+    {
+      "decision": "AJOUTER",
+      "passage": "T3 + prototype + MVP",
+      "justification": "Absents du texte reçu ; indispensables au grain E4."
+    }
+  ],
+  "segments": [
+    {
+      "couleur": "noir",
+      "texte": "Bonjour. Je m'appelle Stéphanie Oger-Roussel. Je suis directrice de l'innovation et de la stratégie à la SATT Paris-Saclay."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Vous venez d'entendre des chercheurs sortir du laboratoire pour vérifier un besoin."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Un résultat prometteur, une technologie, n'est pas encore une innovation. Encore faut-il savoir ce que l'on a déjà démontré — et ce que l'on n'a pas encore démontré."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Cinq repères. Le résultat scientifique. La preuve de concept, le POC. Le prototype. Le produit minimum viable, le MVP. Et l'échelle TRL, pour se situer."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Lorsqu'un chercheur a une idée, et des premiers résultats prometteurs, il va pouvoir valider une première preuve de concept. Ce n'est pas encore une preuve d'usage. Yann Monier part de la bibliographie et de rapports : ils confirment un intérêt possible. Ce n'est pas encore une preuve que des industriels, un par un, ont ce problème au quotidien."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Sylvia Cohen-Kaminski a identifié une cible, puis une feuille de route jusqu'au candidat médicament dans des modèles. On n'est plus seulement dans l'idée. On n'est pas encore dans l'usage auprès des patients. Chez elle, passer des séries chimiques au candidat dans des modèles, c'est déjà une première preuve de concept."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Il faudra se tourner dans un premier temps sur la démonstration d'une première preuve de concept sur une application donnée. Est-ce que ça marche, dans un cadre encore contrôlé ? Pas : est-ce que le marché l'achètera. Pas : est-ce que l'usine peut le produire."
+    },
+    {
+      "couleur": "noir",
+      "texte": "La valeur dépend de la façon dont la technologie va répondre à un besoin concret. Pour cela, il est nécessaire d'interagir avec des experts industriels, des utilisateurs, pour évaluer la réceptivité de la technologie, comprendre les problématiques, les enjeux. Jean-Jacques Greffet avait un besoin « connu » par le cofondateur. Cela n'a pas suffi. Une étude plus chiffrée, des échanges avec des utilisateurs, et la cible a changé. Une intuition de marché n'est pas encore une preuve."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Dans une SATT, on étudie un projet avec les chercheurs, et on les accompagne pour situer où ils en sont. Quelle preuve ont-ils — un résultat, une première preuve de concept ? À quelle maturité, le TRL ? Et si l'usage commence à se poser : a-t-on déjà quelque chose qu'un utilisateur peut tester — ce que l'on appelle parfois un MVP ? On ne tranche pas à leur place. On aide à lire le niveau."
+    },
+    {
+      "couleur": "noir",
+      "texte": "C'est à ça que la SATT a servi dans ce que vous venez d'entendre. Loïc : une étude de marché portée avec nous, puis les acteurs — les besoins n'étaient pas les mêmes d'une filière à l'autre. Jean-Jacques : une étude plus chiffrée, avec la SATT — le besoin « connu » ne tenait pas. Muriel : un projet déposé à la SATT, une étude, et la découverte que des produits prescrits n'étaient pas consommés. Sylvia : la rencontre a permis une feuille de route jusqu'au candidat médicament. Quatre lectures de preuve. Le déroulé des financements, des jalons, vient après — une fois le niveau nommé."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Il est important également de comprendre les contraintes de la montée en échelle de la technologie, afin de réaliser un développement qui intègre les critères de performances attendus. C'est le passage au prototype : une version que l'on peut montrer et faire tourner, parfois à une autre échelle. Loïc Rajjou le dit à sa façon : si le transfert de laboratoire est trop décalé de ce que l'industrie fait au quotidien, la rupture est trop forte."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Le MVP, le produit minimum viable, n'est pas le produit fini. C'est la plus petite version qu'un utilisateur réel peut tester, là où le produit ou l'usage est censé vivre. Muriel Thomas le dit sans le nommer : il faut tester l'idée là où elle sera utilisée. Son étude a montré qu'une grande partie des compléments prescrits n'étaient pas consommés. Une preuve de laboratoire n'aurait rien dit de cette preuve d'usage."
+    },
+    {
+      "couleur": "noir",
+      "texte": "On parle souvent de TRL 3 ou 4 à ce moment-là : la preuve de concept tient ; le prototype représentatif n'est pas encore là. Le TRL, Technology Readiness Level, est une échelle de maturité technologique. On s'en sert pour parler le même langage — avec un industriel, un financeur, une SATT. On ne récite pas les neuf crans. Le TRL nomme où l'on est."
+    },
+    {
+      "couleur": "noir",
+      "texte": "Alors, pour vous. Trois lignes. Quelle est ma preuve aujourd'hui — scientifique, POC, prototype, usage ? Qu'est-ce qu'elle ne dit pas encore ? Quelle serait la prochaine preuve minimale à obtenir ?"
+    },
+    {
+      "couleur": "noir",
+      "texte": "Vous n'avez pas à tout prouver maintenant. Vous avez à ne pas confondre ce que vous savez déjà avec ce que vous n'avez pas encore démontré. Quand vous viendrez nous voir, c'est souvent par là que l'on commencera."
+    }
+  ],
+  "mots_estimes": 759
+}

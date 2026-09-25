@@ -1,0 +1,48 @@
+# Proposition de script E4 — Stephanie Oger-Roussel
+# Date : 2026-09-23
+# Source temoin : transcripts_videos_finaux.json / T3.docx (script T monté V1, 07:15)
+# Grain E4 : clarifier les niveaux de preuve
+#   (resultat scientifique, POC, prototype, MVP, TRL)
+# Interdit : recouvrir E5 (Virginia Branco, deja filmee) — derisquer, prematuration,
+#   maturation, jalons techniques/commerciaux, criteres de decision, « pivot = decision »
+#   ; citer un extrait BAB absent du T3 filme (POC 18 mois, formulation poudre)
+#   ; attribuer aux chercheurs les mots POC / prototype / MVP / TRL (absents du montage)
+#   ; reciter le tableau TRL 1-9 ou le DRL
+# Ancrage : Yann (biblio / rapports ≠ industriels) ; Sylvia (cible, in vivo, candidat) ;
+#   Jean-Jacques (besoin « connu » ≠ preuve) ; Loic (labo / acteurs / scale-up) ;
+#   Muriel (complements non consommes ; tester la ou ce sera utilise)
+# Cible : ~5 min (±2) · voix expert SATT
+# Statut : PROPOSITION_EDITORIALE (aucun script recu)
+# Tournage : 2026-09-24, 12:00, IncubAlliance Palaiseau (planning : 12h, pas 13h)
+
+---
+
+Bonjour. Je m'appelle Stéphanie Oger-Roussel. Je suis directrice de l'innovation et de la stratégie à la SATT Paris-Saclay.
+
+Vous venez d'entendre des chercheurs sortir du laboratoire pour vérifier un besoin. Cette vidéo ne reprend pas ce geste. Elle sert à nommer ce que l'on confond souvent : le niveau de preuve dont on dispose.
+
+Un résultat scientifique n'est pas encore une preuve d'usage. Une étude de marché n'est pas encore un prototype. Un prototype n'est pas encore un produit que quelqu'un utilise vraiment. Clarifier ces niveaux, c'est pouvoir dire où l'on est — et ce qui n'est pas encore démontré.
+
+Cinq repères. Le résultat scientifique. La preuve de concept, le POC. Le prototype. Le produit minimum viable, le MVP. Et l'échelle TRL, pour se situer.
+
+Premier niveau : le résultat scientifique. C'est ce que le laboratoire sait déjà montrer : un mécanisme, une cible, une méthode, une publication. Yann Monier part de là. Dès la construction de son sujet, la bibliographie lui dit qu'il existe un intérêt. Des rapports confirment une économie possible. Ce n'est pas rien. Mais ce n'est pas encore une preuve que des industriels, un par un, ont ce problème au quotidien. C'est une preuve de pertinence. Ce n'est pas une preuve d'usage.
+
+Sylvia Cohen-Kaminski a identifié une cible dans le système nerveux central. Elle construit une feuille de route : optimiser des séries chimiques, les explorer dans des modèles, désigner un candidat médicament. On n'est plus seulement dans l'idée. On n'est pas encore dans l'usage auprès des patients. On est dans la preuve que la molécule fait, dans un cadre expérimental, ce que l'on attend.
+
+Deuxième niveau : la preuve de concept, le POC. Une question courte. Est-ce que ça marche, dans un cadre encore contrôlé ? Pas : est-ce que le marché l'achètera. Pas : est-ce que l'usine peut le produire. Le principe tient-il, hors de la diapositive ? Chez Sylvia, passer des séries chimiques au candidat dans des modèles, c'est déjà ce geste.
+
+Chez Jean-Jacques Greffet, le besoin était « connu » par le cofondateur. Cela n'a pas suffi. Il a fallu une étude plus chiffrée, des conférences d'utilisateurs, pour savoir si la cible tenait. Ils ont ensuite adapté la technologie à un autre besoin. Une intuition de marché, même sincère, n'est pas encore une preuve.
+
+Troisième niveau : le prototype. Un objet, un procédé, une version que l'on peut montrer et faire tourner, parfois à une autre échelle. Loïc Rajjou insiste sur ce passage : maîtriser sa technologie, et imaginer le scale-up — monter à une échelle applicable pour les acteurs. Si le transfert de laboratoire est trop décalé de ce que l'industrie fait au quotidien, la rupture est trop forte. Ce qui marche au banc n'est pas encore un prototype industrialisable.
+
+Quatrième niveau : le MVP, le produit minimum viable. Ce n'est pas le produit fini. C'est la plus petite version qu'un utilisateur réel peut tester, là où le produit ou l'usage est censé vivre. Muriel Thomas le dit sans le nommer : il faut tester l'idée là où le nouveau produit, ou le nouvel usage, sera utilisé. Son étude, portée avec la SATT, montre autre chose qu'une formule : une grande partie des compléments nutritionnels prescrits ne sont pas consommés. Les patients ont besoin de diversité. Une preuve de laboratoire n'aurait rien dit de cette preuve d'usage.
+
+Cinquième repère : le TRL. Technology Readiness Level : une échelle de maturité technologique, pour parler le même langage avec un industriel, un financeur, une structure de valorisation. On ne récite pas les neuf crans. En bas, un principe observé. Au milieu, une preuve dans un environnement de plus en plus réel. En haut, un système prêt à l'emploi. Le TRL n'invente pas la preuve. Il la nomme, pour que l'on cesse de dire « projet mature » sans dire mature pour quoi.
+
+Ces cinq mots ne sont pas une course. On n'est pas « meilleur » plus haut sur l'échelle. On est simplement plus précis. Loïc échange d'abord près du laboratoire, puis dans une étude de marché, puis avec les acteurs. Les exigences changent d'une filière à l'autre, et les besoins aussi. Chaque cercle lève un type de preuve. Pas le même.
+
+Alors, pour vous. Trois lignes. Première : quelle est ma preuve aujourd'hui — scientifique, POC, prototype, usage ? Deuxième : qu'est-ce que cette preuve ne dit pas encore ? Troisième : quelle serait la prochaine preuve minimale à obtenir — pas le projet entier, la prochaine.
+
+Vous n'avez pas à tout prouver maintenant. Vous avez à ne pas confondre ce que vous savez déjà avec ce que vous n'avez pas encore démontré.
+
+La vidéo suivante vous aidera à enchaîner ces doutes dans le temps. Ici, l'essentiel est plus simple : nommer le niveau où vous êtes.

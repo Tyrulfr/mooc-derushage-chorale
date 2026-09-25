@@ -1,7 +1,7 @@
 {
-  "date_mise_a_jour": "2026-09-10",
+  "date_mise_a_jour": "2026-09-25",
   "animatrice": "Monica Henao",
-  "critere": "Vidéo filmée le 7 ou le 9 septembre 2026, ou script déposé dans scripts_valides/. Les autres restent de côté.",
+  "critere": "Intros/outros rédigées pour les vidéos déjà filmées quand un script de référence existe. Les filmées 24/09 sans V0 attendent la transcription.",
   "propositions": [
     {
       "code": "E1",
@@ -53,6 +53,13 @@
       "base": ["filme_2026-09-09", "scripts_recus/E10.txt"]
     },
     {
+      "code": "E12",
+      "fichier": "E12.txt",
+      "expert": "Stephanie Oger-Roussel",
+      "temoin": "T7",
+      "base": ["filme_2026-09-24", "scripts_valides/E12.txt", "scripts_recus/E12.txt"]
+    },
+    {
       "code": "E16",
       "fichier": "E16.txt",
       "expert": "Pascal Corbel",
@@ -81,58 +88,78 @@
       "base": ["filme_2026-09-07", "scripts_valides/E21.txt"]
     }
   ],
-  "de_cote": [
-    {
-      "code": "E13bis",
-      "raison": "Tournée le 7 septembre (Yoann Montenot) mais aucun script dans le dépôt : intro/outro non rédigées pour ne pas inventer le debrief."
-    },
-    {
-      "code": "E2",
-      "raison": "Ni filmée les 7/9 septembre, ni dans scripts_valides."
-    },
+  "filmees_sans_intro_redigee": [
     {
       "code": "E3",
-      "raison": "Ni filmée les 7/9 septembre, ni dans scripts_valides."
-    },
-    {
-      "code": "E4",
-      "raison": "Ni filmée les 7/9 septembre, ni dans scripts_valides."
+      "expert": "Gregoire Burgé",
+      "filme_le": "2026-09-24",
+      "raison": "Filmé ; pas de V0 ni de script validé assez stable pour rédiger l'intro/outro sans inventer."
     },
     {
       "code": "E11",
-      "raison": "Ni filmée les 7/9 septembre, ni dans scripts_valides."
-    },
-    {
-      "code": "E12",
-      "raison": "Ni filmée les 7/9 septembre, ni dans scripts_valides."
+      "expert": "Soizic Lefeuvre",
+      "filme_le": "2026-09-11",
+      "raison": "V0 importé ; intro/outro Monica pas encore rédigée."
     },
     {
       "code": "E13",
-      "raison": "Ni filmée les 7/9 septembre, ni dans scripts_valides."
+      "expert": "Arielle Santé",
+      "filme_le": "2026-09-24",
+      "raison": "Filmé ; V0 pas encore importé."
     },
     {
-      "code": "E14",
-      "raison": "Ni filmée les 7/9 septembre, ni dans scripts_valides."
+      "code": "E13bis",
+      "expert": "Yoann Montenot",
+      "filme_le": "2026-09-07",
+      "raison": "V0 importé ; aucun script de travail dans le dépôt pour caler le debrief."
     },
     {
       "code": "E15",
-      "raison": "Ni filmée les 7/9 septembre, ni dans scripts_valides."
+      "expert": "Arielle Santé",
+      "filme_le": "2026-09-24",
+      "raison": "Filmé ; V0 pas encore importé."
     },
     {
       "code": "E17",
-      "raison": "Ni filmée les 7/9 septembre, ni dans scripts_valides."
+      "expert": "Antoine Latreille",
+      "filme_le": "2026-09-24",
+      "raison": "Filmé ; V0 pas encore importé."
     },
     {
       "code": "E18",
-      "raison": "Ni filmée les 7/9 septembre, ni dans scripts_valides."
+      "expert": "Arielle Santé",
+      "filme_le": "2026-09-24",
+      "raison": "Filmé ; V0 pas encore importé."
     },
     {
       "code": "E22",
-      "raison": "Ni filmée les 7/9 septembre, ni dans scripts_valides."
+      "expert": "Rémi Waché",
+      "filme_le": "2026-09-11",
+      "raison": "V0 importé ; intro/outro Monica pas encore rédigée."
     },
     {
       "code": "E23",
-      "raison": "Ni filmée les 7/9 septembre, ni dans scripts_valides."
+      "expert": "Eneli Vino",
+      "filme_le": "2026-09-11",
+      "raison": "V0 importé ; intro/outro Monica pas encore rédigée."
+    }
+  ],
+  "de_cote": [
+    {
+      "code": "E2",
+      "raison": "Non filmée le 24/09. Créneau à reprogrammer."
+    },
+    {
+      "code": "E4",
+      "raison": "Pas filmée. Accord Fatoumata à obtenir."
+    },
+    {
+      "code": "E11bis",
+      "raison": "Optionnelle, pas programmée. Loi PACTE / concours scientifique (T6)."
+    },
+    {
+      "code": "E14",
+      "raison": "Créneau 11/09 au planning ; pas de V0. Filmé non confirmé."
     }
   ]
 }
