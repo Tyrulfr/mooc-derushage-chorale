@@ -1,0 +1,89 @@
+Je m’appelle Joël Nguyen.
+Je suis responsable du pôle de développement
+à la Direction de l’Innovation de l’Institut d’Optique.
+
+Vous venez d’entendre cinq chercheurs.
+Chacun a une connaissance, une méthode,
+parfois une technologie déjà avancée.
+Et chacun, d’une manière ou d’une autre,
+a dû la faire rencontrer un problème —
+des gens, des usages, parfois un marché.
+C’est cette rencontre que je voudrais éclairer.
+
+On emploie souvent deux mots pour la décrire.
+Techno-push : on part de ce que l’on sait faire.
+Market-pull : on part d’un besoin déjà formulé.
+Ces mots servent à se repérer.
+Ils décrivent rarement un projet réel.
+Dans les témoignages, le besoin et la capacité se précisent ensemble.
+Ce qui compte, ce n’est pas de choisir un camp.
+C’est de ne pas confondre ce que la technologie sait faire
+avec le problème qu’elle pourrait résoudre.
+
+Une connaissance n’est pas encore une innovation.
+Elle le devient lorsqu’elle est utilisée,
+et qu’elle améliore une situation.
+Pour y arriver, il faut pouvoir dire, même de façon provisoire :
+pour qui, dans quelle situation, par rapport à quoi, et avec quel effet.
+Sans commencer par le nom de la techno.
+
+Regardez ce que vous venez d’entendre.
+
+Sylvia ne raconte pas « une molécule ».
+Elle part d’une maladie grave, l’hypertension artérielle pulmonaire.
+Les traitements existent : des vasodilatateurs.
+Ils prolongent la survie.
+Ils ne traitent pas la cause — le remodelage des vaisseaux.
+Sa cible vise précisément cette cause.
+Et elle dit où elle veut aller : jusqu’au lit du patient.
+Le bénéficiaire est nommé. La techno, ensuite.
+
+Loïc, à l’inverse, part de mécanismes moléculaires — germination, croissance.
+Les producteurs n’en ont pas besoin.
+Ils veulent une graine qui lève, un plant qui tienne,
+moins de traitements de synthèse.
+Le laboratoire et la filière ne parlent pas la même langue.
+L’innovation commence quand on traduit l’un dans le problème de l’autre.
+
+Yann a une méthode : des jumeaux numériques de chaînes de production,
+construits à partir des capteurs.
+Le problème, lui, est industriel et simple : des arrêts qui coûtent cher.
+Ce qu’il propose, ce n’est pas « un modèle ».
+C’est se brancher aux données, sans des mois d’équipes d’ingénieurs.
+Reste une question qu’il n’a pas tranchée dans la vidéo, et qu’il faudra trancher :
+qui utilisera l’outil, et qui décidera de l’installer.
+
+Parce que les rôles se séparent.
+Celui qui se sert de la solution n’est pas toujours celui qui paie,
+ni celui dont la vie s’améliore, ni celui qui signe.
+Les confondre, c’est souvent mal poser le problème.
+
+Muriel le montre dans la chaîne de soin.
+En écrivant les contextes des demandes de financement, l’application apparaît.
+Puis tout se complique : un aliment qu’on accepte — goût, couleur, odeur —
+un probiotique qui tienne,
+les recommandations de la Haute Autorité de santé,
+et des interlocuteurs qui ne veulent pas la même chose :
+médecins, diététiciens, cuisiniers.
+L’utilisateur, le prescripteur, le décideur, le bénéficiaire :
+ce n’est pas une seule personne.
+
+Jean-Jacques, lui, formule un problème de mesure.
+Des nanoparticules portent de l’ARN.
+Il faut les compter, et savoir si elles sont remplies.
+Plus difficile que de savoir si un comprimé contient le principe actif :
+ici, c’est de la matière vivante.
+La question n’est pas « de la nanophotonique ».
+C’est : comment contrôler ce que l’on fabrique.
+
+Vous n’avez pas à valider tout cela aujourd’hui.
+Vous avez à formuler une hypothèse assez précise pour aller la confronter.
+La suite du parcours s’en chargera.
+
+Essayez, en une phrase, sans nommer votre techno :
+aujourd’hui, tel acteur rencontre telle limite, dans telle situation,
+et cela entraîne telles conséquences.
+Puis : qui l’utiliserait, qui déciderait, qui en bénéficierait.
+Si vous voulez de l’aide pour cet exercice,
+les cellules de valorisation de votre établissement
+et la SATT Paris-Saclay sont là pour ça.

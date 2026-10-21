@@ -1,0 +1,64 @@
+Objet : Re: MOOC L'Esprit d'innover — place de ta séquence (vidéo 2)
+
+Bonjour Joël,
+
+Merci pour ce message. Ta lecture « moins binaire » est exactement ce qu’il nous faut : la séquence n’est pas un cours techno-push contre market-pull. Elle montre la rencontre entre ce qu’une capacité rend possible et un problème, des usages, des acteurs — parfois un marché.
+
+1) Place dans le parcours (ce que les apprenants ont déjà vu)
+
+Ils viennent d’enchaîner, dans cet ordre :
+
+— Vidéo témoin 1 (chorale) : pourquoi oser, comment l’innovation est née chez chacun.
+— Vidéo expert 1 (Bernard Yannou, déjà tournée) : les origines. Une techno n’est pas encore une innovation ; elle le devient quand elle rencontre un besoin. Plusieurs portes : domaine pressenti, rencontre, pas de côté, etc. Ces origines se combinent. Bernard referme en disant que les vidéos suivantes approfondiront le passage d’une technologie à un problème, les usages, et le test des hypothèses.
+
+— Vidéo témoin 2, « De la recherche à l’innovation » (chorale que tu rattaches) : Sylvia, Loïc, Yann, Muriel, Jean-Jacques formulent déjà un usage, un manque, une contrainte. Ce n’est pas encore « le bon problème validé ».
+
+Puis ta vidéo.
+Puis la vidéo expert 3 (Grégoire Burgé, déjà tournée) : poser ou identifier le bon problème, le valider, le faire évoluer au contact du terrain.
+
+Donc : la 1 a nommé d’où ça part. La chorale 2 montre le geste. Toi, tu enseignes comment formuler le problème d’usage à partir d’une capacité. La 3 éprouve si c’est le bon.
+
+2) Ce que ta séquence doit permettre de comprendre
+
+Une connaissance, une méthode ou une performance n’est pas encore une innovation.
+
+Il faut formuler une hypothèse d’usage : pour qui, dans quelle situation, par rapport à quoi, avec quel effet observable — sans d’abord nommer la techno.
+
+Distinguer les rôles (ils ne coïncident pas toujours) : utilisateur, décideur, bénéficiaire, parfois financeur.
+
+S’arrêter à l’hypothèse. La confrontation au terrain, le pivot, le « problem-solution fit » : c’est la vidéo 3.
+
+Ta phrase — rencontre entre ce que la techno rend possible et un problème, des usages, des acteurs, un marché — est le bon fil. Pas deux camps.
+
+3) Durée
+
+Cinq minutes, plus ou moins deux (donc entre 3 et 7 min). Vise plutôt 5. Au-delà de 7, on sort du format.
+
+4) Témoins : quoi garder, quoi ne pas recoller
+
+Les cinq sont dans la chorale 2. La vidéo 3 les reprend déjà, sous l’angle « bon problème / validation ». Toi, tu ne les racontes pas une deuxième fois : tu t’en sers comme raccords courts, pour le geste (capacité → usage, rôles).
+
+À ancrer sur ce qui est entendu dans la vidéo 2 (pas le BAB, pas un détail hors montage) :
+
+— Sylvia : question d’usage dès le départ ; hypertension pulmonaire grave ; les vasodilatateurs n’améliorent que la survie, sans traiter la cause (remodelage) ; aller jusqu’au lit du patient → le bénéficiaire.
+— Loïc : les producteurs veulent une graine / un plant efficaces ; la biologie est complexe ; relier les connaissances du labo à une performance agricole.
+— Yann : jumeaux numériques à partir des capteurs ; arrêts de ligne coûteux ; se brancher aux données sans des mois d’équipes d’ingénieurs ; qui utilisera / qui décidera reste ouvert.
+— Muriel : les « contextes » des demandes de financement font émerger l’application ; goût, couleur, odeur ; stabilité ; Haute Autorité de santé ; convaincre médecins, diététiciens, cuisiniers, chaîne de soin → les rôles ne sont pas les mêmes.
+— Jean-Jacques : problème de mesure (ARN, nanoparticules, compter, savoir si elles sont remplies) ; plus difficile qu’un comprimé ; matière vivante. Dans la chorale il ne nomme ni Unveil ni le Laboratoire Charles Fabry : tu peux les dire de ta place (Institut d’Optique), pas comme citation du témoignage.
+
+Pas indispensable, et plutôt à éviter s’il faut serrer : exemple matériau hors chorale ; chercheuse SHS / hyperscanning ; dénutrition (ce n’est pas dans le montage 2) ; un cours d’origines (déjà dans la 1) ; pivot, test, product-market fit (déjà dans la 3).
+
+5) Vidéo voisine déjà tournée (la 3) — pour ne pas la recouvrir
+
+Grégoire part du « bon » problème, des idées préconçues, de la confrontation au terrain, du pivot. Il reprend les cinq. Il termine même sur techno-push / market-pull et sur le problem-solution fit. D’où l’intérêt que tu restes sur la rencontre et l’hypothèse, sans refaire l’opposition des deux approches ni la validation.
+
+6) Conducteur
+
+Pas de conducteur unique type « plateau TV ». L’ordre pour l’apprenant est celui du §1. Monica Henao assure intro / outro des expertises (objectif, à retenir) : inutile d’annoncer les codes internes (E1, E2, E3).
+
+Si tu veux, on t’envoie le transcript de la chorale 2 et, en appui interne, le début et la fin de la 1 (Bernard) pour voir la passe. La 3, on te la résume comme ci-dessus plutôt que de te la coller en entier : tu n’as pas à l’enseigner.
+
+Tu peux reprendre ton texte sur cette base. On relit volontiers une version avant le 30 octobre.
+
+Bien cordialement,
+Christophe
