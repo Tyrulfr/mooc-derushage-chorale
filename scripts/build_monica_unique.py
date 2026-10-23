@@ -159,26 +159,36 @@ def clarisse_for(code: str | None) -> dict:
 
 
 def _emit_clarisse(doc: DocxDocument, label: str, text: str, note: str = "") -> None:
-    doc.paragraph(
-        label,
-        bold=True,
-        italic=True,
-        color=CLARISSE_COLOR,
-        font=CLARISSE_FONT,
-    )
+    lines = [
+        {
+            "text": label,
+            "bold": True,
+            "italic": True,
+            "color": CLARISSE_COLOR,
+            "font": CLARISSE_FONT,
+            "size_half": 20,
+        }
+    ]
     if note:
-        doc.paragraph(
-            note,
-            italic=True,
-            color=CLARISSE_COLOR,
-            font=CLARISSE_FONT,
+        lines.append(
+            {
+                "text": note,
+                "italic": True,
+                "color": CLARISSE_COLOR,
+                "font": CLARISSE_FONT,
+                "size_half": 18,
+            }
         )
-    doc.paragraph(
-        text,
-        italic=True,
-        color=CLARISSE_COLOR,
-        font=CLARISSE_FONT,
+    lines.append(
+        {
+            "text": text,
+            "italic": True,
+            "color": CLARISSE_COLOR,
+            "font": CLARISSE_FONT,
+            "size_half": 21,
+        }
     )
+    doc.boxed(lines, fill="F5F3FF", border="C4B5FD")
 
 
 def _clarisse_after_intro(doc: DocxDocument, props: dict) -> None:
@@ -531,23 +541,35 @@ def write_formation_docx(segments: list[dict], path: Path) -> None:
     for item in segments:
         doc.heading(item["titre"], level=2)
         if item.get("intro"):
-            doc.paragraph("Intro Monica", bold=True)
+            doc.paragraph("Intro Monica", bold=True, space_after=80)
             for line in item["intro"]:
-                doc.paragraph(line)
+                doc.paragraph(line, space_after=140)
         if item.get("kind") == "temoin":
             _clarisse_after_intro(doc, item.get("clarisse") or {})
-        if item.get("transcript"):
-            doc.paragraph("Transcription de la vidéo", bold=True)
-            for line in item["transcript"]:
-                doc.paragraph(line)
-        else:
-            doc.paragraph("Transcription non disponible.", muted=True)
+        transcript_lines = [
+            {
+                "text": "Transcription de la vidéo",
+                "bold": True,
+                "size_half": 18,
+                "color": "475569",
+            }
+        ]
+        body = item.get("transcript") or ["Transcription non disponible."]
+        transcript_lines.extend(
+            {
+                "text": line,
+                "size_half": 20,
+                "color": "334155",
+            }
+            for line in body
+        )
+        doc.boxed(transcript_lines, fill="F8FAFC", border="CBD5E1")
         if item.get("kind") == "temoin":
             _clarisse_after_concl(doc, item.get("clarisse") or {})
         if item.get("outro"):
-            doc.paragraph("Outro Monica", bold=True)
+            doc.paragraph("Outro Monica", bold=True, space_after=80)
             for line in item["outro"]:
-                doc.paragraph(line)
+                doc.paragraph(line, space_after=140)
         doc.paragraph("")
     doc.save(path)
 

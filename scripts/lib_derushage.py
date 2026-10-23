@@ -255,10 +255,16 @@ class DocxDocument:
         large: bool = False,
         color: str | None = None,
         font: str | None = None,
+        size_half: int | None = None,
+        space_after: int | None = None,
         runs: list[tuple[str, bool]] | None = None,
     ) -> None:
         paragraph = ET.Element(_w("p"))
-        size = 28 if large else (21 if muted else None)
+        if space_after is not None:
+            ppr = ET.SubElement(paragraph, _w("pPr"))
+            spacing = ET.SubElement(ppr, _w("spacing"))
+            spacing.set(_w("after"), str(space_after))
+        size = size_half if size_half is not None else (28 if large else (21 if muted else None))
         run_color = color or ("5C6B7A" if muted else None)
         if runs:
             for chunk, chunk_bold in runs:
@@ -341,6 +347,64 @@ class DocxDocument:
                     bold=(header and row_index == 0) or (key_value and col_index == 0),
                     size_half=21,
                 )
+        self._blocks.append(tbl)
+        self.paragraph("")
+
+    def boxed(
+        self,
+        lines: list[dict],
+        *,
+        fill: str = "F8FAFC",
+        border: str = "CBD5E1",
+    ) -> None:
+        """Cadre d’un seul tenant (tableau 1 cellule). Word n’arrondit pas les coins."""
+        if not lines:
+            return
+        tbl = ET.Element(_w("tbl"))
+        tbl_pr = ET.SubElement(tbl, _w("tblPr"))
+        tbl_w = ET.SubElement(tbl_pr, _w("tblW"))
+        tbl_w.set(_w("w"), "5000")
+        tbl_w.set(_w("type"), "pct")
+        borders = ET.SubElement(tbl_pr, _w("tblBorders"))
+        for edge in ("top", "left", "bottom", "right"):
+            el = ET.SubElement(borders, _w(edge))
+            el.set(_w("val"), "single")
+            el.set(_w("sz"), "8")
+            el.set(_w("space"), "0")
+            el.set(_w("color"), border)
+        for edge in ("insideH", "insideV"):
+            el = ET.SubElement(borders, _w(edge))
+            el.set(_w("val"), "nil")
+        grid = ET.SubElement(tbl, _w("tblGrid"))
+        col = ET.SubElement(grid, _w("gridCol"))
+        col.set(_w("w"), "9638")
+        tr = ET.SubElement(tbl, _w("tr"))
+        tc = ET.SubElement(tr, _w("tc"))
+        tc_pr = ET.SubElement(tc, _w("tcPr"))
+        shd = ET.SubElement(tc_pr, _w("shd"))
+        shd.set(_w("val"), "clear")
+        shd.set(_w("fill"), fill)
+        mar = ET.SubElement(tc_pr, _w("tcMar"))
+        for edge, value in (("top", "120"), ("left", "160"), ("bottom", "120"), ("right", "160")):
+            node = ET.SubElement(mar, _w(edge))
+            node.set(_w("w"), value)
+            node.set(_w("type"), "dxa")
+        for index, line in enumerate(lines):
+            paragraph = ET.SubElement(tc, _w("p"))
+            ppr = ET.SubElement(paragraph, _w("pPr"))
+            spacing = ET.SubElement(ppr, _w("spacing"))
+            spacing.set(_w("after"), "80" if index < len(lines) - 1 else "0")
+            spacing.set(_w("line"), "276")
+            spacing.set(_w("lineRule"), "auto")
+            _docx_run(
+                paragraph,
+                line.get("text") or "",
+                bold=bool(line.get("bold")),
+                italic=bool(line.get("italic")),
+                size_half=line.get("size_half"),
+                color=line.get("color"),
+                font=line.get("font"),
+            )
         self._blocks.append(tbl)
         self.paragraph("")
 

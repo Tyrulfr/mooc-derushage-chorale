@@ -768,20 +768,69 @@ tbody tr:last-child td { border-bottom: none; }
   line-height: 1.65;
   white-space: normal;
 }
+.monica-fil {
+  max-width: 46rem;
+  margin: 0 auto;
+}
+.monica-fil article.card {
+  padding: 22px 24px 20px;
+  margin-bottom: 22px;
+}
+.monica-fil article.card h2 {
+  font-size: 1.35rem;
+  line-height: 1.3;
+  margin-bottom: 14px;
+}
+.monica-role {
+  margin: 0 0 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.monica-voice {
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+.monica-voice p { margin: 0 0 0.7em; }
+.monica-transcript {
+  margin: 16px 0;
+  padding: 16px 18px;
+  border: 1px solid #d7dee6;
+  border-radius: 16px;
+  background: #f7f9fb;
+  color: #334155;
+  font-size: 10pt;
+  line-height: 1.55;
+}
+.monica-transcript h3 {
+  margin: 0 0 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+.monica-transcript p { margin: 0 0 0.45em; }
 .monica-clarisse {
-  margin: 12px 0;
-  padding: 12px 16px;
-  border-left: 4px solid #6b21a8;
+  margin: 14px 0;
+  padding: 14px 18px;
+  border: 1px solid #d8b4fe;
+  border-radius: 16px;
   background: #f5f3ff;
   color: #6b21a8;
   font-family: Georgia, "Times New Roman", serif;
   font-style: italic;
-  line-height: 1.6;
+  line-height: 1.65;
+  box-shadow: 0 1px 0 rgba(107, 33, 168, 0.06);
 }
 .monica-clarisse strong {
   font-style: normal;
   display: block;
   margin-bottom: 6px;
+  font-size: 13px;
+  letter-spacing: 0.02em;
 }
 .script-attente-panel { border-left: 4px solid var(--warn); }
 .script-valide-panel { border-left: 4px solid #047857; }
@@ -12775,8 +12824,12 @@ def build_monica_pages() -> None:
             ]
             if video.get("intro") or video.get("transcript") or video.get("outro"):
                 if video.get("intro"):
-                    bits.append("<h3>Intro Monica</h3>")
-                    bits.append(_monica_paragraphs(video.get("intro") or []))
+                    bits.append("<p class='monica-role'>Intro Monica</p>")
+                    bits.append(
+                        "<div class='monica-voice'>"
+                        + _monica_paragraphs(video.get("intro") or [])
+                        + "</div>"
+                    )
                 if video.get("kind") == "temoin":
                     bits.append(
                         clarisse_html(
@@ -12785,8 +12838,11 @@ def build_monica_pages() -> None:
                             "À arbitrer / synthétiser / réécrire.",
                         )
                     )
-                bits.append("<h3>Transcription de la vidéo</h3>")
-                bits.append(_monica_paragraphs(video.get("transcript") or []))
+                bits.append(
+                    "<div class='monica-transcript'><h3>Transcription de la vidéo</h3>"
+                    + _monica_paragraphs(video.get("transcript") or [])
+                    + "</div>"
+                )
                 if video.get("kind") == "temoin":
                     for item in props.get("transitions") or []:
                         bits.append(
@@ -12809,8 +12865,12 @@ def build_monica_pages() -> None:
                         )
                     )
                 if video.get("outro"):
-                    bits.append("<h3>Outro Monica</h3>")
-                    bits.append(_monica_paragraphs(video.get("outro") or []))
+                    bits.append("<p class='monica-role'>Outro Monica</p>")
+                    bits.append(
+                        "<div class='monica-voice'>"
+                        + _monica_paragraphs(video.get("outro") or [])
+                        + "</div>"
+                    )
             for bloc in video.get("blocs") or []:
                 bits.append(f"<h3>{escape(bloc.get('label') or '')}</h3>")
                 bits.append(_monica_paragraphs(bloc.get("lignes") or []))
@@ -12928,7 +12988,9 @@ def build_monica_pages() -> None:
 <div class="export-toolbar">
   {export_btn}
 </div>
+<div class="monica-fil">
 {''.join(fil_articles) or "<p class='meta'>Document unique à régénérer.</p>"}
+</div>
 <p>{toc}</p>
 <table class="data-table">
 <thead><tr><th>Code</th><th>Titre</th><th>Type</th><th>Intro</th><th>Outro</th><th>Source</th><th>Filmé</th><th>Monté</th><th>Validé</th></tr></thead>
