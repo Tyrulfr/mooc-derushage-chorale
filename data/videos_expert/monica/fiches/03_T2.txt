@@ -1,0 +1,56 @@
+T2 — De la recherche à l’innovation
+Vidéo témoin chorale
+
+INTRO
+
+Quel serait le premier pas pour se lancer dans l'exploration de développer quelque chose de nouveau qui serait utilisé par ses potentiels bénéficiaires ? Les témoignages passent de la recherche à autre chose : un problème, un contexte, des défis, un usage, une recherche de financements, une mise à l’épreuve hors du laboratoire. Suivez leurs histoires !
+
+OUTRO
+
+Retenez l’écart entre un résultat scientifique et une innovation. La référente suivante nous parlera du passage d'une hypothèse, une expérimentation ou un résultat issu d'un laboratoire à l'importante de se focaliser pour résoudre un problème concret. Il ne s'agit pas de faire coller le résultat à un marché mais plutôt d'ouvrir des perspectives pour comprendre les potentiels utilisateurs et répondre à un véritable besoin.
+OK MH 18/10/26
+
+TRANSCRIPT (document Monica)
+
+00:00:13 Sylvia Je me suis posé cette question de l'usage et de l'utilité de l'innovation dès le début du projet.
+00:00:18 Sylvia En fait, j'avais cette idée en tête.
+00:00:20 Sylvia Cette innovation intervient à un moment où l'hypertension artérielle pulmonaire est très grave.
+00:00:27 Sylvia Les patients meurent dans les 3 à 5 ans après le diagnostic et les seules solutions thérapeutiques proposées sont des vasodilatateurs.
+00:00:36 Sylvia Il y a 15 actifs vasodilatateurs qui ne font qu'améliorer la survie des patients et ne traitent absolument pas les causes de la maladie, c'est-à-dire le remodelage vasculaire pulmonaire.
+00:00:47 Sylvia Or, la cible que j'ai identifiée intervient justement sur ce remodelage vasculaire pulmonaire.
+00:00:53 Loïc J'ai la chance d'avoir une thématique qui peut être orientée assez facilement vers les filières agricoles.
+00:01:00 Loïc Je travaille sur un objet qui est la graine, la semence.
+00:01:04 Loïc Les producteurs de plants veulent une graine efficace pour un plant efficace.
+00:01:08 Loïc Ils cherchent à atteindre un taux de germination proche de 100 %.
+00:01:12 Loïc Or, on sait que c'est une biologie complexe.
+00:01:15 Loïc On cherche à comprendre les mécanismes moléculaires qui conduisent à l'efficacité de levée, ça nous a vraiment fait réfléchir, nous, sur les connaissances qu'on avait et comment on pouvait les valoriser, et comment est-ce qu'on pouvait développer quelque chose d'un petit peu nouveau qui se positionnerait dans le paysage au moins européen, en commençant par le paysage français.
+00:01:37 Yann C'est pendant, je dirais, ma troisième année de thèse que j'avais envie de creuser un petit peu plus loin le côté pratique, Mon innovation, elle sert à construire automatiquement des modèles de jumeaux numériques de chaînes de production à partir des données provenant des différents capteurs et actionneurs.
+00:02:00 Yann Et ensuite, ce modèle, il peut être utilisé par les industriels pour pouvoir faire du monitoring et ainsi limiter des temps d'arrêt qui sont assez coûteux pour l'industrie.
+00:02:11 Yann Ma solution est innovante parce qu'elle se base sur des nouvelles méthodes mathématiques.
+00:02:18 Yann On a juste besoin de se brancher aux données de la chaîne de production sans avoir forcément d'intervention humaine et d'équipes d'ingénieurs dédiées pour la mettre en place.
+00:02:32 Yann Qui permet d'avoir quand même ces résultats de maintenance prédictive et d'analyse qu'on a aujourd'hui normalement qu'après plusieurs mois de travail par des équipes d'ingénieurs dédiées.
+00:02:45 Muriel Au laboratoire, on fait régulièrement des demandes de financement.
+00:02:49 Muriel Et dans ces demandes de financements, les premiers paragraphes à compléter sont les contextes.
+00:02:56 Muriel Et c'est en écrivant de nombreuses fois ces contextes que j'ai pris conscience de l'application que pourrait avoir cette innovation.
+00:03:06 Muriel Les défis principaux?
+00:03:08 Muriel Auquel on s'est confrontés.
+00:03:13 Muriel C'est un défi technologique parce qu'il faut à la fois formuler ses aliments et on a voulu formuler des aliments qui avant tout sont bons.
+00:03:24 Muriel Donc il faut travailler le goût, il faut travailler les saveurs, il faut travailler la couleur, il faut travailler les odeurs.
+00:03:30 Muriel Donc ça c'était un gros défi technologique et en plus nous on ajoute le probiotique.
+00:03:36 Muriel Donc il faut aussi produire le probiotique et que ce probiotique soit stable dans la matrice alimentaire.
+00:03:42 Muriel Le deuxième défi est un défi réglementaire, parce qu'il faut que ces aliments répondent aux recommandations de la Haute Autorité de Santé pour les compléments nutritionnels au roux.
+00:03:51 Muriel Le troisième défi, c'est un défi, j'appellerais corporatiste, c'est-à-dire qu'il faut convaincre les médecins, les diététiciens, les cuisiniers, toute la chaîne, toutes les personnes qui sont impliquées dans le soin, dans un établissement, Notre innovation.
+00:04:10 Jean Jacques Apporte la réponse à la question de la détection de nanoparticules qui sont utilisées dans des applications médicales.
+00:04:19 Jean Jacques Très concrètement, le vaccin que nous avons tous connus contre le Covid, véhicule de l'ARN.
+00:04:27 Jean Jacques Cet ARN, si on l'injecte dans le corps, il est détruit par le système immunitaire extrêmement vite.
+00:04:31 Jean Jacques Il faut le protéger en l'emballant.
+00:04:34 Jean Jacques Et donc ça, ça pose la question de compter ces particules, savoir combien on en a fabriqué, et de savoir si elles sont remplies oui ou non.
+00:04:42 Jean Jacques Et c'est beaucoup plus difficile de répondre à cette question que dans le cas d'une aspirine, savoir si le comprimé contient le produit actif.
+00:04:49 Jean Jacques Parce que ce n'est pas de la synthèse chimique, c'est fabriqué par de la matière vivante.
+00:04:54 Jean Jacques Et du coup, on a un contrôle qui n'est pas du tout le même sur ce qu'on fabrique.
+00:04:58 Jean Jacques Et donc, caractériser ce que la matière vivante a produit est très difficile.
+00:05:03 Jean Jacques Et c'est cette question à laquelle on veut répondre.
+00:05:07 Sylvia L'innovation au plan de la recherche n'était pas culturelle dans le laboratoire.
+00:05:15 Sylvia Il y avait l'innovation thérapeutique, il y avait de nouveaux essais cliniques, mais au plan de la recherche fondamentale, on n'était pas habitué à innover, à valoriser ou en tout cas aller jusqu'au bout de la démarche d'innovation.
+00:05:30 Sylvia On pouvait déposer des brevets occasionnellement, mais après, que devenaient ces brevets?
+00:05:34 Sylvia Moi, j'avais envie d'aller jusqu'au bout, d'aller au lit du patient.

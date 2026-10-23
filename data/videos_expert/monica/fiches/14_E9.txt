@@ -1,0 +1,64 @@
+E9 — La PI comme actif stratégique
+Vidéo expert
+
+INTRO
+
+La propriété intellectuelle comme actif : ce n’est pas un trophée, c’est ce qui se licencie, se partage ou se défend.
+
+OUTRO
+
+Retenez que sans stratégie de PI, la valorisation n’a pas de levier. Les juristes en propriété intellectuelle de votre établissement employeur doivent être les premiers à interagir avec vous pour définir une modalité adéquate de sécuriser vos projets. Une stratégie adaptée ouvrira les portes de l’avenir de votre recherche ou découverte.
+
+TRANSCRIPT (document Monica)
+
+00:00:05 Bonjour à tous, je m'appelle Stanislas de La Paz, je suis chargé d'affaires à l'INPI, l'Institut National de la Propriété Industrielle.
+00:00:12 Notre mission est de vous accompagner pour valoriser vos actifs immatériels et sécuriser votre propriété intellectuelle.
+00:00:19 L'objet de cette séquence est de comprendre pourquoi et comment la propriété intellectuelle est un levier stratégique pour votre entreprise, surtout si vous partez de résultats de recherche.
+00:00:29 Les actifs immatériels sont souvent votre seule richesse au départ et prennent une importance croissante.
+00:00:35 À titre d'illustration, selon une étude Ocean Tomo, 92% de la valeur des entreprises du S&P 500 proviennent aujourd'hui d'actifs intangibles.
+00:00:44 Les usines, équipements ou stocks ne représentent plus que 8%.
+00:00:48 Pour sécuriser ses actifs, tout commence avant même la R&D.
+00:00:52 Avec votre idée en tête, explorez l'existant.
+00:00:55 Utilisez les bases de données de brevets et publications scientifiques, gratuites via l'INPI ou l'Office européen des brevets, afin de faire une veille technologique.
+00:01:04 Cette étape est cruciale.
+00:01:06 Elle vous permet de voir ce qui se fait déjà dans votre domaine, d'éviter les doublons et même de trouver de l'inspiration.
+00:01:12 Une fois cette recherche faite, passez à la R&D.
+00:01:15 Mais attention, documentez et datez chaque étape de vos travaux.
+00:01:19 Et surtout, protégez vos secrets en mettant en place des mesures raisonnables.
+00:01:23 Accords de confidentialité, sécurité des locaux, accès restreint aux informations sensibles, Quand votre invention est suffisamment aboutie, une étape clé s'impose, l'étude de la liberté d'exploitation, ou FTO, Freedom to Operate.
+00:01:37 Cette étude, à réaliser avec un conseil en propriété industrielle, détermine si votre invention ne dépend pas d'un brevet existant.
+00:01:44 C'est essentiel, parce que si votre technologie repose sur un brevet tiers, vous devrez peut-être négocier une licence ou revoir votre business model.
+00:01:53 En parallèle, vous pouvez Premièrement, lancez avec un conseil en propriété industrielle une recherche d'antériorité pour valider, par une recherche brevet plus fouillée, la brevetabilité de l'invention.
+00:02:05 Et deuxièmement, lancez une étude de marché pour valider le potentiel commercial de votre invention.
+00:02:10 Troisièmement, déposer une demande de brevet si cela s'inscrit dans votre stratégie.
+00:02:14 Sur ce point, je vous renvoie à notre précédente vidéo.
+00:02:18 A noter qu'en tant que chercheur dans un organisme public de recherche, l'invention appartient à l'employeur et c'est à lui de décider de déposer ou non.
+00:02:26 La déclaration d'invention est donc indispensable.
+00:02:29 Vous pouvez bien entendu vous impliquer dans ces processus de décision.
+00:02:33 Dans votre projet technologique, tenez compte aussi des autres moyens d'appropriation de la propriété intellectuelle, indispensables pour protéger la technologie et bénéficier ainsi d'un monopole temporaire.
+00:02:45 Vous aurez ainsi le temps d'avance nécessaire sur vos concurrents pour développer et commercialiser la technologie, puis valoriser financièrement votre future société.
+00:02:54 Le droit d'auteur, pour vos logiciels par exemple, il protège votre code source contre la copie ou la distribution non autorisée, ainsi que les travaux préparatoires.
+00:03:03 Un dépôt probatoire sera donc indispensable.
+00:03:06 Les dépôts de titres de propriétés intellectuelles, comme les brevets pour vos inventions techniques, nous l'avons vu, mais aussi marques pour vos signes distinctifs, dessins et modèles pour vos créations esthétiques.
+00:03:17 Le secret des affaires pour protéger vos savoir-faire indétectables ou non retrouvables par rétro-ingénierie, comme un procédé de fabrication ou une recette.
+00:03:26 Mais attention, une fuite peut tout compromettre.
+00:03:29 Vous pouvez aussi prendre licence exclusive sur des titres de propriété industrielle, brevets, savoir-faire, droits d'auteur, détenus par des organismes publics de recherche via la société que vous aurez créée, en spin-off par exemple.
+00:03:42 C'est un modèle de valorisation de la recherche bien connu et valorisé par les investisseurs car ces licences sont généralement stables et sécurisées.
+00:03:50 Une étude conjointe de l'Office européen des brevets et de l'EUIPO révèle un chiffre frappant.
+00:03:57 Les startups qui déposent des brevets ou des marques lors de leur phase d'amorçage ont jusqu'à 10 fois plus de chances d'obtenir un financement.
+00:04:04 Parce qu'un brevet, par exemple, est un titre validé après une procédure exigeante et constitue une barrière à l'entrée solide pour vos concurrents, sécurise votre marché et devient un levier de négociation lors des levées de fonds.
+00:04:17 Les investisseurs sont rassurés par un portefeuille de pays bien construit.
+00:04:21 Lors d'une levée de fonds, ils mèneront un audit de votre propriété intellectuelle.
+00:04:25 Soyez prêts à justifier chaque choix.
+00:04:27 Et n'oubliez pas, selon votre stratégie, vous pouvez aussi concéder des licences sur vos actifs de propriété intellectuelle pour des marchés que vous ne souhaitez pas exploiter directement.
+00:04:37 Dans le cas où vous souhaitez exploiter votre technologie sous licence exclusive, il vous faudra alors prévoir, dans le contrat de licence exclusive, la capacité à sous-licencier à d'autres opérateurs économiques.
+00:04:49 A noter qu'en tant que chercheur dans un organisme public de recherche, nombre de processus propriété intellectuelle sont déjà mis en place dans votre organisme.
+00:04:57 Vous êtes ainsi épaulé dès le début de votre projet sur les questions de propriété intellectuelle.
+00:05:02 Pour synthétiser, la propriété intellectuelle n'est pas une option, c'est un pilier stratégique, que ce soit pour protéger vos innovations, sécuriser vos actifs immatériels ou attirer des investisseurs, chaque étape compte.
+00:05:15 Recherchez l'existant avant de démarrer, documentez et protégez vos travaux en cours.
+00:05:21 Vérifiez la brevetabilité et votre liberté d'exploitation avant de commercialiser.
+00:05:26 Sécurisez vos actifs via les outils disponibles, brevets, marques, datations et secrets, dessins et modèles, etc.
+00:05:34 Valorisez votre propriété intellectuelle pour lever des fonds ou concéder des licences.
+00:05:40 L'INPI est là pour vous accompagner dans cette démarche.
+00:05:42 N'hésitez pas à nous solliciter pour éclairer vos choix dans la construction d'une stratégie de PI adaptée à votre projet.
+00:05:49 Je vous remercie.

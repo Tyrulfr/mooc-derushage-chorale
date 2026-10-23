@@ -1,9 +1,26 @@
-# Intros / outros Monica Henao
+# Monica Henao — ciment du parcours
 
-Textes **proposés** pour l’animatrice (prompteur). Ce ne sont pas des verbatims d’experts ni de chercheurs.
+Monica ouvre et clôt **toutes les vidéos** (témoins et expertise).
 
-Critère d’inclusion : vidéo **déjà filmée** (7 ou 9 septembre 2026) **ou** script dans `scripts_valides/`.
+## Sources officielles (23 octobre 2026)
 
-Les autres codes restent **de côté** (voir `index.json`) : pas de script Monica tant qu’il n’y a ni rush/script de tournage, ni script validé.
+- `sources/` — documents Word reçus, un fichier par vidéo (`01_T1.docx` … `20_E13.docx`)
+- `sources/Mooc_Script Monica Henao_Vdraft_repasse20261019.docx` — script global Monica
+- `fiches/` — extraits grain par grain
+- `Monica_deroule_complet.docx` / `.txt` — **document unique d’arbitrage** : fil Monica + propositions Clarisse (T1–T13) en Georgia violet
+- `fil_arbitrage.json` — même fil pour l’onglet site
+- `index.json` — ordre, intros, outros, transcripts, suivi de captation
 
-Les outros sont calées sur le script (validé ou reçu pour le prompteur). À recouper avec le rush si l’oral a divergé.
+Régénérer le document unique :
+
+```
+python3 scripts/build_monica_unique.py
+```
+
+Importer un nouveau lot grain par grain :
+
+```
+python3 scripts/import_monica_docs.py
+```
+
+L’onglet site `monica.html` est régénéré par `python3 scripts/build_site.py`.

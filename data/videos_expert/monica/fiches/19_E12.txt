@@ -1,0 +1,90 @@
+E12 — Prématuration → maturation
+Vidéo expert
+
+INTRO
+
+Capsule SATT à venir : de la prématuration à la maturation, invention n’est pas innovation, preuve de concept et proposition de valeur.
+
+OUTRO
+
+Retenez que pour passer d'un projet prometteur à une innovation qui se développe, il faut aussi du temps, des moyens et des opportunités. Financements, concours, appels à projets ou dispositifs d'accompagnement peuvent jouer un rôle déterminant. Dans cette vidéo, vous avez découvert comment ces leviers permettent de faire évoluer et dérisquer votre projet étape par étape tout en vous accompagnant à maturer votre projet. Dans la vidéo suivante Arielle Santé vous expliquera ce que fait un incubateur, voyons les différences !
+
+TRANSCRIPT (document Monica)
+
+00:00:05 Bonjour, je suis Stéphanie Oger-Roussel, Directrice Stratégie Innovation à la Société d'accélération de transfert de technologie de Paris-Saclay.
+00:00:14 Mon équipe accompagne plus d'une cinquantaine de projets par an issus des laboratoires du Pôle universitaire d'innovation de l'Université Paris-Saclay, essentiellement au stade de prématuration et dans toutes les disciplines technologiques telles que les sciences de vivant, la santé, les sciences de l'ingénieur ou le numérique.
+00:00:31 Les témoignages des chercheurs que vous venez d'entendre montrent que nous sommes à leurs côtés pour les aider sur tout le chemin de l'innovation et ce, à différents stades de maturité de leurs projets.
+00:00:41 On leur apporte des conseils en expertise marché, une vision technologique sur le développement de leurs projets et également une vision sur leur stratégie de propriété intellectuelle.
+00:00:52 Nous investissons également dans les technologies pour les maturer.
+00:00:56 Le plus tôt possible, nous travaillons avec vous sur votre stratégie d'innovation et nous allons pouvoir vous aider à évaluer si vos inventions peuvent se transformer en innovation à fort potentiel.
+00:01:07 En effet, toutes les inventions n'aboutissent pas à des innovations.
+00:01:10 Une invention ne se développera pas si elle ne rencontre pas un enjeu commercial.
+00:01:14 L'innovation, c'est la création de quelque chose de nouveau, qui va créer de la valeur et qui va surtout répondre à un besoin marché.
+00:01:21 Notre écosystème d'innovation dispose de plusieurs dispositifs et de financements pour vous accompagner, porteurs de projets, à développer vos technologies et transformer vos inventions en innovations.
+00:01:33 Selon la maturité technologique de votre projet, des accompagnements appropriés sont accessibles pour dérisquer vos projets tout au long de leur développement.
+00:01:42 Lorsque vous avez une idée et des premiers résultats prometteurs, il va falloir valider une première preuve de concept via des financements de prématuration.
+00:01:50 Ce sont des financements à hauteur de 100 000 euros pendant un an qui vont vous permettre de valider une hypothèse sur un premier marché applicatif.
+00:01:59 Il y a des étapes de sélection.
+00:02:01 Vous déposez un dossier de candidature à des programmes tels que Poking Labs proposé par l'Université Paris-Saclay.
+00:02:07 Les projets sont ensuite évalués et analysés par un jury d'experts en fonction des différentes thématiques et une dizaine de projets est financé par an.
+00:02:16 Lorsque le projet est sélectionné, à ce stade, une étude de positionnement technico-économique est nécessaire pour explorer et valider le ou les marchés cibles.
+00:02:26 Il y a plusieurs étapes.
+00:02:27 On commence par une étude de foisonnement.
+00:02:29 Il faut alors tester plusieurs positionnements.
+00:02:31 En santé, ça peut être plusieurs types d'indications ou différentes populations de patients.
+00:02:37 Et pour chaque hypothèse, on va réaliser une étude de marché.
+00:02:40 Ces études sont essentielles pour accompagner la stratégie R&D de votre projet et répondre à un réel besoin.
+00:02:47 Une première étape consiste à réaliser un état de l'art technologique et concurrentiel pour comprendre les aspects différenciants de votre technologie par rapport à la concurrence.
+00:02:57 Il s'agit de positionner votre technologie dans son environnement.
+00:03:00 L'analyse des différents segments de marché, de la chaîne de valeur sont des étapes préalables essentielles afin de pouvoir mettre en évidence la proposition de valeur du projet de la technologie.
+00:03:12 Il faut décortiquer tout l'environnement du domaine ciblé pour positionner finement la technologie et se concentrer sur une problématique précise.
+00:03:22 La valeur dépend de la façon dont la technologie va répondre à un besoin concret.
+00:03:27 Cette notion de proposition de valeur est essentielle.
+00:03:30 Quelle est la proposition de valeur par rapport à la concurrence?
+00:03:33 Quelle est la proposition de valeur pour répondre à un besoin?
+00:03:37 Qu'est-ce qui fait qu'un client sera prêt à payer pour pouvoir bénéficier de votre technologie?
+00:03:42 Quel est le problème que ma technologie lui retire?
+00:03:45 En anglais, on dit souvent «more the pain, more the gain».
+00:03:48 Plus le problème est important, plus la valeur est forte.
+00:03:51 Il y a plusieurs façons d'appréhender la valeur.
+00:03:53 Elle peut être économique, bien évidemment, mais en thérapeutique humaine, on parle de bénéfice-risque pour le patient.
+00:04:01 Elle dépend également du degré de maturité de la technologie et du temps de mise sur le marché, du potentiel du marché adressé également.
+00:04:09 Cette valeur peut également dépendre du contexte.
+00:04:12 J'aime bien prendre l'exemple du prix que l'on serait prêt à mettre pour l'achat d'une bouteille d'eau, qu'on soit à Paris ou dans le désert.
+00:04:19 Évidemment, la valeur de la bouteille d''eau dans le désert serait supérieure à celle qu'on pourrait être prêt à payer à Paris, puisqu'elle serait vitale.
+00:04:28 Pour réaliser une étude de marché, il y a souvent deux grandes étapes.
+00:04:31 La première, elle va être très documentaire.
+00:04:34 On va aller rechercher des données bibliographiques, on va aller fouiller dans des bases, soit accessibles ou des bases de données qui vont être spécialisées pour décrypter tout l'environnement du marché visé.
+00:04:48 On peut aussi se servir des bases de données brevets pour comprendre les technologies qui sont développées autour et comprendre la concurrence.
+00:04:57 Dans une deuxième phase, il est nécessaire d'interagir avec des experts industriels ou des cliniciens si la technologie est dans le domaine de la santé.
+00:05:05 C'est essentiel et nécessaire pour comprendre leurs pratiques, les solutions qui sont déjà utilisées, ce qui marche, ce qui ne marche pas et quel est le besoin non satisfait ou quels sont les enjeux ou les barrières à l'entrée.
+00:05:20 Après seulement, on va aller échanger sur la réceptivité de la technologie.
+00:05:24 Elle doit se faire challenger.
+00:05:25 Et est-ce qu'elle peut répondre à un réel besoin?
+00:05:28 Il est important également de comprendre les contraintes de la montée en échelle de la technologie afin de réaliser un développement qui intègre les critères de performance attendue.
+00:05:37 Ce n'est pas la même chose d'avoir des résultats dans un laboratoire où l'environnement est extrêmement contrôlé que dans des environnements où les paramètres peuvent être plus aléatoires ou s'il existe des contraintes de coûts liées à la montée en échelle.
+00:05:50 Il peut exister plusieurs positionnements pertinents.
+00:05:53 Il faudra se tourner dans un premier temps sur la démonstration d'une première preuve de concept sur une application donnée pour après envisager d'autres applications où la captation de valeur économique ou sociétale est souvent la plus forte.
+00:06:07 La stratégie de propriété intellectuelle doit également se faire en parallèle.
+00:06:10 Le développement du projet peut se poursuivre via des étapes de maturation, notamment dans les SAT.
+00:06:15 Les SAT disposent de financements publics pour maturer la preuve de concept.
+00:06:20 La technologie doit être un TRL 3-4, avoir un marché applicatif identifié et aussi qu'il y ait une stratégie de propriété intellectuelle identifiée.
+00:06:30 Là encore, il y a un processus de sélection.
+00:06:33 Le chercheur va déposer son dossier et va venir pitcher devant un comité de sélection, celui de la SAT, qui est composé d'experts innovation.
+00:06:41 Les projets sont ensuite évalués sur plusieurs critères tels que le caractère innovant de votre technologie, sa proposition de valeur marché, la robustesse de la propriété intellectuelle et aussi la motivation de l'équipe.
+00:06:54 A ce stade, 55% des projets qui sont soumis sont retenus en moyenne.
+00:06:59 On va passer ensuite en phase de co-construction.
+00:07:02 C'est une phase qui peut durer entre 3 et 6 mois et qui va permettre de constituer un dossier d'investissement qui sera alors présenté à notre comité d'investissement.
+00:07:11 Ce comité est composé de professionnels de l'industrie, du capital risque, d'entrepreneurs.
+00:07:16 En moyenne à ce stade, 80% des projets sont retenus.
+00:07:20 Il restera une phase plus administrative où le conseil d'administration a la responsabilité de valider les décisions d'investissement.
+00:07:27 L'objectif de la maturation est d'accompagner le projet à forte valeur d'innovation pour créer de la valeur économique et dérisquer au maximum les verrous technologiques.
+00:07:36 La finalité est de réaliser un transfert de technologie vers un partenaire industriel qui peut être soit une entreprise qui existe déjà, soit vers une start-up qui peut être nouvellement créée.
+00:07:47 Ça dépend de la technologie, ça dépend du modèle d'affaires associé à la mise sur le marché de la technologie.
+00:07:54 Les financements de maturation sont en moyenne de 500 000 euros.
+00:07:57 Et là, le projet va être accompagné par toute une équipe d'experts qui va soutenir le porteur, qui va vous soutenir et lui apporter les éléments essentiels pour sécuriser son développement.
+00:08:09 Il va y avoir un chef de projet, un ingénieur brevet, un juriste.
+00:08:13 Un véritable business plan est réalisé pour mesurer les retours sur investissement potentiels.
+00:08:19 À l'issue du projet, un transfert de technologie est réalisé permettant la poursuite des développements par un tiers privé qui exploitera la technologie pour sa mise sur le marché.
+00:08:29 Là encore, les équipes de la SAT vont vous accompagner dans les étapes de transfert et vous permettent d'ouvrir les premières portes de l'entreprenariat si c'est un modèle de start-up qui est envisagé.
+00:08:41 L'ambition finale reste de vous accompagner pour que vos innovations puissent bénéficier à la société et répondre aux enjeux et aux transitions de notre époque.

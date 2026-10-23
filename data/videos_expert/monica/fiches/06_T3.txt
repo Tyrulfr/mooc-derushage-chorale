@@ -1,0 +1,114 @@
+T3 — Identifier un besoin réel
+Vidéo témoin chorale
+
+INTRO
+
+Pour cette séquence, nos témoins parlent des adaptations et de l'étude de besoins. Quel est l'intérêt du marché ? Découvrez également les dispositifs qui les ont aidé à optimiser et orienter la recherche au sein du laboratoire. Écoutez leurs démarches et leurs challenges !
+
+OUTRO
+
+Un besoin n’est pas une hypothèse de labo. La suite pose les mots POC, prototype, MVP, TRL, puis la logique de dérisquage par étapes. Découvrons avec Fatoumata Aonon tous ces concepts de manière plus détaillée.
+
+TRANSCRIPT (document Monica)
+
+00:00:11 Loïc Pour valider l'intérêt de notre technologie et de notre innovation, on a beaucoup échangé avec déjà notre environnement de proximité au laboratoire.
+00:00:22 Loïc On a échangé aussi dans le cadre d'une étude de marché qu'on a fait réaliser, portée par la SATT Paris-Saclay.
+00:00:29 Loïc Et puis après, on a beaucoup échangé avec les acteurs eux-mêmes.
+00:00:32 Loïc Et on s'est aperçu qu'en fait les exigences étaient très différentes en termes de qualité d'une filière à l'autre et le deuxième point c'est que les besoins n'étaient pas du tout les mêmes.
+00:00:41 Jean Jacques Dans notre cas, nous sommes partis d'un besoin du marché qui était connu par mon confondateur.
+00:00:52 Jean Jacques Pour autant, nous avons réalisé une étude de marché pour essayer d'avoir une approche qui ne soit pas cette fois-ci qualitative, mais un peu plus quantitative de ce que serait le marché.
+00:01:03 Jean Jacques Et là, nous avons bénéficié de l'aide de la SATT de Paris-Saclay.
+00:01:07 Jean Jacques En parallèle, nous avons assisté à beaucoup de conférences dans les domaines des utilisateurs potentiels de l'innovation pour identifier ce qu'étaient les problèmes importants.
+00:01:19 Jean Jacques L'ensemble de ces étapes nous a conduit à modifier notre cible et nous avons fait ce qu'on appelle un pivot, c'est-à-dire qu'on a adapté notre technologie pour répondre à un autre besoin qu'on a défini à ce moment-là.
+00:01:39 Yann On a validé qu'il existait un besoin et un intérêt de notre solution dès le début de la construction du sujet de thèse à partir de la bibliographie scientifique.
+00:01:51 Yann Pour savoir s'il y avait vraiment besoin, j'ai fait des recherches à la fois sur Internet et en utilisant divers systèmes d'IA, comme ChatGPT ou Claude.
+00:02:02 Yann Et ça m'a permis de découvrir des rapports qui sont faits soit par Siemens, soit par des cabinets de conseil comme McKinsey, qui donnent une vue globale de l'économie autour de ma solution, qui montrent qu'il y avait un véritable intérêt.
+00:02:18 Yann Mais cette vision globale toute seule, elle ne suffit pas parce qu'à la fin, on a vraiment besoin d'aller chercher des vrais industriels.
+00:02:24 Yann Ce sont nos futurs clients.
+00:02:26 Yann Donc, on doit aller sur le terrain et aller interroger les clients un par un, les personnes concernées pour pouvoir connaître quels sont leurs différents problèmes au quotidien et comment nous, on peut adapter notre solution pour pouvoir les aider.
+00:02:40 Muriel Avec la Société d'accélération de transfert technologique, donc la SATT de Paris-Saclay, j'ai déposé un projet pour obtenir un financement.
+00:02:50 Muriel Et dans le contexte de ce projet, il y avait une étude de marché qui était faite.
+00:02:55 Muriel Et là, on s'est aperçu que plus de la moitié des compléments nutritionnels euros qui sont prescrits ne sont pas consommés.
+00:03:03 Muriel Donc il y a une place pour proposer des nouveaux produits, pour essayer de diversifier les propositions alimentaires qui sont faites à ces patients qui souvent sont fatigués, sont fragiles, n'ont pas faim.
+00:03:16 Muriel Donc ils ont besoin de diversité.
+00:03:18 Sylvia Pour vérifier l'intérêt d'une innovation, surtout dans le domaine médical, je pense qu'il est important d'aller discuter très très tôt avec les cliniciens.
+00:03:28 Sylvia On ne sait pas à quel point parfois leurs remarques, leurs réflexions peuvent aussi orienter notre démarche de recherche.
+00:03:38 Sylvia Il ne suffit pas de faire de la recherche en laboratoire.
+00:03:42 Sylvia On a bien identifié une cible.
+00:03:44 Sylvia Cette cible, je vous l'ai dit, était dans le système nerveux central.
+00:03:48 Sylvia Mais j'avais un challenge, un challenge de développer des molécules thérapeutiques qui ne passent pas dans le cerveau pour éviter les effets cognitifs et centraux.
+00:04:01 Sylvia Ce challenge, j'ai pu le résoudre en collaborant avec des chimistes de l'université Paris-Saclay et en collaborant avec des personnes spécialisées en pharmacologie au CEA.
+00:04:13 Sylvia Le moment d'accélération a été la rencontre avec la SATT Paris-Saclay.
+00:04:19 Sylvia Cette rencontre a permis de changer notre posture de chercheur en entrepreneur.
+00:04:25 Sylvia Et ensuite, on a pu construire une feuille de route réaliste à partir de nos séries chimiques pour les optimiser, pour les explorer in vivo dans les modèles expérimentaux et pour exploiter les propriétés de ces molécules pour désigner le candidat médicament.
+00:04:47 Muriel C'est obligatoire de sortir du labo pour innover.
+00:04:51 Muriel Quand vous innovez, vous cherchez à mettre sur le marché soit un nouveau produit, soit un nouvel usage.
+00:04:58 Muriel Et donc là, évidemment, il faut tester cette idée-là.
+00:05:02 Muriel Et pour tester cette idée-là, il faut aller là où vous voulez que votre nouveau produit ou votre nouvel usage soit utilisé.
+00:05:10 Loïc Le conseil que je pourrais donner à un chercheur ou à un enseignant-chercheur qui voudrait s'engager dans une démarche de transfert de connaissances vers de l'innovation et éventuellement vers de l'entreprenariat, c'est qu'effectivement, il doit bien maîtriser ses technos, il doit en imaginer la capacité à faire du scale-up, à monter à une échelle qui soit applicable pour les acteurs, et donc il doit bien connaître le mode de fonctionnement des acteurs industriels.
+00:05:41 Loïc S'il ne connaît pas l'industrialisation du process ou s'il a une idée un peu préconçue de ce que ce doit être par rapport à son transfert de laboratoire et que c'est trop en décalage avec ce qui se fait de manière quotidienne dans l'industrie, ce sera une rupture trop forte.
+00:05:57 Yann En confrontant ma recherche au terrain, la première chose qui m'a surpris, c'est le fait que la technologie et la solution technique n'est pas la chose la plus importante.
+00:06:08 Yann Elle a besoin de répondre à un vrai problème de marché et ça on ne peut pas l'avoir en restant dans le laboratoire.
+00:06:14 Yann On ne peut le trouver qu'en allant à l'extérieur, en discutant avec des gens qui sont concernés.
+00:06:19 Yann Par les problèmes et c'est grâce à cette information qu'on va pouvoir essayer de créer un business plan, un business model et toute une économie qui va accompagner notre innovation.
+00:06:31 Sylvia En fait, il ne faut pas hésiter à sortir du labo et aller confronter ses idées au terrain.
+00:06:37 Sylvia C'est une expérience incroyable, un accomplissement personnel au-delà de la recherche.
+00:06:44 Sylvia C'est enthousiasmant, c'est exaltant et il faut vraiment oser y aller.
+00:06:49 Sylvia Si on n'ose pas, on ne peut pas comprendre si notre idée a du potentiel ou pas.
+00:06:54 Sylvia Et si on sait s'entourer, on peut éventuellement aller jusqu'au bout de cette idée.
+00:07:35 Yann Et du coup, ça a levé aussi de nouvelles problématiques à résoudre qu'on n'avait pas forcément regardées au début.
+00:07:43 Yann Et ça a donc permis d'orienter le développement de la solution vers ce qu'elle est aujourd'hui.
+00:07:51 Yann Et je suis sûr qu'elle va devoir encore évoluer suite aux prochaines discussions que j'aurai.
+00:08:00 Yann Il est aussi très important, je trouve, de s'entourer de personnes qui ont des compétences différentes et qui complètent nos compétences.
+00:08:27 Loïc On a vocation à travailler pour quelque chose qui soit du bien collectif.
+00:08:33 Loïc Et nous, en tant que, modestement, chercheurs académiques, on essaie de venir contribuer à cette stratégie-là, à une stratégie qui soit collective et qui soit utile, finalement, pour la société et pour l'environnement.
+00:09:03 Yann J'ai eu énormément d'échanges déterminants dans mon parcours, à plusieurs étapes.
+00:09:09 Yann Les premières, elles étaient avec l'écosystème de l'Université Paris-Saclay et principalement la maison du doctorat, qui a pu me permettre d'avoir des formations qui m'ont initié à l'entrepreneuriat et qui m'ont donné envie vraiment de me lancer dedans.
+00:09:24 Yann Et puis ensuite, avec différents acteurs comme le service valorisation de l'ENS, la SATT ou IncubAlliance,.
+00:09:40 Muriel Clairement, il y a eu des rencontres déterminantes et absolument fondatrices, notamment celle avec l'EHPAD de Puyraveau, qui est un EHPAD situé dans les Deux-Sèvres, tout simplement parce que leur projet d'établissement était basé sur l'amélioration de la nutrition.
+00:09:55 Muriel Et donc, vous voyez, c'était parfaitement cohérent avec notre projet et nos produits.
+00:10:01 Muriel Et nous travaillons ensemble, nous co-construisons ensemble depuis plus de cinq ans.
+00:10:07 Muriel Et ils m'ont souvent dit ou souvent témoigné, en fait, de leur intérêt pour notre projet parce que c'est un projet qui leur amène aussi de l'espoir.
+00:10:18 Muriel Donc nous, à la fois, on bénéficie de leur expérience et eux aussi trouvent un intérêt pour motiver les équipes et pour participer à des innovations.
+00:10:38 Loïc À qui on apporte de la valeur.
+00:10:41 Loïc Et donc, à partir de là, on a commencé vraiment à creuser une approche plutôt, effectivement, entrepreneuriale sur la question de la valeur.
+00:10:52 Loïc Alors, est-ce que notre idée de départ a évolué?
+00:10:55 Loïc Très certainement, elle a même beaucoup évolué.
+00:10:58 Loïc Ce qui a évolué, c'est comment on l'a ajusté aux acteurs.
+00:11:02 Loïc Et en fait, on est arrivé non pas avec une innovation, mais avec une gamme de possibles.
+00:11:09 Loïc Qui était très adaptable.
+00:11:11 Loïc Et au final, notre innovation, c'est plutôt quelque chose qui est très utilisateur-dépendant.
+00:11:16 Loïc Donc, on fait du design à façon du traitement de semences en fonction de l'espèce, en fonction de la génétique, en fonction du territoire où il va produire son espèce pour pouvoir, effectivement, lui offrir la meilleure performance par rapport à ce qu'il fait aujourd'hui.
+00:11:33 Loïc Je vous donne un exemple, aujourd'hui, en laitue, pour produire un plan de laitue, Ils ne cherchent pas 95 de germination, ils ne cherchent pas 97 de germination.
+00:11:45 Loïc Ils veulent au moins 98-99 %.
+00:11:49 En.
+00:11:58 Loïc Termes de recherche académique, on peut avoir des convictions, mais le chemin pour y aller peut difficilement être sans les acteurs industriels.
+00:12:07 Loïc Ma conviction, c'est qu'effectivement, il faut qu'on réussisse à trouver une articulation qui permette d'avoir un bénéfice commun à partir des connaissances académiques et à travers les stratégies individuelles des entreprises ou collectives.
+00:12:39 Loïc Pourquoi il est essentiel de sortir du laboratoire pour innover?
+00:12:42 Loïc Pour plein de raisons.
+00:12:43 Loïc Nous, dans le cas de la semence, on est capable de travailler sur quelques milligrammes, quelques grammes.
+00:12:48 Loïc Dans l'industrie, on travaille sur quelques kilos ou quelques centaines de kilos.
+00:12:54 Loïc Donc, le scale-up est super important.
+00:12:57 Loïc Si on n'articule pas ça,.
+00:13:01 Loïc Il est.
+00:13:01 Loïc Improbable, impossible d'aller au marché.
+00:13:07 Loïc Ce qu'on a découvert, qu'on n'aurait jamais appris si on était resté simplement au laboratoire...
+00:13:13 Loïc Je ne sais pas.
+00:13:16 Loïc Non, non, je réfléchis.
+00:13:19 Loïc Il y a sûrement plein de trucs.
+00:13:21 Loïc Quand on est au labo, dans le monde académique, on est assez peu contraint aux exigences réglementaires ou aux exigences économiques des industries.
+00:13:33 Loïc Et ça, il fallait qu'on le prenne en compte dans notre dimensionnement.
+00:13:37 Loïc Ça nous a permis aussi de se positionner pour leur apporter notre technologie.
+00:13:53 Muriel Clairement, il y a eu des échanges qui ont été fondateurs dans le parcours de l'innovation, notamment un échange qu'on a établi avec un EHPAD, qui s'appelle l'EHPAD de Notre-Dame de Puraveau, parce que cet EHPAD travaillait déjà depuis 15 ans sur la façon dont on pouvait innover en nutrition dans l'établissement pour essayer d'adapter les aliments aux contraintes de l'âge ou de la maladie.
+00:14:21 Muriel Et nous avons eu un parcours depuis maintenant plus de cinq ans de co-construction, de co-réflexion, mais aussi de co-action.
+00:14:34 Muriel Peut-être trois ans après avoir établi le premier contact, j'ai demandé à cette équipe de l'EHPAD, mais qu'est-ce qui vous motive pour continuer à travailler avec nous, à passer du temps avec nous?
+00:14:45 Muriel Et leur réponse m'a surprise.
+00:14:49 Muriel Ils m'ont dit, c'est tout simplement un projet qui parle d'espoir et d'innovation.
+00:14:54 Muriel Et après le Covid, on en avait besoin.
+00:15:03 Jean Jacques On n'est pas là pour faire un beau projet de physicien, on est là pour répondre à des besoins réels de clients.
+00:15:10 Jean Jacques Et un besoin réel, ça veut dire que le client va payer.
+00:15:14 Jean Jacques Donc en fait, on distingue entre le «nice to have» et le «must have».
+00:15:21 Jean Jacques Et une première façon d'ailleurs de le faire, c'est de vérifier s'ils sont prêts à payer un petit peu pour voir, c'est-à-dire louer un instrument par exemple.
+00:15:48 Sylvia Le besoin réel était une évidence.
+00:15:51 Sylvia Je travaillais déjà avec les cliniciens impliqués dans le suivi de ces patients.
+00:15:57 Sylvia J'ai aussi discuté avec les patients et donc le besoin était urgent et évident.

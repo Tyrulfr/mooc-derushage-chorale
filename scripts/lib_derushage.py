@@ -18,6 +18,7 @@ NAV_ITEMS = (
     ("index.html", "Accueil"),
     ("videos_temoins.html", "Vidéos témoins"),
     ("videos_expert.html", "Vidéos expert"),
+    ("monica.html", "Monica"),
     ("incrustations.html", "Incrustations"),
     ("tournage.html", "Tournage"),
     ("mise_en_oeuvre.html", "Mise en œuvre"),
@@ -28,6 +29,7 @@ NAV_CURRENT_EXACT = {
     "videos_temoins.html": "videos_temoins.html",
     "script_propose.html": "videos_temoins.html",
     "videos_expert.html": "videos_expert.html",
+    "monica.html": "monica.html",
     "incrustations.html": "incrustations.html",
     "incrustations_bonnes_pratiques.html": "incrustations.html",
     "tournage.html": "tournage.html",
@@ -47,6 +49,7 @@ NAV_CURRENT_PREFIXES = (
     ("capsule_GEN", "videos_temoins.html"),
     ("script_propose_", "videos_temoins.html"),
     ("video_expert_", "videos_expert.html"),
+    ("monica", "monica.html"),
     ("incrustation_", "incrustations.html"),
     ("mail_videos_attendues_", "videos_expert.html"),
     ("guide_editorial_", "videos_expert.html"),
@@ -186,8 +189,10 @@ def _docx_run(
     text: str,
     *,
     bold: bool = False,
+    italic: bool = False,
     size_half: int | None = None,
     color: str | None = None,
+    font: str | None = None,
 ) -> None:
     parts = (text or "").split("\n")
     for index, part in enumerate(parts):
@@ -195,8 +200,15 @@ def _docx_run(
             ET.SubElement(ET.SubElement(paragraph, _w("r")), _w("br"))
         run = ET.SubElement(paragraph, _w("r"))
         rpr = ET.SubElement(run, _w("rPr"))
+        if font:
+            fonts = ET.SubElement(rpr, _w("rFonts"))
+            fonts.set(_w("ascii"), font)
+            fonts.set(_w("hAnsi"), font)
+            fonts.set(_w("cs"), font)
         if bold:
             ET.SubElement(rpr, _w("b"))
+        if italic:
+            ET.SubElement(rpr, _w("i"))
         if size_half:
             sz = ET.SubElement(rpr, _w("sz"))
             sz.set(_w("val"), str(size_half))
@@ -235,24 +247,37 @@ class DocxDocument:
         text: str = "",
         *,
         bold: bool = False,
+        italic: bool = False,
         muted: bool = False,
         large: bool = False,
+        color: str | None = None,
+        font: str | None = None,
         runs: list[tuple[str, bool]] | None = None,
     ) -> None:
         paragraph = ET.Element(_w("p"))
         size = 28 if large else (21 if muted else None)
-        color = "5C6B7A" if muted else None
+        run_color = color or ("5C6B7A" if muted else None)
         if runs:
             for chunk, chunk_bold in runs:
                 _docx_run(
                     paragraph,
                     chunk,
                     bold=chunk_bold,
+                    italic=italic,
                     size_half=size,
-                    color=color,
+                    color=run_color,
+                    font=font,
                 )
         else:
-            _docx_run(paragraph, text, bold=bold, size_half=size, color=color)
+            _docx_run(
+                paragraph,
+                text,
+                bold=bold,
+                italic=italic,
+                size_half=size,
+                color=run_color,
+                font=font,
+            )
         self._blocks.append(paragraph)
 
     def bullets(self, items: list[str]) -> None:

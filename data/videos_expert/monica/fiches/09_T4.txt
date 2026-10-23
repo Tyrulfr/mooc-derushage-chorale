@@ -1,0 +1,62 @@
+Passer cette partie au MODULE 2 T4 — Une idée ne suffit pas
+Vidéo témoin chorale
+
+INTRO
+
+Une idée ne suffit pas. Les témoins parlent des freins — divulgation, échouer, manquer de temps — et de leviers, souvent humains.
+Se lancer dans une démarche d'innovation, c'est aussi accepter de sortir de sa zone de confort. Beaucoup de personnes se posent les mêmes questions : Est-ce le bon moment ? Quel est mon rôle ? Est-ce que j'aurais le temps de le faire ? Ces interrogations sont naturelles. Dans cette vidéo, nos intervenants partagent avec sincérité les obstacles qu'ils ont rencontrés et la manière dont ils les ont dépassés. Soyez attentifs à la manière dont les intervenants parlent de leurs essais, de leurs ajustements et parfois aussi de leurs difficultés !
+
+OUTRO
+
+Ces témoignages montrent qu'innover, c'est accepter d'apprendre en permanence. Tous montrent que les freins existent, qu'ils soient personnels, organisationnels ou culturels. Mais ils montrent aussi qu'il est possible de les dépasser, notamment en s'entourant, en se formant et en s'appuyant sur les dispositifs d'accompagnement. Finalement, l'innovation est autant une aventure humaine qu'un défi scientifique ! Mais avant d’en parler autour de soi, il y a un réflexe : déclarer son invention. Puis savoir à qui s’adresser, et avec quoi arriver, Stéphanie Sano nous parle de ce sujet.
+
+TRANSCRIPT (document Monica)
+
+00:00:14 Jean Jacques L'évolution du développement technique de l'innovation s'est faite de la façon suivante.
+00:00:18 Jean Jacques Dans un premier temps, on a une idée.
+00:00:20 Jean Jacques Cette idée, on peut l'utiliser pour rédiger un brevet et protéger l'innovation.
+00:00:26 Jean Jacques Dans un deuxième temps, on réalise une expérience pour vérifier techniquement que ça fonctionne.
+00:00:33 Jean Jacques Et donc ces choses, on les a faites en parallèle.
+00:00:36 Jean Jacques Il faut bien sûr obtenir de l'argent pour déposer un brevet et pour réaliser l'épreuve expérimentale.
+00:00:42 Jean Jacques Et là, on a disposé de soutien de l'établissement, de l'université et du CNRS pour réaliser ces choses-là.
+00:00:50 Jean Jacques Un brevet, il faut compter six mois pour le déposer à peu près.
+00:00:57 Jean Jacques Il est délivré au bout de deux ans.
+00:00:59 Jean Jacques Et puis, sur le plan expérimental, il nous a fallu 18 mois.
+00:01:05 Sylvia Pour passer d'un résultat scientifique à une validation concrète, avant la maturation, il y a l'étape de prématuration.
+00:01:13 Sylvia Cette prématuration est importante pour connaître le marché, pour connaître ses concurrents.
+00:01:19 Sylvia La véritable pierre angulaire qui a permis de montrer que la technologie était viable, c'était pendant la maturation à la SATT Paris-Saclay, quand on a fait la preuve de concept que notre candidat médicament marchait dans les modèles expérimentaux d'HTAP.
+00:01:35 Yann Une idée ne suffit pas, il faut pouvoir la démontrer à plusieurs échelles, d'abord au laboratoire, puis ensuite chez un industriel, puis après dans le cas général.
+00:01:48 Yann Moi, pour le moment, je suis dans une phase de prématuration, sous un financement POC'in Lab de l'Université Paris-Saclay.
+00:01:56 Yann Et c'est pendant cette année que mon objectif, du coup, c'est de développer une première preuve de concept qui va venir consolider toute la recherche que j'ai fait pendant ma thèse et dans mon postdoc, et d'ici la fin 2026, de tester ça sur des chaînes de taille plutôt industrielle.
+00:02:12 Yann Et à la suite de ça, je pense, dans l'année 2027, je vais essayer de chercher un financement de la SATT, de maturation, pour pouvoir développer le projet encore plus loin, faire des partenariats avec des industriels et démarrer la startup.
+00:02:26 Loïc Pour passer de nos résultats académiques vers des technologies applicables, il fallait qu'on fasse la démonstration au terrain.
+00:02:33 Loïc Ça, ça a été un point hyper important pour nous, comment on passe du labo à convaincre les utilisateurs.
+00:02:40 Loïc Convaincre scientifiquement, on savait faire.
+00:02:43 Loïc Convaincre des utilisateurs agricoles, on s'est aperçu qu'on ne savait pas faire.
+00:02:48 Loïc Donc il fallait qu'on dimensionne différemment nos essais.
+00:02:51 Loïc Il fallait qu'on dimensionne différemment les traitements, les volumes.
+00:02:56 Loïc On a pris aussi conscience de la saisonnalité de ces productions-là.
+00:03:01 Loïc À partir du moment où on a vu que notre technologie, à ces échelles-là, répondait bien, on savait qu'on était capable de maîtriser le process et donc de le transférer.
+00:03:12 Muriel Au début, on voulait faire des aliments prêts à consommer, qui se gardaient au froid, mais la chaîne du froid c'est trop cher.
+00:03:19 Muriel Donc on a fait un pivot technologique et on est passé d'une formulation prête à consommer à une formulation prête à préparer.
+00:03:27 Muriel Donc il a fallu 4-5 ans de développement de la formulation.
+00:03:31 Muriel L'étape d'entrée sur le marché, on est en train de la franchir.
+00:03:35 Muriel Mais pour la franchir, il fallait produire, et produire de façon industrielle, pour respecter tous les aspects réglementaires et sanitaires.
+00:03:45 Muriel Donc, trouver un industriel, ça prend du temps, et nous avons déjà quelques établissements qui sont motivés et prêts à acheter ces premiers pots.
+00:03:56 Muriel Donc, il nous a fallu au moins une année pour construire cette entrée sur le marché.
+00:04:03 Muriel En tant qu'académique, quand on commence à projeter comme ça, à se projeter dans un nouvel avenir ou un nouveau projet, il y a plusieurs freins qui apparaissent.
+00:04:14 Muriel Je dirais peut-être le premier frein, c'est la peur du manque de temps.
+00:04:20 Muriel Le deuxième frein, c'est la peur de perdre la légitimité académique, puisqu'on va vers un nouveau métier.
+00:04:30 Muriel Le troisième frein, c'est la peur de l'échec.
+00:04:33 Muriel Et si ce projet ne marche pas.
+00:04:36 Muriel Et si on n'arrive pas à mettre sur le marché, si ce n'est pas viable économiquement.
+00:04:40 Muriel Ça, c'est la peur de l'échec.
+00:04:42 Yann J'avais beaucoup d'hésitation sur le fait de me lancer directement à vouloir monter mon projet, monter mon équipe.
+00:04:49 Yann Pour entreprendre, on n'a pas forcément besoin d'avoir une idée révolutionnaire, mais ce qu'on a besoin c'est d'un problème qui vient de l'industriel et qu'il n'y a pas de mauvais ou bon moment vraiment pour démarrer l'aventure.
+00:05:04 Yann C'est tout cet accompagnement qui m'a décidé à prendre le risque, même si je manquais d'expérience, de quand même me lancer.
+00:05:13 Yann Je pense qu'il n'y a pas de bon ou de mauvais choix dans ce type d'aventure.
+00:05:18 Yann Chacun a son propre parcours et le plus important, c'est d'avancer.
+00:05:23 Jean Jacques Ce qu'il faut surtout finalement dire, c'est qu'il est impossible de tout maîtriser et que de toute façon, il faut se jeter à l'eau.
+00:05:31 Jean Jacques Et quand on se jette à l'eau, la seule chose qu'il faut savoir, c'est que si ça ne marche pas, on essaiera autre chose dans le cadre du même projet.
+00:05:39 Jean Jacques Et puis, si ça ne marche pas, on essaiera autre chose dans le cadre d'un autre projet.
+00:05:42 Jean Jacques Et donc, il n'y a pas de crainte à avoir, en fait.

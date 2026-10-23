@@ -1,0 +1,57 @@
+T5 — Protection et valorisation
+Vidéo témoin chorale
+
+INTRO
+
+Protection et valorisation : les témoignages racontent le moment où il a fallu choisir quoi protéger, et pourquoi. Vous comprendrez que protéger une innovation ne freine pas sa diffusion. Au contraire, c'est souvent ce qui lui permet d'être développée dans de bonnes conditions. Vous connaitrez désormais les grands principes de la propriété intellectuelle et le rôle des structures d'accompagnement pour choisir les bons moments de le faire.
+
+OUTRO
+
+Une fois une innovation protégée, une nouvelle étape commence : choisir la manière dont elle pourra être développée et diffusée. Création d'entreprise, licence d'exploitation, partenariat industriel... plusieurs possibilités existent. Dans la prochaine vidéo, Stanislas Delapasse explique comment ces choix se construisent et pourquoi ils dépendent avant tout des objectifs du projet. La PI n’est pas qu’un brevet, une bonne stratégie distingue les modes de protection et définit si c’est nécessaire de garder le secret comme stratégie.
+
+TRANSCRIPT (document Monica)
+
+00:00:20 Yann J'ai compris qu'il fallait que je protège mon travail après deux ou trois discussions avec la cellule de valorisation, qui m'a fait comprendre que protéger la propriété intellectuelle, c'est quelque chose de très important parce que c'est sur ça que la valeur de la recherche ou même de la future startup est fondée au début de la boîte.
+00:00:41 Yann Et donc, il faut se protéger soit d'attaques d'industriels extérieurs ou de personnes qui voudraient nous voler l'idée.
+00:00:49 Loïc Concernant la propriété intellectuelle, on s'est posé des questions dès le départ, parce qu'on est dans un institut académique, donc moi je travaille dans un laboratoire public à Versailles qui s'appelle l'Institut Jean-Pierre Bourgin, c'est une unité mixte INRAE-AgroParisTech, et toutes les questions de valorisation, de brevetabilité sont gérées par nos tutelles.
+00:01:09 Loïc Il se trouve que c'est un projet qui est rentré en prématuration, puis ensuite en maturation à la SATT, et la SATT avait mandat sur la gestion de la propriété intellectuelle, sur l'accompagnement propriété intellectuelle avec les cellules de valorisation respectives d'INRAE et d'AgroParisTech.
+00:01:26 Loïc Donc on s'est posé les questions collectivement.
+00:01:28 Yann En discutant avec les cellules de valorisation, j'ai compris qu'il fallait qu'on fasse une déclaration d'invention, ou du moins qu'on décrive un document qui va permettre ensuite de pouvoir faire une étude de brevetabilité avec la SATT pour voir parmi ce qu'on a inventé Qu'est-ce qui doit rester un secret de méthode industrielle et qu'est-ce qui doit être protégé par un brevet?
+00:01:51 Loïc Une grande question qui s'est posée nous sur notre technologie, c'est qu'est- ce qui est brevetable?
+00:01:56 Loïc Mais surtout, qu'est- ce qui est divulgable?
+00:02:01 Loïc Potentiellement, tout était brevetable.
+00:02:05 Loïc Par contre, il y avait une partie de la techno qu'on ne souhaitait pas divulguer.
+00:02:10 Loïc Pour une question assez simple, si un acteur faisait exactement la même chose que nous, sans le dire, on était incapable de le démontrer.
+00:02:24 Loïc Donc là, ça nous a amené à réfléchir à une stratégie qui était plus une stratégie de secret industriel.
+00:02:30 Muriel Pendant un projet de recherche qui était financé par Carnot Caliman, on a abouti à la caractérisation du probiotique.
+00:02:40 Muriel Et là, je savais qu'il y avait un potentiel de valorisation.
+00:02:44 Muriel Tout simplement, on ne peut pas breveter du vivant.
+00:02:48 Muriel On ne peut pas breveter une bactérie.
+00:02:50 Muriel En revanche, on peut breveter son application.
+00:02:53 Muriel Cette idée-là, cette application, elle est travaillée par les ingénieurs d'INRAE Transfert, qui regardent si, dans tous les brevets qui existent dans le monde, ce brevet a une place, cette application a une place.
+00:03:06 Sylvia Il faut à tout prix protéger son innovation avant d'en parler publiquement.
+00:03:10 Sylvia Je le savais déjà avant même de commencer.
+00:03:13 Sylvia Sans protection intellectuelle, personne ne s'intéresse à notre innovation et personne ne veut développer derrière.
+00:03:21 Sylvia C'est pourquoi nous avons, dès le départ, breveté y compris le mécanisme d'action avant même de développer les molécules.
+00:03:30 Sylvia Pendant que la recherche était encore au sein du laboratoire, par la suite, on a pu breveter effectivement deux séries chimiques.
+00:03:40 Sylvia Donc notre innovation est liée à trois brevets qui sont maintenant délivrés mondialement.
+00:03:46 Muriel L'objectif final d'un projet de recherche, c'est la publication.
+00:03:51 Muriel Mais jamais le fait d'écrire un brevet ou d'imaginer une application, par exemple pour un probiotique, a freiné cette publication.
+00:04:00 Muriel Parce qu'en fait, dans le temps, c'est séquentiel.
+00:04:03 Muriel Et vous commencez à travailler la propriété intellectuelle, avec notamment INRAE Transfert, avant de publier.
+00:04:11 Sylvia Notre laboratoire était dépendant de deux entités, l'Inserm et l'Université Paris-Saclay.
+00:04:20 Sylvia Il y avait également les acteurs CNRS et les acteurs CEA.
+00:04:23 Sylvia Nous nous sommes beaucoup posé la question de savoir qui allait être porteur de ces innovations en copartenariat bien sûr avec toutes les tutelles.
+00:04:33 Sylvia En fait, nous avons par défaut choisi l'Inserm puisque c'était eux qui, par définition, étaient liés aux innovations de notre laboratoire.
+00:04:43 Sylvia Et je dois dire qu'avec l'Inserm Transfert, ça s'est passé très facilement.
+00:04:48 Sylvia Il n'y a eu aucun conflit par rapport à l'idée de publier.
+00:04:53 Yann La cellule de valorisation a joué un rôle de conseil et d'accompagnement.
+00:04:59 Yann Sur quelles sont les informations qu'on a le droit de publier, que ce soit dans des articles scientifiques ou dans des communications sur LinkedIn ou dans des journaux industriels.
+00:05:09 Sylvia Si je devais donner un conseil par rapport à la valorisation du projet, c'est de s'y prendre le plus tôt possible.
+00:05:16 Sylvia On peut discuter avec les cellules de valorisation, pourquoi pas avec les SATT, très très tôt dans le projet, afin de choisir le bon moment pour breveter, ni trop tôt, ni trop tard, et afin de choisir le bon moment pour entrer en maturation éventuellement avec la SATT de Paris-Saclay.
+00:06:02 Yann Si je devais donner un conseil aujourd'hui aux jeunes chercheurs, ce serait de se rapprocher très tôt de leur cellule de valorisation pour pouvoir discuter avec eux et voir quelle est la valorisation possible de leurs travaux.
+00:06:19 Yann Même s'il n'y a pas de vocation à faire de la valorisation des travaux, c'est toujours un travail intéressant parce que le plus tôt On sait ce qu'on veut faire.
+00:06:28 Yann Le plus tôt, on peut avoir une stratégie sur quoi protéger et quoi publier.
+00:06:34 Yann Et on n'a pas à se retrouver, comme dans mon cas, en milieu de troisième année de thèse, à devoir essayer de faire un arbitrage rapide entre qu'est-ce qu'on va écrire et mettre dans la thèse et qu'est- ce qu'on va devoir protéger.
+00:06:45 Yann Le plus tôt, on le sait.
+00:06:47 Yann Le mieux, on peut s'adapter et donc suivre ce processus sereinement.

@@ -719,6 +719,21 @@ tbody tr:last-child td { border-bottom: none; }
   line-height: 1.65;
   white-space: normal;
 }
+.monica-clarisse {
+  margin: 12px 0;
+  padding: 12px 16px;
+  border-left: 4px solid #6b21a8;
+  background: #f5f3ff;
+  color: #6b21a8;
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  line-height: 1.6;
+}
+.monica-clarisse strong {
+  font-style: normal;
+  display: block;
+  margin-bottom: 6px;
+}
 .script-attente-panel { border-left: 4px solid var(--warn); }
 .script-valide-panel { border-left: 4px solid #047857; }
 .script-revue-panel { border-left: 4px solid #0b6e77; }
@@ -948,7 +963,7 @@ tbody tr:last-child td { border-bottom: none; }
   margin-bottom: 22px;
 }
 .page-header h1 { margin: 0 0 6px; }
-.export-toolbar { flex-shrink: 0; }
+.export-toolbar { flex-shrink: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .bab-segment { margin-bottom: 16px; }
 .bab-segment .capsules { margin: 8px 0; }
 .capsule-tag.utilise { border-color: var(--ok); color: var(--ok); background: #ecfdf5; }

@@ -3,6 +3,7 @@ from __future__ import annotations
 import csv
 import io
 import re
+import shutil
 import zipfile
 from collections import Counter, defaultdict
 from datetime import date
@@ -767,6 +768,21 @@ tbody tr:last-child td { border-bottom: none; }
   line-height: 1.65;
   white-space: normal;
 }
+.monica-clarisse {
+  margin: 12px 0;
+  padding: 12px 16px;
+  border-left: 4px solid #6b21a8;
+  background: #f5f3ff;
+  color: #6b21a8;
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  line-height: 1.6;
+}
+.monica-clarisse strong {
+  font-style: normal;
+  display: block;
+  margin-bottom: 6px;
+}
 .script-attente-panel { border-left: 4px solid var(--warn); }
 .script-valide-panel { border-left: 4px solid #047857; }
 .script-revue-panel { border-left: 4px solid #0b6e77; }
@@ -996,7 +1012,7 @@ tbody tr:last-child td { border-bottom: none; }
   margin-bottom: 22px;
 }
 .page-header h1 { margin: 0 0 6px; }
-.export-toolbar { flex-shrink: 0; }
+.export-toolbar { flex-shrink: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .bab-segment { margin-bottom: 16px; }
 .bab-segment .capsules { margin: 8px 0; }
 .capsule-tag.utilise { border-color: var(--ok); color: var(--ok); background: #ecfdf5; }
@@ -4829,6 +4845,12 @@ def build_home(capsules: list[dict], segments: list[dict]) -> None:
             "▶",
             "Vidéos expert",
             "Scripts, revues et cahier édito envoyé aux experts — par vidéo ou par nom.",
+        ),
+        (
+            "monica.html",
+            "◇",
+            "Monica",
+            "Ciment du parcours : intros et outros de toutes les vidéos, documents sources et captation.",
         ),
         (
             "incrustations.html",
@@ -12690,6 +12712,207 @@ def _write_tournage_xlsx(records: list[dict], path: Path) -> str:
     return path.name
 
 
+def _load_monica_index() -> dict:
+    path = ROOT / "data" / "videos_expert" / "monica" / "index.json"
+    if not path.exists():
+        return {"videos": []}
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _monica_paragraphs(lines: list[str]) -> str:
+    if not lines:
+        return "<p class='meta'>—</p>"
+    return "".join(f"<p>{escape(line)}</p>" for line in lines)
+
+
+def build_monica_pages() -> None:
+    """Onglet Monica : ciment du parcours, documents sources, captation intro/outro."""
+    index = _load_monica_index()
+    videos = list(index.get("videos") or [])
+    monica_dir = ROOT / "data" / "videos_expert" / "monica"
+    site_src = SITE / "monica_sources"
+    if site_src.exists():
+        shutil.rmtree(site_src)
+    site_src.mkdir(parents=True)
+    for src in (monica_dir / "sources").glob("*.docx"):
+        shutil.copy2(src, site_src / src.name)
+    for name in (
+        "Monica_deroule_complet.docx",
+        "Monica_deroule_complet.txt",
+        "fil_arbitrage.json",
+    ):
+        path = monica_dir / name
+        if path.exists():
+            shutil.copy2(path, SITE / name)
+
+    def clarisse_html(label: str, text: str, note: str = "") -> str:
+        if not text:
+            return ""
+        note_html = f"<p>{escape(note)}</p>" if note else ""
+        return (
+            f"<div class='monica-clarisse'><strong>{escape(label)}</strong>"
+            f"{note_html}<p>{escape(text)}</p></div>"
+        )
+
+    fil_path = monica_dir / "fil_arbitrage.json"
+    fil_articles: list[str] = []
+    if fil_path.exists():
+        fil = json.loads(fil_path.read_text(encoding="utf-8"))
+        for video in fil.get("videos") or []:
+            code = video.get("code") or ""
+            props = video.get("clarisse") or {}
+            bits = [
+                f"<article class='card' id='fil-{escape(code or 'x')}'>",
+                f"<h2>{escape(video.get('titre') or '')}"
+                + (f" · {escape(code)}" if code else "")
+                + "</h2>",
+            ]
+            for bloc in video.get("blocs") or []:
+                bits.append(f"<h3>{escape(bloc.get('label') or '')}</h3>")
+                bits.append(_monica_paragraphs(bloc.get("lignes") or []))
+                kind = bloc.get("kind")
+                if kind == "intro_temoin":
+                    bits.append(
+                        clarisse_html(
+                            f"Proposition Clarisse — intro {code}",
+                            props.get("intro") or "",
+                            "À arbitrer / synthétiser / réécrire.",
+                        )
+                    )
+                elif kind == "concl_temoin":
+                    for item in props.get("transitions") or []:
+                        bits.append(
+                            clarisse_html(
+                                f"Proposition Clarisse — relance {code}",
+                                item.get("texte") or "",
+                                item.get("position") or "",
+                            )
+                        )
+                    bits.append(
+                        clarisse_html(
+                            f"Proposition Clarisse — outro {code}",
+                            props.get("outro") or "",
+                        )
+                    )
+                    bits.append(
+                        clarisse_html(
+                            f"Proposition Clarisse — à retenir {code}",
+                            props.get("a_retenir") or "",
+                        )
+                    )
+            bits.append("</article>")
+            fil_articles.append("".join(bits))
+
+    n_intro = sum(1 for item in videos if item.get("has_intro"))
+    n_outro = sum(1 for item in videos if item.get("has_outro"))
+    n_t = sum(1 for item in videos if item.get("kind") == "temoin")
+    n_e = sum(1 for item in videos if item.get("kind") == "expert")
+
+    toc = "".join(
+        f"<a class='btn btn-secondary' href='#{escape(item['code'])}'>"
+        f"{escape(item['code'])}</a> "
+        for item in videos
+    )
+    rows = []
+    articles = []
+    for item in videos:
+        code = item.get("code") or ""
+        href = f"monica_sources/{quote(item.get('source_fichier') or '')}"
+        rows.append(
+            "<tr>"
+            f"<td><a href='#{escape(code)}'><strong>{escape(code)}</strong></a></td>"
+            f"<td>{escape(item.get('titre') or '')}</td>"
+            f"<td>{escape(item.get('kind_label') or item.get('kind') or '')}</td>"
+            f"<td>{'Oui' if item.get('has_intro') else '—'}</td>"
+            f"<td>{'Oui' if item.get('has_outro') else '—'}</td>"
+            f"<td><a href='{escape(href)}'>Source</a></td>"
+            f"<td>{_tournage_toggle_html('monica-' + code, 'filme', 'Filmé')}</td>"
+            f"<td>{_tournage_toggle_html('monica-' + code, 'monte', 'Monté')}</td>"
+            f"<td>{_tournage_toggle_html('monica-' + code, 'valide', 'Validé')}</td>"
+            "</tr>"
+        )
+        transcript = item.get("transcript") or []
+        details = ""
+        if transcript:
+            details = (
+                "<details><summary>Transcript du document Monica"
+                f" ({len(transcript)} blocs)</summary>"
+                f"{_monica_paragraphs(transcript)}</details>"
+            )
+        articles.append(
+            f"<article class='card' id='{escape(code)}'>"
+            f"<h2>{escape(item.get('titre') or code)}</h2>"
+            f"<p class='meta'>{escape(item.get('kind_label') or '')} · "
+            f"<a href='{escape(href)}'>{escape(item.get('source_fichier') or '')}</a></p>"
+            "<h3>Intro</h3>"
+            f"{_monica_paragraphs(item.get('intro') or [])}"
+            "<h3>Outro</h3>"
+            f"{_monica_paragraphs(item.get('outro') or [])}"
+            f"{details}"
+            "</article>"
+        )
+
+    export_btn = (
+        "<a class='btn' href='Monica_deroule_complet.docx' "
+        "download='Monica_Henao_document_unique.docx'>Exporter le document</a>"
+        "<a class='btn btn-secondary' href='Monica_deroule_complet.txt' "
+        "download='Monica_Henao_document_unique.txt'>Exporter en texte</a>"
+    )
+    body = f"""
+<section class="hero">
+  <p class="hero__eyebrow">Animatrice · Monica Henao</p>
+  <h1>Monica, ciment du parcours</h1>
+  <p class="hero__lead">Elle ouvre et clôt chaque vidéo — témoins et expertise. Les documents ci-dessous sont ses textes de travail, dans l’ordre de formation.</p>
+  <div class="hero__stats">
+    <span class="stat-pill"><strong>{len(videos)}</strong> vidéos</span>
+    <span class="stat-pill"><strong>{n_t}</strong> témoins</span>
+    <span class="stat-pill"><strong>{n_e}</strong> expert</span>
+    <span class="stat-pill"><strong>{n_intro}</strong> intros</span>
+    <span class="stat-pill"><strong>{n_outro}</strong> outros</span>
+  </div>
+</section>
+<div class="export-toolbar">
+  {export_btn}
+</div>
+<p class="meta">Texte Monica en police courante. Propositions Clarisse (T1–T13) en Georgia violet italique, insérées après l’intro témoignages et après la conclusion témoignages.</p>
+<p class="meta">Captation : Filmé / Monté / Validé se cochent ici (mémorisés dans ce navigateur).</p>
+<section class="stats-grid">
+  <div class="stat-card"><div class="stat-card__label">Ordre</div><div class="stat-card__value">{len(videos)}</div><div class="stat-card__meta">T1 → E13</div></div>
+  <div class="stat-card"><div class="stat-card__label">Sources</div><div class="stat-card__value">{len(videos)}</div><div class="stat-card__meta">docx Monica</div></div>
+</section>
+<h2 class="section-title">Fil d’arbitrage</h2>
+<div class="export-toolbar">
+  {export_btn}
+</div>
+{''.join(fil_articles) or "<p class='meta'>Document unique à régénérer.</p>"}
+<p>{toc}</p>
+<table class="data-table">
+<thead><tr><th>Code</th><th>Titre</th><th>Type</th><th>Intro</th><th>Outro</th><th>Source</th><th>Filmé</th><th>Monté</th><th>Validé</th></tr></thead>
+<tbody>{''.join(rows)}</tbody>
+</table>
+<h2 class="section-title">Déroulé</h2>
+{''.join(articles)}
+"""
+    write_text(
+        SITE / "monica.html",
+        html_page(
+            "Monica",
+            body,
+            nav_current="monica.html",
+            scripts=["assets/tournage.js"],
+            page_header=(
+                "<div class='page-header'>"
+                "<div><h1>Monica</h1>"
+                "<p class='lead'>Document unique d’arbitrage : fil Monica + propositions Clarisse.</p></div>"
+                "<div class='export-toolbar'>"
+                "<a class='btn' href='Monica_deroule_complet.docx' "
+                "download='Monica_Henao_document_unique.docx'>Exporter le document</a>"
+                "</div></div>"
+            ),
+        ),
+    )
+
+
 def build_tournage_page(programme_table: dict, experts_profils: dict) -> None:
     """Onglet Tournage : planning + Script / Script final / Filmé / Monté / Validé / Implémenté."""
     planning = _load_tournage()
@@ -14731,6 +14954,7 @@ if __name__ == "__main__":
     build_proposition_edito_pages(programme_table)
     build_fonctions_temoins_page()
     build_videos_expert_pages(programme_table, experts_profils)
+    build_monica_pages()
     build_tournage_page(programme_table, experts_profils)
     build_prev_vid_page(programme_table)
     build_suivi_intervenants_pages(programme_table, experts_profils)

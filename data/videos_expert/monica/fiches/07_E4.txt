@@ -1,0 +1,19 @@
+E4 — POC, prototype, MVP, TRL
+Vidéo expert
+
+INTRO
+
+Capsule à venir : les niveaux de preuve — POC, prototype, MVP — et l’échelle TRL, pour ne plus les confondre.
+Objectif de l'apprenant : comprendre ce langage essentiel pour se projeter dans une démarche innovante issue de l'écosystème académique.
+
+OUTRO
+
+Retenez que l’utilisation de Technology Readiness Levels (TRL), ou niveaux de maturité technologique, d’abord au sein de la NASA puis dans son adoption croissante dans de plus amples domaines, a permis des discussions cohérentes et uniformes au sujet de la maturité technique de différents types de technologies. Les TRL se basent ainsi sur une échelle de 1 à 9, 9 étant la technologie la plus mature. Le niveau 3 TRL correspond à la preuve de concept expérimentale et le niveau 7 TRL correspond à un prototype dans un environnement opérationnel. Savez-vous où en êtes-vous dans l'échelle TRL ? Est-ce qu'il existe un prototype ou POC ? Quel serait votre MVP minimum product viable ? Virginia Branco déroule dans la séquence suivante les moyens de dérisquer votre projet.
+Fascicule 2 page 15
+fraction fascicule 2 page 5
+OK MH 18/10/26
+
+TRANSCRIPT (document Monica)
+
+Transcript non disponible (mettre les scripts de Fatoumata)— vidéo pas encore filmée, ou fichier source absent.
+Fatoumata peut utiliser les informations sur le fascicule sur DRL et TRL
