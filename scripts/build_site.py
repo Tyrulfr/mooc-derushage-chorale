@@ -4853,6 +4853,12 @@ def build_home(capsules: list[dict], segments: list[dict]) -> None:
             "Ciment du parcours : intros et outros de toutes les vidéos, documents sources et captation.",
         ),
         (
+            "transcripts_expert_final.html",
+            "≡",
+            "Transcription Vidéo Expert Final",
+            "Transcriptions V0 expert, mot pour mot, dans l’ordre des vidéos.",
+        ),
+        (
             "incrustations.html",
             "▣",
             "Incrustations",
@@ -12767,6 +12773,44 @@ def build_monica_pages() -> None:
                 + (f" · {escape(code)}" if code else "")
                 + "</h2>",
             ]
+            if video.get("intro") or video.get("transcript") or video.get("outro"):
+                if video.get("intro"):
+                    bits.append("<h3>Intro Monica</h3>")
+                    bits.append(_monica_paragraphs(video.get("intro") or []))
+                if video.get("kind") == "temoin":
+                    bits.append(
+                        clarisse_html(
+                            f"Proposition Clarisse — intro {code}",
+                            props.get("intro") or "",
+                            "À arbitrer / synthétiser / réécrire.",
+                        )
+                    )
+                bits.append("<h3>Transcription de la vidéo</h3>")
+                bits.append(_monica_paragraphs(video.get("transcript") or []))
+                if video.get("kind") == "temoin":
+                    for item in props.get("transitions") or []:
+                        bits.append(
+                            clarisse_html(
+                                f"Proposition Clarisse — relance {code}",
+                                item.get("texte") or "",
+                                item.get("position") or "",
+                            )
+                        )
+                    bits.append(
+                        clarisse_html(
+                            f"Proposition Clarisse — outro {code}",
+                            props.get("outro") or "",
+                        )
+                    )
+                    bits.append(
+                        clarisse_html(
+                            f"Proposition Clarisse — à retenir {code}",
+                            props.get("a_retenir") or "",
+                        )
+                    )
+                if video.get("outro"):
+                    bits.append("<h3>Outro Monica</h3>")
+                    bits.append(_monica_paragraphs(video.get("outro") or []))
             for bloc in video.get("blocs") or []:
                 bits.append(f"<h3>{escape(bloc.get('label') or '')}</h3>")
                 bits.append(_monica_paragraphs(bloc.get("lignes") or []))
@@ -12909,6 +12953,75 @@ def build_monica_pages() -> None:
                 "download='Monica_Henao_document_unique.docx'>Exporter le document</a>"
                 "</div></div>"
             ),
+        ),
+    )
+
+
+def build_transcripts_expert_final_pages() -> None:
+    """Onglet Transcription Vidéo Expert Final — V0 mot pour mot."""
+    src_dir = ROOT / "data" / "transcripts_expert_final"
+    index_path = src_dir / "index.json"
+    if not index_path.exists():
+        return
+    index = json.loads(index_path.read_text(encoding="utf-8"))
+    videos = list(index.get("videos") or [])
+    site_src = SITE / "transcripts_expert_final_sources"
+    if site_src.exists():
+        shutil.rmtree(site_src)
+    site_src.mkdir(parents=True)
+    for src in (src_dir / "sources").glob("*.docx"):
+        shutil.copy2(src, site_src / src.name)
+
+    toc = "".join(
+        f"<a class='btn btn-secondary' href='#{escape(item.get('code') or item.get('v') or 'x')}'>"
+        f"{escape(item.get('code') or item.get('v') or '')}</a> "
+        for item in videos
+    )
+    articles = []
+    rows = []
+    for item in videos:
+        code = item.get("code") or item.get("v") or ""
+        href = f"transcripts_expert_final_sources/{quote(item.get('fichier') or '')}"
+        rows.append(
+            "<tr>"
+            f"<td><a href='#{escape(code)}'><strong>{escape(code)}</strong></a></td>"
+            f"<td>{escape(item.get('v') or '')}</td>"
+            f"<td>{escape(item.get('expert') or '')}</td>"
+            f"<td>{len(item.get('lignes') or [])}</td>"
+            f"<td><a href='{escape(href)}'>{escape(item.get('fichier') or '')}</a></td>"
+            "</tr>"
+        )
+        articles.append(
+            f"<article class='card' id='{escape(code)}'>"
+            f"<h2>{escape(code)} · {escape(item.get('expert') or '')}</h2>"
+            f"<p class='meta'>{escape(item.get('v') or '')} · "
+            f"<a href='{escape(href)}'>{escape(item.get('fichier') or '')}</a></p>"
+            + _monica_paragraphs(item.get("lignes") or [])
+            + "</article>"
+        )
+    body = f"""
+<section class="hero">
+  <p class="hero__eyebrow">Expert · transcriptions V0</p>
+  <h1>Transcription Vidéo Expert Final</h1>
+  <p class="hero__lead">Textes importés mot pour mot depuis les documents V0 Transcript. Aucune réécriture.</p>
+  <div class="hero__stats">
+    <span class="stat-pill"><strong>{len(videos)}</strong> vidéos</span>
+  </div>
+</section>
+<p>{toc}</p>
+<table class="data-table">
+<thead><tr><th>Code</th><th>V</th><th>Expert</th><th>Blocs</th><th>Source</th></tr></thead>
+<tbody>{''.join(rows)}</tbody>
+</table>
+<h2 class="section-title">Transcriptions</h2>
+{''.join(articles)}
+"""
+    write_text(
+        SITE / "transcripts_expert_final.html",
+        html_page(
+            "Transcription Vidéo Expert Final",
+            body,
+            nav_current="transcripts_expert_final.html",
         ),
     )
 
@@ -14955,6 +15068,7 @@ if __name__ == "__main__":
     build_fonctions_temoins_page()
     build_videos_expert_pages(programme_table, experts_profils)
     build_monica_pages()
+    build_transcripts_expert_final_pages()
     build_tournage_page(programme_table, experts_profils)
     build_prev_vid_page(programme_table)
     build_suivi_intervenants_pages(programme_table, experts_profils)
